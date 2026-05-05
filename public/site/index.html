@@ -216,6 +216,14 @@
     margin-top:8px; font-size:11px; letter-spacing:.12em;
     text-transform:uppercase; color: var(--text-3); font-weight:600;
   }
+  /* hero countdown */
+  .hero-countdown{ margin-bottom: 28px; padding: 18px 0 22px; border-bottom: 1px solid var(--stroke); display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .hc-label{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
+  .hc-blocks{ display:flex; gap: 22px; }
+  .hc-block{ text-align:center; min-width: 64px; }
+  .hc-num{ font-size: 38px; font-weight:600; letter-spacing:-.04em; line-height:1; background: linear-gradient(180deg, #FFFFFF, #A1A1A6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent; font-variant-numeric: tabular-nums; }
+  .hc-lbl{ margin-top:6px; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
+  @media (max-width: 640px){ .hc-num{ font-size: 28px; } .hc-block{ min-width: 50px; } .hc-blocks{ gap: 12px; } }
 
   /* ============ STATS ============ */
   .stats{
@@ -345,9 +353,10 @@
     z-index: 1;
     /* per-card height tweak so faces align */
   }
-  .kn-card.kn-1 .kn-photo,
+  .kn-card.kn-1 .kn-photo{ object-position: center 102%; transform: scale(0.95); transform-origin: center bottom; }
   .kn-card.kn-2 .kn-photo{ object-position: center 102%; transform: scale(1.15); transform-origin: center bottom; }
-  .kn-card:hover .kn-photo{ transform: scale(1.20); }
+  .kn-card.kn-1:hover .kn-photo{ transform: scale(1.0); }
+  .kn-card.kn-2:hover .kn-photo{ transform: scale(1.20); }
 
   /* Soft vignette + bottom darkening so text reads */
   .kn-overlay{
@@ -1908,6 +1917,15 @@
   </div>
 
   <div class="hero-inner">
+    <div class="hero-countdown">
+      <div class="hc-label">Nästa mässa öppnar</div>
+      <div class="hc-blocks" id="cd">
+        <div class="hc-block"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div></div>
+        <div class="hc-block"><div class="hc-num" data-cd="h">14</div><div class="hc-lbl">Timmar</div></div>
+        <div class="hc-block"><div class="hc-num" data-cd="m">42</div><div class="hc-lbl">Minuter</div></div>
+        <div class="hc-block"><div class="hc-num" data-cd="s">08</div><div class="hc-lbl">Sek</div></div>
+      </div>
+    </div>
     <span class="eyebrow"><span class="dot"></span> 19–20 maj 2027 · Kistamässan, Stockholm</span>
     <h1 class="hero-title"><span class="grad">Energimässan 2027 Live.</span></h1>
 
@@ -1936,21 +1954,7 @@
   </div>
 </section>
 
-<!-- ============ COUNTDOWN ============ -->
-<section class="countdown">
-  <div class="countdown-inner">
-    <div class="countdown-text">
-      <div class="label">Nästa mässa öppnar</div>
-      <div class="h">19 maj 2027<br/>kl. 09:00</div>
-    </div>
-    <div class="countdown-blocks" id="cd">
-      <div class="cd-block"><div class="cd-num" data-cd="d">312</div><div class="cd-lbl">Dagar</div></div>
-      <div class="cd-block"><div class="cd-num" data-cd="h">14</div><div class="cd-lbl">Timmar</div></div>
-      <div class="cd-block"><div class="cd-num" data-cd="m">42</div><div class="cd-lbl">Minuter</div></div>
-      <div class="cd-block"><div class="cd-num" data-cd="s">08</div><div class="cd-lbl">Sek</div></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ============ STATS ============ -->
 <section class="section" id="program">
@@ -2550,97 +2554,7 @@
   </div>
 </section>
 
-<!-- ============ FOUR FAIRS ============ -->
-<section class="section fwfw" id="parallellt">
-  <div class="section-inner">
-     <div class="fwfw-grid" style="display:block;">
-       <img src="assets/fyra-varldar-full.png" alt="En biljett. Fyra världar." style="width:100%;height:auto;display:block;border-radius:16px;" loading="lazy" />
-       <div class="fwfw-text" style="display:none;">
-        <div class="section-eyebrow" style="color:#34D399;">4 mässor under ett tak</div>
-        <h2 class="section-title fwfw-h">En biljett.<br/><span class="grad">Fyra världar.</span></h2>
-        <p class="fwfw-sub">Energi, smart city, mobilitet och infrastruktur möts parallellt i Kistamässan. Du rör dig fritt mellan dem.</p>
-        <div class="fwfw-tip">
-          <span class="fwfw-spark">✦</span>
-          <span><b>Därför ska du vara här:</b> en resa ger dig fyra perspektiv på samma samhällsomställning.</span>
-        </div>
-        <a href="checkout.html" class="fwfw-cta">Hämta biljett <span>→</span></a>
-        <div class="fwfw-foot">
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg> 19–20 maj 2027</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg> Kistamässan, Stockholm</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M14 19c0-2 2-3.5 4-3.5s3.5 1.5 3.5 3.5"/></svg> 3 200+ besökare</span>
-        </div>
-      </div>
-      <div class="fwfw-right">
-        <div class="fwfw-cards">
-          <a class="fwfw-card f-1" href="#" style="--photo: url('assets/world-energi.png');">
-            <div class="fwfw-card-body">
-              <div>
-                <div class="fwfw-card-h">Energi&shy;mässan</div>
-                <div class="fwfw-card-d">Kraften som driver samhället framåt — produktion, nät och industri.</div>
-              </div>
-              <div class="fwfw-card-cta">Utforska <span class="fwfw-card-cta-arrow">→</span></div>
-            </div>
-            <div class="fwfw-card-photo-wrap"><div class="fwfw-card-photo"></div></div>
-            <div class="fwfw-card-swatch"></div>
-          </a>
-          <a class="fwfw-card f-2" href="#" style="--photo: url('assets/world-smart-city.png');">
-            <div class="fwfw-card-body">
-              <div>
-                <div class="fwfw-card-h">Stockholm<br/>Smart&nbsp;City</div>
-                <div class="fwfw-card-d">Smarta lösningar för levande och hållbara städer.</div>
-              </div>
-              <div class="fwfw-card-cta">Utforska <span class="fwfw-card-cta-arrow">→</span></div>
-            </div>
-            <div class="fwfw-card-photo-wrap"><div class="fwfw-card-photo"></div></div>
-            <div class="fwfw-card-swatch"></div>
-          </a>
-          <a class="fwfw-card f-3" href="#" style="--photo: url('assets/world-mobility.png');">
-            <div class="fwfw-card-body">
-              <div>
-                <div class="fwfw-card-h">Nordic<br/>Mobility</div>
-                <div class="fwfw-card-d">Mobilitet som är ren, säker och tillgänglig — för alla.</div>
-              </div>
-              <div class="fwfw-card-cta">Utforska <span class="fwfw-card-cta-arrow">→</span></div>
-            </div>
-            <div class="fwfw-card-photo-wrap"><div class="fwfw-card-photo"></div></div>
-            <div class="fwfw-card-swatch"></div>
-          </a>
-          <a class="fwfw-card f-4" href="#" style="--photo: url('assets/world-infra.png');">
-            <div class="fwfw-card-body">
-              <div>
-                <div class="fwfw-card-h">Infra&shy;struktur</div>
-                <div class="fwfw-card-d">Grundläggande system för ett robust samhälle.</div>
-              </div>
-              <div class="fwfw-card-cta">Utforska <span class="fwfw-card-cta-arrow">→</span></div>
-            </div>
-            <div class="fwfw-card-photo-wrap"><div class="fwfw-card-photo"></div></div>
-            <div class="fwfw-card-swatch"></div>
-          </a>
-        </div>
 
-        <div class="fwfw-thread-wrap" aria-hidden="true">
-          <svg class="fwfw-thread-svg" viewBox="0 0 1000 60" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="fwfwThreadGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#34D399"/>
-                <stop offset="33%" stop-color="#5AC8FA"/>
-                <stop offset="66%" stop-color="#BF5AF2"/>
-                <stop offset="100%" stop-color="#FF9F0A"/>
-              </linearGradient>
-            </defs>
-            <path d="M 0 30 C 125 0, 250 60, 375 30 S 625 0, 750 30 S 1000 60, 1000 30" stroke="url(#fwfwThreadGrad)" stroke-width="2" fill="none" stroke-linecap="round"/>
-          </svg>
-          <div class="fwfw-thread-dots">
-            <div class="fwfw-thread-dot d-1"><span class="d"></span><span class="l">Energi</span></div>
-            <div class="fwfw-thread-dot d-2"><span class="d"></span><span class="l">Smart City</span></div>
-            <div class="fwfw-thread-dot d-3"><span class="d"></span><span class="l">Mobilitet</span></div>
-            <div class="fwfw-thread-dot d-4"><span class="d"></span><span class="l">Infrastruktur</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ HITTA RÄTT SPÅR FÖR DIN ROLL (referens) ============ -->
 <section class="section spar-section" id="spar" style="padding-top: 0;">
@@ -2781,11 +2695,79 @@
     investerare:  ['Investering marknad och affär', 'Kärnkraft och kraftproduktion', 'AI data och digitalisering']
   };
 
+  // Speaker pool for demo
+  const SPEAKERS = [
+    {n:'Magdalena Andersson', r:'Partiordförande', s:'magdalena-andersson', p:'talare/photos/magdalena.png'},
+    {n:'Anna Borg', r:'VD, Vattenfall', s:'anna-borg', p:'talare/photos/anna-borg.webp'},
+    {n:'Tomas Kåberger', r:'Ordf., Sveriges Energiforum', s:'tomas-kaberger', p:'talare/photos/tomas-kaberger.png'},
+    {n:'Ulrika Hesslow', r:'Energiexpert', s:'ulrika-hesslow', p:'talare/photos/ulrika-hesslow.png'},
+    {n:'Jonas Birgersson', r:'VD, Via Europa', s:'jonas-birgersson', p:'talare/photos/jonas-birgersson.png'},
+    {n:'Carl Berglöf', r:'Energiföretagen', s:'carl-berglof', p:'talare/photos/carl-berglof.png'},
+    {n:'Désirée Comstedt', r:'Affärsutvecklare', s:'desiree-comstedt', p:'talare/photos/desiree-comstedt.png'},
+    {n:'Peter Carlsson', r:'F.d. VD, Northvolt', s:'peter-carlsson', p:'talare/photos/peter-carlsson.png'},
+    {n:'Ramon Gras', r:'Aretian, Harvard', s:'ramon-gras', p:'talare/photos/ramon-gras.png'},
+    {n:'Niklas Wykman', r:'Finansmarknadsminister', s:'niklas-wykman', p:'talare/photos/anna-borg.webp'},
+    {n:'Lars Hjälmered', r:'Riksdagsledamot (M)', s:'lars-hjalmered', p:'talare/photos/carl-berglof.png'},
+    {n:'Pernilla Winnhed', r:'VD, Energiföretagen', s:'pernilla-winnhed', p:'talare/photos/ulrika-hesslow.png'},
+    {n:'Åsa Pettersson', r:'VD, Energiföretagen', s:'asa-pettersson', p:'talare/photos/desiree-comstedt.png'},
+    {n:'Bo Normark', r:'EIT InnoEnergy', s:'bo-normark', p:'talare/photos/tomas-kaberger.png'},
+    {n:'Boris Schucht', r:'CEO, 50Hertz', s:'boris-schucht', p:'talare/photos/peter-carlsson.png'}
+  ];
+  const STAGES = ['Stora scenen','AI-zonen','Konferens','Mässgolvet'];
+  const TIMES = ['08:30','09:30','10:15','11:00','11:45','12:30','13:15','14:00','14:45','15:30','16:15','17:00'];
+
+  function pgmTitle(track, i){
+    const titles = {
+      'Politik och reglering': ['Sveriges energipolitik 2027','EU-paketet i praktiken','Tillstånd & tempo','Reglerade marknader','Elcertifikat 2.0','Energistöd och statshjälp','Klimatlagen — uppföljning','Politisk keynote','Kommunala mandat','Ny elmarknadslag','Nordens energiunion','Paneldebatt: Politik möter industri'],
+      'Energisystem och elnät': ['Stamnätets framtid','Flexibilitet i lokalnätet','Effektreserven','Nya transformatorstationer','Smart grid med ML','Hav till hushåll','HVDC-projekten','Battery storage at scale','Mikronät i praktiken','Lastbalansering','Frekvenshållning','Driftsäkerhet 2030'],
+      'Kärnkraft och kraftproduktion': ['SMR i Sverige','Kärnkraftens nya våg','Finansieringsmodeller','Vattenfalls plan','Forsmark 4?','Bränslecykeln','Avfallshantering','Internationella exempel','Tidsplaner & risker','Kärnkraftens roll','Long-term contracts','Talarpanel: SMR'],
+      'Industri och elektrifiering': ['Hybrit & H2 Green Steel','Cement & batterier','Vätgasens roll','Fordonsindustrin elektrifierar','Värmepumpar i industri','Processindustrins krav','PPA i praktiken','CBAM och scope 3','Industriell symbios','Elektrifieringsplan','Norrbotten case','Skåne case'],
+      'AI data och digitalisering': ['Frukost-AI: LLM:er i drift','AI som energisparat ord','Smart grid med ML','Prediktivt underhåll','Datadrivna beslut','Edge computing','Digital tvilling','Cybersäkerhet','Open data','AI och nätstabilitet','Talare: Mats Lindelöw','AI etik i energi'],
+      'Hållbarhet och klimat': ['Klimatmålen 2030','Scope 3 i praktiken','CSRD-rapportering','Hållbar finansiering','Cirkulär ekonomi','Biologisk mångfald','Vattenresurser','Klimatanpassning','Företagens klimatresa','Net zero pathways','Greenwashing','Talare: Hållbarhetspanel'],
+      'Kommun stad och samhällsbyggnad': ['Smart City Stockholm','Hållbara stadsdelar','Energieffektiva byggnader','Lokala energisystem','Solceller på stadshus','Laddinfrastruktur','Fjärrvärme 4.0','Kommunala mandat','Återbrukets stad','Fastighetsbranschen','Boverket informerar','Borgarrådet talar'],
+      'Investering marknad och affär': ['Greentech-fonderna','Marknadstrender','PPA-strukturer','Riskkapital i energi','IPO-piplinen','Långsiktiga avtal','EU-finansiering','Nordiska investerare','M&A i energisektorn','Family offices','Pensionsfondernas roll','Klimatobligationer']
+    };
+    return (titles[track] || ['Programpunkt'])[i % 12] || 'Programpunkt';
+  }
+
+  function openTrack(trackName, count){
+    const overlay = document.getElementById('trackModal');
+    document.getElementById('tm-title').textContent = trackName;
+    document.getElementById('tm-sub').textContent = (count||12) + ' programpunkter rekommenderas för dig';
+    const list = document.getElementById('tm-list');
+    const n = Math.min(count||12, 12);
+    let html = '';
+    for(let i=0;i<n;i++){
+      const sp = SPEAKERS[i % SPEAKERS.length];
+      const t = pgmTitle(trackName, i);
+      const stage = STAGES[i % STAGES.length];
+      const time = TIMES[i % TIMES.length];
+      html += `<a class="tm-row" href="talare/${sp.s}.html">
+        <div class="tm-time">${time}</div>
+        <div class="tm-photo" style="background-image:url('${sp.p}');"></div>
+        <div class="tm-info">
+          <div class="tm-stage">${stage}</div>
+          <div class="tm-t">${t}</div>
+          <div class="tm-sp">${sp.n} · ${sp.r}</div>
+        </div>
+        <div class="tm-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg></div>
+      </a>`;
+    }
+    list.innerHTML = html;
+    overlay.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  window.__openTrack = openTrack;
+  window.__closeTrack = function(){
+    document.getElementById('trackModal').classList.remove('open');
+    document.body.style.overflow='';
+  };
+
   function render(aud){
     const wrap = document.getElementById('spar-cards');
     const items = TRACKS[aud];
     wrap.innerHTML = items.map(item => `
-      <a class="spar-card${item.hi ? ' hi' : ''}" href="program.html?track=${encodeURIComponent(item.t)}">
+      <button type="button" class="spar-card${item.hi ? ' hi' : ''}" onclick="__openTrack('${item.t.replace(/'/g,"\\'")}', ${item.n})">
         <div class="sc-ico">${ICONS[item.ico]}</div>
         <div class="sc-h">${item.t}</div>
         <div class="sc-d">${item.d}</div>
@@ -2793,7 +2775,7 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z" fill="currentColor"/></svg>
           ${item.n} programpunkter
         </div>
-      </a>
+      </button>
     `).join('');
 
     const f = FLOWS[aud];
@@ -2813,6 +2795,45 @@
   render('energibolag');
 })();
 </script>
+
+<!-- Track modal -->
+<div id="trackModal" class="tm-overlay" onclick="if(event.target===this)__closeTrack()">
+  <div class="tm-modal">
+    <button class="tm-close" type="button" onclick="__closeTrack()" aria-label="Stäng">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M6 18L18 6"/></svg>
+    </button>
+    <div class="tm-eyebrow">Rekommenderat spår</div>
+    <h3 class="tm-h" id="tm-title">Politik och reglering</h3>
+    <p class="tm-s" id="tm-sub">12 programpunkter rekommenderas för dig</p>
+    <button type="button" class="tm-add">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      Lägg till talarlista
+    </button>
+    <div class="tm-list" id="tm-list"></div>
+  </div>
+</div>
+<style>
+  .tm-overlay{ position: fixed; inset: 0; background: rgba(8,8,10,0.78); backdrop-filter: blur(14px); z-index: 1000; display: none; align-items: flex-start; justify-content: center; padding: 60px 20px; overflow-y: auto; }
+  .tm-overlay.open{ display: flex; }
+  .tm-modal{ position: relative; max-width: 720px; width: 100%; background: #0F1A2E; border: 1px solid rgba(94,180,255,0.22); border-radius: 24px; padding: 36px 32px 28px; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7); color: #fff; }
+  .tm-close{ position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; display: grid; place-items: center; cursor: pointer; }
+  .tm-close:hover{ background: rgba(255,255,255,0.12); }
+  .tm-eyebrow{ font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #5AC8FA; font-weight: 700; }
+  .tm-h{ margin: 8px 0 6px; font-size: clamp(26px, 3vw, 36px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+  .tm-s{ color: rgba(255,255,255,0.6); font-size: 14px; margin: 0 0 18px; }
+  .tm-add{ display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 100px; background: linear-gradient(135deg, #FF9F0A, #FF6A00); color: #fff; font-weight: 700; font-size: 14px; border: none; cursor: pointer; box-shadow: 0 14px 32px -10px rgba(255,159,10,0.55); margin-bottom: 22px; }
+  .tm-add:hover{ transform: translateY(-1px); }
+  .tm-list{ display: flex; flex-direction: column; gap: 8px; max-height: 60vh; overflow-y: auto; padding-right: 4px; }
+  .tm-row{ display: grid; grid-template-columns: 56px 44px 1fr 22px; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); text-decoration: none; color: #fff; transition: all .2s ease; }
+  .tm-row:hover{ background: rgba(94,180,255,0.08); border-color: rgba(94,180,255,0.35); transform: translateX(2px); }
+  .tm-time{ font-size: 13px; font-weight: 700; color: #5AC8FA; font-variant-numeric: tabular-nums; }
+  .tm-photo{ width: 44px; height: 44px; border-radius: 50%; background-size: cover; background-position: center 22%; border: 1px solid rgba(94,180,255,0.3); }
+  .tm-stage{ font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700; margin-bottom: 2px; }
+  .tm-t{ font-size: 14px; font-weight: 700; line-height: 1.3; }
+  .tm-sp{ font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+  .tm-arrow{ color: rgba(255,255,255,0.4); }
+  button.spar-card{ font: inherit; text-align: left; cursor: pointer; }
+</style>
 
 <script>
 /* ============ AI-Zonen neural canvas ============ */
