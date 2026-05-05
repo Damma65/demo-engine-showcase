@@ -345,9 +345,10 @@
     z-index: 1;
     /* per-card height tweak so faces align */
   }
-  .kn-card.kn-1 .kn-photo,
+  .kn-card.kn-1 .kn-photo{ object-position: center 102%; transform: scale(0.95); transform-origin: center bottom; }
   .kn-card.kn-2 .kn-photo{ object-position: center 102%; transform: scale(1.15); transform-origin: center bottom; }
-  .kn-card:hover .kn-photo{ transform: scale(1.20); }
+  .kn-card.kn-1:hover .kn-photo{ transform: scale(1.0); }
+  .kn-card.kn-2:hover .kn-photo{ transform: scale(1.20); }
 
   /* Soft vignette + bottom darkening so text reads */
   .kn-overlay{
