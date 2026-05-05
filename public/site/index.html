@@ -2695,11 +2695,79 @@
     investerare:  ['Investering marknad och affär', 'Kärnkraft och kraftproduktion', 'AI data och digitalisering']
   };
 
+  // Speaker pool for demo
+  const SPEAKERS = [
+    {n:'Magdalena Andersson', r:'Partiordförande', s:'magdalena-andersson', p:'talare/photos/magdalena.png'},
+    {n:'Anna Borg', r:'VD, Vattenfall', s:'anna-borg', p:'talare/photos/anna-borg.webp'},
+    {n:'Tomas Kåberger', r:'Ordf., Sveriges Energiforum', s:'tomas-kaberger', p:'talare/photos/tomas-kaberger.png'},
+    {n:'Ulrika Hesslow', r:'Energiexpert', s:'ulrika-hesslow', p:'talare/photos/ulrika-hesslow.png'},
+    {n:'Jonas Birgersson', r:'VD, Via Europa', s:'jonas-birgersson', p:'talare/photos/jonas-birgersson.png'},
+    {n:'Carl Berglöf', r:'Energiföretagen', s:'carl-berglof', p:'talare/photos/carl-berglof.png'},
+    {n:'Désirée Comstedt', r:'Affärsutvecklare', s:'desiree-comstedt', p:'talare/photos/desiree-comstedt.png'},
+    {n:'Peter Carlsson', r:'F.d. VD, Northvolt', s:'peter-carlsson', p:'talare/photos/peter-carlsson.png'},
+    {n:'Ramon Gras', r:'Aretian, Harvard', s:'ramon-gras', p:'talare/photos/ramon-gras.png'},
+    {n:'Niklas Wykman', r:'Finansmarknadsminister', s:'niklas-wykman', p:'talare/photos/anna-borg.webp'},
+    {n:'Lars Hjälmered', r:'Riksdagsledamot (M)', s:'lars-hjalmered', p:'talare/photos/carl-berglof.png'},
+    {n:'Pernilla Winnhed', r:'VD, Energiföretagen', s:'pernilla-winnhed', p:'talare/photos/ulrika-hesslow.png'},
+    {n:'Åsa Pettersson', r:'VD, Energiföretagen', s:'asa-pettersson', p:'talare/photos/desiree-comstedt.png'},
+    {n:'Bo Normark', r:'EIT InnoEnergy', s:'bo-normark', p:'talare/photos/tomas-kaberger.png'},
+    {n:'Boris Schucht', r:'CEO, 50Hertz', s:'boris-schucht', p:'talare/photos/peter-carlsson.png'}
+  ];
+  const STAGES = ['Stora scenen','AI-zonen','Konferens','Mässgolvet'];
+  const TIMES = ['08:30','09:30','10:15','11:00','11:45','12:30','13:15','14:00','14:45','15:30','16:15','17:00'];
+
+  function pgmTitle(track, i){
+    const titles = {
+      'Politik och reglering': ['Sveriges energipolitik 2027','EU-paketet i praktiken','Tillstånd & tempo','Reglerade marknader','Elcertifikat 2.0','Energistöd och statshjälp','Klimatlagen — uppföljning','Politisk keynote','Kommunala mandat','Ny elmarknadslag','Nordens energiunion','Paneldebatt: Politik möter industri'],
+      'Energisystem och elnät': ['Stamnätets framtid','Flexibilitet i lokalnätet','Effektreserven','Nya transformatorstationer','Smart grid med ML','Hav till hushåll','HVDC-projekten','Battery storage at scale','Mikronät i praktiken','Lastbalansering','Frekvenshållning','Driftsäkerhet 2030'],
+      'Kärnkraft och kraftproduktion': ['SMR i Sverige','Kärnkraftens nya våg','Finansieringsmodeller','Vattenfalls plan','Forsmark 4?','Bränslecykeln','Avfallshantering','Internationella exempel','Tidsplaner & risker','Kärnkraftens roll','Long-term contracts','Talarpanel: SMR'],
+      'Industri och elektrifiering': ['Hybrit & H2 Green Steel','Cement & batterier','Vätgasens roll','Fordonsindustrin elektrifierar','Värmepumpar i industri','Processindustrins krav','PPA i praktiken','CBAM och scope 3','Industriell symbios','Elektrifieringsplan','Norrbotten case','Skåne case'],
+      'AI data och digitalisering': ['Frukost-AI: LLM:er i drift','AI som energisparat ord','Smart grid med ML','Prediktivt underhåll','Datadrivna beslut','Edge computing','Digital tvilling','Cybersäkerhet','Open data','AI och nätstabilitet','Talare: Mats Lindelöw','AI etik i energi'],
+      'Hållbarhet och klimat': ['Klimatmålen 2030','Scope 3 i praktiken','CSRD-rapportering','Hållbar finansiering','Cirkulär ekonomi','Biologisk mångfald','Vattenresurser','Klimatanpassning','Företagens klimatresa','Net zero pathways','Greenwashing','Talare: Hållbarhetspanel'],
+      'Kommun stad och samhällsbyggnad': ['Smart City Stockholm','Hållbara stadsdelar','Energieffektiva byggnader','Lokala energisystem','Solceller på stadshus','Laddinfrastruktur','Fjärrvärme 4.0','Kommunala mandat','Återbrukets stad','Fastighetsbranschen','Boverket informerar','Borgarrådet talar'],
+      'Investering marknad och affär': ['Greentech-fonderna','Marknadstrender','PPA-strukturer','Riskkapital i energi','IPO-piplinen','Långsiktiga avtal','EU-finansiering','Nordiska investerare','M&A i energisektorn','Family offices','Pensionsfondernas roll','Klimatobligationer']
+    };
+    return (titles[track] || ['Programpunkt'])[i % 12] || 'Programpunkt';
+  }
+
+  function openTrack(trackName, count){
+    const overlay = document.getElementById('trackModal');
+    document.getElementById('tm-title').textContent = trackName;
+    document.getElementById('tm-sub').textContent = (count||12) + ' programpunkter rekommenderas för dig';
+    const list = document.getElementById('tm-list');
+    const n = Math.min(count||12, 12);
+    let html = '';
+    for(let i=0;i<n;i++){
+      const sp = SPEAKERS[i % SPEAKERS.length];
+      const t = pgmTitle(trackName, i);
+      const stage = STAGES[i % STAGES.length];
+      const time = TIMES[i % TIMES.length];
+      html += `<a class="tm-row" href="talare/${sp.s}.html">
+        <div class="tm-time">${time}</div>
+        <div class="tm-photo" style="background-image:url('${sp.p}');"></div>
+        <div class="tm-info">
+          <div class="tm-stage">${stage}</div>
+          <div class="tm-t">${t}</div>
+          <div class="tm-sp">${sp.n} · ${sp.r}</div>
+        </div>
+        <div class="tm-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg></div>
+      </a>`;
+    }
+    list.innerHTML = html;
+    overlay.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  window.__openTrack = openTrack;
+  window.__closeTrack = function(){
+    document.getElementById('trackModal').classList.remove('open');
+    document.body.style.overflow='';
+  };
+
   function render(aud){
     const wrap = document.getElementById('spar-cards');
     const items = TRACKS[aud];
     wrap.innerHTML = items.map(item => `
-      <a class="spar-card${item.hi ? ' hi' : ''}" href="program.html?track=${encodeURIComponent(item.t)}">
+      <button type="button" class="spar-card${item.hi ? ' hi' : ''}" onclick="__openTrack('${item.t.replace(/'/g,"\\'")}', ${item.n})">
         <div class="sc-ico">${ICONS[item.ico]}</div>
         <div class="sc-h">${item.t}</div>
         <div class="sc-d">${item.d}</div>
@@ -2707,7 +2775,7 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z" fill="currentColor"/></svg>
           ${item.n} programpunkter
         </div>
-      </a>
+      </button>
     `).join('');
 
     const f = FLOWS[aud];
@@ -2727,6 +2795,45 @@
   render('energibolag');
 })();
 </script>
+
+<!-- Track modal -->
+<div id="trackModal" class="tm-overlay" onclick="if(event.target===this)__closeTrack()">
+  <div class="tm-modal">
+    <button class="tm-close" type="button" onclick="__closeTrack()" aria-label="Stäng">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M6 18L18 6"/></svg>
+    </button>
+    <div class="tm-eyebrow">Rekommenderat spår</div>
+    <h3 class="tm-h" id="tm-title">Politik och reglering</h3>
+    <p class="tm-s" id="tm-sub">12 programpunkter rekommenderas för dig</p>
+    <button type="button" class="tm-add">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      Lägg till talarlista
+    </button>
+    <div class="tm-list" id="tm-list"></div>
+  </div>
+</div>
+<style>
+  .tm-overlay{ position: fixed; inset: 0; background: rgba(8,8,10,0.78); backdrop-filter: blur(14px); z-index: 1000; display: none; align-items: flex-start; justify-content: center; padding: 60px 20px; overflow-y: auto; }
+  .tm-overlay.open{ display: flex; }
+  .tm-modal{ position: relative; max-width: 720px; width: 100%; background: #0F1A2E; border: 1px solid rgba(94,180,255,0.22); border-radius: 24px; padding: 36px 32px 28px; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7); color: #fff; }
+  .tm-close{ position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; display: grid; place-items: center; cursor: pointer; }
+  .tm-close:hover{ background: rgba(255,255,255,0.12); }
+  .tm-eyebrow{ font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #5AC8FA; font-weight: 700; }
+  .tm-h{ margin: 8px 0 6px; font-size: clamp(26px, 3vw, 36px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+  .tm-s{ color: rgba(255,255,255,0.6); font-size: 14px; margin: 0 0 18px; }
+  .tm-add{ display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 100px; background: linear-gradient(135deg, #FF9F0A, #FF6A00); color: #fff; font-weight: 700; font-size: 14px; border: none; cursor: pointer; box-shadow: 0 14px 32px -10px rgba(255,159,10,0.55); margin-bottom: 22px; }
+  .tm-add:hover{ transform: translateY(-1px); }
+  .tm-list{ display: flex; flex-direction: column; gap: 8px; max-height: 60vh; overflow-y: auto; padding-right: 4px; }
+  .tm-row{ display: grid; grid-template-columns: 56px 44px 1fr 22px; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); text-decoration: none; color: #fff; transition: all .2s ease; }
+  .tm-row:hover{ background: rgba(94,180,255,0.08); border-color: rgba(94,180,255,0.35); transform: translateX(2px); }
+  .tm-time{ font-size: 13px; font-weight: 700; color: #5AC8FA; font-variant-numeric: tabular-nums; }
+  .tm-photo{ width: 44px; height: 44px; border-radius: 50%; background-size: cover; background-position: center 22%; border: 1px solid rgba(94,180,255,0.3); }
+  .tm-stage{ font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 700; margin-bottom: 2px; }
+  .tm-t{ font-size: 14px; font-weight: 700; line-height: 1.3; }
+  .tm-sp{ font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+  .tm-arrow{ color: rgba(255,255,255,0.4); }
+  .spar-card[type="button"]{ all: unset; cursor: pointer; }
+</style>
 
 <script>
 /* ============ AI-Zonen neural canvas ============ */
