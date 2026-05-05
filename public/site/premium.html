@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Premiumupplevelse · Energimässan 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  body{ background: #0a0a0c; color: #f4f4f5; }
+  .pre-wrap{ max-width: 1200px; margin: 120px auto 100px; padding: 0 32px; }
+
+  /* Confirmation strip */
+  .pre-confirm{
+    display:flex; align-items: center; gap: 16px;
+    padding: 18px 24px; border-radius: 18px;
+    background: linear-gradient(135deg, rgba(48,209,88,0.12), rgba(48,209,88,0.02));
+    border: 1px solid rgba(48,209,88,0.3);
+  }
+  .pre-confirm-ico{
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, #34D399, #5AC8FA);
+    color: #001a0e; display:grid; place-items:center; flex-shrink: 0;
+    font-size: 22px; font-weight: 800;
+  }
+  .pre-confirm-l{ flex: 1; }
+  .pre-confirm-h{ font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
+  .pre-confirm-d{ font-size: 12.5px; color: rgba(244,244,245,0.7); margin-top: 2px; }
+  .pre-confirm-r{ font-size: 12px; color: rgba(244,244,245,0.6); padding: 6px 12px; border-radius: 100px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+
+  /* Hero */
+  .pre-hero{ margin-top: 56px; text-align: center; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .pre-eyebrow{
+    display: inline-block; padding: 6px 14px; border-radius: 100px;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 700; color: #FFD700;
+    background: linear-gradient(135deg, rgba(255,215,0,0.18), rgba(255,159,10,0.1));
+    border: 1px solid rgba(255,215,0,0.35);
+  }
+  .pre-h{ margin-top: 22px; font-size: clamp(48px, 6.5vw, 88px); font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+  .pre-h .grad-gold{ background: linear-gradient(120deg, #FFD700 0%, #FF9F0A 60%, #FF6BA8 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .pre-sub{ margin-top: 22px; font-size: 18px; color: rgba(244,244,245,0.7); line-height: 1.5; }
+
+  /* Tier cards */
+  .pre-tiers{
+    margin-top: 64px;
+    display:grid; grid-template-columns: 1fr 1.05fr 1fr; gap: 20px; align-items: stretch;
+  }
+  @media (max-width: 980px){ .pre-tiers{ grid-template-columns: 1fr; } }
+  .tier{
+    position: relative;
+    padding: 32px 28px; border-radius: 24px;
+    background: rgba(20,20,22,0.55);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .tier.featured{
+    background: linear-gradient(180deg, rgba(255,215,0,0.08) 0%, rgba(20,20,22,0.85) 100%);
+    border-color: rgba(255,215,0,0.4);
+    box-shadow: 0 30px 70px -25px rgba(255,159,10,0.4);
+    transform: translateY(-12px);
+  }
+  .tier-badge{
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    padding: 5px 14px; border-radius: 100px; font-size: 10.5px; letter-spacing: .14em; font-weight: 700;
+    background: linear-gradient(135deg, #FFD700, #FF9F0A); color: #1a1100;
+  }
+  .tier-name{ font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+  .tier-tag{ font-size: 12px; color: rgba(244,244,245,0.55); letter-spacing: .04em; text-transform: uppercase; font-weight: 600; }
+  .tier-price{ display:flex; align-items: baseline; gap: 6px; padding: 10px 0 6px; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .tier-price-n{ font-size: 36px; font-weight: 800; letter-spacing: -.03em; }
+  .tier.featured .tier-price-n{ background: linear-gradient(120deg, #FFD700, #FF9F0A); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tier-price-u{ font-size: 12.5px; color: rgba(244,244,245,0.55); }
+  .tier-feats{ list-style: none; padding: 0; margin: 0; display:flex; flex-direction:column; gap: 10px; flex: 1; }
+  .tier-feats li{ font-size: 13.5px; color: rgba(244,244,245,0.85); padding-left: 24px; position: relative; line-height: 1.4; }
+  .tier-feats li::before{
+    content: "✓"; position: absolute; left: 0; top: 1px;
+    width: 16px; height: 16px; border-radius: 50%; font-size: 9px; font-weight: 800;
+    display: grid; place-items: center;
+    background: rgba(48,209,88,0.18); color: #34D399;
+  }
+  .tier.featured .tier-feats li::before{ background: rgba(255,215,0,0.18); color: #FFD700; }
+  .tier-cta{
+    display: block; text-align: center; padding: 14px 22px; border-radius: 100px;
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: #f4f4f5;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .tier-cta:hover{ transform: translateY(-1px); }
+  .tier.featured .tier-cta{ background: linear-gradient(135deg, #FFD700, #FF9F0A); color: #1a1100; border-color: transparent; box-shadow: 0 14px 36px -10px rgba(255,159,10,0.55); }
+
+  /* Comparison divider */
+  .pre-divider{ margin: 100px 0 60px; display: flex; align-items: center; gap: 18px; }
+  .pre-divider-line{ flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); }
+  .pre-divider-t{ font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(244,244,245,0.5); font-weight: 600; }
+
+  /* Premium perks grid */
+  .perks{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 900px){ .perks{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px){ .perks{ grid-template-columns: 1fr; } }
+  .perk{
+    padding: 24px; border-radius: 18px;
+    background: rgba(20,20,22,0.55); border: 1px solid rgba(255,255,255,0.06);
+  }
+  .perk-ico{ width: 36px; height: 36px; border-radius: 10px; display:grid; place-items:center; background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,159,10,0.12)); color: #FFD700; margin-bottom: 14px; }
+  .perk-ico svg{ width: 20px; height: 20px; }
+  .perk-h{ font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
+  .perk-d{ margin-top: 6px; font-size: 12.5px; color: rgba(244,244,245,0.6); line-height: 1.5; }
+
+  /* Skip CTA */
+  .pre-skip{ margin-top: 64px; text-align: center; font-size: 13.5px; color: rgba(244,244,245,0.55); }
+  .pre-skip a{ color: rgba(244,244,245,0.85); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Floating gold orb */
+  .pre-orb{ position: fixed; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255,215,0,0.12), transparent 60%); pointer-events: none; z-index: -1; filter: blur(40px); }
+</style>
+</head>
+<body>
+
+<div class="pre-orb"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="program.html">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="checkout.html">Biljetter</a>
+    </nav>
+    <a href="index.html" class="nav-cta">Tillbaka</a>
+  </div>
+</header>
+
+<div class="pre-wrap">
+
+  <!-- Confirmation -->
+  <div class="pre-confirm">
+    <div class="pre-confirm-ico">✓</div>
+    <div class="pre-confirm-l">
+      <div class="pre-confirm-h">Tack — din konferensbiljett är bokad.</div>
+      <div class="pre-confirm-d">Bekräftelse skickad till <b>karin.j@stockholmsexergi.se</b> · Bokningsnr <b>EM27-39041</b></div>
+    </div>
+    <div class="pre-confirm-r">2 dagar · 19–20 maj 2027</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="pre-hero">
+    <span class="pre-eyebrow">Bara för dig · Erbjudande gäller 24 h</span>
+    <h1 class="pre-h">Gör det till en<br/><span class="grad-gold">premiumupplevelse.</span></h1>
+    <p class="pre-sub">Du är på väg till Sveriges största energiträff. Lägg till VIP-tillträde, executive-mingel och en chaufför från entrén — så får du två dagar utan friktion.</p>
+  </div>
+
+  <!-- Tiers -->
+  <div class="pre-tiers">
+    <article class="tier">
+      <div class="tier-tag">Du har bokat</div>
+      <h3 class="tier-name">Konferens</h3>
+      <div class="tier-price">
+        <span class="tier-price-n">5 995</span><span class="tier-price-u">kr · ingår</span>
+      </div>
+      <ul class="tier-feats">
+        <li>Båda dagarna · 19–20 maj</li>
+        <li>Alla keynotes &amp; paneler</li>
+        <li>Lunch &amp; fika ingår</li>
+        <li>Mässappen + personlig kalender</li>
+        <li>Tillträde till mässgolvet</li>
+      </ul>
+      <a href="index.html" class="tier-cta">Behåll min biljett</a>
+    </article>
+
+    <article class="tier featured">
+      <div class="tier-badge">Mest populär · Spara 28%</div>
+      <div class="tier-tag" style="color:#FFD700;">Uppgradera till</div>
+      <h3 class="tier-name">Premium VIP</h3>
+      <div class="tier-price">
+        <span class="tier-price-n">+ 4 200</span><span class="tier-price-u">kr · totalt 10 195 kr</span>
+      </div>
+      <ul class="tier-feats">
+        <li><b>Allt i Konferens</b> — plus följande</li>
+        <li>VIP-läge med skybox över Stora scenen</li>
+        <li>Executive Lounge · espresso, frukost, lunch</li>
+        <li>Reserverade platser · första tre raderna</li>
+        <li>Exklusivt VIP-mingel · Onsdag 20:30</li>
+        <li>Förbokat 1-mot-1 med 3 talare</li>
+        <li>Dedikerad concierge i appen</li>
+        <li>Garderob &amp; bagageförvaring</li>
+      </ul>
+      <a href="#" class="tier-cta" id="upgrade-btn">Uppgradera till Premium VIP →</a>
+    </article>
+
+    <article class="tier">
+      <div class="tier-tag">Tillval</div>
+      <h3 class="tier-name">Executive Plus</h3>
+      <div class="tier-price">
+        <span class="tier-price-n">+ 8 800</span><span class="tier-price-u">kr · totalt 14 795 kr</span>
+      </div>
+      <ul class="tier-feats">
+        <li><b>Allt i Premium VIP</b> — plus följande</li>
+        <li>Privat chaufför · entré ↔ mässan</li>
+        <li>Hotelluppgradering · Grand Hôtel sviten</li>
+        <li>Middag med talarpanelen · onsdag</li>
+        <li>Bokat möte med Anna Borg eller Magdalena Andersson</li>
+        <li>Privat rundtur i AI-zonen före öppning</li>
+      </ul>
+      <a href="#" class="tier-cta">Lägg till Executive Plus</a>
+    </article>
+  </div>
+
+  <!-- Divider -->
+  <div class="pre-divider">
+    <span class="pre-divider-line"></span>
+    <span class="pre-divider-t">Vad du får extra</span>
+    <span class="pre-divider-line"></span>
+  </div>
+
+  <!-- Perks -->
+  <div class="perks">
+    <div class="perk">
+      <div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21V13h6v8"/></svg></div>
+      <div class="perk-h">Skybox över Stora scenen</div>
+      <div class="perk-d">Reserverat utrymme för 80 VIP-gäster med direktservice och egen ingång.</div>
+    </div>
+    <div class="perk">
+      <div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 12V8a5 5 0 0 0-10 0v4"/><rect x="5" y="12" width="14" height="9" rx="2"/></svg></div>
+      <div class="perk-h">Executive Lounge</div>
+      <div class="perk-d">Lugn arbetsmiljö 200 m² mellan sessionerna. Snabb wifi, full service.</div>
+    </div>
+    <div class="perk">
+      <div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+      <div class="perk-h">Reserverade platser</div>
+      <div class="perk-d">Tre första raderna på Stora scenen och Konferens — alltid din plats.</div>
+    </div>
+    <div class="perk">
+      <div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <div class="perk-h">Dedikerad concierge</div>
+      <div class="perk-d">Personlig assistent i appen — bokar möten, byter session, fixar bord.</div>
+    </div>
+    <div class="perk">
+      <div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="perk-h">Förbokade 1-mot-1</div>
+      <div class="perk-d">Vi syr ihop möten med tre talare/utställare av högsta strategiska värde.</div>
+    </div>
+    <div class="perk">
+      <div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18l-3-7H6z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
+      <div class="perk-h">VIP-mingel onsdag 20:30</div>
+      <div class="perk-d">Slutet event med 200 inbjudna. Branschpersonligheter, mat &amp; jazz.</div>
+    </div>
+  </div>
+
+  <!-- Skip -->
+  <div class="pre-skip">
+    Inte intresserad just nu? <a href="index.html">Gå till min mässsida →</a>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('upgrade-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    const btn = e.currentTarget;
+    btn.textContent = '✓ Premium VIP tillagt';
+    btn.style.background = 'linear-gradient(135deg, #34D399, #5AC8FA)';
+    btn.style.color = '#001a0e';
+    setTimeout(() => { window.location.href = 'index.html'; }, 1400);
+  });
+</script>
+
+</body>
+</html>

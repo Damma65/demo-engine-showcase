@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Anna Borg · Energimässan 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../shared.css" />
+<style>
+  body{ background: #08080a; }
+
+  /* ============ TALARPROFIL — referensmatchad ============ */
+  .sp-wrap{
+    max-width: 1280px; margin: 0 auto;
+    padding: 56px 32px 48px;
+    display: grid;
+    grid-template-columns: minmax(360px, 460px) 1fr minmax(280px, 320px);
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 1100px){
+    .sp-wrap{ grid-template-columns: 360px 1fr; }
+    .sp-side{ grid-column: 1 / -1; }
+  }
+  @media (max-width: 720px){
+    .sp-wrap{ grid-template-columns: 1fr; padding: 32px 20px; gap: 28px; }
+  }
+
+  /* PORTRAIT — mörk + halo-ring */
+  .sp-portrait{
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 30%, #1a2540 0%, #08080a 70%);
+    border: 1px solid var(--stroke-2);
+  }
+  .sp-portrait::before{
+    content:"";
+    position:absolute; inset: 0;
+    background:
+      radial-gradient(120% 60% at 50% -10%, rgba(94,180,255,0.45) 0%, rgba(94,180,255,0.12) 30%, transparent 55%),
+      radial-gradient(80% 40% at 50% 100%, rgba(94,92,230,0.28), transparent 60%);
+    z-index: 0;
+  }
+  .sp-portrait::after{
+    content:"";
+    position:absolute;
+    left: 50%; top: 8%;
+    width: 130%; aspect-ratio: 1;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 1px solid rgba(120,180,255,0.35);
+    box-shadow:
+      inset 0 0 80px rgba(120,180,255,0.18),
+      0 0 60px rgba(120,180,255,0.12);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .sp-portrait-img{
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 92%;
+    background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&q=85&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center 25%;
+    z-index: 2;
+    -webkit-mask-image: radial-gradient(ellipse 70% 100% at 50% 70%, #000 50%, transparent 95%);
+            mask-image: radial-gradient(ellipse 70% 100% at 50% 70%, #000 50%, transparent 95%);
+  }
+  .sp-portrait-tags{
+    position: absolute; left: 18px; bottom: 18px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+    z-index: 3;
+  }
+  .sp-pt{
+    padding: 7px 14px; border-radius: 100px;
+    font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  .sp-pt.green{ color: #34D399; border-color: rgba(52,211,153,0.4); }
+  .sp-pt.purple{ color: #BF5AF2; border-color: rgba(191,90,242,0.4); }
+  .sp-pt.cyan{ color: #5AC8FA; border-color: rgba(90,200,250,0.4); }
+  .sp-portrait-quote{
+    position: absolute; left: 18px; right: 18px; bottom: -1px;
+    z-index: 3;
+    transform: translateY(calc(100% + 16px));
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--stroke-2);
+    font-size: 13px; line-height: 1.5; color: var(--text-2);
+    font-style: italic;
+    display: grid; grid-template-columns: 18px 1fr; gap: 10px;
+  }
+  .sp-portrait-quote::before{
+    content:"\201C"; font-family: Georgia, serif;
+    font-size: 32px; color: rgba(120,180,255,0.5);
+    line-height: 0.7; font-style: normal;
+  }
+  /* spara plats för citatet */
+  .sp-portrait-host{ position: relative; padding-bottom: 110px; }
+
+  /* MAIN — vänster centerkolumn */
+  .sp-main{ padding-top: 4px; }
+  .sp-eyebrow{
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: #5AC8FA; font-weight: 600;
+  }
+  .sp-eyebrow::after{
+    content:""; width: 56px; height: 1px; background: rgba(90,200,250,0.5);
+  }
+  .sp-name{
+    margin-top: 14px;
+    font-size: clamp(48px, 5.6vw, 80px);
+    font-weight: 700; letter-spacing: -.045em; line-height: .95;
+    background: linear-gradient(180deg, #FFFFFF 0%, #C9C9CF 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .sp-role{
+    margin-top: 14px;
+    font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600;
+  }
+  .sp-bio{
+    margin-top: 22px;
+    font-size: 15px; line-height: 1.6; color: var(--text-2);
+    max-width: 580px;
+    border-bottom: 1px solid var(--stroke);
+    padding-bottom: 28px;
+  }
+
+  .sp-meta-grid{
+    margin-top: 26px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 600px){ .sp-meta-grid{ grid-template-columns: 1fr; } }
+  .sp-meta-item{
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .sp-meta-icon{
+    flex: 0 0 38px; width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid rgba(90,200,250,0.4);
+    background: rgba(90,200,250,0.08);
+    display: grid; place-items: center;
+    color: #5AC8FA;
+  }
+  .sp-meta-icon svg{ width: 18px; height: 18px; }
+  .sp-meta-key{
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600;
+  }
+  .sp-meta-val{
+    margin-top: 4px; font-size: 13.5px; color: var(--text); line-height: 1.4;
+  }
+
+  .sp-why{
+    margin-top: 36px;
+    border-top: 1px solid var(--stroke);
+    padding-top: 28px;
+  }
+  .sp-why-h{
+    font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600; margin-bottom: 16px;
+  }
+  .sp-why-list{ display: flex; flex-direction: column; gap: 12px; }
+  .sp-why-row{
+    display: grid; grid-template-columns: 22px 1fr; gap: 12px;
+    font-size: 14px; color: var(--text); line-height: 1.5;
+  }
+  .sp-why-check{
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 1px solid rgba(52,211,153,0.5);
+    display: grid; place-items: center; margin-top: 3px;
+    color: #34D399;
+  }
+  .sp-why-check svg{ width: 11px; height: 11px; }
+
+  /* SIDE — höger panel */
+  .sp-side{
+    padding: 28px 24px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid var(--stroke-2);
+    display: flex; flex-direction: column; gap: 14px;
+    position: sticky; top: 96px;
+  }
+  .sp-side-cta{
+    display: inline-flex; align-items: center; justify-content: space-between;
+    padding: 16px 22px; border-radius: 100px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .sp-side-cta.primary{
+    background: linear-gradient(135deg, #5AC8FA, #5E5CE6);
+    color: #fff;
+    box-shadow: 0 14px 32px -10px rgba(94,180,255,0.55);
+  }
+  .sp-side-cta.primary:hover{ transform: translateY(-2px); box-shadow: 0 20px 42px -10px rgba(94,180,255,0.7); }
+  .sp-side-cta.secondary{
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--stroke-2);
+    color: var(--text);
+  }
+  .sp-side-cta.secondary:hover{ background: rgba(255,255,255,0.08); }
+  .sp-side-cta svg{ width: 16px; height: 16px; }
+  .sp-side-note{
+    margin-top: 6px;
+    padding: 18px 18px;
+    border-radius: 14px;
+    background: rgba(94,180,255,0.06);
+    border: 1px solid rgba(94,180,255,0.22);
+    font-size: 13px; line-height: 1.5; color: var(--text-2);
+    display: grid; grid-template-columns: 18px 1fr; gap: 10px;
+  }
+  .sp-side-note::before{
+    content:"\201C"; font-family: Georgia, serif;
+    font-size: 28px; color: rgba(94,180,255,0.6);
+    line-height: 0.6;
+  }
+
+  /* RELATED — kompakta kort */
+  .sp-related{
+    margin-top: 36px;
+    border-top: 1px solid var(--stroke);
+    padding-top: 28px;
+  }
+  .sp-related-h{
+    font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600; margin-bottom: 18px;
+  }
+  .sp-related-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 600px){ .sp-related-grid{ grid-template-columns: 1fr; } }
+  .sp-rel{
+    position: relative;
+    padding: 16px 14px 14px;
+    border-radius: 14px;
+    background: rgba(20,20,22,0.6);
+    border: 1px solid var(--stroke);
+    text-decoration: none; color: var(--text);
+    display: flex; flex-direction: column; gap: 10px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .sp-rel:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+  .sp-rel-photo{
+    width: 56px; height: 56px; border-radius: 50%;
+    background-size: cover; background-position: center 22%;
+    border: 1px solid var(--stroke-2);
+  }
+  .sp-rel-name{ font-size: 13px; font-weight: 600; line-height: 1.2; }
+  .sp-rel-role{ font-size: 11px; color: var(--text-3); margin-top: 3px; line-height: 1.35; }
+  .sp-rel-arrow{ position: absolute; top: 14px; right: 14px; color: #5AC8FA; font-size: 14px; }
+
+  /* TRUST-rad i botten — 3 kolumner */
+  .sp-trust{
+    max-width: 1280px; margin: 24px auto 60px;
+    padding: 28px 32px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--stroke-2);
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 800px){ .sp-trust{ grid-template-columns: 1fr; gap: 18px; } }
+  .sp-trust-item{
+    display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center;
+  }
+  .sp-trust-icon{
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 1px solid rgba(90,200,250,0.35);
+    display: grid; place-items: center;
+    color: #5AC8FA;
+  }
+  .sp-trust-icon svg{ width: 24px; height: 24px; }
+  .sp-trust-h{ font-size: 15px; font-weight: 600; letter-spacing: -.012em; }
+  .sp-trust-d{ margin-top: 4px; font-size: 12.5px; color: var(--text-3); line-height: 1.5; }
+
+  /* Back link */
+  .back{
+    max-width: 1280px; margin: 24px auto 0;
+    padding: 0 32px;
+    display: block;
+    font-size: 12px; color: var(--text-3);
+    text-decoration: none;
+  }
+  .back:hover{ color: var(--text); }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Startsida</a>
+      <a href="../program.html">Program</a>
+      <a href="../talare.html" class="active">Talare</a>
+      <a href="../checkout.html">Biljetter</a>
+      <a href="../index.html#praktiskt">Praktisk info</a>
+    </nav>
+    <a href="../checkout.html" class="nav-cta">Boka konferensbiljett</a>
+  </div>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.5"/><path d="M5 20c1-4 5-6 7-6s6 2 7 6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></symbol>
+  </defs>
+</svg>
+
+<a href="../talare.html" class="back">← Alla talare</a>
+
+<div class="sp-wrap">
+  <!-- Vänster: portrait med halo + tags + citat -->
+  <div class="sp-portrait-host">
+    <div class="sp-portrait">
+      <div class="sp-portrait-img"></div>
+      <div class="sp-portrait-tags">
+        <span class="sp-pt green">Opening keynote</span>
+        <span class="sp-pt cyan">Vattenfall</span>
+        <span class="sp-pt purple">Energiomställning</span>
+      </div>
+    </div>
+    <div class="sp-portrait-quote">
+      <span></span>
+      <span>Vi bygger ett fossilfritt energisystem på 14 år — det kräver att hela Sverige rör sig i takt.</span>
+    </div>
+  </div>
+
+  <!-- Mitten: profil -->
+  <div class="sp-main">
+    <div class="sp-eyebrow">Talarprofil</div>
+    <h1 class="sp-name">Anna Borg</h1>
+    <div class="sp-role">VD och koncernchef · Vattenfall</div>
+
+    <p class="sp-bio">
+      Som VD för Vattenfall leder Anna Borg en av Europas största energikoncerner genom historiens
+      mest ambitiösa omställning. Hennes investeringsplan på 670 miljarder kronor till 2040 är
+      ryggraden i Sveriges fossilfria framtid — och hon talar med skärpa om vad det kräver av oss alla.
+    </p>
+
+    <div class="sp-meta-grid">
+      <div class="sp-meta-item">
+        <span class="sp-meta-icon"><svg><use href="#i-cal"/></svg></span>
+        <div>
+          <div class="sp-meta-key">Tid</div>
+          <div class="sp-meta-val">20 maj<br/>09:30 — 10:15</div>
+        </div>
+      </div>
+      <div class="sp-meta-item">
+        <span class="sp-meta-icon"><svg><use href="#i-pin"/></svg></span>
+        <div>
+          <div class="sp-meta-key">Scen</div>
+          <div class="sp-meta-val">Huvudscenen</div>
+        </div>
+      </div>
+      <div class="sp-meta-item">
+        <span class="sp-meta-icon"><svg><use href="#i-bolt"/></svg></span>
+        <div>
+          <div class="sp-meta-key">Ämne</div>
+          <div class="sp-meta-val">Sveriges elsystem mot 2035 — investering, kapacitet, konkurrenskraft</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-why">
+      <div class="sp-why-h">Därför ska du höra denna session</div>
+      <div class="sp-why-list">
+        <div class="sp-why-row">
+          <span class="sp-why-check"><svg><use href="#i-check"/></svg></span>
+          <span>Få insyn i Vattenfalls 670-miljardersplan och vad den betyder för svensk industri.</span>
+        </div>
+        <div class="sp-why-row">
+          <span class="sp-why-check"><svg><use href="#i-check"/></svg></span>
+          <span>Förstå hur fossilfri produktion, kapacitet och prissättning hänger ihop till 2035.</span>
+        </div>
+        <div class="sp-why-row">
+          <span class="sp-why-check"><svg><use href="#i-check"/></svg></span>
+          <span>Ta del av strategiska beslut från en av Nordens mest tongivande energiledare.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-related">
+      <div class="sp-related-h">Fler talare som du kanske är intresserad av</div>
+      <div class="sp-related-grid">
+        <a href="magdalena-andersson.html" class="sp-rel">
+          <span class="sp-rel-arrow">→</span>
+          <div class="sp-rel-photo" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=200&q=80&auto=format&fit=crop&crop=faces');"></div>
+          <div>
+            <div class="sp-rel-name">Magdalena Andersson</div>
+            <div class="sp-rel-role">Partiordförande · F.d. statsminister</div>
+          </div>
+        </a>
+        <a href="#" class="sp-rel">
+          <span class="sp-rel-arrow">→</span>
+          <div class="sp-rel-photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80&auto=format&fit=crop&crop=faces');"></div>
+          <div>
+            <div class="sp-rel-name">Jonas Birgersson</div>
+            <div class="sp-rel-role">Ordförande · Västerberg</div>
+          </div>
+        </a>
+        <a href="#" class="sp-rel">
+          <span class="sp-rel-arrow">→</span>
+          <div class="sp-rel-photo" style="background-image: url('https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=200&q=80&auto=format&fit=crop&crop=faces');"></div>
+          <div>
+            <div class="sp-rel-name">Tomas Kåberger</div>
+            <div class="sp-rel-role">Senior Advisor · Chalmers &amp; Aqen</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Höger: sticky CTA-kort -->
+  <aside class="sp-side">
+    <a href="../checkout.html" class="sp-side-cta primary">
+      Boka konferensbiljett
+      <svg><use href="#i-arrow"/></svg>
+    </a>
+    <a href="../program.html" class="sp-side-cta secondary">
+      Se hela programmet
+      <svg><use href="#i-arrow"/></svg>
+    </a>
+    <div class="sp-side-note">
+      <span></span>
+      <span>En av våra mest efterfrågade röster — boka din plats i tid.</span>
+    </div>
+  </aside>
+</div>
+
+<!-- Trust-rad -->
+<div class="sp-trust">
+  <div class="sp-trust-item">
+    <div class="sp-trust-icon"><svg><use href="#i-user"/></svg></div>
+    <div>
+      <div class="sp-trust-h">Tydlig talarpresentation</div>
+      <div class="sp-trust-d">Lär känna talaren, hens bakgrund och vad du kan förvänta dig av sessionen.</div>
+    </div>
+  </div>
+  <div class="sp-trust-item">
+    <div class="sp-trust-icon"><svg><use href="#i-star"/></svg></div>
+    <div>
+      <div class="sp-trust-h">Relevant innehåll</div>
+      <div class="sp-trust-d">Få insikt i ämnen, perspektiv och värdet du tar med dig från scenen.</div>
+    </div>
+  </div>
+  <div class="sp-trust-item">
+    <div class="sp-trust-icon"><svg><use href="#i-ticket"/></svg></div>
+    <div>
+      <div class="sp-trust-h">Enkel väg till bokning</div>
+      <div class="sp-trust-d">Boka din plats direkt — snabbt, smidigt och med full trygghet.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div>© 2027 Nordic Live Expo · Energimässan</div>
+    <div class="foot-links">
+      <a href="../index.html">Hem</a>
+      <a href="../program.html">Program</a>
+      <a href="../talare.html">Talare</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+/* ============ ENERGIMÄSSAN 2027 — SHARED STYLES ============ */
+:root{
+  --bg:#000;
+  --bg-2:#0A0A0C;
+  --bg-3:#101013;
+  --surface: rgba(255,255,255,0.04);
+  --surface-2: rgba(255,255,255,0.08);
+  --stroke: rgba(255,255,255,0.08);
+  --stroke-2: rgba(255,255,255,0.16);
+  --text:#F5F5F7;
+  --text-2:#A1A1A6;
+  --text-3:#6E6E73;
+  --green:#30D158;
+  --green-2:#5DE38A;
+  --indigo:#5E5CE6;
+  --indigo-2:#B0AEFF;
+  --blue:#0A84FF;
+  --orange:#FF9F0A;
+  --pink:#FF375F;
+  --teal:#64D2FF;
+  --purple:#BF5AF2;
+  --yellow:#FFD60A;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.nav{
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background: rgba(0,0,0,0.55);
+  border-bottom: 1px solid var(--stroke);
+}
+.nav-inner{
+  max-width: 1280px; margin: 0 auto;
+  padding: 14px 32px;
+  display:flex; align-items:center; justify-content:space-between; gap:32px;
+}
+.logo{
+  display:flex; align-items:center; gap:11px;
+  text-decoration:none;
+  color: var(--text);
+}
+.logo-mark{
+  width:32px; height:32px; border-radius:9px;
+  background: linear-gradient(135deg, #30D158 0%, #5E5CE6 70%, #FF9F0A 100%);
+  display:grid; place-items:center;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(94,92,230,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.logo-mark::after{
+  content:""; position:absolute; inset: 4px;
+  border-radius: 5px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 50%);
+  pointer-events: none;
+}
+.logo-mark svg{ width:16px; height:16px; color:white; position: relative; z-index: 1; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); }
+.logo-text{ display:flex; flex-direction:column; line-height: 1; gap: 3px; }
+.logo-brand{ font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+.logo-event{ font-size: 14px; font-weight: 600; letter-spacing: -.012em; color: var(--text); }
+.nav-links{ display:flex; gap:4px; }
+.nav-links a{
+  padding:8px 14px; color: var(--text-2);
+  text-decoration:none; font-size:13px; font-weight:500; border-radius:10px;
+}
+.nav-links a:hover, .nav-links a.active{ color: var(--text); }
+.nav-links a.active{ background: rgba(255,255,255,0.06); }
+.nav-cta{
+  padding:8px 16px; background: var(--text); color: var(--bg);
+  border-radius:100px; font-size:13px; font-weight:600; text-decoration:none;
+}
+
+/* SECTIONS */
+.section{ padding: 140px 32px; position: relative; }
+.section.tight{ padding: 80px 32px; }
+.section-inner{ max-width: 1280px; margin: 0 auto; }
+.section-narrow{ max-width: 1100px; margin: 0 auto; }
+.section-eyebrow{
+  font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+  color: var(--green-2); font-weight:600;
+}
+.section-title{
+  margin-top:18px;
+  font-size: clamp(44px, 5.5vw, 76px);
+  font-weight: 700; letter-spacing: -0.04em; line-height: 1;
+  max-width: 900px;
+}
+.section-title .grad{
+  background: linear-gradient(135deg, #30D158, #64D2FF);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section-title .grad-warm{
+  background: linear-gradient(135deg, #FF9F0A, #FF375F);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section-title .grad-cool{
+  background: linear-gradient(135deg, #5E5CE6, #64D2FF);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section-sub{
+  margin-top:28px; font-size:19px; color: var(--text-2);
+  line-height:1.5; max-width: 620px; letter-spacing: -0.012em;
+}
+
+/* BUTTONS */
+.btn{
+  padding: 16px 26px; border-radius: 100px;
+  font-size:15px; font-weight:500; cursor:pointer; border:none;
+  text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+  letter-spacing: -0.01em;
+  transition: transform .2s ease, background .2s ease;
+  font-family: inherit;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn-primary{ background: var(--text); color: var(--bg); }
+.btn-primary:hover{ background: rgba(245,245,247,0.85); }
+.btn-secondary{
+  background: rgba(255,255,255,0.08); color: var(--text);
+  border:1px solid var(--stroke-2); backdrop-filter: blur(20px);
+}
+.btn-secondary:hover{ background: rgba(255,255,255,0.14); }
+.btn svg{ width:14px; height:14px; }
+
+/* FOOTER */
+footer{
+  padding: 60px 32px 40px;
+  border-top:1px solid var(--stroke);
+  color: var(--text-3); font-size: 12.5px;
+}
+.foot-inner{
+  max-width: 1280px; margin: 0 auto;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+}
+.foot-links{ display:flex; gap:24px; }
+.foot-links a{ color: var(--text-3); text-decoration:none; }
+.foot-links a:hover{ color: var(--text-2); }
+
+/* PERSON / SPEAKER avatar (used everywhere) */
+.avatar{
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--c1, #5E5CE6), var(--c2, #30D158));
+  position: relative;
+  overflow: hidden;
+}
+.avatar.has-photo::before,
+.avatar.has-photo::after,
+.sp-card .avatar::before,
+.sp-card .avatar::after,
+.sp-tile .avatar::before,
+.sp-tile .avatar::after{ display: none !important; content: none !important; }
+.avatar::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 50% 38% at 50% 32%, rgba(0,0,0,0.18), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 50% 88%, rgba(0,0,0,0.22), transparent 70%);
+}
+.avatar::after{
+  /* Hair / silhouette block */
+  content:""; position:absolute;
+  top:20%; left:25%; width:50%; height:25%;
+  background: rgba(0,0,0,0.32);
+  border-radius: 50% 50% 30% 30%;
+  filter: blur(2px);
+}
+.avatar .body{
+  position:absolute; bottom:0; left:50%; transform: translateX(-50%);
+  width: 80%; height: 50%;
+  background: rgba(0,0,0,0.28);
+  border-radius: 50% 50% 0 0;
+  filter: blur(3px);
+}
+.avatar .initials{
+  position: absolute;
+  inset: 0;
+  display: grid; place-items: center;
+  font-size: 56px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: -0.04em;
+  z-index: 2;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+}
+
+/* RESPONSIVE BASE */
+@media (max-width: 900px){
+  .nav-links{ display:none; }
+}
