@@ -92,8 +92,8 @@
 
   /* Filter: HIDE non-matches completely (gap collapses) */
   .sp-card{ transition: transform .5s ease, opacity .3s ease; }
-  .sp-card.matched{ opacity: 1; transform: scale(1); }
-  .sp-card.dimmed{ display: none; }
+  .sp-card.matched, .sp-card-link.matched{ opacity: 1; transform: scale(1); }
+  .sp-card.dimmed, .sp-card-link.dimmed{ display: none; }
   .sp-card.hidden{ display: none; }
   .count-line.filtered{
     color: var(--orange);
