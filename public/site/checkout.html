@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Checkout · Energimässan 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  body{ background: #0a0a0c; }
+  .checkout{ max-width: 1280px; margin: 120px auto 80px; padding: 0 32px; display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items:flex-start; }
+  @media (max-width: 1000px){ .checkout{ grid-template-columns: 1fr; } }
+  .co-h{ font-size: clamp(40px,5vw,64px); font-weight:700; letter-spacing:-.04em; line-height:1; }
+  .co-sub{ margin-top:14px; font-size:16px; color:var(--text-2); line-height:1.5; max-width: 520px; }
+
+  .step{ margin-top: 44px; }
+  .step-h{ font-size: 13px; letter-spacing:.14em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
+  .step-h .n{ display:inline-block; width:22px; height:22px; border-radius:50%; background: var(--text); color:#000; font-size:12px; line-height:22px; text-align:center; margin-right:10px; letter-spacing:0; }
+  .step-h.done .n{ background: linear-gradient(135deg,#30D158,#64D2FF); color:#001a0e; }
+  .step-h.done .n::before{ content:"✓"; }
+  .step-h.done .n .n-text{ display:none; }
+
+  .tickets{ margin-top: 18px; display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
+  @media (max-width: 700px){ .tickets{ grid-template-columns: 1fr; } }
+  .tk{
+    padding: 22px 20px; border-radius: 18px;
+    background: rgba(20,20,22,0.55); border:1px solid var(--stroke);
+    cursor:pointer; transition: all .25s ease;
+  }
+  .tk:hover{ border-color: rgba(255,255,255,0.18); }
+  .tk.selected{ border-color: var(--orange); background: linear-gradient(180deg, rgba(255,159,10,0.10), rgba(255,159,10,0.02)); }
+  .tk-name{ font-size: 14px; font-weight: 600; letter-spacing:-.012em; }
+  .tk-tag{ display:inline-block; padding:3px 9px; border-radius:100px; background: rgba(255,159,10,0.18); color: var(--orange); font-size: 10.5px; letter-spacing:.06em; font-weight:600; margin-bottom: 8px; }
+  .tk-price{ margin-top: 12px; font-size: 26px; font-weight:600; letter-spacing:-.025em; }
+  .tk-price .e{ font-size: 12px; color: var(--text-3); margin-left: 4px; font-weight:400; }
+  .tk-list{ margin-top: 14px; display:flex; flex-direction:column; gap:6px; font-size:12.5px; color: var(--text-2); }
+  .tk-list li{ list-style:none; }
+  .tk-list li::before{ content:"·"; color: var(--orange); margin-right: 8px; font-weight:700; }
+
+  .form{ margin-top: 18px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form .full{ grid-column: 1 / -1; }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field label{ font-size: 12px; color: var(--text-3); font-weight:500; }
+  .field input, .field select{
+    padding: 12px 14px; border-radius: 10px;
+    background: rgba(255,255,255,0.04); border:1px solid var(--stroke-2);
+    color: var(--text); font-size: 14px;
+    transition: border-color .2s ease;
+  }
+  .field input:focus, .field select:focus{ outline:none; border-color: var(--orange); }
+
+  .addons{ margin-top: 18px; display:flex; flex-direction:column; gap:10px; }
+  .addon{
+    display:flex; align-items:center; gap:14px; padding: 16px 18px;
+    border-radius: 14px; background: rgba(20,20,22,0.55); border:1px solid var(--stroke);
+    cursor: pointer;
+  }
+  .addon.selected{ border-color: var(--orange); background: linear-gradient(180deg, rgba(255,159,10,0.10), rgba(255,159,10,0.02)); }
+  .addon-check{ width:22px; height:22px; border-radius:6px; border:1.5px solid var(--stroke-2); flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+  .addon.selected .addon-check{ background: var(--orange); border-color: var(--orange); }
+  .addon.selected .addon-check::before{ content:"✓"; color:#000; font-size: 14px; font-weight: 700; }
+  .addon-text{ flex:1; }
+  .addon-name{ font-size: 14.5px; font-weight: 600; }
+  .addon-desc{ font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
+  .addon-price{ font-size: 14px; font-weight: 600; }
+
+  .summary{
+    position: sticky; top: 100px;
+    padding: 28px 26px; border-radius: 22px;
+    background: linear-gradient(180deg, rgba(20,20,22,0.85), rgba(20,20,22,0.55));
+    border: 1px solid var(--stroke-2);
+    backdrop-filter: blur(18px);
+  }
+  .sm-h{ font-size: 13px; letter-spacing:.14em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
+  .sm-event{ margin-top: 12px; font-size: 17px; font-weight: 600; letter-spacing:-.015em; }
+  .sm-event-meta{ font-size: 12.5px; color: var(--text-3); margin-top: 4px; }
+  .sm-rows{ margin-top: 22px; padding-top: 22px; border-top:1px solid var(--stroke); display:flex; flex-direction:column; gap:10px; }
+  .sm-row{ display:flex; justify-content:space-between; font-size: 13.5px; color: var(--text-2); }
+  .sm-row .name{ color: var(--text); }
+  .sm-row .price{ font-feature-settings:"tnum"; }
+  .sm-row.muted{ color: var(--text-3); }
+  .sm-total{ margin-top: 22px; padding-top: 18px; border-top:1px solid var(--stroke); display:flex; justify-content:space-between; align-items:flex-end; }
+  .sm-total .lbl{ font-size: 13px; color: var(--text-3); }
+  .sm-total .val{ font-size: 28px; font-weight:700; letter-spacing:-.02em; }
+  .sm-vat{ font-size: 11.5px; color: var(--text-3); margin-top: 4px; }
+  .sm-cta{
+    margin-top: 22px; display:block; text-align:center;
+    padding: 14px 22px; border-radius: 100px;
+    background: var(--text); color: #000; font-weight:600; font-size: 14.5px; text-decoration:none;
+    transition: transform .3s ease;
+  }
+  .sm-cta:hover{ transform: scale(1.03); }
+  .sm-trust{ margin-top: 16px; display:flex; justify-content:space-between; font-size: 11.5px; color: var(--text-3); }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Startsida</a>
+      <a href="program.html">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="checkout.html" class="active">Biljetter</a>
+    </nav>
+    <a href="checkout.html" class="nav-cta">Slutför köp</a>
+  </div>
+</header>
+
+<section class="checkout">
+  <div>
+    <h1 class="co-h">Boka <span class="grad">din plats.</span></h1>
+    <p class="co-sub">Mässan är alltid kostnadsfri. Konferensen ger dig keynotes, paneler och VIP-mingel. Boka före 31 mars och spara 1 000 kr.</p>
+
+    <!-- STEP 1: Ticket -->
+    <div class="step">
+      <div class="step-h"><span class="n">1</span>Välj biljett</div>
+      <div class="tickets" id="tickets">
+        <div class="tk" data-tk="mass" data-price="0">
+          <span class="tk-tag">Gratis</span>
+          <div class="tk-name">Mässpass</div>
+          <div class="tk-price">0 kr<span class="e">inkl. moms</span></div>
+          <ul class="tk-list">
+            <li>Hela utställningen</li><li>Öppen scen</li><li>AI-Zonen</li><li>MässMatch (basic)</li>
+          </ul>
+        </div>
+        <div class="tk selected" data-tk="konf" data-price="6900">
+          <span class="tk-tag">★ Populärast</span>
+          <div class="tk-name">Konferenspass</div>
+          <div class="tk-price">6 900 kr<span class="e">exkl. moms</span></div>
+          <ul class="tk-list">
+            <li>Allt i Mässpass</li><li>Stora scenen + Konferens</li><li>Lunch båda dagarna</li><li>MässMatch (full)</li>
+          </ul>
+        </div>
+        <div class="tk" data-tk="vip" data-price="14500">
+          <span class="tk-tag">VIP</span>
+          <div class="tk-name">VIP &amp; Mingel</div>
+          <div class="tk-price">14 500 kr<span class="e">exkl. moms</span></div>
+          <ul class="tk-list">
+            <li>Allt i Konferens</li><li>Onsdagsmingel + middag</li><li>Investor Lounge</li><li>Skipline-incheckning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Details -->
+    <div class="step">
+      <div class="step-h"><span class="n">2</span>Dina uppgifter</div>
+      <div class="form">
+        <div class="field"><label>Förnamn</label><input value="Anna" /></div>
+        <div class="field"><label>Efternamn</label><input value="Bergström" /></div>
+        <div class="field full"><label>E-post (biljett skickas hit)</label><input type="email" value="anna.bergstrom@vattenfall.se" /></div>
+        <div class="field"><label>Telefon</label><input value="+46 70 123 45 67" /></div>
+        <div class="field">
+          <label>Roll</label>
+          <select><option>VD &amp; Strateg</option><option>Tech &amp; CIO</option><option>Drift &amp; UH</option><option>Inköp</option></select>
+        </div>
+        <div class="field full"><label>Företag</label><input value="Vattenfall" /></div>
+        <div class="field full"><label>Fakturareferens (valfritt)</label><input placeholder="t.ex. VF-2027-MARK" /></div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Add-ons -->
+    <div class="step">
+      <div class="step-h"><span class="n">3</span>Tillval</div>
+      <div class="addons" id="addons">
+        <div class="addon selected" data-id="mingle" data-price="1900">
+          <div class="addon-check"></div>
+          <div class="addon-text">
+            <div class="addon-name">Onsdagsmingel + middag</div>
+            <div class="addon-desc">3-rätters middag · 250 inbjudna · live talk · 19 maj 18:30</div>
+          </div>
+          <div class="addon-price">1 900 kr</div>
+        </div>
+        <div class="addon" data-id="vip-lounge" data-price="2500">
+          <div class="addon-check"></div>
+          <div class="addon-text">
+            <div class="addon-name">Investor Lounge-pass</div>
+            <div class="addon-desc">Tillgång till investerar­zonen · 18 fonder · privata möten</div>
+          </div>
+          <div class="addon-price">2 500 kr</div>
+        </div>
+        <div class="addon selected" data-id="hotel" data-price="2200">
+          <div class="addon-check"></div>
+          <div class="addon-text">
+            <div class="addon-name">Hotellpaket Kista (1 natt)</div>
+            <div class="addon-desc">Scandic Victoria Tower · 18 → 19 maj · inkl. frukost &amp; transfer</div>
+          </div>
+          <div class="addon-price">2 200 kr</div>
+        </div>
+        <div class="addon" data-id="parking" data-price="450">
+          <div class="addon-check"></div>
+          <div class="addon-text">
+            <div class="addon-name">Parkering Kistamässan (2 dagar)</div>
+            <div class="addon-desc">Reserverad plats · ladd­tillgång</div>
+          </div>
+          <div class="addon-price">450 kr</div>
+        </div>
+        <div class="addon" data-id="report" data-price="1490">
+          <div class="addon-check"></div>
+          <div class="addon-text">
+            <div class="addon-name">Branschrapport 2027 (PDF)</div>
+            <div class="addon-desc">Energimässans årsrapport · 80 sidor · släpps under mässan</div>
+          </div>
+          <div class="addon-price">1 490 kr</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY SUMMARY -->
+  <aside class="summary">
+    <div class="sm-h">Din beställning</div>
+    <div class="sm-event">Energimässan 2027</div>
+    <div class="sm-event-meta">19–20 maj · Kistamässan · Stockholm</div>
+    <div class="sm-rows" id="sm-rows"></div>
+    <div class="sm-total">
+      <div>
+        <div class="lbl">Att betala</div>
+        <div class="val" id="sm-total">0 kr</div>
+        <div class="sm-vat" id="sm-vat">+ moms 25%</div>
+      </div>
+    </div>
+    <a href="premium.html" class="sm-cta">Slutför köp →</a>
+    <div class="sm-trust">
+      <span>🔒 Säker betalning</span>
+      <span>Faktura · Kort · Swish</span>
+    </div>
+  </aside>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>© 2027 Nordic Live Expo · Energimässan</div>
+    <div class="foot-links">
+      <a href="index.html">Hem</a>
+      <a href="program.html">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const ticketNames = { mass: 'Mässpass', konf: 'Konferenspass', vip: 'VIP &amp; Mingel' };
+  function fmt(n){ return n.toLocaleString('sv-SE') + ' kr'; }
+  function recalc(){
+    const tk = document.querySelector('.tk.selected');
+    const tkPrice = +tk.dataset.price;
+    const tkId = tk.dataset.tk;
+    const addons = [...document.querySelectorAll('.addon.selected')].map(a => ({
+      name: a.querySelector('.addon-name').textContent,
+      price: +a.dataset.price
+    }));
+    let rows = `<div class="sm-row"><span class="name">${ticketNames[tkId]}</span><span class="price">${fmt(tkPrice)}</span></div>`;
+    addons.forEach(a => { rows += `<div class="sm-row"><span class="name">${a.name}</span><span class="price">${fmt(a.price)}</span></div>`; });
+    if (tkPrice > 0) rows += `<div class="sm-row muted"><span>Early bird-rabatt</span><span class="price">−1 000 kr</span></div>`;
+    document.getElementById('sm-rows').innerHTML = rows;
+    let total = tkPrice + addons.reduce((s,a) => s+a.price, 0) - (tkPrice > 0 ? 1000 : 0);
+    document.getElementById('sm-total').textContent = fmt(total);
+    document.getElementById('sm-vat').textContent = total > 0 ? `+ moms 25% (${fmt(total*0.25)})` : 'Ingen moms';
+  }
+  document.getElementById('tickets').addEventListener('click', e => {
+    const tk = e.target.closest('.tk'); if (!tk) return;
+    document.querySelectorAll('.tk').forEach(x => x.classList.remove('selected'));
+    tk.classList.add('selected'); recalc();
+  });
+  document.getElementById('addons').addEventListener('click', e => {
+    const a = e.target.closest('.addon'); if (!a) return;
+    a.classList.toggle('selected'); recalc();
+  });
+  recalc();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Program · Energimässan 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .page-hero{ padding: 160px 32px 60px; text-align:center; position:relative; overflow:hidden; }
+  .page-hero::before{ content:""; position:absolute; inset:0; z-index:0;
+    background: radial-gradient(700px 400px at 50% 0%, rgba(94,92,230,0.25), transparent 60%); }
+  .page-hero > *{ position: relative; z-index: 1; }
+  .page-h1{
+    font-size: clamp(56px, 8vw, 112px);
+    font-weight: 700; letter-spacing: -.05em; line-height: .95;
+    background: linear-gradient(180deg, #FFFFFF, #BABABF);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .page-h1 .grad{
+    background: linear-gradient(135deg, #5E5CE6, #64D2FF);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .page-sub{ margin: 28px auto 0; max-width: 600px; font-size: 18px; color: var(--text-2); line-height: 1.5; }
+
+  .day-tabs{
+    margin: 50px auto 0; display:flex; gap:8px; padding:6px;
+    background: rgba(255,255,255,0.04);
+    border:1px solid var(--stroke-2);
+    border-radius: 100px;
+    width: fit-content;
+  }
+  .day-tab{
+    padding: 11px 22px; border-radius: 100px;
+    color: var(--text-2); font-size: 13.5px; font-weight: 600; cursor: pointer;
+    border: none; background: transparent; font-family: inherit;
+  }
+  .day-tab.active{ background: var(--text); color: var(--bg); }
+
+  .stage-filter{ margin: 18px auto 0; display:flex; gap: 8px; flex-wrap:wrap; justify-content:center; max-width: 700px; }
+  .sf{
+    padding: 7px 14px; border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--stroke);
+    color: var(--text-2); font-size: 12px; font-weight: 500;
+    cursor:pointer;
+  }
+  .sf.active{ background: var(--text); color: var(--bg); border-color: var(--text); }
+
+  .schedule{
+    max-width: 1100px; margin: 50px auto 0;
+    padding: 0 32px;
+  }
+  .time-row{
+    display: grid; grid-template-columns: 100px 1fr;
+    gap: 24px; padding: 28px 0;
+    border-top: 1px solid var(--stroke);
+  }
+  .time-row:first-child{ border-top: none; }
+  .time-label{
+    font-size: 28px; font-weight: 700; letter-spacing: -.025em;
+    color: var(--text); font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .time-sub{ margin-top: 4px; font-size: 11px; color: var(--text-3); letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+
+  .sessions{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .session{
+    padding: 22px;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    transition: background .2s, border-color .2s, transform .2s;
+    cursor: pointer;
+  }
+  .session:hover{ background: var(--surface-2); border-color: var(--stroke-2); transform: translateY(-2px); }
+  .session-stage{
+    font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .stage-stora{ color: var(--green-2); }
+  .stage-ai{ color: var(--indigo-2); }
+  .stage-drift{ color: var(--orange); }
+  .stage-konferens{ color: var(--teal); }
+  .session-title{ margin-top: 10px; font-size: 17px; font-weight: 600; letter-spacing: -.018em; line-height: 1.25; }
+  .session-meta{ margin-top: 12px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); }
+  .session-meta .speaker-mini{ display: inline-flex; align-items: center; gap: 6px; }
+  .mini-av{
+    width: 18px; height: 18px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--c1, #5E5CE6), var(--c2, #30D158));
+    display: grid; place-items: center;
+    font-size: 8px; color: white; font-weight: 700;
+  }
+  .session.featured{
+    background: linear-gradient(180deg, rgba(94,92,230,0.16), rgba(94,92,230,0.04));
+    border-color: rgba(94,92,230,0.4);
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Startsida</a>
+      <a href="program.html" class="active">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="index.html#biljetter">Biljetter</a>
+    </nav>
+    <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1 class="page-h1">Två dagar.<br/><span class="grad">Fyra scener.</span></h1>
+  <p class="page-sub">Kuraterat program — keynotes, paneler, demos och case. Filtrera på dag och scen.</p>
+
+  <div class="day-tabs" id="days">
+    <button class="day-tab active" data-day="1">Dag 1 · 19 maj</button>
+    <button class="day-tab" data-day="2">Dag 2 · 20 maj</button>
+  </div>
+
+  <div class="stage-filter" id="stages">
+    <span class="sf active" data-stage="all">Alla scener</span>
+    <span class="sf" data-stage="stora">Stora scenen</span>
+    <span class="sf" data-stage="ai">AI &amp; Digital</span>
+    <span class="sf" data-stage="drift">Drift &amp; UH</span>
+    <span class="sf" data-stage="konferens">Konferens</span>
+  </div>
+</section>
+
+<!-- ============ RÄTT SPÅR FÖR DIN ROLL ============ -->
+<section class="role-tracks">
+  <div class="rt-eyebrow">Rätt spår för din roll</div>
+  <h2 class="rt-h">Du har 2 dagar.<br/><span class="grad">Vi visar de 8 sessioner du inte får missa.</span></h2>
+  <p class="rt-sub">Välj din roll — programmet kuraterar sig själv. Sparas till din personliga agenda när du loggar in.</p>
+
+  <div class="rt-roles" id="rt-roles">
+    <button class="rt-role active" data-role="vd">VD &amp; Strateg</button>
+    <button class="rt-role" data-role="tech">Tech &amp; CIO</button>
+    <button class="rt-role" data-role="drift">Drift &amp; UH</button>
+    <button class="rt-role" data-role="inkop">Inköp &amp; Affär</button>
+  </div>
+
+  <div class="rt-grid" id="rt-grid"></div>
+</section>
+
+<style>
+  .role-tracks{ max-width: 1280px; margin: 80px auto 0; padding: 0 32px; }
+  .rt-eyebrow{ text-align:center; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
+  .rt-h{ margin-top:14px; font-size:clamp(36px,4.6vw,56px); font-weight:700; letter-spacing:-.035em; line-height:1.05; text-align:center; }
+  .rt-sub{ text-align:center; margin: 18px auto 0; max-width: 600px; font-size:15px; color:var(--text-2); line-height:1.55; }
+  .rt-roles{ margin: 44px auto 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .rt-role{
+    padding: 12px 22px; border-radius:100px; font-size:14px; font-weight:600;
+    background: rgba(255,255,255,0.04); border:1px solid var(--stroke-2); color: var(--text-2);
+    cursor:pointer; transition: all .25s ease;
+  }
+  .rt-role:hover{ color: var(--text); border-color: rgba(255,255,255,0.18); }
+  .rt-role.active{ background: var(--text); color:#000; border-color: var(--text); }
+  .rt-grid{
+    margin-top: 36px;
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .rt-card{
+    padding: 18px 18px 16px; border-radius: 16px;
+    background: rgba(20,20,22,0.55); border:1px solid var(--stroke);
+    display:flex; flex-direction:column; min-height: 170px;
+    transition: border-color .3s ease, transform .3s ease;
+  }
+  .rt-card:hover{ border-color: rgba(94,92,230,0.4); transform: translateY(-2px); }
+  .rt-card .num{ font-size:11px; font-weight:600; color: var(--text-3); letter-spacing:.06em; }
+  .rt-card .title{ margin-top:8px; font-size:14.5px; font-weight:600; line-height:1.35; letter-spacing:-.012em; flex:1; }
+  .rt-card .meta{ margin-top:14px; display:flex; align-items:center; justify-content:space-between; font-size:11.5px; color: var(--text-3); }
+  .rt-card .stage-pill{ padding:3px 9px; border-radius:100px; background: rgba(94,92,230,0.18); color:#9b9aff; font-weight:500; }
+  @media (max-width:1100px){ .rt-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 600px){ .rt-grid{ grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  (function(){
+    const tracks = {
+      vd: [
+        ['Anna Borg: Vägen till 2030','09:30 · Stora','keynote'],
+        ['Magdalena Andersson: Politisk keynote','14:00 · Stora','keynote'],
+        ['VD-panel: Investera nu eller vänta?','11:00 · Stora','panel'],
+        ['Energimarknaden 2027–2035','13:00 · Konferens','keynote'],
+        ['Strategi för flexibilitet','15:30 · Konferens','panel'],
+        ['Capital flows: 80 mdr på 3 år','10:00 · Konferens','panel'],
+        ['Framtidens nät: VD perspektiv','14:30 · Stora','keynote'],
+        ['Mingel: Branschledare-mottagning','17:30 · VIP','mingel']
+      ],
+      tech: [
+        ['Jeff Sundheim: AI i energi','10:30 · AI','keynote'],
+        ['Digital tvilling i drift','11:30 · AI','demo'],
+        ['Cybersäkerhet i kritisk infra','13:30 · AI','panel'],
+        ['Edge AI för nätstationer','15:00 · AI','demo'],
+        ['Plattformar: Build vs buy','09:30 · AI','panel'],
+        ['Filip Kjellgren: AI Sweden update','14:00 · AI','keynote'],
+        ['Datadelning mellan aktörer','10:30 · Konferens','panel'],
+        ['AI-Zonen: 30 demos parallellt','hela dagen · AI','demo']
+      ],
+      drift: [
+        ['Drift &amp; UH: branschens nyckeltal','09:00 · Drift','keynote'],
+        ['Prediktivt UH: cases från fält','10:30 · Drift','panel'],
+        ['Drönare + AI för ledningsbesiktning','11:30 · Drift','demo'],
+        ['Reservdelar 2027: leveranskedja','13:00 · Drift','panel'],
+        ['Säkerhet i ställverk','14:00 · Drift','keynote'],
+        ['Vintrarna 2026/27: lärdomar','15:00 · Drift','panel'],
+        ['Schneider/ABB/Hitachi: produktnytt','11:00 · Drift','demo'],
+        ['Drift-mingel: Tekniker &amp; chefer','17:00 · Drift','mingel']
+      ],
+      inkop: [
+        ['Upphandling i flexibilitet','09:30 · Konferens','panel'],
+        ['Carl Berglöf: Kärnkraftens upphandling','10:30 · Konferens','keynote'],
+        ['Nät: ramavtal som fungerar','11:30 · Konferens','panel'],
+        ['Lokala leverantörer i ny tid','13:00 · Konferens','panel'],
+        ['Riskdelning i långa avtal','14:00 · Konferens','keynote'],
+        ['Affärsmodell: PPA &amp; flex-bonus','15:00 · Konferens','panel'],
+        ['MässMatch: 5 möten · 90 min','11:00 · B4','mingel'],
+        ['Inköpsmingel: 80 inköpschefer','17:30 · VIP','mingel']
+      ]
+    };
+    const grid = document.getElementById('rt-grid');
+    const roles = document.getElementById('rt-roles');
+    function render(role){
+      grid.innerHTML = tracks[role].map((t,i) => `
+        <div class="rt-card">
+          <span class="num">${String(i+1).padStart(2,'0')}</span>
+          <div class="title">${t[0]}</div>
+          <div class="meta">
+            <span>${t[1]}</span>
+            <span class="stage-pill">${t[2]}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+    roles.addEventListener('click', e => {
+      const b = e.target.closest('.rt-role'); if (!b) return;
+      roles.querySelectorAll('.rt-role').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      render(b.dataset.role);
+    });
+    render('vd');
+  })();
+</script>
+
+<div class="schedule" id="schedule"></div>
+
+<footer>
+  <div class="foot-inner">
+    <div>© 2027 Nordic Live Expo · Energimässan</div>
+    <div class="foot-links">
+      <a href="index.html">Hem</a>
+      <a href="talare.html">Talare</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const PROGRAM = {
+  1: [
+    ['08:00', 'Morgon', [
+      {stage:'stora', title:'Morgonseminarium: Sveriges energi 2027 — vad har hänt?', speakers:[['TK','#30D158','#64D2FF']], duration:'45 min', open:true},
+      {stage:'ai',    title:'Frukost-AI: hur LLM:er förändrar drift', speakers:[['AS','#5E5CE6','#30D158']], duration:'30 min', open:true},
+    ]],
+    ['09:30', 'Öppning', [
+      {stage:'stora', title:'KEYNOTE: Vattenfalls plan för 2030', speakers:[['AB','#FFD60A','#FF9500']], duration:'45 min', open:true, featured:true},
+    ]],
+    ['11:00', 'Förmiddag', [
+      {stage:'ai', title:'AI som energisparat ord — global outlook', speakers:[['JS','#0A84FF','#5E5CE6']], duration:'30 min'},
+      {stage:'konferens', title:'Kärnkraftens nya våg — finansiering, tidsplan, risker', speakers:[['CB','#FF9F0A','#FF375F'],['BS','#5E5CE6','#FF375F']], duration:'45 min'},
+      {stage:'drift', title:'Prediktivt underhåll i kraftverk — case Hitachi', speakers:[['PB','#FFD60A','#30D158']], duration:'25 min', open:true},
+    ]],
+    ['12:30', 'Lunch', [
+      {stage:'stora', title:'Lunch &amp; nätverkande på mässgolvet', speakers:[], duration:'90 min', open:true},
+    ]],
+    ['14:00', 'Eftermiddag', [
+      {stage:'stora', title:'POLITISK KEYNOTE: Magdalena Andersson', speakers:[['MA','#FF375F','#BF5AF2']], duration:'30 min', open:true, featured:true},
+      {stage:'ai', title:'Smart grid med ML — Power Circle &amp; Qurrent', speakers:[['JL','#FF9500','#FFD60A'],['ML','#BF5AF2','#30D158']], duration:'40 min'},
+      {stage:'konferens', title:'Vätgasens roll i industrin', speakers:[['CF','#64D2FF','#30D158']], duration:'30 min'},
+    ]],
+    ['15:30', 'Sen eftermiddag', [
+      {stage:'drift', title:'BESS i drift — lärdomar från Volvo Energy', speakers:[['NT','#5E5CE6','#0A84FF']], duration:'30 min', open:true},
+      {stage:'ai', title:'Hands-on: prediktivt underhåll med AI Sweden', speakers:[['FK','#0A84FF','#BF5AF2']], duration:'45 min'},
+      {stage:'konferens', title:'Panel: Hur ska Sverige finansiera elnätet?', speakers:[['UH','#FF375F','#FF9500'],['LH','#FF9F0A','#FF375F']], duration:'45 min'},
+    ]],
+    ['17:30', 'Mingel', [
+      {stage:'stora', title:'★ MINGEL: Liveuppträdande &amp; Årets Framstegspris Energi', speakers:[], duration:'till 21:00', open:true, featured:true},
+    ]],
+  ],
+  2: [
+    ['08:00', 'Morgon', [
+      {stage:'ai',  title:'Morgonseminarium: AI-Zonen öppnar', speakers:[['AS','#5E5CE6','#30D158']], duration:'30 min', open:true},
+      {stage:'drift', title:'Frukost: Drift &amp; UH-träffen', speakers:[['LB','#BF5AF2','#0A84FF']], duration:'45 min', open:true},
+    ]],
+    ['09:30', 'Öppning dag 2', [
+      {stage:'stora', title:'KEYNOTE: Peter Carlsson — efter Northvolt, vad nu?', speakers:[['PC','#30D158','#FFD60A']], duration:'45 min', open:true, featured:true},
+    ]],
+    ['11:00', 'Förmiddag', [
+      {stage:'konferens', title:'Solens decennium — Becquerel-rapporten 2027', speakers:[['JL','#64D2FF','#0A84FF']], duration:'30 min'},
+      {stage:'ai', title:'Energi-LLM:er live — demos från 5 startups', speakers:[], duration:'45 min'},
+      {stage:'drift', title:'Digital tvilling i värmekraftverk', speakers:[['MH','#FF9500','#30D158'],['HH','#0A84FF','#FFD60A']], duration:'30 min', open:true},
+    ]],
+    ['13:00', 'Eftermiddag', [
+      {stage:'stora', title:'Panel: Industrins elektrifiering — vem betalar?', speakers:[['ÅP','#FF9500','#FF375F'],['MN','#0A84FF','#30D158'],['JS','#BF5AF2','#5E5CE6']], duration:'60 min', open:true},
+      {stage:'ai', title:'AI-rådgivning live · drop-in (12 experter)', speakers:[], duration:'pågående', open:true},
+    ]],
+    ['15:00', 'Avslutning', [
+      {stage:'stora', title:'AVSLUTNING: Vart är vi på väg 2030?', speakers:[['TK','#30D158','#64D2FF'],['BN','#64D2FF','#0A84FF']], duration:'45 min', open:true, featured:true},
+    ]],
+  ]
+};
+
+const stageNames = { stora:'Stora scenen', ai:'AI & Digital', drift:'Drift & UH', konferens:'Konferens' };
+const STAGE_CLS = { stora:'stage-stora', ai:'stage-ai', drift:'stage-drift', konferens:'stage-konferens' };
+
+let activeDay = 1;
+let activeStage = 'all';
+
+function render(){
+  const sched = document.getElementById('schedule');
+  const blocks = PROGRAM[activeDay];
+  let html = '';
+  blocks.forEach(([time, label, sessions]) => {
+    const filtered = sessions.filter(s => activeStage === 'all' || s.stage === activeStage);
+    if (filtered.length === 0) return;
+    html += `<div class="time-row">
+      <div>
+        <div class="time-label">${time}</div>
+        <div class="time-sub">${label}</div>
+      </div>
+      <div class="sessions">
+        ${filtered.map(s => `
+          <div class="session ${s.featured?'featured':''}">
+            <div class="session-stage ${STAGE_CLS[s.stage]}">${stageNames[s.stage]} ${s.open?'· Öppen':''}</div>
+            <div class="session-title">${s.title}</div>
+            <div class="session-meta">
+              ${s.speakers.length ? `<span class="speaker-mini">${s.speakers.map(([init,c1,c2]) => `<span class="mini-av" style="--c1:${c1};--c2:${c2}">${init}</span>`).join('')}</span>` : ''}
+              <span>${s.duration}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  });
+  sched.innerHTML = html || `<div style="text-align:center;color:var(--text-3);padding:60px;">Inga sessioner i denna scen den här dagen.</div>`;
+}
+
+document.querySelectorAll('#days .day-tab').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#days .day-tab').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    activeDay = +b.dataset.day;
+    render();
+  });
+});
+document.querySelectorAll('#stages .sf').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#stages .sf').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    activeStage = b.dataset.stage;
+    render();
+  });
+});
+render();
+</script>
+
+</body>
+</html>

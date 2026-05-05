@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Talare · Energimässan 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .page-hero{
+    padding: 160px 32px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before{
+    content:""; position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(700px 400px at 50% 0%, rgba(94,92,230,0.25), transparent 60%),
+      radial-gradient(500px 300px at 20% 100%, rgba(48,209,88,0.15), transparent 60%);
+  }
+  .page-hero > *{ position: relative; z-index:1; }
+  .page-h1{
+    font-size: clamp(64px, 9vw, 128px);
+    font-weight: 700; letter-spacing: -.05em; line-height: 0.95;
+    background: linear-gradient(180deg, #FFFFFF, #BABABF);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-h1 .grad{
+    background: linear-gradient(135deg, #30D158, #64D2FF, #5E5CE6);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-sub{
+    margin: 28px auto 0;
+    max-width: 600px; font-size: 19px; color: var(--text-2); line-height: 1.5;
+  }
+  .filters{
+    margin: 50px auto 0; max-width: 900px;
+    display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  }
+  .chip{
+    padding: 9px 18px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--stroke);
+    color: var(--text-2);
+    font-size: 13px; font-weight: 500;
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .chip:hover{ color: var(--text); border-color: var(--stroke-2); }
+  .chip.active{
+    background: var(--text); color: var(--bg); border-color: var(--text);
+  }
+  .search-wrap{
+    margin: 18px auto 0; max-width: 480px;
+    display: flex;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--stroke-2);
+    border-radius: 100px;
+    padding: 6px 6px 6px 22px;
+    align-items: center;
+    gap: 10px;
+  }
+  .search-wrap svg{ width: 16px; height: 16px; color: var(--text-3); }
+  .search-wrap input{
+    flex:1; background: transparent; border: none; outline: none;
+    color: var(--text); font-size: 14px; padding: 10px 0;
+    font-family: inherit;
+  }
+  .search-wrap input::placeholder{ color: var(--text-3); }
+
+  .speakers-grid{
+    max-width: 1280px; margin: 0 auto;
+    padding: 32px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .sp-card{
+    aspect-ratio: 3/4;
+    border-radius: 22px; overflow: hidden;
+    position: relative;
+    border: 1px solid var(--stroke);
+    background: var(--bg-2);
+    cursor: pointer;
+    transition: transform .3s;
+  }
+  .sp-card:hover{ transform: translateY(-3px); }
+  .sp-card .avatar{ width:100%; height:100%; transition: transform .6s; background-size: cover; background-position: center 25%; background-color: #1a1a1f; }
+  .sp-card .avatar .tint{ display: none; }
+  .sp-card:hover .avatar{ transform: scale(1.06); }
+
+  /* Filter: HIDE non-matches completely (gap collapses) */
+  .sp-card{ transition: transform .5s ease, opacity .3s ease; }
+  .sp-card.matched{ opacity: 1; transform: scale(1); }
+  .sp-card.dimmed{ display: none; }
+  .sp-card.hidden{ display: none; }
+  .count-line.filtered{
+    color: var(--orange);
+    font-weight: 600;
+  }
+  .sp-overlay{
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.95) 100%);
+  }
+  .sp-content{ position: absolute; bottom: 0; left:0; right:0; padding: 22px; z-index:2; }
+  .sp-cat{
+    display: inline-block;
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 100px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    color: var(--text); font-weight: 600;
+  }
+  .sp-name{ margin-top: 8px; font-size: 19px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+  .sp-role{ margin-top: 4px; font-size: 12px; color: var(--text-2); }
+  .sp-org{ margin-top: 2px; font-size: 11px; color: var(--text-3); }
+
+  .count-line{
+    text-align: center;
+    color: var(--text-3); font-size: 13px;
+    padding: 10px 32px 30px;
+  }
+
+  @media (max-width: 900px){
+    .speakers-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 500px){
+    .speakers-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Startsida</a>
+      <a href="program.html">Program</a>
+      <a href="talare.html" class="active">Talare</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="index.html#biljetter">Biljetter</a>
+    </nav>
+    <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1 class="page-h1">200+ talare.<br/><span class="grad">En scen.</span></h1>
+  <p class="page-sub">Branschens mest betydelsefulla röster — VD:ar, ministrar, forskare och innovatörer. Filtrera på spår eller sök.</p>
+
+  <div class="filters" id="filters">
+    <span class="chip active" data-cat="all">Alla</span>
+    <span class="chip" data-cat="keynote">Keynote</span>
+    <span class="chip" data-cat="ai">AI &amp; Digital</span>
+    <span class="chip" data-cat="produktion">Produktion</span>
+    <span class="chip" data-cat="drift">Drift &amp; Underhåll</span>
+    <span class="chip" data-cat="politik">Politik &amp; Myndighet</span>
+    <span class="chip" data-cat="forskning">Forskning</span>
+  </div>
+
+  <div class="search-wrap">
+    <svg><use href="#i-search"/></svg>
+    <input type="text" id="search" placeholder="Sök på namn, roll eller organisation…" />
+  </div>
+</section>
+
+<div class="count-line" id="countline">Visar 24 av 24 talare</div>
+
+<div class="speakers-grid" id="grid"></div>
+
+<footer>
+  <div class="foot-inner">
+    <div>© 2027 Nordic Live Expo · Energimässan</div>
+    <div class="foot-links">
+      <a href="index.html">Hem</a>
+      <a href="program.html">Program</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const PHOTOS = [
+    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1573497019418-b400bb3ab074?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1545996124-0501ebae84d0?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1542206395-9feb3edaa68d?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1521119989659-a83eee488004?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1558898479-33c0057a5d12?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1551727974-8af20a3322f4?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1611432579402-7037e3e2c1e4?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1521252659862-eec69941b071?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1500649297466-74794c70acfc?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1542178243-bc20204b769f?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1583341655898-ad3744b69b22?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1601412436009-d964bd02edbc?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1542144612-1b3641ec3459?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1546961342-1e8c4624e4f2?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1605664041952-4a2855d9ef39?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1592621385612-4d7129426394?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?w=600&q=80&auto=format&fit=crop&crop=faces',
+    'https://images.unsplash.com/photo-1542327897-d73f4005b533?w=600&q=80&auto=format&fit=crop&crop=faces'
+  ];
+
+  const SPEAKERS = [
+    ['Anna Borg','VD &amp; koncernchef','Vattenfall','keynote','#FFD60A','#FF9500','AB'],
+    ['Magdalena Andersson','Partiordförande','Socialdemokraterna','politik','#FF375F','#BF5AF2','MA'],
+    ['Jeff Sundheim','AI Business Strategist','Google','ai','#0A84FF','#5E5CE6','JS'],
+    ['Tomas Kåberger','Ordförande','Sveriges Energiforum','keynote','#30D158','#64D2FF','TK'],
+    ['Carl Berglöf','Kärnkraftsamordnare','Regeringskansliet','politik','#FF9F0A','#FF375F','CB'],
+    ['Anna Svensson','Co-lead, Energy','AI Sweden','ai','#5E5CE6','#30D158','AS'],
+    ['Bo Normark','Industrial strategy exec.','EIT InnoEnergy','produktion','#64D2FF','#0A84FF','BN'],
+    ['Lotta Bångens','VD','Eneff','drift','#BF5AF2','#0A84FF','LB'],
+    ['Markus Wråke','VD','Calentix Energy','produktion','#30D158','#FFD60A','MW'],
+    ['Pernilla Winnhed','Chef, Näringspolitik','LRF','politik','#FF9500','#FF375F','PW'],
+    ['Johan Svenningsson','VD','Uniper Sverige','produktion','#BF5AF2','#5E5CE6','JS'],
+    ['Mikael Nordlander','Director Partnerships','Vattenfall','produktion','#0A84FF','#30D158','MN'],
+    ['Ulrika Hesslow','Generaldirektör','Energimarknadsinspektionen','politik','#FF375F','#FF9500','UH'],
+    ['Jonas Birgersson','Ordförande','Via Europa','ai','#30D158','#5E5CE6','JB'],
+    ['Patrik Berkesten','Strategic Account Manager','Hitachi Energy','drift','#FFD60A','#30D158','PB'],
+    ['Boris Schucht','CEO','Urenco','produktion','#5E5CE6','#FF375F','BS'],
+    ['Filip Kjellgren','Head of Adoption','AI Sweden','ai','#0A84FF','#BF5AF2','FK'],
+    ['Johanna Lakso','VD','Power Circle','produktion','#FF9500','#FFD60A','JL'],
+    ['Claes Fredriksson','VD &amp; grundare','Liquid Wind','produktion','#64D2FF','#30D158','CF'],
+    ['Åsa Pettersson','VD','Energiföretagen','keynote','#FF9500','#FF375F','ÅP'],
+    ['Niklas Thulin','VP, Head of BESS','Volvo Energy','produktion','#5E5CE6','#0A84FF','NT'],
+    ['Peter Carlsson','Entreprenör','Tidigare Northvolt','keynote','#30D158','#FFD60A','PC'],
+    ['Lars Hjälmered','Statssekreterare','Regeringskansliet','politik','#FF9F0A','#FF375F','LH'],
+    ['Niklas Wykman','Finansmarknadsminister','Regeringen','politik','#5E5CE6','#30D158','NW'],
+    ['Anna Werner','Energiexpert','Oberoende','forskning','#64D2FF','#5E5CE6','AW'],
+    ['Magnus Holtmar','Senior verksamhetskonsult','DigiMaint','drift','#FF9500','#30D158','MH'],
+    ['Hans Hellström','VD &amp; Seniorkonsult','DigiMaint','drift','#0A84FF','#FFD60A','HH'],
+    ['Erik Särnholm','Verksamhetsledare','Länsstyrelserna','politik','#30D158','#FF9500','ES'],
+    ['Dr. Johan Lindahl','PV-analytiker','Becquerel Sweden','forskning','#64D2FF','#0A84FF','JL'],
+    ['Mycle Schneider','Independent analyst','Energy &amp; Nuclear','forskning','#FF375F','#5E5CE6','MS'],
+    ['Arne Bergvik','Energistrategisk konsult','Sigholm','drift','#FFD60A','#5E5CE6','AB'],
+    ['Andrew Owens','Product Manager','Hitachi Energy','drift','#5E5CE6','#0A84FF','AO'],
+    ['Magnus Nilsson','VD','Glava Energy Center','produktion','#30D158','#64D2FF','MN'],
+    ['Johan Granström','Head of Energy Transition','ABB Energy Industries','produktion','#FF9500','#FF375F','JG'],
+    ['Christer Viktorsson','Director General','Federal Authority for Nuclear Reg.','politik','#5E5CE6','#FFD60A','CV'],
+    ['Elisabeth Larsson','Head of Sales','Volvo Energy','produktion','#0A84FF','#30D158','EL'],
+    ['Martin Malmveld','VD','Solfolket','produktion','#FFD60A','#FF9500','MM'],
+    ['Mats Lindelöw','VD','Qurrent','ai','#BF5AF2','#30D158','ML'],
+    ['Angelica Wistbo','VD','Wistbo Information','drift','#FF375F','#FF9500','AW'],
+    ['Anton Steen','Country Manager','Steady Energy','produktion','#64D2FF','#5E5CE6','AS'],
+    ['Nils Grunditz','VD','Green Power Sweden','produktion','#30D158','#FFD60A','NG'],
+    ['Ola Alterå','Kanslichef','Klimatpolitiska rådet','politik','#FF9F0A','#FF375F','OA'],
+    ['Gustav Ebenå','Avdelningschef','Energimyndigheten','politik','#5E5CE6','#0A84FF','GE'],
+    ['Desiree Comstedt','VD','Videberg Kraft','produktion','#0A84FF','#BF5AF2','DC'],
+    ['Karl Bergman','Styrgruppsordförande','IVA','forskning','#FFD60A','#5E5CE6','KB'],
+    ['Saira Alladin','Elnätsexpert','NCC','drift','#FF375F','#0A84FF','SA'],
+    ['Mikaela Berggren','Forskningsledare','Chalmers','forskning','#30D158','#5E5CE6','MB'],
+    ['Erik Lundström','Hållbarhetschef','Schneider Electric','drift','#64D2FF','#30D158','EL']
+  ];
+
+  const grid = document.getElementById('grid');
+  const countLine = document.getElementById('countline');
+
+  function render(filterCat, search){
+    const q = (search || '').toLowerCase().trim();
+    let activeCount = 0;
+
+    const html = SPEAKERS.map(([name,role,org,cat,c1,c2,init], i) => {
+      const catOK = !filterCat || filterCat === 'all' || cat === filterCat;
+      const sOK = !q || (name+role+org).toLowerCase().includes(q);
+      const match = catOK && sOK;
+      if (match) activeCount++;
+      const photo = PHOTOS[i % PHOTOS.length];
+      return `
+        <article class="sp-card ${match ? 'matched' : 'dimmed'}">
+          <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');">
+            <div class="tint"></div>
+          </div>
+          <div class="sp-overlay"></div>
+          <div class="sp-content">
+            <span class="sp-cat">${ {keynote:'Keynote',ai:'AI & Digital',produktion:'Produktion',drift:'Drift & UH',politik:'Politik',forskning:'Forskning'}[cat] || cat }</span>
+            <div class="sp-name">${name}</div>
+            <div class="sp-role">${role}</div>
+            <div class="sp-org">${org}</div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    grid.innerHTML = html;
+    countLine.textContent = `Visar ${activeCount} av ${SPEAKERS.length} talare`;
+    countLine.classList.toggle('filtered', activeCount < SPEAKERS.length);
+  }
+
+  let activeCat = 'all';
+  let activeSearch = '';
+
+  document.querySelectorAll('#filters .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      document.querySelectorAll('#filters .chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      activeCat = c.dataset.cat;
+      render(activeCat, activeSearch);
+    });
+  });
+
+  document.getElementById('search').addEventListener('input', (e) => {
+    activeSearch = e.target.value;
+    render(activeCat, activeSearch);
+  });
+
+  render('all', '');
+</script>
+
+</body>
+</html>

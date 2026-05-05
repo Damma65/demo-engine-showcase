@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Utställning · Energimässan 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .page-hero{ padding: 160px 32px 60px; text-align:center; position:relative; overflow:hidden; }
+  .page-hero::before{ content:""; position:absolute; inset:0; z-index:0;
+    background: radial-gradient(700px 400px at 50% 0%, rgba(48,209,88,0.18), transparent 60%); }
+  .page-hero > *{ position: relative; z-index: 1; }
+  .page-h1{
+    font-size: clamp(56px, 8vw, 112px);
+    font-weight: 700; letter-spacing: -.05em; line-height: .95;
+    background: linear-gradient(180deg, #FFFFFF, #BABABF);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
+  }
+  .page-h1 .grad{
+    background: linear-gradient(135deg, #30D158, #64D2FF);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
+  }
+  .page-sub{ margin: 28px auto 0; max-width: 620px; font-size: 18px; color: var(--text-2); line-height: 1.5; }
+
+  /* HALLPLAN */
+  .hall-wrap{
+    max-width: 1280px; margin: 60px auto 0;
+    padding: 0 32px;
+  }
+  /* REAL HALLPLAN (PDF) */
+  .hall-real{ margin-top: 32px; }
+  .hall-real-toolbar{ display:flex; align-items:center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .hr-eyebrow{ font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+  .hr-actions{ display:flex; gap: 8px; }
+  .hr-btn{ padding: 9px 16px; border-radius: 100px; font-size: 12.5px; font-weight: 600; text-decoration: none; color: var(--text-2); border:1px solid var(--stroke); background: rgba(255,255,255,0.04); transition: all .2s ease; }
+  .hr-btn:hover{ border-color: rgba(255,255,255,0.3); color: var(--text); }
+  .hr-btn.primary{ background: var(--text); color: #000; border-color: var(--text); }
+  .hall-real-frame{
+    position: relative; aspect-ratio: 1.4/1;
+    border-radius: 18px; overflow: hidden;
+    background: #FAFAFA;
+    border: 1px solid var(--stroke);
+    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.5);
+  }
+  .hall-real-pdf{ width: 100%; height: 100%; display: block; background: #FAFAFA; }
+  .hall-real-pdf img{ width: 100%; height: 100%; object-fit: contain; }
+  .hall-real-pins{ position:absolute; inset: 0; pointer-events: none; }
+  .hr-pin{
+    position:absolute; transform: translate(-50%, -50%);
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #30D158;
+    box-shadow: 0 0 0 4px rgba(48,209,88,0.25), 0 0 0 9px rgba(48,209,88,0.12);
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  .hr-pin::after{
+    content: attr(data-l);
+    position:absolute; top: 22px; left: 50%; transform: translateX(-50%);
+    white-space: nowrap; font-size: 11px; font-weight: 600; padding: 4px 10px;
+    background: rgba(0,0,0,0.85); color: #fff; border-radius: 6px;
+    opacity: 0; transition: opacity .2s ease;
+    pointer-events: none;
+  }
+  .hr-pin:hover::after{ opacity: 1; }
+  .hall-real-foot{
+    margin-top: 18px; display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+    padding: 16px; border-radius: 14px; border:1px solid var(--stroke); background: rgba(255,255,255,0.02);
+  }
+  @media (max-width: 700px){ .hall-real-foot{ grid-template-columns: 1fr 1fr; } }
+  .hrf-stat{ display:flex; flex-direction: column; gap: 2px; }
+  .hrf-stat b{ font-size: 18px; font-weight: 800; letter-spacing: -.02em; background: linear-gradient(135deg, #30D158, #64D2FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hrf-stat span{ font-size: 11px; color: var(--text-3); letter-spacing: .04em; }
+
+  .hall{
+    border-radius: 28px;
+    border: 1px solid var(--stroke);
+    background: linear-gradient(180deg, #0C0C10, #050507);
+    padding: 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hall-tag{
+    display: inline-flex; align-items:center; gap:8px;
+    padding: 6px 14px; border-radius: 100px;
+    background: rgba(48,209,88,0.12);
+    color: var(--green-2); font-size: 12px; font-weight: 600;
+  }
+  .hall-h{
+    margin-top: 16px;
+    font-size: 36px; font-weight: 700; letter-spacing: -.03em;
+  }
+  .hall-svg-wrap{
+    margin-top: 32px; position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 18px; overflow: hidden;
+    background: radial-gradient(ellipse at center, #15151A, #0A0A0E);
+    border: 1px solid var(--stroke);
+  }
+  .hall-svg-wrap svg{ width: 100%; height: 100%; display: block; }
+  .booth{
+    cursor: pointer;
+    transition: filter .2s;
+  }
+  .booth:hover{ filter: brightness(1.4); }
+  .legend{
+    margin-top: 24px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-size: 12px; color: var(--text-2);
+  }
+  .leg-dot{ display:inline-flex; align-items:center; gap: 8px; }
+  .ld{ width: 12px; height: 12px; border-radius: 4px; }
+
+  /* CATEGORIES */
+  .cats{
+    max-width: 1280px; margin: 50px auto 0;
+    padding: 0 32px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .cat{
+    padding: 9px 18px; border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--stroke);
+    color: var(--text-2); font-size: 13px; font-weight: 500; cursor: pointer;
+  }
+  .cat.active{ background: var(--text); color: var(--bg); border-color: var(--text); }
+
+  /* EXHIBITORS */
+  .exhibitors{
+    max-width: 1280px; margin: 32px auto 0;
+    padding: 0 32px 100px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  }
+  .ex-card{
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    border-radius: 18px;
+    transition: background .2s, transform .2s, border-color .2s;
+    cursor: pointer;
+  }
+  .ex-card:hover{ background: var(--surface-2); border-color: var(--stroke-2); transform: translateY(-2px); }
+  .ex-logo{
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    display: grid; place-items: center;
+    font-size: 22px; font-weight: 700; color: white;
+    letter-spacing: -.02em;
+  }
+  .ex-tier{
+    margin-top: 14px;
+    display: inline-block;
+    font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600;
+  }
+  .ex-tier.gold{ color: #FFD60A; }
+  .ex-tier.silver{ color: #BABABF; }
+  .ex-tier.bronze{ color: #FF9F0A; }
+  .ex-name{
+    margin-top: 6px; font-size: 17px; font-weight: 600; letter-spacing: -.018em;
+  }
+  .ex-booth{ margin-top: 4px; font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+  .ex-cats{ margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .ex-cats span{
+    font-size: 10.5px; padding: 3px 8px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 100px;
+    color: var(--text-2);
+  }
+
+  @media (max-width: 900px){
+    .exhibitors{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 500px){
+    .exhibitors{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Startsida</a>
+      <a href="program.html">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="utstallning.html" class="active">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="index.html#biljetter">Biljetter</a>
+    </nav>
+    <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1 class="page-h1">250+ utställare.<br/><span class="grad">Ett mässgolv.</span></h1>
+  <p class="page-sub">Globala jättar, nordiska greentech-startups och allt däremellan. Hitta din monter — eller upptäck nästa partner.</p>
+</section>
+
+<div class="hall-wrap">
+  <div class="hall">
+    <span class="hall-tag">● Live · uppdateras realtid</span>
+    <div class="hall-h">Hallplan · Kistamässan</div>
+
+    <div class="hall-real">
+      <div class="hall-real-toolbar">
+        <span class="hr-eyebrow">Officiell hallplan · Kistamässan</span>
+        <div class="hr-actions">
+          <a class="hr-btn" href="assets/hallplan.pdf" target="_blank" rel="noopener">Öppna PDF ↗</a>
+          <a class="hr-btn primary" href="assets/hallplan.pdf" download>Ladda ner</a>
+        </div>
+      </div>
+      <div class="hall-real-frame">
+        <object data="assets/hallplan.pdf#view=FitH&toolbar=0&navpanes=0" type="application/pdf" class="hall-real-pdf">
+          <img src="assets/hallplan.pdf" alt="Hallplan Energimässan 2027" />
+        </object>
+        <div class="hall-real-pins">
+          <span class="hr-pin" style="left:14%;top:18%;" data-l="Stora scenen"></span>
+          <span class="hr-pin" style="left:48%;top:22%;" data-l="AI-zonen ★"></span>
+          <span class="hr-pin" style="left:72%;top:26%;" data-l="Konferens"></span>
+          <span class="hr-pin" style="left:34%;top:64%;" data-l="Café"></span>
+          <span class="hr-pin" style="left:58%;top:78%;" data-l="Restaurang"></span>
+        </div>
+      </div>
+      <div class="hall-real-foot">
+        <div class="hrf-stat"><b>250+</b><span>utställare</span></div>
+        <div class="hrf-stat"><b>4</b><span>scener</span></div>
+        <div class="hrf-stat"><b>~12 000 m²</b><span>mässyta</span></div>
+        <div class="hrf-stat"><b>A–M</b><span>monterzoner</span></div>
+      </div>
+    </div>
+
+    <div class="hall-svg-wrap" hidden>
+      <svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          </pattern>
+          <linearGradient id="g-stage" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5E5CE6"/><stop offset="100%" stop-color="#30D158"/></linearGradient>
+        </defs>
+        <rect width="1200" height="675" fill="url(#grid)"/>
+
+        <!-- Outer hall -->
+        <rect x="40" y="40" width="1120" height="595" rx="14" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+
+        <!-- Entrance -->
+        <rect x="540" y="32" width="120" height="16" rx="4" fill="rgba(48,209,88,0.5)"/>
+        <text x="600" y="24" fill="#5DE38A" font-size="11" text-anchor="middle" font-family="-apple-system" font-weight="600" letter-spacing="2">ENTRÉ</text>
+
+        <!-- Stora scenen -->
+        <rect x="80" y="80" width="280" height="120" rx="10" fill="url(#g-stage)" opacity="0.85"/>
+        <text x="220" y="135" fill="white" font-size="14" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">STORA SCENEN</text>
+        <text x="220" y="155" fill="rgba(255,255,255,0.7)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="1.5">1 200 SITTPLATSER</text>
+
+        <!-- AI Zone -->
+        <rect x="400" y="80" width="240" height="120" rx="10" fill="rgba(94,92,230,0.4)" stroke="rgba(176,174,255,0.5)" stroke-width="1"/>
+        <text x="520" y="135" fill="#B0AEFF" font-size="14" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">AI-ZONEN ★</text>
+        <text x="520" y="155" fill="rgba(176,174,255,0.7)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="1.5">30+ DEMOS · NYHET 2027</text>
+
+        <!-- Drift & UH -->
+        <rect x="680" y="80" width="200" height="120" rx="10" fill="rgba(255,159,10,0.35)" stroke="rgba(255,159,10,0.5)" stroke-width="1"/>
+        <text x="780" y="135" fill="#FF9F0A" font-size="13" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">DRIFT &amp; UH</text>
+        <text x="780" y="155" fill="rgba(255,159,10,0.7)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="1.5">EGEN SCEN</text>
+
+        <!-- Konferens -->
+        <rect x="920" y="80" width="200" height="120" rx="10" fill="rgba(100,210,255,0.3)" stroke="rgba(100,210,255,0.5)" stroke-width="1"/>
+        <text x="1020" y="135" fill="#64D2FF" font-size="13" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">KONFERENS</text>
+        <text x="1020" y="155" fill="rgba(100,210,255,0.7)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="1.5">SVERIGES ENERGIFORUM</text>
+
+        <!-- Booth grid -->
+        <g font-family="-apple-system" font-size="9" font-weight="600">
+          <!-- Row 1 - Gold -->
+          <g class="booth"><rect x="80" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="120" y="275" fill="#000" text-anchor="middle">Vattenfall</text><text x="120" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:01</text></g>
+          <g class="booth"><rect x="170" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="210" y="275" fill="#000" text-anchor="middle">Hitachi</text><text x="210" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:02</text></g>
+          <g class="booth"><rect x="260" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="300" y="275" fill="#000" text-anchor="middle">Siemens</text><text x="300" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:03</text></g>
+          <g class="booth"><rect x="350" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="390" y="275" fill="#000" text-anchor="middle">Sungrow</text><text x="390" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:04</text></g>
+          <g class="booth"><rect x="440" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="480" y="275" fill="#000" text-anchor="middle">ABB</text><text x="480" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:05</text></g>
+          <g class="booth"><rect x="530" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="570" y="275" fill="#000" text-anchor="middle">Schneider</text><text x="570" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:06</text></g>
+
+          <!-- Row 2 - Silver -->
+          <g class="booth"><rect x="80" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="110" y="350" fill="white" text-anchor="middle">Volvo E.</text></g>
+          <g class="booth"><rect x="150" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="180" y="350" fill="white" text-anchor="middle">Fortum</text></g>
+          <g class="booth"><rect x="220" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="250" y="350" fill="white" text-anchor="middle">Steady</text></g>
+          <g class="booth"><rect x="290" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="320" y="350" fill="white" text-anchor="middle">Merus</text></g>
+          <g class="booth"><rect x="360" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="390" y="350" fill="white" text-anchor="middle">Digpro</text></g>
+          <g class="booth"><rect x="430" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="460" y="350" fill="white" text-anchor="middle">Westermo</text></g>
+          <g class="booth"><rect x="500" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="530" y="350" fill="white" text-anchor="middle">Granitor</text></g>
+          <g class="booth"><rect x="570" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="600" y="350" fill="white" text-anchor="middle">Vinnergi</text></g>
+
+          <!-- Row 3 - Bronze (smaller booths) -->
+          <g class="booth"><rect x="80" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="104" y="416" fill="white" text-anchor="middle" font-size="8">PSW</text></g>
+          <g class="booth"><rect x="138" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="162" y="416" fill="white" text-anchor="middle" font-size="8">Renewcast</text></g>
+          <g class="booth"><rect x="196" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="220" y="416" fill="white" text-anchor="middle" font-size="8">Truxco</text></g>
+          <g class="booth"><rect x="254" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="278" y="416" fill="white" text-anchor="middle" font-size="8">Truxel</text></g>
+          <g class="booth"><rect x="312" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="336" y="416" fill="white" text-anchor="middle" font-size="8">CANEA</text></g>
+          <g class="booth"><rect x="370" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="394" y="416" fill="white" text-anchor="middle" font-size="8">Wistbo</text></g>
+          <g class="booth"><rect x="428" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="452" y="416" fill="white" text-anchor="middle" font-size="8">Aire</text></g>
+          <g class="booth"><rect x="486" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="510" y="416" fill="white" text-anchor="middle" font-size="8">Pinja</text></g>
+          <g class="booth"><rect x="544" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="568" y="416" fill="white" text-anchor="middle" font-size="8">Mersen</text></g>
+          <g class="booth"><rect x="602" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="626" y="416" fill="white" text-anchor="middle" font-size="8">Kiwa</text></g>
+
+          <!-- Right column (more booths) -->
+          <g class="booth"><rect x="700" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="740" y="275" fill="white" text-anchor="middle">Google AI</text><text x="740" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:01</text></g>
+          <g class="booth"><rect x="790" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="830" y="275" fill="white" text-anchor="middle">AI Sweden</text><text x="830" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:02</text></g>
+          <g class="booth"><rect x="880" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="920" y="275" fill="white" text-anchor="middle">Qurrent</text><text x="920" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:03</text></g>
+          <g class="booth"><rect x="970" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="1010" y="275" fill="white" text-anchor="middle">Truxel.ai</text><text x="1010" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:04</text></g>
+          <g class="booth"><rect x="1060" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="1100" y="275" fill="white" text-anchor="middle">Pinja AI</text><text x="1100" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:05</text></g>
+
+          <!-- Mingle area -->
+          <rect x="700" y="450" width="440" height="110" rx="14" fill="rgba(48,209,88,0.18)" stroke="rgba(48,209,88,0.4)" stroke-width="1" stroke-dasharray="6 6"/>
+          <text x="920" y="500" fill="#5DE38A" font-size="14" text-anchor="middle" font-weight="700" letter-spacing="1">MINGEL · DAG 1 · 17:30</text>
+          <text x="920" y="520" fill="rgba(93,227,138,0.7)" font-size="10" text-anchor="middle" letter-spacing="1.5">LIVE · MAT &amp; DRYCK · PRISUTDELNING</text>
+
+          <!-- Café -->
+          <rect x="80" y="500" width="120" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+          <text x="140" y="540" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">CAFÉ</text>
+          <text x="140" y="555" fill="rgba(255,255,255,0.4)" font-size="9" text-anchor="middle">07:30–17:00</text>
+
+          <!-- Matchmaking -->
+          <rect x="220" y="500" width="120" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+          <text x="280" y="540" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">MATCH-</text>
+          <text x="280" y="552" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">MAKING</text>
+          <text x="280" y="567" fill="rgba(255,255,255,0.4)" font-size="9" text-anchor="middle">DROP-IN</text>
+
+          <!-- Press -->
+          <rect x="360" y="500" width="120" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+          <text x="420" y="545" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">PRESS</text>
+          <text x="420" y="558" fill="rgba(255,255,255,0.4)" font-size="9" text-anchor="middle">&amp; INFO</text>
+
+          <!-- Garderob -->
+          <rect x="500" y="500" width="120" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+          <text x="560" y="545" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">GARDEROB</text>
+        </g>
+
+      </svg>
+    </div>
+
+    <div class="legend">
+      <span class="leg-dot"><span class="ld" style="background: rgba(255,214,10,0.55)"></span> Guld (48 m²+)</span>
+      <span class="leg-dot"><span class="ld" style="background: rgba(186,186,191,0.5)"></span> Silver (24 m²)</span>
+      <span class="leg-dot"><span class="ld" style="background: rgba(255,159,10,0.4)"></span> Brons (9–18 m²)</span>
+      <span class="leg-dot"><span class="ld" style="background: rgba(94,92,230,0.5)"></span> AI-Zonen</span>
+      <span class="leg-dot"><span class="ld" style="background: rgba(48,209,88,0.4); border:1px dashed rgba(48,209,88,0.6)"></span> Mingelyta</span>
+    </div>
+  </div>
+</div>
+
+<div class="cats" id="cats">
+  <span class="cat active" data-cat="all">Alla 250+</span>
+  <span class="cat" data-cat="prod">Produktion</span>
+  <span class="cat" data-cat="grid">Smart Grid &amp; Lagring</span>
+  <span class="cat" data-cat="ai">AI &amp; Digital</span>
+  <span class="cat" data-cat="drift">Drift &amp; Underhåll</span>
+  <span class="cat" data-cat="solar">Sol &amp; Vind</span>
+</div>
+
+<div class="exhibitors" id="exh"></div>
+
+<footer>
+  <div class="foot-inner">
+    <div>© 2027 Nordic Live Expo · Energimässan</div>
+    <div class="foot-links">
+      <a href="index.html">Hem</a>
+      <a href="program.html">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const EXHIBITORS = [
+  ['Vattenfall','VA','#FFD60A','#FF9500','gold','A:01',['prod','grid']],
+  ['Hitachi Energy','HE','#0A84FF','#5E5CE6','gold','A:02',['drift','grid']],
+  ['Siemens Energy','SE','#30D158','#0A84FF','gold','A:03',['prod','drift']],
+  ['Sungrow','SG','#FFD60A','#30D158','gold','A:04',['solar','grid']],
+  ['ABB Energy','AB','#FF375F','#FF9500','gold','A:05',['prod','grid']],
+  ['Schneider Electric','SC','#30D158','#5E5CE6','gold','A:06',['drift','grid']],
+  ['Volvo Energy','VE','#5E5CE6','#0A84FF','silver','C:01',['grid']],
+  ['Fortum Optimizer','FO','#0A84FF','#30D158','silver','C:02',['grid','ai']],
+  ['Steady Energy','ST','#64D2FF','#5E5CE6','silver','C:03',['prod']],
+  ['Merus Power','MP','#FF9500','#FF375F','silver','C:04',['drift']],
+  ['Digpro','DG','#30D158','#64D2FF','silver','C:05',['drift','ai']],
+  ['Westermo','WM','#0A84FF','#5E5CE6','silver','C:06',['drift']],
+  ['Granitor Electro','GE','#FF9500','#30D158','silver','C:07',['drift']],
+  ['Vinnergi','VG','#5E5CE6','#30D158','silver','C:08',['drift']],
+  ['Google Cloud','GC','#0A84FF','#FFD60A','featured','B:01',['ai']],
+  ['AI Sweden','AS','#5E5CE6','#30D158','featured','B:02',['ai']],
+  ['Qurrent','QU','#BF5AF2','#30D158','featured','B:03',['ai']],
+  ['Truxel.ai','TX','#5E5CE6','#0A84FF','featured','B:04',['ai','drift']],
+  ['Pinja AI','PJ','#FF9500','#5E5CE6','featured','B:05',['ai','drift']],
+  ['PSW Power','PS','#FF9500','#FFD60A','bronze','D:01',['prod']],
+  ['Renewcast','RC','#30D158','#64D2FF','bronze','D:02',['solar','ai']],
+  ['Truxco','TC','#FF375F','#FF9500','bronze','D:03',['drift']],
+  ['CANEA','CN','#5E5CE6','#0A84FF','bronze','D:04',['drift']],
+  ['Wistbo','WB','#FF9500','#30D158','bronze','D:05',['drift']],
+  ['Liquid Wind','LW','#64D2FF','#30D158','bronze','D:06',['solar','prod']],
+  ['Solfolket','SF','#FFD60A','#FF9500','bronze','D:07',['solar']],
+  ['Glava Energy','GL','#30D158','#64D2FF','bronze','D:08',['solar']],
+  ['Cloudberry','CB','#5E5CE6','#0A84FF','bronze','D:09',['solar','prod']],
+  ['Nidec','ND','#FF9500','#FF375F','bronze','D:10',['drift']],
+  ['Mersen','MS','#FF375F','#5E5CE6','bronze','D:11',['drift','grid']],
+  ['Aire','AI','#0A84FF','#30D158','bronze','D:12',['ai','grid']],
+  ['Kiwa Sweden','KS','#FFD60A','#5E5CE6','bronze','D:13',['drift']],
+];
+
+const TIER_LABEL = { gold:'Guldpartner', silver:'Silver', bronze:'Brons', featured:'AI-Zonen' };
+const CAT_LABEL = { prod:'Produktion', grid:'Smart Grid', ai:'AI', drift:'Drift & UH', solar:'Sol/Vind' };
+
+let activeC = 'all';
+function renderEx(){
+  const filt = EXHIBITORS.filter(([,,,,,,cats]) => activeC === 'all' || cats.includes(activeC));
+  document.getElementById('exh').innerHTML = filt.map(([name, abbr, c1, c2, tier, booth, cats]) => `
+    <div class="ex-card">
+      <div class="ex-logo" style="--c1:${c1};--c2:${c2}">${abbr}</div>
+      <div class="ex-tier ${tier}">${TIER_LABEL[tier] || tier}</div>
+      <div class="ex-name">${name}</div>
+      <div class="ex-booth">Monter ${booth}</div>
+      <div class="ex-cats">${cats.map(c => `<span>${CAT_LABEL[c]}</span>`).join('')}</div>
+    </div>
+  `).join('');
+}
+document.querySelectorAll('#cats .cat').forEach(c => {
+  c.addEventListener('click', () => {
+    document.querySelectorAll('#cats .cat').forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    activeC = c.dataset.cat;
+    renderEx();
+  });
+});
+renderEx();
+</script>
+
+</body>
+</html>

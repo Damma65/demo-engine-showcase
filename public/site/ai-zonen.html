@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>AI-Zonen · Energimässan 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  /* ============ Hero ============ */
+  .az-hero{
+    position: relative;
+    min-height: 88vh;
+    padding: 160px 32px 100px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .az-hero canvas{
+    position: absolute; inset: 0; z-index: 0;
+    width: 100%; height: 100%;
+    opacity: 0.7;
+    -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 45%, #000 35%, transparent 90%);
+            mask-image: radial-gradient(ellipse 80% 65% at 50% 45%, #000 35%, transparent 90%);
+  }
+  .az-hero::before{
+    content:""; position:absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(700px 500px at 30% 20%, rgba(94,92,230,0.32), transparent 60%),
+      radial-gradient(600px 400px at 80% 80%, rgba(100,210,255,0.18), transparent 60%);
+  }
+  .az-hero-inner{
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 80px; align-items: center;
+  }
+  .az-eyebrow{
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 7px 16px; border-radius: 999px;
+    background: linear-gradient(135deg, rgba(176,174,255,0.22), rgba(94,92,230,0.18));
+    border: 1px solid rgba(176,174,255,0.4);
+    font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 700; color: #DAD9FF;
+  }
+  .az-eyebrow::before{
+    content:""; width:6px; height:6px; border-radius:50%;
+    background: #B0AEFF;
+    box-shadow: 0 0 12px #B0AEFF;
+    animation: az-pulse 2s ease-in-out infinite;
+  }
+  @keyframes az-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
+
+  .az-h1{
+    margin-top: 26px;
+    font-size: clamp(64px, 8.4vw, 132px);
+    font-weight: 700; letter-spacing: -.05em; line-height: .9;
+    background: linear-gradient(180deg, #FFFFFF 35%, #B7B6BF);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .az-h1 .grad{
+    background: linear-gradient(135deg, #B0AEFF 0%, #5E5CE6 50%, #64D2FF 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .az-lede{
+    margin-top: 28px; max-width: 540px;
+    font-size: 20px; line-height: 1.5; color: var(--text-2);
+  }
+  .az-meta{
+    margin-top: 36px;
+    display: flex; flex-wrap: wrap; gap: 28px;
+  }
+  .az-meta-item{ }
+  .az-meta-k{
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 600; color: var(--text-3);
+  }
+  .az-meta-v{
+    margin-top: 6px; font-size: 18px; font-weight: 600;
+    color: var(--text); letter-spacing: -.015em;
+  }
+  .az-cta-row{
+    margin-top: 44px; display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .az-btn{
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 26px; border-radius: 999px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .az-btn-primary{
+    background: linear-gradient(135deg, #6E6CFF, #5E5CE6);
+    color: #fff;
+    box-shadow: 0 10px 32px -8px rgba(94,92,230,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  .az-btn-primary:hover{ transform: translateY(-1px); }
+  .az-btn-ghost{
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+    border: 1px solid var(--stroke-2);
+  }
+  .az-btn-ghost:hover{ background: rgba(255,255,255,0.1); }
+
+  /* Hero visual: 3D-ish nät av AI-noder */
+  .az-hero-visual{
+    position: relative; aspect-ratio: 1; max-width: 540px; margin-left: auto;
+  }
+  .az-hero-visual svg{ width: 100%; height: 100%; }
+  .az-orb-glow{
+    position: absolute; inset: 10%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(94,92,230,0.5), transparent 70%);
+    filter: blur(40px);
+    animation: az-breathe 6s ease-in-out infinite;
+  }
+  @keyframes az-breathe{ 0%,100%{ transform: scale(1); opacity: .8; } 50%{ transform: scale(1.08); opacity: 1; } }
+
+  /* ============ Number strip ============ */
+  .az-numbers{
+    border-top: 1px solid var(--stroke);
+    border-bottom: 1px solid var(--stroke);
+    padding: 56px 32px;
+  }
+  .az-numbers-inner{
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .az-num-item{ text-align: left; }
+  .az-num-v{
+    font-size: 56px; font-weight: 700; letter-spacing: -.04em; line-height: 1;
+    background: linear-gradient(135deg, #B0AEFF, #64D2FF);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .az-num-l{ margin-top: 10px; font-size: 14px; color: var(--text-2); line-height: 1.4; max-width: 240px; }
+
+  /* ============ Section base ============ */
+  .az-section{ padding: 100px 32px; }
+  .az-section-inner{ max-width: 1200px; margin: 0 auto; }
+  .az-eb{
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 700; color: #B0AEFF;
+  }
+  .az-h2{
+    margin-top: 16px;
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 700; letter-spacing: -.04em; line-height: 1;
+    color: var(--text);
+  }
+  .az-h2 .grad{
+    background: linear-gradient(135deg, #B0AEFF, #64D2FF);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .az-sub{ margin-top: 22px; max-width: 640px; font-size: 18px; color: var(--text-2); line-height: 1.5; }
+
+  /* ============ Pillars ============ */
+  .pillars{
+    margin-top: 60px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .pillar{
+    padding: 32px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(94,92,230,0.10), rgba(94,92,230,0.02));
+    border: 1px solid rgba(176,174,255,0.18);
+    min-height: 280px;
+    display: flex; flex-direction: column;
+    transition: transform .25s, border-color .25s, background .25s;
+  }
+  .pillar:hover{
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, rgba(94,92,230,0.16), rgba(94,92,230,0.04));
+    border-color: rgba(176,174,255,0.35);
+  }
+  .pillar-num{
+    font-size: 12px; letter-spacing: .12em; font-weight: 700;
+    color: #B0AEFF;
+  }
+  .pillar-t{
+    margin-top: auto; font-size: 22px; font-weight: 600;
+    letter-spacing: -.02em; line-height: 1.18;
+    color: var(--text);
+  }
+  .pillar-d{
+    margin-top: 14px; font-size: 14px; line-height: 1.5;
+    color: var(--text-2);
+  }
+
+  /* ============ Exhibitor grid ============ */
+  .ex-controls{
+    margin-top: 36px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .ex-chip{
+    padding: 8px 16px; border-radius: 999px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--stroke);
+    color: var(--text-2);
+    font-size: 13px; font-weight: 500;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .ex-chip.active{ background: var(--text); color: var(--bg); border-color: var(--text); }
+  .ex-chip-count{
+    margin-left: 6px; padding: 1px 7px; border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    font-size: 11px; font-weight: 600;
+  }
+  .ex-chip.active .ex-chip-count{ background: rgba(0,0,0,0.18); }
+
+  .ex-grid{
+    margin-top: 28px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .ex-card{
+    padding: 26px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    transition: transform .2s, border-color .2s, background .2s;
+    cursor: pointer;
+    min-height: 200px;
+    display: flex; flex-direction: column;
+  }
+  .ex-card:hover{ transform: translateY(-2px); border-color: var(--stroke-2); background: var(--surface-2); }
+  .ex-logo{
+    width: 48px; height: 48px; border-radius: 12px;
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 16px; letter-spacing: -.02em;
+    color: white;
+  }
+  .ex-name{ margin-top: 18px; font-size: 17px; font-weight: 600; letter-spacing: -.018em; color: var(--text); }
+  .ex-cat{ margin-top: 6px; font-size: 12px; color: var(--text-3); letter-spacing: .04em; }
+  .ex-tag{
+    margin-top: auto; padding-top: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11.5px; color: var(--text-3); font-weight: 500;
+  }
+  .ex-tag .ex-booth{ color: var(--text-2); font-weight: 600; }
+  .ex-card.featured{
+    background: linear-gradient(180deg, rgba(94,92,230,0.14), rgba(94,92,230,0.03));
+    border-color: rgba(176,174,255,0.35);
+  }
+  .ex-featured-badge{
+    margin-top: 14px; align-self: flex-start;
+    font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: #B0AEFF; font-weight: 700;
+  }
+
+  /* ============ Schedule ============ */
+  .az-schedule{
+    margin-top: 60px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .day-block{
+    padding: 32px;
+    border-radius: 24px;
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+  }
+  .day-h{
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--stroke);
+  }
+  .day-name{ font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+  .day-date{ font-size: 12.5px; color: var(--text-3); font-weight: 500; }
+  .slot{
+    display: grid; grid-template-columns: 92px 1fr;
+    gap: 18px; padding: 18px 0;
+    border-top: 1px solid var(--stroke);
+  }
+  .slot:first-of-type{ border-top: none; }
+  .slot-time{
+    font-size: 16px; font-weight: 600;
+    color: var(--text); font-variant-numeric: tabular-nums;
+  }
+  .slot-stage{
+    margin-top: 4px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600;
+  }
+  .slot-t{ font-size: 15.5px; font-weight: 600; line-height: 1.3; letter-spacing: -.015em; }
+  .slot-by{ margin-top: 5px; font-size: 12.5px; color: var(--text-3); }
+  .slot.keynote .slot-t{ color: #DAD9FF; }
+  .slot.keynote .slot-stage{ color: #B0AEFF; }
+
+  /* ============ Hands-on ============ */
+  .hands-on{
+    margin-top: 60px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .hands-card{
+    padding: 32px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid var(--stroke);
+    min-height: 320px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .hands-card::before{
+    content:""; position: absolute; inset: 0; z-index:0;
+    background: radial-gradient(400px 250px at 80% 0%, var(--accent, rgba(94,92,230,0.18)), transparent 60%);
+    pointer-events: none;
+  }
+  .hands-card > *{ position: relative; z-index: 1; }
+  .hands-icon{
+    width: 56px; height: 56px;
+    display: grid; place-items: center;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--stroke-2);
+  }
+  .hands-icon svg{ width: 26px; height: 26px; stroke: var(--accent-stroke, #B0AEFF); fill: none; stroke-width: 1.7; }
+  .hands-t{ margin-top: 24px; font-size: 24px; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
+  .hands-d{ margin-top: 14px; font-size: 14.5px; color: var(--text-2); line-height: 1.55; }
+  .hands-foot{
+    margin-top: auto; padding-top: 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--text-3);
+  }
+  .hands-pill{
+    padding: 4px 10px; border-radius: 999px;
+    background: rgba(176,174,255,0.14);
+    color: #B0AEFF; font-weight: 600; font-size: 11px;
+  }
+
+  /* ============ Experts ============ */
+  .experts{
+    margin-top: 60px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .expert{
+    padding: 22px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    text-align: left;
+  }
+  .ex-av{
+    width: 64px; height: 64px; border-radius: 50%;
+    background-size: cover; background-position: center;
+    border: 2px solid rgba(176,174,255,0.3);
+  }
+  .ex-n{ margin-top: 14px; font-size: 16px; font-weight: 600; letter-spacing: -.018em; }
+  .ex-r{ margin-top: 4px; font-size: 12.5px; color: var(--text-3); line-height: 1.35; }
+  .ex-slot{
+    margin-top: 14px; padding: 6px 10px; border-radius: 8px;
+    background: rgba(176,174,255,0.1);
+    color: #B0AEFF; font-size: 11px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .ex-slot::before{ content:""; width: 5px; height: 5px; border-radius: 50%; background: #B0AEFF; }
+
+  /* ============ Closing CTA ============ */
+  .az-close{
+    margin: 80px 32px 100px;
+    padding: 80px 48px;
+    border-radius: 32px;
+    background:
+      radial-gradient(700px 400px at 20% 0%, rgba(94,92,230,0.32), transparent 60%),
+      radial-gradient(600px 350px at 100% 100%, rgba(100,210,255,0.18), transparent 60%),
+      linear-gradient(180deg, #14141F, #0B0B12);
+    border: 1px solid rgba(176,174,255,0.18);
+    text-align: center;
+    max-width: 1200px; margin-left: auto; margin-right: auto;
+  }
+  .az-close-h{
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700; letter-spacing: -.04em; line-height: 1;
+  }
+  .az-close-h .grad{
+    background: linear-gradient(135deg, #B0AEFF, #64D2FF);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .az-close-d{
+    margin: 22px auto 0; max-width: 540px;
+    font-size: 17px; color: var(--text-2); line-height: 1.5;
+  }
+  .az-close-row{ margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 1100px){
+    .az-hero-inner{ grid-template-columns: 1fr; gap: 40px; }
+    .az-hero-visual{ max-width: 380px; }
+    .az-numbers-inner{ grid-template-columns: repeat(2, 1fr); }
+    .pillars{ grid-template-columns: repeat(2, 1fr); }
+    .ex-grid{ grid-template-columns: repeat(2, 1fr); }
+    .az-schedule{ grid-template-columns: 1fr; }
+    .hands-on{ grid-template-columns: 1fr; }
+    .experts{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px){
+    .az-numbers-inner{ grid-template-columns: 1fr; }
+    .pillars, .ex-grid, .experts{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Startsida</a>
+      <a href="program.html">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="index.html#biljetter">Biljetter</a>
+    </nav>
+    <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="az-hero">
+  <canvas id="az-canvas" aria-hidden="true"></canvas>
+
+  <div class="az-hero-inner">
+    <div>
+      <span class="az-eyebrow">Nyhet 2027 · 600 m² i Hall B</span>
+      <h1 class="az-h1">AI-Zonen.<br/><span class="grad">Här blir AI på riktigt.</span></h1>
+      <p class="az-lede">Hela energibranschens AI-möte. Demos från 30+ utställare, daglig keynote, hands-on-prototyper för prediktivt underhåll, och speed-rådgivning med 12 experter — du går därifrån med konkreta nästa steg.</p>
+
+      <div class="az-meta">
+        <div class="az-meta-item">
+          <div class="az-meta-k">Plats</div>
+          <div class="az-meta-v">Hall B · Område 7-9</div>
+        </div>
+        <div class="az-meta-item">
+          <div class="az-meta-k">Datum</div>
+          <div class="az-meta-v">19–20 maj 2027</div>
+        </div>
+        <div class="az-meta-item">
+          <div class="az-meta-k">Yta</div>
+          <div class="az-meta-v">600 m²</div>
+        </div>
+        <div class="az-meta-item">
+          <div class="az-meta-k">Inträde</div>
+          <div class="az-meta-v">Ingår i alla biljetter</div>
+        </div>
+      </div>
+
+      <div class="az-cta-row">
+        <a href="index.html#biljetter" class="az-btn az-btn-primary">Boka biljett <span aria-hidden="true">→</span></a>
+        <a href="#exhibitors" class="az-btn az-btn-ghost">Se utställare</a>
+      </div>
+    </div>
+
+    <div class="az-hero-visual" aria-hidden="true">
+      <div class="az-orb-glow"></div>
+      <svg viewBox="0 0 400 400">
+        <defs>
+          <radialGradient id="hg" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#B0AEFF" stop-opacity="0.95"/>
+            <stop offset="55%" stop-color="#5E5CE6" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#5E5CE6" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="hl" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#B0AEFF" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#64D2FF" stop-opacity="0.2"/>
+          </linearGradient>
+        </defs>
+
+        <!-- orbits -->
+        <g fill="none" stroke="rgba(176,174,255,0.32)" stroke-width="0.7">
+          <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(-15 200 200)"/>
+          <ellipse cx="200" cy="200" rx="150" ry="80" transform="rotate(35 200 200)"/>
+          <circle cx="200" cy="200" r="120"/>
+        </g>
+
+        <!-- core -->
+        <circle cx="200" cy="200" r="78" fill="url(#hg)"/>
+
+        <!-- nodes -->
+        <g fill="rgba(220,220,255,0.9)">
+          <circle cx="60"  cy="160" r="3.5"/>
+          <circle cx="340" cy="160" r="3.5"/>
+          <circle cx="120" cy="60"  r="3"/>
+          <circle cx="280" cy="340" r="3"/>
+          <circle cx="80"  cy="280" r="2.5"/>
+          <circle cx="320" cy="280" r="2.5"/>
+          <circle cx="200" cy="40"  r="3"/>
+          <circle cx="200" cy="360" r="3"/>
+        </g>
+
+        <!-- lines from core -->
+        <g stroke="url(#hl)" stroke-width="0.8" fill="none" opacity="0.7">
+          <line x1="200" y1="200" x2="60"  y2="160"/>
+          <line x1="200" y1="200" x2="340" y2="160"/>
+          <line x1="200" y1="200" x2="120" y2="60"/>
+          <line x1="200" y1="200" x2="280" y2="340"/>
+          <line x1="200" y1="200" x2="80"  y2="280"/>
+          <line x1="200" y1="200" x2="320" y2="280"/>
+          <line x1="200" y1="200" x2="200" y2="40"/>
+          <line x1="200" y1="200" x2="200" y2="360"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="az-numbers">
+  <div class="az-numbers-inner">
+    <div class="az-num-item">
+      <div class="az-num-v">30+</div>
+      <div class="az-num-l">utställare specialiserade på AI för energi</div>
+    </div>
+    <div class="az-num-item">
+      <div class="az-num-v">600m²</div>
+      <div class="az-num-l">egen yta i Hall B — ingen trängsel, full demo-uppställning</div>
+    </div>
+    <div class="az-num-item">
+      <div class="az-num-v">12</div>
+      <div class="az-num-l">experter för 1-on-1 speed-rådgivning</div>
+    </div>
+    <div class="az-num-item">
+      <div class="az-num-v">2</div>
+      <div class="az-num-l">dagliga keynotes från Google &amp; AI Sweden</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUR PILLARS ============ -->
+<section class="az-section">
+  <div class="az-section-inner">
+    <div class="az-eb">Vad du hittar här</div>
+    <h2 class="az-h2">Fyra rum.<br/><span class="grad">En hel disciplin.</span></h2>
+    <p class="az-sub">AI-Zonen är inte en konferensspår — det är en helt egen hall, kuraterad efter de fyra områden som rör sig snabbast i branschen just nu.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-num">01</span>
+        <div class="pillar-t">Prediktivt underhåll</div>
+        <div class="pillar-d">Sensorer, anomalidetektion och digitala tvillingar. Boka demo på 9 olika lösningar.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">02</span>
+        <div class="pillar-t">Generativ AI &amp; copilots</div>
+        <div class="pillar-d">Kundservice, försäljning, dokumentation. Live-prototyper du kan trycka på.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">03</span>
+        <div class="pillar-t">Optimering &amp; prognoser</div>
+        <div class="pillar-d">Produktion, balans, prissättning. Modeller från forskning till drift på 18 månader.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">04</span>
+        <div class="pillar-t">AI-säkerhet &amp; styrning</div>
+        <div class="pillar-d">EU AI Act, NIS2, modellrevision. Hur du implementerar utan att fastna i juridik.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXHIBITORS ============ -->
+<section class="az-section" id="exhibitors" style="padding-top:0;">
+  <div class="az-section-inner">
+    <div class="az-eb">Utställare i AI-Zonen</div>
+    <h2 class="az-h2">30+ företag.<br/><span class="grad">Bara AI för energi.</span></h2>
+    <p class="az-sub">Filtrera på kategori. Klicka på ett kort för att förboka demo-tid — slots är begränsade och keynote-utställarna brukar ta slut första veckan.</p>
+
+    <div class="ex-controls" id="ex-controls">
+      <button class="ex-chip active" data-cat="all">Alla <span class="ex-chip-count" id="c-all">32</span></button>
+      <button class="ex-chip" data-cat="predictive">Prediktivt UH <span class="ex-chip-count">9</span></button>
+      <button class="ex-chip" data-cat="genai">Generativ AI <span class="ex-chip-count">8</span></button>
+      <button class="ex-chip" data-cat="optim">Optimering <span class="ex-chip-count">7</span></button>
+      <button class="ex-chip" data-cat="data">Dataplattform <span class="ex-chip-count">5</span></button>
+      <button class="ex-chip" data-cat="gov">Styrning &amp; säkerhet <span class="ex-chip-count">3</span></button>
+    </div>
+
+    <div class="ex-grid" id="ex-grid"></div>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section class="az-section" style="padding-top:0;">
+  <div class="az-section-inner">
+    <div class="az-eb">Scenprogram i AI-Zonen</div>
+    <h2 class="az-h2">Två dagar<br/><span class="grad">på AI-scenen.</span></h2>
+    <p class="az-sub">Bara höjdpunkter — för fullständigt program, se <a href="program.html" style="color:#B0AEFF; text-decoration:underline;">Program</a>.</p>
+
+    <div class="az-schedule">
+      <div class="day-block">
+        <div class="day-h">
+          <div class="day-name">Dag 1 · Onsdag</div>
+          <div class="day-date">19 maj 2027</div>
+        </div>
+        <div class="slot keynote">
+          <div>
+            <div class="slot-time">09:30</div>
+            <div class="slot-stage">Keynote</div>
+          </div>
+          <div>
+            <div class="slot-t">Energibranschens AI-skifte: vad vi lärt oss av 200 produktionssystem</div>
+            <div class="slot-by">Magnus Carlsson · Director, AI Sweden</div>
+          </div>
+        </div>
+        <div class="slot">
+          <div>
+            <div class="slot-time">11:00</div>
+            <div class="slot-stage">Demo</div>
+          </div>
+          <div>
+            <div class="slot-t">Live: prediktivt underhåll på en transformator — från sensor till åtgärd</div>
+            <div class="slot-by">Pinja &amp; Vattenfall</div>
+          </div>
+        </div>
+        <div class="slot">
+          <div>
+            <div class="slot-time">13:00</div>
+            <div class="slot-stage">Panel</div>
+          </div>
+          <div>
+            <div class="slot-t">Generativ AI i kundservice — risker, vinster, verklighet</div>
+            <div class="slot-by">E.ON · Tekniska Verken · Fortum</div>
+          </div>
+        </div>
+        <div class="slot">
+          <div>
+            <div class="slot-time">14:30</div>
+            <div class="slot-stage">Workshop</div>
+          </div>
+          <div>
+            <div class="slot-t">Bygg en AI-agent på 60 minuter — hands-on i AI-Studio</div>
+            <div class="slot-by">Google Cloud (förbokning krävs)</div>
+          </div>
+        </div>
+        <div class="slot">
+          <div>
+            <div class="slot-time">16:00</div>
+            <div class="slot-stage">Talk</div>
+          </div>
+          <div>
+            <div class="slot-t">Edge AI för nätstationer — beslut på millisekund-nivå</div>
+            <div class="slot-by">Hitachi Energy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-block">
+        <div class="day-h">
+          <div class="day-name">Dag 2 · Torsdag</div>
+          <div class="day-date">20 maj 2027</div>
+        </div>
+        <div class="slot keynote">
+          <div>
+            <div class="slot-time">09:30</div>
+            <div class="slot-stage">Keynote</div>
+          </div>
+          <div>
+            <div class="slot-t">Foundation models i kraftsystem: vad fungerar 2027</div>
+            <div class="slot-by">Lina Berg · Technical Director, Google Cloud Nordics</div>
+          </div>
+        </div>
+        <div class="slot">
+          <div>
+            <div class="slot-time">11:00</div>
+            <div class="slot-stage">Demo</div>
+          </div>
+          <div>
+            <div class="slot-t">Prognosmotorer för balansansvar — från 6h till 5min framförhållning</div>
+            <div class="slot-by">Greenlytics &amp; Statkraft</div>
+          </div>
+        </div>
+        <div class="slot">
+          <div>
+            <div class="slot-time">13:00</div>
+            <div class="slot-stage">Mässdejting</div>
+          </div>
+          <div>
+            <div class="slot-t">AI-Match: 24 forskarteam möter industri — 7 minuter per möte</div>
+            <div class="slot-by">KTH · Chalmers · Uppsala · LTU</div>
+          </div>
+        </div>
+        <div class="slot">
+          <div>
+            <div class="slot-time">14:30</div>
+            <div class="slot-stage">Talk</div>
+          </div>
+          <div>
+            <div class="slot-t">EU AI Act för energiaktörer — vad gäller från 2026</div>
+            <div class="slot-by">Setterwalls &amp; Ei</div>
+          </div>
+        </div>
+        <div class="slot">
+          <div>
+            <div class="slot-time">16:00</div>
+            <div class="slot-stage">Closing</div>
+          </div>
+          <div>
+            <div class="slot-t">Årets AI-fall i energibranschen — utdelning av Framstegspriset AI</div>
+            <div class="slot-by">Juryn presenterar tre finalister</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HANDS-ON ============ -->
+<section class="az-section" style="padding-top:0;">
+  <div class="az-section-inner">
+    <div class="az-eb">Hands-on-zon</div>
+    <h2 class="az-h2">Tre stationer.<br/><span class="grad">Tryck, prova, ta hem.</span></h2>
+    <p class="az-sub">Inga säljpitchar — bara prototyper du faktiskt kan använda. Bemannade hela mässan av leverantörer + AI-Sweden-coacher.</p>
+
+    <div class="hands-on">
+      <div class="hands-card" style="--accent: rgba(94,92,230,0.22); --accent-stroke: #B0AEFF;">
+        <div class="hands-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3m12 0h3M12 3v3m0 12v3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <div class="hands-t">Anomalidetektion på riktig sensordata</div>
+        <div class="hands-d">Vi har 90 dagars data från en kraftvärmeanläggning. Bygg en modell på 25 minuter, jämför med driftens egen larmlogg, ta hem koden.</div>
+        <div class="hands-foot">
+          <span class="hands-pill">25 min</span>
+          <span>Bemannad av Pinja</span>
+        </div>
+      </div>
+
+      <div class="hands-card" style="--accent: rgba(100,210,255,0.22); --accent-stroke: #64D2FF;">
+        <div class="hands-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+        </div>
+        <div class="hands-t">Bygg en kundservice-copilot</div>
+        <div class="hands-d">Riktiga kundärenden från en svensk elhandlare (anonymiserade). Konfigurera RAG, träna upp tonalitet, mät svarskvalitet live.</div>
+        <div class="hands-foot">
+          <span class="hands-pill">30 min</span>
+          <span>Bemannad av Google Cloud</span>
+        </div>
+      </div>
+
+      <div class="hands-card" style="--accent: rgba(48,209,88,0.22); --accent-stroke: #30D158;">
+        <div class="hands-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-7"/></svg>
+        </div>
+        <div class="hands-t">Prognos på vindkraftspark</div>
+        <div class="hands-d">Träna en effektprognos på 6 månaders historik. Se hur valet av features (väder, lastlogg, kalender) påverkar MAPE.</div>
+        <div class="hands-foot">
+          <span class="hands-pill">20 min</span>
+          <span>Bemannad av Greenlytics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERTS ============ -->
+<section class="az-section" style="padding-top:0;">
+  <div class="az-section-inner">
+    <div class="az-eb">Speed-rådgivning</div>
+    <h2 class="az-h2">12 experter.<br/><span class="grad">15 minuter var.</span></h2>
+    <p class="az-sub">Boka 1-on-1 med någon som faktiskt har implementerat. Förbokade slots, först till kvarn — drop-in om något öppnar upp.</p>
+
+    <div class="experts">
+      <div class="expert">
+        <div class="ex-av" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&h=200&fit=crop')"></div>
+        <div class="ex-n">Lina Berg</div>
+        <div class="ex-r">Technical Director, Google Cloud Nordics</div>
+        <div class="ex-slot">19/5 · 10:00–10:15</div>
+      </div>
+      <div class="expert">
+        <div class="ex-av" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop')"></div>
+        <div class="ex-n">Magnus Carlsson</div>
+        <div class="ex-r">Director, AI Sweden</div>
+        <div class="ex-slot">19/5 · 11:00–11:15</div>
+      </div>
+      <div class="expert">
+        <div class="ex-av" style="background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop')"></div>
+        <div class="ex-n">Sara Lindqvist</div>
+        <div class="ex-r">Head of Data, Vattenfall</div>
+        <div class="ex-slot">19/5 · 13:00–13:15</div>
+      </div>
+      <div class="expert">
+        <div class="ex-av" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop')"></div>
+        <div class="ex-n">Erik Nordström</div>
+        <div class="ex-r">CTO, Greenlytics</div>
+        <div class="ex-slot">19/5 · 14:00–14:15</div>
+      </div>
+      <div class="expert">
+        <div class="ex-av" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop')"></div>
+        <div class="ex-n">Karin Holmberg</div>
+        <div class="ex-r">Chief AI Officer, E.ON Sverige</div>
+        <div class="ex-slot">19/5 · 15:00–15:15</div>
+      </div>
+      <div class="expert">
+        <div class="ex-av" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop')"></div>
+        <div class="ex-n">Johan Petersson</div>
+        <div class="ex-r">Senior Architect, Pinja</div>
+        <div class="ex-slot">20/5 · 10:00–10:15</div>
+      </div>
+      <div class="expert">
+        <div class="ex-av" style="background-image: url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&h=200&fit=crop')"></div>
+        <div class="ex-n">Anna Sjögren</div>
+        <div class="ex-r">Forskningsledare, KTH AI Lab</div>
+        <div class="ex-slot">20/5 · 11:00–11:15</div>
+      </div>
+      <div class="expert">
+        <div class="ex-av" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop')"></div>
+        <div class="ex-n">Daniel Westin</div>
+        <div class="ex-r">VP AI, Hitachi Energy</div>
+        <div class="ex-slot">20/5 · 13:00–13:15</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="az-close">
+  <h2 class="az-close-h">Två dagar. <span class="grad">En hel branschs AI-skifte.</span></h2>
+  <p class="az-close-d">AI-Zonen ingår i alla biljetter till Energimässan — du får hela mässan på köpet. 250 utställare, 200 talare, fyra mässor under ett tak.</p>
+  <div class="az-close-row">
+    <a href="index.html#biljetter" class="az-btn az-btn-primary">Boka biljett <span aria-hidden="true">→</span></a>
+    <a href="program.html" class="az-btn az-btn-ghost">Se hela programmet</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <div>
+        <div class="footer-brand-name">Nordic Live Expo</div>
+        <div class="footer-brand-event">Energimässan 2027 · 19–20 maj · Kistamässan</div>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div><div class="footer-h">Mässan</div><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="utstallning.html">Utställning</a><a href="ai-zonen.html">AI-Zonen</a></div>
+      <div><div class="footer-h">Delta</div><a href="index.html#biljetter">Biljetter</a><a href="bli-utstallare.html">Bli utställare</a><a href="checkout.html">Checkout</a></div>
+      <div><div class="footer-h">Kontakt</div><a href="bli-utstallare.html#sales">Säljteam</a><a href="mailto:info@nordiclivexpo.se">info@nordiclivexpo.se</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ============ Exhibitor data ============ */
+  const exhibitors = [
+    { n: 'Google Cloud', cat: 'genai', booth: 'A:01', logo: 'G', c1:'#4285F4', c2:'#34A853', featured: true, tag:'Keynote' },
+    { n: 'AI Sweden', cat: 'data', booth: 'A:02', logo: 'AI', c1:'#FF6B35', c2:'#F7931E', featured: true, tag:'Värd' },
+    { n: 'Pinja', cat: 'predictive', booth: 'A:03', logo: 'P', c1:'#5E5CE6', c2:'#B0AEFF', featured: true, tag:'Demo' },
+    { n: 'Greenlytics', cat: 'optim', booth: 'A:04', logo: 'GL', c1:'#30D158', c2:'#64D2FF' },
+    { n: 'Hitachi Energy', cat: 'predictive', booth: 'B:01', logo: 'HE', c1:'#E60012', c2:'#FF6B35' },
+    { n: 'Microsoft', cat: 'genai', booth: 'B:02', logo: 'M', c1:'#0078D4', c2:'#00BCF2' },
+    { n: 'Anthropic', cat: 'genai', booth: 'B:03', logo: 'A', c1:'#D97757', c2:'#F4A661' },
+    { n: 'OpenAI', cat: 'genai', booth: 'B:04', logo: 'OA', c1:'#10A37F', c2:'#1A7F64' },
+    { n: 'Databricks', cat: 'data', booth: 'B:05', logo: 'DB', c1:'#FF3621', c2:'#FF6B35' },
+    { n: 'Snowflake', cat: 'data', booth: 'B:06', logo: 'SF', c1:'#29B5E8', c2:'#1A7AC9' },
+    { n: 'NVIDIA', cat: 'optim', booth: 'C:01', logo: 'N', c1:'#76B900', c2:'#5A8C00' },
+    { n: 'Schneider Electric', cat: 'predictive', booth: 'C:02', logo: 'SE', c1:'#3DCD58', c2:'#1B8E2F' },
+    { n: 'Siemens Energy', cat: 'optim', booth: 'C:03', logo: 'S', c1:'#00B0AC', c2:'#007F7B' },
+    { n: 'ABB', cat: 'predictive', booth: 'C:04', logo: 'AB', c1:'#FF000F', c2:'#C90000' },
+    { n: 'GE Vernova', cat: 'optim', booth: 'C:05', logo: 'GV', c1:'#005EB8', c2:'#004080' },
+    { n: 'Setterwalls', cat: 'gov', booth: 'D:01', logo: 'SW', c1:'#1A1A1A', c2:'#444' },
+    { n: 'Energiintresset', cat: 'gov', booth: 'D:02', logo: 'EI', c1:'#5E5CE6', c2:'#7E7CFF' },
+    { n: 'Cybercom', cat: 'gov', booth: 'D:03', logo: 'CC', c1:'#0066CC', c2:'#0099FF' },
+    { n: 'Bonsai.io', cat: 'predictive', booth: 'D:04', logo: 'BO', c1:'#30D158', c2:'#5EE686' },
+    { n: 'Volue', cat: 'optim', booth: 'D:05', logo: 'VO', c1:'#0F4C81', c2:'#1976BC' },
+    { n: 'Trifork', cat: 'genai', booth: 'D:06', logo: 'TR', c1:'#FF6B00', c2:'#FF9500' },
+    { n: 'Sopra Steria', cat: 'genai', booth: 'E:01', logo: 'SS', c1:'#5E5CE6', c2:'#9089FF' },
+    { n: 'CGI', cat: 'data', booth: 'E:02', logo: 'CG', c1:'#E31837', c2:'#FF4060' },
+    { n: 'Capgemini', cat: 'genai', booth: 'E:03', logo: 'CP', c1:'#0070AD', c2:'#12ABDB' },
+    { n: 'Tietoevry', cat: 'data', booth: 'E:04', logo: 'TE', c1:'#0033A0', c2:'#0066D4' },
+    { n: 'Knowit', cat: 'predictive', booth: 'E:05', logo: 'KN', c1:'#FF8200', c2:'#FFA94D' },
+    { n: 'Combitech', cat: 'predictive', booth: 'F:01', logo: 'CB', c1:'#005FAA', c2:'#3399E0' },
+    { n: 'Affecto', cat: 'optim', booth: 'F:02', logo: 'AF', c1:'#A50034', c2:'#D4144A' },
+    { n: 'Peltarion', cat: 'predictive', booth: 'F:03', logo: 'PE', c1:'#5E5CE6', c2:'#9089FF' },
+    { n: 'Hugin AI', cat: 'predictive', booth: 'F:04', logo: 'HU', c1:'#FF3B30', c2:'#FF6B6B' },
+    { n: 'Norkart', cat: 'genai', booth: 'F:05', logo: 'NO', c1:'#1A7F64', c2:'#30D158' },
+    { n: 'Modulai', cat: 'predictive', booth: 'F:06', logo: 'MO', c1:'#5856D6', c2:'#A29BFE' }
+  ];
+
+  function renderExhibitors(filter){
+    const grid = document.getElementById('ex-grid');
+    const filtered = filter === 'all' ? exhibitors : exhibitors.filter(e => e.cat === filter);
+    grid.innerHTML = filtered.map(e => `
+      <div class="ex-card ${e.featured ? 'featured' : ''}">
+        <div class="ex-logo" style="background: linear-gradient(135deg, ${e.c1}, ${e.c2});">${e.logo}</div>
+        <div class="ex-name">${e.n}</div>
+        <div class="ex-cat">${labelFor(e.cat)}</div>
+        ${e.featured ? `<div class="ex-featured-badge">★ ${e.tag}</div>` : ''}
+        <div class="ex-tag">
+          <span>Demo bokningsbar</span>
+          <span class="ex-booth">${e.booth}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+  function labelFor(c){
+    return ({
+      predictive: 'Prediktivt underhåll',
+      genai: 'Generativ AI',
+      optim: 'Optimering & prognoser',
+      data: 'Dataplattform',
+      gov: 'Styrning & säkerhet'
+    })[c] || c;
+  }
+  document.getElementById('c-all').textContent = exhibitors.length;
+  renderExhibitors('all');
+
+  document.getElementById('ex-controls').addEventListener('click', (ev) => {
+    const btn = ev.target.closest('.ex-chip');
+    if (!btn) return;
+    document.querySelectorAll('.ex-chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    renderExhibitors(btn.dataset.cat);
+  });
+
+  /* ============ Hero canvas — neuralt nät ============ */
+  (function(){
+    const c = document.getElementById('az-canvas');
+    if (!c) return;
+    const ctx = c.getContext('2d');
+    let W=0, H=0, DPR = Math.min(devicePixelRatio||1, 2);
+    let layers = [];
+    let pulses = [];
+    let raf, lastSpawn = 0;
+
+    function resize(){
+      const r = c.getBoundingClientRect();
+      W = r.width; H = r.height;
+      c.width = W*DPR; c.height = H*DPR;
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+      build();
+    }
+    function build(){
+      // 4 lager neuralt nät från vänster
+      layers = [];
+      const margin = 80;
+      const xs = [margin, W*0.3, W*0.55, W*0.78];
+      const counts = [5, 7, 7, 4];
+      for (let li=0; li<xs.length; li++){
+        const cnt = counts[li];
+        const layer = [];
+        for (let i=0; i<cnt; i++){
+          const t = (i+0.5)/cnt;
+          layer.push({
+            x: xs[li],
+            y: H * 0.18 + t * H * 0.64,
+            phase: Math.random()*Math.PI*2,
+            li
+          });
+        }
+        layers.push(layer);
+      }
+    }
+    function spawn(t){
+      const start = layers[0][Math.floor(Math.random()*layers[0].length)];
+      pulses.push({ path:[start], t0:t, speed: 220+Math.random()*80, segT:0, next:null, alpha:1, life:0, hue: 240+Math.random()*30 });
+    }
+    function step(p, dt){
+      p.life += dt;
+      const cur = p.path[p.path.length-1];
+      if (cur.li >= layers.length-1){ p.alpha *= 0.92; return; }
+      if (!p.next){
+        const nl = layers[cur.li+1];
+        p.next = nl[Math.floor(Math.random()*nl.length)];
+        p.segLen = Math.hypot(p.next.x-cur.x, p.next.y-cur.y);
+        p.segT = 0;
+      }
+      p.segT += (p.speed*dt)/p.segLen;
+      if (p.segT >= 1){
+        p.path.push(p.next); p.next = null; p.segT = 0;
+        if (p.path.length > 6) p.path.shift();
+      }
+    }
+    function render(){
+      const now = performance.now()/1000;
+      ctx.fillStyle = 'rgba(8,10,18,0.20)';
+      ctx.fillRect(0,0,W,H);
+
+      // edges between layers
+      ctx.lineWidth = 0.7;
+      for (let li=0; li<layers.length-1; li++){
+        for (const a of layers[li]){
+          for (const b of layers[li+1]){
+            const sh = 0.025 + 0.02*Math.sin(now*0.6 + a.phase + b.phase);
+            ctx.strokeStyle = `rgba(150,170,255,${sh})`;
+            ctx.beginPath();
+            ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          }
+        }
+      }
+      // nodes
+      for (const layer of layers){
+        for (const n of layer){
+          const p = 0.5+0.5*Math.sin(now*1.4+n.phase);
+          ctx.fillStyle = `rgba(200,210,255,${0.25+p*0.25})`;
+          ctx.beginPath(); ctx.arc(n.x,n.y, 2+p*1.2, 0, Math.PI*2); ctx.fill();
+        }
+      }
+      // pulses
+      if (now-lastSpawn > 0.18 && pulses.length < 22){ spawn(now); lastSpawn = now; }
+      const dt = 1/60;
+      for (const p of pulses){
+        step(p, dt);
+        for (let i=0; i<p.path.length-1; i++){
+          const a = p.path[i], b = p.path[i+1];
+          const la = (i/p.path.length) * p.alpha;
+          ctx.strokeStyle = `hsla(${p.hue},90%,75%,${la*0.85})`;
+          ctx.lineWidth = 1.2+i*0.18;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+        if (p.next){
+          const last = p.path[p.path.length-1];
+          const hx = last.x + (p.next.x-last.x)*p.segT;
+          const hy = last.y + (p.next.y-last.y)*p.segT;
+          const g = ctx.createRadialGradient(hx,hy,0,hx,hy,16);
+          g.addColorStop(0, `hsla(${p.hue},95%,82%,${p.alpha})`);
+          g.addColorStop(1, `hsla(${p.hue},95%,82%,0)`);
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(hx,hy,16,0,Math.PI*2); ctx.fill();
+          ctx.fillStyle = `hsla(${p.hue},100%,94%,${p.alpha})`;
+          ctx.beginPath(); ctx.arc(hx,hy,2.2,0,Math.PI*2); ctx.fill();
+        }
+      }
+      pulses = pulses.filter(p => p.alpha > 0.05);
+      raf = requestAnimationFrame(render);
+    }
+    resize();
+    addEventListener('resize', () => { DPR = Math.min(devicePixelRatio||1, 2); resize(); });
+    render();
+  })();
+</script>
+
+</body>
+</html>
