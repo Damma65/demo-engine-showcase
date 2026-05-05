@@ -302,14 +302,32 @@
     const q = (search || '').toLowerCase().trim();
     let activeCount = 0;
 
+    const REAL = {
+      'anna borg':'talare/photos/anna-borg.webp',
+      'magdalena andersson':'talare/photos/magdalena.png',
+      'tomas kåberger':'talare/photos/tomas-kaberger.png',
+      'carl berglöf':'talare/photos/carl-berglof.png',
+      'jonas birgersson':'talare/photos/jonas-birgersson.png',
+      'ulrika hesslow':'talare/photos/ulrika-hesslow.png',
+      'peter carlsson':'talare/photos/peter-carlsson.png',
+      'desiree comstedt':'talare/photos/desiree-comstedt.png',
+    };
+    const slugify = (s) => s.toLowerCase()
+      .replace(/å|ä/g,'a').replace(/ö/g,'o').replace(/é/g,'e')
+      .replace(/&amp;/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
     const html = SPEAKERS.map(([name,role,org,cat,c1,c2,init], i) => {
       const catOK = !filterCat || filterCat === 'all' || cat === filterCat;
       const sOK = !q || (name+role+org).toLowerCase().includes(q);
       const match = catOK && sOK;
       if (match) activeCount++;
-      const photo = PHOTOS[i % PHOTOS.length];
+      const cleanName = name.replace(/&amp;/g,'&');
+      const realPhoto = REAL[cleanName.toLowerCase()];
+      const photo = realPhoto || PHOTOS[i % PHOTOS.length];
+      const slug = slugify(cleanName);
       return `
-        <article class="sp-card ${match ? 'matched' : 'dimmed'}">
+        <a class="sp-card-link ${match ? 'matched' : 'dimmed'}" href="talare/${slug}.html" style="text-decoration:none;color:inherit;display:block;">
+        <article class="sp-card">
           <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');">
             <div class="tint"></div>
           </div>
@@ -321,6 +339,7 @@
             <div class="sp-org">${org}</div>
           </div>
         </article>
+        </a>
       `;
     }).join('');
 
