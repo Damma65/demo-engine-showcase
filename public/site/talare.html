@@ -80,15 +80,17 @@
     aspect-ratio: 3/4;
     border-radius: 22px; overflow: hidden;
     position: relative;
-    border: 1px solid var(--stroke);
+    border: 2px solid var(--cat, var(--stroke));
     background: var(--bg-2);
     cursor: pointer;
-    transition: transform .3s;
+    transition: transform .3s, box-shadow .3s;
+    box-shadow: 0 0 0 0 transparent;
   }
-  .sp-card:hover{ transform: translateY(-3px); }
+  .sp-card:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px -12px var(--cat, rgba(255,255,255,0.15)); }
   .sp-card .avatar{ width:100%; height:100%; transition: transform .6s; background-size: cover; background-position: center 25%; background-color: #1a1a1f; }
   .sp-card .avatar .tint{ display: none; }
   .sp-card:hover .avatar{ transform: scale(1.06); }
+  .sp-card .sp-cat{ background: var(--cat, rgba(255,255,255,0.12)); color: #0a0a0c; }
 
   /* Filter: HIDE non-matches completely (gap collapses) */
   .sp-card{ transition: transform .5s ease, opacity .3s ease; }
