@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <meta name="description" content="">
+    <link rel="stylesheet" href="/src/css/anmintion.css">
+    <link rel="stylesheet" href="/src/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/src/css/index.css">
+    <link rel="stylesheet" href="/src/css/Public.css">
+
+    <script src="/src/js/countUp.js"></script>
+    <script src="/src/js/gsap.min.js"></script>
+    <script src="/src/js/lenis.min.js"></script>
+    <script src="/src/js/ScrollTrigger.min.js"></script>
+    <script src="/src/js/swiper-bundle.min.js"></script>
+    <script src="/src/js/swiper.animate1.0.3.min.js"></script>
+    <script src="/src/js/Public.js"></script>
+</head>
+
+<body>
+    <link rel="stylesheet" href="/src/css/aos.css">
+<link rel="stylesheet" href="/src/css/nav.css">
+
+<script src="/src/js/aos.js"></script>
+<script src="/src/js/other.js"></script>
+
+<script>
+    AOS.init({
+        duration: 1000,
+    });
+</script>
+<header>
+    <div class="head">
+        <div class="logo">
+            <a href="/">
+                <!-- <img src="/src/img/logo.png" alt="logo"> -->
+                <!-- <img src="/src/svg/logo.svg" alt="logo"> -->
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 928.57 132.15">
+                    <defs>
+                        <style>
+                            
+                        </style>
+                    </defs>
+                    <g>
+                        <g>
+                            <g>
+                                <path class="cls-2"
+                                    d="M567.34,16.87l-33.85,59.03v39.46h-40.78v-39.46l-34.15-59.03h36.27l17.87,33.58,19.18-33.58h35.46Z" />
+                                <path class="cls-2"
+                                    d="M903.66,52.23v63.04h-40.78v-63.04h-25V16.82h90.69v35.41h-24.91Z" />
+                                <path class="cls-2"
+                                    d="M830.03,52.94v25.59h-33.95v10.83h33.95v25.92l-69.68.08V16.84h69.69v25.55h-33.91v10.54h33.9Z" />
+                                <path class="cls-1"
+                                    d="M627.73,16.87s.1,56.87.17,67.7c.04,5.61-1.9,9.57-7.51,11.12-7.74,2.14-13.63-2.41-13.67-10.77-.05-9.92.03-68.05.03-68.05h-31.56s.07,68.82.12,80.54c.04,9.98,7.83,17.73,17.81,17.81,15.88.14,31.77.16,47.66.09,10.11-.04,18.31-8.18,18.39-18.18.1-12.06.02-24.12.02-36.17,0-11.04-.23-33.05-.12-44.09h-31.34Z" />
+                                <path class="cls-2"
+                                    d="M720.29,54.89V16.88h32.21v98.48c-12.19,0-24.25-.01-36.1-.01-.05,0-13.38-22.11-16.33-27.19v27.2h-33.05V16.88c5.1,0,10.32.04,15.45,0,2.09-.02,4.17.01,6.24,0,3.02-.02,6.02,0,9.07,0" />
+                            </g>
+                            <path class="cls-3"
+                                d="M284.84,3.65h73.47c5.65,0,13.56,3.39,18.09,7.9,4.52,4.51,7.28,12.41,7.28,19.18v17.66h-52.5v-12.02c0-2.26-2.26-4.51-4.52-4.51h-10.73c-3.39,0-5.65,2.26-5.65,4.51v61.65c.16,2.22,2.26,4.51,5.65,4.51h7.34c2.26,0,4.52-2.26,4.52-4.51v-11.08h-5.1v-22.24h60.96v63.71h-32.35l-5.37-6.62-5.71,6.62h-56.51c-14.69,0-25.32-10.35-25.32-23.89V28.93c0-13.54,12.89-25.28,26.45-25.28h0ZM0,3.65h115.29v44.82h-33.02v80.01H28.26V48.47H0V3.65ZM222.67,3.65c14.7,0,26.48,12.41,26.48,25.95v73.35c0,13.54-11.79,25.54-26.48,25.54h-98.33V3.65h98.33ZM177.78,31.87h12.42c4.21,0,6.02,2.63,6.02,5.51v59.23c0,3.38-2.26,5.64-4.52,5.64h-13.92V31.87Z" />
+                            <rect class="cls-2" x="415.53" width="10.73" height="132.15" />
+                        </g>
+                    </g>
+                </svg>
+            </a>
+        </div>
+
+        <ul class="nav">
+                        <li class="NavLis">
+                <a href="/company/">Company</a>
+                <div class="childNav">
+                                        <a href="/company/#about">About TDG YUNET</a>
+                                        <a href="/company/#global">Global Industrial Layout</a>
+                                        <a href="/company/#culture">Corporate Culture</a>
+                                    </div>
+            </li>
+                        <li class="NavLis">
+                <a href="/solutions-products/">Solutions &amp; Products</a>
+                <div class="childNav">
+                                        <a href="/solutions-products/#pro1">C&amp;I Energy Storage Solutions/Retrofit Solutions</a>
+                                        <a href="/solutions-products/#pro2">Containerized Energy Storage Solutions</a>
+                                        <a href="/solutions-products/#pro3">Integrated PV + Storage + Charging + Generator Solutions</a>
+                                        <a href="/solutions-products/#pro4">Mobile Energy Storage Systems</a>
+                                    </div>
+            </li>
+                        <li class="NavLis">
+                <a href="/innovation/">Innovation</a>
+                <div class="childNav">
+                                    </div>
+            </li>
+                        <li class="NavLis">
+                <a href="/service/">Service</a>
+                <div class="childNav">
+                                    </div>
+            </li>
+                        <li class="NavLis">
+                <a href="/news/">News</a>
+                <div class="childNav">
+                                    </div>
+            </li>
+                    </ul>
+
+        <div class="langBox">
+            <div class="lang NavLis">
+                <span>
+                    ENG
+                    <svg class="langIco" t="1773632439573" class="icon" viewBox="0 0 1603 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="3655" width="10" height="8">
+                        <path
+                            d="M1010.042131 836.203222L837.472119 1008.773234c-18.610492 18.610492-50.755886 18.610492-71.05824 0L15.226766 255.894259c-18.610492-18.610492-18.610492-50.755886 0-71.058241L187.796778 13.957869c18.610492-18.610492 50.755886-18.610492 71.058241 0l751.187112 751.187112c18.610492 20.302354 18.610492 52.447749 0 71.058241z"
+                            p-id="3656" fill="#ffffff"></path>
+                        <path
+                            d="M1416.089219 13.957869L1588.659232 186.527881c18.610492 18.610492 18.610492 50.755886 0 71.05824L835.780256 1008.773234c-18.610492 18.610492-50.755886 18.610492-71.05824 0L593.843866 836.203222c-18.610492-18.610492-18.610492-50.755886 0-71.058241L1346.722842 13.957869c18.610492-18.610492 50.755886-18.610492 69.366377 0z"
+                            p-id="3657" fill="#ffffff"></path>
+                    </svg>
+                </span>
+                <div class="childNav">
+                    <a href="https://cn.tdgyunet.com/">ZH-CN</a>
+                    <a href="/es/">ES</a>
+                </div>
+            </div>
+            <a href="/get-in-touch/">Get in Touch</a>
+        </div>
+
+        <!-- Mo -->
+        <div class="MoBox">
+            <ul>
+                <li>
+                    <div>
+                        <a class="NavLi" href="/">Home</a>
+                    </div>
+                </li>
+                                <li data-index="0">
+                    <div>
+                        <a class="NavLi" href="/company/">Company</a>
+                        <div data-index="0" class="HeadMoIcon" onclick="HeadOpen(this)">
+                            <svg t="1695092894793" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="4811" width="16" height="16">
+                                <path d="M230.4 512 742.4 0l51.2 51.2-460.8 460.8 460.8 460.8-51.2 51.2L230.4 512z"
+                                    p-id="4812">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="HeadNavLevel2">
+                                                <a href="/company/#about">-&nbsp;&nbsp;About TDG YUNET</a>
+                                                <a href="/company/#global">-&nbsp;&nbsp;Global Industrial Layout</a>
+                                                <a href="/company/#culture">-&nbsp;&nbsp;Corporate Culture</a>
+                                            </div>
+                </li>
+                                <li data-index="1">
+                    <div>
+                        <a class="NavLi" href="/solutions-products/">Solutions &amp; Products</a>
+                        <div data-index="1" class="HeadMoIcon" onclick="HeadOpen(this)">
+                            <svg t="1695092894793" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="4811" width="16" height="16">
+                                <path d="M230.4 512 742.4 0l51.2 51.2-460.8 460.8 460.8 460.8-51.2 51.2L230.4 512z"
+                                    p-id="4812">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="HeadNavLevel2">
+                                                <a href="/solutions-products/#pro1">-&nbsp;&nbsp;C&amp;I Energy Storage Solutions/Retrofit Solutions</a>
+                                                <a href="/solutions-products/#pro2">-&nbsp;&nbsp;Containerized Energy Storage Solutions</a>
+                                                <a href="/solutions-products/#pro3">-&nbsp;&nbsp;Integrated PV + Storage + Charging + Generator Solutions</a>
+                                                <a href="/solutions-products/#pro4">-&nbsp;&nbsp;Mobile Energy Storage Systems</a>
+                                            </div>
+                </li>
+                                <li data-index="2">
+                    <div>
+                        <a class="NavLi" href="/innovation/">Innovation</a>
+                        <div data-index="2" class="HeadMoIcon" onclick="HeadOpen(this)">
+                            <svg t="1695092894793" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="4811" width="16" height="16">
+                                <path d="M230.4 512 742.4 0l51.2 51.2-460.8 460.8 460.8 460.8-51.2 51.2L230.4 512z"
+                                    p-id="4812">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="HeadNavLevel2">
+                                            </div>
+                </li>
+                                <li data-index="3">
+                    <div>
+                        <a class="NavLi" href="/service/">Service</a>
+                        <div data-index="3" class="HeadMoIcon" onclick="HeadOpen(this)">
+                            <svg t="1695092894793" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="4811" width="16" height="16">
+                                <path d="M230.4 512 742.4 0l51.2 51.2-460.8 460.8 460.8 460.8-51.2 51.2L230.4 512z"
+                                    p-id="4812">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="HeadNavLevel2">
+                                            </div>
+                </li>
+                                <li data-index="4">
+                    <div>
+                        <a class="NavLi" href="/news/">News</a>
+                        <div data-index="4" class="HeadMoIcon" onclick="HeadOpen(this)">
+                            <svg t="1695092894793" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="4811" width="16" height="16">
+                                <path d="M230.4 512 742.4 0l51.2 51.2-460.8 460.8 460.8 460.8-51.2 51.2L230.4 512z"
+                                    p-id="4812">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="HeadNavLevel2">
+                                            </div>
+                </li>
+                                <li data-index="5">
+                    <div>
+                        <a class="NavLi" href="/get-in-touch/">Get in Touch</a>
+                        <div data-index="5" class="HeadMoIcon" onclick="HeadOpen(this)">
+                            <svg t="1695092894793" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="4811" width="16" height="16">
+                                <path d="M230.4 512 742.4 0l51.2 51.2-460.8 460.8 460.8 460.8-51.2 51.2L230.4 512z"
+                                    p-id="4812">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="HeadNavLevel2">
+                                            </div>
+                </li>
+                                <li>
+                    <div>
+                        <a class="NavLi">Language</a>
+                        <div class="HeadMoIcon" onclick="HeadOpen(this)">
+                            <svg t="1695092894793" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="4811" width="16" height="16">
+                                <path d="M230.4 512 742.4 0l51.2 51.2-460.8 460.8 460.8 460.8-51.2 51.2L230.4 512z"
+                                    p-id="4812">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="HeadNavLevel2">
+                        <a href="https://cn.tdgyunet.com/">ZH-CN</a>
+                        <a href="/es/">ES</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="Hamburg moident">
+            <input type="checkbox" id="Headcheckbox" class="Headcheckbox">
+            <label for="Headcheckbox" class="toggle">
+                <div class="bars" id="bar1"></div>
+                <div class="bars" id="bar2"></div>
+                <div class="bars" id="bar3"></div>
+            </label>
+        </div>
+    </div>
+</header>
+
+
+<script>
+    headers()
+</script>
+    <div class="idxP1">
+        <video id="sourceVideo" airplay="allow" autoplay="" class="banner_Ele" loop="" muted="" playsinline=""
+            preload="" poster="/src/img/idx.jpg" src="https://customer-53z8f27ctn2ruoh0.cloudflarestream.com/44d3ff898df597066e14e5ff199507fe/downloads/default.mp4" webkit-playsinline="" x-webkit-airplay="true"
+            x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-playsinline="" controls360="no">
+        </video>
+        <div class="typeArea">
+            <h2 data-aos="fade-up">
+                Powering A Greener Future
+            </h2>
+            <div class="cir" onclick="GoTo(500)">
+                <svg t="1773798456553" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="8498" width="16" height="16">
+                    <path
+                        d="M545.472 32v837.504L947.2 467.712l44.544 46.144-478.08 478.144L32.128 510.4l44.48-44.544 405.248 403.712V32h63.616z"
+                        fill="#ffffff" p-id="8499"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <section class="iff">
+        <div class="idxP2">
+            <img src="/src/img/page2.jpg" alt="background" class="idxbg">
+            <div class="fixBg">
+                <div class="info">
+                    <p data-aos="fade-up"><span>ABOUT TDG YUNET</span></p>
+                    <h3 data-aos="fade-up">
+                        <!-- <span>TDG YUNET</span> Focuses on Advanced <br> Energy Storage Technology R&D
+                        and <br>Integrated Energy Services -->
+                        To become a globally leading, innovation-driven  <br>
+                        comprehensive energy service provider.
+                    </h3>
+                    <p data-aos="fade-up">TDG YUNET focuses on advanced energy storage technology R&D and integrated
+                        energy <br> services,
+                        driving
+                        the
+                        global energy transition through innovative technologies and striving to <br> become a globally
+                        leading
+                        innovation-driven integrated energy service provider.</p>
+                    <a class="more" data-aos="fade-up" href="/company/">
+                        EXPLORE MORE
+                        <div class="ico">
+                            <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                <path
+                                    d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                    fill="#fff" p-id="3700"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="img">
+                    <div class="imgBac">
+                        <img src="/src/img/business_bg.jpg" alt="">
+                    </div>
+
+                    <div class="info">
+                        <div>
+                            <p data-aos="fade-up" data-aos-duration="1000">SOLUTIONS
+                                & PRODUCTS</p>
+                            <h3 data-aos="fade-up" data-aos-duration="1000">
+                                Continuously Delivering <br />High-Quality Solutions to <br />the Global Market</h3>
+                            <a class="more" data-aos="fade-up" data-aos-duration="1000" href="/solutions-products/">
+                                EXPLORE MORE
+                                <div class="ico">
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <div class="counter">
+                                <num class="ani num" data-start-num="1000" data-num="27000">0 </num><span>㎡</span>
+                            </div>
+                            <p data-aos="fade-up">China (Haining) manufacturing center & <br>Spain (Zaragoza)
+                                manufacturing center</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dim"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="idxP3">
+        <div class="back">
+            <img src="/src/img/page3.jpg" alt="page3">
+        </div>
+        <div class="piece-honri horizontal">
+            <div class="hori-wapper">
+                                <div class="piece highlight-img" data-idx="1">
+                    <div class="img">
+                        <img src="https://www.tdgyunet.com/upload/img/20260316/7c1b40eef6a1006b2a0c1ec612e08e9c.png" alt="C&amp;I Energy Storage Solutions/Retrofit Solutions" title="C&amp;I Energy Storage Solutions/Retrofit Solutions">
+                    </div>
+                    <div class="info">
+                        <div class="tit">
+                            <h3 title="C&amp;I Energy Storage Solutions/Retrofit Solutions">C&amp;I Energy Storage Solutions/Retrofit Solutions</h3>
+                        </div>
+                        <p>For commercial and industrial users with significant peak-valley price differentials and high load fluctuations, configuring energy storage and implementing integrated energy management can effectively reduce electricity costs. In the event of a power outage or power curtailment, the energy storage system can continuously supply power to local loads, ensuring the continuity of production and operation for commercial and industrial users.</p>
+                        <a class="more" href="#">
+                            EXPLORE MORE
+                            <div class="ico">
+                                <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                    <path
+                                        d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                        fill="#fff" p-id="3700"></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="piece " data-idx="2">
+                    <div class="img">
+                        <img src="https://www.tdgyunet.com/upload/img/20260316/a5836ed1edee47edfc9c1fd83f1ad3ad.png" alt="Containerized Energy Storage Solutions" title="Containerized Energy Storage Solutions">
+                    </div>
+                    <div class="info">
+                        <div class="tit">
+                            <h3 title="Containerized Energy Storage Solutions">Containerized Energy Storage Solutions</h3>
+                        </div>
+                        <p>By integrating advanced energy storage technology with intelligentmanagement systems, we provide the power system with secureefficient, and flexible energy storage and dispatch capabilities.</p>
+                        <a class="more" href="#">
+                            EXPLORE MORE
+                            <div class="ico">
+                                <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                    <path
+                                        d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                        fill="#fff" p-id="3700"></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="piece " data-idx="3">
+                    <div class="img">
+                        <img src="https://www.tdgyunet.com/upload/img/20260330/ed03481068c3730e579290dea8618d31.png" alt="Integrated PV + Storage + Charging + Generator Solutions" title="Integrated PV + Storage + Charging + Generator Solutions">
+                    </div>
+                    <div class="info">
+                        <div class="tit">
+                            <h3 title="Integrated PV + Storage + Charging + Generator Solutions">Integrated PV + Storage + Charging + Generator Solutions</h3>
+                        </div>
+                        <p>An integrated energy system combining photovoltaic power generation, energy storage systems, diesel generators, and charging facilities enhances energy efficiency, ensures stable power supply, and reduces carbon emissions through multi-energy complementarity.</p>
+                        <a class="more" href="#">
+                            EXPLORE MORE
+                            <div class="ico">
+                                <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                    <path
+                                        d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                        fill="#fff" p-id="3700"></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                                <div class="piece " data-idx="4">
+                    <div class="img">
+                        <img src="https://www.tdgyunet.com/upload/img/20260330/99a02a9d55d9597f10bd5aa7e3736525.png" alt="Mobile Energy Storage Systems" title="Mobile Energy Storage Systems">
+                    </div>
+                    <div class="info">
+                        <div class="tit">
+                            <h3 title="Mobile Energy Storage Systems">Mobile Energy Storage Systems</h3>
+                        </div>
+                        <p>This system integrates advanced energy storage technology and intelligent management systems internally, endowing itself with flexible energy storage and dispatch capabilities. It supports multi-scenario applications: it can be used for emergency rescue tasks, while in normal conditions, it serves various purposes such as peak-valley arbitrage, capacity expansion, and renewable energy curtailment management.</p>
+                        <a class="more" href="#">
+                            EXPLORE MORE
+                            <div class="ico">
+                                <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                    <path
+                                        d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                        fill="#fff" p-id="3700"></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                            </div>
+        </div>
+
+
+    </div>
+
+    <div class="idxP4">
+        <div class="typeArea">
+            <div class="title">
+                <p data-aos="fade-up">project</p>
+                <div>
+                    <h3 data-aos="fade-up">The Latest News From TDG YUNET</h3>
+                    <a class="more" data-aos="fade-right" href="/news/">
+                        VIEW MORE
+                        <div class="ico">
+                            <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                <path
+                                    d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                    fill="#fff" p-id="3700"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper newSwiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/jointly-building-an-all-weather-community-with-a-shared-future-china-zimbabwe-green-energy-cooperation-takes-a-solid-step-forward-at-tdg-yunet/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/f4329c3fc645a7fba5a9a2e0e41e0b83.jpg" alt="Jointly Building an All-Weather Community with a Shared Future: China&ndash;Zimbabwe Green Energy Cooperation Takes a Solid Step Forward at TDG YUNET">
+                                </div>
+                                <p class="title">
+                                    Jointly Building an All-Weather Community with a Shared Future: China&ndash;Zimbabwe Green Energy Cooperation Takes a Solid Step Forward at TDG YUNET                                </p>
+                                <p class="info">On September 9, 2025, the heads of state of China and Zimbabwe announced the elevation of bilateral relations to an all-weather community with a shared future. Under this friendly context, on November 14, a delegation from Zimbabwe’s FRONTERAS company visited TDG YUNET Technology Co., Ltd., toured the company’s green production lines, and inspected project implementations. Both sides held constructive talks on deepening China–Zimbabwe cooperation in new energy.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>November 14,2025</p>
+                                <a class="more" href="/jointly-building-an-all-weather-community-with-a-shared-future-china-zimbabwe-green-energy-cooperation-takes-a-solid-step-forward-at-tdg-yunet/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/consuls-general-and-technical-delegations-from-three-south-american-countries-visit-tdg-yunet-energy-storage-factory-to-discuss-green-energy-cooperation/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/fa4a1cf7c8842577b49955187b3338a4.jpg" alt="Consuls General and Technical Delegations from Three South American Countries Visit TDG YUNET Energy Storage Factory to Discuss Green Energy Cooperation">
+                                </div>
+                                <p class="title">
+                                    Consuls General and Technical Delegations from Three South American Countries Visit TDG YUNET Energy Storage Factory to Discuss Green Energy Cooperation                                </p>
+                                <p class="info">On August 26, 2025, a delegation composed of Consuls General from Argentina, Chile, and Uruguay in Shanghai, along with technical representatives from their consulates and leaders from the Zhejiang Chamber of Commerce in Shanghai, visited TDG YUNET Technology Co., Ltd. in Haining, Zhejiang, for an in-depth inspection and exchange at the company’s green energy industrial base.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>August 26,2025</p>
+                                <a class="more" href="/consuls-general-and-technical-delegations-from-three-south-american-countries-visit-tdg-yunet-energy-storage-factory-to-discuss-green-energy-cooperation/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/showcasing-the-new-style-of-intelligent-manufacturing-mayor-of-zaragoza-spain-leads-delegation-to-visit-tdg-yunet-green-energy-factory/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/fef634582469a241c74c3cbec47c7a1a.jpg" alt="Showcasing the New Style of Intelligent Manufacturing | Mayor of Zaragoza, Spain Leads Delegation to Visit TDG YUNET Green Energy Factory">
+                                </div>
+                                <p class="title">
+                                    Showcasing the New Style of Intelligent Manufacturing | Mayor of Zaragoza, Spain Leads Delegation to Visit TDG YUNET Green Energy Factory                                </p>
+                                <p class="info">The year 2024 marked TDG YUNET’s efforts in overseas localization development, with multiple visits to the Aragon region and Zaragoza in Spain, bringing bilateral exchanges and cooperation to a new stage. On February 16, 2025, the Mayor of Zaragoza, Spain, Natalia Chueca, led a delegation to visit China and toured TDG YUNET’s green energy industrial factory. This visit further enhanced mutual understanding and trust, and opened new opportunities for future cooperation.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>February 16,2025</p>
+                                <a class="more" href="/showcasing-the-new-style-of-intelligent-manufacturing-mayor-of-zaragoza-spain-leads-delegation-to-visit-tdg-yunet-green-energy-factory/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/across-mountains-and-seas-planning-the-future-together-tdg-ibernavitas-unveiling-ceremony-successfully-held/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/2bcb0ade586e94954eccafd2a316a41f.jpg" alt="Across Mountains and Seas, Planning the Future Together | TDG IBERNAVITAS Unveiling Ceremony Successfully Held">
+                                </div>
+                                <p class="title">
+                                    Across Mountains and Seas, Planning the Future Together | TDG IBERNAVITAS Unveiling Ceremony Successfully Held                                </p>
+                                <p class="info">On January 16, 2025, the unveiling ceremony of TDG IBERNAVITAS, invested and established by TDG YUNET, was successfully held at TDG headquarters in Haining, Jiaxing, Zhejiang. This ceremony marked an important step in TDG YUNET’s global strategic layout and further deepened its business expansion in the European market.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>January 16,2025</p>
+                                <a class="more" href="/across-mountains-and-seas-planning-the-future-together-tdg-ibernavitas-unveiling-ceremony-successfully-held/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/building-a-people-centered-city-sharing-a-better-life-tdg-yunet-technology-co-ltd-attends-2024-world-cities-day-china-main-event/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/f626cb95912385e6dada3125fe0665a7.jpg" alt="Building a People-Centered City, Sharing a Better Life | TDG YUNET Technology Co., Ltd. Attends 2024 World Cities Day China Main Event">
+                                </div>
+                                <p class="title">
+                                    Building a People-Centered City, Sharing a Better Life | TDG YUNET Technology Co., Ltd. Attends 2024 World Cities Day China Main Event                                </p>
+                                <p class="info">Recently, the highly anticipated 2024 World Cities Day China Main Event was grandly held in Weihai, Shandong Province. The event, themed “Building a People-Centered City, Sharing a Better Life,” attracted hundreds of participants including government officials, experts, scholars, and business representatives from around the world. Gao Xuegong, Executive Director of TDG YUNET Technology Co., Ltd., and Xu Kaida, Deputy General Manager, were invited to attend the event.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>October 26,2024</p>
+                                <a class="more" href="/building-a-people-centered-city-sharing-a-better-life-tdg-yunet-technology-co-ltd-attends-2024-world-cities-day-china-main-event/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/leading-the-future-advancing-china-spain-science-and-technology-cooperation-tdg-yunet-technology-co-ltd-attends-china-spain-science-and-technology-cooperation-event/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/2e650967d835dbda73eb701f4aa4d322.jpg" alt="Leading the Future, Advancing China&ndash;Spain Science and Technology Cooperation | TDG YUNET Technology Co., Ltd. Attends China&ndash;Spain Science and Technology Cooperation Event">
+                                </div>
+                                <p class="title">
+                                    Leading the Future, Advancing China&ndash;Spain Science and Technology Cooperation | TDG YUNET Technology Co., Ltd. Attends China&ndash;Spain Science and Technology Cooperation Event                                </p>
+                                <p class="info">Zaragoza, Spain — September 25, 2024, TDG YUNET Technology Co., Ltd. attended the “China–Spain Science and Technology Cooperation Theme Day” event held at the University of Zaragoza. Within this historic and academically vibrant institution, a grand gathering of scientific and technological elites from China and Spain was successfully held, marking a new step forward in bilateral cooperation in technological innovation.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>September 26,2024</p>
+                                <a class="more" href="/leading-the-future-advancing-china-spain-science-and-technology-cooperation-tdg-yunet-technology-co-ltd-attends-china-spain-science-and-technology-cooperation-event/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/empowering-green-development-creating-a-better-future-together-grand-launch-ceremony-of-tdg-green-energy-industrial-base/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/83d7162122aa0978025fd4e07d7f5df8.jpg" alt="Empowering Green Development, Creating a Better Future Together | Grand Launch Ceremony of TDG Green Energy Industrial Base">
+                                </div>
+                                <p class="title">
+                                    Empowering Green Development, Creating a Better Future Together | Grand Launch Ceremony of TDG Green Energy Industrial Base                                </p>
+                                <p class="info">On the morning of September 13, under the joint witness of leaders from the Haining Economic and Technological Development Zone, Spanish guests, company executives, and representatives of resident enterprises, the inauguration ceremony of the TDG Green Energy Industrial Base, themed “Empowering Green Development, Creating a Better Future Together,” was grandly held at Phase II of the TDG Pan-Semiconductor Industrial Park.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>September 13,2024</p>
+                                <a class="more" href="/empowering-green-development-creating-a-better-future-together-grand-launch-ceremony-of-tdg-green-energy-industrial-base/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/exhibition-review-tdg-yunet-empowers-energy-innovation-showcases-at-the-3rd-essa-energy-storage-exhibition/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/5d42db6a491d1fd387ebae63f184f023.jpg" alt="Exhibition Review | TDG YUNET Empowers Energy Innovation, Showcases at the 3rd ESSA Energy Storage Exhibition">
+                                </div>
+                                <p class="title">
+                                    Exhibition Review | TDG YUNET Empowers Energy Innovation, Showcases at the 3rd ESSA Energy Storage Exhibition                                </p>
+                                <p class="info">Recently, TDG YUNET Technology Co., Ltd. showcased its innovative technological products at the 3rd EESA Energy Storage Exhibition held at the National Exhibition and Convention Center (Shanghai), joining industry peers to explore a new chapter in energy development. The exhibition, themed “Green Carbon Ecology, Intelligent Energy Storage for a New Era,” comprehensively displayed energy storage system solutions, core equipment, advanced storage technologies, and applications, making it a major annual event in the energy storage industry.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>September 09,2024</p>
+                                <a class="more" href="/exhibition-review-tdg-yunet-empowers-energy-innovation-showcases-at-the-3rd-essa-energy-storage-exhibition/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="swiper-slide newSlide">
+                        <div class="newSlideBox">
+                            <a class="info" href="/government-enterprise-university-collaboration-to-jointly-draw-a-new-blueprint-for-new-energy-cooperation-tdg-yunet-explores-aragon-and-the-university-of-zaragoza-in-depth/">
+                                <div class="img">
+                                    <img src="https://www.tdgyunet.com/upload/img/20260403/2b3073d66e82cb00870b389301df93c9.jpg" alt="Government&ndash;Enterprise&ndash;University Collaboration to Jointly Draw a New Blueprint for New Energy Cooperation | TDG YUNET Explores Aragon and the University of Zaragoza in Depth">
+                                </div>
+                                <p class="title">
+                                    Government&ndash;Enterprise&ndash;University Collaboration to Jointly Draw a New Blueprint for New Energy Cooperation | TDG YUNET Explores Aragon and the University of Zaragoza in Depth                                </p>
+                                <p class="info">Recently, TDG YUNET’s European delegation carried out a significant exchange activity in the field of new energy in the Aragon region. During this visit, TDG YUNET not only conducted in-depth engagement with the University of Zaragoza and local new energy enterprises, but also held active exchanges and discussions with the Government of Aragon.</p>
+                            </a>
+                            <div class="bottom">
+                                <p>May 17,2024</p>
+                                <a class="more" href="/government-enterprise-university-collaboration-to-jointly-draw-a-new-blueprint-for-new-energy-cooperation-tdg-yunet-explores-aragon-and-the-university-of-zaragoza-in-depth/">
+                                    MORE
+                                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                                        <path
+                                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                                            fill="#fff" p-id="3700"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+            <div class="pagin" data-aos="fade-up"></div>
+        </div>
+    </div>
+    <div class="idxP5">
+        <div class="back">
+            <img src="/src/img/page5.jpg" alt="background">
+        </div>
+        <div class="typeArea">
+            <p data-aos="fade-up">Contact info.</p>
+            <p data-aos="fade-up">TDG YUNET will provide global customers with localized and highly <br>
+                adaptable low-carbon energy solutions.</p>
+            <a class="more" data-aos="fade-up" href="/get-in-touch/">
+                VIEW MORE
+                <div class="ico">
+                    <svg t="1772873555330" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="3699" width="16" height="16">
+                        <path
+                            d="M390.436571 162.377143a59.099429 59.099429 0 0 0-81.042285 0 53.394286 53.394286 0 0 0 0 77.677714L593.042286 512 309.394286 783.945143a53.394286 53.394286 0 0 0 0 77.677714 59.099429 59.099429 0 0 0 81.042285 0L714.605714 550.838857a53.394286 53.394286 0 0 0 0-77.677714L390.436571 162.377143z"
+                            fill="#fff" p-id="3700"></path>
+                    </svg>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+    <div class="typeArea">
+        <div class="left">
+            <div class="ftl1">
+                <img src="/src/img/logo.png" alt="logo">
+                <ul class="fNav">
+                                        <li>
+                        <a href="/company/">
+                            Company                        </a>
+                    </li>
+                                        <li>
+                        <a href="/solutions-products/">
+                            Solutions &amp; Products                        </a>
+                    </li>
+                                        <li>
+                        <a href="/innovation/">
+                            Innovation                        </a>
+                    </li>
+                                        <li>
+                        <a href="/service/">
+                            Service                        </a>
+                    </li>
+                                        <li>
+                        <a href="/news/">
+                            News                        </a>
+                    </li>
+                                    </ul>
+            </div>
+            <div class="ftl2">
+                <a href="tel:+86-573-83381844">
+                    <svg t="1773739256806" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2592" width="16" height="16">
+                        <path
+                            d="M733.76 960 733.76 960l-4.352 0c-102.4-5.376-240.704-106.752-370.112-270.976L311.552 628.736C182.144 464.512 114.368 304.064 130.304 199.744 141.44 126.144 245.696 64 305.28 64c29.312 0 40 15.296 43.84 24.512C382.592 151.552 424.32 260.928 424.64 300.16l0 2.752L423.68 305.536C416.192 326.144 399.616 336 384.896 344.768 365.504 356.288 354.56 363.776 353.152 385.472 352.832 392 358.208 422.016 443.52 532.352L480 578.624c85.632 106.112 112.512 117.504 118.72 118.4 20.672 3.136 30.528-6.144 45.312-23.36 11.264-13.248 24.064-27.904 45.12-31.104l2.816-0.512 2.56 0.896c37.376 8 132.48 72.512 186.88 120.512 7.68 5.376 21.312 21.632 10.56 57.28C875.072 876.736 801.28 960 733.76 960L733.76 960z"
+                            fill="#909194" p-id="2593"></path>
+                    </svg>
+                    +86-573-83381844                </a>
+                <a href="mailto:info@tdgyunet.com">
+                    <svg t="1773739717414" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="5488" width="16" height="16">
+                        <path
+                            d="M901.557832 195.910948 122.431935 195.910948c-33.127492 0-60.042491 26.900673-60.042491 60.065004l0 509.325078c0 33.221636 26.885324 60.065004 60.042491 60.065004l779.125897 0c33.135678 0 60.051701-26.901697 60.051701-60.065004L961.609533 255.975952C961.609533 222.75227 934.724209 195.910948 901.557832 195.910948zM796.517497 410.939303l-268.550339 155.051355c-4.15667 3.541663-9.485025 5.41636-14.886035 5.328355-5.399987 0.088004-10.726296-1.786693-14.883989-5.328355l-268.551362-155.051355c-10.765181-6.205329-14.497179-19.875676-8.246825-30.706349 6.212492-10.742668 19.897166-14.488992 30.727839-8.225335l260.954337 150.661372 260.956384-150.661372c10.829649-6.263657 24.514323-2.517333 30.720675 8.225335C811.021839 391.063627 807.275515 404.733974 796.517497 410.939303z"
+                            fill="#909194" p-id="5489"></path>
+                    </svg>
+                    info@tdgyunet.com                </a> <br>
+                <div>
+                    Add:
+                    No.9 TDG Building, No. 129 Shuanglian Road, Economic Develoment Zone, Haining City, Zhejiang, China                </div>
+            </div>
+
+            <div class="ftl3">
+                <a href="">
+                    <svg t="1773795846809" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="4200">
+                        <path
+                            d="M761.759375 122h132.320625L605 452.4003125 945.08 902H678.8L470.24 629.3196875 231.599375 902H99.2l309.1996875-353.4L82.16 122h273.0403125l188.52 249.24z m-46.4390625 700.8h73.32L315.359375 197.0403125h-78.680625z"
+                            fill="#ffffff" p-id="4201"></path>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg t="1773795572935" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2500">
+                        <path
+                            d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32z m-92.4 233.5h-63.9c-50.1 0-59.8 23.8-59.8 58.8v77.1h119.6l-15.6 120.7h-104V912H539.2V602.2H434.9V481.4h104.3v-89c0-103.3 63.1-159.6 155.3-159.6 44.2 0 82.1 3.3 93.2 4.8v107.9z"
+                            p-id="2501" fill="#ffffff"></path>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg t="1773796560938" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="7479">
+                        <path
+                            d="M512 378.7c-73.4 0-133.3 59.9-133.3 133.3S438.6 645.3 512 645.3 645.3 585.4 645.3 512 585.4 378.7 512 378.7z"
+                            p-id="7480" fill="#ffffff"></path>
+                        <path
+                            d="M911.8 512c0-55.2 0.5-109.9-2.6-165-3.1-64-17.7-120.8-64.5-167.6-46.9-46.9-103.6-61.4-167.6-64.5-55.2-3.1-109.9-2.6-165-2.6-55.2 0-109.9-0.5-165 2.6-64 3.1-120.8 17.7-167.6 64.5C132.6 226.3 118.1 283 115 347c-3.1 55.2-2.6 109.9-2.6 165s-0.5 109.9 2.6 165c3.1 64 17.7 120.8 64.5 167.6 46.9 46.9 103.6 61.4 167.6 64.5 55.2 3.1 109.9 2.6 165 2.6 55.2 0 109.9 0.5 165-2.6 64-3.1 120.8-17.7 167.6-64.5 46.9-46.9 61.4-103.6 64.5-167.6 3.2-55.1 2.6-109.8 2.6-165zM512 717.1c-113.5 0-205.1-91.6-205.1-205.1S398.5 306.9 512 306.9 717.1 398.5 717.1 512 625.5 717.1 512 717.1z m213.5-370.7c-26.5 0-47.9-21.4-47.9-47.9s21.4-47.9 47.9-47.9 47.9 21.4 47.9 47.9c-0.1 26.6-21.4 47.9-47.9 47.9z"
+                            p-id="7481" fill="#ffffff"></path>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg t="1773795911484" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="6372">
+                        <path
+                            d="M896 64H127.8C92.6 64 64 93 64 128.6v766.8C64 931 92.6 960 127.8 960H896c35.2 0 64-29 64-64.6V128.6c0-35.6-28.8-64.6-64-64.6zM334.8 832H202V404.4h133V832z m-66.4-486c-42.6 0-77-34.6-77-77S225.8 192 268.4 192c42.4 0 77 34.6 77 77 0 42.6-34.4 77-77 77z m564.2 486h-132.8V624c0-49.6-1-113.4-69-113.4-69.2 0-79.8 54-79.8 109.8V832h-132.8V404.4h127.4v58.4h1.8c17.8-33.6 61.2-69 125.8-69 134.4 0 159.4 88.6 159.4 203.8V832z"
+                            fill="#ffffff" p-id="6373"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="right">
+            <div>
+                <a href="/contact/">Get in Touch</a>
+                <a onclick="GoTo(0)">
+                    Top
+                    <svg style="transform: rotate(180deg);" t="1773632439573" viewBox="0 0 1603 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="3655" width="10" height="8">
+                        <path
+                            d="M1010.042131 836.203222L837.472119 1008.773234c-18.610492 18.610492-50.755886 18.610492-71.05824 0L15.226766 255.894259c-18.610492-18.610492-18.610492-50.755886 0-71.058241L187.796778 13.957869c18.610492-18.610492 50.755886-18.610492 71.058241 0l751.187112 751.187112c18.610492 20.302354 18.610492 52.447749 0 71.058241z"
+                            p-id="3656" fill="#ffffff"></path>
+                        <path
+                            d="M1416.089219 13.957869L1588.659232 186.527881c18.610492 18.610492 18.610492 50.755886 0 71.05824L835.780256 1008.773234c-18.610492 18.610492-50.755886 18.610492-71.05824 0L593.843866 836.203222c-18.610492-18.610492-18.610492-50.755886 0-71.058241L1346.722842 13.957869c18.610492-18.610492 50.755886-18.610492 69.366377 0z"
+                            p-id="3657" fill="#ffffff"></path>
+                    </svg>
+                </a>
+            </div>
+            <p>Copyright &copy; 2026 TDG YUNET</p>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+
+<script src="/src/js/index.js"></script>
+<script>
+    counter()
+</script>
+
+</html>

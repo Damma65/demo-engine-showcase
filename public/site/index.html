@@ -1759,7 +1759,9 @@
     border-radius: 22px; overflow: hidden;
     border: 1px solid var(--stroke);
   }
-  .partner-tier.gold .partner-grid{ grid-template-columns: repeat(2, 1fr); }
+  .partner-tier.gold .partner-grid{ grid-template-columns: 1fr; gap: 16px; }
+  .partner-tier.gold .partner{ padding: 28px 32px; min-height: 140px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.gold .partner img{ max-height: 72px; max-width: 80%; width:auto; height:auto; object-fit: contain; filter: brightness(1.05); }
   .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(3, 1fr); }
   .partner-tier.event .partner-grid,
   .partner-tier.partner .partner-grid{ grid-template-columns: repeat(5, 1fr); }
@@ -3408,8 +3410,8 @@
     // [name, url, hex1, hex2, mark/initials/glyph]
     const data = {
       gold: [
-        ['Sungrow','https://en.sungrowpower.com/','#FF9500','#FFD60A','S'],
-        ['Scandinavia Haining Center','http://www.tdgyunet.com/','#0A84FF','#5E5CE6','◇']
+        ['Sungrow','https://en.sungrowpower.com/','#FF9500','#FFD60A','S','partners/sungrow.svg'],
+        ['TDG | YUNET','http://www.tdgyunet.com/','#0A84FF','#5E5CE6','◇','partners/tdg-yunet.png']
       ],
       bronze: [
         ['Siemens Energy','https://www.siemens-energy.com/se/sv/home.html','#00A4A7','#0A84FF','SE'],
@@ -3449,7 +3451,12 @@
     function render(tier, items){
       const el = document.getElementById('pg-'+tier);
       if (!el) return;
-      el.innerHTML = items.map(([name, url, c1, c2, mark]) => {
+      el.innerHTML = items.map(([name, url, c1, c2, mark, logo]) => {
+        if (tier==='gold' && logo) {
+          return `<a class="partner" href="${url}" target="_blank" rel="noopener" aria-label="${name}">
+            <img src="${logo}" alt="${name}" loading="lazy" />
+          </a>`;
+        }
         const goldExtra = tier==='gold' ? `<span class="partner-name"><b>GULDPARTNER</b></span>` : '';
         return `<a class="partner" href="${url}" target="_blank" rel="noopener">
           ${goldExtra}
