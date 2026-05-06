@@ -35,9 +35,9 @@
   .pi-card .desc{ margin-top:8px; font-size:13.5px; color:var(--text-2); line-height:1.5; }
   .pi-card .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; vertical-align:middle; }
   .pi-card.s1 .dot{ background: var(--green-2); }
-  .pi-card.s2 .dot{ background: var(--indigo-2); }
-  .pi-card.s3 .dot{ background: var(--orange); }
-  .pi-card.s4 .dot{ background: var(--teal); }
+  .pi-card.s2 .dot{ background: var(--orange); }
+  .pi-card.s3 .dot{ background: #FF375F; }
+  .pi-card.s4 .dot{ background: var(--indigo-2); }
   @media (max-width: 1000px){ .program-intro{ grid-template-columns: repeat(2,1fr); } }
   @media (max-width: 560px){ .program-intro{ grid-template-columns: 1fr; } }
 
@@ -106,8 +106,8 @@
   .session-stage .sd{ width:7px; height:7px; border-radius:50%; }
   .stage-stora{ color: var(--green-2); } .stage-stora .sd{ background: var(--green-2); }
   .stage-ai   { color: var(--indigo-2); } .stage-ai .sd{ background: var(--indigo-2); }
-  .stage-drift{ color: var(--orange); } .stage-drift .sd{ background: var(--orange); }
-  .stage-tech { color: var(--teal); } .stage-tech .sd{ background: var(--teal); }
+  .stage-drift{ color: #FF375F; } .stage-drift .sd{ background: #FF375F; }
+  .stage-tech { color: var(--orange); } .stage-tech .sd{ background: var(--orange); }
 
   .session-title{ margin-top: 12px; font-size: 18px; font-weight: 600; letter-spacing: -.018em; line-height: 1.3; }
   .session-desc{ margin-top: 10px; font-size: 13.5px; color: var(--text-2); line-height:1.5; }
@@ -122,13 +122,15 @@
     font-size: 9px; color: white; font-weight: 700;
     border: 1.5px solid var(--bg);
   }
-  .session.featured{
-    background: linear-gradient(180deg, rgba(94,92,230,0.18), rgba(94,92,230,0.04));
-    border-color: rgba(94,92,230,0.45);
-  }
+  /* Per-stage subtle fade backgrounds — matches each stage's button color. */
+  .session.s-stora{ background: linear-gradient(180deg, rgba(48,209,88,0.18), rgba(48,209,88,0.02)); border-color: rgba(48,209,88,0.45); }
+  .session.s-tech { background: linear-gradient(180deg, rgba(255,159,10,0.18), rgba(255,159,10,0.02)); border-color: rgba(255,159,10,0.45); }
+  .session.s-drift{ background: linear-gradient(180deg, rgba(255,55,95,0.18), rgba(255,55,95,0.02)); border-color: rgba(255,55,95,0.45); }
+  .session.s-ai   { background: linear-gradient(180deg, rgba(176,174,255,0.18), rgba(176,174,255,0.02)); border-color: rgba(176,174,255,0.45); }
+  .session.featured{ box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
   .session.paid{
-    background: linear-gradient(180deg, rgba(255,159,10,0.14), rgba(255,159,10,0.02));
-    border-color: rgba(255,159,10,0.45);
+    background: linear-gradient(180deg, rgba(255,159,10,0.20), rgba(255,159,10,0.02));
+    border-color: rgba(255,159,10,0.55);
   }
   .badge{
     display:inline-flex; align-items:center; gap:5px;
@@ -137,7 +139,7 @@
     margin-left: 8px;
     vertical-align: 2px;
   }
-  .badge.kn{ background: rgba(94,92,230,0.2); color:#aeacff; }
+  .badge.kn{ background: linear-gradient(135deg,#FF9F0A,#FF6A00); color:#1a1300; }
   .badge.pd{ background: linear-gradient(135deg,#FFD60A,#FF9500); color:#1a1300; }
   .badge.op{ background: rgba(48,209,88,0.18); color: var(--green-2); }
 </style>
@@ -200,8 +202,8 @@
   <div class="stage-filter" id="stages">
     <span class="sf active" data-stage="all">Alla scener</span>
     <span class="sf" data-stage="stora"><span class="sf-dot" style="background:var(--green-2)"></span>Stora scenen</span>
-    <span class="sf" data-stage="tech"><span class="sf-dot" style="background:var(--teal)"></span>Tech &amp; CIO</span>
-    <span class="sf" data-stage="drift"><span class="sf-dot" style="background:var(--orange)"></span>Drift &amp; UH</span>
+    <span class="sf" data-stage="tech"><span class="sf-dot" style="background:var(--orange)"></span>Tech &amp; CIO</span>
+    <span class="sf" data-stage="drift"><span class="sf-dot" style="background:#FF375F"></span>Drift &amp; UH</span>
     <span class="sf" data-stage="ai"><span class="sf-dot" style="background:var(--indigo-2)"></span>AI-Zonen</span>
   </div>
   <div class="legend">
@@ -301,11 +303,12 @@ function render(){
         ${filtered.map(s => {
           const firstSpk = s.speakers[0];
           const href = firstSpk ? `talare/${firstSpk[2]}.html` : 'talare.html';
-          const cls = `session ${s.featured?'featured':''} ${s.paid?'paid':''}`;
+          const stageCls = `s-${s.stage}`;
+          const cls = `session ${stageCls} ${s.featured?'featured':''} ${s.paid?'paid':''}`;
           let badges = '';
           if (s.kind === 'keynote') badges += `<span class="badge kn">Keynote</span>`;
           if (s.paid) badges += `<span class="badge pd">Betalseminarium</span>`;
-          if (s.open && !s.paid) badges += `<span class="badge op">Öppen</span>`;
+          if (s.open && !s.paid && s.kind !== 'keynote') badges += `<span class="badge op">Öppen</span>`;
           const spkHtml = s.speakers.length
             ? `<span class="sm-spk">${s.speakers.map(([init,name,slug,c1,c2]) => `<span class="mini-av" style="--c1:${c1};--c2:${c2}">${init}</span>`).join('')}<span>${s.speakers.map(s=>s[1]).join(' · ')}</span></span>`
             : '';
