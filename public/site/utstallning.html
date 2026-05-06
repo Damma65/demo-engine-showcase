@@ -2,182 +2,68 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8" />
-<title>Utställning · Energimässan 2027</title>
+<title>Utställare · Energimässan 2027 · 130+ företag på Kistamässan</title>
+<meta name="description" content="Bläddra bland alla utställare på Energimässan 2027. Sök på företagsnamn för att hitta monter, eller filtrera på tier och kategori." />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="/site/utstallning.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="shared.css" />
 <style>
   .page-hero{ padding: 160px 32px 60px; text-align:center; position:relative; overflow:hidden; }
   .page-hero::before{ content:""; position:absolute; inset:0; z-index:0;
     background: radial-gradient(700px 400px at 50% 0%, rgba(48,209,88,0.18), transparent 60%); }
   .page-hero > *{ position: relative; z-index: 1; }
-  .page-h1{
-    font-size: clamp(56px, 8vw, 112px);
-    font-weight: 700; letter-spacing: -.05em; line-height: .95;
-    background: linear-gradient(180deg, #FFFFFF, #BABABF);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
-  }
-  .page-h1 .grad{
-    background: linear-gradient(135deg, #30D158, #64D2FF);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
-  }
-  .page-sub{ margin: 28px auto 0; max-width: 620px; font-size: 18px; color: var(--text-2); line-height: 1.5; }
+  .page-h1{ font-size: clamp(56px,8vw,112px); font-weight:700; letter-spacing:-.05em; line-height:.95;
+    background: linear-gradient(180deg,#FFFFFF,#BABABF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-h1 .grad{ background: linear-gradient(135deg,#30D158,#64D2FF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-sub{ margin: 28px auto 0; max-width: 640px; font-size: 18px; color: var(--text-2); line-height: 1.5; }
 
-  /* HALLPLAN */
-  .hall-wrap{
-    max-width: 1280px; margin: 60px auto 0;
-    padding: 0 32px;
-  }
-  /* REAL HALLPLAN (PDF) */
-  .hall-real{ margin-top: 32px; }
-  .hall-real-toolbar{ display:flex; align-items:center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
-  .hr-eyebrow{ font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
-  .hr-actions{ display:flex; gap: 8px; }
-  .hr-btn{ padding: 9px 16px; border-radius: 100px; font-size: 12.5px; font-weight: 600; text-decoration: none; color: var(--text-2); border:1px solid var(--stroke); background: rgba(255,255,255,0.04); transition: all .2s ease; }
-  .hr-btn:hover{ border-color: rgba(255,255,255,0.3); color: var(--text); }
-  .hr-btn.primary{ background: var(--text); color: #000; border-color: var(--text); }
-  .hall-real-frame{
-    position: relative; aspect-ratio: 1.4/1;
-    border-radius: 18px; overflow: hidden;
-    background: #FAFAFA;
-    border: 1px solid var(--stroke);
-    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.5);
-  }
-  .hall-real-pdf{ width: 100%; height: 100%; display: block; background: #FAFAFA; }
-  .hall-real-pdf img{ width: 100%; height: 100%; object-fit: contain; }
-  .hall-real-pins{ position:absolute; inset: 0; pointer-events: none; }
-  .hr-pin{
-    position:absolute; transform: translate(-50%, -50%);
-    width: 14px; height: 14px; border-radius: 50%;
-    background: #30D158;
-    box-shadow: 0 0 0 4px rgba(48,209,88,0.25), 0 0 0 9px rgba(48,209,88,0.12);
-    pointer-events: auto;
-    cursor: pointer;
-  }
-  .hr-pin::after{
-    content: attr(data-l);
-    position:absolute; top: 22px; left: 50%; transform: translateX(-50%);
-    white-space: nowrap; font-size: 11px; font-weight: 600; padding: 4px 10px;
-    background: rgba(0,0,0,0.85); color: #fff; border-radius: 6px;
-    opacity: 0; transition: opacity .2s ease;
-    pointer-events: none;
-  }
-  .hr-pin:hover::after{ opacity: 1; }
-  .hall-real-foot{
-    margin-top: 18px; display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
-    padding: 16px; border-radius: 14px; border:1px solid var(--stroke); background: rgba(255,255,255,0.02);
-  }
-  @media (max-width: 700px){ .hall-real-foot{ grid-template-columns: 1fr 1fr; } }
-  .hrf-stat{ display:flex; flex-direction: column; gap: 2px; }
-  .hrf-stat b{ font-size: 18px; font-weight: 800; letter-spacing: -.02em; background: linear-gradient(135deg, #30D158, #64D2FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hrf-stat span{ font-size: 11px; color: var(--text-3); letter-spacing: .04em; }
+  .hall-wrap{ max-width: 1280px; margin: 50px auto 0; padding: 0 32px; }
+  .hall{ border-radius: 28px; border:1px solid var(--stroke); background: linear-gradient(180deg,#0C0C10,#050507); padding: 32px; }
+  .hall-search{ position: relative; margin-bottom: 22px; }
+  .hall-search input{ width:100%; background: rgba(255,255,255,0.04); border:1px solid var(--stroke-2); border-radius:14px; padding:16px 20px 16px 50px; color:var(--text); font-size:15px; outline:none; font-family:inherit; }
+  .hall-search input:focus{ border-color: var(--green); }
+  .hall-search svg{ position:absolute; left:18px; top:50%; transform: translateY(-50%); width:18px; height:18px; color:var(--text-3); }
+  .hall-search-results{ position:absolute; top: 60px; left:0; right:0; background:#15151A; border:1px solid var(--stroke-2); border-radius:14px; max-height: 280px; overflow:auto; z-index:10; display:none; box-shadow: 0 30px 60px -10px rgba(0,0,0,0.6); }
+  .hall-search-results.open{ display:block; }
+  .hsr-item{ padding: 12px 18px; cursor: pointer; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--stroke); }
+  .hsr-item:hover{ background: rgba(255,255,255,0.05); }
+  .hsr-item:last-child{ border:none; }
+  .hsr-name{ font-size:14px; font-weight:500; }
+  .hsr-booth{ font-size:12px; color: var(--green-2); font-variant-numeric: tabular-nums; padding: 3px 10px; background: rgba(48,209,88,0.12); border-radius: 100px; }
 
-  .hall{
-    border-radius: 28px;
-    border: 1px solid var(--stroke);
-    background: linear-gradient(180deg, #0C0C10, #050507);
-    padding: 44px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hall-tag{
-    display: inline-flex; align-items:center; gap:8px;
-    padding: 6px 14px; border-radius: 100px;
-    background: rgba(48,209,88,0.12);
-    color: var(--green-2); font-size: 12px; font-weight: 600;
-  }
-  .hall-h{
-    margin-top: 16px;
-    font-size: 36px; font-weight: 700; letter-spacing: -.03em;
-  }
-  .hall-svg-wrap{
-    margin-top: 32px; position: relative;
-    aspect-ratio: 16/9;
-    border-radius: 18px; overflow: hidden;
-    background: radial-gradient(ellipse at center, #15151A, #0A0A0E);
-    border: 1px solid var(--stroke);
-  }
-  .hall-svg-wrap svg{ width: 100%; height: 100%; display: block; }
-  .booth{
-    cursor: pointer;
-    transition: filter .2s;
-  }
-  .booth:hover{ filter: brightness(1.4); }
-  .legend{
-    margin-top: 24px;
-    display: flex; gap: 24px; flex-wrap: wrap;
-    font-size: 12px; color: var(--text-2);
-  }
-  .leg-dot{ display:inline-flex; align-items:center; gap: 8px; }
-  .ld{ width: 12px; height: 12px; border-radius: 4px; }
+  .hall-frame{ position:relative; aspect-ratio: 16/9; border-radius:18px; overflow:hidden; background:#0A0A10; border:1px solid var(--stroke); }
+  .hall-frame svg{ width:100%; height:100%; display:block; }
+  .booth-rect{ cursor:pointer; transition: filter .2s, stroke-width .2s; }
+  .booth-rect:hover{ filter: brightness(1.5); stroke-width: 2; }
+  .booth-rect.highlight{ stroke:#30D158; stroke-width:3; filter: drop-shadow(0 0 12px rgba(48,209,88,0.8)); }
+  .hall-foot{ margin-top: 18px; display:grid; grid-template-columns: repeat(4,1fr); gap:10px; padding: 16px; border-radius:14px; border:1px solid var(--stroke); background: rgba(255,255,255,0.02); }
+  @media(max-width:700px){ .hall-foot{ grid-template-columns: 1fr 1fr; } }
+  .hf-stat b{ font-size:18px; font-weight:800; letter-spacing:-.02em; background: linear-gradient(135deg,#30D158,#64D2FF); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hf-stat span{ font-size:11px; color:var(--text-3); letter-spacing:.04em; display:block; margin-top:2px; }
 
-  /* CATEGORIES */
-  .cats{
-    max-width: 1280px; margin: 50px auto 0;
-    padding: 0 32px;
-    display: flex; gap: 8px; flex-wrap: wrap;
-  }
-  .cat{
-    padding: 9px 18px; border-radius: 100px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--stroke);
-    color: var(--text-2); font-size: 13px; font-weight: 500; cursor: pointer;
-  }
+  .cats{ max-width:1280px; margin:50px auto 0; padding:0 32px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .cat{ padding: 9px 18px; border-radius:100px; background: rgba(255,255,255,0.04); border:1px solid var(--stroke); color:var(--text-2); font-size:13px; font-weight:500; cursor:pointer; }
   .cat.active{ background: var(--text); color: var(--bg); border-color: var(--text); }
+  .ex-search{ margin-left:auto; position:relative; }
+  .ex-search input{ background: rgba(255,255,255,0.04); border:1px solid var(--stroke-2); border-radius:100px; padding: 9px 16px 9px 38px; color:var(--text); font-size:13px; outline:none; font-family:inherit; min-width: 220px; }
+  .ex-search svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); width:14px; height:14px; color:var(--text-3); }
 
-  /* EXHIBITORS */
-  .exhibitors{
-    max-width: 1280px; margin: 32px auto 0;
-    padding: 0 32px 100px;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
-  }
-  .ex-card{
-    padding: 24px;
-    background: var(--surface);
-    border: 1px solid var(--stroke);
-    border-radius: 18px;
-    transition: background .2s, transform .2s, border-color .2s;
-    cursor: pointer;
-  }
+  .exhibitors{ max-width:1280px; margin:24px auto 0; padding: 0 32px 100px; display:grid; grid-template-columns: repeat(4,1fr); gap:14px; }
+  .ex-card{ padding:22px; background: var(--surface); border:1px solid var(--stroke); border-radius:18px; transition: all .2s; cursor:pointer; text-decoration:none; color:inherit; display:block; }
   .ex-card:hover{ background: var(--surface-2); border-color: var(--stroke-2); transform: translateY(-2px); }
-  .ex-logo{
-    width: 56px; height: 56px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, var(--c1), var(--c2));
-    display: grid; place-items: center;
-    font-size: 22px; font-weight: 700; color: white;
-    letter-spacing: -.02em;
-  }
-  .ex-tier{
-    margin-top: 14px;
-    display: inline-block;
-    font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--text-3); font-weight: 600;
-  }
-  .ex-tier.gold{ color: #FFD60A; }
-  .ex-tier.silver{ color: #BABABF; }
-  .ex-tier.bronze{ color: #FF9F0A; }
-  .ex-name{
-    margin-top: 6px; font-size: 17px; font-weight: 600; letter-spacing: -.018em;
-  }
-  .ex-booth{ margin-top: 4px; font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
-  .ex-cats{ margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
-  .ex-cats span{
-    font-size: 10.5px; padding: 3px 8px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 100px;
-    color: var(--text-2);
-  }
-
-  @media (max-width: 900px){
-    .exhibitors{ grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 500px){
-    .exhibitors{ grid-template-columns: 1fr; }
-  }
+  .ex-logo{ width:52px; height:52px; border-radius:12px; background: linear-gradient(135deg,var(--c1),var(--c2)); display:grid; place-items:center; font-size:18px; font-weight:700; color:white; letter-spacing:-.02em; }
+  .ex-tier{ margin-top:12px; display:inline-block; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
+  .ex-tier.gold{ color:#FFD60A; } .ex-tier.silver{ color:#BABABF; } .ex-tier.bronze{ color:#FF9F0A; }
+  .ex-name{ margin-top:6px; font-size:16px; font-weight:600; letter-spacing:-.018em; line-height:1.25; }
+  .ex-booth{ margin-top:6px; font-size:12px; color:var(--text-3); font-variant-numeric: tabular-nums; }
+  .ex-link{ margin-top:10px; font-size:11.5px; color: var(--green-2); }
+  @media(max-width:1100px){ .exhibitors{ grid-template-columns: repeat(3,1fr);} }
+  @media(max-width:800px){ .exhibitors{ grid-template-columns: repeat(2,1fr);} .cats{ flex-direction:column; align-items:stretch;} .ex-search{ margin-left:0;} }
+  @media(max-width:500px){ .exhibitors{ grid-template-columns: 1fr;} }
 </style>
 </head>
 <body>
-
 <header class="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">
@@ -197,164 +83,59 @@
 </header>
 
 <section class="page-hero">
-  <h1 class="page-h1">250+ utställare.<br/><span class="grad">Ett mässgolv.</span></h1>
-  <p class="page-sub">Globala jättar, nordiska greentech-startups och allt däremellan. Hitta din monter — eller upptäck nästa partner.</p>
+  <h1 class="page-h1">130+ utställare.<br/><span class="grad">Ett mässgolv.</span></h1>
+  <p class="page-sub">Globala jättar, nordiska greentech-startups och allt däremellan. Sök på företagsnamn ovan hallplanen — vi visar montern direkt.</p>
 </section>
 
 <div class="hall-wrap">
   <div class="hall">
-    <span class="hall-tag">● Live · uppdateras realtid</span>
-    <div class="hall-h">Hallplan · Kistamässan</div>
-
-    <div class="hall-real">
-      <div class="hall-real-toolbar">
-        <span class="hr-eyebrow">Officiell hallplan · Kistamässan</span>
-        <div class="hr-actions">
-          <a class="hr-btn" href="assets/hallplan.pdf" target="_blank" rel="noopener">Öppna PDF ↗</a>
-        </div>
-      </div>
-      <div class="hall-real-frame">
-        <a href="assets/hallplan.pdf" target="_blank" rel="noopener" class="hall-real-pdf" style="display:block;">
-          <img src="assets/hallplan-1.png" alt="Hallplan Energimässan 2027" style="width:100%;height:100%;object-fit:contain;display:block;background:#FAFAFA;" />
-        </a>
-        <div class="hall-real-pins">
-          <span class="hr-pin" style="left:14%;top:18%;" data-l="Stora scenen"></span>
-          <span class="hr-pin" style="left:48%;top:22%;" data-l="AI-zonen ★"></span>
-          <span class="hr-pin" style="left:72%;top:26%;" data-l="Konferens"></span>
-          <span class="hr-pin" style="left:34%;top:64%;" data-l="Café"></span>
-          <span class="hr-pin" style="left:58%;top:78%;" data-l="Restaurang"></span>
-        </div>
-      </div>
-      <div class="hall-real-foot">
-        <div class="hrf-stat"><b>250+</b><span>utställare</span></div>
-        <div class="hrf-stat"><b>4</b><span>scener</span></div>
-        <div class="hrf-stat"><b>~12 000 m²</b><span>mässyta</span></div>
-        <div class="hrf-stat"><b>A–M</b><span>monterzoner</span></div>
-      </div>
+    <div class="hall-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="hallq" type="text" placeholder="Sök företag — t.ex. Vattenfall, Sungrow, Hitachi…" autocomplete="off" />
+      <div class="hall-search-results" id="hsr"></div>
     </div>
 
-    <div class="hall-svg-wrap" hidden>
-      <svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid meet">
+    <div class="hall-frame">
+      <svg id="hallSvg" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid meet">
         <defs>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-          </pattern>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/></pattern>
           <linearGradient id="g-stage" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5E5CE6"/><stop offset="100%" stop-color="#30D158"/></linearGradient>
         </defs>
         <rect width="1200" height="675" fill="url(#grid)"/>
-
-        <!-- Outer hall -->
         <rect x="40" y="40" width="1120" height="595" rx="14" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
-
-        <!-- Entrance -->
         <rect x="540" y="32" width="120" height="16" rx="4" fill="rgba(48,209,88,0.5)"/>
         <text x="600" y="24" fill="#5DE38A" font-size="11" text-anchor="middle" font-family="-apple-system" font-weight="600" letter-spacing="2">ENTRÉ</text>
-
-        <!-- Stora scenen -->
-        <rect x="80" y="80" width="280" height="120" rx="10" fill="url(#g-stage)" opacity="0.85"/>
-        <text x="220" y="135" fill="white" font-size="14" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">STORA SCENEN</text>
-        <text x="220" y="155" fill="rgba(255,255,255,0.7)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="1.5">1 200 SITTPLATSER</text>
-
-        <!-- AI Zone -->
-        <rect x="400" y="80" width="240" height="120" rx="10" fill="rgba(94,92,230,0.4)" stroke="rgba(176,174,255,0.5)" stroke-width="1"/>
-        <text x="520" y="135" fill="#B0AEFF" font-size="14" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">AI-ZONEN ★</text>
-        <text x="520" y="155" fill="rgba(176,174,255,0.7)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="1.5">30+ DEMOS · NYHET 2027</text>
-
-        <!-- Drift & UH -->
-        <rect x="680" y="80" width="200" height="120" rx="10" fill="rgba(255,159,10,0.35)" stroke="rgba(255,159,10,0.5)" stroke-width="1"/>
-        <text x="780" y="135" fill="#FF9F0A" font-size="13" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">DRIFT &amp; UH</text>
-        <text x="780" y="155" fill="rgba(255,159,10,0.7)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="1.5">EGEN SCEN</text>
-
-        <!-- Konferens -->
-        <rect x="920" y="80" width="200" height="120" rx="10" fill="rgba(100,210,255,0.3)" stroke="rgba(100,210,255,0.5)" stroke-width="1"/>
-        <text x="1020" y="135" fill="#64D2FF" font-size="13" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">KONFERENS</text>
-        <text x="1020" y="155" fill="rgba(100,210,255,0.7)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="1.5">SVERIGES ENERGIFORUM</text>
-
-        <!-- Booth grid -->
-        <g font-family="-apple-system" font-size="9" font-weight="600">
-          <!-- Row 1 - Gold -->
-          <g class="booth"><rect x="80" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="120" y="275" fill="#000" text-anchor="middle">Vattenfall</text><text x="120" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:01</text></g>
-          <g class="booth"><rect x="170" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="210" y="275" fill="#000" text-anchor="middle">Hitachi</text><text x="210" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:02</text></g>
-          <g class="booth"><rect x="260" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="300" y="275" fill="#000" text-anchor="middle">Siemens</text><text x="300" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:03</text></g>
-          <g class="booth"><rect x="350" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="390" y="275" fill="#000" text-anchor="middle">Sungrow</text><text x="390" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:04</text></g>
-          <g class="booth"><rect x="440" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="480" y="275" fill="#000" text-anchor="middle">ABB</text><text x="480" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:05</text></g>
-          <g class="booth"><rect x="530" y="240" width="80" height="60" rx="4" fill="rgba(255,214,10,0.55)"/><text x="570" y="275" fill="#000" text-anchor="middle">Schneider</text><text x="570" y="288" fill="rgba(0,0,0,0.6)" text-anchor="middle" font-size="8">A:06</text></g>
-
-          <!-- Row 2 - Silver -->
-          <g class="booth"><rect x="80" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="110" y="350" fill="white" text-anchor="middle">Volvo E.</text></g>
-          <g class="booth"><rect x="150" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="180" y="350" fill="white" text-anchor="middle">Fortum</text></g>
-          <g class="booth"><rect x="220" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="250" y="350" fill="white" text-anchor="middle">Steady</text></g>
-          <g class="booth"><rect x="290" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="320" y="350" fill="white" text-anchor="middle">Merus</text></g>
-          <g class="booth"><rect x="360" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="390" y="350" fill="white" text-anchor="middle">Digpro</text></g>
-          <g class="booth"><rect x="430" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="460" y="350" fill="white" text-anchor="middle">Westermo</text></g>
-          <g class="booth"><rect x="500" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="530" y="350" fill="white" text-anchor="middle">Granitor</text></g>
-          <g class="booth"><rect x="570" y="320" width="60" height="50" rx="4" fill="rgba(186,186,191,0.4)"/><text x="600" y="350" fill="white" text-anchor="middle">Vinnergi</text></g>
-
-          <!-- Row 3 - Bronze (smaller booths) -->
-          <g class="booth"><rect x="80" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="104" y="416" fill="white" text-anchor="middle" font-size="8">PSW</text></g>
-          <g class="booth"><rect x="138" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="162" y="416" fill="white" text-anchor="middle" font-size="8">Renewcast</text></g>
-          <g class="booth"><rect x="196" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="220" y="416" fill="white" text-anchor="middle" font-size="8">Truxco</text></g>
-          <g class="booth"><rect x="254" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="278" y="416" fill="white" text-anchor="middle" font-size="8">Truxel</text></g>
-          <g class="booth"><rect x="312" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="336" y="416" fill="white" text-anchor="middle" font-size="8">CANEA</text></g>
-          <g class="booth"><rect x="370" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="394" y="416" fill="white" text-anchor="middle" font-size="8">Wistbo</text></g>
-          <g class="booth"><rect x="428" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="452" y="416" fill="white" text-anchor="middle" font-size="8">Aire</text></g>
-          <g class="booth"><rect x="486" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="510" y="416" fill="white" text-anchor="middle" font-size="8">Pinja</text></g>
-          <g class="booth"><rect x="544" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="568" y="416" fill="white" text-anchor="middle" font-size="8">Mersen</text></g>
-          <g class="booth"><rect x="602" y="390" width="48" height="42" rx="3" fill="rgba(255,159,10,0.32)"/><text x="626" y="416" fill="white" text-anchor="middle" font-size="8">Kiwa</text></g>
-
-          <!-- Right column (more booths) -->
-          <g class="booth"><rect x="700" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="740" y="275" fill="white" text-anchor="middle">Google AI</text><text x="740" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:01</text></g>
-          <g class="booth"><rect x="790" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="830" y="275" fill="white" text-anchor="middle">AI Sweden</text><text x="830" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:02</text></g>
-          <g class="booth"><rect x="880" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="920" y="275" fill="white" text-anchor="middle">Qurrent</text><text x="920" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:03</text></g>
-          <g class="booth"><rect x="970" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="1010" y="275" fill="white" text-anchor="middle">Truxel.ai</text><text x="1010" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:04</text></g>
-          <g class="booth"><rect x="1060" y="240" width="80" height="60" rx="4" fill="rgba(94,92,230,0.45)"/><text x="1100" y="275" fill="white" text-anchor="middle">Pinja AI</text><text x="1100" y="288" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-size="8">B:05</text></g>
-
-          <!-- Mingle area -->
-          <rect x="700" y="450" width="440" height="110" rx="14" fill="rgba(48,209,88,0.18)" stroke="rgba(48,209,88,0.4)" stroke-width="1" stroke-dasharray="6 6"/>
-          <text x="920" y="500" fill="#5DE38A" font-size="14" text-anchor="middle" font-weight="700" letter-spacing="1">MINGEL · DAG 1 · 17:30</text>
-          <text x="920" y="520" fill="rgba(93,227,138,0.7)" font-size="10" text-anchor="middle" letter-spacing="1.5">LIVE · MAT &amp; DRYCK · PRISUTDELNING</text>
-
-          <!-- Café -->
-          <rect x="80" y="500" width="120" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
-          <text x="140" y="540" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">CAFÉ</text>
-          <text x="140" y="555" fill="rgba(255,255,255,0.4)" font-size="9" text-anchor="middle">07:30–17:00</text>
-
-          <!-- Matchmaking -->
-          <rect x="220" y="500" width="120" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
-          <text x="280" y="540" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">MATCH-</text>
-          <text x="280" y="552" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">MAKING</text>
-          <text x="280" y="567" fill="rgba(255,255,255,0.4)" font-size="9" text-anchor="middle">DROP-IN</text>
-
-          <!-- Press -->
-          <rect x="360" y="500" width="120" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
-          <text x="420" y="545" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">PRESS</text>
-          <text x="420" y="558" fill="rgba(255,255,255,0.4)" font-size="9" text-anchor="middle">&amp; INFO</text>
-
-          <!-- Garderob -->
-          <rect x="500" y="500" width="120" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
-          <text x="560" y="545" fill="rgba(255,255,255,0.6)" font-size="11" text-anchor="middle" font-weight="600">GARDEROB</text>
-        </g>
-
+        <rect x="80" y="80" width="280" height="90" rx="10" fill="url(#g-stage)" opacity="0.85"/>
+        <text x="220" y="125" fill="white" font-size="13" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">STORA SCENEN</text>
+        <rect x="400" y="80" width="240" height="90" rx="10" fill="rgba(94,92,230,0.4)" stroke="rgba(176,174,255,0.5)" stroke-width="1"/>
+        <text x="520" y="125" fill="#B0AEFF" font-size="13" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">AI-ZONEN ★</text>
+        <rect x="680" y="80" width="200" height="90" rx="10" fill="rgba(255,159,10,0.35)" stroke="rgba(255,159,10,0.5)" stroke-width="1"/>
+        <text x="780" y="125" fill="#FF9F0A" font-size="13" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">DRIFT &amp; UH</text>
+        <rect x="920" y="80" width="200" height="90" rx="10" fill="rgba(100,210,255,0.3)" stroke="rgba(100,210,255,0.5)" stroke-width="1"/>
+        <text x="1020" y="125" fill="#64D2FF" font-size="13" text-anchor="middle" font-family="-apple-system" font-weight="700" letter-spacing="1">KONFERENS</text>
+        <g id="boothLayer"></g>
+        <rect x="80" y="600" width="200" height="20" rx="4" fill="rgba(255,255,255,0.06)"/><text x="180" y="614" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="2">CAFÉ &amp; LUNCH</text>
+        <rect x="920" y="600" width="200" height="20" rx="4" fill="rgba(255,255,255,0.06)"/><text x="1020" y="614" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle" font-family="-apple-system" letter-spacing="2">RESTAURANG</text>
       </svg>
     </div>
-
-    <div class="legend">
-      <span class="leg-dot"><span class="ld" style="background: rgba(255,214,10,0.55)"></span> Guld (48 m²+)</span>
-      <span class="leg-dot"><span class="ld" style="background: rgba(186,186,191,0.5)"></span> Silver (24 m²)</span>
-      <span class="leg-dot"><span class="ld" style="background: rgba(255,159,10,0.4)"></span> Brons (9–18 m²)</span>
-      <span class="leg-dot"><span class="ld" style="background: rgba(94,92,230,0.5)"></span> AI-Zonen</span>
-      <span class="leg-dot"><span class="ld" style="background: rgba(48,209,88,0.4); border:1px dashed rgba(48,209,88,0.6)"></span> Mingelyta</span>
+    <div class="hall-foot">
+      <div class="hf-stat"><b>130+</b><span>UTSTÄLLARE</span></div>
+      <div class="hf-stat"><b>4</b><span>SCENER</span></div>
+      <div class="hf-stat"><b>~12 000 m²</b><span>MÄSSYTA</span></div>
+      <div class="hf-stat"><b>A–M</b><span>MONTERZONER</span></div>
     </div>
   </div>
 </div>
 
 <div class="cats" id="cats">
-  <span class="cat active" data-cat="all">Alla 250+</span>
-  <span class="cat" data-cat="prod">Produktion</span>
-  <span class="cat" data-cat="grid">Smart Grid &amp; Lagring</span>
-  <span class="cat" data-cat="ai">AI &amp; Digital</span>
-  <span class="cat" data-cat="drift">Drift &amp; Underhåll</span>
-  <span class="cat" data-cat="solar">Sol &amp; Vind</span>
+  <span class="cat active" data-cat="all">Alla</span>
+  <span class="cat" data-cat="gold">Guldpartner</span>
+  <span class="cat" data-cat="silver">Silver</span>
+  <span class="cat" data-cat="bronze">Övriga</span>
+  <div class="ex-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="exq" type="text" placeholder="Sök utställare…" />
+  </div>
 </div>
 
 <div class="exhibitors" id="exh"></div>
@@ -363,76 +144,84 @@
   <div class="foot-inner">
     <div>© 2027 Nordic Live Expo · Energimässan</div>
     <div class="foot-links">
-      <a href="index.html">Hem</a>
-      <a href="program.html">Program</a>
-      <a href="talare.html">Talare</a>
-      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="index.html">Hem</a><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="bli-utstallare.html">Bli utställare</a><a href="sponsorer.html">Sponsorer</a>
     </div>
   </div>
 </footer>
 
 <script>
-const EXHIBITORS = [
-  ['Vattenfall','VA','#FFD60A','#FF9500','gold','A:01',['prod','grid']],
-  ['Hitachi Energy','HE','#0A84FF','#5E5CE6','gold','A:02',['drift','grid']],
-  ['Siemens Energy','SE','#30D158','#0A84FF','gold','A:03',['prod','drift']],
-  ['Sungrow','SG','#FFD60A','#30D158','gold','A:04',['solar','grid']],
-  ['ABB Energy','AB','#FF375F','#FF9500','gold','A:05',['prod','grid']],
-  ['Schneider Electric','SC','#30D158','#5E5CE6','gold','A:06',['drift','grid']],
-  ['Volvo Energy','VE','#5E5CE6','#0A84FF','silver','C:01',['grid']],
-  ['Fortum Optimizer','FO','#0A84FF','#30D158','silver','C:02',['grid','ai']],
-  ['Steady Energy','ST','#64D2FF','#5E5CE6','silver','C:03',['prod']],
-  ['Merus Power','MP','#FF9500','#FF375F','silver','C:04',['drift']],
-  ['Digpro','DG','#30D158','#64D2FF','silver','C:05',['drift','ai']],
-  ['Westermo','WM','#0A84FF','#5E5CE6','silver','C:06',['drift']],
-  ['Granitor Electro','GE','#FF9500','#30D158','silver','C:07',['drift']],
-  ['Vinnergi','VG','#5E5CE6','#30D158','silver','C:08',['drift']],
-  ['Google Cloud','GC','#0A84FF','#FFD60A','featured','B:01',['ai']],
-  ['AI Sweden','AS','#5E5CE6','#30D158','featured','B:02',['ai']],
-  ['Qurrent','QU','#BF5AF2','#30D158','featured','B:03',['ai']],
-  ['Truxel.ai','TX','#5E5CE6','#0A84FF','featured','B:04',['ai','drift']],
-  ['Pinja AI','PJ','#FF9500','#5E5CE6','featured','B:05',['ai','drift']],
-  ['PSW Power','PS','#FF9500','#FFD60A','bronze','D:01',['prod']],
-  ['Renewcast','RC','#30D158','#64D2FF','bronze','D:02',['solar','ai']],
-  ['Truxco','TC','#FF375F','#FF9500','bronze','D:03',['drift']],
-  ['CANEA','CN','#5E5CE6','#0A84FF','bronze','D:04',['drift']],
-  ['Wistbo','WB','#FF9500','#30D158','bronze','D:05',['drift']],
-  ['Liquid Wind','LW','#64D2FF','#30D158','bronze','D:06',['solar','prod']],
-  ['Solfolket','SF','#FFD60A','#FF9500','bronze','D:07',['solar']],
-  ['Glava Energy','GL','#30D158','#64D2FF','bronze','D:08',['solar']],
-  ['Cloudberry','CB','#5E5CE6','#0A84FF','bronze','D:09',['solar','prod']],
-  ['Nidec','ND','#FF9500','#FF375F','bronze','D:10',['drift']],
-  ['Mersen','MS','#FF375F','#5E5CE6','bronze','D:11',['drift','grid']],
-  ['Aire','AI','#0A84FF','#30D158','bronze','D:12',['ai','grid']],
-  ['Kiwa Sweden','KS','#FFD60A','#5E5CE6','bronze','D:13',['drift']],
-];
+const EXH = [{"n":"2030 Sekretariatet","u":"https://www.2030sekretariatet.se/","a":"S","t":"bronze","b":"A:01","c1":"#FFD60A","c2":"#FF9500","s":"2030-sekretariatet"},{"n":"ABAX Sweden","u":"https://www.abax.com/sv%20","a":"AS","t":"bronze","b":"B:01","c1":"#0A84FF","c2":"#5E5CE6","s":"abax-sweden"},{"n":"AI Sweden","u":"https://www.ai.se/sv","a":"AS","t":"bronze","b":"C:01","c1":"#30D158","c2":"#0A84FF","s":"ai-sweden"},{"n":"Aire Energy","u":"https://www.aire.energy/","a":"AE","t":"bronze","b":"D:01","c1":"#FF375F","c2":"#FF9500","s":"aire-energy"},{"n":"Ampner","u":"https://ampner.com/en/","a":"A","t":"bronze","b":"E:01","c1":"#5E5CE6","c2":"#30D158","s":"ampner"},{"n":"Asfaltsgruppen Sverige","u":"https://asfaltsgruppen.se/","a":"AS","t":"bronze","b":"F:01","c1":"#64D2FF","c2":"#0A84FF","s":"asfaltsgruppen-sverige"},{"n":"Assemblin El + Schneider","u":"https://www.assemblin.com/sv/","a":"AE","t":"bronze","b":"G:01","c1":"#BF5AF2","c2":"#5E5CE6","s":"assemblin-el-schneider"},{"n":"AUCOTEC","u":"https://www.aucotec.com/en/","a":"A","t":"bronze","b":"H:01","c1":"#FF9500","c2":"#FF375F","s":"aucotec"},{"n":"AWILCO","u":"https://www.awilco.dk/","a":"A","t":"bronze","b":"J:01","c1":"#30D158","c2":"#64D2FF","s":"awilco"},{"n":"BENGglas","u":"https://bengglas.nl/","a":"B","t":"bronze","b":"K:01","c1":"#FFD60A","c2":"#5E5CE6","s":"bengglas"},{"n":"Besway","u":"https://www.besway.se/","a":"B","t":"bronze","b":"L:01","c1":"#FFD60A","c2":"#FF9500","s":"besway"},{"n":"Bitus","u":"https://bitus.com/sweden-sv/","a":"B","t":"bronze","b":"M:01","c1":"#0A84FF","c2":"#5E5CE6","s":"bitus"},{"n":"BOS Power","u":"https://bospower.com/","a":"BP","t":"bronze","b":"A:02","c1":"#30D158","c2":"#0A84FF","s":"bos-power"},{"n":"Branschaktuellt","u":"https://branschaktuellt.se/","a":"B","t":"bronze","b":"B:02","c1":"#FF375F","c2":"#FF9500","s":"branschaktuellt"},{"n":"Bröderna Berner","u":"https://www.bernercompany.se/","a":"BB","t":"bronze","b":"C:02","c1":"#5E5CE6","c2":"#30D158","s":"broderna-berner"},{"n":"C3C Engineering","u":"https://c3c.se/","a":"CC","t":"bronze","b":"D:02","c1":"#64D2FF","c2":"#0A84FF","s":"c3c-engineering"},{"n":"CANEA Partner Group","u":"https://www.canea.se/","a":"CP","t":"bronze","b":"E:02","c1":"#BF5AF2","c2":"#5E5CE6","s":"canea-partner-group"},{"n":"Capture Energy","u":"https://captureenergy.eu/","a":"CE","t":"bronze","b":"F:02","c1":"#FF9500","c2":"#FF375F","s":"capture-energy"},{"n":"CELLNEX","u":"https://www.cellnex.com/se-sv/","a":"C","t":"bronze","b":"G:02","c1":"#30D158","c2":"#64D2FF","s":"cellnex"},{"n":"Cloudberry","u":"https://www.cloudberry.no/","a":"C","t":"bronze","b":"H:02","c1":"#FFD60A","c2":"#5E5CE6","s":"cloudberry"},{"n":"Cosafe Technology","u":"https://cosafe.se/","a":"CT","t":"bronze","b":"J:02","c1":"#FFD60A","c2":"#FF9500","s":"cosafe-technology"},{"n":"CTI","u":"http://www.cti.fi/","a":"C","t":"bronze","b":"K:02","c1":"#0A84FF","c2":"#5E5CE6","s":"cti"},{"n":"Detector Solutions AB","u":"https://detectorsolutions.se/","a":"DS","t":"bronze","b":"L:02","c1":"#30D158","c2":"#0A84FF","s":"detector-solutions-ab"},{"n":"Digpro","u":"https://digpro.com/","a":"D","t":"silver","b":"M:02","c1":"#FF375F","c2":"#FF9500","s":"digpro"},{"n":"dLab","u":"https://dlaboratory.com/","a":"D","t":"bronze","b":"A:03","c1":"#5E5CE6","c2":"#30D158","s":"dlab"},{"n":"EC Nordic","u":"https://www.ecnordic.se/","a":"EN","t":"bronze","b":"B:03","c1":"#64D2FF","c2":"#0A84FF","s":"ec-nordic"},{"n":"EENOVANCE","u":"https://www.eenovance.com/","a":"E","t":"bronze","b":"C:03","c1":"#BF5AF2","c2":"#5E5CE6","s":"eenovance"},{"n":"Ekströms Värmetekniska Aktiebolag","u":"https://ekstromsvarme.se/","a":"EV","t":"bronze","b":"D:03","c1":"#FF9500","c2":"#FF375F","s":"ekstroms-varmetekniska-aktiebolag"},{"n":"Elekt as","u":"https://www.elekt.com/no","a":"EA","t":"bronze","b":"E:03","c1":"#30D158","c2":"#64D2FF","s":"elekt-as"},{"n":"Eneff","u":"https://eneff.se/","a":"E","t":"bronze","b":"F:03","c1":"#FFD60A","c2":"#5E5CE6","s":"eneff"},{"n":"Energipress","u":"https://www.energipress.se/","a":"E","t":"bronze","b":"G:03","c1":"#FFD60A","c2":"#FF9500","s":"energipress"},{"n":"Energy5","u":"https://energy5.pl/en/","a":"E","t":"bronze","b":"H:03","c1":"#0A84FF","c2":"#5E5CE6","s":"energy5"},{"n":"Enqore","u":"https://two.se/","a":"E","t":"bronze","b":"J:03","c1":"#30D158","c2":"#0A84FF","s":"enqore"},{"n":"EPLAN","u":"https://www.eplan.se/","a":"E","t":"silver","b":"K:03","c1":"#FF375F","c2":"#FF9500","s":"eplan"},{"n":"EWF ECO","u":"https://ewfeco.com/","a":"EE","t":"bronze","b":"L:03","c1":"#5E5CE6","c2":"#30D158","s":"ewf-eco"},{"n":"FCT Sweden","u":"http://www.fctsweden.se/","a":"FS","t":"bronze","b":"M:03","c1":"#64D2FF","c2":"#0A84FF","s":"fct-sweden"},{"n":"Fortum Optimizer","u":"https://www.fortum.com/se/el/foretag/tillaggstjanster/fortum-optimizer","a":"FO","t":"gold","b":"A:04","c1":"#BF5AF2","c2":"#5E5CE6","s":"fortum-optimizer"},{"n":"GAFS","u":"https://www.gjutasfalt.se/","a":"G","t":"bronze","b":"B:04","c1":"#FF9500","c2":"#FF375F","s":"gafs"},{"n":"General Prepper","u":"https://generalprepper.com/","a":"GP","t":"bronze","b":"C:04","c1":"#30D158","c2":"#64D2FF","s":"general-prepper"},{"n":"Geobear","u":"https://www.geobear.se/","a":"G","t":"bronze","b":"D:04","c1":"#FFD60A","c2":"#5E5CE6","s":"geobear"},{"n":"Glava Energy Center","u":"https://glavaenergycenter.se/","a":"GE","t":"bronze","b":"E:04","c1":"#FFD60A","c2":"#FF9500","s":"glava-energy-center"},{"n":"Granitor Electro","u":"https://www.granitor.se/electro","a":"GE","t":"silver","b":"F:04","c1":"#0A84FF","c2":"#5E5CE6","s":"granitor-electro"},{"n":"Grundfos","u":"https://www.grundfos.com/se","a":"G","t":"silver","b":"G:04","c1":"#30D158","c2":"#0A84FF","s":"grundfos"},{"n":"Hitachi Energy","u":"https://www.hitachienergy.com/se/sv","a":"HE","t":"gold","b":"H:04","c1":"#FF375F","c2":"#FF9500","s":"hitachi-energy"},{"n":"Infometric","u":"https://infometric.se/","a":"I","t":"bronze","b":"J:04","c1":"#5E5CE6","c2":"#30D158","s":"infometric"},{"n":"InnoEnergy","u":"https://innoenergy.com/","a":"I","t":"silver","b":"K:04","c1":"#64D2FF","c2":"#0A84FF","s":"innoenergy"},{"n":"JAUDA","u":"http://www.jauda.com/","a":"J","t":"bronze","b":"L:04","c1":"#BF5AF2","c2":"#5E5CE6","s":"jauda"},{"n":"Jönköping Energi","u":"https://jonkopingenergi.se/","a":"JE","t":"bronze","b":"M:04","c1":"#FF9500","c2":"#FF375F","s":"jonkoping-energi"},{"n":"Kiwa Sweden","u":"https://www.kiwa.com/se/sv/","a":"KS","t":"silver","b":"A:05","c1":"#30D158","c2":"#64D2FF","s":"kiwa-sweden"},{"n":"Kraus & Naimer AB","u":"https://www.krausnaimer.com/se_sv","a":"KN","t":"bronze","b":"B:05","c1":"#FFD60A","c2":"#5E5CE6","s":"kraus-and-naimer-ab"},{"n":"Laitex","u":"https://www.laitex.fi/","a":"L","t":"bronze","b":"C:05","c1":"#FFD60A","c2":"#FF9500","s":"laitex"},{"n":"Landvac","u":"https://www.landvac.net/","a":"L","t":"bronze","b":"D:05","c1":"#0A84FF","c2":"#5E5CE6","s":"landvac"},{"n":"Lantbrukarnas Riskförbund","u":"https://www.lrf.se/","a":"LR","t":"silver","b":"E:05","c1":"#30D158","c2":"#0A84FF","s":"lantbrukarnas-riskforbund"},{"n":"Lime Technologies","u":"https://www.lime-technologies.com/sv/produkter/lime-crm/branscher/utility/","a":"LT","t":"bronze","b":"F:05","c1":"#FF375F","c2":"#FF9500","s":"lime-technologies"},{"n":"Lynk & Co","u":"https://www.lynkco.com/sv-se?gclsrc=aw.ds&gad_source=1&gad_campaignid=22153993178&gbraid=0AAAAAB_7Do9gKJqtYbsaVYUIlt7ADrVxy&gclid=CjwKCAjwhqfPBhBWEiwAZo196lJ-1vHYNzToU2fg65VABtpdXPpDJBT5sQoF_SaKf90pO5FC31M0hRoCpZQQAvD_BwE","a":"LC","t":"bronze","b":"G:05","c1":"#5E5CE6","c2":"#30D158","s":"lynk-and-co"},{"n":"Melbye","u":"https://melbye.se/","a":"M","t":"bronze","b":"H:05","c1":"#64D2FF","c2":"#0A84FF","s":"melbye"},{"n":"Mersen","u":"https://www.mersen.com/en/products","a":"M","t":"bronze","b":"J:05","c1":"#BF5AF2","c2":"#5E5CE6","s":"mersen"},{"n":"Merus Power","u":"https://meruspower.com/","a":"MP","t":"silver","b":"K:05","c1":"#FF9500","c2":"#FF375F","s":"merus-power"},{"n":"MIC Nordic","u":"https://micnordic.se/en/","a":"MN","t":"bronze","b":"L:05","c1":"#30D158","c2":"#64D2FF","s":"mic-nordic"},{"n":"MLT Maskin & Laser Teknik","u":"https://mlt.se/","a":"MM","t":"bronze","b":"M:05","c1":"#FFD60A","c2":"#5E5CE6","s":"mlt-maskin-and-laser-teknik"},{"n":"Modity Energy Trading","u":"https://www.modity.se/sv","a":"ME","t":"bronze","b":"A:06","c1":"#FFD60A","c2":"#FF9500","s":"modity-energy-trading"},{"n":"Momentum Industrial","u":"https://www.momentum-industrial.com/","a":"MI","t":"bronze","b":"B:06","c1":"#0A84FF","c2":"#5E5CE6","s":"momentum-industrial"},{"n":"Motion Control","u":"https://www.motioncontrol.se/","a":"MC","t":"bronze","b":"C:06","c1":"#30D158","c2":"#0A84FF","s":"motion-control"},{"n":"NEKTAB","u":"https://nektab.se/","a":"N","t":"bronze","b":"D:06","c1":"#FF375F","c2":"#FF9500","s":"nektab"},{"n":"Nidec Conversion","u":"https://www.nidec-conversion.com/?_gl=1*b977jk*_up*MQ..*_gs*MQ..&gclid=EAIaIQobChMIyrbRmcXEkgMVJZqDBx0q_BuhEAAYASAAEgIkKPD_BwE&gbraid=0AAAAADekVvQ6jeCrnvZ03gLQ3FkTNUFvC","a":"NC","t":"silver","b":"E:06","c1":"#5E5CE6","c2":"#30D158","s":"nidec-conversion"},{"n":"Nissen","u":"https://nissenenergy.com/","a":"N","t":"bronze","b":"F:06","c1":"#64D2FF","c2":"#0A84FF","s":"nissen"},{"n":"Nordic Energy Supply","u":"https://nesdc.se/","a":"NE","t":"bronze","b":"G:06","c1":"#BF5AF2","c2":"#5E5CE6","s":"nordic-energy-supply"},{"n":"NordTech Energy","u":"https://www.nordtechenergy.com/","a":"NE","t":"bronze","b":"H:06","c1":"#FF9500","c2":"#FF375F","s":"nordtech-energy"},{"n":"Norelco OY","u":"https://www.norelco.fi/se/hemsida","a":"NO","t":"bronze","b":"J:06","c1":"#30D158","c2":"#64D2FF","s":"norelco-oy"},{"n":"Parat Halvorsen","u":"https://www.parat.no/","a":"PH","t":"bronze","b":"K:06","c1":"#FFD60A","c2":"#5E5CE6","s":"parat-halvorsen"},{"n":"Peikko Sverige","u":"https://www.peikko.se/","a":"PS","t":"bronze","b":"L:06","c1":"#FFD60A","c2":"#FF9500","s":"peikko-sverige"},{"n":"PINJA","u":"https://pinja.com/","a":"P","t":"bronze","b":"M:06","c1":"#0A84FF","c2":"#5E5CE6","s":"pinja"},{"n":"Plexigrid","u":"https://plexigrid.com/","a":"P","t":"bronze","b":"A:07","c1":"#30D158","c2":"#0A84FF","s":"plexigrid"},{"n":"Processpumpar Norden","u":"https://ppab.se/","a":"PN","t":"bronze","b":"B:07","c1":"#FF375F","c2":"#FF9500","s":"processpumpar-norden"},{"n":"PSW Power & Automation","u":"https://pswpower.no/","a":"PP","t":"bronze","b":"C:07","c1":"#5E5CE6","c2":"#30D158","s":"psw-power-and-automation"},{"n":"Qurrent","u":"https://www.qurrent.energy/se","a":"Q","t":"bronze","b":"D:07","c1":"#64D2FF","c2":"#0A84FF","s":"qurrent"},{"n":"R.Stahl Scandinavia AS","u":"https://r-stahl.com/en/global/home/","a":"RS","t":"bronze","b":"E:07","c1":"#BF5AF2","c2":"#5E5CE6","s":"r-stahl-scandinavia-as"},{"n":"Renewcast","u":"https://renewcast.com/","a":"R","t":"bronze","b":"F:07","c1":"#FF9500","c2":"#FF375F","s":"renewcast"},{"n":"RISE","u":"https://www.ri.se/sv","a":"R","t":"silver","b":"G:07","c1":"#30D158","c2":"#64D2FF","s":"rise"},{"n":"Rittal","u":"https://www.rittal.com/se-sv/","a":"R","t":"silver","b":"H:07","c1":"#FFD60A","c2":"#5E5CE6","s":"rittal"},{"n":"Rocco Oil","u":"https://roccosweden.se/","a":"RO","t":"bronze","b":"J:07","c1":"#FFD60A","c2":"#FF9500","s":"rocco-oil"},{"n":"Sandcore","u":"https://sandcore.eu/","a":"S","t":"bronze","b":"K:07","c1":"#0A84FF","c2":"#5E5CE6","s":"sandcore"},{"n":"Scandinavia Energy System","u":"https://noova.no/se","a":"SE","t":"bronze","b":"L:07","c1":"#30D158","c2":"#0A84FF","s":"scandinavia-energy-system"},{"n":"Schneider Electric","u":"https://www.se.com/se/sv/","a":"SE","t":"gold","b":"M:07","c1":"#FF375F","c2":"#FF9500","s":"schneider-electric"},{"n":"Setek","u":"https://systems.setek.se/","a":"S","t":"bronze","b":"A:08","c1":"#5E5CE6","c2":"#30D158","s":"setek"},{"n":"Shanghai Sermatec Energy Technology","u":"https://en.sermatec-ess.com/","a":"SS","t":"bronze","b":"B:08","c1":"#64D2FF","c2":"#0A84FF","s":"shanghai-sermatec-energy-technology"},{"n":"Shanghai ZOE Energy Storage Technology Co.,Ltd","u":"http://www.zoeess.com/","a":"SZ","t":"bronze","b":"C:08","c1":"#BF5AF2","c2":"#5E5CE6","s":"shanghai-zoe-energy-storage-technology-co-ltd"},{"n":"Shelly","u":"https://www.shelly.com/","a":"S","t":"bronze","b":"D:08","c1":"#FF9500","c2":"#FF375F","s":"shelly"},{"n":"Siemens Energy","u":"https://www.siemens-energy.com/se/sv/home.html","a":"SE","t":"gold","b":"E:08","c1":"#30D158","c2":"#64D2FF","s":"siemens-energy"},{"n":"SKF","u":"https://www.skf.com/se","a":"S","t":"silver","b":"F:08","c1":"#FFD60A","c2":"#5E5CE6","s":"skf"},{"n":"SSG Standard Solutions Group","u":"https://www.ssgsolutions.com/sv/","a":"SS","t":"bronze","b":"G:08","c1":"#FFD60A","c2":"#FF9500","s":"ssg-standard-solutions-group"},{"n":"Steady Energy “The Fission Bar by Steady Energy”","u":"https://www.steadyenergy.com/","a":"SE","t":"silver","b":"H:08","c1":"#0A84FF","c2":"#5E5CE6","s":"steady-energy-the-fission-bar-by-steady-energy"},{"n":"Steel Master Finland","u":"https://steelmaster.fi/","a":"SM","t":"bronze","b":"J:08","c1":"#30D158","c2":"#0A84FF","s":"steel-master-finland"},{"n":"Stockholms Universitet","u":"https://www.su.se/","a":"SU","t":"bronze","b":"K:08","c1":"#FF375F","c2":"#FF9500","s":"stockholms-universitet"},{"n":"Strikersoft","u":"https://strikersoft.com/sv/","a":"S","t":"bronze","b":"L:08","c1":"#5E5CE6","c2":"#30D158","s":"strikersoft"},{"n":"Sungrow Nordics","u":"https://en.sungrowpower.com/","a":"SN","t":"gold","b":"M:08","c1":"#64D2FF","c2":"#0A84FF","s":"sungrow-nordics"},{"n":"Svebio","u":"https://www.svebio.se/","a":"S","t":"silver","b":"A:09","c1":"#BF5AF2","c2":"#5E5CE6","s":"svebio"},{"n":"Svensk pumpstyrning","u":"https://www.svenskpsab.se/","a":"SP","t":"bronze","b":"B:09","c1":"#FF9500","c2":"#FF375F","s":"svensk-pumpstyrning"},{"n":"Svensk Solenergi","u":"https://svensksolenergi.se/","a":"SS","t":"silver","b":"C:09","c1":"#30D158","c2":"#64D2FF","s":"svensk-solenergi"},{"n":"Svenska Geotech","u":"https://www.svenskageotech.se/","a":"SG","t":"bronze","b":"D:09","c1":"#FFD60A","c2":"#5E5CE6","s":"svenska-geotech"},{"n":"Switchgear AB – låg-och mellanspänningsställverk","u":"https://www.switchgear.se/","a":"SA","t":"bronze","b":"E:09","c1":"#FFD60A","c2":"#FF9500","s":"switchgear-ab-lag-och-mellanspanningsstallverk"},{"n":"Sympower","u":"https://sympower.net/","a":"S","t":"bronze","b":"F:09","c1":"#0A84FF","c2":"#5E5CE6","s":"sympower"},{"n":"Taratest","u":"https://www.taratest.fi/en/","a":"T","t":"bronze","b":"G:09","c1":"#30D158","c2":"#0A84FF","s":"taratest"},{"n":"TDG Yunet","u":"https://www.tdgyunet.com/","a":"TY","t":"bronze","b":"H:09","c1":"#FF375F","c2":"#FF9500","s":"tdg-yunet"},{"n":"Telko","u":"https://www.telko.com/","a":"T","t":"bronze","b":"J:09","c1":"#5E5CE6","c2":"#30D158","s":"telko"},{"n":"Thermtest Instruments","u":"https://thermtest.se/","a":"TI","t":"bronze","b":"K:09","c1":"#64D2FF","c2":"#0A84FF","s":"thermtest-instruments"},{"n":"TOMAL","u":"https://www.tomal.se/","a":"T","t":"bronze","b":"L:09","c1":"#BF5AF2","c2":"#5E5CE6","s":"tomal"},{"n":"Trackson – Elektronisk körjournal för företag","u":"https://trackson.se/","a":"TE","t":"bronze","b":"M:09","c1":"#FF9500","c2":"#FF375F","s":"trackson-elektronisk-korjournal-for-foretag"},{"n":"Truxco Energy","u":"https://truxco.energy/sv/","a":"TE","t":"bronze","b":"A:10","c1":"#30D158","c2":"#64D2FF","s":"truxco-energy"},{"n":"Truxel","u":"https://truxel.ai/","a":"T","t":"bronze","b":"B:10","c1":"#FFD60A","c2":"#5E5CE6","s":"truxel"},{"n":"Uniper","u":"https://www.uniper.energy/sv/sverige","a":"U","t":"gold","b":"C:10","c1":"#FFD60A","c2":"#FF9500","s":"uniper"},{"n":"Vattenfall","u":"https://www.vattenfall.se/","a":"V","t":"gold","b":"D:10","c1":"#0A84FF","c2":"#5E5CE6","s":"vattenfall"},{"n":"Vinnergi","u":"https://vinnergi.se/","a":"V","t":"silver","b":"E:10","c1":"#30D158","c2":"#0A84FF","s":"vinnergi"},{"n":"Vivavis AG","u":"https://sgop.global/","a":"VA","t":"bronze","b":"F:10","c1":"#FF375F","c2":"#FF9500","s":"vivavis-ag"},{"n":"Volvo Energy","u":"https://www.volvoenergy.com/en/about-us.html","a":"VE","t":"gold","b":"G:10","c1":"#5E5CE6","c2":"#30D158","s":"volvo-energy"},{"n":"WattsFuture & EVbee","u":"https://www.wattsfuture.com/","a":"WE","t":"bronze","b":"H:10","c1":"#64D2FF","c2":"#0A84FF","s":"wattsfuture-and-evbee"},{"n":"Weland Trafikmiljö","u":"https://www.welandtrafikmiljo.se/","a":"WT","t":"bronze","b":"J:10","c1":"#BF5AF2","c2":"#5E5CE6","s":"weland-trafikmiljo"},{"n":"Westermo Data Communications","u":"https://www.westermo.com/se/industries/energy","a":"WD","t":"silver","b":"K:10","c1":"#FF9500","c2":"#FF375F","s":"westermo-data-communications"},{"n":"Wistbo","u":"https://www.wistbo.com/","a":"W","t":"bronze","b":"L:10","c1":"#30D158","c2":"#64D2FF","s":"wistbo"},{"n":"XCHARGE Europe","u":"https://www.xcharge.com/","a":"XE","t":"bronze","b":"M:10","c1":"#FFD60A","c2":"#5E5CE6","s":"xcharge-europe"},{"n":"XCharge Europe GmbH","u":"https://www.xcharge.com/","a":"XE","t":"bronze","b":"A:11","c1":"#FFD60A","c2":"#FF9500","s":"xcharge-europe-gmbh"},{"n":"Xmentor","u":"https://www.xmentor.se/","a":"X","t":"bronze","b":"B:11","c1":"#0A84FF","c2":"#5E5CE6","s":"xmentor"},{"n":"Zeekit","u":"https://www.zeekit.no/home/","a":"Z","t":"bronze","b":"C:11","c1":"#30D158","c2":"#0A84FF","s":"zeekit"},{"n":"ZENITA SECURITY ”RÄTT LÖSNING RÄTT SÄKERHET”","u":"http://www.zenita.se/","a":"ZS","t":"bronze","b":"D:11","c1":"#FF375F","c2":"#FF9500","s":"zenita-security-ratt-losning-ratt-sakerhet"}];
+const TIER_LABEL = { gold:'Guldpartner', silver:'Silverpartner', bronze:'Utställare' };
 
-const TIER_LABEL = { gold:'Guldpartner', silver:'Silver', bronze:'Brons', featured:'AI-Zonen' };
-const CAT_LABEL = { prod:'Produktion', grid:'Smart Grid', ai:'AI', drift:'Drift & UH', solar:'Sol/Vind' };
-
-let activeC = 'all';
-function renderEx(){
-  const filt = EXHIBITORS.filter(([,,,,,,cats]) => activeC === 'all' || cats.includes(activeC));
-  document.getElementById('exh').innerHTML = filt.map(([name, abbr, c1, c2, tier, booth, cats]) => `
-    <div class="ex-card">
-      <div class="ex-logo" style="--c1:${c1};--c2:${c2}">${abbr}</div>
-      <div class="ex-tier ${tier}">${TIER_LABEL[tier] || tier}</div>
-      <div class="ex-name">${name}</div>
-      <div class="ex-booth">Monter ${booth}</div>
-      <div class="ex-cats">${cats.map(c => `<span>${CAT_LABEL[c]}</span>`).join('')}</div>
-    </div>
-  `).join('');
-}
-document.querySelectorAll('#cats .cat').forEach(c => {
-  c.addEventListener('click', () => {
-    document.querySelectorAll('#cats .cat').forEach(x => x.classList.remove('active'));
-    c.classList.add('active');
-    activeC = c.dataset.cat;
-    renderEx();
+// Render booths on hall SVG. Distribute by tier.
+const layer = document.getElementById('boothLayer');
+function laySvg(){
+  // 6 cols x N rows in main area y=200..570 x=80..1120
+  const cols = 12;
+  const colW = (1120-80)/cols;
+  let html = '';
+  EXH.forEach((e, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = 80 + col*colW + 4;
+    const y = 200 + row*42;
+    if (y > 590) return;
+    const w = colW - 6, h = 38;
+    const fill = e.t==='gold'?'rgba(255,214,10,0.55)':(e.t==='silver'?'rgba(186,186,191,0.4)':'rgba(255,159,10,0.28)');
+    const txt = e.t==='gold' ? '#000' : '#fff';
+    html += `<g><rect class="booth-rect" data-id="${i}" x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="${fill}" stroke="rgba(255,255,255,0.1)"><title>${e.n} · Monter ${e.b}</title></rect><text x="${x+w/2}" y="${y+h/2+3}" fill="${txt}" font-size="8" text-anchor="middle" font-family="-apple-system" font-weight="600" pointer-events="none">${e.n.length>14?e.n.slice(0,12)+'…':e.n}</text></g>`;
   });
-});
+  layer.innerHTML = html;
+  layer.querySelectorAll('rect').forEach(r => r.addEventListener('click', () => {
+    const e = EXH[+r.dataset.id];
+    document.getElementById('exq').value = e.n;
+    activeQ = e.n.toLowerCase();
+    renderEx();
+    document.querySelector('.exhibitors').scrollIntoView({behavior:'smooth', block:'start'});
+  }));
+}
+laySvg();
+
+// Hall search → filter SVG + dropdown
+const hallq = document.getElementById('hallq');
+const hsr = document.getElementById('hsr');
+function searchHall(q){
+  q = q.toLowerCase().trim();
+  layer.querySelectorAll('rect').forEach(r => r.classList.remove('highlight'));
+  if (!q){ hsr.classList.remove('open'); return; }
+  const matches = EXH.map((e,i)=>({e,i})).filter(x => x.e.n.toLowerCase().includes(q)).slice(0,12);
+  if (!matches.length){ hsr.innerHTML = '<div class="hsr-item"><span class="hsr-name" style="color:var(--text-3)">Inga träffar</span></div>'; hsr.classList.add('open'); return; }
+  matches.forEach(({i}) => { const r = layer.querySelector(`rect[data-id="${i}"]`); if (r) r.classList.add('highlight'); });
+  hsr.innerHTML = matches.map(({e,i}) => `<div class="hsr-item" data-i="${i}"><span class="hsr-name">${e.n}</span><span class="hsr-booth">Monter ${e.b}</span></div>`).join('');
+  hsr.classList.add('open');
+  hsr.querySelectorAll('.hsr-item').forEach(it => it.addEventListener('click', () => {
+    const i = +it.dataset.i; if (isNaN(i)) return;
+    hallq.value = EXH[i].n; searchHall(EXH[i].n);
+  }));
+}
+hallq.addEventListener('input', e => searchHall(e.target.value));
+hallq.addEventListener('focus', e => { if (e.target.value) searchHall(e.target.value); });
+document.addEventListener('click', e => { if (!hallq.parentElement.contains(e.target)) hsr.classList.remove('open'); });
+
+// Exhibitor list filter
+let activeC = 'all', activeQ = '';
+function renderEx(){
+  const filt = EXH.filter(e => (activeC==='all' || e.t===activeC) && (!activeQ || e.n.toLowerCase().includes(activeQ)));
+  document.getElementById('exh').innerHTML = filt.map(e => `
+    <a class="ex-card" href="${e.u}" target="_blank" rel="noopener" style="--c1:${e.c1};--c2:${e.c2}">
+      <div class="ex-logo">${e.a}</div>
+      <div class="ex-tier ${e.t}">${TIER_LABEL[e.t]}</div>
+      <div class="ex-name">${e.n}</div>
+      <div class="ex-booth">Monter ${e.b}</div>
+      <div class="ex-link">Besök hemsida →</div>
+    </a>`).join('') || '<div style="grid-column:1/-1;text-align:center;color:var(--text-3);padding:60px;">Inga utställare matchar.</div>';
+}
+document.querySelectorAll('#cats .cat').forEach(c => c.addEventListener('click', () => {
+  document.querySelectorAll('#cats .cat').forEach(x => x.classList.remove('active'));
+  c.classList.add('active'); activeC = c.dataset.cat; renderEx();
+}));
+document.getElementById('exq').addEventListener('input', e => { activeQ = e.target.value.toLowerCase().trim(); renderEx(); });
 renderEx();
 </script>
-
 </body>
 </html>
