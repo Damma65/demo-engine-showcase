@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Mässappen · Energimässan 2027 · Personlig agenda, MässMatch & wayfinder</title>
+<meta name="description" content="Ladda ner mässappen för Energimässan 2027 — personlig kalender, MässMatch, wayfinder, mobilbiljett och push-notiser för Stora scenens keynotes." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="/site/massappen.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .page-hero{ padding:140px 32px 40px; max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 380px; gap:60px; align-items:center; }
+  @media(max-width:1000px){ .page-hero{ grid-template-columns:1fr; padding-top:120px; } }
+  .page-eyebrow{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--indigo-2); font-weight:700; }
+  .page-h1{ margin-top:14px; font-size:clamp(48px,7vw,96px); font-weight:700; letter-spacing:-.045em; line-height:.95;
+    background:linear-gradient(180deg,#FFF,#BABABF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-h1 .grad{ background:linear-gradient(135deg,#5E5CE6,#64D2FF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-sub{ margin:24px 0 32px; font-size:18px; color:var(--text-2); line-height:1.5; max-width:520px; }
+  .stores{ display:flex; gap:12px; flex-wrap:wrap; }
+  .store{ display:flex; align-items:center; gap:12px; padding:12px 22px; background:var(--text); color:#000; border-radius:14px; text-decoration:none; font-weight:600; }
+  .store .lbl{ font-size:10px; opacity:.7; display:block; letter-spacing:.05em; text-transform:uppercase; }
+  .store .nm{ font-size:16px; font-weight:700; }
+  .store.dark{ background:rgba(255,255,255,0.06); color:var(--text); border:1px solid var(--stroke-2); }
+  .qr-card{ padding:28px; border-radius:24px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke-2); text-align:center; }
+  .qr-card .qr{ width:220px; height:220px; margin:0 auto; background:white; padding:14px; border-radius:14px; display:grid; place-items:center; }
+  .qr-card .qr svg{ width:100%; height:100%; }
+  .qr-card .lbl{ margin-top:14px; font-size:13px; color:var(--text-3); }
+  .qr-card .nm{ margin-top:4px; font-size:15px; font-weight:600; }
+
+  .features{ max-width:1280px; margin:80px auto; padding:0 32px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media(max-width:900px){ .features{ grid-template-columns:1fr; } }
+  .ft{ padding:28px; border-radius:20px; background:rgba(255,255,255,0.03); border:1px solid var(--stroke); }
+  .ft .ico{ width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,var(--c1),var(--c2)); display:grid; place-items:center; font-size:22px; }
+  .ft h3{ margin-top:18px; font-size:20px; font-weight:600; letter-spacing:-.018em; }
+  .ft p{ margin-top:10px; font-size:14px; color:var(--text-2); line-height:1.6; }
+
+  .phones{ max-width:1280px; margin:80px auto; padding:0 32px; display:grid; grid-template-columns:repeat(3,1fr); gap:32px; align-items:end; }
+  @media(max-width:900px){ .phones{ grid-template-columns:1fr; } }
+  .phone{ aspect-ratio:9/19; border-radius:42px; background:linear-gradient(180deg,#1c1c1f,#0a0a0c); border:8px solid #2a2a2e; padding:18px; box-shadow:0 30px 80px -20px rgba(0,0,0,0.7); position:relative; overflow:hidden; }
+  .phone::before{ content:""; position:absolute; top:8px; left:50%; transform:translateX(-50%); width:80px; height:18px; background:#000; border-radius:100px; z-index:2; }
+  .phone-inner{ height:100%; padding-top:30px; display:flex; flex-direction:column; gap:10px; }
+  .ph-h{ font-size:11px; color:var(--text-3); letter-spacing:.1em; text-transform:uppercase; }
+  .ph-t{ font-size:20px; font-weight:700; letter-spacing:-.02em; }
+  .ph-card{ padding:12px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--stroke); font-size:11px; }
+  .ph-card b{ font-size:12.5px; }
+  .ph-card .meta{ color:var(--text-3); margin-top:4px; font-size:10px; }
+  .ph-pill{ display:inline-block; padding:2px 8px; border-radius:100px; font-size:9px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-bottom:4px; }
+  .ph-pill.kn{ background:#FFD60A; color:#000; }
+  .ph-pill.ai{ background:rgba(94,92,230,0.3); color:#B0AEFF; }
+  .phone-cap{ text-align:center; margin-top:18px; font-size:12px; color:var(--text-3); letter-spacing:.06em; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span></a>
+  <nav class="nav-links"><a href="index.html">Startsida</a><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="utstallning.html">Utställning</a><a href="bli-utstallare.html">Bli utställare</a><a href="index.html#biljetter">Biljetter</a></nav>
+  <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
+</div></header>
+
+<section class="page-hero">
+  <div>
+    <div class="page-eyebrow">★ Ny version 2027</div>
+    <h1 class="page-h1">Hela mässan i<br/><span class="grad">din ficka.</span></h1>
+    <p class="page-sub">Mobilbiljett, personlig kalender, MässMatch, wayfinder och push-notiser för Stora scenens keynotes — allt i en app. Nedladdad av 11 800 besökare 2026.</p>
+    <div class="stores">
+      <a class="store" href="#"><span style="font-size:24px">🍎</span><span><span class="lbl">Ladda ner i</span><span class="nm">App Store</span></span></a>
+      <a class="store dark" href="#"><span style="font-size:24px">▶</span><span><span class="lbl">Hämta från</span><span class="nm">Google Play</span></span></a>
+    </div>
+  </div>
+  <div class="qr-card">
+    <div class="qr">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <rect width="100" height="100" fill="white"/>
+        <g fill="black">
+          <rect x="0" y="0" width="28" height="28"/><rect x="4" y="4" width="20" height="20" fill="white"/><rect x="8" y="8" width="12" height="12"/>
+          <rect x="72" y="0" width="28" height="28"/><rect x="76" y="4" width="20" height="20" fill="white"/><rect x="80" y="8" width="12" height="12"/>
+          <rect x="0" y="72" width="28" height="28"/><rect x="4" y="76" width="20" height="20" fill="white"/><rect x="8" y="80" width="12" height="12"/>
+          <rect x="32" y="4" width="4" height="4"/><rect x="40" y="4" width="4" height="4"/><rect x="48" y="4" width="8" height="4"/><rect x="60" y="4" width="4" height="4"/>
+          <rect x="32" y="12" width="8" height="4"/><rect x="44" y="12" width="4" height="4"/><rect x="52" y="12" width="4" height="4"/><rect x="60" y="12" width="8" height="4"/>
+          <rect x="32" y="20" width="4" height="4"/><rect x="40" y="20" width="8" height="4"/><rect x="52" y="20" width="4" height="4"/><rect x="64" y="20" width="4" height="4"/>
+          <rect x="4" y="32" width="4" height="4"/><rect x="12" y="32" width="8" height="4"/><rect x="24" y="32" width="4" height="4"/><rect x="32" y="32" width="4" height="4"/><rect x="40" y="32" width="4" height="4"/><rect x="48" y="32" width="8" height="4"/><rect x="60" y="32" width="4" height="4"/><rect x="72" y="32" width="4" height="4"/><rect x="80" y="32" width="8" height="4"/><rect x="92" y="32" width="4" height="4"/>
+          <rect x="0" y="40" width="4" height="4"/><rect x="8" y="40" width="4" height="4"/><rect x="16" y="40" width="8" height="4"/><rect x="28" y="40" width="4" height="4"/><rect x="36" y="40" width="4" height="4"/><rect x="44" y="40" width="4" height="4"/><rect x="52" y="40" width="8" height="4"/><rect x="64" y="40" width="4" height="4"/><rect x="72" y="40" width="8" height="4"/><rect x="84" y="40" width="4" height="4"/><rect x="92" y="40" width="4" height="4"/>
+          <rect x="4" y="48" width="4" height="4"/><rect x="12" y="48" width="4" height="4"/><rect x="20" y="48" width="8" height="4"/><rect x="32" y="48" width="4" height="4"/><rect x="40" y="48" width="8" height="4"/><rect x="52" y="48" width="4" height="4"/><rect x="60" y="48" width="8" height="4"/><rect x="72" y="48" width="4" height="4"/><rect x="80" y="48" width="4" height="4"/><rect x="88" y="48" width="8" height="4"/>
+          <rect x="0" y="56" width="8" height="4"/><rect x="12" y="56" width="4" height="4"/><rect x="24" y="56" width="4" height="4"/><rect x="32" y="56" width="8" height="4"/><rect x="44" y="56" width="4" height="4"/><rect x="52" y="56" width="4" height="4"/><rect x="60" y="56" width="4" height="4"/><rect x="68" y="56" width="8" height="4"/><rect x="80" y="56" width="4" height="4"/><rect x="88" y="56" width="4" height="4"/>
+          <rect x="4" y="64" width="4" height="4"/><rect x="12" y="64" width="8" height="4"/><rect x="24" y="64" width="4" height="4"/><rect x="32" y="64" width="4" height="4"/><rect x="40" y="64" width="4" height="4"/><rect x="48" y="64" width="8" height="4"/><rect x="60" y="64" width="4" height="4"/><rect x="68" y="64" width="4" height="4"/><rect x="76" y="64" width="4" height="4"/><rect x="84" y="64" width="8" height="4"/>
+          <rect x="32" y="76" width="4" height="4"/><rect x="40" y="76" width="8" height="4"/><rect x="52" y="76" width="4" height="4"/><rect x="60" y="76" width="4" height="4"/><rect x="68" y="76" width="4" height="4"/><rect x="76" y="76" width="8" height="4"/><rect x="88" y="76" width="4" height="4"/>
+          <rect x="32" y="84" width="8" height="4"/><rect x="44" y="84" width="4" height="4"/><rect x="52" y="84" width="8" height="4"/><rect x="64" y="84" width="4" height="4"/><rect x="72" y="84" width="4" height="4"/><rect x="80" y="84" width="4" height="4"/><rect x="88" y="84" width="4" height="4"/>
+          <rect x="32" y="92" width="4" height="4"/><rect x="40" y="92" width="4" height="4"/><rect x="48" y="92" width="4" height="4"/><rect x="56" y="92" width="8" height="4"/><rect x="68" y="92" width="4" height="4"/><rect x="76" y="92" width="8" height="4"/><rect x="92" y="92" width="4" height="4"/>
+        </g>
+      </svg>
+    </div>
+    <div class="lbl">Skanna med kameran</div>
+    <div class="nm">energimassan.app</div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="ft"><div class="ico" style="--c1:#5E5CE6;--c2:#64D2FF">📅</div><h3>Personlig kalender</h3><p>Markera sessioner — appen bygger din agenda och påminner 10 min före start.</p></div>
+  <div class="ft"><div class="ico" style="--c1:#30D158;--c2:#64D2FF">🤝</div><h3>MässMatch &amp; mässdejting</h3><p>AI matchar dig med 5 personer per dag baserat på roll, intresse och mål.</p></div>
+  <div class="ft"><div class="ico" style="--c1:#FF9F0A;--c2:#FF375F">🗺️</div><h3>Wayfinder</h3><p>Hitta vilken som helst utställare på sekunder — pinpoint på hallkartan.</p></div>
+  <div class="ft"><div class="ico" style="--c1:#FFD60A;--c2:#FF9500">🎫</div><h3>Mobilbiljett</h3><p>Ditt biljett-QR i Apple/Google Wallet. Funkar offline vid entrén.</p></div>
+  <div class="ft"><div class="ico" style="--c1:#BF5AF2;--c2:#5E5CE6">🔔</div><h3>Push-notiser</h3><p>Vi vibrerar när din keynote börjar och vid Stora scenens prisutdelningar.</p></div>
+  <div class="ft"><div class="ico" style="--c1:#0A84FF;--c2:#30D158">📇</div><h3>Skanna &amp; spara</h3><p>Skanna utställarbadge eller produkt-QR och få info direkt till mejl efter mässan.</p></div>
+</section>
+
+<section class="phones">
+  <div>
+    <div class="phone"><div class="phone-inner">
+      <div class="ph-h">Tor 20 maj · 09:30</div>
+      <div class="ph-t">Min kalender</div>
+      <div class="ph-card"><span class="ph-pill kn">Keynote</span><br/><b>Peter Carlsson — efter Northvolt</b><div class="meta">Stora scenen · 45 min</div></div>
+      <div class="ph-card"><span class="ph-pill ai">AI-Zonen</span><br/><b>Energi-LLM:er live</b><div class="meta">11:00 · 5 startups</div></div>
+      <div class="ph-card"><b>Lunch-möte: Vattenfall</b><div class="meta">12:30 · Lounge B · MässMatch</div></div>
+    </div></div>
+    <div class="phone-cap">Personlig kalender</div>
+  </div>
+  <div>
+    <div class="phone"><div class="phone-inner">
+      <div class="ph-h">MässMatch · 5 nya</div>
+      <div class="ph-t">För dig idag</div>
+      <div class="ph-card"><b>Anna Bergström</b><div class="meta">Strateg · Vattenfall · 96% match</div></div>
+      <div class="ph-card"><b>Erik Lundström</b><div class="meta">Hållb.chef · Schneider · 91% match</div></div>
+      <div class="ph-card"><b>Mats Lindelöw</b><div class="meta">VD · Qurrent · 88% match</div></div>
+      <div style="margin-top:auto;padding:10px;background:var(--green-2);color:#001a0e;border-radius:10px;text-align:center;font-size:11px;font-weight:700;">Boka 15 min →</div>
+    </div></div>
+    <div class="phone-cap">MässMatch / mässdejting</div>
+  </div>
+  <div>
+    <div class="phone"><div class="phone-inner">
+      <div class="ph-h">Hall A · monter B14</div>
+      <div class="ph-t">Wayfinder</div>
+      <div style="flex:1;background:linear-gradient(135deg,rgba(94,92,230,0.2),rgba(48,209,88,0.15));border-radius:12px;display:grid;place-items:center;font-size:36px;">📍</div>
+      <div class="ph-card"><b>Vattenfall</b><div class="meta">42 m från dig · 30 sek gång</div></div>
+      <div style="padding:10px;background:rgba(255,255,255,0.08);border-radius:10px;text-align:center;font-size:11px;">Visa rutt på karta →</div>
+    </div></div>
+    <div class="phone-cap">Wayfinder &amp; mobilbiljett</div>
+  </div>
+</section>
+
+<footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="program.html">Program</a><a href="utstallning.html">Utställning</a><a href="faq.html">FAQ</a></div></div></footer>
+</body>
+</html>
