@@ -620,11 +620,6 @@
   /* Fokusområden — samma look som "Hitta rätt spår", men i grönt/indigo. */
   .focus{
     margin-top: 60px;
-    padding: 22px 20px 24px;
-    border-radius: 24px;
-    border: 1px solid rgba(48,209,88,0.18);
-    background: linear-gradient(180deg, rgba(20,28,22,0.85) 0%, rgba(8,14,10,0.92) 100%);
-    box-shadow: 0 30px 80px -30px rgba(48,209,88,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
   }
   @media (max-width: 980px){ .focus{ grid-template-columns: repeat(2, 1fr); } }
@@ -1995,7 +1990,7 @@
     </div>
 
     <div class="hero-cta">
-      <a href="checkout.html" class="btn btn-primary">Hämta kostnadsfri biljett <svg><use href="#i-arrow"/></svg></a>
+      <a href="checkout.html?ticket=expo" class="btn btn-primary">Hämta kostnadsfri biljett <svg><use href="#i-arrow"/></svg></a>
       <a href="program.html" class="btn btn-secondary"><svg><use href="#i-play"/></svg> Se programmet</a>
     </div>
   </div>
@@ -2317,7 +2312,7 @@
         <p class="app-sub">Hela mässan i fickan: din kalender, hallplan, talarprofiler, dejting-bokningar och biljett — allt i en app.</p>
 
         <div class="app-features">
-          <div class="app-feat">
+          <div class="app-feat" data-feat="kalender">
             <div class="app-feat-ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
             </div>
@@ -2327,7 +2322,7 @@
             </div>
           </div>
 
-          <div class="app-feat">
+          <div class="app-feat" data-feat="wayfinder">
             <div class="app-feat-ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
             </div>
@@ -2337,7 +2332,7 @@
             </div>
           </div>
 
-          <div class="app-feat">
+          <div class="app-feat" data-feat="match">
             <div class="app-feat-ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </div>
@@ -2347,7 +2342,7 @@
             </div>
           </div>
 
-          <div class="app-feat">
+          <div class="app-feat" data-feat="biljett">
             <div class="app-feat-ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/><path d="M7 15h.01M11 15h2"/></svg>
             </div>
@@ -2374,45 +2369,92 @@
         <div class="app-phone">
           <div class="app-phone-frame">
             <div class="app-phone-notch"></div>
-            <div class="app-phone-screen">
+            <div class="app-phone-screen" id="app-phone-screen">
               <div class="aps-status"><span>09:24</span><span class="aps-icons">●●● 5G ● 100%</span></div>
-              <div class="aps-head">
-                <div class="aps-day">Onsdag 19 maj</div>
-                <div class="aps-greeting">God morgon, Karin.</div>
-              </div>
-              <div class="aps-now">
-                <div class="aps-now-tag">PÅGÅR NU</div>
-                <div class="aps-now-h">Anna Borg · Vattenfalls plan 2030</div>
-                <div class="aps-now-meta">Stora scenen · 09:30 — 10:15</div>
-                <div class="aps-now-bar"><span></span></div>
-              </div>
-              <div class="aps-list-h">Nästa upp</div>
-              <div class="aps-row">
-                <div class="aps-time">11:00</div>
-                <div>
-                  <div class="aps-row-h">Jeff Sundheim — AI som energisparar ord</div>
-                  <div class="aps-row-d">AI-zonen · 30 min</div>
+              <div id="aps-view-kalender">
+                <div class="aps-head">
+                  <div class="aps-day">Onsdag 19 maj</div>
+                  <div class="aps-greeting">God morgon, Karin.</div>
                 </div>
-                <div class="aps-pin">●</div>
-              </div>
-              <div class="aps-row">
-                <div class="aps-time">11:20</div>
-                <div>
-                  <div class="aps-row-h">Mässdejting · Lars Bergström</div>
-                  <div class="aps-row-d">Sungrow · Mötespunkt B4</div>
+                <div class="aps-now">
+                  <div class="aps-now-tag">PÅGÅR NU</div>
+                  <div class="aps-now-h">Anna Borg · Vattenfalls plan 2030</div>
+                  <div class="aps-now-meta">Stora scenen · 09:30 — 10:15</div>
+                  <div class="aps-now-bar"><span></span></div>
                 </div>
-                <div class="aps-pin pink">●</div>
-              </div>
-              <div class="aps-row">
-                <div class="aps-time">13:00</div>
-                <div>
-                  <div class="aps-row-h">Lunch · Hall B</div>
-                  <div class="aps-row-d">Bordsbokad · 8 personer</div>
+                <div class="aps-list-h">Nästa upp</div>
+                <div class="aps-row">
+                  <div class="aps-time">11:00</div>
+                  <div>
+                    <div class="aps-row-h">Jeff Sundheim — AI som energisparar ord</div>
+                    <div class="aps-row-d">AI-zonen · 30 min</div>
+                  </div>
+                  <div class="aps-pin">●</div>
                 </div>
-                <div class="aps-pin orange">●</div>
+                <div class="aps-row">
+                  <div class="aps-time">11:20</div>
+                  <div>
+                    <div class="aps-row-h">Mässdejting · Lars Bergström</div>
+                    <div class="aps-row-d">Sungrow · Mötespunkt B4</div>
+                  </div>
+                  <div class="aps-pin pink">●</div>
+                </div>
+                <div class="aps-row">
+                  <div class="aps-time">13:00</div>
+                  <div>
+                    <div class="aps-row-h">Lunch · Hall B</div>
+                    <div class="aps-row-d">Bordsbokad · 8 personer</div>
+                  </div>
+                  <div class="aps-pin orange">●</div>
+                </div>
               </div>
-              <div class="aps-tabs">
-                <span>Idag</span><span>Karta</span><span>Match</span><span>Profil</span>
+              <div id="aps-view-wayfinder" style="display:none;">
+                <div class="aps-head">
+                  <div class="aps-day">Karta · Kistamässan</div>
+                  <div class="aps-greeting">Indoor wayfinding</div>
+                </div>
+                <div class="aps-now">
+                  <div class="aps-now-tag">DIN POSITION</div>
+                  <div class="aps-now-h">Hall B · Entré nord</div>
+                  <div class="aps-now-meta">2 min till Stora scenen</div>
+                </div>
+                <div class="aps-list-h">Föreslagen rutt</div>
+                <div class="aps-row"><div class="aps-time">→</div><div><div class="aps-row-h">Stora scenen</div><div class="aps-row-d">Hall A · 120 m</div></div><div class="aps-pin">●</div></div>
+                <div class="aps-row"><div class="aps-time">→</div><div><div class="aps-row-h">Sungrow B4</div><div class="aps-row-d">Hall B · 40 m</div></div><div class="aps-pin pink">●</div></div>
+                <div class="aps-row"><div class="aps-time">→</div><div><div class="aps-row-h">AI-zonen</div><div class="aps-row-d">Hall C · 80 m</div></div><div class="aps-pin orange">●</div></div>
+              </div>
+              <div id="aps-view-match" style="display:none;">
+                <div class="aps-head">
+                  <div class="aps-day">Mässdejting</div>
+                  <div class="aps-greeting">3 nya matcher</div>
+                </div>
+                <div class="aps-now">
+                  <div class="aps-now-tag">FÖREBOKAT 1-MOT-1</div>
+                  <div class="aps-now-h">Lars Bergström · Sungrow</div>
+                  <div class="aps-now-meta">11:20 · Mötespunkt B4</div>
+                </div>
+                <div class="aps-list-h">Förslag på möten</div>
+                <div class="aps-row"><div class="aps-time">14:00</div><div><div class="aps-row-h">Anna Werner · Hitachi Energy</div><div class="aps-row-d">95% match</div></div><div class="aps-pin">●</div></div>
+                <div class="aps-row"><div class="aps-time">15:30</div><div><div class="aps-row-h">Erik Sarnholm · TDG Yunet</div><div class="aps-row-d">88% match</div></div><div class="aps-pin pink">●</div></div>
+                <div class="aps-row"><div class="aps-time">16:15</div><div><div class="aps-row-h">Patrik Berkesten · Hitachi</div><div class="aps-row-d">82% match</div></div><div class="aps-pin orange">●</div></div>
+              </div>
+              <div id="aps-view-biljett" style="display:none;">
+                <div class="aps-head">
+                  <div class="aps-day">Din biljett</div>
+                  <div class="aps-greeting">Karin Lindberg</div>
+                </div>
+                <div style="margin:14px 16px; padding:18px; border-radius:14px; background:#fff; display:grid; place-items:center;">
+                  <div style="width:140px;height:140px;background:repeating-conic-gradient(#000 0% 25%, #fff 0% 50%) 50%/14px 14px; border-radius:6px;"></div>
+                  <div style="margin-top:10px; color:#000; font-weight:700; font-size:12px; letter-spacing:.1em;">EM27-9F4K-LB</div>
+                </div>
+                <div class="aps-now">
+                  <div class="aps-now-tag">KONFERENSPASS · 2 DAGAR</div>
+                  <div class="aps-now-h">19–20 maj 2027</div>
+                  <div class="aps-now-meta">Apple Wallet · Google Wallet</div>
+                </div>
+              </div>
+              <div class="aps-tabs" id="aps-tabs">
+                <span data-tab="kalender" class="active">Idag</span><span data-tab="wayfinder">Karta</span><span data-tab="match">Match</span><span data-tab="biljett">Profil</span>
               </div>
             </div>
           </div>
@@ -4401,6 +4443,31 @@
     btn.classList.toggle('added');
     btn.textContent = btn.classList.contains('added') ? '✓' : '+';
   });
+
+  // App preview tab/feature swap
+  (function(){
+    const views = ['kalender','wayfinder','match','biljett'];
+    function show(name){
+      views.forEach(v => {
+        const el = document.getElementById('aps-view-'+v);
+        if (el) el.style.display = (v===name) ? '' : 'none';
+      });
+      document.querySelectorAll('#aps-tabs span').forEach(s => {
+        s.classList.toggle('active', s.dataset.tab === name);
+      });
+      document.querySelectorAll('.app-feat[data-feat]').forEach(f => {
+        f.classList.toggle('is-active', f.dataset.feat === name);
+      });
+    }
+    document.querySelectorAll('.app-feat[data-feat]').forEach(f => {
+      f.style.cursor = 'pointer';
+      f.addEventListener('click', () => show(f.dataset.feat));
+    });
+    document.querySelectorAll('#aps-tabs span[data-tab]').forEach(s => {
+      s.style.cursor = 'pointer';
+      s.addEventListener('click', () => show(s.dataset.tab));
+    });
+  })();
 </script>
 
 </body>
