@@ -4443,6 +4443,31 @@
     btn.classList.toggle('added');
     btn.textContent = btn.classList.contains('added') ? '✓' : '+';
   });
+
+  // App preview tab/feature swap
+  (function(){
+    const views = ['kalender','wayfinder','match','biljett'];
+    function show(name){
+      views.forEach(v => {
+        const el = document.getElementById('aps-view-'+v);
+        if (el) el.style.display = (v===name) ? '' : 'none';
+      });
+      document.querySelectorAll('#aps-tabs span').forEach(s => {
+        s.classList.toggle('active', s.dataset.tab === name);
+      });
+      document.querySelectorAll('.app-feat[data-feat]').forEach(f => {
+        f.classList.toggle('is-active', f.dataset.feat === name);
+      });
+    }
+    document.querySelectorAll('.app-feat[data-feat]').forEach(f => {
+      f.style.cursor = 'pointer';
+      f.addEventListener('click', () => show(f.dataset.feat));
+    });
+    document.querySelectorAll('#aps-tabs span[data-tab]').forEach(s => {
+      s.style.cursor = 'pointer';
+      s.addEventListener('click', () => show(s.dataset.tab));
+    });
+  })();
 </script>
 
 </body>
