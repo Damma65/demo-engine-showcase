@@ -19,7 +19,7 @@
   .step-h.done .n::before{ content:"✓"; }
   .step-h.done .n .n-text{ display:none; }
 
-  .tickets{ margin-top: 18px; display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
+  .tickets{ margin-top: 18px; display:grid; grid-template-columns: repeat(2,1fr); gap:12px; }
   @media (max-width: 700px){ .tickets{ grid-template-columns: 1fr; } }
   .tk{
     padding: 22px 20px; border-radius: 18px;
@@ -137,14 +137,6 @@
             <li>Allt i Mässpass</li><li>Stora scenen + Konferens</li><li>Lunch båda dagarna</li><li>MässMatch (full)</li>
           </ul>
         </div>
-        <div class="tk" data-tk="vip" data-price="14500">
-          <span class="tk-tag">VIP</span>
-          <div class="tk-name">VIP &amp; Mingel</div>
-          <div class="tk-price">14 500 kr<span class="e">exkl. moms</span></div>
-          <ul class="tk-list">
-            <li>Allt i Konferens</li><li>Onsdagsmingel + middag</li><li>Investor Lounge</li><li>Skipline-incheckning</li>
-          </ul>
-        </div>
       </div>
     </div>
 
@@ -248,7 +240,7 @@
 </footer>
 
 <script>
-  const ticketNames = { mass: 'Mässpass', konf: 'Konferenspass', vip: 'VIP &amp; Mingel' };
+  const ticketNames = { mass: 'Mässpass', konf: 'Konferenspass' };
   function fmt(n){ return n.toLocaleString('sv-SE') + ' kr'; }
   function recalc(){
     const tk = document.querySelector('.tk.selected');
