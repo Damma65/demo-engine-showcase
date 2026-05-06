@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Sponsorer & partners · Energimässan 2027 · Logotypvägg per tier</title>
+<meta name="description" content="Tack till alla partners som möjliggör Energimässan 2027 — guldpartners, silverpartners, mediapartners och tematiska sponsorer." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="/site/sponsorer.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .page-hero{ padding:160px 32px 40px; text-align:center; }
+  .page-h1{ font-size:clamp(56px,8vw,112px); font-weight:700; letter-spacing:-.05em; line-height:.95;
+    background:linear-gradient(180deg,#FFF,#BABABF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-h1 .grad{ background:linear-gradient(135deg,#FFD60A,#FF9500); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-sub{ margin:28px auto 0; max-width:640px; font-size:18px; color:var(--text-2); }
+  .tier{ max-width:1280px; margin:60px auto; padding:0 32px; }
+  .tier h2{ font-size:14px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; padding-bottom:18px; border-bottom:1px solid var(--stroke); }
+  .tier.gold h2{ color:#FFD60A; }
+  .tier.silver h2{ color:#BABABF; }
+  .tier.bronze h2{ color:#FF9F0A; }
+  .tier.media h2{ color:#64D2FF; }
+  .wall{ margin-top:24px; display:grid; gap:14px; }
+  .gold .wall{ grid-template-columns:repeat(4,1fr); }
+  .silver .wall{ grid-template-columns:repeat(5,1fr); }
+  .bronze .wall, .media .wall{ grid-template-columns:repeat(6,1fr); }
+  .ltile{ aspect-ratio:16/9; border:1px solid var(--stroke); border-radius:14px; background:linear-gradient(135deg,var(--c1),var(--c2)); display:grid; place-items:center; color:white; font-weight:700; letter-spacing:-.02em; padding:14px; text-align:center; font-size:15px; transition:transform .2s; }
+  .ltile:hover{ transform:translateY(-3px); }
+  .gold .ltile{ font-size:20px; }
+  .cta{ max-width:900px; margin:80px auto 100px; padding:48px; border-radius:24px; background:linear-gradient(135deg, rgba(255,214,10,0.1), rgba(255,159,10,0.05)); border:1px solid rgba(255,214,10,0.3); text-align:center; }
+  .cta h2{ font-size:32px; font-weight:700; letter-spacing:-.025em; }
+  .cta p{ margin-top:12px; font-size:15px; color:var(--text-2); }
+  .cta a{ display:inline-block; margin-top:20px; padding:12px 26px; background:#FFD60A; color:#1a1300; border-radius:100px; font-weight:600; text-decoration:none; font-size:14px; }
+  @media(max-width:900px){ .gold .wall{ grid-template-columns:repeat(2,1fr); } .silver .wall{ grid-template-columns:repeat(3,1fr); } .bronze .wall,.media .wall{ grid-template-columns:repeat(3,1fr); } }
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span></a>
+  <nav class="nav-links"><a href="index.html">Startsida</a><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="utstallning.html">Utställning</a><a href="bli-utstallare.html">Bli utställare</a><a href="index.html#biljetter">Biljetter</a></nav>
+  <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
+</div></header>
+
+<section class="page-hero">
+  <h1 class="page-h1">Tack till våra<br/><span class="grad">partners.</span></h1>
+  <p class="page-sub">Tillsammans gör vi Nordens största energimässa möjlig. Vill ditt företag synas här 2027?</p>
+</section>
+
+<div class="tier gold"><h2>Guldpartners</h2>
+  <div class="wall" id="gold"></div>
+</div>
+<div class="tier silver"><h2>Silverpartners</h2>
+  <div class="wall" id="silver"></div>
+</div>
+<div class="tier bronze"><h2>Tematiska partners</h2>
+  <div class="wall" id="bronze"></div>
+</div>
+<div class="tier media"><h2>Media­partners</h2>
+  <div class="wall" id="media"></div>
+</div>
+
+<div class="cta">
+  <h2>Bli partner inför 2027</h2>
+  <p>Sponsorpaket från 95 000 kr. Räckvidd över 14 000 besökare och 50 000 i digital räckvidd.</p>
+  <a href="bli-utstallare.html">Se alla paket →</a>
+</div>
+
+<footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="utstallning.html">Utställare</a><a href="bli-utstallare.html">Bli utställare</a></div></div></footer>
+
+<script>
+const COLORS=[['#FFD60A','#FF9500'],['#0A84FF','#5E5CE6'],['#30D158','#0A84FF'],['#FF375F','#FF9500'],['#5E5CE6','#30D158'],['#64D2FF','#0A84FF'],['#BF5AF2','#5E5CE6'],['#FF9500','#FF375F'],['#30D158','#64D2FF'],['#FFD60A','#5E5CE6']];
+const GOLD=['Vattenfall','Hitachi Energy','Siemens Energy','Sungrow Nordics','TDG Yunet','Schneider Electric','Volvo Energy','Uniper'];
+const SILVER=['ABB','Fortum Optimizer','Steady Energy','Merus Power','Digpro','Westermo','Granitor Electro','Vinnergi','Nidec','Grundfos','Rittal','RISE','Svebio','Svensk Solenergi','InnoEnergy'];
+const BRONZE=['Cloudberry','Plexigrid','Truxel','Pinja','Renewcast','Liquid Wind','Wistbo','Qurrent','Solfolket','Kiwa Sweden','Mersen','Aire'];
+const MEDIA=['Branschaktuellt','Energipress','Nordic Live','Smart Energi','Energinyheter','PV Magazine'];
+function render(id, list){
+  document.getElementById(id).innerHTML = list.map((n,i)=>{ const [c1,c2]=COLORS[i%COLORS.length]; return `<div class="ltile" style="--c1:${c1};--c2:${c2}">${n}</div>`; }).join('');
+}
+render('gold',GOLD); render('silver',SILVER); render('bronze',BRONZE); render('media',MEDIA);
+</script>
+</body>
+</html>

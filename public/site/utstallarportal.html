@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Utställarportalen · Energimässan 2027 · Lead retrieval & checklista</title>
+<meta name="description" content="Mockup av utställarportalen — uppladdning av logotyp, montermaterial, lead retrieval, tidsplan och biljettkoder för dina kunder." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="/site/utstallarportal.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .page-hero{ padding:160px 32px 40px; text-align:center; }
+  .page-h1{ font-size:clamp(48px,7vw,96px); font-weight:700; letter-spacing:-.05em; line-height:.95;
+    background:linear-gradient(180deg,#FFF,#BABABF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-h1 .grad{ background:linear-gradient(135deg,#5E5CE6,#30D158); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-sub{ margin:24px auto 0; max-width:640px; font-size:17px; color:var(--text-2); }
+  .demo-badge{ display:inline-block; padding:6px 14px; background:rgba(255,159,10,0.15); color:#FF9F0A; border:1px solid rgba(255,159,10,0.3); border-radius:100px; font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; margin-bottom:24px; }
+
+  .portal{ max-width:1280px; margin:60px auto 100px; padding:0 32px; display:grid; grid-template-columns: 240px 1fr; gap:24px; }
+  .sidebar{ position:sticky; top:90px; align-self:start; padding:18px; background:rgba(255,255,255,0.03); border:1px solid var(--stroke); border-radius:18px; }
+  .sb-co{ padding:12px; background:rgba(48,209,88,0.08); border-radius:12px; margin-bottom:14px; }
+  .sb-co b{ display:block; font-size:13px; }
+  .sb-co span{ font-size:11px; color:var(--text-3); }
+  .sb-nav{ display:flex; flex-direction:column; gap:2px; }
+  .sb-nav a{ padding:10px 12px; border-radius:10px; color:var(--text-2); text-decoration:none; font-size:13px; font-weight:500; display:flex; align-items:center; justify-content:space-between; }
+  .sb-nav a:hover{ background:rgba(255,255,255,0.04); color:var(--text); }
+  .sb-nav a.active{ background:rgba(94,92,230,0.15); color:var(--indigo-2); }
+  .sb-nav .dot{ width:6px; height:6px; border-radius:50%; background:var(--green); }
+
+  .main{ display:flex; flex-direction:column; gap:24px; }
+  .panel{ padding:28px; border:1px solid var(--stroke); border-radius:20px; background:rgba(255,255,255,0.02); }
+  .panel h3{ font-size:20px; font-weight:600; letter-spacing:-.02em; }
+  .panel .lead{ font-size:13px; color:var(--text-3); margin-top:4px; }
+
+  .progress{ margin-top:18px; }
+  .progress-bar{ height:6px; background:rgba(255,255,255,0.06); border-radius:100px; overflow:hidden; }
+  .progress-bar i{ display:block; height:100%; width:62%; background:linear-gradient(90deg,#30D158,#64D2FF); }
+  .progress small{ display:block; margin-top:8px; font-size:12px; color:var(--text-3); }
+
+  .stats3{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+  .stat3{ padding:18px; border:1px solid var(--stroke); border-radius:14px; background:rgba(255,255,255,0.02); }
+  .stat3 b{ font-size:28px; font-weight:700; letter-spacing:-.02em; background:linear-gradient(135deg,#30D158,#64D2FF); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .stat3 span{ display:block; font-size:11px; color:var(--text-3); letter-spacing:.08em; text-transform:uppercase; margin-top:4px; }
+
+  .checklist{ margin-top:14px; }
+  .check{ display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--stroke); align-items:center; }
+  .check:first-child{ border-top:none; }
+  .check .box{ width:22px; height:22px; border-radius:7px; border:1.5px solid var(--stroke-2); flex-shrink:0; display:grid; place-items:center; }
+  .check.done .box{ background:var(--green); border-color:var(--green); color:#000; font-size:13px; font-weight:700; }
+  .check .body{ flex:1; }
+  .check .ttl{ font-size:14px; font-weight:500; }
+  .check .due{ font-size:11.5px; color:var(--text-3); margin-top:2px; }
+  .check.done .ttl{ text-decoration:line-through; color:var(--text-3); }
+
+  .leads{ margin-top:14px; display:grid; gap:8px; }
+  .lead-row{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 80px; gap:12px; padding:14px; background:rgba(255,255,255,0.02); border:1px solid var(--stroke); border-radius:12px; align-items:center; font-size:13px; }
+  .lead-row .nm{ font-weight:500; }
+  .lead-row .co{ color:var(--text-2); }
+  .lead-row .ti{ color:var(--text-3); font-size:12px; }
+  .lead-row .sc{ font-weight:700; color:var(--green-2); text-align:right; }
+
+  @media(max-width:900px){ .portal{ grid-template-columns:1fr; } .sidebar{ position:static; } .stats3{ grid-template-columns:1fr; } .lead-row{ grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span></a>
+  <nav class="nav-links"><a href="index.html">Startsida</a><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="utstallning.html">Utställning</a><a href="bli-utstallare.html">Bli utställare</a><a href="index.html#biljetter">Biljetter</a></nav>
+  <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
+</div></header>
+
+<section class="page-hero">
+  <span class="demo-badge">Demo · interaktiv mockup</span>
+  <h1 class="page-h1">Utställar­<br/><span class="grad">portalen.</span></h1>
+  <p class="page-sub">Här hanterar du allt som rör din monter — leads, material, biljetter och checklistor. Live från 14 dagar före mässan.</p>
+</section>
+
+<div class="portal">
+  <aside class="sidebar">
+    <div class="sb-co"><b>Vattenfall AB</b><span>Guldpartner · Monter A:01</span></div>
+    <div class="sb-nav">
+      <a href="#" class="active">Översikt <span class="dot"></span></a>
+      <a href="#">Företagsprofil</a>
+      <a href="#">Monter & material</a>
+      <a href="#">Lead retrieval <span class="dot"></span></a>
+      <a href="#">Biljetter (35 av 50)</a>
+      <a href="#">Möten (MässMatch)</a>
+      <a href="#">Logistik & teknik</a>
+      <a href="#">Faktura & avtal</a>
+    </div>
+  </aside>
+
+  <div class="main">
+
+    <div class="panel">
+      <h3>Förberedelse — 62% klart</h3>
+      <div class="lead">Mässan öppnar om 12 dagar. 4 punkter återstår.</div>
+      <div class="progress"><div class="progress-bar"><i></i></div><small>5 av 8 punkter avklarade</small></div>
+    </div>
+
+    <div class="panel">
+      <h3>Live från mässan</h3>
+      <div class="stats3">
+        <div class="stat3"><b>0</b><span>Leads scannade</span></div>
+        <div class="stat3"><b>14</b><span>Bokade möten</span></div>
+        <div class="stat3"><b>3</b><span>Demo-tider kvar</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Checklista inför mässan</h3>
+      <div class="checklist">
+        <div class="check done"><div class="box">✓</div><div class="body"><div class="ttl">Avtal signerat</div><div class="due">Klart 12 mars</div></div></div>
+        <div class="check done"><div class="box">✓</div><div class="body"><div class="ttl">Företagsprofil & logotyp</div><div class="due">Klart 28 mars</div></div></div>
+        <div class="check done"><div class="box">✓</div><div class="body"><div class="ttl">Faktura betald</div><div class="due">Klart 2 april</div></div></div>
+        <div class="check done"><div class="box">✓</div><div class="body"><div class="ttl">Biljetter distribuerade (35/50)</div><div class="due">Pågående</div></div></div>
+        <div class="check done"><div class="box">✓</div><div class="body"><div class="ttl">El, internet & möbler beställda</div><div class="due">Klart 25 april</div></div></div>
+        <div class="check"><div class="box"></div><div class="body"><div class="ttl">Ladda upp pitchmaterial till AI-rådgivningen</div><div class="due">Senast 5 maj</div></div></div>
+        <div class="check"><div class="box"></div><div class="body"><div class="ttl">Aktivera lead retrieval-app för 6 monter­värdar</div><div class="due">Senast 15 maj</div></div></div>
+        <div class="check"><div class="box"></div><div class="body"><div class="ttl">Bekräfta MässMatch-profil & nyckelord</div><div class="due">Senast 12 maj</div></div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Senaste leads · live preview</h3>
+      <div class="lead">Visas live under mässan när dina värdar scannar QR.</div>
+      <div class="leads">
+        <div class="lead-row"><div><div class="nm">Anna Lindqvist</div><div class="ti">Driftchef</div></div><div class="co">Stockholm Exergi</div><div>anna.l@exergi.se</div><div class="sc">★★★★</div></div>
+        <div class="lead-row"><div><div class="nm">Per Sundström</div><div class="ti">Inköp</div></div><div class="co">Boliden</div><div>p.sundstrom@boliden.com</div><div class="sc">★★★</div></div>
+        <div class="lead-row" style="opacity:.45"><div><div class="nm">— väntar på första scan —</div><div class="ti"></div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="bli-utstallare.html">Bli utställare</a><a href="utstallning.html">Utställare</a><a href="sponsorer.html">Sponsorer</a></div></div></footer>
+</body>
+</html>
