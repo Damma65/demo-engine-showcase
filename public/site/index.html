@@ -3693,6 +3693,23 @@
     tick(); setInterval(tick, 1000);
   })();
 
+  // Early bird countdown to 31 March 2027
+  (function(){
+    const ebTarget = new Date('2027-03-31T23:59:59+02:00').getTime();
+    const el = document.getElementById('eb-cd');
+    const banner = document.getElementById('eb-banner');
+    if (!el) return;
+    function tick(){
+      const diff = ebTarget - Date.now();
+      if (diff <= 0){ if (banner) banner.style.display='none'; return; }
+      const d = Math.floor(diff/86400000);
+      const h = Math.floor((diff%86400000)/3600000);
+      const m = Math.floor((diff%3600000)/60000);
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }
+    tick(); setInterval(tick, 30000);
+  })();
+
   // Personlig agenda — multi-axis curering: roll × bransch × fokus × mål → scored sessions + min plan
   (function(){
     const role = document.getElementById('ag-role');
