@@ -2,8 +2,11 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8" />
-<title>Program · Energimässan 2027</title>
+<title>Program · Energimässan 2027 · Två dagar, fyra scener</title>
+<meta name="description" content="Hela programmet för Energimässan 2027 — 120+ sessioner på fyra scener, 19–20 maj på Kistamässan. Filtrera på dag, scen och sök på talare." />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="/site/program.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="shared.css" />
 <style>
   .page-hero{ padding: 160px 32px 40px; text-align:center; position:relative; overflow:hidden; }
@@ -210,6 +213,12 @@
     <span class="pill"><span class="pp"></span> Betalseminarium (kräver konferenspass)</span>
     <span class="pill"><span class="badge op" style="margin:0">Öppen</span> Ingår i mässpass</span>
   </div>
+  <div style="max-width:520px;margin:22px auto 0;padding:0 24px;">
+    <div style="position:relative;">
+      <svg style="position:absolute;left:16px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--text-3)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="psearch" type="text" placeholder="Sök session, talare eller ämne…" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--stroke-2);border-radius:100px;padding:12px 18px 12px 44px;color:var(--text);font-size:14px;outline:none;font-family:inherit;" />
+    </div>
+  </div>
 </div>
 
 <div class="schedule" id="schedule"></div>
@@ -286,13 +295,20 @@ const STAGE_CLS = { stora:'stage-stora', ai:'stage-ai', drift:'stage-drift', tec
 
 let activeDay = 1;
 let activeStage = 'all';
+let activeQuery = '';
 
 function render(){
   const sched = document.getElementById('schedule');
   const blocks = PROGRAM[activeDay];
+  const q = activeQuery;
   let html = '';
   blocks.forEach(([time, label, sessions]) => {
-    const filtered = sessions.filter(s => activeStage === 'all' || s.stage === activeStage);
+    const filtered = sessions.filter(s => {
+      const stageOk = activeStage === 'all' || s.stage === activeStage;
+      const text = (s.title+' '+(s.desc||'')+' '+s.speakers.map(x=>x[1]).join(' ')).toLowerCase();
+      const qOk = !q || text.includes(q);
+      return stageOk && qOk;
+    });
     if (filtered.length === 0) return;
     html += `<div class="time-row">
       <div>
@@ -334,7 +350,8 @@ document.querySelectorAll('#days .day-tab').forEach(b => {
     document.querySelectorAll('#days .day-tab').forEach(x => x.classList.remove('active'));
     b.classList.add('active');
     activeDay = +b.dataset.day;
-    render();
+document.getElementById('psearch').addEventListener('input', e => { activeQuery = e.target.value.toLowerCase().trim(); render(); });
+render();
   });
 });
 document.querySelectorAll('#stages .sf').forEach(b => {

@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Nordic Live Expo//Energimässan 2027//SV
+BEGIN:VEVENT
+UID:energimassan-2027@nordiclive.se
+DTSTAMP:20260101T000000Z
+DTSTART:20270519T070000Z
+DTEND:20270520T150000Z
+SUMMARY:Energimässan 2027
+DESCRIPTION:Nordens största energimässa. 200+ talare\, 250+ utställare\, AI-Zonen och Sveriges Energiforum.
+LOCATION:Kistamässan\, Arne Beurlings Torg 5\, 164 40 Kista
+URL:/site/index.html
+END:VEVENT
+END:VCALENDAR
