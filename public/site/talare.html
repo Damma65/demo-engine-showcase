@@ -310,9 +310,13 @@
   const grid = document.getElementById('grid');
   const countLine = document.getElementById('countline');
 
-  function render(filterCat, search){
+  function render(filterCat, search, sort){
     const q = (search || '').toLowerCase().trim();
     let activeCount = 0;
+    let list = SPEAKERS.map((s,i)=>({s,i}));
+    if (sort === 'name') list.sort((a,b)=>a.s[0].localeCompare(b.s[0],'sv'));
+    else if (sort === 'org') list.sort((a,b)=>a.s[2].localeCompare(b.s[2],'sv'));
+    else if (sort === 'cat') list.sort((a,b)=>a.s[3].localeCompare(b.s[3]));
 
     const REAL = {
       'anna borg':'talare/photos/anna-borg.webp',
