@@ -217,13 +217,13 @@
     text-transform:uppercase; color: var(--text-3); font-weight:600;
   }
   /* hero countdown */
-  .hero-countdown{ margin-bottom: 28px; padding: 18px 0 22px; border-bottom: 1px solid var(--stroke); display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .hc-label{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
-  .hc-blocks{ display:flex; gap: 22px; }
-  .hc-block{ text-align:center; min-width: 64px; }
-  .hc-num{ font-size: 38px; font-weight:600; letter-spacing:-.04em; line-height:1; background: linear-gradient(180deg, #FFFFFF, #A1A1A6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent; font-variant-numeric: tabular-nums; }
-  .hc-lbl{ margin-top:6px; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
-  @media (max-width: 640px){ .hc-num{ font-size: 28px; } .hc-block{ min-width: 50px; } .hc-blocks{ gap: 12px; } }
+  .hero-countdown{ margin: 0 auto 36px; padding: 22px 0 28px; border-bottom: 1px solid var(--stroke); display: flex; flex-direction: column; align-items: center; gap: 18px; max-width: 760px; }
+  .hc-label{ font-size:11.5px; letter-spacing:.22em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
+  .hc-blocks{ display:flex; gap: 36px; align-items: flex-end; }
+  .hc-block{ text-align:center; min-width: 92px; }
+  .hc-num{ font-size: 72px; font-weight:600; letter-spacing:-.045em; line-height:1; background: linear-gradient(180deg, #FFFFFF, #A1A1A6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent; font-variant-numeric: tabular-nums; }
+  .hc-lbl{ margin-top:10px; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
+  @media (max-width: 640px){ .hc-num{ font-size: 44px; } .hc-block{ min-width: 64px; } .hc-blocks{ gap: 18px; } }
 
   /* ============ STATS ============ */
   .stats{
