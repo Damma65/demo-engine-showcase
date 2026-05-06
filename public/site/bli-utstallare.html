@@ -270,7 +270,7 @@
     background: linear-gradient(180deg, rgba(20,22,28,0.8), rgba(12,12,14,0.9));
     border: 1px solid rgba(255,255,255,0.07);
     transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    display:flex; flex-direction:column; min-height: 290px; overflow:hidden;
+    display:flex; flex-direction:column; min-height: 380px; overflow:hidden; cursor:pointer;
   }
   .mp-card::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.0; transition: opacity .3s ease;
     background: radial-gradient(420px 200px at 50% -10%, currentColor, transparent 60%); }
@@ -291,12 +291,13 @@
   .mp-booth-img{ display:block; margin: 6px auto 10px; object-fit: contain; object-position: center bottom;
     filter: drop-shadow(0 18px 30px rgba(0,0,0,0.6)); transition: transform .35s ease; }
   .mp-card:hover .mp-booth-img{ transform: translateY(-3px) scale(1.03); }
-  .mp-card.is-selected{ border-color: rgba(255,159,10,.55) !important; box-shadow: 0 24px 60px -28px rgba(255,159,10,.45) !important; }
-  .mp-card .mp-pick{ position:absolute; top: 14px; right: 14px; width: 22px; height: 22px; border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.4); display:grid; place-items:center; transition: all .2s; }
-  .mp-card.is-selected .mp-pick{ background: var(--orange); border-color: var(--orange); }
-  .mp-card .mp-pick svg{ width: 12px; height: 12px; color: #0a0a0c; opacity: 0; transition: opacity .2s; }
-  .mp-card.is-selected .mp-pick svg{ opacity: 1; }
+  .mp-card.is-selected{ border-color: rgba(48,209,88,.6) !important; box-shadow: 0 24px 60px -28px rgba(48,209,88,.45) !important; }
+  .mp-card .mp-pick, .mp-addon .mp-pick, .mb-tile .mb-pick{ position:absolute; top: 14px; right: 14px; width: 16px; height: 16px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.28); background: transparent; transition: all .2s; box-shadow: inset 0 0 0 0 transparent; }
+  .mp-card.is-selected .mp-pick, .mp-addon.is-selected .mp-pick, .mb-tile.is-selected .mb-pick{
+    border-color: #30D158; box-shadow: inset 0 0 0 4px #30D158;
+  }
+  .mp-card .mp-pick svg, .mp-addon .mp-pick svg, .mb-tile .mb-pick svg{ display:none; }
   .mp-incl{ margin-top:auto; padding-top: 12px; border-top: 1px dashed rgba(255,255,255,0.08); display:flex; flex-wrap:wrap; gap: 6px 10px; }
   .mp-incl span{ display:inline-flex; align-items:center; gap:5px; font-size: 10.5px; color: var(--text-3); font-weight:500; }
   .mp-incl span svg{ width:11px; height:11px; opacity:.7; }
@@ -371,7 +372,7 @@
           <div class="mp-num">1</div><div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
           <div class="mp-size">9<sub>m²</sub></div>
           <div class="mp-price">48 500 SEK<small>exkl. moms</small></div>
-          <img class="mp-booth-img" src="assets/booth-9.png" alt="9 m² monter" style="height:90px;width:auto;max-width:90%;" loading="lazy"/>
+          <img class="mp-booth-img" src="assets/booth-9.png" alt="9 m² monter" style="height:140px;width:auto;max-width:100%;" loading="lazy"/>
           <div class="mp-incl">
             <span><svg><use href="#ic-check"/></svg>Matta</span><span><svg><use href="#ic-check"/></svg>Väggar</span>
             <span><svg><use href="#ic-check"/></svg>2 spots</span><span><svg><use href="#ic-check"/></svg>1 eluttag</span>
@@ -382,7 +383,7 @@
           <div class="mp-num">2</div><div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
           <div class="mp-size">12<sub>m²</sub></div>
           <div class="mp-price">62 400 SEK<small>exkl. moms</small></div>
-          <img class="mp-booth-img" src="assets/booth-12.png" alt="12 m² monter" style="height:108px;width:auto;max-width:95%;" loading="lazy"/>
+          <img class="mp-booth-img" src="assets/booth-12.png" alt="12 m² monter" style="height:160px;width:auto;max-width:100%;" loading="lazy"/>
           <div class="mp-incl">
             <span><svg><use href="#ic-check"/></svg>Matta</span><span><svg><use href="#ic-check"/></svg>Väggar</span>
             <span><svg><use href="#ic-check"/></svg>3 spots</span><span><svg><use href="#ic-check"/></svg>1 eluttag</span>
@@ -399,7 +400,7 @@
           <div class="mp-num">3</div><div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
           <div class="mp-size">16<sub>m²</sub></div>
           <div class="mp-price">83 200 SEK<small>exkl. moms</small></div>
-          <img class="mp-booth-img" src="assets/booth-16.png" alt="16 m² monter" style="height:124px;width:auto;max-width:95%;" loading="lazy"/>
+          <img class="mp-booth-img" src="assets/booth-16.png" alt="16 m² monter" style="height:175px;width:auto;max-width:100%;" loading="lazy"/>
           <div class="mp-incl">
             <span><svg><use href="#ic-check"/></svg>Matta</span><span><svg><use href="#ic-check"/></svg>Väggar</span>
             <span><svg><use href="#ic-check"/></svg>4 spots</span><span><svg><use href="#ic-check"/></svg>1 eluttag</span>
@@ -410,7 +411,7 @@
           <div class="mp-num">4</div><div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
           <div class="mp-size">18<sub>m²</sub></div>
           <div class="mp-price">93 600 SEK<small>exkl. moms</small></div>
-          <img class="mp-booth-img" src="assets/booth-18.png" alt="18 m² monter" style="height:132px;width:auto;max-width:95%;" loading="lazy"/>
+          <img class="mp-booth-img" src="assets/booth-18.png" alt="18 m² monter" style="height:185px;width:auto;max-width:100%;" loading="lazy"/>
           <div class="mp-incl">
             <span><svg><use href="#ic-check"/></svg>Matta</span><span><svg><use href="#ic-check"/></svg>Väggar</span>
             <span><svg><use href="#ic-check"/></svg>4 spots</span><span><svg><use href="#ic-check"/></svg>1 eluttag</span>
@@ -421,7 +422,7 @@
           <div class="mp-num">5</div><div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
           <div class="mp-size">20<sub>m²</sub></div>
           <div class="mp-price">104 000 SEK<small>exkl. moms</small></div>
-          <img class="mp-booth-img" src="assets/booth-20.png" alt="20 m² monter" style="height:140px;width:auto;max-width:95%;" loading="lazy"/>
+          <img class="mp-booth-img" src="assets/booth-20.png" alt="20 m² monter" style="height:195px;width:auto;max-width:100%;" loading="lazy"/>
           <div class="mp-incl">
             <span><svg><use href="#ic-check"/></svg>Matta</span><span><svg><use href="#ic-check"/></svg>Väggar</span>
             <span><svg><use href="#ic-check"/></svg>5 spots</span><span><svg><use href="#ic-check"/></svg>1 eluttag</span>
@@ -438,7 +439,7 @@
           <div class="mp-num">6</div><div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
           <div class="mp-size">24<sub>m²</sub></div>
           <div class="mp-price">124 800 SEK<small>exkl. moms</small></div>
-          <img class="mp-booth-img" src="assets/booth-24.png" alt="24 m² monter" style="height:160px;width:auto;max-width:95%;" loading="lazy"/>
+          <img class="mp-booth-img" src="assets/booth-24.png" alt="24 m² monter" style="height:215px;width:auto;max-width:100%;" loading="lazy"/>
           <div class="mp-incl">
             <span><svg><use href="#ic-check"/></svg>Matta</span><span><svg><use href="#ic-check"/></svg>5 spots</span>
             <span><svg><use href="#ic-check"/></svg>1 eluttag</span><span><svg><use href="#ic-check"/></svg>1 vatten</span>
@@ -451,21 +452,21 @@
 
   <div class="mp-addons">
     <div class="mp-addon a-corner mp-card-toggle" data-pkg="addon" data-name="Hörnmonter" data-price="4500">
-      <div class="mp-pick" style="position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);background:rgba(0,0,0,.4);display:grid;place-items:center;"><svg><use href="#ic-check"/></svg></div>
+      <div class="mp-pick"></div>
       <div class="mp-addon-num">7</div>
       <h4>Hörnmonter</h4>
       <div class="ap">+ 4 500 SEK</div>
       <p class="ad">Tillägg vid två öppna sidor — naturligt flöde och bättre tillgänglighet.</p>
     </div>
     <div class="mp-addon a-fee mp-card-toggle is-selected" data-pkg="fee" data-name="Anmälningsavgift" data-price="9900">
-      <div class="mp-pick" style="position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);background:rgba(0,0,0,.4);display:grid;place-items:center;"><svg><use href="#ic-check"/></svg></div>
+      <div class="mp-pick"></div>
       <div class="mp-addon-num">8</div>
       <h4>Anmälningsavgift</h4>
       <div class="ap">9 900 SEK</div>
       <p class="ad">Obligatorisk för alla utställare. Registrering, försäkring och utställarservice.</p>
     </div>
     <div class="mp-addon a-plus mp-card-toggle" data-pkg="addon" data-name="Pluspaketet" data-price="16900">
-      <div class="mp-pick" style="position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);background:rgba(0,0,0,.4);display:grid;place-items:center;"><svg><use href="#ic-check"/></svg></div>
+      <div class="mp-pick"></div>
       <div class="mp-addon-num">9</div>
       <h4>Pluspaketet · Uppgradering</h4>
       <div class="ap">16 900 SEK</div>
@@ -479,30 +480,8 @@
       </ul>
     </div>
   </div>
-
-  <div class="mp-tips">
-    <div class="mp-tip">
-      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
-      <h5>Rätt yta ger rätt affärer</h5>
-      <p>Större yta ger fler besök, fler kontakter och högre konvertering.</p>
-    </div>
-    <div class="mp-tip">
-      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M14 20c0-2 2-3.5 4-3.5s3.5 1.5 3.5 3.5"/></svg></div>
-      <h5>Storlek matchar mål och team</h5>
-      <p>Välj en monter som passar ditt team och dina affärsmål.</p>
-    </div>
-    <div class="mp-tip">
-      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/></svg></div>
-      <h5>Hörnläge ökar synligheten</h5>
-      <p>Två öppna sidor skapar naturligt flöde och bättre tillgänglighet.</p>
-    </div>
-    <div class="mp-tip">
-      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><polygon points="12 3 14.6 9 21 9.6 16 14 17.5 20.5 12 17 6.5 20.5 8 14 3 9.6 9.4 9"/></svg></div>
-      <h5>Premium ger fler spontana möten</h5>
-      <p>Nära scen, entré och café skapar fler kvalificerade möten.</p>
-    </div>
-  </div>
 </section>
+
 
 <!-- ============ MÄSSBOOST & TILLVAL ============ -->
 <style>
@@ -533,12 +512,7 @@
     transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     display:flex; flex-direction:column; gap: 8px; }
   .mb-tile:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
-  .mb-tile.is-selected{ border-color: rgba(255,159,10,.55); box-shadow: 0 16px 40px -20px rgba(255,159,10,.45); background: rgba(255,159,10,0.06); }
-  .mb-tile .mb-pick{ position:absolute; top: 14px; right: 14px; width: 22px; height: 22px; border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.22); background: rgba(0,0,0,0.4); display:grid; place-items:center; transition: all .2s; }
-  .mb-tile.is-selected .mb-pick{ background: var(--orange); border-color: var(--orange); }
-  .mb-tile .mb-pick svg{ width: 12px; height: 12px; color:#0a0a0c; opacity:0; transition: opacity .2s; }
-  .mb-tile.is-selected .mb-pick svg{ opacity:1; }
+  .mb-tile.is-selected{ border-color: rgba(48,209,88,.55); box-shadow: 0 16px 40px -20px rgba(48,209,88,.45); background: rgba(48,209,88,0.05); }
   .mb-tile .mb-icon{ width:34px; height:34px; border-radius:9px; display:grid; place-items:center; background: rgba(255,255,255,0.05); color: var(--text-2); }
   .mb-tile .mb-icon svg{ width:18px; height:18px; }
   .mb-tile.cat-partner .mb-icon{ background: rgba(255,159,10,0.14); color:#FFB84D; }
@@ -577,19 +551,7 @@
 </style>
 
 <section class="mb">
-  <div class="mb-eyebrow">Mässboost &amp; tillval</div>
-  <h2 class="mb-h">Öka synlighet.<br/><span class="accent">Få fler möten.</span></h2>
-  <p class="mb-sub">Bygg ditt paket — välj synligheten före, under och efter mässan. Totalkostnaden uppdateras direkt.</p>
-
-  <div class="mb-benefits">
-    <div class="mb-bn"><div class="mb-bn-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/></svg></div><h5>Mer synlighet</h5><p>Fånga uppmärksamhet före, under och efter mässan.</p></div>
-    <div class="mb-bn"><div class="mb-bn-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg></div><h5>Fler leads</h5><p>Generera fler kvalificerade kontakter och möten.</p></div>
-    <div class="mb-bn"><div class="mb-bn-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 21h8M12 17v4M6 4h12v6a6 6 0 0 1-12 0z"/></svg></div><h5>Thought leadership</h5><p>Positionera er som expert och branschledare.</p></div>
-    <div class="mb-bn"><div class="mb-bn-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div><h5>Starkare varumärke</h5><p>Bygg igenkänning och förstärk ert varumärke.</p></div>
-    <div class="mb-bn"><div class="mb-bn-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg></div><h5>Mer trafik till montern</h5><p>Driv fler besökare till montern – varje dag.</p></div>
-  </div>
-
-  <h3 class="mb-section-h"><span class="mb-num-pill">1</span> Partnerpaket</h3>
+  <h3 class="mb-section-h" style="margin-top:0;"><span class="mb-num-pill">1</span> Partnerpaket</h3>
   <div class="mb-grid cols-6">
     <div class="mb-tile cat-partner is-popular" data-pkg="partner" data-name="Guldpartner" data-price="340000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
       <div class="mb-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.5 9 9"/></svg></div>
@@ -691,6 +653,29 @@
     <div class="mb-total"><span class="mb-tlabel">Totalkostnad</span><span class="mb-tval" id="mbTotal">0 SEK</span><small>exkl. moms</small></div>
     <a href="#" class="btn btn-primary">Boka mitt paket <svg><use href="#i-arrow"/></svg></a>
     <div class="mb-list" id="mbList"></div>
+  </div>
+
+  <div class="mp-tips" style="margin-top:60px;">
+    <div class="mp-tip">
+      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+      <h5>Rätt yta ger rätt affärer</h5>
+      <p>Större yta ger fler besök, fler kontakter och högre konvertering.</p>
+    </div>
+    <div class="mp-tip">
+      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M14 20c0-2 2-3.5 4-3.5s3.5 1.5 3.5 3.5"/></svg></div>
+      <h5>Storlek matchar mål och team</h5>
+      <p>Välj en monter som passar ditt team och dina affärsmål.</p>
+    </div>
+    <div class="mp-tip">
+      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/></svg></div>
+      <h5>Hörnläge ökar synligheten</h5>
+      <p>Två öppna sidor skapar naturligt flöde och bättre tillgänglighet.</p>
+    </div>
+    <div class="mp-tip">
+      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><polygon points="12 3 14.6 9 21 9.6 16 14 17.5 20.5 12 17 6.5 20.5 8 14 3 9.6 9.4 9"/></svg></div>
+      <h5>Premium ger fler spontana möten</h5>
+      <p>Nära scen, entré och café skapar fler kvalificerade möten.</p>
+    </div>
   </div>
 </section>
 
