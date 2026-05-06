@@ -178,6 +178,12 @@
   <div class="search-wrap">
     <svg><use href="#i-search"/></svg>
     <input type="text" id="search" placeholder="Sök på namn, roll eller organisation…" />
+    <select id="sort" style="background:transparent;border:none;color:var(--text-2);font-size:13px;padding:0 14px;outline:none;font-family:inherit;cursor:pointer;">
+      <option value="default">Standard</option>
+      <option value="name">Namn (A–Ö)</option>
+      <option value="org">Organisation (A–Ö)</option>
+      <option value="cat">Spår</option>
+    </select>
   </div>
 </section>
 
@@ -304,9 +310,13 @@
   const grid = document.getElementById('grid');
   const countLine = document.getElementById('countline');
 
-  function render(filterCat, search){
+  function render(filterCat, search, sort){
     const q = (search || '').toLowerCase().trim();
     let activeCount = 0;
+    let list = SPEAKERS.map((s,i)=>({s,i}));
+    if (sort === 'name') list.sort((a,b)=>a.s[0].localeCompare(b.s[0],'sv'));
+    else if (sort === 'org') list.sort((a,b)=>a.s[2].localeCompare(b.s[2],'sv'));
+    else if (sort === 'cat') list.sort((a,b)=>a.s[3].localeCompare(b.s[3]));
 
     const REAL = {
       'anna borg':'talare/photos/anna-borg.webp',
@@ -322,7 +332,7 @@
       .replace(/å|ä/g,'a').replace(/ö/g,'o').replace(/é/g,'e')
       .replace(/&amp;/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
-    const html = SPEAKERS.map(([name,role,org,cat,c1,c2,init], i) => {
+    const html = list.map(({s:[name,role,org,cat,c1,c2,init], i}) => {
       const cats = cat.split(/\s+/);
       const primaryCat = cats[0];
       const catOK = !filterCat || filterCat === 'all' || cats.includes(filterCat);
@@ -340,7 +350,7 @@
       return `
         <a class="sp-card-link ${match ? 'matched' : 'dimmed'}" href="talare/${slug}.html" style="text-decoration:none;color:inherit;${match ? 'display:block;' : 'display:none;'}">
         <article class="sp-card" style="--cat:${catColor};">
-          <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');">
+          <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');" loading="lazy">
             <div class="tint"></div>
           </div>
           <div class="sp-overlay"></div>
@@ -362,22 +372,28 @@
 
   let activeCat = 'all';
   let activeSearch = '';
+  let activeSort = 'default';
 
   document.querySelectorAll('#filters .chip').forEach(c => {
     c.addEventListener('click', () => {
       document.querySelectorAll('#filters .chip').forEach(x => x.classList.remove('active'));
       c.classList.add('active');
       activeCat = c.dataset.cat;
-      render(activeCat, activeSearch);
+      render(activeCat, activeSearch, activeSort);
     });
   });
 
   document.getElementById('search').addEventListener('input', (e) => {
     activeSearch = e.target.value;
-    render(activeCat, activeSearch);
+    render(activeCat, activeSearch, activeSort);
   });
 
-  render('all', '');
+  document.getElementById('sort').addEventListener('change', (e) => {
+    activeSort = e.target.value;
+    render(activeCat, activeSearch, activeSort);
+  });
+
+  render('all', '', 'default');
 </script>
 
 </body>

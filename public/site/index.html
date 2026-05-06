@@ -1860,16 +1860,17 @@
   /* ============ STICKY BOTTOM CTA ============ */
   .sticky-cta{
     position: fixed; bottom: 24px; left: 50%;
-    transform: translateX(-50%) translateY(120%);
+    transform: translateX(-50%) translateY(160%);
     z-index: 90;
     display: flex; align-items: center; gap: 16px;
     padding: 8px 8px 8px 24px;
-    background: rgba(20,20,22,0.85);
+    background: rgba(20,20,22,0.92);
     backdrop-filter: blur(28px) saturate(180%);
     border: 1px solid var(--stroke-2);
     border-radius: 100px;
     box-shadow: 0 16px 48px -8px rgba(0,0,0,0.5);
     transition: transform .4s cubic-bezier(.2,.7,.2,1);
+    max-width: calc(100vw - 24px);
   }
   .sticky-cta.show{ transform: translateX(-50%) translateY(0); }
   .sticky-cta-text{ font-size: 13px; font-weight: 500; }
@@ -1878,7 +1879,26 @@
     padding: 10px 18px; background: var(--text); color: var(--bg);
     border-radius: 100px; text-decoration: none;
     font-size: 13px; font-weight: 600;
+    white-space: nowrap;
   }
+  @media (max-width: 600px){
+    .sticky-cta{ bottom: 12px; padding: 6px 6px 6px 16px; gap: 10px; }
+    .sticky-cta-text .when{ display:none; }
+    .sticky-cta-btn{ padding: 9px 14px; font-size: 12.5px; }
+  }
+  /* Early bird banner */
+  .eb-banner{
+    position: sticky; top: 64px; z-index: 50;
+    background: linear-gradient(90deg, rgba(255,159,10,0.18), rgba(255,55,95,0.14));
+    border-bottom: 1px solid rgba(255,159,10,0.3);
+    padding: 10px 24px; text-align: center;
+    font-size: 13px; color: var(--text);
+    backdrop-filter: blur(20px);
+  }
+  .eb-banner b{ color: var(--orange); }
+  .eb-banner a{ color: var(--text); text-decoration: underline; margin-left: 10px; font-weight: 600; }
+  .eb-banner .eb-cd{ font-feature-settings:"tnum"; color: var(--orange); font-weight:700; }
+  @media (max-width: 700px){ .eb-banner{ font-size: 12px; padding: 8px 14px; } }
 
   /* RESPONSIVE */
   @media (max-width: 900px){
@@ -1945,6 +1965,12 @@
     <a href="checkout.html" class="nav-cta">Boka biljett</a>
   </div>
 </header>
+
+<!-- Early bird banner -->
+<div class="eb-banner" id="eb-banner">
+  🔥 <b>Early bird</b> — spara 1 000 kr på konferenspasset. Erbjudandet stänger om <span class="eb-cd" id="eb-cd">—</span>
+  <a href="checkout.html?ticket=konf">Säkra rabatten →</a>
+</div>
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
@@ -3665,6 +3691,23 @@
       elD.textContent = d; elH.textContent = pad(h); elM.textContent = pad(m); elS.textContent = pad(s);
     }
     tick(); setInterval(tick, 1000);
+  })();
+
+  // Early bird countdown to 31 March 2027
+  (function(){
+    const ebTarget = new Date('2027-03-31T23:59:59+02:00').getTime();
+    const el = document.getElementById('eb-cd');
+    const banner = document.getElementById('eb-banner');
+    if (!el) return;
+    function tick(){
+      const diff = ebTarget - Date.now();
+      if (diff <= 0){ if (banner) banner.style.display='none'; return; }
+      const d = Math.floor(diff/86400000);
+      const h = Math.floor((diff%86400000)/3600000);
+      const m = Math.floor((diff%3600000)/60000);
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }
+    tick(); setInterval(tick, 30000);
   })();
 
   // Personlig agenda — multi-axis curering: roll × bransch × fokus × mål → scored sessions + min plan

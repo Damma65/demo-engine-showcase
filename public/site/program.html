@@ -328,16 +328,18 @@ function render(){
           const spkHtml = s.speakers.length
             ? `<span class="sm-spk">${s.speakers.map(([init,name,slug,c1,c2]) => `<span class="mini-av" style="--c1:${c1};--c2:${c2}">${init}</span>`).join('')}<span>${s.speakers.map(s=>s[1]).join(' · ')}</span></span>`
             : '';
-          return `<a href="${href}" class="${cls}">
-            <div class="session-stage ${STAGE_CLS[s.stage]}"><span class="sd"></span>${stageNames[s.stage]}</div>
-            <div class="session-title">${s.title}${badges}</div>
-            <div class="session-desc">${s.desc||''}</div>
+          return `<div class="${cls}">
+            <a href="${href}" style="text-decoration:none;color:inherit;display:block;">
+              <div class="session-stage ${STAGE_CLS[s.stage]}"><span class="sd"></span>${stageNames[s.stage]}</div>
+              <div class="session-title">${s.title}${badges}</div>
+              <div class="session-desc">${s.desc||''}</div>
+            </a>
             <div class="session-meta">
               ${spkHtml}
               <span>${s.duration}</span>
-              <span class="arrow">→</span>
+              <button onclick="downloadIcs(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}')" style="margin-left:auto;background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">📅 .ics</button>
             </div>
-          </a>`;
+          </div>`;
         }).join('')}
       </div>
     </div>`;
@@ -350,8 +352,7 @@ document.querySelectorAll('#days .day-tab').forEach(b => {
     document.querySelectorAll('#days .day-tab').forEach(x => x.classList.remove('active'));
     b.classList.add('active');
     activeDay = +b.dataset.day;
-document.getElementById('psearch').addEventListener('input', e => { activeQuery = e.target.value.toLowerCase().trim(); render(); });
-render();
+    render();
   });
 });
 document.querySelectorAll('#stages .sf').forEach(b => {
@@ -362,6 +363,27 @@ document.querySelectorAll('#stages .sf').forEach(b => {
     render();
   });
 });
+document.getElementById('psearch').addEventListener('input', e => {
+  activeQuery = e.target.value.toLowerCase().trim();
+  render();
+});
+
+// .ics export per session
+function pad(n){return String(n).padStart(2,'0');}
+function fmtDT(d){return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+'T'+pad(d.getUTCHours())+pad(d.getUTCMinutes())+'00Z';}
+window.downloadIcs = function(day, time, title, desc, dur){
+  const dateBase = day===1 ? '2027-05-19' : '2027-05-20';
+  const start = new Date(`${dateBase}T${time}:00+02:00`);
+  const mins = parseInt((dur||'30').match(/\d+/)?.[0]||'30',10);
+  const end = new Date(start.getTime()+mins*60000);
+  const safe = s => (s||'').replace(/&amp;/g,'&').replace(/\n/g,' ');
+  const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Energimassan//SV\nBEGIN:VEVENT\nUID:${Date.now()}@energimassan.se\nDTSTAMP:${fmtDT(new Date())}\nDTSTART:${fmtDT(start)}\nDTEND:${fmtDT(end)}\nSUMMARY:${safe(title)}\nDESCRIPTION:${safe(desc)}\nLOCATION:Kistamässan, Stockholm\nEND:VEVENT\nEND:VCALENDAR`;
+  const blob = new Blob([ics],{type:'text/calendar'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = safe(title).toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,40)+'.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+};
 render();
 </script>
 
