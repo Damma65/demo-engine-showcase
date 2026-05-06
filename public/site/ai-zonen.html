@@ -820,6 +820,94 @@
   </div>
 </section>
 
+<!-- ============ AI DEMOS ============ -->
+<section style="max-width:1280px;margin:80px auto;padding:0 32px;">
+  <div style="text-align:center;margin-bottom:48px;">
+    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B0AEFF;font-weight:700;">★ Live i AI-Zonen</div>
+    <h2 style="margin-top:14px;font-size:clamp(40px,5vw,64px);font-weight:700;letter-spacing:-.035em;line-height:1;">Prova två AI-demos<br/><span style="background:linear-gradient(135deg,#5E5CE6,#64D2FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">direkt här på sidan.</span></h2>
+    <p style="margin:18px auto 0;max-width:560px;color:var(--text-2);font-size:16px;">Samma motorer som körs i AI-Zonen — säg vad du är intresserad av så bygger vi din agenda eller svarar på din fråga.</p>
+  </div>
+
+  <div class="ai-demos" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+    <div style="padding:28px;border-radius:22px;background:linear-gradient(180deg,rgba(94,92,230,0.10),rgba(94,92,230,0.02));border:1px solid rgba(94,92,230,0.3);display:flex;flex-direction:column;min-height:520px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#5E5CE6,#64D2FF);display:grid;place-items:center;font-size:18px;">🤖</div>
+        <div><div style="font-size:16px;font-weight:600;">EnergiAI</div><div style="font-size:11.5px;color:var(--text-3);">Frågor om program, talare, utställare</div></div>
+      </div>
+      <div id="chat-log" style="flex:1;margin-top:18px;padding:16px;background:rgba(0,0,0,0.25);border-radius:14px;overflow-y:auto;font-size:13.5px;line-height:1.5;display:flex;flex-direction:column;gap:12px;"></div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="cs" data-q="När pratar Anna Borg?">När pratar Anna Borg?</button>
+        <button class="cs" data-q="Visa alla AI-sessioner dag 2">AI-sessioner dag 2</button>
+        <button class="cs" data-q="Var ligger Vattenfalls monter?">Vattenfalls monter</button>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:8px;">
+        <input id="chat-input" placeholder="Fråga om mässan…" style="flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--stroke-2);color:var(--text);padding:12px 16px;border-radius:100px;font-family:inherit;font-size:14px;outline:none;" />
+        <button id="chat-send" style="padding:12px 22px;background:linear-gradient(135deg,#5E5CE6,#64D2FF);border:none;color:white;border-radius:100px;font-weight:600;cursor:pointer;font-family:inherit;">Skicka</button>
+      </div>
+    </div>
+
+    <div style="padding:28px;border-radius:22px;background:linear-gradient(180deg,rgba(48,209,88,0.10),rgba(48,209,88,0.02));border:1px solid rgba(48,209,88,0.3);display:flex;flex-direction:column;min-height:520px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#30D158,#64D2FF);display:grid;place-items:center;font-size:18px;">📅</div>
+        <div><div style="font-size:16px;font-weight:600;">Bygg min agenda</div><div style="font-size:11.5px;color:var(--text-3);">AI väljer rätt sessioner åt dig</div></div>
+      </div>
+      <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;">
+        <select id="ag-role2" style="padding:12px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--stroke-2);color:var(--text);border-radius:10px;font-family:inherit;font-size:14px;">
+          <option>Min roll…</option><option>VD/Strateg</option><option>CIO/Tech</option><option>Drift/UH</option><option>Inköp</option><option>Politik/Myndighet</option>
+        </select>
+        <select id="ag-int2" style="padding:12px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--stroke-2);color:var(--text);border-radius:10px;font-family:inherit;font-size:14px;">
+          <option>Mitt fokus…</option><option>AI &amp; digitalisering</option><option>Kärnkraft</option><option>Sol &amp; vind</option><option>Lagring/BESS</option><option>Elnät</option>
+        </select>
+        <button id="ag-build" style="padding:12px 22px;background:linear-gradient(135deg,#30D158,#64D2FF);border:none;color:#001a0e;border-radius:100px;font-weight:700;cursor:pointer;font-family:inherit;">Bygg min agenda →</button>
+      </div>
+      <div id="ag-result" style="margin-top:18px;flex:1;padding:14px;background:rgba(0,0,0,0.25);border-radius:14px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--text-3);"><div style="text-align:center;padding:40px 0;">Välj roll och fokus så bygger vi din agenda</div></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cs{ background:rgba(255,255,255,0.05); border:1px solid var(--stroke-2); color:var(--text-2); padding:6px 12px; border-radius:100px; font-size:12px; cursor:pointer; font-family:inherit; }
+  .cs:hover{ color:var(--text); border-color:rgba(94,92,230,0.5); }
+  @media(max-width:900px){ .ai-demos{ grid-template-columns:1fr !important; } }
+</style>
+
+<script>
+(function(){
+  const ANSWERS = {
+    'anna borg':'<b>Anna Borg (Vattenfall)</b> håller keynote <b>Dag 1 kl 09:30</b> på Stora scenen — "Vattenfalls plan för 2030".',
+    'ai':'Dag 2 AI-Zonen: <b>09:30</b> Frukost-AI, <b>11:00</b> Energi-LLM:er live, <b>13:00</b> AI-rådgivning drop-in.',
+    'vattenfall':'<b>Vattenfall</b> finns i <b>monter A:14</b>, hall A.',
+    'parkering':'P-hus med 1 200 platser, 60+ snabbladdare. 25 kr/h, max 200 kr/dygn.',
+    'biljett':'Mässpass <b>kostnadsfritt</b>. Konferenspass 4 990 kr (early bird 3 990 kr till 31 mars).',
+    'kärnkraft':'Dag 1 kl 11:00 (Tech): "Kärnkraftens nya våg" med Carl Berglöf och Boris Schucht.'
+  };
+  function answer(q){ const lq=q.toLowerCase(); for(const k in ANSWERS) if(lq.includes(k)) return ANSWERS[k]; return 'Jag hittade inget exakt svar — prova en av knapparna eller sök i <a href="program.html" style="color:#B0AEFF">programmet</a>.'; }
+  const log=document.getElementById('chat-log');
+  function append(role,text){ const w=document.createElement('div'); w.style.cssText = role==='user'?'align-self:flex-end;max-width:80%;background:#5E5CE6;color:white;padding:10px 14px;border-radius:14px 14px 2px 14px;':'align-self:flex-start;max-width:85%;background:rgba(255,255,255,0.06);padding:10px 14px;border-radius:14px 14px 14px 2px;color:var(--text);'; w.innerHTML=text; log.appendChild(w); log.scrollTop=log.scrollHeight; }
+  append('bot','Hej! Jag är EnergiAI 👋 Jag kan svara på frågor om program, talare och utställare.');
+  function send(q){ if(!q)return; append('user',q); setTimeout(()=>append('bot',answer(q)),350); }
+  document.getElementById('chat-send').onclick=()=>{ const i=document.getElementById('chat-input'); send(i.value.trim()); i.value=''; };
+  document.getElementById('chat-input').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('chat-send').click(); });
+  document.querySelectorAll('.cs').forEach(b=>b.onclick=()=>send(b.dataset.q));
+
+  const PLAN={
+    'AI & digitalisering':[['Dag 1 · 11:00','AI som energisparat ord','Stora scenen'],['Dag 1 · 14:00','Smart grid med ML','AI-Zonen'],['Dag 2 · 11:00','Energi-LLM:er live','AI-Zonen']],
+    'Kärnkraft':[['Dag 1 · 11:00','Kärnkraftens nya våg','Tech-scenen'],['Dag 2 · 09:30','Peter Carlsson keynote','Stora scenen']],
+    'Sol & vind':[['Dag 2 · 11:00','Solens decennium — Becquerel','Tech-scenen']],
+    'Lagring/BESS':[['Dag 1 · 15:30','BESS i drift — Volvo Energy','Drift-scenen'],['Dag 2 · 11:00','Digital tvilling','Drift-scenen']],
+    'Elnät':[['Dag 1 · 15:30','Panel: Sveriges elnät','Tech-scenen'],['Dag 2 · 13:00','Industrins elektrifiering','Stora scenen']]
+  };
+  document.getElementById('ag-build').onclick=()=>{
+    const role=document.getElementById('ag-role2').value, focus=document.getElementById('ag-int2').value;
+    const items=PLAN[focus]; const out=document.getElementById('ag-result');
+    if(!items){ out.innerHTML='<div style="text-align:center;padding:40px 0;color:var(--text-3)">Välj fokus först</div>'; return; }
+    out.innerHTML = `<div style="font-size:12px;color:var(--text-3);margin-bottom:6px;">★ ${items.length} sessioner för <b style="color:var(--text)">${role!=='Min roll…'?role:'dig'}</b> · ${focus}</div>` +
+      items.map(([t,nm,sc])=>`<div style="padding:12px 14px;background:rgba(48,209,88,0.10);border:1px solid rgba(48,209,88,0.25);border-radius:12px;color:var(--text);font-size:13px;"><b>${nm}</b><div style="font-size:11.5px;color:var(--text-3);margin-top:3px;">${t} · ${sc}</div></div>`).join('') +
+      `<a href="program.html" style="display:block;text-align:center;margin-top:6px;padding:10px;background:#30D158;color:#001a0e;border-radius:100px;font-weight:700;text-decoration:none;font-size:13px;">Öppna i programmet →</a>`;
+  };
+})();
+</script>
+
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="footer-inner">
