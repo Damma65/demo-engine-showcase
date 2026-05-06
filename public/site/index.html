@@ -449,6 +449,32 @@
   .kn-arrow{ color: var(--text-3); font-weight: 500; transition: color .15s ease, transform .15s ease; }
   .kn-card:hover .kn-arrow{ color: var(--orange); transform: translateX(3px); }
 
+  /* Sponsor/brand chip — bottom-right of keynote portrait */
+  .kn-brand{
+    position: absolute; right: 18px; bottom: 18px; z-index: 2;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 12px 7px 8px; border-radius: 10px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900; font-size: 12px; letter-spacing: .02em;
+  }
+  .kn-brand-vf{ background: #FFE600; color: #1E1E1C; }
+  .kn-brand-vf .kn-brand-mark{
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #FFE600; border: 2px solid #1E1E1C;
+    display: grid; place-items: center; color: #1E1E1C;
+    font-weight: 900; font-size: 11px; line-height: 1;
+  }
+  .kn-brand-s{ background: #fff; color: #E2001A; }
+  .kn-brand-s .kn-brand-rose{
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #E2001A; display: grid; place-items: center;
+  }
+  .kn-brand-s .kn-brand-rose svg{ width: 14px; height: 14px; }
+  /* Lift the meta text so the brand chip never overlaps it */
+  .kn-meta{ padding-bottom: 64px !important; }
+  @media (max-width: 700px){ .kn-meta{ padding-bottom: 60px !important; } }
+
   /* Per-card duotone — riktigt dramatiskt */
   .kn-card.kn-1 .kn-photo, .kn-card.kn-2 .kn-photo, .kn-card.kn-3 .kn-photo{
     /* base photo, duotone via mix-blend on overlay layers below */
@@ -2024,6 +2050,10 @@
         <div class="kn-bigword">Energi</div>
         <img class="kn-photo" src="assets/anna-borg.webp" alt="" />
         <div class="kn-overlay"></div>
+        <div class="kn-brand kn-brand-vf" title="Vattenfall">
+          <span class="kn-brand-mark">V</span>
+          <span class="kn-brand-text">Vattenfall</span>
+        </div>
         <div class="kn-meta">
           <span class="kn-tag">★ Opening keynote</span>
           <div class="kn-name">Anna Borg</div>
@@ -2035,6 +2065,12 @@
         <div class="kn-bigword">Politik</div>
         <img class="kn-photo" src="assets/magdalena-andersson.webp" alt="" />
         <div class="kn-overlay"></div>
+        <div class="kn-brand kn-brand-s" title="Socialdemokraterna">
+          <span class="kn-brand-rose" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z" fill="#fff"/></svg>
+          </span>
+          <span class="kn-brand-text">Socialdemokraterna</span>
+        </div>
         <div class="kn-meta">
           <span class="kn-tag">◆ Politisk keynote</span>
           <div class="kn-name">Magdalena Andersson</div>
