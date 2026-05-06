@@ -320,7 +320,9 @@
       .replace(/&amp;/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
     const html = SPEAKERS.map(([name,role,org,cat,c1,c2,init], i) => {
-      const catOK = !filterCat || filterCat === 'all' || cat === filterCat;
+      const cats = cat.split(/\s+/);
+      const primaryCat = cats[0];
+      const catOK = !filterCat || filterCat === 'all' || cats.includes(filterCat);
       const sOK = !q || (name+role+org).toLowerCase().includes(q);
       const match = catOK && sOK;
       if (match) activeCount++;
@@ -329,7 +331,9 @@
       const photo = realPhoto || PHOTOS[i % PHOTOS.length];
       const slug = slugify(cleanName);
       const CAT_COLOR = { keynote:'#FF9F0A', ai:'#5AC8FA', produktion:'#30D158', drift:'#BF5AF2', politik:'#FF375F', forskning:'#64D2FF' };
-      const catColor = CAT_COLOR[cat] || '#6E6E73';
+      const CAT_LABEL = {keynote:'Keynote',ai:'AI & Digital',produktion:'Produktion',drift:'Drift & UH',politik:'Politik',forskning:'Forskning'};
+      const catColor = CAT_COLOR[primaryCat] || '#6E6E73';
+      const catLabel = cats.map(c => CAT_LABEL[c] || c).join(' · ');
       return `
         <a class="sp-card-link ${match ? 'matched' : 'dimmed'}" href="talare/${slug}.html" style="text-decoration:none;color:inherit;${match ? 'display:block;' : 'display:none;'}">
         <article class="sp-card" style="--cat:${catColor};">
@@ -338,7 +342,7 @@
           </div>
           <div class="sp-overlay"></div>
           <div class="sp-content">
-            <span class="sp-cat">${ {keynote:'Keynote',ai:'AI & Digital',produktion:'Produktion',drift:'Drift & UH',politik:'Politik',forskning:'Forskning'}[cat] || cat }</span>
+            <span class="sp-cat">${catLabel}</span>
             <div class="sp-name">${name}</div>
             <div class="sp-role">${role}</div>
             <div class="sp-org">${org}</div>
