@@ -2369,45 +2369,92 @@
         <div class="app-phone">
           <div class="app-phone-frame">
             <div class="app-phone-notch"></div>
-            <div class="app-phone-screen">
+            <div class="app-phone-screen" id="app-phone-screen">
               <div class="aps-status"><span>09:24</span><span class="aps-icons">●●● 5G ● 100%</span></div>
-              <div class="aps-head">
-                <div class="aps-day">Onsdag 19 maj</div>
-                <div class="aps-greeting">God morgon, Karin.</div>
-              </div>
-              <div class="aps-now">
-                <div class="aps-now-tag">PÅGÅR NU</div>
-                <div class="aps-now-h">Anna Borg · Vattenfalls plan 2030</div>
-                <div class="aps-now-meta">Stora scenen · 09:30 — 10:15</div>
-                <div class="aps-now-bar"><span></span></div>
-              </div>
-              <div class="aps-list-h">Nästa upp</div>
-              <div class="aps-row">
-                <div class="aps-time">11:00</div>
-                <div>
-                  <div class="aps-row-h">Jeff Sundheim — AI som energisparar ord</div>
-                  <div class="aps-row-d">AI-zonen · 30 min</div>
+              <div id="aps-view-kalender">
+                <div class="aps-head">
+                  <div class="aps-day">Onsdag 19 maj</div>
+                  <div class="aps-greeting">God morgon, Karin.</div>
                 </div>
-                <div class="aps-pin">●</div>
-              </div>
-              <div class="aps-row">
-                <div class="aps-time">11:20</div>
-                <div>
-                  <div class="aps-row-h">Mässdejting · Lars Bergström</div>
-                  <div class="aps-row-d">Sungrow · Mötespunkt B4</div>
+                <div class="aps-now">
+                  <div class="aps-now-tag">PÅGÅR NU</div>
+                  <div class="aps-now-h">Anna Borg · Vattenfalls plan 2030</div>
+                  <div class="aps-now-meta">Stora scenen · 09:30 — 10:15</div>
+                  <div class="aps-now-bar"><span></span></div>
                 </div>
-                <div class="aps-pin pink">●</div>
-              </div>
-              <div class="aps-row">
-                <div class="aps-time">13:00</div>
-                <div>
-                  <div class="aps-row-h">Lunch · Hall B</div>
-                  <div class="aps-row-d">Bordsbokad · 8 personer</div>
+                <div class="aps-list-h">Nästa upp</div>
+                <div class="aps-row">
+                  <div class="aps-time">11:00</div>
+                  <div>
+                    <div class="aps-row-h">Jeff Sundheim — AI som energisparar ord</div>
+                    <div class="aps-row-d">AI-zonen · 30 min</div>
+                  </div>
+                  <div class="aps-pin">●</div>
                 </div>
-                <div class="aps-pin orange">●</div>
+                <div class="aps-row">
+                  <div class="aps-time">11:20</div>
+                  <div>
+                    <div class="aps-row-h">Mässdejting · Lars Bergström</div>
+                    <div class="aps-row-d">Sungrow · Mötespunkt B4</div>
+                  </div>
+                  <div class="aps-pin pink">●</div>
+                </div>
+                <div class="aps-row">
+                  <div class="aps-time">13:00</div>
+                  <div>
+                    <div class="aps-row-h">Lunch · Hall B</div>
+                    <div class="aps-row-d">Bordsbokad · 8 personer</div>
+                  </div>
+                  <div class="aps-pin orange">●</div>
+                </div>
               </div>
-              <div class="aps-tabs">
-                <span>Idag</span><span>Karta</span><span>Match</span><span>Profil</span>
+              <div id="aps-view-wayfinder" style="display:none;">
+                <div class="aps-head">
+                  <div class="aps-day">Karta · Kistamässan</div>
+                  <div class="aps-greeting">Indoor wayfinding</div>
+                </div>
+                <div class="aps-now">
+                  <div class="aps-now-tag">DIN POSITION</div>
+                  <div class="aps-now-h">Hall B · Entré nord</div>
+                  <div class="aps-now-meta">2 min till Stora scenen</div>
+                </div>
+                <div class="aps-list-h">Föreslagen rutt</div>
+                <div class="aps-row"><div class="aps-time">→</div><div><div class="aps-row-h">Stora scenen</div><div class="aps-row-d">Hall A · 120 m</div></div><div class="aps-pin">●</div></div>
+                <div class="aps-row"><div class="aps-time">→</div><div><div class="aps-row-h">Sungrow B4</div><div class="aps-row-d">Hall B · 40 m</div></div><div class="aps-pin pink">●</div></div>
+                <div class="aps-row"><div class="aps-time">→</div><div><div class="aps-row-h">AI-zonen</div><div class="aps-row-d">Hall C · 80 m</div></div><div class="aps-pin orange">●</div></div>
+              </div>
+              <div id="aps-view-match" style="display:none;">
+                <div class="aps-head">
+                  <div class="aps-day">Mässdejting</div>
+                  <div class="aps-greeting">3 nya matcher</div>
+                </div>
+                <div class="aps-now">
+                  <div class="aps-now-tag">FÖREBOKAT 1-MOT-1</div>
+                  <div class="aps-now-h">Lars Bergström · Sungrow</div>
+                  <div class="aps-now-meta">11:20 · Mötespunkt B4</div>
+                </div>
+                <div class="aps-list-h">Förslag på möten</div>
+                <div class="aps-row"><div class="aps-time">14:00</div><div><div class="aps-row-h">Anna Werner · Hitachi Energy</div><div class="aps-row-d">95% match</div></div><div class="aps-pin">●</div></div>
+                <div class="aps-row"><div class="aps-time">15:30</div><div><div class="aps-row-h">Erik Sarnholm · TDG Yunet</div><div class="aps-row-d">88% match</div></div><div class="aps-pin pink">●</div></div>
+                <div class="aps-row"><div class="aps-time">16:15</div><div><div class="aps-row-h">Patrik Berkesten · Hitachi</div><div class="aps-row-d">82% match</div></div><div class="aps-pin orange">●</div></div>
+              </div>
+              <div id="aps-view-biljett" style="display:none;">
+                <div class="aps-head">
+                  <div class="aps-day">Din biljett</div>
+                  <div class="aps-greeting">Karin Lindberg</div>
+                </div>
+                <div style="margin:14px 16px; padding:18px; border-radius:14px; background:#fff; display:grid; place-items:center;">
+                  <div style="width:140px;height:140px;background:repeating-conic-gradient(#000 0% 25%, #fff 0% 50%) 50%/14px 14px; border-radius:6px;"></div>
+                  <div style="margin-top:10px; color:#000; font-weight:700; font-size:12px; letter-spacing:.1em;">EM27-9F4K-LB</div>
+                </div>
+                <div class="aps-now">
+                  <div class="aps-now-tag">KONFERENSPASS · 2 DAGAR</div>
+                  <div class="aps-now-h">19–20 maj 2027</div>
+                  <div class="aps-now-meta">Apple Wallet · Google Wallet</div>
+                </div>
+              </div>
+              <div class="aps-tabs" id="aps-tabs">
+                <span data-tab="kalender" class="active">Idag</span><span data-tab="wayfinder">Karta</span><span data-tab="match">Match</span><span data-tab="biljett">Profil</span>
               </div>
             </div>
           </div>
