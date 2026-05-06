@@ -328,16 +328,18 @@ function render(){
           const spkHtml = s.speakers.length
             ? `<span class="sm-spk">${s.speakers.map(([init,name,slug,c1,c2]) => `<span class="mini-av" style="--c1:${c1};--c2:${c2}">${init}</span>`).join('')}<span>${s.speakers.map(s=>s[1]).join(' · ')}</span></span>`
             : '';
-          return `<a href="${href}" class="${cls}">
-            <div class="session-stage ${STAGE_CLS[s.stage]}"><span class="sd"></span>${stageNames[s.stage]}</div>
-            <div class="session-title">${s.title}${badges}</div>
-            <div class="session-desc">${s.desc||''}</div>
+          return `<div class="${cls}">
+            <a href="${href}" style="text-decoration:none;color:inherit;display:block;">
+              <div class="session-stage ${STAGE_CLS[s.stage]}"><span class="sd"></span>${stageNames[s.stage]}</div>
+              <div class="session-title">${s.title}${badges}</div>
+              <div class="session-desc">${s.desc||''}</div>
+            </a>
             <div class="session-meta">
               ${spkHtml}
               <span>${s.duration}</span>
-              <span class="arrow">→</span>
+              <button onclick="downloadIcs(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}')" style="margin-left:auto;background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">📅 .ics</button>
             </div>
-          </a>`;
+          </div>`;
         }).join('')}
       </div>
     </div>`;
