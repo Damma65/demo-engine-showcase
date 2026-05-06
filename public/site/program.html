@@ -350,7 +350,8 @@ document.querySelectorAll('#days .day-tab').forEach(b => {
     document.querySelectorAll('#days .day-tab').forEach(x => x.classList.remove('active'));
     b.classList.add('active');
     activeDay = +b.dataset.day;
-    render();
+document.getElementById('psearch').addEventListener('input', e => { activeQuery = e.target.value.toLowerCase().trim(); render(); });
+render();
   });
 });
 document.querySelectorAll('#stages .sf').forEach(b => {
