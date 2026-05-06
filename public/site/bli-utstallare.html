@@ -705,9 +705,23 @@
     listEl.innerHTML = items.join('');
   }
 
+  // Inject info "+" link on each mb-tile that links to a per-package info page
+  document.querySelectorAll('.mb-tile').forEach(t=>{
+    const slug = (t.dataset.name||'').toLowerCase()
+      .replace(/å|ä/g,'a').replace(/ö/g,'o')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    const a = document.createElement('a');
+    a.className = 'mb-info';
+    a.href = `paket.html?id=${encodeURIComponent(slug)}&name=${encodeURIComponent(t.dataset.name||'')}&price=${encodeURIComponent(t.dataset.price||'')}&cat=${encodeURIComponent(t.dataset.pkg||'')}`;
+    a.title = 'Mer info';
+    a.setAttribute('aria-label','Mer info om '+(t.dataset.name||''));
+    a.textContent = '+';
+    t.appendChild(a);
+  });
+
   tiles.forEach(t=>{
     t.addEventListener('click', e=>{
-      // Prevent toggling when clicking nested links
+      // Prevent toggling when clicking nested links (incl. info "+")
       if(e.target.closest('a')) return;
       if(t.dataset.pkg === 'monter'){
         // single-select among monter cards
