@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Paketinformation · Energimässan 2027</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .pk-wrap{ max-width: 1080px; margin: 140px auto 80px; padding: 0 32px; }
+  .pk-back{ display:inline-flex; align-items:center; gap:8px; color: var(--text-3); text-decoration:none; font-size:13px; margin-bottom: 22px; }
+  .pk-back:hover{ color: var(--text); }
+  .pk-eyebrow{ font-size: 11px; letter-spacing:.18em; text-transform: uppercase; color: var(--orange); font-weight:700; }
+  .pk-h1{ margin-top: 12px; font-size: clamp(40px, 6vw, 72px); font-weight: 700; letter-spacing:-.04em; line-height:1;
+    background: linear-gradient(180deg, #fff, #B8B8BD); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .pk-price{ margin-top: 24px; font-size: 36px; font-weight: 700; letter-spacing:-.025em; color: var(--orange); font-feature-settings:"tnum"; }
+  .pk-price small{ display:block; font-size: 11px; color: var(--text-3); letter-spacing:.14em; text-transform:uppercase; margin-top:4px; font-weight:500; }
+  .pk-grid{ margin-top: 56px; display:grid; grid-template-columns: 1.4fr 1fr; gap: 28px; }
+  @media (max-width: 880px){ .pk-grid{ grid-template-columns: 1fr; } }
+  .pk-card{ padding: 28px; border-radius: 22px; background: var(--surface); border:1px solid var(--stroke); }
+  .pk-card h3{ margin: 0 0 14px; font-size: 18px; font-weight:700; letter-spacing:-.018em; }
+  .pk-card p{ margin: 0 0 12px; color: var(--text-2); font-size: 14.5px; line-height: 1.6; }
+  .pk-list{ margin: 0; padding: 0; list-style:none; display:flex; flex-direction:column; gap: 10px; }
+  .pk-list li{ display:flex; align-items:flex-start; gap: 10px; font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+  .pk-list li::before{ content:""; width:6px; height:6px; border-radius:50%; background: var(--orange); margin-top: 7px; flex-shrink:0; }
+  .pk-cta{ display:inline-flex; align-items:center; gap:10px; margin-top: 22px; padding: 12px 22px; border-radius:100px;
+    background: var(--text); color: var(--bg); text-decoration:none; font-weight:600; font-size:13px; }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Startsida</a>
+      <a href="program.html">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html" class="active">Bli utställare</a>
+      <a href="index.html#biljetter">Biljetter</a>
+    </nav>
+    <a href="bli-utstallare.html" class="nav-cta">Boka monter</a>
+  </div>
+</header>
+
+<section class="pk-wrap">
+  <a href="bli-utstallare.html" class="pk-back">← Tillbaka till alla paket</a>
+  <div class="pk-eyebrow" id="pkCat">Paket</div>
+  <h1 class="pk-h1" id="pkName">Paket</h1>
+  <div class="pk-price"><span id="pkPrice">—</span><small>exkl. moms</small></div>
+
+  <div class="pk-grid">
+    <div class="pk-card">
+      <h3>Om paketet</h3>
+      <p id="pkDesc">Detta paket ger dig stark exponering före, under och efter Energimässan 2027 — ett av Nordens största energievent med 3 200+ kvalificerade besökare.</p>
+      <p>Allt innehåll skräddarsys utifrån era mål. Vi hjälper er hela vägen — från avtal och kreativ produktion till uppföljning och leadrapport efter mässan.</p>
+      <h3 style="margin-top:24px;">Det här ingår</h3>
+      <ul class="pk-list" id="pkIncl"></ul>
+    </div>
+    <div class="pk-card">
+      <h3>Nästa steg</h3>
+      <p>Säkra ditt paket — antalet är begränsat och flera utställare bokar tidigt.</p>
+      <ul class="pk-list">
+        <li>Ring eller mejla din säljare för avtal</li>
+        <li>Vi skickar produktionsspec inom 5 dagar</li>
+        <li>Sätt igång — exponering startar 6 mån innan mässan</li>
+      </ul>
+      <a href="bli-utstallare.html" class="pk-cta">Lägg till i mitt paket →</a>
+      <a href="mailto:michael@energimassan.se" class="pk-cta" style="background: rgba(255,255,255,0.06); color: var(--text); border:1px solid var(--stroke-2);">Boka säljmöte</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>© 2027 Nordic Live Expo · Energimässan</div>
+    <div class="foot-links">
+      <a href="index.html">Hem</a>
+      <a href="program.html">Program</a>
+      <a href="talare.html">Talare</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const PKG_INFO = {
+    'guldpartner': { cat:'Partnerpaket · Guld', incl:['Loggan stor på sajt, nyhetsbrev och i app','Keynote-pass på Stora scenen (20 min)','Logo på badgeband + alla namnbrickor','VIP-bord på onsdagsminglet (10 platser)','Helsida i mässguiden','Featured i 4 nyhetsbrev till 18 000+ prenumeranter','Premiummonter 24 m² ingår med fri placering','Pressrelease + co-branding i pressmaterial','Dedikerad partneransvarig + post-event rapport']},
+    'silverpartner': { cat:'Partnerpaket · Silver', incl:['Stor logga på sajt och i app','Talartid 15 min på valfri scen','VIP-platser onsdagsminglet (6 st)','Halvsida i mässguiden','Featured i 2 nyhetsbrev','Premiummonter 18 m² ingår']},
+    'bronspartner': { cat:'Partnerpaket · Brons', incl:['Logga på sajt och i app','Talartid 10 min på Open Inspiration-scen','VIP-platser onsdagsminglet (4 st)','Kvartssida i mässguiden','Featured i 1 nyhetsbrev']},
+    'eventpartner': { cat:'Partnerpaket · Event', incl:['Synlighet kopplat till valt event (mingel, lunch eller VIP-event)','Eget tackord på scen','Logga på all event-kommunikation','5 VIP-platser till eventet']},
+    'scenpartner': { cat:'Partnerpaket · Scen', incl:['Namngivning på vald scen ("X presenterar")','Logga på scenens digitala bakgrund','Featured i scen-programmet i appen','Talartid 10 min på samma scen']},
+    'mingelpartner': { cat:'Partnerpaket · Mingel', incl:['Logga på all mingel-kommunikation','Egen bar-zon i mingelytan','VIP-platser (8 st)','Tackord på scen i samband med pris-ceremonin']},
+    'talartid-i-konferensen': { cat:'Tal & möten', incl:['25 min talartid på konferens-scen','Tekniker + scen-coach inkluderat','Sessionen filmas och delas i efterhand','Lead-export från sessionen']},
+    'open-inspiration': { cat:'Tal & möten', incl:['10 min talartid på öppen scen','Stor publik från mässgolvet','Sessionen filmas','Promotion på sajt och i app']},
+    'speed-meeting': { cat:'Tal & möten', incl:['Förbokade 1:1-möten via vår AI-matchmaking','Eget mötesrum med kaffe','Lead-rapport efter mässan','Upp till 10 möten per dag']},
+    'registreringshallen': { cat:'Exponeringspaket', incl:['Storbildskärm + banderoller i registrering','Egen bemanning möjlig','Första intrycket för 100% av besökarna']},
+    'cafepartner': { cat:'Exponeringspaket', incl:['Logga på koppar, servetter och digitala skärmar','Sponsrat fika i 2 timmar','Egen samtalshörna']},
+    'namnbrickor': { cat:'Exponeringspaket', incl:['Er logo på samtliga deltagares namnbrickor','Synlighet på 3 200+ besökare','Stark recall-effekt']},
+    'vaska-pase-i-entren': { cat:'Exponeringspaket', incl:['Er logo på mässans påse','Möjlighet att lägga eget material i påsen','Delas ut till alla i entrén']},
+    'badgeband': { cat:'Exponeringspaket', incl:['Er logo tryckt på alla badgeband','Synlighet under hela mässan','Souvenir-effekt efter mässan']},
+    'profilering-pa-golv': { cat:'Exponeringspaket', incl:['Stora golv-vinyler i huvudgångar','Wayfinding-stickers med er logo','Hög synlighet']},
+    'fasadvepa': { cat:'Exponeringspaket', incl:['Stor vepa på Kistamässans fasad','Syns från E4 och tunnelbanan','3 veckor exponering']},
+    'flagga-vid-huvudentren': { cat:'Exponeringspaket', incl:['Er flagga vid huvudentrén','Synlighet både dagar','Inkluderar produktion']}
+  };
+  function fmt(n){ return Number(n||0).toLocaleString('sv-SE').replace(/,/g,' ') + ' SEK'; }
+  const p = new URLSearchParams(location.search);
+  const id = p.get('id') || '';
+  const name = p.get('name') || 'Paket';
+  const price = p.get('price') || '0';
+  const info = PKG_INFO[id] || { cat: 'Paket', incl: ['Detaljer skickas av din säljare']};
+  document.getElementById('pkName').textContent = name;
+  document.getElementById('pkPrice').textContent = fmt(price);
+  document.getElementById('pkCat').textContent = info.cat;
+  document.title = name + ' · Energimässan 2027';
+  const ul = document.getElementById('pkIncl');
+  info.incl.forEach(t=>{ const li=document.createElement('li'); li.textContent=t; ul.appendChild(li); });
+</script>
+</body>
+</html>
