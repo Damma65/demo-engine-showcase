@@ -332,7 +332,7 @@
       .replace(/å|ä/g,'a').replace(/ö/g,'o').replace(/é/g,'e')
       .replace(/&amp;/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
-    const html = SPEAKERS.map(([name,role,org,cat,c1,c2,init], i) => {
+    const html = list.map(({s:[name,role,org,cat,c1,c2,init], i}) => {
       const cats = cat.split(/\s+/);
       const primaryCat = cats[0];
       const catOK = !filterCat || filterCat === 'all' || cats.includes(filterCat);
@@ -350,7 +350,7 @@
       return `
         <a class="sp-card-link ${match ? 'matched' : 'dimmed'}" href="talare/${slug}.html" style="text-decoration:none;color:inherit;${match ? 'display:block;' : 'display:none;'}">
         <article class="sp-card" style="--cat:${catColor};">
-          <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');">
+          <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');" loading="lazy">
             <div class="tint"></div>
           </div>
           <div class="sp-overlay"></div>
