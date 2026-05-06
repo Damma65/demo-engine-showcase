@@ -267,6 +267,17 @@
     const a = e.target.closest('.addon'); if (!a) return;
     a.classList.toggle('selected'); recalc();
   });
+  // Pre-select ticket from URL ?ticket=expo|konf
+  (function preselect(){
+    const p = new URLSearchParams(location.search).get('ticket');
+    const map = { expo: 'mass', mass: 'mass', konf: 'konf' };
+    const id = map[p];
+    if (!id) return;
+    const target = document.querySelector(`.tk[data-tk="${id}"]`);
+    if (!target) return;
+    document.querySelectorAll('.tk').forEach(x => x.classList.remove('selected'));
+    target.classList.add('selected');
+  })();
   recalc();
 </script>
 
