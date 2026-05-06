@@ -326,7 +326,7 @@
       const photo = realPhoto || PHOTOS[i % PHOTOS.length];
       const slug = slugify(cleanName);
       return `
-        <a class="sp-card-link ${match ? 'matched' : 'dimmed'}" href="talare/${slug}.html" style="text-decoration:none;color:inherit;display:block;">
+        <a class="sp-card-link ${match ? 'matched' : 'dimmed'}" href="talare/${slug}.html" style="text-decoration:none;color:inherit;${match ? 'display:block;' : 'display:none;'}">
         <article class="sp-card">
           <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');">
             <div class="tint"></div>
