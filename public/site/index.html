@@ -591,30 +591,41 @@
   .pt-stage.warm{ background: rgba(255,159,10,0.14); color: var(--orange); }
 
   /* ============ FOCUS GRID ============ */
+  /* Fokusområden — samma look som "Hitta rätt spår", men i grönt/indigo. */
   .focus{
-    margin-top: 80px;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin-top: 60px;
+    padding: 22px 20px 24px;
+    border-radius: 24px;
+    border: 1px solid rgba(48,209,88,0.18);
+    background: linear-gradient(180deg, rgba(20,28,22,0.85) 0%, rgba(8,14,10,0.92) 100%);
+    box-shadow: 0 30px 80px -30px rgba(48,209,88,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
   }
+  @media (max-width: 980px){ .focus{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px){ .focus{ grid-template-columns: 1fr; } }
   .focus-card{
-    padding: 28px;
-    background: var(--surface); border: 1px solid var(--stroke);
-    border-radius: 22px;
-    transition: background .2s, border-color .2s, transform .2s;
+    display:flex; flex-direction:column; gap: 10px;
+    padding: 18px 16px 16px;
+    border-radius: 14px;
+    border:1px solid rgba(48,209,88,0.15);
+    background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 100%);
+    transition: all .25s ease;
+    min-height: 168px;
   }
-  .focus-card:hover{ background: var(--surface-2); border-color: var(--stroke-2); transform: translateY(-2px); }
+  .focus-card:hover{ border-color: rgba(48,209,88,0.5); background: linear-gradient(180deg, rgba(48,209,88,0.06) 0%, rgba(176,174,255,0.02) 100%); transform: translateY(-2px); }
   .focus-icon{
-    width:44px; height:44px; border-radius:12px;
+    width: 36px; height: 36px; border-radius: 10px;
     display:grid; place-items:center;
-    background: rgba(48,209,88,0.12);
+    background: rgba(48,209,88,0.14);
   }
-  .focus-icon svg{ width:20px; height:20px; color: var(--green-2); }
-  .focus-card.alt .focus-icon{ background: rgba(94,92,230,0.12); } .focus-card.alt .focus-icon svg{ color: var(--indigo-2); }
-  .focus-card.alt2 .focus-icon{ background: rgba(10,132,255,0.12); } .focus-card.alt2 .focus-icon svg{ color: var(--teal); }
-  .focus-card.alt3 .focus-icon{ background: rgba(255,159,10,0.12); } .focus-card.alt3 .focus-icon svg{ color: var(--orange); }
-  .focus-card.alt4 .focus-icon{ background: rgba(255,55,95,0.12); } .focus-card.alt4 .focus-icon svg{ color: var(--pink); }
-  .focus-card.alt5 .focus-icon{ background: rgba(100,210,255,0.12); } .focus-card.alt5 .focus-icon svg{ color: var(--teal); }
-  .focus-h{ margin-top: 22px; font-size: 18px; font-weight: 600; letter-spacing: -.018em; }
-  .focus-d{ margin-top: 8px; font-size: 13.5px; color: var(--text-3); line-height: 1.5; }
+  .focus-icon svg{ width:18px; height:18px; color: var(--green-2); }
+  .focus-card.alt  .focus-icon{ background: rgba(94,92,230,0.14); } .focus-card.alt  .focus-icon svg{ color: var(--indigo-2); }
+  .focus-card.alt2 .focus-icon{ background: rgba(100,210,255,0.14); } .focus-card.alt2 .focus-icon svg{ color: var(--teal); }
+  .focus-card.alt3 .focus-icon{ background: rgba(255,159,10,0.14); } .focus-card.alt3 .focus-icon svg{ color: var(--orange); }
+  .focus-card.alt4 .focus-icon{ background: rgba(255,55,95,0.14); } .focus-card.alt4 .focus-icon svg{ color: var(--pink); }
+  .focus-card.alt5 .focus-icon{ background: rgba(176,174,255,0.14); } .focus-card.alt5 .focus-icon svg{ color: var(--indigo-2); }
+  .focus-h{ margin-top: 4px; font-size: 14px; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; }
+  .focus-d{ margin-top: 2px; font-size: 12px; color: var(--text-3); line-height: 1.45; flex: 1; }
 
   /* ============ HITTA RÄTT SPÅR (referens) ============ */
   .spar-section .section-inner{ position: relative; }
