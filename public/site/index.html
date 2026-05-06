@@ -68,9 +68,23 @@
   .hero-canvas{
     position:absolute; inset:0; z-index:0;
     width:100%; height:100%;
-    opacity: 0.55;
+    opacity: 0.35;
     mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 30%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 30%, transparent 80%);
+  }
+  /* Background hero video loop */
+  .hero-bg-video{
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .hero-bg-video-overlay{
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.85) 70%, #000 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.85) 100%);
   }
   .orb{
     position:absolute; width: 720px; height: 720px;
