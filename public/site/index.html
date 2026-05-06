@@ -3451,7 +3451,12 @@
     function render(tier, items){
       const el = document.getElementById('pg-'+tier);
       if (!el) return;
-      el.innerHTML = items.map(([name, url, c1, c2, mark]) => {
+      el.innerHTML = items.map(([name, url, c1, c2, mark, logo]) => {
+        if (tier==='gold' && logo) {
+          return `<a class="partner" href="${url}" target="_blank" rel="noopener" aria-label="${name}">
+            <img src="${logo}" alt="${name}" loading="lazy" />
+          </a>`;
+        }
         const goldExtra = tier==='gold' ? `<span class="partner-name"><b>GULDPARTNER</b></span>` : '';
         return `<a class="partner" href="${url}" target="_blank" rel="noopener">
           ${goldExtra}
