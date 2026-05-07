@@ -15,5 +15,6 @@
   <url><loc>/site/hallbarhet.html</loc><priority>0.6</priority></url>
   <url><loc>/site/tidigare-ar.html</loc><priority>0.5</priority></url>
   <url><loc>/site/awards.html</loc><priority>0.6</priority></url>
+  <url><loc>/site/massmatch.html</loc><priority>0.7</priority></url>
   <url><loc>/site/checkout.html</loc><priority>0.5</priority></url>
 </urlset>

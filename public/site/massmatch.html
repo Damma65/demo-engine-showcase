@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>MässMatch · AI-driven B2B-matchmaking · Energimässan 2027</title>
+<meta name="description" content="MässMatch är Energimässans AI-drivna mötesbokning som matchar besökare, utställare och investerare baserat på roll, intressen och affärsbehov." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="/site/massmatch.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="shared.css" />
+<style>
+  .page-hero{ padding:160px 32px 40px; text-align:center; }
+  .badge{ display:inline-block; padding:6px 14px; border-radius:100px; background:linear-gradient(135deg,rgba(94,92,230,0.18),rgba(100,210,255,0.12)); border:1px solid rgba(94,92,230,0.4); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--indigo-2); font-weight:600; }
+  .page-h1{ margin-top:18px; font-size:clamp(56px,8vw,128px); font-weight:700; letter-spacing:-.05em; line-height:.95;
+    background:linear-gradient(180deg,#FFF,#BABABF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-h1 .grad{ background:linear-gradient(135deg,#5E5CE6,#64D2FF,#30D158); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .page-sub{ margin:28px auto 0; max-width:680px; font-size:18px; color:var(--text-2); line-height:1.5; }
+
+  .container{ max-width:1280px; margin:0 auto; padding:0 32px; }
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:48px auto; max-width:980px; }
+  .stat{ padding:22px; border:1px solid var(--stroke); border-radius:16px; background:rgba(255,255,255,0.03); text-align:center; }
+  .stat .n{ font-size:32px; font-weight:700; letter-spacing:-.025em; background:linear-gradient(135deg,#5E5CE6,#64D2FF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat .l{ font-size:11.5px; color:var(--text-3); margin-top:4px; letter-spacing:.06em; text-transform:uppercase; }
+
+  /* DEMO APP */
+  .app{ margin:60px auto; max-width:1200px; border-radius:28px; overflow:hidden; border:1px solid var(--stroke-2); background:linear-gradient(180deg,#0e0e12,#0a0a0c); box-shadow:0 40px 120px -20px rgba(94,92,230,0.25); }
+  .app-bar{ padding:14px 22px; border-bottom:1px solid var(--stroke); display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); }
+  .app-bar .dots{ display:flex; gap:6px; }
+  .app-bar .dots i{ width:11px; height:11px; border-radius:50%; background:#3a3a3f; }
+  .app-bar .url{ flex:1; text-align:center; font-size:12px; color:var(--text-3); font-family:ui-monospace,monospace; }
+  .app-bar .me{ display:flex; align-items:center; gap:8px; font-size:12px; color:var(--text-2); }
+  .app-bar .av{ width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#5E5CE6,#FF375F); }
+
+  .app-body{ display:grid; grid-template-columns:240px 1fr 320px; min-height:640px; }
+  @media(max-width:1000px){ .app-body{ grid-template-columns:1fr; } .side, .right{ display:none; } }
+
+  .side{ padding:22px 18px; border-right:1px solid var(--stroke); display:flex; flex-direction:column; gap:4px; }
+  .side .grp-h{ font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin:14px 8px 6px; font-weight:600; }
+  .side a{ padding:9px 12px; border-radius:10px; font-size:13px; color:var(--text-2); text-decoration:none; display:flex; align-items:center; gap:10px; }
+  .side a.act{ background:rgba(94,92,230,0.15); color:var(--text); }
+  .side a:hover{ color:var(--text); }
+  .side a .ic{ width:18px; text-align:center; opacity:.8; }
+  .side a .b{ margin-left:auto; padding:2px 7px; border-radius:100px; background:var(--pink); color:#fff; font-size:10px; font-weight:700; }
+
+  .main{ padding:28px 28px 40px; }
+  .main h2{ font-size:24px; font-weight:600; letter-spacing:-.02em; }
+  .main .sub{ font-size:13px; color:var(--text-3); margin-top:4px; }
+
+  /* Filter chips */
+  .chips{ margin-top:20px; display:flex; gap:8px; flex-wrap:wrap; }
+  .chip{ padding:7px 14px; border-radius:100px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke); font-size:12px; color:var(--text-2); cursor:pointer; }
+  .chip.on{ background:var(--text); color:#000; border-color:var(--text); }
+
+  /* Match cards */
+  .matches{ margin-top:22px; display:flex; flex-direction:column; gap:12px; }
+  .m-card{ display:grid; grid-template-columns:64px 1fr auto; gap:16px; padding:18px; border:1px solid var(--stroke); border-radius:18px; background:rgba(255,255,255,0.02); align-items:center; transition:all .25s; }
+  .m-card:hover{ border-color:var(--stroke-2); background:rgba(255,255,255,0.04); }
+  .m-av{ width:64px; height:64px; border-radius:50%; display:grid; place-items:center; font-size:22px; font-weight:700; color:#fff; }
+  .m-av.a{ background:linear-gradient(135deg,#5E5CE6,#FF375F); }
+  .m-av.b{ background:linear-gradient(135deg,#30D158,#64D2FF); }
+  .m-av.c{ background:linear-gradient(135deg,#FF9F0A,#FFD60A); color:#1a0e00; }
+  .m-av.d{ background:linear-gradient(135deg,#BF5AF2,#5E5CE6); }
+  .m-av.e{ background:linear-gradient(135deg,#FF375F,#FF9F0A); }
+  .m-name{ font-size:15.5px; font-weight:600; letter-spacing:-.012em; }
+  .m-role{ font-size:12.5px; color:var(--text-3); margin-top:2px; }
+  .m-tags{ margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; }
+  .m-tag{ padding:3px 9px; border-radius:100px; background:rgba(94,92,230,0.12); color:var(--indigo-2); font-size:10.5px; font-weight:500; }
+  .m-tag.green{ background:rgba(48,209,88,0.12); color:var(--green-2); }
+  .m-meter{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-width:120px; }
+  .m-pct{ font-size:24px; font-weight:700; letter-spacing:-.02em; background:linear-gradient(135deg,#5E5CE6,#64D2FF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .m-bar{ width:110px; height:5px; border-radius:100px; background:rgba(255,255,255,0.06); overflow:hidden; }
+  .m-bar i{ display:block; height:100%; background:linear-gradient(90deg,#5E5CE6,#64D2FF); }
+  .m-cta{ margin-top:6px; padding:7px 14px; border-radius:100px; background:var(--text); color:#000; font-size:11.5px; font-weight:600; border:none; cursor:pointer; }
+  .m-cta.ghost{ background:transparent; color:var(--text-2); border:1px solid var(--stroke-2); }
+
+  /* Right panel — schema */
+  .right{ padding:22px; border-left:1px solid var(--stroke); background:rgba(0,0,0,0.3); }
+  .right h3{ font-size:14px; font-weight:600; }
+  .right .sub{ font-size:12px; color:var(--text-3); margin-top:2px; }
+  .day{ margin-top:18px; }
+  .day h4{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); }
+  .slot{ margin-top:8px; padding:12px 14px; border-radius:12px; background:rgba(94,92,230,0.08); border:1px solid rgba(94,92,230,0.25); font-size:12.5px; }
+  .slot .t{ color:var(--indigo-2); font-weight:600; font-size:11px; letter-spacing:.06em; }
+  .slot .who{ margin-top:2px; font-weight:600; color:var(--text); }
+  .slot .where{ margin-top:2px; color:var(--text-3); font-size:11.5px; }
+  .slot.free{ background:rgba(255,255,255,0.03); border-style:dashed; border-color:var(--stroke); color:var(--text-3); text-align:center; cursor:pointer; }
+
+  /* HOW IT WORKS */
+  .how{ margin:100px auto; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .h-card{ padding:32px; border:1px solid var(--stroke); border-radius:22px; background:rgba(255,255,255,0.02); }
+  .h-card .num{ font-size:48px; font-weight:700; letter-spacing:-.03em; background:linear-gradient(135deg,#5E5CE6,#64D2FF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .h-card h3{ margin-top:14px; font-size:20px; font-weight:600; letter-spacing:-.02em; }
+  .h-card p{ margin-top:10px; font-size:14px; color:var(--text-2); line-height:1.55; }
+  @media(max-width:900px){ .how{ grid-template-columns:1fr; } .stats{ grid-template-columns:repeat(2,1fr); } }
+
+  .cta{ text-align:center; margin:80px 0 100px; }
+  .cta h2{ font-size:42px; font-weight:700; letter-spacing:-.03em; }
+  .cta a{ display:inline-block; margin-top:24px; padding:16px 32px; border-radius:100px; background:var(--text); color:#000; text-decoration:none; font-weight:600; font-size:15px; }
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span></a>
+  <nav class="nav-links"><a href="index.html">Startsida</a><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="utstallning.html">Utställning</a><a href="bli-utstallare.html">Bli utställare</a><a href="checkout.html">Biljetter</a></nav>
+  <a href="checkout.html" class="nav-cta">Boka biljett</a>
+</div></header>
+
+<section class="page-hero">
+  <span class="badge">★ Ingår i alla biljetter</span>
+  <h1 class="page-h1">MässMatch.<br/><span class="grad">AI hittar dina möten.</span></h1>
+  <p class="page-sub">Vår algoritm matchar dig med rätt utställare, kollegor och investerare baserat på roll, intressen och affärsbehov. Boka 1:1-möten i mötespods direkt i appen.</p>
+</section>
+
+<div class="container">
+  <div class="stats">
+    <div class="stat"><div class="n">8 400</div><div class="l">Möten 2026</div></div>
+    <div class="stat"><div class="n">94%</div><div class="l">Genomförda möten</div></div>
+    <div class="stat"><div class="n">4,7/5</div><div class="l">Snittbetyg</div></div>
+    <div class="stat"><div class="n">12 min</div><div class="l">Snittlängd</div></div>
+  </div>
+
+  <!-- DEMO APP -->
+  <div class="app">
+    <div class="app-bar">
+      <div class="dots"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></div>
+      <div class="url">massmatch.energimassan.se / mina matchningar</div>
+      <div class="me"><div class="av"></div>Anna B · Vattenfall</div>
+    </div>
+    <div class="app-body">
+      <aside class="side">
+        <div class="grp-h">Mässmatch</div>
+        <a href="#" class="act"><span class="ic">⚡</span>Matchningar<span class="b">12</span></a>
+        <a href="#"><span class="ic">📅</span>Min agenda</a>
+        <a href="#"><span class="ic">💬</span>Meddelanden<span class="b">3</span></a>
+        <a href="#"><span class="ic">🤝</span>Mötespods</a>
+        <a href="#"><span class="ic">⭐</span>Bevakade</a>
+        <div class="grp-h">Profil</div>
+        <a href="#"><span class="ic">👤</span>Min profil</a>
+        <a href="#"><span class="ic">🎯</span>Intressen</a>
+        <a href="#"><span class="ic">⚙️</span>Inställningar</a>
+      </aside>
+
+      <main class="main">
+        <h2>12 nya matchningar</h2>
+        <div class="sub">AI rankade efter rollkomplement, projektfas och tidigare interaktioner. Uppdateras varje natt.</div>
+
+        <div class="chips" id="chips">
+          <span class="chip on" data-f="all">Alla</span>
+          <span class="chip" data-f="utst">Utställare</span>
+          <span class="chip" data-f="inv">Investerare</span>
+          <span class="chip" data-f="koll">Kollegor</span>
+          <span class="chip" data-f="talare">Talare</span>
+        </div>
+
+        <div class="matches">
+          <div class="m-card" data-f="utst">
+            <div class="m-av a">SG</div>
+            <div>
+              <div class="m-name">Erik Lundström · Sungrow Nordic</div>
+              <div class="m-role">Sales Director · Storskalig PV + BESS</div>
+              <div class="m-tags"><span class="m-tag green">★ Toppmatch</span><span class="m-tag">BESS-projekt 200 MWh</span><span class="m-tag">Söker partner i Norrland</span></div>
+            </div>
+            <div class="m-meter">
+              <div class="m-pct">96%</div>
+              <div class="m-bar"><i style="width:96%"></i></div>
+              <button class="m-cta">Boka 15 min</button>
+            </div>
+          </div>
+
+          <div class="m-card" data-f="inv">
+            <div class="m-av b">EI</div>
+            <div>
+              <div class="m-name">Sara Magnusson · EQT Infrastructure</div>
+              <div class="m-role">Investment Director · Cleantech & Grid</div>
+              <div class="m-tags"><span class="m-tag green">★ Toppmatch</span><span class="m-tag">Investerar serie B–D</span><span class="m-tag">Energilagring</span></div>
+            </div>
+            <div class="m-meter">
+              <div class="m-pct">93%</div>
+              <div class="m-bar"><i style="width:93%"></i></div>
+              <button class="m-cta">Boka 15 min</button>
+            </div>
+          </div>
+
+          <div class="m-card" data-f="utst">
+            <div class="m-av c">NT</div>
+            <div>
+              <div class="m-name">Niklas Thulin · Northvolt Systems</div>
+              <div class="m-role">Head of Grid Storage</div>
+              <div class="m-tags"><span class="m-tag">Komplementerande roll</span><span class="m-tag">Pilotprojekt 2027</span></div>
+            </div>
+            <div class="m-meter">
+              <div class="m-pct">88%</div>
+              <div class="m-bar"><i style="width:88%"></i></div>
+              <button class="m-cta">Boka 15 min</button>
+            </div>
+          </div>
+
+          <div class="m-card" data-f="koll">
+            <div class="m-av d">EO</div>
+            <div>
+              <div class="m-name">Emma Olsson · E.ON Sverige</div>
+              <div class="m-role">Strategic Lead · Smart Grid</div>
+              <div class="m-tags"><span class="m-tag">Branschkollega</span><span class="m-tag">Möte i pod B-12</span></div>
+            </div>
+            <div class="m-meter">
+              <div class="m-pct">82%</div>
+              <div class="m-bar"><i style="width:82%"></i></div>
+              <button class="m-cta">Boka 15 min</button>
+            </div>
+          </div>
+
+          <div class="m-card" data-f="talare">
+            <div class="m-av e">BN</div>
+            <div>
+              <div class="m-name">Bo Normark · InnoEnergy</div>
+              <div class="m-role">Strategic Innovation Officer · Talare 19 maj kl 11</div>
+              <div class="m-tags"><span class="m-tag">Talare</span><span class="m-tag">Drop-in efter keynote</span></div>
+            </div>
+            <div class="m-meter">
+              <div class="m-pct">79%</div>
+              <div class="m-bar"><i style="width:79%"></i></div>
+              <button class="m-cta ghost">Sätt påminnelse</button>
+            </div>
+          </div>
+
+          <div class="m-card" data-f="utst">
+            <div class="m-av a">JG</div>
+            <div>
+              <div class="m-name">Johan Granström · Hitachi Energy</div>
+              <div class="m-role">Key Account Manager · HVDC & nätomriktare</div>
+              <div class="m-tags"><span class="m-tag">Söker pilotkund</span></div>
+            </div>
+            <div class="m-meter">
+              <div class="m-pct">74%</div>
+              <div class="m-bar"><i style="width:74%"></i></div>
+              <button class="m-cta">Boka 15 min</button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="right">
+        <h3>Min agenda</h3>
+        <div class="sub">3 bekräftade möten · 5 lediga slots</div>
+
+        <div class="day"><h4>Onsdag 19 maj</h4>
+          <div class="slot"><div class="t">10:30 — 10:45</div><div class="who">Erik Lundström · Sungrow</div><div class="where">Mötespod B-04</div></div>
+          <div class="slot"><div class="t">13:00 — 13:15</div><div class="who">Sara Magnusson · EQT</div><div class="where">Investor Lounge</div></div>
+          <div class="slot free">+ Boka 14:30</div>
+          <div class="slot free">+ Boka 15:30</div>
+        </div>
+
+        <div class="day"><h4>Torsdag 20 maj</h4>
+          <div class="slot"><div class="t">09:30 — 09:45</div><div class="who">Niklas Thulin · Northvolt</div><div class="where">Mötespod A-11</div></div>
+          <div class="slot free">+ Boka 11:00</div>
+          <div class="slot free">+ Boka 14:00</div>
+        </div>
+
+        <div style="margin-top:22px;padding:14px;border-radius:12px;background:rgba(48,209,88,0.08);border:1px solid rgba(48,209,88,0.3);font-size:12px;">
+          <b style="color:var(--green-2);">↗ Synka kalender</b><br/>
+          <span style="color:var(--text-3);">Google · Outlook · Apple</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how">
+    <div class="h-card"><div class="num">01</div><h3>Berätta vem du är</h3><p>Vid biljettköpet svarar du på 5 snabba frågor om roll, projekt och vad du vill ha ut av mässan. Tar 90 sekunder.</p></div>
+    <div class="h-card"><div class="num">02</div><h3>AI matchar dig</h3><p>Vår algoritm väger 18 faktorer — bransch, projektfas, geografi, beslutsmandat och tidigare interaktioner. 12–25 förslag per person.</p></div>
+    <div class="h-card"><div class="num">03</div><h3>Boka i mötespod</h3><p>15 min slots i 24 dedikerade mötespods. Påminnelse 30 min före. Genomsnittlig affär från ett MässMatch-möte 2026: 480 000 kr.</p></div>
+  </div>
+
+  <div class="cta">
+    <h2>Redo att hitta dina rätta möten?</h2>
+    <a href="checkout.html">Skaffa biljett — MässMatch ingår →</a>
+  </div>
+</div>
+
+<footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="program.html">Program</a><a href="utstallning.html">Utställning</a><a href="faq.html">FAQ</a></div></div></footer>
+
+<script>
+  document.getElementById('chips').addEventListener('click', e => {
+    const c = e.target.closest('.chip'); if (!c) return;
+    document.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on');
+    const f = c.dataset.f;
+    document.querySelectorAll('.m-card').forEach(card => {
+      card.style.display = (f === 'all' || card.dataset.f === f) ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>

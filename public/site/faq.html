@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Vanliga frågor · Energimässan 2027 · FAQ för besökare och utställare</title>
-<meta name="description" content="Svar på de vanligaste frågorna om Energimässan 2027 — biljetter, program, parkering, mat, garderob, tillgänglighet och utställarinfo." />
+<meta name="description" content="Svar på de vanligaste frågorna om Energimässan 2027 — biljetter, program, parkering, mat, garderob, tillgänglighet, press, hållbarhet och utställarinfo." />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="canonical" href="/site/faq.html" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -11,25 +11,51 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"När och var äger mässan rum?","acceptedAnswer":{"@type":"Answer","text":"19–20 maj 2027 på Kistamässan i Stockholm."}},
-{"@type":"Question","name":"Vad kostar en biljett?","acceptedAnswer":{"@type":"Answer","text":"Mässpasset är kostnadsfritt. Konferenspass kostar 4 990 kr exkl. moms (early bird till 31 mars 2027)."}},
+{"@type":"Question","name":"Vad kostar en biljett?","acceptedAnswer":{"@type":"Answer","text":"Mässpasset är kostnadsfritt. Konferenspass kostar 6 900 kr exkl. moms (early bird 5 900 kr till 31 mars 2027)."}},
 {"@type":"Question","name":"Är mat och dryck inkluderat?","acceptedAnswer":{"@type":"Answer","text":"Konferenspass inkluderar lunch och kaffe. Mässpass har full tillgång till caféer och restauranger på plats."}}
 ]}
 </script>
 <style>
-  .page-hero{ padding:160px 32px 40px; text-align:center; }
+  .page-hero{ padding:160px 32px 30px; text-align:center; }
   .page-h1{ font-size:clamp(56px,8vw,112px); font-weight:700; letter-spacing:-.05em; line-height:.95;
     background:linear-gradient(180deg,#FFF,#BABABF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .page-h1 .grad{ background:linear-gradient(135deg,#5E5CE6,#64D2FF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-  .page-sub{ margin:28px auto 0; max-width:600px; font-size:18px; color:var(--text-2); }
-  .faq-wrap{ max-width:820px; margin:60px auto 100px; padding:0 32px; }
+  .page-sub{ margin:24px auto 0; max-width:600px; font-size:18px; color:var(--text-2); }
+
+  .search-wrap{ max-width:680px; margin:36px auto 0; padding:0 32px; position:relative; }
+  .search{ width:100%; padding:18px 22px 18px 52px; border-radius:100px; background:rgba(255,255,255,0.05); border:1px solid var(--stroke-2); color:var(--text); font-size:15.5px; font-family:inherit; }
+  .search:focus{ outline:none; border-color:var(--indigo-2); }
+  .search-wrap::before{ content:"🔍"; position:absolute; left:52px; top:50%; transform:translateY(-50%); font-size:16px; opacity:.7; }
+
+  .cats{ max-width:680px; margin:24px auto 0; padding:0 32px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .cat-pill{ padding:8px 16px; border-radius:100px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke); color:var(--text-2); font-size:12.5px; cursor:pointer; transition:all .2s; }
+  .cat-pill.active{ background:var(--text); color:#000; border-color:var(--text); }
+  .cat-pill:hover{ color:var(--text); }
+
+  .faq-wrap{ max-width:820px; margin:48px auto 80px; padding:0 32px; }
   .faq-cat{ margin-top:48px; }
-  .faq-cat h2{ font-size:24px; font-weight:600; letter-spacing:-.02em; margin-bottom:8px; color:var(--green-2); }
+  .faq-cat h2{ font-size:24px; font-weight:600; letter-spacing:-.02em; margin-bottom:8px; color:var(--indigo-2); }
   details{ border-bottom:1px solid var(--stroke); padding:18px 0; cursor:pointer; }
   details summary{ list-style:none; font-size:16px; font-weight:500; display:flex; justify-content:space-between; align-items:center; gap:16px; }
   details summary::-webkit-details-marker{ display:none; }
   details summary::after{ content:"+"; font-size:22px; color:var(--text-3); font-weight:300; transition:transform .2s; }
   details[open] summary::after{ transform:rotate(45deg); }
-  details p{ margin-top:14px; font-size:14px; color:var(--text-2); line-height:1.6; }
+  details .answer{ margin-top:14px; font-size:14px; color:var(--text-2); line-height:1.6; }
+  details .answer a{ color:var(--indigo-2); }
+  .feedback{ margin-top:14px; padding-top:12px; border-top:1px dashed var(--stroke); display:flex; align-items:center; gap:10px; font-size:12px; color:var(--text-3); }
+  .feedback button{ padding:5px 12px; border-radius:100px; background:rgba(255,255,255,0.06); border:1px solid var(--stroke-2); color:var(--text-2); font-size:11.5px; cursor:pointer; font-family:inherit; }
+  .feedback button:hover{ background:rgba(255,255,255,0.1); color:var(--text); }
+  .feedback.thanks button{ display:none; }
+  .feedback.thanks::after{ content:"Tack för din feedback!"; color:var(--green-2); }
+
+  .empty{ text-align:center; padding:60px 20px; color:var(--text-3); display:none; }
+  .faq-cat.hidden{ display:none; }
+  details.hidden{ display:none; }
+
+  .contact-cta{ margin:60px auto 100px; max-width:680px; padding:32px; border:1px solid var(--stroke); border-radius:22px; background:linear-gradient(135deg,rgba(94,92,230,0.1),rgba(100,210,255,0.05)); text-align:center; }
+  .contact-cta h3{ font-size:22px; font-weight:600; letter-spacing:-.02em; }
+  .contact-cta p{ margin-top:8px; font-size:14px; color:var(--text-2); }
+  .contact-cta a{ display:inline-block; margin-top:16px; padding:12px 24px; background:var(--text); color:#000; border-radius:100px; text-decoration:none; font-weight:600; font-size:14px; }
 </style>
 </head>
 <body>
@@ -41,37 +67,120 @@
 
 <section class="page-hero">
   <h1 class="page-h1">Vanliga<br/><span class="grad">frågor.</span></h1>
-  <p class="page-sub">Allt du behöver veta inför Energimässan 2027 — från biljetter till parkering.</p>
+  <p class="page-sub">Sök eller bläddra. Saknar du något — kontakta oss längst ner.</p>
 </section>
 
-<div class="faq-wrap">
-
-<div class="faq-cat"><h2>Biljetter & registrering</h2>
-  <details><summary>Vad kostar mässpasset?</summary><p>Mässpasset är helt kostnadsfritt. Du registrerar dig på checkout-sidan och får din biljett direkt på mejl.</p></details>
-  <details><summary>Vad ingår i konferenspasset?</summary><p>Konferenspasset (4 990 kr exkl. moms, early bird 3 990 kr till 31 mars) ger tillgång till alla betalseminarier, lunch, kaffe samt VIP-mingel.</p></details>
-  <details><summary>Kan jag avboka eller överlåta min biljett?</summary><p>Ja, mässpasset kan överlåtas fram till mässan. Konferenspass återbetalas till 100% fram till 30 dagar före, därefter 50% fram till 7 dagar före.</p></details>
+<div class="search-wrap">
+  <input class="search" id="search" placeholder="Sök bland 40+ frågor — t.ex. parkering, hund, faktura…" />
 </div>
 
-<div class="faq-cat"><h2>Plats & resa</h2>
-  <details><summary>Var ligger Kistamässan?</summary><p>Arne Beurlings Torg 5, 164 40 Kista. 8 minuter från Stockholm City med pendeltåg, eller 20 min med tunnelbanans blå linje.</p></details>
-  <details><summary>Finns det parkering?</summary><p>Ja, 1 200 platser i Kistamässans P-hus. 25 kr/timme, max 200 kr/dygn. 60+ snabbladdare för elbilar.</p></details>
-  <details><summary>Hur tar jag mig dit från Arlanda?</summary><p>Direktbuss 583 till Kista station tar 25 minuter. Taxi cirka 350 kr.</p></details>
+<div class="cats" id="cats">
+  <span class="cat-pill active" data-cat="all">Alla</span>
+  <span class="cat-pill" data-cat="biljetter">Biljetter</span>
+  <span class="cat-pill" data-cat="resa">Plats & resa</span>
+  <span class="cat-pill" data-cat="plats">På plats</span>
+  <span class="cat-pill" data-cat="tillg">Tillgänglighet</span>
+  <span class="cat-pill" data-cat="hallbar">Hållbarhet</span>
+  <span class="cat-pill" data-cat="utst">Utställare</span>
+  <span class="cat-pill" data-cat="press">Press</span>
 </div>
 
-<div class="faq-cat"><h2>På plats</h2>
-  <details><summary>Är det mat och fika?</summary><p>Tre caféer och två restauranger på mässgolvet. Konferensgäster får lunch i lounge B.</p></details>
-  <details><summary>Finns garderob?</summary><p>Ja, bemannad garderob vid huvudentrén — kostnadsfri.</p></details>
-  <details><summary>Är mässan tillgänglig för rullstol?</summary><p>Hela mässgolvet är i markplan. Hörselslinga finns i samtliga seminariesalar. Begär ledsagare via info@nordiclive.se.</p></details>
-  <details><summary>Finns wifi?</summary><p>Ja — kostnadsfritt höghastighetsnät i hela hallen. Lösenord visas på alla skärmar.</p></details>
+<div class="faq-wrap" id="faq-wrap">
+
+<div class="faq-cat" data-cat="biljetter"><h2>Biljetter & registrering</h2>
+  <details><summary>Vad kostar mässpasset?</summary><div class="answer">Mässpasset är helt kostnadsfritt. Du registrerar dig på checkout-sidan och får din biljett direkt på mejl.</div><div class="feedback"><span>Var detta till hjälp?</span><button onclick="this.parentElement.classList.add('thanks')">👍 Ja</button><button onclick="this.parentElement.classList.add('thanks')">👎 Nej</button></div></details>
+  <details><summary>Vad ingår i konferenspasset?</summary><div class="answer">Konferenspasset (6 900 kr exkl. moms, early bird 5 900 kr till 31 mars) ger tillgång till alla betalseminarier, lunch, kaffe samt VIP-mingel.</div><div class="feedback"><span>Var detta till hjälp?</span><button onclick="this.parentElement.classList.add('thanks')">👍 Ja</button><button onclick="this.parentElement.classList.add('thanks')">👎 Nej</button></div></details>
+  <details><summary>Kan jag avboka eller överlåta min biljett?</summary><div class="answer">Ja, mässpasset kan överlåtas fram till mässan. Konferenspass återbetalas till 100% fram till 30 dagar före, därefter 50% fram till 7 dagar före.</div><div class="feedback"><span>Var detta till hjälp?</span><button onclick="this.parentElement.classList.add('thanks')">👍 Ja</button><button onclick="this.parentElement.classList.add('thanks')">👎 Nej</button></div></details>
+  <details><summary>Finns gruppbiljetter eller studentrabatt?</summary><div class="answer">Ja — 3 för 2 på konferenspass, studentbiljett 990 kr (mot giltigt LADOK-intyg) och pressbiljett kostnadsfritt via <a href="pressrum.html">pressrummet</a>.</div><div class="feedback"><span>Var detta till hjälp?</span><button onclick="this.parentElement.classList.add('thanks')">👍 Ja</button><button onclick="this.parentElement.classList.add('thanks')">👎 Nej</button></div></details>
+  <details><summary>Hur betalar jag — kort, faktura eller Swish?</summary><div class="answer">Alla tre fungerar. Faktura har 30 dagars betalningsvillkor. Företagsfaktura ovan 25 000 kr går alltid igenom kreditkontroll.</div><div class="feedback"><span>Var detta till hjälp?</span><button onclick="this.parentElement.classList.add('thanks')">👍 Ja</button><button onclick="this.parentElement.classList.add('thanks')">👎 Nej</button></div></details>
 </div>
 
-<div class="faq-cat"><h2>Utställare</h2>
-  <details><summary>Hur blir man utställare?</summary><p>Se vår sida <a href="bli-utstallare.html" style="color:var(--green-2)">Bli utställare</a> för paket och priser. Kontakt: sales@nordiclive.se.</p></details>
-  <details><summary>När får jag tillgång till lead-systemet?</summary><p>14 dagar före mässan via vår utställarportal. Inkluderar QR-scanning, formulär och realtidsexport.</p></details>
+<div class="faq-cat" data-cat="resa"><h2>Plats & resa</h2>
+  <details><summary>Var ligger Kistamässan?</summary><div class="answer">Arne Beurlings Torg 5, 164 40 Kista. 8 minuter från Stockholm City med pendeltåg, eller 20 min med tunnelbanans blå linje.</div></details>
+  <details><summary>Finns det parkering?</summary><div class="answer">Ja, 1 200 platser i Kistamässans P-hus. 25 kr/timme, max 200 kr/dygn. 60+ snabbladdare för elbilar.</div></details>
+  <details><summary>Hur tar jag mig dit från Arlanda?</summary><div class="answer">Direktbuss 583 till Kista station tar 25 minuter. Taxi cirka 350 kr. Se <a href="resa-boende.html">Resa &amp; boende</a>.</div></details>
+  <details><summary>Finns rabatterade hotell?</summary><div class="answer">Ja, tre partnerhotell med exklusiv rabattkod. Se <a href="resa-boende.html">Resa &amp; boende</a> för bokning.</div></details>
 </div>
 
+<div class="faq-cat" data-cat="plats"><h2>På plats</h2>
+  <details><summary>Är det mat och fika?</summary><div class="answer">Tre caféer och två restauranger på mässgolvet. Konferensgäster får lunch i lounge B.</div></details>
+  <details><summary>Finns garderob?</summary><div class="answer">Ja, bemannad garderob vid huvudentrén — kostnadsfri.</div></details>
+  <details><summary>Finns wifi?</summary><div class="answer">Ja — kostnadsfritt höghastighetsnät i hela hallen. Lösenord visas på alla skärmar.</div></details>
+  <details><summary>Får jag ta med min hund?</summary><div class="answer">Endast ledar- och servicehund. Övriga djur tillåts ej i mässhallen.</div></details>
+  <details><summary>Finns barnpassning?</summary><div class="answer">Ja, vi erbjuder pop-up-förskola för 3–9 år båda dagar 09–17. Bokning krävs senast 5 maj via mässappen.</div></details>
+</div>
+
+<div class="faq-cat" data-cat="tillg"><h2>Tillgänglighet</h2>
+  <details><summary>Är mässan tillgänglig för rullstol?</summary><div class="answer">Hela mässgolvet är i markplan. Hörselslinga finns i samtliga seminariesalar. Begär ledsagare via info@nordiclive.se.</div></details>
+  <details><summary>Finns teckenspråkstolkning?</summary><div class="answer">Ja, samtliga keynotes på Stora scenen tolkas. Övriga sessioner mot förbeställning senast 7 dagar före.</div></details>
+  <details><summary>Finns lugna pauszoner?</summary><div class="answer">Ja, två sensoriskt anpassade tysta rum med dämpad belysning, intill ingång C.</div></details>
+</div>
+
+<div class="faq-cat" data-cat="hallbar"><h2>Hållbarhet</h2>
+  <details><summary>Hur jobbar ni med klimatavtrycket?</summary><div class="answer">Mässan är ISO 20121-certifierad. 100% förnybar el, vegetarisk grundmeny, 92% materialåtervinning från montrar. Se <a href="hallbarhet.html">Hållbarhet</a>.</div></details>
+  <details><summary>Kan jag klimatkompensera min resa?</summary><div class="answer">Ja, en frivillig avgift på 75 kr läggs till i checkout. Pengarna går oavkortat till Solvatten-projekt i Östafrika.</div></details>
+</div>
+
+<div class="faq-cat" data-cat="utst"><h2>Utställare</h2>
+  <details><summary>Hur blir man utställare?</summary><div class="answer">Se vår sida <a href="bli-utstallare.html">Bli utställare</a> för paket och priser. Kontakt: sales@nordiclive.se.</div></details>
+  <details><summary>När får jag tillgång till lead-systemet?</summary><div class="answer">14 dagar före mässan via vår <a href="utstallarportal.html">utställarportal</a>. Inkluderar QR-scanning, formulär och realtidsexport.</div></details>
+  <details><summary>Vad ingår i monterhyran?</summary><div class="answer">Golvyta, vägg, belysning, el (3 kW), wifi, en städning per dag, två utställarpass per 6 m². Möbler och AV tillkommer.</div></details>
+  <details><summary>När är monterbygge och nedmontering?</summary><div class="answer">Bygg: 18 maj 08–22. Nedmontering: 20 maj 17–22 + 21 maj 07–12. Detaljschema i utställarportalen.</div></details>
+</div>
+
+<div class="faq-cat" data-cat="press"><h2>Press</h2>
+  <details><summary>Hur ackrediterar jag mig som press?</summary><div class="answer">Via formuläret i <a href="pressrum.html#ackreditering">pressrummet</a>. Vi godkänner inom 48 timmar.</div></details>
+  <details><summary>Finns pressrum på plats?</summary><div class="answer">Ja, eget pressrum vid ingång A med wifi, arbetsplatser, tyst zon för intervjuer och catering hela mässveckan.</div></details>
+  <details><summary>Får jag fotografera och filma fritt?</summary><div class="answer">Ja på allmänna ytor. Vid scener krävs ackreditering. Kommersiell film kräver skriftligt OK från press@nordiclive.se.</div></details>
+</div>
+
+<div class="empty" id="empty">
+  <div style="font-size:42px;">🤔</div>
+  <p style="margin-top:8px;font-size:15px;">Inga träffar — testa annat sökord eller kontakta oss nedan.</p>
+</div>
+
+</div>
+
+<div class="contact-cta">
+  <h3>Hittade du inte svaret?</h3>
+  <p>Vårt team svarar normalt inom 4 timmar, vardagar 08–18.</p>
+  <a href="mailto:info@nordiclive.se?subject=Fr%C3%A5ga%20om%20Energim%C3%A4ssan%202027">Mejla oss →</a>
 </div>
 
 <footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="pressrum.html">Press</a><a href="resa-boende.html">Resa & boende</a><a href="sponsorer.html">Sponsorer</a></div></div></footer>
+
+<script>
+  const search = document.getElementById('search');
+  const cats = document.getElementById('cats');
+  const empty = document.getElementById('empty');
+  let activeCat = 'all';
+
+  function apply(){
+    const q = search.value.trim().toLowerCase();
+    let total = 0;
+    document.querySelectorAll('.faq-cat').forEach(cat => {
+      const catId = cat.dataset.cat;
+      const catMatch = activeCat === 'all' || activeCat === catId;
+      let visible = 0;
+      cat.querySelectorAll('details').forEach(d => {
+        const txt = d.textContent.toLowerCase();
+        const match = catMatch && (q === '' || txt.includes(q));
+        d.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      cat.classList.toggle('hidden', visible === 0);
+      total += visible;
+    });
+    empty.style.display = total === 0 ? 'block' : 'none';
+  }
+  search.addEventListener('input', apply);
+  cats.addEventListener('click', e => {
+    const p = e.target.closest('.cat-pill'); if (!p) return;
+    document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    activeCat = p.dataset.cat;
+    apply();
+  });
+</script>
 </body>
 </html>

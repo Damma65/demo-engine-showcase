@@ -3,28 +3,71 @@
 <head>
 <meta charset="utf-8" />
 <title>Pressrum · Energimässan 2027 · Pressackreditering & material</title>
-<meta name="description" content="Pressrum för Energimässan 2027 — pressmeddelanden, ackreditering, talarfoton, logotyper och presskontakt." />
+<meta name="description" content="Pressrum för Energimässan 2027 — pressmeddelanden, ackreditering, talespersoner, mediakit och pressbilder." />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="canonical" href="/site/pressrum.html" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="shared.css" />
 <style>
-  .page-hero{ padding:160px 32px 60px; text-align:center; }
+  .page-hero{ padding:160px 32px 40px; text-align:center; }
   .page-h1{ font-size:clamp(56px,8vw,112px); font-weight:700; letter-spacing:-.05em; line-height:.95;
     background:linear-gradient(180deg,#FFF,#BABABF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .page-h1 .grad{ background:linear-gradient(135deg,#FF375F,#FF9F0A); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .page-sub{ margin:28px auto 0; max-width:640px; font-size:18px; color:var(--text-2); line-height:1.5; }
-  .grid{ max-width:1100px; margin:60px auto; padding:0 32px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-  .card{ padding:32px; border:1px solid var(--stroke); border-radius:22px; background:rgba(255,255,255,0.03); }
-  .card h3{ font-size:22px; font-weight:600; letter-spacing:-.02em; margin-bottom:10px; }
-  .card p{ font-size:14px; color:var(--text-2); line-height:1.55; }
-  .card a.btn-link{ display:inline-block; margin-top:14px; font-size:13px; color:var(--green-2); text-decoration:none; font-weight:600; }
-  .release{ padding:22px 0; border-top:1px solid var(--stroke); }
+
+  .container{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:48px; }
+  .stat{ padding:22px; border:1px solid var(--stroke); border-radius:16px; background:rgba(255,255,255,0.03); text-align:center; }
+  .stat .n{ font-size:32px; font-weight:700; letter-spacing:-.025em; background:linear-gradient(135deg,#FF375F,#FF9F0A); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat .l{ font-size:11.5px; color:var(--text-3); margin-top:4px; letter-spacing:.06em; text-transform:uppercase; }
+
+  .section-h{ margin-top:80px; font-size:36px; font-weight:700; letter-spacing:-.03em; }
+  .section-sub{ margin-top:8px; font-size:14.5px; color:var(--text-3); }
+
+  .grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:24px; }
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:24px; }
+  .card{ padding:28px; border:1px solid var(--stroke); border-radius:20px; background:rgba(255,255,255,0.03); }
+  .card h3{ font-size:20px; font-weight:600; letter-spacing:-.02em; margin-bottom:8px; }
+  .card p{ font-size:13.5px; color:var(--text-2); line-height:1.55; }
+  .card a.btn-link{ display:inline-block; margin-top:14px; font-size:13px; color:var(--pink); text-decoration:none; font-weight:600; }
+
+  /* Spokesperson */
+  .spo{ display:flex; gap:18px; align-items:center; padding:22px; border:1px solid var(--stroke); border-radius:18px; background:rgba(255,255,255,0.02); }
+  .spo .av{ width:72px; height:72px; border-radius:50%; flex-shrink:0; background:linear-gradient(135deg,#FF375F,#FF9F0A); display:grid; place-items:center; font-size:24px; font-weight:700; color:#fff; }
+  .spo .name{ font-size:16px; font-weight:600; }
+  .spo .role{ font-size:12px; color:var(--text-3); margin-top:2px; }
+  .spo .ct{ margin-top:8px; font-size:12.5px; color:var(--text-2); }
+  .spo .ct a{ color:var(--text); text-decoration:none; }
+
+  /* Releases */
+  .release{ padding:22px 0; border-top:1px solid var(--stroke); display:grid; grid-template-columns: 110px 1fr auto; gap:24px; align-items:center; }
   .release:last-child{ border-bottom:1px solid var(--stroke); }
   .release .date{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
-  .release h4{ margin-top:6px; font-size:18px; font-weight:600; }
-  .release p{ margin-top:6px; font-size:13.5px; color:var(--text-2); }
-  @media(max-width:800px){ .grid{ grid-template-columns:1fr; } }
+  .release h4{ font-size:17px; font-weight:600; letter-spacing:-.012em; }
+  .release p{ margin-top:4px; font-size:13px; color:var(--text-2); }
+  .release .dl{ font-size:12px; color:var(--text-2); text-decoration:none; padding:8px 14px; border:1px solid var(--stroke-2); border-radius:100px; }
+  .release .dl:hover{ background:rgba(255,255,255,0.05); }
+  @media(max-width:800px){ .grid-2,.grid-3,.stat-row{ grid-template-columns:1fr; } .release{ grid-template-columns:1fr; } }
+
+  /* Asset gallery */
+  .assets{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:24px; }
+  .asset{ aspect-ratio:1; border-radius:14px; border:1px solid var(--stroke); position:relative; overflow:hidden; cursor:pointer; }
+  .asset .ph{ position:absolute; inset:0; display:grid; place-items:center; font-size:28px; }
+  .asset.l1{ background:linear-gradient(135deg,#FF375F,#5E5CE6); }
+  .asset.l2{ background:linear-gradient(135deg,#30D158,#64D2FF); }
+  .asset.l3{ background:linear-gradient(135deg,#FF9F0A,#FFD60A); }
+  .asset.l4{ background:linear-gradient(135deg,#5E5CE6,#BF5AF2); }
+  .asset .ov{ position:absolute; inset:auto 0 0 0; padding:8px 12px; background:linear-gradient(180deg,transparent,rgba(0,0,0,0.7)); font-size:11px; }
+  @media(max-width:800px){ .assets{ grid-template-columns:repeat(2,1fr); } }
+
+  /* Form */
+  .form{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:24px; padding:32px; border:1px solid var(--stroke); border-radius:22px; background:rgba(255,255,255,0.02); }
+  .form .full{ grid-column:1/-1; }
+  .field label{ font-size:12px; color:var(--text-3); display:block; margin-bottom:6px; }
+  .field input, .field select, .field textarea{ width:100%; padding:12px 14px; border-radius:10px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke-2); color:var(--text); font-size:14px; font-family:inherit; }
+  .field textarea{ min-height:90px; resize:vertical; }
+  .form button{ padding:14px 26px; border-radius:100px; background:var(--text); color:#000; font-weight:600; border:none; font-size:14px; cursor:pointer; justify-self:start; }
+  @media(max-width:700px){ .form{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -36,40 +79,83 @@
 
 <section class="page-hero">
   <h1 class="page-h1">Pressrum<br/><span class="grad">2027.</span></h1>
-  <p class="page-sub">Pressackreditering, talarfoton, logotyper och senaste pressmeddelandena om Nordens största energimässa.</p>
+  <p class="page-sub">Pressmeddelanden, ackreditering, talespersoner och högupplöst material — allt fritt för redaktionellt bruk.</p>
 </section>
 
-<div class="grid">
-  <div class="card">
-    <h3>Pressackreditering</h3>
-    <p>Är du journalist, fotograf eller producent? Ackreditering är kostnadsfri och inkluderar mässpass båda dagar, lunch i pressrummet samt tillgång till intervjuzoner.</p>
-    <a class="btn-link" href="mailto:press@nordiclive.se?subject=Pressackreditering%202027">Ansök om ackreditering →</a>
+<div class="container">
+  <div class="stat-row">
+    <div class="stat"><div class="n">14 200</div><div class="l">Besökare 2026</div></div>
+    <div class="stat"><div class="n">340+</div><div class="l">Utställare</div></div>
+    <div class="stat"><div class="n">120</div><div class="l">Talare</div></div>
+    <div class="stat"><div class="n">42</div><div class="l">Ackrediterade media 2026</div></div>
   </div>
-  <div class="card">
-    <h3>Mediakit & logotyper</h3>
-    <p>Officiella logotyper, talarporträtt i högupplösning, hallplaner och mässfakta. Allt material får användas fritt i redaktionellt sammanhang.</p>
-    <a class="btn-link" href="#">Hämta mediakit (.zip) →</a>
+
+  <h2 class="section-h">Snabbhjälp</h2>
+  <p class="section-sub">Det vanligaste pressbehovet — hanterat på en klick.</p>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Pressackreditering</h3>
+      <p>Kostnadsfri ackreditering för journalister, fotografer och producenter. Inkluderar pass båda dagar, lunch i pressrum, intervjuzoner och tidiga embargon.</p>
+      <a class="btn-link" href="#ackreditering">Ansök nedan →</a>
+    </div>
+    <div class="card">
+      <h3>Mediakit (.zip)</h3>
+      <p>Logotyper (SVG/PNG), pressbilder från 2026, hallplaner i hög upplösning, faktablad och officiella färger.</p>
+      <a class="btn-link" href="#" onclick="alert('Mediakit laddas ned (mockup)');return false;">Ladda ned 28 MB →</a>
+    </div>
+    <div class="card">
+      <h3>Embargon & exklusivt</h3>
+      <p>Vi delar nyheter under embargo 48 h före publikt släpp. Anmäl dig så får du dem i mejlen.</p>
+      <a class="btn-link" href="mailto:press@nordiclive.se?subject=Embargo-lista">Anmäl mig →</a>
+    </div>
+    <div class="card">
+      <h3>Intervjubokning</h3>
+      <p>Vi förmedlar intervjuer med talare, utställare och arrangörer. Skicka önskemål senast 5 dagar före mässan.</p>
+      <a class="btn-link" href="mailto:press@nordiclive.se?subject=Intervjubokning">Boka intervju →</a>
+    </div>
   </div>
-  <div class="card">
-    <h3>Presskontakt</h3>
-    <p><b>Karin Lindgren</b> — Presschef<br/>karin.lindgren@nordiclive.se<br/>+46 70 123 45 67<br/>Tillgänglig 08–20 hela mässveckan.</p>
+
+  <h2 class="section-h">Talespersoner</h2>
+  <p class="section-sub">Ring direkt — vi svarar 08–20 hela mässveckan.</p>
+  <div class="grid-3">
+    <div class="spo"><div class="av">KL</div><div><div class="name">Karin Lindgren</div><div class="role">Presschef</div><div class="ct"><a href="tel:+46701234567">+46 70 123 45 67</a><br/><a href="mailto:karin.lindgren@nordiclive.se">karin@nordiclive.se</a></div></div></div>
+    <div class="spo"><div class="av">MS</div><div><div class="name">Martin Sjögren</div><div class="role">VD Nordic Live Expo</div><div class="ct"><a href="tel:+46701112233">+46 70 111 22 33</a><br/>Strategi & branschtrender</div></div></div>
+    <div class="spo"><div class="av">EN</div><div><div class="name">Elin Norén</div><div class="role">Programchef</div><div class="ct"><a href="tel:+46703334455">+46 70 333 44 55</a><br/>Talare, scen & innehåll</div></div></div>
   </div>
-  <div class="card">
-    <h3>Intervjubokning</h3>
-    <p>Vi förmedlar gärna intervjuer med talare, utställare och våra arrangörer. Skicka önskemål senast 5 dagar före mässan.</p>
-    <a class="btn-link" href="mailto:press@nordiclive.se?subject=Intervjubokning">Boka intervju →</a>
+
+  <h2 class="section-h">Pressbilder</h2>
+  <p class="section-sub">Klicka för högupplöst nedladdning. Fri användning i redaktionellt sammanhang med byline "Foto: Nordic Live Expo".</p>
+  <div class="assets">
+    <div class="asset l1"><div class="ph">📸</div><div class="ov">Mässgolv 2026 · 4K</div></div>
+    <div class="asset l2"><div class="ph">🎤</div><div class="ov">Stora scenen · 4K</div></div>
+    <div class="asset l3"><div class="ph">⚡</div><div class="ov">AI-Zonen · 4K</div></div>
+    <div class="asset l4"><div class="ph">🤝</div><div class="ov">VIP-mingel · 4K</div></div>
   </div>
+
+  <h2 class="section-h">Pressmeddelanden</h2>
+  <p class="section-sub">Kronologisk lista — senaste först.</p>
+  <div style="margin-top:24px;">
+    <div class="release"><div class="date">12 Apr 2026</div><div><h4>Magdalena Andersson talar på Energimässan 2027</h4><p>Tidigare statsministern blir en av huvudtalarna när Nordens största energimässa öppnar 19 maj 2027 på Kistamässan.</p></div><a class="dl" href="#">PDF + bilder</a></div>
+    <div class="release"><div class="date">28 Mar 2026</div><div><h4>AI-Zonen växer — 30+ live-demos klara</h4><p>För andra året i rad blir AI-Zonen ett eget område med tematiska scener, hands-on labs och rådgivning drop-in.</p></div><a class="dl" href="#">PDF + bilder</a></div>
+    <div class="release"><div class="date">14 Mar 2026</div><div><h4>14 200 besökare 2026 — rekord för svensk energimässa</h4><p>Slutrapporten från 2026-mässan visar växande intresse från industri, kommuner och investerare.</p></div><a class="dl" href="#">PDF + bilder</a></div>
+    <div class="release"><div class="date">02 Feb 2026</div><div><h4>Vattenfall, E.ON och Fortum bekräftar deltagande</h4><p>De tre nordiska energijättarna ställer ut i premiumzonen och deltar i panelen om elnätets framtid.</p></div><a class="dl" href="#">PDF + bilder</a></div>
+    <div class="release"><div class="date">10 Jan 2026</div><div><h4>Energy Awards 2027 — nominering öppen</h4><p>Sex kategorier, oberoende jury och 600 gäster på galan kvällen 19 maj. Sista nomineringsdag 28 februari 2027.</p></div><a class="dl" href="#">PDF + bilder</a></div>
+  </div>
+
+  <h2 class="section-h" id="ackreditering">Ansök om pressackreditering</h2>
+  <p class="section-sub">Vi godkänner inom 48 h. Ackrediteringen skickas digitalt till din mejl.</p>
+  <form class="form" onsubmit="event.preventDefault(); this.innerHTML='<div class=\'full\' style=\'text-align:center;padding:24px;\'><div style=\'font-size:42px;\'>✓</div><h3 style=\'margin-top:8px;\'>Tack — ansökan mottagen!</h3><p style=\'margin-top:8px;color:var(--text-2);font-size:14px\'>Du hör från oss inom 48 timmar.</p></div>';">
+    <div class="field"><label>Förnamn</label><input required /></div>
+    <div class="field"><label>Efternamn</label><input required /></div>
+    <div class="field"><label>Mediahus / publikation</label><input required placeholder="t.ex. Dagens Industri" /></div>
+    <div class="field"><label>Roll</label><select><option>Reporter</option><option>Fotograf</option><option>Producent</option><option>Redaktör</option><option>Frilans</option></select></div>
+    <div class="field"><label>E-post</label><input type="email" required /></div>
+    <div class="field"><label>Telefon</label><input /></div>
+    <div class="field full"><label>Intresseområde / story (valfritt)</label><textarea placeholder="Vad vill du bevaka eller intervjua om?"></textarea></div>
+    <div class="full"><button type="submit">Skicka ansökan →</button></div>
+  </form>
 </div>
 
-<section style="max-width:900px;margin:80px auto 100px;padding:0 32px;">
-  <h2 style="font-size:36px;font-weight:700;letter-spacing:-.03em;">Pressmeddelanden</h2>
-  <div style="margin-top:24px;">
-    <div class="release"><div class="date">12 Apr 2026</div><h4>Magdalena Andersson talar på Energimässan 2027</h4><p>Tidigare statsministern blir en av huvudtalarna när Nordens största energimässa öppnar 19 maj 2027 på Kistamässan.</p></div>
-    <div class="release"><div class="date">28 Mar 2026</div><h4>AI-Zonen växer — 30+ live-demos klara</h4><p>För andra året i rad blir AI-Zonen ett eget område med tematiska scener, hands-on labs och rådgivning drop-in.</p></div>
-    <div class="release"><div class="date">14 Mar 2026</div><h4>14 200 besökare 2026 — rekord för svensk energimässa</h4><p>Slutrapporten från 2026-mässan visar växande intresse från industri, kommuner och investerare.</p></div>
-  </div>
-</section>
-
-<footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="program.html">Program</a><a href="faq.html">FAQ</a><a href="resa-boende.html">Resa & boende</a></div></div></footer>
+<footer style="margin-top:100px;"><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="program.html">Program</a><a href="faq.html">FAQ</a><a href="resa-boende.html">Resa & boende</a></div></div></footer>
 </body>
 </html>
