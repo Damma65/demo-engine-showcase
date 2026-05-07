@@ -203,6 +203,20 @@
           </ul>
         </div>
       </div>
+
+      <!-- GROUP DISCOUNTS -->
+      <div class="group-row" id="groups">
+        <div class="grp" data-grp="single" data-disc="0"><div class="tag">Standard</div><div class="ttl">1 person</div><div class="desc">Ordinarie pris</div></div>
+        <div class="grp" data-grp="three" data-disc="0.333"><div class="tag">−33%</div><div class="ttl">3 för 2</div><div class="desc">Tre kollegor, betala för två</div></div>
+        <div class="grp" data-grp="student" data-disc="0.85"><div class="tag">−85%</div><div class="ttl">Student</div><div class="desc">990 kr · LADOK krävs</div></div>
+      </div>
+
+      <!-- PROMO -->
+      <div class="promo">
+        <input id="promo" placeholder="Rabattkod (t.ex. ENERGI500)" />
+        <button onclick="applyPromo()">Lös in</button>
+      </div>
+      <div class="msg" id="promo-msg"></div>
     </div>
 
     <!-- STEP 2: Details -->
