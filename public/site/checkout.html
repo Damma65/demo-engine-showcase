@@ -344,6 +344,7 @@
     if (codes[v]){ promoDisc = codes[v]; msg.textContent = `✓ Rabatt ${codes[v]} kr aktiverad`; msg.classList.add('show'); }
     else { promoDisc = 0; msg.textContent = '✗ Ogiltig kod'; msg.style.color = 'var(--pink)'; msg.classList.add('show'); }
     recalc();
+  }
 
   const ticketNames = { mass: 'Mässpass', konf: 'Konferenspass' };
   function fmt(n){ return n.toLocaleString('sv-SE') + ' kr'; }
