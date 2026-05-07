@@ -298,12 +298,53 @@
       </div>
     </div>
     <a href="premium.html" class="sm-cta">Slutför köp →</a>
-    <div class="sm-trust">
-      <span>🔒 Säker betalning</span>
-      <span>Faktura · Kort · Swish</span>
+
+    <div class="wallets">
+      <div class="wal" onclick="alert('Apple Wallet-pass läggs till efter betalning')"> Apple Wallet</div>
+      <div class="wal" onclick="alert('Google Wallet-pass läggs till efter betalning')">G Pay Wallet</div>
+    </div>
+
+    <div class="trust-row">
+      <span>🔒 PCI-DSS</span>
+      <span>✓ GDPR</span>
+      <span>↩ 30 d ångerrätt</span>
+    </div>
+    <div class="pay-logos">
+      <span class="pl">VISA</span><span class="pl">Mastercard</span><span class="pl">Amex</span><span class="pl">Swish</span><span class="pl">Klarna</span><span class="pl">Faktura</span>
     </div>
   </aside>
 </section>
+
+<script>
+  // Animera social proof
+  setInterval(() => {
+    const n = document.getElementById('proof-n');
+    const now = document.getElementById('proof-now');
+    if (n) n.textContent = 410 + Math.floor(Math.random()*8);
+    if (now) now.textContent = 2 + Math.floor(Math.random()*5);
+  }, 4000);
+
+  // Group discount
+  let groupDisc = 0;
+  document.getElementById('groups').addEventListener('click', e => {
+    const g = e.target.closest('.grp'); if (!g) return;
+    document.querySelectorAll('.grp').forEach(x => x.classList.remove('selected'));
+    g.classList.add('selected');
+    groupDisc = +g.dataset.disc;
+    recalc();
+  });
+  document.querySelector('.grp[data-grp="single"]').classList.add('selected');
+
+  // Promo
+  let promoDisc = 0;
+  function applyPromo(){
+    const v = document.getElementById('promo').value.trim().toUpperCase();
+    const msg = document.getElementById('promo-msg');
+    const codes = { 'ENERGI500': 500, 'PRESS100': 100, 'PARTNER1000': 1000 };
+    if (codes[v]){ promoDisc = codes[v]; msg.textContent = `✓ Rabatt ${codes[v]} kr aktiverad`; msg.classList.add('show'); }
+    else { promoDisc = 0; msg.textContent = '✗ Ogiltig kod'; msg.style.color = 'var(--pink)'; msg.classList.add('show'); }
+    recalc();
+  }
 
 <footer>
   <div class="foot-inner">
