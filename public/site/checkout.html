@@ -344,7 +344,56 @@
     if (codes[v]){ promoDisc = codes[v]; msg.textContent = `✓ Rabatt ${codes[v]} kr aktiverad`; msg.classList.add('show'); }
     else { promoDisc = 0; msg.textContent = '✗ Ogiltig kod'; msg.style.color = 'var(--pink)'; msg.classList.add('show'); }
     recalc();
+
+  const ticketNames = { mass: 'Mässpass', konf: 'Konferenspass' };
+  function fmt(n){ return n.toLocaleString('sv-SE') + ' kr'; }
+  function recalc(){
+    const tk = document.querySelector('.tk.selected');
+    const tkPrice = +tk.dataset.price;
+    const tkId = tk.dataset.tk;
+    const addons = [...document.querySelectorAll('.addon.selected')].map(a => ({
+      name: a.querySelector('.addon-name').textContent,
+      price: +a.dataset.price
+    }));
+    let rows = `<div class="sm-row"><span class="name">${ticketNames[tkId]}</span><span class="price">${fmt(tkPrice)}</span></div>`;
+    addons.forEach(a => { rows += `<div class="sm-row"><span class="name">${a.name}</span><span class="price">${fmt(a.price)}</span></div>`; });
+    let subtotal = tkPrice + addons.reduce((s,a) => s+a.price, 0);
+    if (tkPrice > 0) { rows += `<div class="sm-row muted"><span>Early bird-rabatt</span><span class="price">−1 000 kr</span></div>`; subtotal -= 1000; }
+    if (groupDisc > 0 && tkPrice > 0){
+      const gd = Math.round(tkPrice * groupDisc);
+      rows += `<div class="sm-row muted"><span>Grupprabatt</span><span class="price">−${fmt(gd)}</span></div>`;
+      subtotal -= gd;
+    }
+    if (promoDisc > 0){
+      rows += `<div class="sm-row muted"><span>Rabattkod</span><span class="price">−${fmt(promoDisc)}</span></div>`;
+      subtotal -= promoDisc;
+    }
+    subtotal = Math.max(0, subtotal);
+    document.getElementById('sm-rows').innerHTML = rows;
+    document.getElementById('sm-total').textContent = fmt(subtotal);
+    document.getElementById('sm-vat').textContent = subtotal > 0 ? `+ moms 25% (${fmt(subtotal*0.25)})` : 'Ingen moms';
   }
+  document.getElementById('tickets').addEventListener('click', e => {
+    const tk = e.target.closest('.tk'); if (!tk) return;
+    document.querySelectorAll('.tk').forEach(x => x.classList.remove('selected'));
+    tk.classList.add('selected'); recalc();
+  });
+  document.getElementById('addons').addEventListener('click', e => {
+    const a = e.target.closest('.addon'); if (!a) return;
+    a.classList.toggle('selected'); recalc();
+  });
+  (function preselect(){
+    const p = new URLSearchParams(location.search).get('ticket');
+    const map = { expo: 'mass', mass: 'mass', konf: 'konf' };
+    const id = map[p];
+    if (!id) return;
+    const target = document.querySelector(`.tk[data-tk="${id}"]`);
+    if (!target) return;
+    document.querySelectorAll('.tk').forEach(x => x.classList.remove('selected'));
+    target.classList.add('selected');
+  })();
+  recalc();
+</script>
 
 <footer>
   <div class="foot-inner">
@@ -359,47 +408,6 @@
   </div>
 </footer>
 
-<script>
-  const ticketNames = { mass: 'Mässpass', konf: 'Konferenspass' };
-  function fmt(n){ return n.toLocaleString('sv-SE') + ' kr'; }
-  function recalc(){
-    const tk = document.querySelector('.tk.selected');
-    const tkPrice = +tk.dataset.price;
-    const tkId = tk.dataset.tk;
-    const addons = [...document.querySelectorAll('.addon.selected')].map(a => ({
-      name: a.querySelector('.addon-name').textContent,
-      price: +a.dataset.price
-    }));
-    let rows = `<div class="sm-row"><span class="name">${ticketNames[tkId]}</span><span class="price">${fmt(tkPrice)}</span></div>`;
-    addons.forEach(a => { rows += `<div class="sm-row"><span class="name">${a.name}</span><span class="price">${fmt(a.price)}</span></div>`; });
-    if (tkPrice > 0) rows += `<div class="sm-row muted"><span>Early bird-rabatt</span><span class="price">−1 000 kr</span></div>`;
-    document.getElementById('sm-rows').innerHTML = rows;
-    let total = tkPrice + addons.reduce((s,a) => s+a.price, 0) - (tkPrice > 0 ? 1000 : 0);
-    document.getElementById('sm-total').textContent = fmt(total);
-    document.getElementById('sm-vat').textContent = total > 0 ? `+ moms 25% (${fmt(total*0.25)})` : 'Ingen moms';
-  }
-  document.getElementById('tickets').addEventListener('click', e => {
-    const tk = e.target.closest('.tk'); if (!tk) return;
-    document.querySelectorAll('.tk').forEach(x => x.classList.remove('selected'));
-    tk.classList.add('selected'); recalc();
-  });
-  document.getElementById('addons').addEventListener('click', e => {
-    const a = e.target.closest('.addon'); if (!a) return;
-    a.classList.toggle('selected'); recalc();
-  });
-  // Pre-select ticket from URL ?ticket=expo|konf
-  (function preselect(){
-    const p = new URLSearchParams(location.search).get('ticket');
-    const map = { expo: 'mass', mass: 'mass', konf: 'konf' };
-    const id = map[p];
-    if (!id) return;
-    const target = document.querySelector(`.tk[data-tk="${id}"]`);
-    if (!target) return;
-    document.querySelectorAll('.tk').forEach(x => x.classList.remove('selected'));
-    target.classList.add('selected');
-  })();
-  recalc();
-</script>
-
 </body>
 </html>
+
