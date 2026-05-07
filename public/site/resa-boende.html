@@ -2,56 +2,180 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8" />
-<title>Resa & boende · Energimässan 2027 · Hotell, transport, parkering</title>
-<meta name="description" content="Allt om resa och boende inför Energimässan 2027 — partnerhotell med rabatt, kommunala alternativ, transport från Arlanda, parkering och elbilsladdning." />
+<title>Praktisk info, resa & boende · Energimässan 2027</title>
+<meta name="description" content="Allt du behöver veta inför Energimässan 2027 på Kistamässan — hotell, transport, parkering, karta, WiFi, mat, garderob, tillgänglighet och säkerhet." />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="canonical" href="/site/resa-boende.html" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="shared.css" />
 <style>
-  .page-hero{ padding:160px 32px 40px; text-align:center; }
-  .page-h1{ font-size:clamp(56px,8vw,112px); font-weight:700; letter-spacing:-.05em; line-height:.95;
-    background:linear-gradient(180deg,#FFF,#BABABF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-  .page-h1 .grad{ background:linear-gradient(135deg,#30D158,#FFD60A); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-  .page-sub{ margin:28px auto 0; max-width:640px; font-size:18px; color:var(--text-2); }
-  .grid{ max-width:1180px; margin:60px auto; padding:0 32px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-  .h-card{ padding:24px; border:1px solid var(--stroke); border-radius:18px; background:rgba(255,255,255,0.03); }
-  .h-card .price{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--green-2); font-weight:600; }
+  body{ background:#08080a; color:#fff; }
+  .page-hero{ padding:140px 32px 48px; text-align:center; max-width:980px; margin:0 auto; }
+  .page-eyebrow{ display:inline-block; padding:6px 14px; border-radius:100px; background:rgba(48,209,88,0.12); border:1px solid rgba(48,209,88,0.3); color:#5EE7B6; font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; margin-bottom:24px; }
+  .page-h1{ font-size:clamp(48px,7vw,96px); font-weight:800; letter-spacing:-.045em; line-height:1; color:#fff; }
+  .page-h1 .grad{ background:linear-gradient(135deg,#30D158 0%,#5AC8FA 60%,#FFD60A 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+  .page-sub{ margin:24px auto 0; max-width:680px; font-size:18px; line-height:1.55; color:rgba(255,255,255,0.7); }
+
+  .quick{ max-width:1180px; margin:24px auto 0; padding:0 32px; display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .quick-pill{ padding:14px 16px; border-radius:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:10px; font-size:13px; }
+  .quick-pill b{ color:#fff; }
+  .quick-pill span{ color:rgba(255,255,255,0.6); }
+  .quick-dot{ width:8px; height:8px; border-radius:50%; background:#30D158; box-shadow:0 0 12px #30D158; flex-shrink:0; }
+
+  h2.sec-h{ text-align:center; font-size:36px; font-weight:700; letter-spacing:-.025em; margin:80px 0 8px; }
+  .sec-sub{ text-align:center; color:rgba(255,255,255,0.55); font-size:14px; max-width:560px; margin:0 auto 32px; }
+
+  .grid{ max-width:1180px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .h-card{ padding:24px; border:1px solid rgba(255,255,255,0.1); border-radius:18px; background:rgba(255,255,255,0.03); }
+  .h-card .price{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#5EE7B6; font-weight:700; }
   .h-card h3{ margin-top:6px; font-size:20px; font-weight:600; letter-spacing:-.02em; }
-  .h-card .meta{ margin-top:6px; font-size:12.5px; color:var(--text-3); }
-  .h-card p{ margin-top:14px; font-size:13.5px; color:var(--text-2); line-height:1.5; }
-  .h-card .code{ margin-top:14px; padding:8px 12px; background:rgba(48,209,88,0.1); border:1px dashed rgba(48,209,88,0.4); border-radius:8px; font-family:ui-monospace,monospace; font-size:12px; color:var(--green-2); display:inline-block; }
-  .info-grid{ max-width:1100px; margin:80px auto; padding:0 32px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-  .info-card{ padding:30px; border:1px solid var(--stroke); border-radius:22px; background:rgba(255,255,255,0.02); }
-  .info-card h3{ font-size:22px; font-weight:600; letter-spacing:-.02em; }
-  .info-card p{ margin-top:10px; font-size:14px; color:var(--text-2); line-height:1.55; }
-  @media(max-width:900px){ .grid,.info-grid{ grid-template-columns:1fr; } }
+  .h-card .meta{ margin-top:6px; font-size:12.5px; color:rgba(255,255,255,0.55); }
+  .h-card p{ margin-top:14px; font-size:13.5px; color:rgba(255,255,255,0.7); line-height:1.5; }
+  .h-card .code{ margin-top:14px; padding:8px 12px; background:rgba(48,209,88,0.1); border:1px dashed rgba(48,209,88,0.4); border-radius:8px; font-family:ui-monospace,monospace; font-size:12px; color:#5EE7B6; display:inline-block; }
+
+  /* Map */
+  .map-wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .map-card{ position:relative; border-radius:24px; overflow:hidden; border:1px solid rgba(94,180,255,0.25); background:#0F1A2E; box-shadow:0 32px 80px -32px rgba(94,180,255,0.3); }
+  .map-card iframe{ display:block; width:100%; height:480px; border:0; filter:invert(0.92) hue-rotate(180deg) contrast(0.9) saturate(0.7); }
+  .map-overlay{ position:absolute; left:24px; bottom:24px; right:24px; display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; pointer-events:none; }
+  .map-card-info{ background:rgba(8,8,10,0.92); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:18px 22px; max-width:380px; pointer-events:auto; }
+  .map-card-info h3{ font-size:18px; font-weight:700; margin-bottom:4px; }
+  .map-card-info p{ font-size:13px; color:rgba(255,255,255,0.7); line-height:1.5; }
+  .map-actions{ display:flex; gap:8px; flex-wrap:wrap; pointer-events:auto; }
+  .map-btn{ padding:11px 16px; border-radius:100px; background:rgba(8,8,10,0.92); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.18); color:#fff; font-size:13px; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
+  .map-btn.primary{ background:linear-gradient(135deg,#30D158,#5AC8FA); border:0; color:#0a0a0c; }
+
+  .info-grid{ max-width:1180px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .info-card{ padding:24px; border:1px solid rgba(255,255,255,0.1); border-radius:18px; background:rgba(255,255,255,0.02); }
+  .info-card .ic-h{ display:flex; align-items:center; gap:10px; font-size:18px; font-weight:600; letter-spacing:-.01em; }
+  .info-card .ic-ico{ width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, rgba(94,200,250,0.15), rgba(48,209,88,0.15)); display:grid; place-items:center; font-size:18px; }
+  .info-card p{ margin-top:10px; font-size:13.5px; color:rgba(255,255,255,0.7); line-height:1.55; }
+  .info-card ul{ margin-top:10px; padding-left:18px; color:rgba(255,255,255,0.7); font-size:13px; line-height:1.7; }
+
+  /* Schedule strip */
+  .opening{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .opening-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid rgba(255,255,255,0.1); border-radius:18px; overflow:hidden; }
+  .op-day{ padding:24px; background:rgba(255,255,255,0.02); border-right:1px solid rgba(255,255,255,0.08); }
+  .op-day:last-child{ border-right:0; }
+  .op-day .d-d{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#5AC8FA; font-weight:700; }
+  .op-day .d-h{ font-size:22px; font-weight:700; margin-top:4px; letter-spacing:-.02em; }
+  .op-day .d-t{ margin-top:10px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.55; }
+
+  /* Contact / emergency */
+  .em{ max-width:1180px; margin:60px auto 0; padding:0 32px; }
+  .em-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .em-card{ padding:18px 20px; border:1px solid rgba(255,159,10,0.3); border-radius:14px; background:rgba(255,159,10,0.06); }
+  .em-card .l{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#FFD60A; font-weight:700; }
+  .em-card .v{ font-size:16px; font-weight:700; margin-top:4px; }
+  .em-card .d{ font-size:12px; color:rgba(255,255,255,0.65); margin-top:4px; }
+
+  @media(max-width:980px){
+    .grid,.info-grid,.quick,.opening-grid,.em-row{ grid-template-columns:1fr; }
+    .map-card iframe{ height:340px; }
+  }
 </style>
 </head>
 <body>
 <header class="nav"><div class="nav-inner">
   <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span></a>
-  <nav class="nav-links"><a href="index.html">Startsida</a><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="utstallning.html">Utställning</a><a href="bli-utstallare.html">Bli utställare</a><a href="index.html#biljetter">Biljetter</a></nav>
-  <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
+  <nav class="nav-links"><a href="index.html">Startsida</a><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="utstallning.html">Utställning</a><a href="bli-utstallare.html">Bli utställare</a><a href="index.html#biljetter">Biljetter</a><a href="resa-boende.html" class="active">Praktisk info</a></nav>
+  <a href="checkout.html" class="nav-cta">Boka biljett</a>
 </div></header>
 
 <section class="page-hero">
-  <h1 class="page-h1">Resa &amp;<br/><span class="grad">boende.</span></h1>
-  <p class="page-sub">Tre partnerhotell med exklusiv rabatt, smidig kollektivtrafik och 60+ snabbladdare på plats.</p>
+  <div class="page-eyebrow">Praktisk info</div>
+  <h1 class="page-h1">Resa, boende &amp; <span class="grad">allt på plats.</span></h1>
+  <p class="page-sub">Allt du behöver veta inför 18–20 maj 2027 på Kistamässan — hotell med rabatt, transport, parkering, mat, WiFi, garderob, tillgänglighet och säkerhet.</p>
 </section>
 
-<h2 style="text-align:center;font-size:32px;font-weight:700;letter-spacing:-.025em;margin-top:40px;">Partnerhotell</h2>
-<div class="grid">
-  <div class="h-card"><div class="price">Från 1 290 kr/natt</div><h3>Scandic Victoria Tower</h3><div class="meta">★★★★ · 4 min till mässan · 850 rum</div><p>Stockholm region's tallest hotel. Sky bar på 32:a våningen, gym och spa. Frukost ingår.</p><div class="code">EM2027-VIC</div></div>
-  <div class="h-card"><div class="price">Från 990 kr/natt</div><h3>Quality Hotel Friends</h3><div class="meta">★★★★ · 12 min till mässan · 600 rum</div><p>Modern fastighet vid Friends Arena. Smidig direktbuss till Kistamässan båda morgnar.</p><div class="code">EM2027-FR</div></div>
-  <div class="h-card"><div class="price">Från 1 590 kr/natt</div><h3>Elite Hotel Marina Tower</h3><div class="meta">★★★★ · 25 min till mässan · 220 rum</div><p>Klassisk arkitektur vid Saltsjökvarn. Båt- och taxi-shuttle inkl. för konferensgäster.</p><div class="code">EM2027-MAR</div></div>
+<div class="quick">
+  <div class="quick-pill"><span class="quick-dot"></span><span><b>Datum</b><br/>18–20 maj 2027</span></div>
+  <div class="quick-pill"><span class="quick-dot" style="background:#5AC8FA;box-shadow:0 0 12px #5AC8FA"></span><span><b>Plats</b><br/>Kistamässan, Stockholm</span></div>
+  <div class="quick-pill"><span class="quick-dot" style="background:#FFD60A;box-shadow:0 0 12px #FFD60A"></span><span><b>Öppettider</b><br/>09:00–18:00</span></div>
+  <div class="quick-pill"><span class="quick-dot" style="background:#FF9F0A;box-shadow:0 0 12px #FF9F0A"></span><span><b>Adress</b><br/>Arne Beurlings Torg 5</span></div>
 </div>
 
+<h2 class="sec-h">Hitta hit</h2>
+<p class="sec-sub">Kistamässan ligger 4 minuters promenad från Helenelunds pendeltågsstation och 6 minuter från Kista tunnelbana.</p>
+<div class="map-wrap">
+  <div class="map-card">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=17.9320%2C59.4035%2C17.9620%2C59.4145&amp;layer=mapnik&amp;marker=59.4090%2C17.9470"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Karta över Kistamässan"></iframe>
+    <div class="map-overlay">
+      <div class="map-card-info">
+        <h3>Kistamässan</h3>
+        <p>Arne Beurlings Torg 5, 164 40 Kista · 4 min från Helenelunds pendeltåg, 6 min från Kista T-bana.</p>
+      </div>
+      <div class="map-actions">
+        <a class="map-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=Kistamässan,+Arne+Beurlings+Torg+5,+Kista" target="_blank" rel="noopener">Vägbeskrivning →</a>
+        <a class="map-btn" href="https://www.openstreetmap.org/?mlat=59.4090&mlon=17.9470#map=16/59.4090/17.9470" target="_blank" rel="noopener">Öppna karta</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="sec-h">Öppettider</h2>
+<p class="sec-sub">Konferensen pågår 18–20 maj 2027. Utställningsgolvet är öppet samtliga dagar.</p>
+<div class="opening">
+  <div class="opening-grid">
+    <div class="op-day"><div class="d-d">Tisdag 18 maj</div><div class="d-h">09:00 — 18:00</div><div class="d-t">Invigning kl 09:00 med opening keynote. Energy Awards-galan kl 19:30.</div></div>
+    <div class="op-day"><div class="d-d">Onsdag 19 maj</div><div class="d-h">09:00 — 18:00</div><div class="d-t">Höjdpunkt-dagen. Politisk keynote och MässMatch B2B-möten hela dagen.</div></div>
+    <div class="op-day"><div class="d-d">Torsdag 20 maj</div><div class="d-h">09:00 — 16:00</div><div class="d-t">Avslutningsdag. Workshops och teknikdemos i AI-zonen fram till stängning.</div></div>
+  </div>
+</div>
+
+<h2 class="sec-h">Partnerhotell</h2>
+<p class="sec-sub">Använd rabattkoderna nedan vid bokning direkt hos hotellen.</p>
+<div class="grid">
+  <div class="h-card"><div class="price">Från 1 290 kr/natt</div><h3>Scandic Victoria Tower</h3><div class="meta">★★★★ · 4 min till mässan · 850 rum</div><p>Stockholmsregionens högsta hotell. Sky bar på 32:a våningen, gym och spa. Frukost ingår.</p><div class="code">EM2027-VIC</div></div>
+  <div class="h-card"><div class="price">Från 990 kr/natt</div><h3>Quality Hotel Friends</h3><div class="meta">★★★★ · 12 min till mässan · 600 rum</div><p>Modern fastighet vid Friends Arena. Smidig direktbuss till Kistamässan båda morgnar.</p><div class="code">EM2027-FR</div></div>
+  <div class="h-card"><div class="price">Från 1 590 kr/natt</div><h3>Elite Hotel Marina Tower</h3><div class="meta">★★★★ · 25 min till mässan · 220 rum</div><p>Klassisk arkitektur vid Saltsjöqvarn. Båt- och taxi-shuttle ingår för konferensgäster.</p><div class="code">EM2027-MAR</div></div>
+</div>
+
+<h2 class="sec-h">Ta dig hit</h2>
+<p class="sec-sub">Kollektivtrafiken är snabbaste vägen — under 20 minuter från Stockholm City.</p>
 <div class="info-grid">
-  <div class="info-card"><h3>🚆 Med tåg</h3><p>Pendeltåg från Stockholm City till <b>Helenelund</b>: 8 min. Därifrån 4 min promenad till Kistamässan. Avgår var 7:e minut.</p></div>
-  <div class="info-card"><h3>🚇 Tunnelbana</h3><p>Blå linje till <b>Kista</b>: cirka 18 minuter från T-Centralen. Sedan 6 min promenad genom Kista Galleria.</p></div>
-  <div class="info-card"><h3>✈️ Från Arlanda</h3><p>Direktbuss 583 (25 min) eller Arlanda Express + tunnelbana (35 min). Taxi cirka 350 kr.</p></div>
-  <div class="info-card"><h3>🚗 Bil & laddning</h3><p>1 200 P-platser, 25 kr/h. <b>60+ snabbladdare</b> (CCS/Type 2) inom 200 m. Reservera via mässappen.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🚆</div>Med pendeltåg</div><p>Pendeltåg från Stockholm City till <b>Helenelund</b>: 8 min. Därifrån 4 min promenad. Avgår var 7:e minut.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🚇</div>Tunnelbana</div><p>Blå linjen till <b>Kista</b>: 18 min från T-Centralen. Sedan 6 min promenad genom Kista Galleria.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">✈️</div>Från Arlanda</div><p>Direktbuss 583 (25 min) eller Arlanda Express + tunnelbana (35 min). Taxi cirka 350 kr.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🚌</div>Shuttle-buss</div><p>Gratis shuttle mellan partnerhotellen och Kistamässan kl 07:30–09:30 och 16:30–19:00 alla dagar.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🚗</div>Bil & laddning</div><p>1 200 P-platser, 25 kr/h. <b>60+ snabbladdare</b> (CCS/Type 2) inom 200 m. Reservera plats via mässappen.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🚲</div>Cykel</div><p>Bevakad cykelparkering vid huvudentrén. Närmaste City-Bike-station 80 m bort.</p></div>
+</div>
+
+<h2 class="sec-h">På plats</h2>
+<p class="sec-sub">Allt du behöver veta för att få ut det mesta av dagarna.</p>
+<div class="info-grid">
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">📶</div>WiFi</div><p>Snabbt gratis WiFi i hela hallen.<br/>Nätverk: <b>Energimässan2027</b><br/>Lösenord: <b>energi2027</b></p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🎫</div>Registrering</div><p>Öppnar 07:30 alla dagar. Hämta ditt badge med QR-koden från din biljettmail. Express-lane för konferensgäster.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🧥</div>Garderob</div><p>Bemannad garderob vid huvudentrén. Pris 30 kr per plagg/väska. Öppen hela mässans öppettider.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🍽️</div>Mat & dryck</div><p>4 restauranger, 6 caféer och en food-truck-park ute. Vegetariskt, veganskt, glutenfritt och halal alltid tillgängligt. Lunch ingår i konferensbiljetten.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">♿</div>Tillgänglighet</div><p>Hela mässan är rullstolsanpassad. Hörselslinga i alla scener. Tysta rum för pauser. Assistanshund välkommen.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">👶</div>Barn & familj</div><p>Skötrum vid varje toalettgrupp. Amningsrum vid Hall A. Barn under 12 år kommer in gratis i sällskap av vuxen.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🤝</div>Networking</div><p>Mingelbar öppen 16:00–18:00 dagligen. MässMatch B2B-rum bokas via mässappen. Energy Awards-gala 18 maj kl 19:30.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">📱</div>Mässappen</div><p>Personlig agenda, hallkarta med navigation, MässMatch och digitala visitkort. Ladda ner från App Store eller Google Play.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🔌</div>Laddning</div><p>Laddstationer för mobil/laptop på samtliga sittytor. USB-C, Lightning och 230V vid arbetsplatserna i Café Spark.</p></div>
+</div>
+
+<h2 class="sec-h">Säkerhet & kontakt</h2>
+<p class="sec-sub">Vi finns på plats hela tiden — tveka inte att fråga.</p>
+<div class="em">
+  <div class="em-row">
+    <div class="em-card"><div class="l">Akut</div><div class="v">112</div><div class="d">SOS Alarm dygnet runt</div></div>
+    <div class="em-card"><div class="l">Sjukvård på plats</div><div class="v">+46 8 506 650 00</div><div class="d">Sjuksköterska i Service Center, Hall A</div></div>
+    <div class="em-card"><div class="l">Hittegods</div><div class="v">Service Center</div><div class="d">Hall A · Öppet hela mässan</div></div>
+    <div class="em-card"><div class="l">Besökarsupport</div><div class="v">support@energimassan.se</div><div class="d">Svar inom 4 timmar vardagar</div></div>
+  </div>
+</div>
+
+<h2 class="sec-h">Bra att veta</h2>
+<div class="info-grid" style="margin-bottom:80px;">
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🌱</div>Hållbarhet</div><p>Vi är klimatkompenserad mässa. Återvinningsstationer i hela hallen, vegetarisk standardmeny och digitala biljetter.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">📸</div>Foto & film</div><p>Mässan filmas och fotograferas. Säg till en värd om du inte vill synas. Pressackreditering via Pressrum-sidan.</p></div>
+  <div class="info-card"><div class="ic-h"><div class="ic-ico">🐶</div>Husdjur</div><p>Husdjur är inte tillåtna inne i hallen, undantag för ledarhundar och assistanshundar.</p></div>
 </div>
 
 <footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="faq.html">FAQ</a><a href="pressrum.html">Press</a></div></div></footer>
