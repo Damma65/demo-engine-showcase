@@ -3869,9 +3869,9 @@
     {u:'hitachienergy', cap:'Live-demo av nya transformatorplattformen kl 14:00 i monter H:04. Missa inte!', tag:'30 min', g:'linear-gradient(135deg,#64D2FF 0%,#0A84FF 100%)', emoji:'⚙️'},
     {u:'svensksolenergi', cap:'Solenergin nådde 5% av Sveriges elmix förra året. På väg mot 15% till 2030.', tag:'5 tim', g:'linear-gradient(135deg,#FFD60A 0%,#FF9F0A 100%)', emoji:'☀️'}
   ];
-  document.getElementById('igGrid').innerHTML = POSTS.map(p => `
+  const html = POSTS.map(p => `
     <div class="ig-post">
-      <div class="ig-bg" style="background:${p.g}; display:grid; place-items:center; font-size:74px;">${p.emoji}</div>
+      <div class="ig-bg" style="background:${p.g}; display:grid; place-items:center; font-size:54px;">${p.emoji}</div>
       <div class="ig-stats"><span>♥ ${p.likes||Math.floor(Math.random()*900+120)}</span><span>💬 ${Math.floor(Math.random()*80+5)}</span></div>
       <div class="ig-meta"><span class="ig-tag ${p.live?'live':''}">${p.tag}</span></div>
       <div class="ig-overlay">
@@ -3879,6 +3879,8 @@
         <div class="ig-cap">${p.cap}</div>
       </div>
     </div>`).join('');
+  // Duplicate for seamless marquee loop
+  document.getElementById('igGrid').innerHTML = html + html;
 })();
 </script>
 
