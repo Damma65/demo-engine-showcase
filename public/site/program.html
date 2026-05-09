@@ -470,6 +470,20 @@ document.head.appendChild(styleEl);
 
 updateAgendaUI();
 render();
+
+/* Make Mingel items click-through to kvallsmingel.html */
+setTimeout(function(){
+  document.querySelectorAll('.session, .sess, [class*="session"]').forEach(function(el){
+    var t = el.textContent || '';
+    if (/mingel/i.test(t)) {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', function(e){
+        if (e.target.closest('a')) return;
+        window.location.href = 'kvallsmingel.html';
+      });
+    }
+  });
+}, 300);
 </script>
 
 </body>
