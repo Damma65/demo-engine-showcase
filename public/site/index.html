@@ -3554,45 +3554,45 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
 <script>
   /* Partners logos — renderas som "logotyp" (symbol + wordmark) */
   (function(){
-    // [name, url, hex1, hex2, mark/initials/glyph]
+    // [name, url, hex1, hex2, mark/initials, logoPath?]
     const data = {
       gold: [
         ['Sungrow','https://en.sungrowpower.com/','#FF9500','#FFD60A','S','partners/sungrow.svg'],
         ['TDG | YUNET','http://www.tdgyunet.com/','#0A84FF','#5E5CE6','◇','partners/tdg-yunet.png']
       ],
       bronze: [
-        ['Siemens Energy','https://www.siemens-energy.com/se/sv/home.html','#00A4A7','#0A84FF','SE'],
-        ['Merus Power','https://meruspower.com/','#5E5CE6','#BF5AF2','M'],
-        ['Fortum Optimizer','https://www.fortum.com/','#30D158','#64D2FF','F']
+        ['Siemens Energy','https://www.siemens-energy.com/se/sv/home.html','#00A4A7','#0A84FF','SE','exhibitors/siemens-energy.png'],
+        ['Merus Power','https://meruspower.com/','#5E5CE6','#BF5AF2','M','exhibitors/merus-power.webp'],
+        ['Fortum Optimizer','https://www.fortum.com/','#30D158','#64D2FF','F','exhibitors/fortum-optimizer.webp']
       ],
       event: [
-        ['Digpro','https://digpro.com/','#0A84FF','#5E5CE6','D'],
-        ['Steady Energy','https://www.steadyenergy.com/','#FF9500','#FFD60A','SE'],
-        ['Vinnergi','https://vinnergi.se/','#30D158','#64D2FF','V'],
-        ['Truxco','https://truxco.energy/sv/','#FF375F','#BF5AF2','T'],
-        ['Truxel','https://truxel.ai/','#BF5AF2','#5E5CE6','T'],
-        ['CANEA','https://www.canea.se/','#FF9F0A','#FF375F','C'],
-        ['Wistbo','https://www.wistbo.com/','#0A84FF','#30D158','W'],
-        ['Schneider Electric','https://www.se.com/se/sv/','#30D158','#FFD60A','SE'],
-        ['AUCOTEC','https://www.aucotec.com/en/','#FF375F','#FF9F0A','A'],
-        ['VIVAVIS SGOP','https://sgop.global/','#5E5CE6','#0A84FF','V']
+        ['Digpro','https://digpro.com/','#0A84FF','#5E5CE6','D','exhibitors/digpro.webp'],
+        ['Steady Energy','https://www.steadyenergy.com/','#FF9500','#FFD60A','SE','exhibitors/steady-energy-the-fission-bar-by-steady-energy.png'],
+        ['Vinnergi','https://vinnergi.se/','#30D158','#64D2FF','V','exhibitors/vinnergi.webp'],
+        ['Truxco','https://truxco.energy/sv/','#FF375F','#BF5AF2','T','exhibitors/truxco-energy.webp'],
+        ['Truxel','https://truxel.ai/','#BF5AF2','#5E5CE6','T','exhibitors/truxel.webp'],
+        ['CANEA','https://www.canea.se/','#FF9F0A','#FF375F','C','exhibitors/canea-partner-group.webp'],
+        ['Wistbo','https://www.wistbo.com/','#0A84FF','#30D158','W','exhibitors/wistbo.webp'],
+        ['Schneider Electric','https://www.se.com/se/sv/','#30D158','#FFD60A','SE','exhibitors/schneider-electric.webp'],
+        ['AUCOTEC','https://www.aucotec.com/en/','#FF375F','#FF9F0A','A','exhibitors/aucotec.webp'],
+        ['VIVAVIS SGOP','https://sgop.global/','#5E5CE6','#0A84FF','V','exhibitors/vivavis-ag.webp']
       ],
       partner: [
-        ['Hitachi Energy','https://www.hitachienergy.com/se/sv','#FF375F','#FF9F0A','H'],
-        ['Vattenfall','https://www.vattenfall.se/','#FFD60A','#FF9500','V'],
-        ['Uniper','https://www.uniper.energy/sv/sverige','#00A4A7','#0A84FF','U'],
-        ['EIT InnoEnergy','https://www.innoenergy.com','#30D158','#64D2FF','EIT'],
-        ['AI Sweden','https://www.ai.se/en','#0A84FF','#5E5CE6','AI'],
-        ['Eneff','https://eneff.se','#BF5AF2','#5E5CE6','E'],
+        ['Hitachi Energy','https://www.hitachienergy.com/se/sv','#FF375F','#FF9F0A','H','exhibitors/hitachi-energy.png'],
+        ['Vattenfall','https://www.vattenfall.se/','#FFD60A','#FF9500','V','exhibitors/vattenfall.webp'],
+        ['Uniper','https://www.uniper.energy/sv/sverige','#00A4A7','#0A84FF','U','exhibitors/uniper.webp'],
+        ['EIT InnoEnergy','https://www.innoenergy.com','#30D158','#64D2FF','EIT','exhibitors/innoenergy.webp'],
+        ['AI Sweden','https://www.ai.se/en','#0A84FF','#5E5CE6','AI','exhibitors/ai-sweden.webp'],
+        ['Eneff','https://eneff.se','#BF5AF2','#5E5CE6','E','exhibitors/eneff.webp'],
         ['Energiforsk','https://energiforsk.se/','#FF9F0A','#FFD60A','E'],
-        ['Svebio','https://www.svebio.se','#30D158','#FFD60A','S'],
+        ['Svebio','https://www.svebio.se','#30D158','#FFD60A','S','exhibitors/svebio.webp'],
         ['Chalmers','https://www.chalmers.se/en/','#0A84FF','#00A4A7','C'],
-        ['Svensk Solenergi','https://svensksolenergi.se/','#FFD60A','#FF9500','◯'],
-        ['Cloudberry','https://www.cloudberry.no/en','#64D2FF','#5E5CE6','C'],
+        ['Svensk Solenergi','https://svensksolenergi.se/','#FFD60A','#FF9500','◯','exhibitors/svensk-solenergi.webp'],
+        ['Cloudberry','https://www.cloudberry.no/en','#64D2FF','#5E5CE6','C','exhibitors/cloudberry.webp'],
         ['LRF','https://www.lrf.se/','#30D158','#FFD60A','LRF'],
-        ['2030-sekretariatet','https://www.2030sekretariatet.se/','#FF375F','#BF5AF2','30'],
+        ['2030-sekretariatet','https://www.2030sekretariatet.se/','#FF375F','#BF5AF2','30','exhibitors/2030-sekretariatet.webp'],
         ['Glava Energy Center','https://glavaenergycenter.se/','#FF9500','#FF375F','G'],
-        ['Energipress','https://www.energipress.se/','#5E5CE6','#0A84FF','E']
+        ['Energipress','https://www.energipress.se/','#5E5CE6','#0A84FF','E','exhibitors/energipress.webp']
       ]
     };
     function render(tier, items){
