@@ -1769,9 +1769,9 @@
   .partner-tier.gold .partner-grid{ grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .partner-tier.gold .partner{ padding: 28px 32px; min-height: 140px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.gold .partner img{ max-height: 72px; max-width: 80%; width:auto; height:auto; object-fit: contain; filter: brightness(1.05); }
-  .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(6, 1fr); }
+  .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 200px)); justify-content:center; gap: 14px; }
   .partner-tier.event .partner-grid,
-  .partner-tier.partner .partner-grid{ grid-template-columns: repeat(5, 1fr); }
+  .partner-tier.partner .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); justify-content:center; gap: 14px; }
   .partner{
     background: var(--bg-2); min-height: 110px;
     display: grid; place-items: center;
@@ -1824,11 +1824,12 @@
   .partner-tier.gold .partner.has-logo{ padding:28px 36px; }
   /* Gold = real brand colors, no invert */
   .partner-tier.gold .partner.has-logo img{ max-height:64px; filter:none; opacity:1; }
-  .partner-tier.bronze .partner.has-logo img{ max-height:36px; }
-  .partner-tier.event .partner.has-logo{ padding:10px 14px; }
-  .partner-tier.event .partner.has-logo img{ max-height:24px; }
-  .partner-tier.partner .partner.has-logo{ padding:8px 12px; }
-  .partner-tier.partner .partner.has-logo img{ max-height:22px; }
+  .partner-tier.bronze .partner.has-logo{ min-width:150px; min-height:90px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.bronze .partner.has-logo img{ max-height:48px; max-width:140px; }
+  .partner-tier.event .partner.has-logo{ min-width:150px; min-height:84px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.event .partner.has-logo img{ max-height:42px; max-width:140px; }
+  .partner-tier.partner .partner.has-logo{ min-width:150px; min-height:84px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.partner .partner.has-logo img{ max-height:42px; max-width:140px; }
   .partner-tier.event .pl-name, .partner-tier.partner .pl-name{ font-size: 11px; }
   .partner-tier.event .pl-mark, .partner-tier.partner .pl-mark{ width:20px; height:20px; font-size:10px; border-radius:6px; }
 
