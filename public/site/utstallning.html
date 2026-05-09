@@ -33,11 +33,20 @@
   .hsr-name{ font-size:14px; font-weight:500; }
   .hsr-booth{ font-size:12px; color: var(--green-2); font-variant-numeric: tabular-nums; padding: 3px 10px; background: rgba(48,209,88,0.12); border-radius: 100px; }
 
-  .hall-frame{ position:relative; aspect-ratio: 16/9; border-radius:18px; overflow:hidden; background:#0A0A10; border:1px solid var(--stroke); }
-  .hall-frame svg{ width:100%; height:100%; display:block; }
-  .booth-rect{ cursor:pointer; transition: filter .2s, stroke-width .2s; }
-  .booth-rect:hover{ filter: brightness(1.5); stroke-width: 2; }
-  .booth-rect.highlight{ stroke:#30D158; stroke-width:3; filter: drop-shadow(0 0 12px rgba(48,209,88,0.8)); }
+  .hall-frame{ position:relative; aspect-ratio: 2561/1820; border-radius:18px; overflow:hidden; background:#0A0A10; border:1px solid var(--stroke); }
+  .hall-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; user-select:none; -webkit-user-drag:none; }
+  .hall-overlay{ position:absolute; inset:0; pointer-events:none; }
+  .booth-pin{ position:absolute; width:26px; height:26px; transform: translate(-50%,-50%); pointer-events:auto; cursor:pointer; }
+  .booth-pin::before{ content:""; position:absolute; inset:-6px; border-radius:50%; border:2px solid #30D158; opacity:0; transition: opacity .2s, transform .2s; box-shadow:0 0 18px rgba(48,209,88,.9); }
+  .booth-pin:hover::before, .booth-pin.highlight::before{ opacity:1; transform: scale(1.1); }
+  .booth-pin.highlight{ animation: pinpulse 1.4s ease-in-out infinite; }
+  @keyframes pinpulse{ 0%,100%{ filter:drop-shadow(0 0 6px #30D158);} 50%{ filter:drop-shadow(0 0 16px #30D158);} }
+  .booth-pin .dot{ position:absolute; inset:8px; border-radius:50%; background:#30D158; box-shadow:0 0 10px #30D158, 0 2px 6px rgba(0,0,0,.6); }
+  .booth-pin .lbl{ position:absolute; left:50%; top:-6px; transform: translate(-50%,-100%); white-space:nowrap; font-size:11px; font-weight:600; padding:4px 9px; border-radius:6px; background: rgba(8,10,14,.95); color:#fff; border:1px solid rgba(48,209,88,.4); opacity:0; pointer-events:none; transition: opacity .15s; }
+  .booth-pin:hover .lbl, .booth-pin.highlight .lbl{ opacity:1; }
+  .hall-tools{ position:absolute; left:14px; bottom:14px; display:flex; gap:8px; z-index:5; }
+  .hall-tools button{ background:rgba(8,10,14,.85); border:1px solid var(--stroke-2); color:var(--text-2); border-radius:10px; padding:8px 12px; font-size:12px; cursor:pointer; font-family:inherit; }
+  .hall-tools button:hover{ color:#fff; border-color:#30D158; }
   .hall-foot{ margin-top: 18px; display:grid; grid-template-columns: repeat(4,1fr); gap:10px; padding: 16px; border-radius:14px; border:1px solid var(--stroke); background: rgba(255,255,255,0.02); }
   @media(max-width:700px){ .hall-foot{ grid-template-columns: 1fr 1fr; } }
   .hf-stat b{ font-size:18px; font-weight:800; letter-spacing:-.02em; background: linear-gradient(135deg,#30D158,#64D2FF); -webkit-background-clip:text; background-clip:text; color:transparent; }
