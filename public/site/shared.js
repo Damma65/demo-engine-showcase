@@ -9,9 +9,9 @@
       '<div class="gold-strip-inner">' +
         '<span class="gs-label"><span class="gs-dot"></span><span class="gs-label-text">Guldsponsorer · Energimässan 2027</span></span>' +
         '<div class="gs-chips">' +
-          '<a class="gs-chip" href="https://en.sungrowpower.com/" target="_blank" rel="noopener"><span class="gs-chip-mark s">S</span>SUNGROW</a>' +
+          '<a class="gs-logo" href="https://en.sungrowpower.com/" target="_blank" rel="noopener" aria-label="Sungrow"><img src="partners/sungrow.svg" alt="Sungrow" /></a>' +
           '<span class="gs-divider"></span>' +
-          '<a class="gs-chip" href="sponsorpaket.html"><span class="gs-chip-mark t">◆</span>TDG</a>' +
+          '<a class="gs-logo" href="sponsorpaket.html" aria-label="TDG Yunet"><img src="partners/tdg-yunet.svg" alt="TDG Yunet" /></a>' +
         '</div>' +
         '<a class="gs-cta" href="sponsorpaket.html">Bli sponsor</a>' +
       '</div>';
