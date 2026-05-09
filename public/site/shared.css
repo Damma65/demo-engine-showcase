@@ -77,6 +77,11 @@ body{
 .gs-cta{ color:#FFD60A; text-decoration:none; white-space:nowrap; transition: color .2s; }
 .gs-cta:hover{ color:#fff; }
 .gs-cta::after{ content:" →"; }
+.gs-eb{ display:inline-flex; align-items:center; gap:6px; margin-left:10px; padding:5px 12px; border-radius:100px;
+  background: linear-gradient(135deg,#FF9500,#FFD60A); color:#1A1300; text-decoration:none; font-weight:800;
+  font-size:11px; letter-spacing:.04em; white-space:nowrap; box-shadow: 0 6px 14px -4px rgba(255,159,10,0.5); transition: transform .15s, box-shadow .15s; }
+.gs-eb:hover{ transform: translateY(-1px); box-shadow: 0 10px 22px -6px rgba(255,159,10,.7); }
+@media (max-width:760px){ .gs-eb{ display:none; } }
 @media (max-width: 900px){
   .gold-strip{ height: 36px; }
   .gold-strip-inner{ padding: 0 14px; gap:10px; font-size:10px; letter-spacing:.10em; }
@@ -365,3 +370,7 @@ footer.site-footer{
   .logo-event{ font-size: 13px; }
   .logo-brand{ font-size: 8.5px; }
 }
+
+/* Kvällsmingel nav link — neutral by default, gold on hover */
+.nav-mingel{ transition: color .15s ease; }
+.nav-mingel:hover{ color:#FFD60A !important; }

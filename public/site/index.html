@@ -469,25 +469,23 @@
   .kn-arrow{ color: var(--text-3); font-weight: 500; transition: color .15s ease, transform .15s ease; }
   .kn-card:hover .kn-arrow{ color: var(--orange); transform: translateX(3px); }
 
-  /* Sponsor/brand chip — bottom-right of keynote portrait */
+  /* Sponsor/brand chip — aligned bottom edge with the "Öppna talarprofil →" CTA */
   .kn-brand{
-    position: absolute; right: 18px; bottom: 18px; z-index: 2;
+    position: absolute; right: 26px; bottom: 26px; z-index: 4;
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 7px 12px 7px 8px; border-radius: 10px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    padding: 5px 10px; border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     font-weight: 900; font-size: 12px; letter-spacing: .02em;
   }
-  .kn-brand-vf{ background: #FFE600; padding: 8px 14px; }
-  .kn-brand-vf img{ height: 22px; width: auto; display: block; }
-  .kn-brand-s{ background: #fff; padding: 8px 14px; }
-  .kn-brand-s img{ height: 22px; width: auto; display: block; }
-  .kn-brand-gold{ background:#fff; color:#1E1E1C; padding:6px 12px; gap:10px; }
+  .kn-brand-vf{ background: #FFE600; padding: 5px 12px; }
+  .kn-brand-vf img{ height: 16px; width: auto; display: block; }
+  .kn-brand-s{ background: #fff; padding: 5px 12px; }
+  .kn-brand-s img{ height: 16px; width: auto; display: block; }
+  .kn-brand-gold{ background:#fff; color:#1E1E1C; padding:5px 10px; gap:8px; }
   .kn-brand-gold .kn-brand-label{ font-size:10px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; color:#B8860B; padding-right:8px; border-right:1px solid rgba(0,0,0,0.12); }
-  .kn-brand-gold img{ height:16px; width:auto; max-width:70px; object-fit:contain; display:block; }
-  /* Lift the meta text so the brand chip never overlaps it */
-  .kn-meta{ padding-bottom: 64px !important; }
-  @media (max-width: 700px){ .kn-meta{ padding-bottom: 60px !important; } }
+  .kn-brand-gold img{ height:14px; width:auto; max-width:64px; object-fit:contain; display:block; }
+  @media (max-width: 700px){ .kn-brand{ right:18px; bottom:18px; } }
 
   /* Per-card duotone — riktigt dramatiskt */
   .kn-card.kn-1 .kn-photo, .kn-card.kn-2 .kn-photo, .kn-card.kn-3 .kn-photo{
@@ -1727,7 +1725,7 @@
   .match-note{ display:block; margin-top: 14px; font-size: 12px; color: var(--text-3); }
 
   /* ============ PARTNERS ============ */
-  .partners{ padding: 100px 32px; border-top:1px solid var(--stroke); }
+  .partners{ padding: 100px 32px; border-top:1px solid var(--stroke); background:#14141A; width:100%; }
   .partners-eyebrow{
     text-align: center;
     font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
@@ -1771,9 +1769,9 @@
   .partner-tier.gold .partner-grid{ grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .partner-tier.gold .partner{ padding: 28px 32px; min-height: 140px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.gold .partner img{ max-height: 72px; max-width: 80%; width:auto; height:auto; object-fit: contain; filter: brightness(1.05); }
-  .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(6, 1fr); }
+  .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 200px)); justify-content:center; gap: 14px; }
   .partner-tier.event .partner-grid,
-  .partner-tier.partner .partner-grid{ grid-template-columns: repeat(5, 1fr); }
+  .partner-tier.partner .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); justify-content:center; gap: 14px; }
   .partner{
     background: var(--bg-2); min-height: 110px;
     display: grid; place-items: center;
@@ -1826,11 +1824,12 @@
   .partner-tier.gold .partner.has-logo{ padding:28px 36px; }
   /* Gold = real brand colors, no invert */
   .partner-tier.gold .partner.has-logo img{ max-height:64px; filter:none; opacity:1; }
-  .partner-tier.bronze .partner.has-logo img{ max-height:36px; }
-  .partner-tier.event .partner.has-logo{ padding:10px 14px; }
-  .partner-tier.event .partner.has-logo img{ max-height:24px; }
-  .partner-tier.partner .partner.has-logo{ padding:8px 12px; }
-  .partner-tier.partner .partner.has-logo img{ max-height:22px; }
+  .partner-tier.bronze .partner.has-logo{ min-width:150px; min-height:90px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.bronze .partner.has-logo img{ max-height:48px; max-width:140px; }
+  .partner-tier.event .partner.has-logo{ min-width:150px; min-height:84px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.event .partner.has-logo img{ max-height:42px; max-width:140px; }
+  .partner-tier.partner .partner.has-logo{ min-width:150px; min-height:84px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.partner .partner.has-logo img{ max-height:42px; max-width:140px; filter:none; opacity:1; }
   .partner-tier.event .pl-name, .partner-tier.partner .pl-name{ font-size: 11px; }
   .partner-tier.event .pl-mark, .partner-tier.partner .pl-mark{ width:20px; height:20px; font-size:10px; border-radius:6px; }
 
@@ -1978,7 +1977,7 @@
       <a href="program.html">Program</a>
       <a href="talare.html">Talare</a>
       <a href="utstallning.html">Utställning</a>
-      <a href="kvallsmingel.html" style="color:#FFD60A">Kvällsmingel</a>
+      <a href="kvallsmingel.html" class="nav-mingel">Kvällsmingel</a>
       <a href="bli-utstallare.html">Bli utställare</a>
       <a href="#biljetter">Biljetter</a>
       <a href="resa-boende.html">Praktisk info</a>
@@ -2026,7 +2025,7 @@
     <div class="hero-countdown">
       <div class="hc-label">Nästa mässa öppnar</div>
       <div class="hc-blocks" id="cd">
-        <div class="hc-block hc-days-wrap" style="position:relative;"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div><a href="checkout.html?ticket=conference" class="eb-badge" title="Early bird stänger 31 mars 2027">🔥 Early bird · spara 1 000 kr</a></div>
+        <div class="hc-block hc-days-wrap" style="position:relative;"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="h">14</div><div class="hc-lbl">Timmar</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="m">42</div><div class="hc-lbl">Minuter</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="s">08</div><div class="hc-lbl">Sek</div></div>
@@ -2066,7 +2065,8 @@
   <div class="section-inner" style="display:grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items:center;">
     <div style="position:relative;">
       <div style="position:relative; width:100%; aspect-ratio: 4/3; border-radius: 28px; overflow:hidden; border:1px solid var(--stroke); box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6);">
-        <img src="assets/human-warmth.jpg" alt="Besökare med namnskylt på energimässa, ler mot kameran" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit: cover; object-position: 56% 28%; transform: scale(1.18);" />
+        <img src="assets/human-warmth.jpg" alt="Heidi Sommers, besökare på Energimässan, med namnskylt och leende mot kameran" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit: cover; object-position: 56% 28%; transform: scale(1.18);" />
+        <div style="position:absolute; top:18px; left:18px; padding:8px 14px; background: rgba(15,15,18,0.78); backdrop-filter: blur(20px); border:1px solid var(--stroke-2); border-radius:100px; font-size:12px; font-weight:600; color:#fff; display:flex; align-items:center; gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#30D158;box-shadow:0 0 8px #30D158;"></span>Heidi Sommers · Besökare 2026</div>
         <div style="position:absolute; inset:0; background:
           radial-gradient(75% 80% at 60% 55%, transparent 0%, transparent 35%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0.85) 100%),
           linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.55) 100%);"></div>
@@ -2096,7 +2096,8 @@
         </div>
       </div>
 
-      <div style="margin-top:14px; display:flex; align-items:center; gap:14px; padding: 14px 18px; border-radius:14px; border:1px solid var(--stroke); background:rgba(255,255,255,0.025);">
+      <div style="margin-top:14px; display:flex; align-items:center; gap:14px; padding: 14px 18px; border-radius:14px; border:1px solid var(--stroke); background:rgba(255,255,255,0.025); position:relative;">
+        <span style="position:absolute; top:-8px; right:14px; font-size:9px; font-weight:800; letter-spacing:.16em; padding:3px 8px; border-radius:100px; background:rgba(94,92,230,.18); color:#B0AEFF; border:1px solid rgba(94,92,230,.4); text-transform:uppercase;">Demo</span>
         <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#FF9500,#FFD60A);display:grid;place-items:center;font-weight:700;color:#1a1300;font-size:13px;">JS</div>
         <div style="font-size:12.5px; color:var(--text-2); line-height:1.5;">"38 kvalificerade leads på två dagar — fler än hela Q4."<br/><span style="color:var(--text-3); font-size:11.5px;">Johan Svenningsson · VD Uniper Sverige</span></div>
       </div>
@@ -3575,14 +3576,14 @@
         ['EIT InnoEnergy','https://www.innoenergy.com','#30D158','#64D2FF','EIT','exhibitors/innoenergy.webp'],
         ['AI Sweden','https://www.ai.se/en','#0A84FF','#5E5CE6','AI','exhibitors/ai-sweden.webp'],
         ['Eneff','https://eneff.se','#BF5AF2','#5E5CE6','E','exhibitors/eneff.webp'],
-        ['Energiforsk','https://energiforsk.se/','#FF9F0A','#FFD60A','E'],
+        ['Energiforsk','https://energiforsk.se/','#FF9F0A','#FFD60A','E','partners/energiforsk.svg'],
         ['Svebio','https://www.svebio.se','#30D158','#FFD60A','S','exhibitors/svebio.webp'],
-        ['Chalmers','https://www.chalmers.se/en/','#0A84FF','#00A4A7','C'],
+        ['Chalmers','https://www.chalmers.se/en/','#0A84FF','#00A4A7','C','partners/chalmers.svg'],
         ['Svensk Solenergi','https://svensksolenergi.se/','#FFD60A','#FF9500','◯','exhibitors/svensk-solenergi.webp'],
         ['Cloudberry','https://www.cloudberry.no/en','#64D2FF','#5E5CE6','C','exhibitors/cloudberry.webp'],
-        ['LRF','https://www.lrf.se/','#30D158','#FFD60A','LRF'],
+        ['LRF','https://www.lrf.se/','#30D158','#FFD60A','LRF','partners/lrf.svg'],
         ['2030-sekretariatet','https://www.2030sekretariatet.se/','#FF375F','#BF5AF2','30','exhibitors/2030-sekretariatet.webp'],
-        ['Glava Energy Center','https://glavaenergycenter.se/','#FF9500','#FF375F','G'],
+        ['Glava Energy Center','https://glavaenergycenter.se/','#FF9500','#FF375F','G','partners/glava-energy-center.svg'],
         ['Energipress','https://www.energipress.se/','#5E5CE6','#0A84FF','E','exhibitors/energipress.webp']
       ]
     };
@@ -4675,13 +4676,13 @@
   .kn-card{ text-decoration: none; color: inherit; cursor: pointer; }
   .kn-cta{
     display: inline-block; margin-top: 14px;
-    font-size: 12.5px; font-weight: 600; letter-spacing: .02em;
-    color: #fff; opacity: .85;
-    border-bottom: 1px solid rgba(255,255,255,0.4);
+    font-size: 12.5px; font-weight: 700; letter-spacing: .02em;
+    color: #30D158; opacity: 1;
+    border-bottom: 1px solid rgba(48,209,88,0.5);
     padding-bottom: 2px; width: fit-content;
-    transition: opacity .2s ease, border-color .2s ease;
+    transition: color .2s ease, border-color .2s ease, transform .2s ease;
   }
-  .kn-card:hover .kn-cta{ opacity: 1; border-color: #fff; }
+  .kn-card:hover .kn-cta{ color: #5DE38A; border-color: #5DE38A; transform: translateX(2px); }
 
 </style>
 
