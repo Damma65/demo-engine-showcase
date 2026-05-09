@@ -469,25 +469,23 @@
   .kn-arrow{ color: var(--text-3); font-weight: 500; transition: color .15s ease, transform .15s ease; }
   .kn-card:hover .kn-arrow{ color: var(--orange); transform: translateX(3px); }
 
-  /* Sponsor/brand chip — bottom-right of keynote portrait */
+  /* Sponsor/brand chip — aligned bottom edge with the "Öppna talarprofil →" CTA */
   .kn-brand{
-    position: absolute; right: 18px; bottom: 18px; z-index: 2;
+    position: absolute; right: 26px; bottom: 26px; z-index: 4;
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 7px 12px 7px 8px; border-radius: 10px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    padding: 5px 10px; border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     font-weight: 900; font-size: 12px; letter-spacing: .02em;
   }
-  .kn-brand-vf{ background: #FFE600; padding: 8px 14px; }
-  .kn-brand-vf img{ height: 22px; width: auto; display: block; }
-  .kn-brand-s{ background: #fff; padding: 8px 14px; }
-  .kn-brand-s img{ height: 22px; width: auto; display: block; }
-  .kn-brand-gold{ background:#fff; color:#1E1E1C; padding:6px 12px; gap:10px; }
+  .kn-brand-vf{ background: #FFE600; padding: 5px 12px; }
+  .kn-brand-vf img{ height: 16px; width: auto; display: block; }
+  .kn-brand-s{ background: #fff; padding: 5px 12px; }
+  .kn-brand-s img{ height: 16px; width: auto; display: block; }
+  .kn-brand-gold{ background:#fff; color:#1E1E1C; padding:5px 10px; gap:8px; }
   .kn-brand-gold .kn-brand-label{ font-size:10px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; color:#B8860B; padding-right:8px; border-right:1px solid rgba(0,0,0,0.12); }
-  .kn-brand-gold img{ height:16px; width:auto; max-width:70px; object-fit:contain; display:block; }
-  /* Lift the meta text so the brand chip never overlaps it */
-  .kn-meta{ padding-bottom: 64px !important; }
-  @media (max-width: 700px){ .kn-meta{ padding-bottom: 60px !important; } }
+  .kn-brand-gold img{ height:14px; width:auto; max-width:64px; object-fit:contain; display:block; }
+  @media (max-width: 700px){ .kn-brand{ right:18px; bottom:18px; } }
 
   /* Per-card duotone — riktigt dramatiskt */
   .kn-card.kn-1 .kn-photo, .kn-card.kn-2 .kn-photo, .kn-card.kn-3 .kn-photo{
@@ -2026,7 +2024,7 @@
     <div class="hero-countdown">
       <div class="hc-label">Nästa mässa öppnar</div>
       <div class="hc-blocks" id="cd">
-        <div class="hc-block hc-days-wrap" style="position:relative;"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div><a href="checkout.html?ticket=conference" class="eb-badge" title="Early bird stänger 31 mars 2027">🔥 Early bird · spara 1 000 kr</a></div>
+        <div class="hc-block hc-days-wrap" style="position:relative;"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="h">14</div><div class="hc-lbl">Timmar</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="m">42</div><div class="hc-lbl">Minuter</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="s">08</div><div class="hc-lbl">Sek</div></div>
@@ -4675,13 +4673,13 @@
   .kn-card{ text-decoration: none; color: inherit; cursor: pointer; }
   .kn-cta{
     display: inline-block; margin-top: 14px;
-    font-size: 12.5px; font-weight: 600; letter-spacing: .02em;
-    color: #fff; opacity: .85;
-    border-bottom: 1px solid rgba(255,255,255,0.4);
+    font-size: 12.5px; font-weight: 700; letter-spacing: .02em;
+    color: #30D158; opacity: 1;
+    border-bottom: 1px solid rgba(48,209,88,0.5);
     padding-bottom: 2px; width: fit-content;
-    transition: opacity .2s ease, border-color .2s ease;
+    transition: color .2s ease, border-color .2s ease, transform .2s ease;
   }
-  .kn-card:hover .kn-cta{ opacity: 1; border-color: #fff; }
+  .kn-card:hover .kn-cta{ color: #5DE38A; border-color: #5DE38A; transform: translateX(2px); }
 
 </style>
 
