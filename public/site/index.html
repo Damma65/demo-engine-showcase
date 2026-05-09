@@ -3628,7 +3628,11 @@
   .ig-sub{ margin-top: 18px; font-size: 17px; color: var(--text-2); max-width: 520px; line-height:1.5; }
   .ig-handle{ display:inline-flex; align-items:center; gap:10px; padding: 12px 18px; border-radius:100px; background: rgba(255,255,255,0.04); border:1px solid var(--stroke-2); color: var(--text); text-decoration:none; font-size:14px; font-weight:500; }
   .ig-handle svg{ width:18px; height:18px; }
-  .ig-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .ig-grid{ position:relative; overflow:hidden; mask-image:linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
+  .ig-track{ display:flex; gap:12px; width:max-content; animation: igslide 80s linear infinite; }
+  .ig-track:hover{ animation-play-state: paused; }
+  .ig-track .ig-post{ flex:0 0 auto; width: 150px; aspect-ratio:1/1; }
+  @keyframes igslide{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
   .ig-post{ aspect-ratio: 1/1; border-radius: 18px; overflow: hidden; position: relative; cursor: pointer; isolation: isolate;
     border: 1px solid var(--stroke); transition: transform .25s ease, border-color .25s ease; }
   .ig-post:hover{ transform: translateY(-3px); border-color: var(--stroke-2); }
