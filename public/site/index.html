@@ -4015,7 +4015,7 @@
             const dataUrl = await new Promise(function(res, rej){
               const r = new FileReader(); r.onload = function(e){ res(e.target.result); }; r.onerror = rej; r.readAsDataURL(file);
             });
-            data[fi.dataset.n + 'Img'] = await loadImage(dataUrl);
+            data[fi.dataset.n + 'Img'] = await stripUniformBackground(await loadImage(dataUrl));
           } catch(e){ /* ignore */ }
         }
         close(data);
