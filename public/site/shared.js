@@ -12,6 +12,7 @@
           '<a class="gs-chip" href="https://en.sungrowpower.com/" target="_blank" rel="noopener"><span class="gs-chip-mark s">S</span>SUNGROW</a>' +
           '<span class="gs-divider"></span>' +
           '<a class="gs-chip" href="sponsorpaket.html"><span class="gs-chip-mark t">◆</span>TDG</a>' +
+          '<a class="gs-eb" href="checkout.html?ticket=conference" title="Early bird stänger 31 mars 2027">🔥 Early bird · spara 1 000 kr</a>' +
         '</div>' +
         '<a class="gs-cta" href="sponsorpaket.html">Bli sponsor</a>' +
       '</div>';
