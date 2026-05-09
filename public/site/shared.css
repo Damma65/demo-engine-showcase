@@ -370,3 +370,7 @@ footer.site-footer{
   .logo-event{ font-size: 13px; }
   .logo-brand{ font-size: 8.5px; }
 }
+
+/* Kvällsmingel nav link — neutral by default, gold on hover */
+.nav-mingel{ transition: color .15s ease; }
+.nav-mingel:hover{ color:#FFD60A !important; }
