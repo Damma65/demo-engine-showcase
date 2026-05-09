@@ -3727,24 +3727,30 @@
 <script>
 (function(){
   const TEMPLATES = [
-    { key:'going',   label:'Jag kommer',     line1:'JAG KOMMER',          line2:'PÅ ENERGIMÄSSAN', g1:'#FF375F', g2:'#BF5AF2', emoji:'⚡' },
-    { key:'speaker', label:'Jag talar',      line1:'JAG TALAR',           line2:'PÅ ENERGIMÄSSAN', g1:'#FFD60A', g2:'#FF9500', emoji:'🎤' },
-    { key:'exhib',   label:'Jag ställer ut', line1:'TRÄFFA OSS',          line2:'I VÅR MONTER',    g1:'#0A84FF', g2:'#5E5CE6', emoji:'📍' },
-    { key:'visit',   label:'Vi ses där',    line1:'SES VI PÅ',           line2:'ENERGIMÄSSAN?',   g1:'#30D158', g2:'#0A84FF', emoji:'👋' }
+    { key:'going',   label:'Jag kommer',     line1:'JAG KOMMER',          line2:'PÅ ENERGIMÄSSAN', g1:'#FF375F', g2:'#BF5AF2', emoji:'⚡',
+      fields:[{n:'name', l:'Ditt namn (valfritt)', ph:'Ex. Anna Andersson', req:false}] },
+    { key:'speaker', label:'Jag talar',      line1:'JAG TALAR',           line2:'PÅ ENERGIMÄSSAN', g1:'#FFD60A', g2:'#FF9500', emoji:'🎤',
+      fields:[{n:'name', l:'Talarens namn', ph:'Ex. Magdalena Andersson', req:true}] },
+    { key:'exhib',   label:'Vi ställer ut',  line1:'TRÄFFA OSS',          line2:'I VÅR MONTER',    g1:'#0A84FF', g2:'#5E5CE6', emoji:'📍',
+      fields:[
+        {n:'company', l:'Företagsnamn', ph:'Ex. Sungrow', req:true},
+        {n:'name',    l:'För- och efternamn', ph:'Ex. Lars Bergström', req:true},
+        {n:'booth',   l:'Monternummer', ph:'Ex. B4', req:true}
+      ] },
+    { key:'visit',   label:'Vi ses där',    line1:'SES VI PÅ',           line2:'ENERGIMÄSSAN?',   g1:'#30D158', g2:'#0A84FF', emoji:'👋',
+      fields:[{n:'name', l:'Ditt namn (valfritt)', ph:'Ex. Anna Andersson', req:false}] }
   ];
 
-  // Render canvas (1080x1920 logical, scaled for preview)
-  function paint(canvas, t){
+  function paint(canvas, t, data){
+    data = data || {};
     const W = 1080, H = 1920;
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext('2d');
 
-    // Background gradient
     const bg = ctx.createLinearGradient(0,0,W,H);
     bg.addColorStop(0,'#0a0612'); bg.addColorStop(1,'#07050d');
     ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
 
-    // Color glow blobs
     const g1 = ctx.createRadialGradient(W*0.2,H*0.15,0,W*0.2,H*0.15,W*0.9);
     g1.addColorStop(0, t.g1+'cc'); g1.addColorStop(0.5,'transparent');
     ctx.fillStyle = g1; ctx.fillRect(0,0,W,H);
@@ -3752,57 +3758,85 @@
     g2.addColorStop(0, t.g2+'cc'); g2.addColorStop(0.5,'transparent');
     ctx.fillStyle = g2; ctx.fillRect(0,0,W,H);
 
-    // Stars
     ctx.fillStyle = 'rgba(255,255,255,0.6)';
     for (let i=0;i<60;i++){
-      const x = Math.random()*W, y = Math.random()*H, r = Math.random()*2.2+0.4;
+      const x = ((i*97)%W), y = ((i*193)%H), r = ((i%5)*0.4)+0.6;
       ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
     }
 
-    // Top eyebrow
     ctx.fillStyle = '#FFD60A';
     ctx.font = '600 30px -apple-system, system-ui, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText('• ENERGIMÄSSAN 2027 •', W/2, 220);
 
-    // Big emoji
-    ctx.font = '180px -apple-system, system-ui, sans-serif';
-    ctx.fillText(t.emoji, W/2, 480);
+    ctx.font = '170px -apple-system, system-ui, sans-serif';
+    ctx.fillText(t.emoji, W/2, 460);
 
-    // Headline lines
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = '800 130px -apple-system, system-ui, sans-serif';
-    const ls = -0.04;
-    drawLetter(ctx, t.line1, W/2, 720, ls);
-    // Gradient text for line 2
-    const tg = ctx.createLinearGradient(0,800,W,1000);
+    fitLine(ctx, t.line1, W/2, 700, 960, 110, '#FFFFFF', -0.04, 800);
+    const tg = ctx.createLinearGradient(0,780,W,980);
     tg.addColorStop(0, t.g1); tg.addColorStop(1, t.g2);
-    ctx.fillStyle = tg;
-    drawLetter(ctx, t.line2, W/2, 870, ls);
+    fitLine(ctx, t.line2, W/2, 830, 960, 110, tg, -0.04, 800);
 
-    // Date pill
+    let py = 1020;
+    if (data.name || data.company || data.booth){
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.beginPath(); ctx.arc(W/2, py, 6, 0, Math.PI*2); ctx.fill();
+      py += 80;
+      if (t.key === 'speaker' && data.name){
+        fitLine(ctx, data.name.toUpperCase(), W/2, py, 960, 78, '#FFFFFF', -0.02, 700);
+      } else if (t.key === 'exhib'){
+        if (data.company){ fitLine(ctx, data.company.toUpperCase(), W/2, py, 960, 78, '#FFFFFF', -0.02, 800); py += 80; }
+        if (data.booth){
+          ctx.fillStyle = t.g1;
+          ctx.font = '700 54px -apple-system, system-ui, sans-serif';
+          ctx.fillText('MONTER ' + data.booth.toUpperCase(), W/2, py);
+          py += 64;
+        }
+        if (data.name){
+          ctx.fillStyle = 'rgba(255,255,255,0.78)';
+          ctx.font = '500 40px -apple-system, system-ui, sans-serif';
+          ctx.fillText(data.name, W/2, py);
+        }
+      } else if (data.name){
+        ctx.fillStyle = 'rgba(255,255,255,0.85)';
+        ctx.font = '600 50px -apple-system, system-ui, sans-serif';
+        ctx.fillText('— ' + data.name, W/2, py);
+      }
+    }
+
+    const pillY = 1430;
     ctx.fillStyle = 'rgba(255,255,255,0.08)';
-    roundRect(ctx, W/2-310, 1380, 620, 100, 50, true, false);
+    roundRect(ctx, W/2-310, pillY, 620, 100, 50, true, false);
     ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
-    roundRect(ctx, W/2-310, 1380, 620, 100, 50, false, true);
+    roundRect(ctx, W/2-310, pillY, 620, 100, 50, false, true);
     ctx.fillStyle = '#FFFFFF';
     ctx.font = '600 38px -apple-system, system-ui, sans-serif';
-    ctx.fillText('19–20 MAJ · KISTAMÄSSAN', W/2, 1444);
+    ctx.fillText('19–20 MAJ · KISTAMÄSSAN', W/2, pillY + 64);
 
-    // Hashtag
     ctx.fillStyle = '#FFD60A';
     ctx.font = '700 44px -apple-system, system-ui, sans-serif';
-    ctx.fillText('#energimässan2027', W/2, 1620);
+    ctx.fillText('#energimässan2027', W/2, 1670);
 
-    // Brand bottom
     ctx.fillStyle = 'rgba(255,255,255,0.55)';
     ctx.font = '500 28px -apple-system, system-ui, sans-serif';
-    ctx.fillText('energimassan.se', W/2, 1820);
+    ctx.fillText('energimassan.se', W/2, 1840);
   }
-  function drawLetter(ctx, str, x, y, ls){
-    // Simple draw (canvas doesn't support letter-spacing natively in old browsers; modern: ctx.letterSpacing)
+
+  function fitLine(ctx, str, x, y, maxW, baseSize, fillStyle, ls, weight){
+    weight = weight || 800;
+    let size = baseSize;
+    ctx.font = weight + ' ' + size + 'px -apple-system, system-ui, sans-serif';
     if ('letterSpacing' in ctx) ctx.letterSpacing = (ls*ctx.measureText('M').width)+'px';
+    let w = ctx.measureText(str).width;
+    while (w > maxW && size > 24){
+      size -= 4;
+      ctx.font = weight + ' ' + size + 'px -apple-system, system-ui, sans-serif';
+      if ('letterSpacing' in ctx) ctx.letterSpacing = (ls*ctx.measureText('M').width)+'px';
+      w = ctx.measureText(str).width;
+    }
+    ctx.fillStyle = fillStyle;
     ctx.fillText(str, x, y);
+    if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
   }
   function roundRect(ctx, x, y, w, h, r, fill, stroke){
     ctx.beginPath();
@@ -3815,10 +3849,59 @@
 
   function canvasToBlob(canvas){ return new Promise(res => canvas.toBlob(res, 'image/png', 0.95)); }
 
+  function openModal(t){
+    return new Promise(resolve => {
+      const overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed; inset:0; background:rgba(8,5,15,0.78); backdrop-filter:blur(10px); z-index:9999; display:grid; place-items:center; padding:20px;';
+      const m = document.createElement('div');
+      m.style.cssText = 'width:100%; max-width:440px; background:#13101c; border:1px solid rgba(255,255,255,0.12); border-radius:22px; padding:28px; color:#fff; font-family:inherit; box-shadow:0 30px 80px -20px rgba(0,0,0,0.7);';
+      m.innerHTML =
+        '<div style="display:flex; align-items:center; gap:12px;">' +
+          '<div style="font-size:34px; line-height:1;">' + t.emoji + '</div>' +
+          '<div>' +
+            '<div style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,0.55); font-weight:700;">Anpassa din bild</div>' +
+            '<div style="font-size:18px; font-weight:700; margin-top:2px;">' + t.line1 + ' ' + t.line2 + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="margin-top:18px; display:flex; flex-direction:column; gap:14px;">' +
+          t.fields.map(function(f){ return (
+            '<label style="display:flex; flex-direction:column; gap:6px; font-size:13px; color:rgba(255,255,255,0.78);">' +
+              '<span style="font-weight:600;">' + f.l + (f.req ? ' *' : '') + '</span>' +
+              '<input data-n="' + f.n + '" placeholder="' + f.ph + '" maxlength="60" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); border-radius:10px; padding:12px 14px; color:#fff; font-size:15px; font-family:inherit; outline:none;" />' +
+            '</label>'
+          ); }).join('') +
+        '</div>' +
+        '<div style="display:flex; gap:10px; margin-top:22px;">' +
+          '<button data-act="cancel" style="flex:1; padding:13px; border-radius:100px; background:transparent; border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.8); font-weight:600; font-size:14px; cursor:pointer; font-family:inherit;">Avbryt</button>' +
+          '<button data-act="ok" style="flex:2; padding:13px; border-radius:100px; background:linear-gradient(135deg,' + t.g1 + ',' + t.g2 + '); border:0; color:#0a0612; font-weight:800; font-size:14px; cursor:pointer; font-family:inherit;">Skapa min bild →</button>' +
+        '</div>';
+      overlay.appendChild(m);
+      document.body.appendChild(overlay);
+      const inputs = m.querySelectorAll('input');
+      setTimeout(function(){ inputs[0] && inputs[0].focus(); }, 50);
+      function close(result){ overlay.remove(); document.removeEventListener('keydown', onKey); resolve(result); }
+      function submit(){
+        const data = {};
+        for (var k=0; k<inputs.length; k++){
+          const inp = inputs[k];
+          const v = (inp.value || '').trim().slice(0, 60);
+          const f = t.fields.find(function(x){ return x.n === inp.dataset.n; });
+          if (f.req && !v){ inp.style.borderColor = '#FF375F'; inp.focus(); return; }
+          if (v) data[inp.dataset.n] = v;
+        }
+        close(data);
+      }
+      function onKey(e){ if (e.key==='Escape') close(null); if (e.key==='Enter') submit(); }
+      document.addEventListener('keydown', onKey);
+      overlay.addEventListener('click', function(e){ if (e.target === overlay) close(null); });
+      m.querySelector('[data-act="cancel"]').addEventListener('click', function(){ close(null); });
+      m.querySelector('[data-act="ok"]').addEventListener('click', submit);
+    });
+  }
+
   async function shareTpl(t, canvas){
     const blob = await canvasToBlob(canvas);
-    const file = new File([blob], `energimassan-${t.key}.png`, { type:'image/png' });
-    // Try native share with file (mobile: shows Instagram in share sheet)
+    const file = new File([blob], 'energimassan-' + t.key + '.png', { type:'image/png' });
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
@@ -3827,41 +3910,46 @@
           text: 'Vi ses på Energimässan 19–20 maj 2027! #energimässan2027 https://energimassan.se'
         });
         return;
-      } catch(e){ /* user cancelled or fallback */ }
+      } catch(e){ /* user cancelled */ }
     }
-    // Desktop fallback: download
     downloadTpl(t, canvas);
-    setTimeout(() => alert('Bilden laddades ner. Öppna Instagram på din mobil och välj bilden för att posta som story.'), 200);
+    setTimeout(function(){ alert('Bilden laddades ner. Öppna Instagram på din mobil och välj bilden för att posta som story.'); }, 200);
   }
 
   async function downloadTpl(t, canvas){
     const blob = await canvasToBlob(canvas);
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `energimassan-2027-${t.key}.png`;
+    const slug = canvas.dataset.slug || t.key;
+    a.download = 'energimassan-2027-' + t.key + '-' + slug + '.png';
     document.body.appendChild(a); a.click();
-    setTimeout(()=>{ a.remove(); URL.revokeObjectURL(a.href); }, 500);
+    setTimeout(function(){ a.remove(); URL.revokeObjectURL(a.href); }, 500);
   }
 
   const grid = document.getElementById('tplGrid');
-  grid.innerHTML = TEMPLATES.map((t,i) => `
-    <div class="tpl-card">
-      <div class="tpl-preview"><canvas id="cv-${i}"></canvas></div>
-      <div class="tpl-label">${t.label}</div>
-      <div class="tpl-actions">
-        <button class="share" data-i="${i}" data-act="share">📲 Dela</button>
-        <button class="dl" data-i="${i}" data-act="dl">⬇ Ladda ner</button>
-      </div>
-    </div>
-  `).join('');
+  grid.innerHTML = TEMPLATES.map(function(t,i){ return (
+    '<div class="tpl-card">' +
+      '<div class="tpl-preview"><canvas id="cv-' + i + '"></canvas></div>' +
+      '<div class="tpl-label">' + t.label + '</div>' +
+      '<div class="tpl-actions">' +
+        '<button class="share" data-i="' + i + '" data-act="share">📲 Dela</button>' +
+        '<button class="dl" data-i="' + i + '" data-act="dl">⬇ Ladda ner</button>' +
+      '</div>' +
+    '</div>'
+  ); }).join('');
 
-  TEMPLATES.forEach((t,i)=> paint(document.getElementById('cv-'+i), t));
+  TEMPLATES.forEach(function(t,i){ paint(document.getElementById('cv-'+i), t); });
 
-  grid.addEventListener('click', e => {
+  grid.addEventListener('click', async function(e){
     const b = e.target.closest('button'); if (!b) return;
     const i = +b.dataset.i; const t = TEMPLATES[i]; const cv = document.getElementById('cv-'+i);
+    const data = await openModal(t);
+    if (!data) return;
+    paint(cv, t, data);
+    cv.dataset.slug = (data.name || data.company || t.key).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);
     if (b.dataset.act === 'share') shareTpl(t, cv);
     else downloadTpl(t, cv);
+    setTimeout(function(){ paint(cv, t); }, 1500);
   });
 })();
 </script>
