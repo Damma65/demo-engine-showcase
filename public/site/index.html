@@ -3693,8 +3693,186 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
+
+    <!-- ============ SHARE TO STORY + TEMPLATES ============ -->
+    <div class="share-block">
+      <div class="share-head">
+        <span class="ig-eyebrow"><span class="live-dot"></span>Posta din egen story</span>
+        <h3 class="share-title">Visa att <span class="grad">du är där.</span></h3>
+        <p class="share-sub">Välj en mall, tryck dela — färdig story i din Instagram på 3 sekunder. På mobil öppnas Instagram direkt, på dator laddas bilden ner.</p>
+      </div>
+
+      <div class="tpl-grid" id="tplGrid"></div>
+
+      <p class="share-foot">Tips: använd hashtaggen <b>#energimässan2027</b> så syns din story i vårt flöde och på storbilds-väggen i hall A.</p>
+    </div>
   </div>
 </section>
+
+<style>
+  .share-block{ margin-top:80px; padding-top:60px; border-top:1px solid var(--stroke); }
+  .share-head{ text-align:center; max-width:640px; margin:0 auto 40px; }
+  .share-title{ margin-top:18px; font-size:clamp(34px,4.5vw,52px); font-weight:700; letter-spacing:-.035em; line-height:1.05; color:#fff; }
+  .share-title .grad{ background:linear-gradient(135deg,#FF375F,#BF5AF2); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .share-sub{ margin-top:16px; font-size:15.5px; color:var(--text-2); line-height:1.55; }
+  .tpl-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .tpl-card{ background:var(--bg-2); border:1px solid var(--stroke); border-radius:20px; padding:18px; display:flex; flex-direction:column; gap:14px; transition:transform .25s, border-color .25s; }
+  .tpl-card:hover{ transform:translateY(-3px); border-color:var(--stroke-2); }
+  .tpl-preview{ aspect-ratio:9/16; border-radius:14px; overflow:hidden; position:relative; }
+  .tpl-preview canvas{ width:100%; height:100%; display:block; }
+  .tpl-label{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); font-weight:700; text-align:center; }
+  .tpl-actions{ display:flex; gap:8px; }
+  .tpl-actions button{ flex:1; padding:11px 8px; border-radius:100px; font-weight:600; font-size:12.5px; cursor:pointer; font-family:inherit; border:0; transition:transform .15s, opacity .15s; }
+  .tpl-actions .share{ background:linear-gradient(135deg,#FF375F,#BF5AF2); color:#fff; box-shadow:0 8px 20px -6px rgba(255,55,95,.45); }
+  .tpl-actions .dl{ background:transparent; color:var(--text-2); border:1px solid var(--stroke-2); }
+  .tpl-actions button:hover{ transform:translateY(-1px); }
+  .share-foot{ margin-top:32px; text-align:center; font-size:13.5px; color:var(--text-3); }
+  .share-foot b{ color:#FFD60A; }
+  @media(max-width:900px){ .tpl-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:520px){ .tpl-grid{ grid-template-columns:1fr 1fr; gap:12px; } .tpl-actions{ flex-direction:column; } }
+</style>
+
+<script>
+(function(){
+  const TEMPLATES = [
+    { key:'going',   label:'Jag kommer',     line1:'JAG KOMMER',          line2:'PÅ ENERGIMÄSSAN', g1:'#FF375F', g2:'#BF5AF2', emoji:'⚡' },
+    { key:'speaker', label:'Jag talar',      line1:'JAG TALAR',           line2:'PÅ ENERGIMÄSSAN', g1:'#FFD60A', g2:'#FF9500', emoji:'🎤' },
+    { key:'exhib',   label:'Jag ställer ut', line1:'TRÄFFA OSS',          line2:'I VÅR MONTER',    g1:'#0A84FF', g2:'#5E5CE6', emoji:'🏭' },
+    { key:'visit',   label:'Vi ses där',    line1:'SES VI PÅ',           line2:'ENERGIMÄSSAN?',   g1:'#30D158', g2:'#0A84FF', emoji:'👋' }
+  ];
+
+  // Render canvas (1080x1920 logical, scaled for preview)
+  function paint(canvas, t){
+    const W = 1080, H = 1920;
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    // Background gradient
+    const bg = ctx.createLinearGradient(0,0,W,H);
+    bg.addColorStop(0,'#0a0612'); bg.addColorStop(1,'#07050d');
+    ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+
+    // Color glow blobs
+    const g1 = ctx.createRadialGradient(W*0.2,H*0.15,0,W*0.2,H*0.15,W*0.9);
+    g1.addColorStop(0, t.g1+'cc'); g1.addColorStop(0.5,'transparent');
+    ctx.fillStyle = g1; ctx.fillRect(0,0,W,H);
+    const g2 = ctx.createRadialGradient(W*0.85,H*0.85,0,W*0.85,H*0.85,W*0.9);
+    g2.addColorStop(0, t.g2+'cc'); g2.addColorStop(0.5,'transparent');
+    ctx.fillStyle = g2; ctx.fillRect(0,0,W,H);
+
+    // Stars
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    for (let i=0;i<60;i++){
+      const x = Math.random()*W, y = Math.random()*H, r = Math.random()*2.2+0.4;
+      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+    }
+
+    // Top eyebrow
+    ctx.fillStyle = '#FFD60A';
+    ctx.font = '600 30px -apple-system, system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('• ENERGIMÄSSAN 2027 •', W/2, 220);
+
+    // Big emoji
+    ctx.font = '180px -apple-system, system-ui, sans-serif';
+    ctx.fillText(t.emoji, W/2, 480);
+
+    // Headline lines
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '800 130px -apple-system, system-ui, sans-serif';
+    const ls = -0.04;
+    drawLetter(ctx, t.line1, W/2, 720, ls);
+    // Gradient text for line 2
+    const tg = ctx.createLinearGradient(0,800,W,1000);
+    tg.addColorStop(0, t.g1); tg.addColorStop(1, t.g2);
+    ctx.fillStyle = tg;
+    drawLetter(ctx, t.line2, W/2, 870, ls);
+
+    // Date pill
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    roundRect(ctx, W/2-310, 1380, 620, 100, 50, true, false);
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
+    roundRect(ctx, W/2-310, 1380, 620, 100, 50, false, true);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '600 38px -apple-system, system-ui, sans-serif';
+    ctx.fillText('19–20 MAJ · KISTAMÄSSAN', W/2, 1444);
+
+    // Hashtag
+    ctx.fillStyle = '#FFD60A';
+    ctx.font = '700 44px -apple-system, system-ui, sans-serif';
+    ctx.fillText('#energimässan2027', W/2, 1620);
+
+    // Brand bottom
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.font = '500 28px -apple-system, system-ui, sans-serif';
+    ctx.fillText('energimassan.se', W/2, 1820);
+  }
+  function drawLetter(ctx, str, x, y, ls){
+    // Simple draw (canvas doesn't support letter-spacing natively in old browsers; modern: ctx.letterSpacing)
+    if ('letterSpacing' in ctx) ctx.letterSpacing = (ls*ctx.measureText('M').width)+'px';
+    ctx.fillText(str, x, y);
+  }
+  function roundRect(ctx, x, y, w, h, r, fill, stroke){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+    ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+    ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+    ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
+    if (fill) ctx.fill(); if (stroke) ctx.stroke();
+  }
+
+  function canvasToBlob(canvas){ return new Promise(res => canvas.toBlob(res, 'image/png', 0.95)); }
+
+  async function shareTpl(t, canvas){
+    const blob = await canvasToBlob(canvas);
+    const file = new File([blob], `energimassan-${t.key}.png`, { type:'image/png' });
+    // Try native share with file (mobile: shows Instagram in share sheet)
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: 'Energimässan 2027',
+          text: 'Vi ses på Energimässan 19–20 maj 2027! #energimässan2027 https://energimassan.se'
+        });
+        return;
+      } catch(e){ /* user cancelled or fallback */ }
+    }
+    // Desktop fallback: download
+    downloadTpl(t, canvas);
+    setTimeout(() => alert('Bilden laddades ner. Öppna Instagram på din mobil och välj bilden för att posta som story.'), 200);
+  }
+
+  async function downloadTpl(t, canvas){
+    const blob = await canvasToBlob(canvas);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `energimassan-2027-${t.key}.png`;
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{ a.remove(); URL.revokeObjectURL(a.href); }, 500);
+  }
+
+  const grid = document.getElementById('tplGrid');
+  grid.innerHTML = TEMPLATES.map((t,i) => `
+    <div class="tpl-card">
+      <div class="tpl-preview"><canvas id="cv-${i}"></canvas></div>
+      <div class="tpl-label">${t.label}</div>
+      <div class="tpl-actions">
+        <button class="share" data-i="${i}" data-act="share">📲 Dela</button>
+        <button class="dl" data-i="${i}" data-act="dl">⬇ Ladda ner</button>
+      </div>
+    </div>
+  `).join('');
+
+  TEMPLATES.forEach((t,i)=> paint(document.getElementById('cv-'+i), t));
+
+  grid.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const i = +b.dataset.i; const t = TEMPLATES[i]; const cv = document.getElementById('cv-'+i);
+    if (b.dataset.act === 'share') shareTpl(t, cv);
+    else downloadTpl(t, cv);
+  });
+})();
+</script>
 <script>
 (function(){
   const POSTS = [
