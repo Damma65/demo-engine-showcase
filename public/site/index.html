@@ -250,6 +250,14 @@
   .hc-num{ font-size: 72px; font-weight:600; letter-spacing:-.045em; line-height:1; background: linear-gradient(180deg, #FFFFFF, #A1A1A6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent; font-variant-numeric: tabular-nums; }
   .hc-lbl{ margin-top:10px; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
   @media (max-width: 640px){ .hc-num{ font-size: 44px; } .hc-block{ min-width: 64px; } .hc-blocks{ gap: 18px; } }
+  .eb-badge{ position:absolute; top:-10px; left: calc(100% + 10px); white-space:nowrap;
+    display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:100px;
+    font-size:11.5px; font-weight:700; letter-spacing:.02em; text-decoration:none;
+    color:#1a1300; background:linear-gradient(135deg,#FFD60A,#FF9500);
+    box-shadow:0 6px 18px -4px rgba(255,159,10,.55), 0 0 0 1px rgba(255,255,255,.15) inset;
+    transition:transform .15s ease, box-shadow .15s ease; }
+  .eb-badge:hover{ transform:translateY(-1px); box-shadow:0 10px 22px -6px rgba(255,159,10,.7), 0 0 0 1px rgba(255,255,255,.25) inset; }
+  @media (max-width: 760px){ .eb-badge{ position:static; margin-top:8px; align-self:center; } .hc-days-wrap{ display:flex; flex-direction:column; align-items:center; } }
 
   /* ============ STATS ============ */
   .stats{
