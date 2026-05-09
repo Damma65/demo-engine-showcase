@@ -304,9 +304,12 @@
   }
 
   function setBtnState(btn, saved){
-    btn.classList.toggle('is-saved', saved);
-    btn.innerHTML = saved ? SVG_FILLED : SVG_BOOKMARK;
-    btn.setAttribute('aria-label', saved ? 'Sparad — klicka för att ta bort' : 'Spara');
+    const nextState = !!saved;
+    if (btn._emSavedState === nextState && btn.innerHTML) return;
+    btn._emSavedState = nextState;
+    btn.classList.toggle('is-saved', nextState);
+    btn.innerHTML = nextState ? SVG_FILLED : SVG_BOOKMARK;
+    btn.setAttribute('aria-label', nextState ? 'Sparad — klicka för att ta bort' : 'Spara');
   }
 
   const decorated = new WeakMap();
@@ -445,7 +448,16 @@
     render();
 
     // Re-scan on dynamic DOM (program/utställning render into .sessions / .ex-grid)
-    const mo = new MutationObserver(() => { scan(); refreshButtons(); });
+    let scanQueued = false;
+    const mo = new MutationObserver(() => {
+      if (scanQueued) return;
+      scanQueued = true;
+      requestAnimationFrame(() => {
+        scanQueued = false;
+        scan();
+        refreshButtons();
+      });
+    });
     mo.observe(document.body, { childList:true, subtree:true });
 
     // Re-mirror agenda whenever localStorage changes (other tabs or program page)
