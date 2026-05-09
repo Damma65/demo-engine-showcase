@@ -250,6 +250,14 @@
   .hc-num{ font-size: 72px; font-weight:600; letter-spacing:-.045em; line-height:1; background: linear-gradient(180deg, #FFFFFF, #A1A1A6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent; font-variant-numeric: tabular-nums; }
   .hc-lbl{ margin-top:10px; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
   @media (max-width: 640px){ .hc-num{ font-size: 44px; } .hc-block{ min-width: 64px; } .hc-blocks{ gap: 18px; } }
+  .eb-badge{ position:absolute; top:-10px; left: calc(100% + 10px); white-space:nowrap;
+    display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:100px;
+    font-size:11.5px; font-weight:700; letter-spacing:.02em; text-decoration:none;
+    color:#1a1300; background:linear-gradient(135deg,#FFD60A,#FF9500);
+    box-shadow:0 6px 18px -4px rgba(255,159,10,.55), 0 0 0 1px rgba(255,255,255,.15) inset;
+    transition:transform .15s ease, box-shadow .15s ease; }
+  .eb-badge:hover{ transform:translateY(-1px); box-shadow:0 10px 22px -6px rgba(255,159,10,.7), 0 0 0 1px rgba(255,255,255,.25) inset; }
+  @media (max-width: 760px){ .eb-badge{ position:static; margin-top:8px; align-self:center; } .hc-days-wrap{ display:flex; flex-direction:column; align-items:center; } }
 
   /* ============ STATS ============ */
   .stats{
@@ -470,19 +478,10 @@
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     font-weight: 900; font-size: 12px; letter-spacing: .02em;
   }
-  .kn-brand-vf{ background: #FFE600; color: #1E1E1C; }
-  .kn-brand-vf .kn-brand-mark{
-    width: 22px; height: 22px; border-radius: 50%;
-    background: #FFE600; border: 2px solid #1E1E1C;
-    display: grid; place-items: center; color: #1E1E1C;
-    font-weight: 900; font-size: 11px; line-height: 1;
-  }
-  .kn-brand-s{ background: #fff; color: #E2001A; }
-  .kn-brand-s .kn-brand-rose{
-    width: 22px; height: 22px; border-radius: 50%;
-    background: #E2001A; display: grid; place-items: center;
-  }
-  .kn-brand-s .kn-brand-rose svg{ width: 14px; height: 14px; }
+  .kn-brand-vf{ background: #FFE600; padding: 8px 14px; }
+  .kn-brand-vf img{ height: 22px; width: auto; display: block; }
+  .kn-brand-s{ background: #fff; padding: 8px 14px; }
+  .kn-brand-s img{ height: 22px; width: auto; display: block; }
   .kn-brand-gold{ background:#fff; color:#1E1E1C; padding:6px 12px; gap:10px; }
   .kn-brand-gold .kn-brand-label{ font-size:10px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; color:#B8860B; padding-right:8px; border-right:1px solid rgba(0,0,0,0.12); }
   .kn-brand-gold img{ height:16px; width:auto; max-width:70px; object-fit:contain; display:block; }
@@ -1769,10 +1768,10 @@
     border-radius: 22px; overflow: hidden;
     border: 1px solid var(--stroke);
   }
-  .partner-tier.gold .partner-grid{ grid-template-columns: 1fr; gap: 16px; }
+  .partner-tier.gold .partner-grid{ grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .partner-tier.gold .partner{ padding: 28px 32px; min-height: 140px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.gold .partner img{ max-height: 72px; max-width: 80%; width:auto; height:auto; object-fit: contain; filter: brightness(1.05); }
-  .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(3, 1fr); }
+  .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(6, 1fr); }
   .partner-tier.event .partner-grid,
   .partner-tier.partner .partner-grid{ grid-template-columns: repeat(5, 1fr); }
   .partner{
@@ -1825,12 +1824,15 @@
   .partner.has-logo img{ max-width:100%; max-height:60px; width:auto; height:auto; object-fit:contain; filter: brightness(0) invert(1); opacity:.85; transition:opacity .2s; }
   .partner.has-logo:hover img{ opacity:1; }
   .partner-tier.gold .partner.has-logo{ padding:28px 36px; }
-  .partner-tier.gold .partner.has-logo img{ max-height:90px; }
-  .partner-tier.bronze .partner.has-logo img{ max-height:70px; }
-  .partner-tier.event .partner.has-logo{ padding:14px 18px; }
-  .partner-tier.event .partner.has-logo img{ max-height:48px; }
-  .partner-tier.partner .partner.has-logo{ padding:12px 16px; }
-  .partner-tier.partner .partner.has-logo img{ max-height:42px; }
+  /* Gold = real brand colors, no invert */
+  .partner-tier.gold .partner.has-logo img{ max-height:64px; filter:none; opacity:1; }
+  .partner-tier.bronze .partner.has-logo img{ max-height:36px; }
+  .partner-tier.event .partner.has-logo{ padding:10px 14px; }
+  .partner-tier.event .partner.has-logo img{ max-height:24px; }
+  .partner-tier.partner .partner.has-logo{ padding:8px 12px; }
+  .partner-tier.partner .partner.has-logo img{ max-height:22px; }
+  .partner-tier.event .pl-name, .partner-tier.partner .pl-name{ font-size: 11px; }
+  .partner-tier.event .pl-mark, .partner-tier.partner .pl-mark{ width:20px; height:20px; font-size:10px; border-radius:6px; }
 
   .partners-grid{
     margin: 36px auto 0; max-width: 1280px;
@@ -1985,11 +1987,7 @@
   </div>
 </header>
 
-<!-- Early bird banner -->
-<div class="eb-banner" id="eb-banner">
-  🔥 <b>Early bird</b> — spara 1 000 kr på konferenspasset. Erbjudandet stänger om <span class="eb-cd" id="eb-cd">—</span>
-  <a href="checkout.html?ticket=konf">Säkra rabatten →</a>
-</div>
+<!-- Early bird banner replaced by hero badge -->
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
@@ -2028,7 +2026,7 @@
     <div class="hero-countdown">
       <div class="hc-label">Nästa mässa öppnar</div>
       <div class="hc-blocks" id="cd">
-        <div class="hc-block"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div></div>
+        <div class="hc-block hc-days-wrap" style="position:relative;"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div><a href="checkout.html?ticket=conference" class="eb-badge" title="Early bird stänger 31 mars 2027">🔥 Early bird · spara 1 000 kr</a></div>
         <div class="hc-block"><div class="hc-num" data-cd="h">14</div><div class="hc-lbl">Timmar</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="m">42</div><div class="hc-lbl">Minuter</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="s">08</div><div class="hc-lbl">Sek</div></div>
@@ -2098,25 +2096,6 @@
         </div>
       </div>
 
-      <div style="margin-top:28px; padding: 20px; border-radius:18px; border:1px solid rgba(10,102,194,0.35); background: linear-gradient(135deg, rgba(10,102,194,0.10), rgba(10,102,194,0.02));">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div style="width:30px;height:30px;border-radius:7px;background:#0A66C2;display:grid;place-items:center;color:#fff;font-weight:800;font-size:13px;font-family:Arial,sans-serif;">in</div>
-          <div style="font-size:13.5px; font-weight:600;">Ses vi 19–20 maj? Berätta för ditt nätverk.</div>
-        </div>
-        <p style="margin-top:8px; font-size:12.5px; color:var(--text-3); line-height:1.5;">Färdig text — ett klick, så är inlägget förvalt med text och länk.</p>
-        <a id="li-share" href="#" target="_blank" rel="noopener" style="margin-top:12px; display:inline-flex; align-items:center; gap:10px; padding:10px 18px; border-radius:100px; background:#0A66C2; color:#fff; font-weight:600; text-decoration:none; font-size:13px;">Dela på LinkedIn →</a>
-        <details style="margin-top:12px;">
-          <summary style="cursor:pointer; font-size:12px; color:var(--text-3); list-style:none;">Förhandsgranska text ▾</summary>
-          <pre id="li-text" style="margin-top:10px; padding:14px; border-radius:10px; background:rgba(0,0,0,0.4); border:1px solid var(--stroke); font-family:inherit; font-size:12.5px; color:var(--text-2); white-space:pre-wrap; line-height:1.55;">⚡ Vi ses på Energimässan 2027!
-
-19–20 maj samlas hela energi-Sverige på Kistamässan — 3 200 besökare, 250 utställare och 200+ talare. Två dagar fulla av samtal, demos och affärer som flyttar omställningen framåt.
-
-Hör av dig om du också är där — så bokar vi in en kaffe.
-
-#Energimässan2027 #EnergiSverige</pre>
-        </details>
-      </div>
-
       <div style="margin-top:14px; display:flex; align-items:center; gap:14px; padding: 14px 18px; border-radius:14px; border:1px solid var(--stroke); background:rgba(255,255,255,0.025);">
         <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#FF9500,#FFD60A);display:grid;place-items:center;font-weight:700;color:#1a1300;font-size:13px;">JS</div>
         <div style="font-size:12.5px; color:var(--text-2); line-height:1.5;">"38 kvalificerade leads på två dagar — fler än hela Q4."<br/><span style="color:var(--text-3); font-size:11.5px;">Johan Svenningsson · VD Uniper Sverige</span></div>
@@ -2169,8 +2148,7 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
         <img class="kn-photo" src="assets/anna-borg.webp" alt="" />
         <div class="kn-overlay"></div>
         <div class="kn-brand kn-brand-vf" title="Vattenfall">
-          <div class="kn-brand-mark">V</div>
-          <span>VATTENFALL</span>
+          <img src="talare/logos/vattenfall.svg" alt="Vattenfall" />
         </div>
         <div class="kn-meta">
           <span class="kn-tag">★ Opening keynote</span>
@@ -2184,8 +2162,7 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
         <img class="kn-photo" src="assets/magdalena-andersson.webp" alt="" />
         <div class="kn-overlay"></div>
         <div class="kn-brand kn-brand-s" title="Socialdemokraterna">
-          <div class="kn-brand-rose"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2c-1 4-4 5-7 5 3 1 5 3 6 6-1-3 1-6 4-7-3-1-3-2-3-4z"/></svg></div>
-          <span>SOCIALDEMOKRATERNA</span>
+          <img src="talare/logos/socialdemokraterna.svg" alt="Socialdemokraterna" />
         </div>
         <div class="kn-meta">
           <span class="kn-tag">◆ Politisk keynote</span>
@@ -3572,7 +3549,7 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
     const data = {
       gold: [
         ['Sungrow','https://en.sungrowpower.com/','#FF9500','#FFD60A','S','partners/sungrow.svg'],
-        ['TDG | YUNET','http://www.tdgyunet.com/','#0A84FF','#5E5CE6','◇','partners/tdg-yunet.png']
+        ['TDG | YUNET','http://www.tdgyunet.com/','#0A84FF','#5E5CE6','◇','partners/tdg-yunet.svg']
       ],
       bronze: [
         ['Siemens Energy','https://www.siemens-energy.com/se/sv/home.html','#00A4A7','#0A84FF','SE','exhibitors/siemens-energy.png'],
@@ -3651,7 +3628,11 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
   .ig-sub{ margin-top: 18px; font-size: 17px; color: var(--text-2); max-width: 520px; line-height:1.5; }
   .ig-handle{ display:inline-flex; align-items:center; gap:10px; padding: 12px 18px; border-radius:100px; background: rgba(255,255,255,0.04); border:1px solid var(--stroke-2); color: var(--text); text-decoration:none; font-size:14px; font-weight:500; }
   .ig-handle svg{ width:18px; height:18px; }
-  .ig-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .ig-grid{ position:relative; overflow:hidden; mask-image:linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
+  .ig-track{ display:flex; gap:12px; width:max-content; animation: igslide 80s linear infinite; }
+  .ig-track:hover{ animation-play-state: paused; }
+  .ig-track .ig-post{ flex:0 0 auto; width: 150px; aspect-ratio:1/1; }
+  @keyframes igslide{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
   .ig-post{ aspect-ratio: 1/1; border-radius: 18px; overflow: hidden; position: relative; cursor: pointer; isolation: isolate;
     border: 1px solid var(--stroke); transition: transform .25s ease, border-color .25s ease; }
   .ig-post:hover{ transform: translateY(-3px); border-color: var(--stroke-2); }
@@ -3671,7 +3652,7 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
   .ig-cta a{ display:inline-flex; align-items:center; gap:10px; padding: 14px 24px; border-radius:100px;
     background: linear-gradient(135deg, #FF375F, #BF5AF2); color:#fff; text-decoration:none; font-weight:600; font-size:14px;
     box-shadow: 0 12px 30px -8px rgba(255,55,95,0.4); }
-  @media(max-width:900px){ .ig-section{ padding: 80px 20px 70px; } .ig-grid{ grid-template-columns: repeat(2,1fr); gap: 10px; } .ig-head{ margin-bottom: 32px; } }
+  @media(max-width:900px){ .ig-section{ padding: 80px 20px 70px; } .ig-track .ig-post{ width: 130px; } .ig-head{ margin-bottom: 32px; } }
 </style>
 <section class="ig-section">
   <div class="ig-inner">
@@ -3686,7 +3667,7 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
         @energimassan · 14.2k följare
       </a>
     </div>
-    <div class="ig-grid" id="igGrid"></div>
+    <div class="ig-grid"><div class="ig-track" id="igGrid"></div></div>
     <div class="ig-cta">
       <a href="https://instagram.com/explore/tags/energimassan2027/" target="_blank" rel="noopener">
         Se hela flödet på Instagram
@@ -3715,7 +3696,10 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
   .share-title{ margin-top:18px; font-size:clamp(34px,4.5vw,52px); font-weight:700; letter-spacing:-.035em; line-height:1.05; color:#fff; }
   .share-title .grad{ background:linear-gradient(135deg,#FF375F,#BF5AF2); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .share-sub{ margin-top:16px; font-size:15.5px; color:var(--text-2); line-height:1.55; }
-  .tpl-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .tpl-grid{ display:grid; grid-template-columns:repeat(4, minmax(0, 168px)); gap:14px; justify-content:center; }
+  .tpl-card{ padding:12px; gap:10px; }
+  .tpl-actions button{ padding:8px 6px; font-size:11px; }
+  .tpl-label{ font-size:10px; }
   .tpl-card{ background:var(--bg-2); border:1px solid var(--stroke); border-radius:20px; padding:18px; display:flex; flex-direction:column; gap:14px; transition:transform .25s, border-color .25s; }
   .tpl-card:hover{ transform:translateY(-3px); border-color:var(--stroke-2); }
   .tpl-preview{ aspect-ratio:9/16; border-radius:14px; overflow:hidden; position:relative; }
@@ -3737,7 +3721,7 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
   const TEMPLATES = [
     { key:'going',   label:'Jag kommer',     line1:'JAG KOMMER',          line2:'PÅ ENERGIMÄSSAN', g1:'#FF375F', g2:'#BF5AF2', emoji:'⚡' },
     { key:'speaker', label:'Jag talar',      line1:'JAG TALAR',           line2:'PÅ ENERGIMÄSSAN', g1:'#FFD60A', g2:'#FF9500', emoji:'🎤' },
-    { key:'exhib',   label:'Jag ställer ut', line1:'TRÄFFA OSS',          line2:'I VÅR MONTER',    g1:'#0A84FF', g2:'#5E5CE6', emoji:'🏭' },
+    { key:'exhib',   label:'Jag ställer ut', line1:'TRÄFFA OSS',          line2:'I VÅR MONTER',    g1:'#0A84FF', g2:'#5E5CE6', emoji:'📍' },
     { key:'visit',   label:'Vi ses där',    line1:'SES VI PÅ',           line2:'ENERGIMÄSSAN?',   g1:'#30D158', g2:'#0A84FF', emoji:'👋' }
   ];
 
@@ -3885,9 +3869,9 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
     {u:'hitachienergy', cap:'Live-demo av nya transformatorplattformen kl 14:00 i monter H:04. Missa inte!', tag:'30 min', g:'linear-gradient(135deg,#64D2FF 0%,#0A84FF 100%)', emoji:'⚙️'},
     {u:'svensksolenergi', cap:'Solenergin nådde 5% av Sveriges elmix förra året. På väg mot 15% till 2030.', tag:'5 tim', g:'linear-gradient(135deg,#FFD60A 0%,#FF9F0A 100%)', emoji:'☀️'}
   ];
-  document.getElementById('igGrid').innerHTML = POSTS.map(p => `
+  const html = POSTS.map(p => `
     <div class="ig-post">
-      <div class="ig-bg" style="background:${p.g}; display:grid; place-items:center; font-size:74px;">${p.emoji}</div>
+      <div class="ig-bg" style="background:${p.g}; display:grid; place-items:center; font-size:54px;">${p.emoji}</div>
       <div class="ig-stats"><span>♥ ${p.likes||Math.floor(Math.random()*900+120)}</span><span>💬 ${Math.floor(Math.random()*80+5)}</span></div>
       <div class="ig-meta"><span class="ig-tag ${p.live?'live':''}">${p.tag}</span></div>
       <div class="ig-overlay">
@@ -3895,6 +3879,8 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
         <div class="ig-cap">${p.cap}</div>
       </div>
     </div>`).join('');
+  // Duplicate for seamless marquee loop
+  document.getElementById('igGrid').innerHTML = html + html;
 })();
 </script>
 
