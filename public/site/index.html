@@ -1835,7 +1835,18 @@
   .partner-tier.event .partner.has-logo{ min-width:150px; min-height:84px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.event .partner.has-logo img{ max-height:42px; max-width:140px; }
   .partner-tier.partner .partner.has-logo{ min-height:84px; padding:14px 14px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.partner .partner.has-logo img{ width:100%; max-width:100%; height:auto; max-height:54px; object-fit:contain; filter:none; opacity:1; }
+  .partner-tier.partner .partner.has-logo img{ width:100%; max-width:100%; height:auto; max-height:54px; object-fit:contain; filter: brightness(0) invert(1); opacity:.9; transition:opacity .2s; }
+  .partner-tier.partner .partner.has-logo:hover img{ opacity:1; }
+  /* Shrink select samarbetspartners-logos with 20% */
+  .partner-tier.partner .partner.has-logo img[src*="hitachi"],
+  .partner-tier.partner .partner.has-logo img[src*="vattenfall"],
+  .partner-tier.partner .partner.has-logo img[src*="eneff"],
+  .partner-tier.partner .partner.has-logo img[src*="energiforsk"],
+  .partner-tier.partner .partner.has-logo img[src*="svebio"],
+  .partner-tier.partner .partner.has-logo img[src*="chalmers"],
+  .partner-tier.partner .partner.has-logo img[src*="cloudberry"],
+  .partner-tier.partner .partner.has-logo img[src*="2030"],
+  .partner-tier.partner .partner.has-logo img[src*="energipress"]{ max-height:43px; max-width:80%; }
   .partner-tier.event .pl-name, .partner-tier.partner .pl-name{ font-size: 11px; }
   .partner-tier.event .pl-mark, .partner-tier.partner .pl-mark{ width:20px; height:20px; font-size:10px; border-radius:6px; }
 
