@@ -462,6 +462,13 @@ window.downloadIcs = function(day, time, title, desc, dur){
   a.download = safe(title).toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,40)+'.ics';
   document.body.appendChild(a); a.click(); a.remove();
 };
+
+// Style for active agenda star
+const styleEl = document.createElement('style');
+styleEl.textContent = `.agenda-star.on{ background:rgba(255,214,10,.14)!important;border-color:rgba(255,214,10,.5)!important;color:#FFD60A!important; } #agendaBtn:hover{ transform:translateY(-2px); }`;
+document.head.appendChild(styleEl);
+
+updateAgendaUI();
 render();
 </script>
 
