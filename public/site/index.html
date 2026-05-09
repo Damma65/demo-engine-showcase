@@ -3895,20 +3895,65 @@
       overlay.appendChild(m);
       document.body.appendChild(overlay);
       const inputs = m.querySelectorAll('input');
-      setTimeout(function(){ inputs[0] && inputs[0].focus(); }, 50);
+      const textInputs = m.querySelectorAll('input:not([type="file"])');
+      const fileInputs = m.querySelectorAll('input[type="file"]');
+      setTimeout(function(){ textInputs[0] && textInputs[0].focus(); }, 50);
+
+      // File preview wiring
+      fileInputs.forEach(function(fi){
+        fi.addEventListener('change', function(){
+          const row = fi.closest('[data-file-row]');
+          const label = row.querySelector('[data-file-label]');
+          const preview = row.querySelector('[data-file-preview]');
+          const img = preview.querySelector('img');
+          const file = fi.files && fi.files[0];
+          if (!file){ label.textContent = '📁 Välj fil…'; preview.style.display = 'none'; return; }
+          const reader = new FileReader();
+          reader.onload = function(ev){
+            img.src = ev.target.result;
+            preview.style.display = 'flex';
+            label.textContent = file.name.length > 24 ? file.name.slice(0,22)+'…' : file.name;
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+
       function close(result){ overlay.remove(); document.removeEventListener('keydown', onKey); resolve(result); }
-      function submit(){
+
+      function loadImage(src){
+        return new Promise(function(res, rej){
+          const im = new Image();
+          im.onload = function(){ res(im); };
+          im.onerror = rej;
+          im.src = src;
+        });
+      }
+
+      async function submit(){
         const data = {};
-        for (var k=0; k<inputs.length; k++){
-          const inp = inputs[k];
+        // Validate text fields
+        for (var k=0; k<textInputs.length; k++){
+          const inp = textInputs[k];
           const v = (inp.value || '').trim().slice(0, 60);
           const f = t.fields.find(function(x){ return x.n === inp.dataset.n; });
           if (f.req && !v){ inp.style.borderColor = '#FF375F'; inp.focus(); return; }
           if (v) data[inp.dataset.n] = v;
         }
+        // Load any file fields
+        for (var j=0; j<fileInputs.length; j++){
+          const fi = fileInputs[j];
+          const file = fi.files && fi.files[0];
+          if (!file) continue;
+          try {
+            const dataUrl = await new Promise(function(res, rej){
+              const r = new FileReader(); r.onload = function(e){ res(e.target.result); }; r.onerror = rej; r.readAsDataURL(file);
+            });
+            data[fi.dataset.n + 'Img'] = await loadImage(dataUrl);
+          } catch(e){ /* ignore */ }
+        }
         close(data);
       }
-      function onKey(e){ if (e.key==='Escape') close(null); if (e.key==='Enter') submit(); }
+      function onKey(e){ if (e.key==='Escape') close(null); if (e.key==='Enter' && e.target.tagName !== 'BUTTON') submit(); }
       document.addEventListener('keydown', onKey);
       overlay.addEventListener('click', function(e){ if (e.target === overlay) close(null); });
       m.querySelector('[data-act="cancel"]').addEventListener('click', function(){ close(null); });
