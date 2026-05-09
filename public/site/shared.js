@@ -120,7 +120,16 @@
     existing.innerHTML = html;
   }
 
-  function init(){ injectGoldStrip(); initMobileNav(); injectFooter(); }
+  function injectSavedSidebar(){
+    if (document.querySelector('script[data-em-saved]')) return;
+    var s = document.createElement('script');
+    s.src = '/site/saved.js';
+    s.defer = true;
+    s.setAttribute('data-em-saved','1');
+    document.head.appendChild(s);
+  }
+
+  function init(){ injectGoldStrip(); initMobileNav(); injectFooter(); injectSavedSidebar(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
