@@ -185,7 +185,7 @@
   .marquee-track{
     display:flex; gap: 14px;
     width: max-content;
-    animation: scroll-x 50s linear infinite;
+    animation: scroll-x 70s linear infinite;
   }
   @keyframes scroll-x{
     from{ transform: translateX(0); }
@@ -1725,7 +1725,7 @@
   .match-note{ display:block; margin-top: 14px; font-size: 12px; color: var(--text-3); }
 
   /* ============ PARTNERS ============ */
-  .partners{ padding: 100px 32px; border-top:1px solid var(--stroke); background:#14141A; width:100%; }
+  .partners{ padding: 100px 32px; border-top:1px solid var(--stroke); background:#06060A; width:100%; }
   .partners-eyebrow{
     text-align: center;
     font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
@@ -1770,8 +1770,16 @@
   .partner-tier.gold .partner{ padding: 28px 32px; min-height: 140px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.gold .partner img{ max-height: 72px; max-width: 80%; width:auto; height:auto; object-fit: contain; filter: brightness(1.05); }
   .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 200px)); justify-content:center; gap: 14px; }
-  .partner-tier.event .partner-grid,
-  .partner-tier.partner .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); justify-content:center; gap: 14px; }
+  .partner-tier.event .partner-grid{ grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .partner-tier.partner .partner-grid{ grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  @media(max-width:900px){
+    .partner-tier.event .partner-grid,
+    .partner-tier.partner .partner-grid{ grid-template-columns: repeat(3, 1fr); }
+  }
+  @media(max-width:560px){
+    .partner-tier.event .partner-grid,
+    .partner-tier.partner .partner-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
   .partner{
     background: var(--bg-2); min-height: 110px;
     display: grid; place-items: center;
@@ -1828,8 +1836,8 @@
   .partner-tier.bronze .partner.has-logo img{ max-height:48px; max-width:140px; }
   .partner-tier.event .partner.has-logo{ min-width:150px; min-height:84px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.event .partner.has-logo img{ max-height:42px; max-width:140px; }
-  .partner-tier.partner .partner.has-logo{ min-width:150px; min-height:84px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.partner .partner.has-logo img{ max-height:42px; max-width:140px; filter:none; opacity:1; }
+  .partner-tier.partner .partner.has-logo{ min-height:84px; padding:14px 14px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.partner .partner.has-logo img{ width:100%; max-width:100%; height:auto; max-height:54px; object-fit:contain; filter:none; opacity:1; }
   .partner-tier.event .pl-name, .partner-tier.partner .pl-name{ font-size: 11px; }
   .partner-tier.event .pl-mark, .partner-tier.partner .pl-mark{ width:20px; height:20px; font-size:10px; border-radius:6px; }
 
@@ -3697,10 +3705,10 @@
   .share-title{ margin-top:18px; font-size:clamp(34px,4.5vw,52px); font-weight:700; letter-spacing:-.035em; line-height:1.05; color:#fff; }
   .share-title .grad{ background:linear-gradient(135deg,#FF375F,#BF5AF2); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .share-sub{ margin-top:16px; font-size:15.5px; color:var(--text-2); line-height:1.55; }
-  .tpl-grid{ display:grid; grid-template-columns:repeat(4, minmax(0, 168px)); gap:14px; justify-content:center; }
-  .tpl-card{ padding:12px; gap:10px; }
-  .tpl-actions button{ padding:8px 6px; font-size:11px; }
-  .tpl-label{ font-size:10px; }
+  .tpl-grid{ display:grid; grid-template-columns:repeat(4, minmax(0, 218px)); gap:18px; justify-content:center; }
+  .tpl-card{ padding:16px; gap:12px; }
+  .tpl-actions button{ padding:10px 8px; font-size:12.5px; }
+  .tpl-label{ font-size:11px; }
   .tpl-card{ background:var(--bg-2); border:1px solid var(--stroke); border-radius:20px; padding:18px; display:flex; flex-direction:column; gap:14px; transition:transform .25s, border-color .25s; }
   .tpl-card:hover{ transform:translateY(-3px); border-color:var(--stroke-2); }
   .tpl-preview{ aspect-ratio:9/16; border-radius:14px; overflow:hidden; position:relative; }
