@@ -129,7 +129,38 @@
     document.head.appendChild(s);
   }
 
-  function init(){ injectGoldStrip(); initMobileNav(); injectFooter(); injectSavedSidebar(); }
+  /* ---------- CLOSE (×) BUTTON on individual speaker profile pages ---------- */
+  function injectSpeakerClose(){
+    var p = location.pathname;
+    if (!/\/site\/talare\/[^\/]+\.html$/.test(p)) return; // only individual profiles
+    if (document.getElementById('sp-page-close')) return;
+    if (!document.getElementById('sp-page-close-style')){
+      var st = document.createElement('style');
+      st.id = 'sp-page-close-style';
+      st.textContent =
+        '#sp-page-close{position:fixed;top:16px;right:16px;z-index:9995;width:42px;height:42px;border-radius:50%;'+
+        'background:rgba(8,5,15,0.78);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);'+
+        'color:#fff;cursor:pointer;display:grid;place-items:center;padding:0;'+
+        'box-shadow:0 10px 28px -8px rgba(0,0,0,0.6);transition:transform .15s, background .15s, border-color .15s;}'+
+        '#sp-page-close:hover{transform:scale(1.06);background:rgba(8,5,15,0.95);border-color:rgba(255,214,10,0.55);color:#FFD60A;}'+
+        '#sp-page-close svg{width:16px;height:16px;}';
+      document.head.appendChild(st);
+    }
+    var btn = document.createElement('button');
+    btn.id = 'sp-page-close';
+    btn.type = 'button';
+    btn.setAttribute('aria-label','Stäng talarprofil');
+    btn.title = 'Stäng (Esc)';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>';
+    btn.addEventListener('click', function(){
+      if (document.referrer && /\/site\//.test(document.referrer) && history.length > 1) history.back();
+      else location.href = '../talare.html';
+    });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') btn.click(); });
+    document.body.appendChild(btn);
+  }
+
+  function init(){ injectGoldStrip(); initMobileNav(); injectFooter(); injectSavedSidebar(); injectSpeakerClose(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
