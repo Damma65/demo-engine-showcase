@@ -3599,13 +3599,14 @@ Hör av dig om du också är där — så bokar vi in en kaffe.
       const el = document.getElementById('pg-'+tier);
       if (!el) return;
       el.innerHTML = items.map(([name, url, c1, c2, mark, logo]) => {
-        if (tier==='gold' && logo) {
-          return `<a class="partner" href="${url}" target="_blank" rel="noopener" aria-label="${name}">
-            <img src="${logo}" alt="${name}" loading="lazy" />
+        if (logo) {
+          const tag = tier==='gold' ? '' : `<span class="pl-name-fallback">${name}</span>`;
+          return `<a class="partner has-logo" href="${url}" target="_blank" rel="noopener" aria-label="${name}" title="${name}">
+            <img src="${logo}" alt="${name}" loading="lazy" onerror="this.parentNode.classList.remove('has-logo');this.replaceWith(Object.assign(document.createElement('span'),{className:'pl-name',textContent:'${name}'}));" />
           </a>`;
         }
         const goldExtra = tier==='gold' ? `<span class="partner-name"><b>GULDPARTNER</b></span>` : '';
-        return `<a class="partner" href="${url}" target="_blank" rel="noopener">
+        return `<a class="partner" href="${url}" target="_blank" rel="noopener" title="${name}">
           ${goldExtra}
           <span class="partner-logo">
             <span class="pl-mark" style="background: linear-gradient(135deg, ${c1}, ${c2});">${mark}</span>
