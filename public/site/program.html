@@ -354,7 +354,7 @@ function render(){
           const spkHtml = s.speakers.length
             ? `<span class="sm-spk">${s.speakers.map(([init,name,slug,c1,c2]) => `<span class="mini-av" style="--c1:${c1};--c2:${c2}">${init}</span>`).join('')}<span>${s.speakers.map(s=>s[1]).join(' · ')}</span></span>`
             : '';
-          return `<div class="${cls}">
+          return `<div class="${cls}" data-sid="${sid(activeDay,time,s.title)}">
             <a href="${href}" style="text-decoration:none;color:inherit;display:block;">
               <div class="session-stage ${STAGE_CLS[s.stage]}"><span class="sd"></span>${stageNames[s.stage]}</div>
               <div class="session-title">${s.title}${badges}</div>
@@ -363,7 +363,8 @@ function render(){
             <div class="session-meta">
               ${spkHtml}
               <span>${s.duration}</span>
-              <button onclick="downloadIcs(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}')" style="margin-left:auto;background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">📅 .ics</button>
+              <button onclick="toggleAgenda(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}', this)" title="Lägg till i Min agenda" class="agenda-star ${isSaved(sid(activeDay,time,s.title))?'on':''}" style="margin-left:auto;background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">★ ${isSaved(sid(activeDay,time,s.title))?'Sparad':'Spara'}</button>
+              <button onclick="downloadIcs(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}')" style="background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">📅 .ics</button>
             </div>
           </div>`;
         }).join('')}
@@ -392,6 +393,57 @@ document.querySelectorAll('#stages .sf').forEach(b => {
 document.getElementById('psearch').addEventListener('input', e => {
   activeQuery = e.target.value.toLowerCase().trim();
   render();
+});
+
+// ===== MIN AGENDA (localStorage) =====
+const AKEY = 'em27_agenda';
+function loadAgenda(){ try { return JSON.parse(localStorage.getItem(AKEY)||'[]'); } catch(e) { return []; } }
+function saveAgenda(arr){ localStorage.setItem(AKEY, JSON.stringify(arr)); updateAgendaUI(); }
+function sid(day,time,title){ return day+'-'+time+'-'+title.replace(/[^a-z0-9]/gi,'').slice(0,20); }
+function isSaved(id){ return loadAgenda().some(x => x.id===id); }
+window.toggleAgenda = function(day,time,title,desc,dur,btn){
+  const id = sid(day,time,title);
+  let a = loadAgenda();
+  if (a.some(x => x.id===id)) {
+    a = a.filter(x => x.id !== id);
+    btn.classList.remove('on'); btn.innerHTML='★ Spara';
+  } else {
+    a.push({id,day,time,title,desc,dur});
+    btn.classList.add('on'); btn.innerHTML='★ Sparad';
+  }
+  saveAgenda(a);
+};
+function updateAgendaUI(){
+  const a = loadAgenda();
+  document.getElementById('agendaCount').textContent = a.length;
+  const list = document.getElementById('agendaList');
+  if (!a.length) { list.innerHTML = '<div style="text-align:center;color:var(--text-3);padding:48px 12px;font-size:14px;">Inga sparade pass än.<br/><br/>Klicka <b style="color:#FFD60A">★ Spara</b> på sessioner du vill gå på så samlas de här.</div>'; return; }
+  a.sort((x,y)=> (x.day-y.day) || x.time.localeCompare(y.time));
+  list.innerHTML = a.map(s => `
+    <div style="padding:14px 0;border-bottom:1px solid var(--stroke);">
+      <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FFD60A;font-weight:700;">Dag ${s.day} · ${s.time} · ${s.dur}</div>
+      <div style="margin-top:6px;font-size:15px;font-weight:600;color:#fff;line-height:1.35;">${s.title}</div>
+      <button onclick="removeAgenda('${s.id}')" style="margin-top:8px;background:transparent;border:0;color:var(--text-3);font-size:12px;cursor:pointer;padding:0;">Ta bort</button>
+    </div>`).join('');
+}
+window.removeAgenda = function(id){ saveAgenda(loadAgenda().filter(x => x.id !== id)); render(); };
+document.getElementById('agendaBtn').addEventListener('click', () => { document.getElementById('agendaDrawer').style.display='block'; });
+document.getElementById('agendaClose').addEventListener('click', () => { document.getElementById('agendaDrawer').style.display='none'; });
+document.getElementById('agendaBackdrop').addEventListener('click', () => { document.getElementById('agendaDrawer').style.display='none'; });
+document.getElementById('agendaClear').addEventListener('click', () => { if (confirm('Rensa hela din agenda?')) { saveAgenda([]); render(); } });
+document.getElementById('agendaIcs').addEventListener('click', () => {
+  const a = loadAgenda(); if (!a.length) return alert('Inga sparade pass.');
+  const events = a.map(s => {
+    const dateBase = s.day===1 ? '2027-05-19' : '2027-05-20';
+    const start = new Date(`${dateBase}T${s.time}:00+02:00`);
+    const mins = parseInt((s.dur||'30').match(/\d+/)?.[0]||'30',10);
+    const end = new Date(start.getTime()+mins*60000);
+    return `BEGIN:VEVENT\nUID:${s.id}@energimassan.se\nDTSTAMP:${fmtDT(new Date())}\nDTSTART:${fmtDT(start)}\nDTEND:${fmtDT(end)}\nSUMMARY:${(s.title||'').replace(/\n/g,' ')}\nDESCRIPTION:${(s.desc||'').replace(/\n/g,' ')}\nLOCATION:Kistamässan, Stockholm\nEND:VEVENT`;
+  }).join('\n');
+  const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Energimassan//SV\n${events}\nEND:VCALENDAR`;
+  const blob = new Blob([ics],{type:'text/calendar'});
+  const a2 = document.createElement('a'); a2.href = URL.createObjectURL(blob); a2.download = 'min-agenda-energimassan-2027.ics';
+  document.body.appendChild(a2); a2.click(); a2.remove();
 });
 
 // .ics export per session
