@@ -250,14 +250,12 @@
   .hc-num{ font-size: 72px; font-weight:600; letter-spacing:-.045em; line-height:1; background: linear-gradient(180deg, #FFFFFF, #A1A1A6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent; font-variant-numeric: tabular-nums; }
   .hc-lbl{ margin-top:10px; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color: var(--text-3); font-weight:600; }
   @media (max-width: 640px){ .hc-num{ font-size: 44px; } .hc-block{ min-width: 64px; } .hc-blocks{ gap: 18px; } }
-  .eb-badge{ position:absolute; top:-10px; left: calc(100% + 10px); white-space:nowrap;
-    display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:100px;
-    font-size:11.5px; font-weight:700; letter-spacing:.02em; text-decoration:none;
+  .eb-badge-below{ display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:100px;
+    font-size:12px; font-weight:700; letter-spacing:.02em; text-decoration:none;
     color:#1a1300; background:linear-gradient(135deg,#FFD60A,#FF9500);
     box-shadow:0 6px 18px -4px rgba(255,159,10,.55), 0 0 0 1px rgba(255,255,255,.15) inset;
-    transition:transform .15s ease, box-shadow .15s ease; }
-  .eb-badge:hover{ transform:translateY(-1px); box-shadow:0 10px 22px -6px rgba(255,159,10,.7), 0 0 0 1px rgba(255,255,255,.25) inset; }
-  @media (max-width: 760px){ .eb-badge{ position:static; margin-top:8px; align-self:center; } .hc-days-wrap{ display:flex; flex-direction:column; align-items:center; } }
+    transition:transform .15s ease, box-shadow .15s ease; align-self:center; }
+  .eb-badge-below:hover{ transform:translateY(-1px); box-shadow:0 10px 22px -6px rgba(255,159,10,.7), 0 0 0 1px rgba(255,255,255,.25) inset; }
 
   /* ============ STATS ============ */
   .stats{
@@ -2033,11 +2031,12 @@
     <div class="hero-countdown">
       <div class="hc-label">Nästa mässa öppnar</div>
       <div class="hc-blocks" id="cd">
-        <div class="hc-block hc-days-wrap" style="position:relative;"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div></div>
+        <div class="hc-block"><div class="hc-num" data-cd="d">312</div><div class="hc-lbl">Dagar</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="h">14</div><div class="hc-lbl">Timmar</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="m">42</div><div class="hc-lbl">Minuter</div></div>
         <div class="hc-block"><div class="hc-num" data-cd="s">08</div><div class="hc-lbl">Sek</div></div>
       </div>
+      <a class="eb-badge eb-badge-below" href="checkout.html?ticket=conference" title="Early bird stänger 31 mars 2027">🔥 Early bird · spara 1 000 kr</a>
     </div>
     <span class="eyebrow"><span class="dot"></span> 19–20 maj 2027 · Kistamässan, Stockholm</span>
     <h1 class="hero-title"><span class="grad">Energimässan 2027 Live.</span></h1>
