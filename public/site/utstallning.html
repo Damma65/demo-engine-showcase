@@ -8,6 +8,7 @@
 <link rel="canonical" href="/site/utstallning.html" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="shared.css" />
+<script src="/site/shared.js" defer></script>
 <style>
   .page-hero{ padding: 160px 32px 60px; text-align:center; position:relative; overflow:hidden; }
   .page-hero::before{ content:""; position:absolute; inset:0; z-index:0;
@@ -50,17 +51,19 @@
   .ex-search svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); width:14px; height:14px; color:var(--text-3); }
 
   .exhibitors{ max-width:1280px; margin:24px auto 0; padding: 0 32px 100px; display:grid; grid-template-columns: repeat(4,1fr); gap:14px; }
-  .ex-card{ padding:22px; background: var(--surface); border:1px solid var(--stroke); border-radius:18px; transition: all .2s; cursor:pointer; text-decoration:none; color:inherit; display:block; }
+  .ex-card{ padding:22px; background: var(--surface); border:1px solid var(--stroke); border-radius:18px; transition: all .2s; cursor:pointer; text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; }
   .ex-card:hover{ background: var(--surface-2); border-color: var(--stroke-2); transform: translateY(-2px); }
-  .ex-logo{ width:52px; height:52px; border-radius:12px; background: linear-gradient(135deg,var(--c1),var(--c2)); display:grid; place-items:center; font-size:18px; font-weight:700; color:white; letter-spacing:-.02em; }
-  .ex-tier{ margin-top:12px; display:inline-block; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
+  .ex-logo{ width:64px; height:64px; border-radius:12px; background: linear-gradient(135deg,var(--c1),var(--c2)); display:grid; place-items:center; font-size:20px; font-weight:700; color:white; letter-spacing:-.02em; overflow:hidden; }
+  .ex-logo.has-img{ background:#fff; padding:8px; }
+  .ex-logo.has-img img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .ex-tier{ margin-top:14px; display:inline-block; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
   .ex-tier.gold{ color:#FFD60A; } .ex-tier.silver{ color:#BABABF; } .ex-tier.bronze{ color:#FF9F0A; }
   .ex-name{ margin-top:6px; font-size:16px; font-weight:600; letter-spacing:-.018em; line-height:1.25; }
   .ex-booth{ margin-top:6px; font-size:12px; color:var(--text-3); font-variant-numeric: tabular-nums; }
   .ex-link{ margin-top:10px; font-size:11.5px; color: var(--green-2); }
   @media(max-width:1100px){ .exhibitors{ grid-template-columns: repeat(3,1fr);} }
-  @media(max-width:800px){ .exhibitors{ grid-template-columns: repeat(2,1fr);} .cats{ flex-direction:column; align-items:stretch;} .ex-search{ margin-left:0;} }
-  @media(max-width:500px){ .exhibitors{ grid-template-columns: 1fr;} }
+  @media(max-width:800px){ .exhibitors{ grid-template-columns: repeat(2,1fr);} .cats{ flex-direction:column; align-items:stretch;} .ex-search{ margin-left:0;} .ex-search input{ min-width:0; width:100%;} }
+  @media(max-width:500px){ .exhibitors{ grid-template-columns: 1fr;} .page-hero{ padding: 120px 20px 40px;} .hall-wrap{ padding: 0 16px;} .hall{ padding: 18px;} }
 </style>
 </head>
 <body>
@@ -204,17 +207,24 @@ hallq.addEventListener('focus', e => { if (e.target.value) searchHall(e.target.v
 document.addEventListener('click', e => { if (!hallq.parentElement.contains(e.target)) hsr.classList.remove('open'); });
 
 // Exhibitor list filter
+const LOGO_MAP = {"2030-sekretariatet":"2030-sekretariatet.webp","ai-sweden":"ai-sweden.webp","asfaltsgruppen-sverige":"asfaltsgruppen-sverige.webp","aucotec":"aucotec.webp","awilco":"awilco.webp","bengglas":"bengglas.webp","bos-power":"bos-power.webp","branschaktuellt":"branschaktuellt.webp","broderna-berner":"broderna-berner.webp","canea-partner-group":"canea-partner-group.webp","capture-energy":"capture-energy.webp","cellnex":"cellnex.webp","cloudberry":"cloudberry.webp","cti":"cti.webp","digpro":"digpro.webp","ec-nordic":"ec-nordic.webp","eneff":"eneff.webp","energipress":"energipress.webp","enqore":"enqore.webp","fortum-optimizer":"fortum-optimizer.webp","gafs":"gafs.webp","granitor-electro":"granitor-electro.webp","hitachi-energy":"hitachi-energy.png","innoenergy":"innoenergy.webp","jauda":"jauda.webp","jonkoping-energi":"jonkoping-energi.webp","kiwa-sweden":"kiwa-sweden.avif","landvac":"landvac.webp","lime-technologies":"lime-technologies.webp","mersen":"mersen.webp","merus-power":"merus-power.webp","mic-nordic":"mic-nordic.webp","mlt-maskin-and-laser-teknik":"mlt-maskin-and-laser-teknik.webp","motion-control":"motion-control.webp","nektab":"nektab.webp","nidec-conversion":"nidec-conversion.webp","nordic-energy-supply":"nordic-energy-supply.webp","nordtech-energy":"nordtech-energy.webp","norelco-oy":"norelco-oy.webp","pinja":"pinja.webp","processpumpar-norden":"processpumpar-norden.png","psw-power-and-automation":"psw-power-and-automation.webp","r-stahl-scandinavia-as":"r-stahl-scandinavia-as.webp","renewcast":"renewcast.webp","scandinavia-energy-system":"scandinavia-energy-system.webp","schneider-electric":"schneider-electric.webp","setek":"setek.webp","siemens-energy":"siemens-energy.png","ssg-standard-solutions-group":"ssg-standard-solutions-group.webp","steady-energy-the-fission-bar-by-steady-energy":"steady-energy-the-fission-bar-by-steady-energy.png","steel-master-finland":"steel-master-finland.webp","stockholms-universitet":"stockholms-universitet.avif","sungrow-nordics":"sungrow-nordics.png","svebio":"svebio.webp","svensk-solenergi":"svensk-solenergi.webp","switchgear-ab-lag-och-mellanspanningsstallverk":"switchgear-ab-lag-och-mellanspanningsstallverk.webp","taratest":"taratest.webp","thermtest-instruments":"thermtest-instruments.webp","tomal":"tomal.webp","trackson-elektronisk-korjournal-for-foretag":"trackson-elektronisk-korjournal-for-foretag.webp","truxco-energy":"truxco-energy.webp","truxel":"truxel.webp","uniper":"uniper.webp","vattenfall":"vattenfall.webp","vinnergi":"vinnergi.webp","vivavis-ag":"vivavis-ag.webp","weland-trafikmiljo":"weland-trafikmiljo.webp","westermo-data-communications":"westermo-data-communications.webp","wistbo":"wistbo.webp","zenita-security-ratt-losning-ratt-sakerhet":"zenita-security-ratt-losning-ratt-sakerhet.webp"};
 let activeC = 'all', activeQ = '';
 function renderEx(){
   const filt = EXH.filter(e => (activeC==='all' || e.t===activeC) && (!activeQ || e.n.toLowerCase().includes(activeQ)));
-  document.getElementById('exh').innerHTML = filt.map(e => `
+  document.getElementById('exh').innerHTML = filt.map(e => {
+    const logo = LOGO_MAP[e.s];
+    const logoHtml = logo
+      ? `<div class="ex-logo has-img"><img src="exhibitors/${logo}" alt="${e.n}" loading="lazy" /></div>`
+      : `<div class="ex-logo">${e.a}</div>`;
+    return `
     <a class="ex-card" href="${e.u}" target="_blank" rel="noopener" style="--c1:${e.c1};--c2:${e.c2}">
-      <div class="ex-logo">${e.a}</div>
+      ${logoHtml}
       <div class="ex-tier ${e.t}">${TIER_LABEL[e.t]}</div>
       <div class="ex-name">${e.n}</div>
       <div class="ex-booth">Monter ${e.b}</div>
       <div class="ex-link">Besök hemsida →</div>
-    </a>`).join('') || '<div style="grid-column:1/-1;text-align:center;color:var(--text-3);padding:60px;">Inga utställare matchar.</div>';
+    </a>`;
+  }).join('') || '<div style="grid-column:1/-1;text-align:center;color:var(--text-3);padding:60px;">Inga utställare matchar.</div>';
 }
 document.querySelectorAll('#cats .cat').forEach(c => c.addEventListener('click', () => {
   document.querySelectorAll('#cats .cat').forEach(x => x.classList.remove('active'));

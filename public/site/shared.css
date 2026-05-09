@@ -194,7 +194,51 @@ footer{
   text-shadow: 0 2px 30px rgba(0,0,0,0.4);
 }
 
+/* MOBILE NAV — hamburger + overlay */
+.nav-burger{
+  display:none; width:40px; height:40px; background:transparent; border:none; cursor:pointer;
+  padding:8px; flex-direction:column; justify-content:space-between; align-items:stretch;
+}
+.nav-burger span{ display:block; height:2px; background: var(--text); border-radius:2px; transition: transform .25s ease, opacity .2s ease; transform-origin: center; }
+.nav-burger.open span:nth-child(1){ transform: translateY(10px) rotate(45deg); }
+.nav-burger.open span:nth-child(2){ opacity:0; }
+.nav-burger.open span:nth-child(3){ transform: translateY(-10px) rotate(-45deg); }
+.nav-overlay{
+  position: fixed; inset: 0; z-index: 99;
+  background: rgba(0,0,0,0.96); backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  display: none; opacity: 0; transition: opacity .25s ease;
+  padding: 90px 32px 40px;
+}
+.nav-overlay.open{ display: block; opacity: 1; }
+.nav-overlay-inner{ max-width: 480px; margin: 0 auto; display:flex; flex-direction: column; gap: 4px; }
+.nav-overlay-inner a{
+  display:block; padding: 18px 20px; color: var(--text); text-decoration:none;
+  font-size: 22px; font-weight: 500; letter-spacing: -.018em; border-radius: 14px;
+  border: 1px solid transparent;
+}
+.nav-overlay-inner a:hover{ background: rgba(255,255,255,0.05); border-color: var(--stroke); }
+.nav-overlay-inner .nav-overlay-cta{
+  margin-top: 16px; background: var(--text); color: var(--bg); text-align: center;
+  font-weight: 600; font-size: 17px; padding: 18px;
+}
+
 /* RESPONSIVE BASE */
 @media (max-width: 900px){
   .nav-links{ display:none; }
+  .nav-cta{ display:none; }
+  .nav-burger{ display:flex; }
+  .nav-inner{ padding: 12px 20px; gap: 12px; }
+  .section{ padding: 80px 20px; }
+  .section.tight{ padding: 50px 20px; }
+  footer{ padding: 40px 20px 30px; }
+  .foot-inner{ flex-direction: column; align-items: flex-start; gap: 16px; text-align: left; }
+  .foot-links{ flex-wrap: wrap; gap: 14px 18px; }
+  .btn{ padding: 14px 22px; font-size: 14px; }
+}
+@media (max-width: 600px){
+  .section-title{ font-size: clamp(36px, 9vw, 56px); }
+  .section-sub{ font-size: 16px; margin-top: 20px; }
+  .logo-event{ font-size: 13px; }
+  .logo-brand{ font-size: 8.5px; }
 }
