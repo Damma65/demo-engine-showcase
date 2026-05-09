@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>Kvällsmingel · Energimässan 2027 · The Night Forward</title>
+<meta name="description" content="Kvällsmingel 19 maj 2027 — Sveriges energibransch samlas på Kistamässan för middag, musik och möten som flyttar branschen framåt." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="/site/kvallsmingel.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="shared.css" />
+<script src="/site/shared.js" defer></script>
+<style>
+  :root { --gold:#FFD60A; --gold-2:#FF9500; --plum:#5E5CE6; --pink:#FF375F; }
+
+  /* ---------- HERO ---------- */
+  .nf-hero{
+    position:relative; min-height:88vh; padding:160px 32px 120px;
+    display:grid; place-items:center; text-align:center; overflow:hidden;
+    background:
+      radial-gradient(1200px 600px at 20% 10%, rgba(255,55,95,0.25), transparent 60%),
+      radial-gradient(900px 600px at 80% 90%, rgba(94,92,230,0.30), transparent 55%),
+      linear-gradient(180deg,#0a0612 0%, #07050d 100%);
+  }
+  .nf-hero::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      radial-gradient(2px 2px at 12% 22%, rgba(255,255,255,.7), transparent 60%),
+      radial-gradient(1.5px 1.5px at 78% 35%, rgba(255,214,10,.8), transparent 60%),
+      radial-gradient(2px 2px at 30% 78%, rgba(255,255,255,.5), transparent 60%),
+      radial-gradient(1px 1px at 62% 60%, rgba(255,255,255,.6), transparent 60%),
+      radial-gradient(1.5px 1.5px at 88% 80%, rgba(94,92,230,.8), transparent 60%);
+    opacity:.7; pointer-events:none;
+  }
+  .nf-eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:8px 18px; border-radius:100px;
+    background:rgba(255,214,10,.08); border:1px solid rgba(255,214,10,.35);
+    color:var(--gold); font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  }
+  .nf-eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:var(--gold); box-shadow:0 0 12px var(--gold); animation:pulse 2s infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.3);} }
+  .nf-h1{
+    margin:32px auto 0; max-width:1100px;
+    font-size:clamp(64px, 10vw, 168px); line-height:.92; font-weight:800; letter-spacing:-.055em;
+    background:linear-gradient(180deg,#FFFFFF 0%, #C7C0E2 60%, #6B5F95 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .nf-h1 .gold{ background:linear-gradient(135deg,var(--gold) 0%, var(--gold-2) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-style:italic; font-weight:300; font-family:"PP Editorial New","Tiempos Headline",Georgia,serif; }
+  .nf-sub{ margin:36px auto 0; max-width:680px; font-size:clamp(17px,1.6vw,21px); color:rgba(255,255,255,.75); line-height:1.5; }
+  .nf-meta{ margin:44px 0 0; display:flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative; z-index:2; }
+  .nf-pill{ padding:10px 18px; border-radius:100px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); color:#fff; font-size:13px; font-weight:500; backdrop-filter: blur(8px); }
+  .nf-pill b{ color:var(--gold); margin-right:6px; font-weight:700; }
+  .nf-cta-row{ margin:44px 0 0; display:flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative; z-index:2; }
+  .nf-btn{ display:inline-flex; align-items:center; gap:10px; padding:16px 28px; border-radius:100px; font-weight:600; font-size:15px; text-decoration:none; transition:transform .2s, box-shadow .2s; }
+  .nf-btn.primary{ background:linear-gradient(135deg,var(--gold),var(--gold-2)); color:#1a1300; box-shadow:0 12px 30px -8px rgba(255,159,0,.5); }
+  .nf-btn.primary:hover{ transform:translateY(-2px); box-shadow:0 16px 36px -8px rgba(255,159,0,.7); }
+  .nf-btn.ghost{ background:rgba(255,255,255,.06); color:#fff; border:1px solid rgba(255,255,255,.18); }
+  .nf-btn.ghost:hover{ background:rgba(255,255,255,.12); }
+
+  /* ---------- TIMELINE ---------- */
+  .nf-section{ max-width:1200px; margin:0 auto; padding:120px 32px; }
+  .nf-eye-2{ font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  .nf-h2{ margin:14px 0 0; font-size:clamp(40px,5.5vw,72px); font-weight:700; letter-spacing:-.04em; line-height:1; color:#fff; }
+  .nf-h2 i{ font-style:italic; font-weight:300; font-family:"PP Editorial New","Tiempos Headline",Georgia,serif; color:#A89BD9; }
+  .nf-lead{ margin:24px 0 0; max-width:620px; font-size:17px; color:var(--text-2); line-height:1.55; }
+
+  .timeline{ margin-top:64px; position:relative; }
+  .timeline::before{ content:""; position:absolute; left:140px; top:8px; bottom:8px; width:1px; background:linear-gradient(180deg, transparent, rgba(255,214,10,.5) 10%, rgba(94,92,230,.5) 50%, rgba(255,55,95,.5) 90%, transparent); }
+  .tl-row{ display:grid; grid-template-columns:140px 1fr; gap:40px; padding:32px 0; align-items:start; position:relative; }
+  .tl-row::before{ content:""; position:absolute; left:135px; top:42px; width:11px; height:11px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px rgba(255,214,10,.18); }
+  .tl-row.plum::before{ background:var(--plum); box-shadow:0 0 0 4px rgba(94,92,230,.2); }
+  .tl-row.pink::before{ background:var(--pink); box-shadow:0 0 0 4px rgba(255,55,95,.18); }
+  .tl-time{ font-size:28px; font-weight:700; letter-spacing:-.025em; color:#fff; }
+  .tl-time small{ display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin-top:6px; font-weight:600; }
+  .tl-card{ background:rgba(255,255,255,.04); border:1px solid var(--stroke); border-radius:20px; padding:28px 32px; transition:background .25s, border-color .25s, transform .25s; }
+  .tl-card:hover{ background:rgba(255,255,255,.06); border-color:var(--stroke-2); transform:translateY(-2px); }
+  .tl-title{ font-size:22px; font-weight:700; letter-spacing:-.022em; color:#fff; }
+  .tl-desc{ margin-top:10px; font-size:14.5px; color:var(--text-2); line-height:1.55; }
+  .tl-tag{ display:inline-block; margin-top:14px; padding:5px 12px; border-radius:100px; background:rgba(255,214,10,.1); border:1px solid rgba(255,214,10,.3); color:var(--gold); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+  .tl-row.plum .tl-tag{ background:rgba(94,92,230,.12); border-color:rgba(94,92,230,.35); color:#A89BD9; }
+  .tl-row.pink .tl-tag{ background:rgba(255,55,95,.12); border-color:rgba(255,55,95,.35); color:#FF7A95; }
+
+  /* ---------- MENU + DETAILS ---------- */
+  .menu-grid{ margin-top:56px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .menu-card{ background:linear-gradient(180deg, rgba(255,214,10,.04), rgba(255,159,0,.01)); border:1px solid rgba(255,214,10,.2); border-radius:24px; padding:40px; }
+  .menu-card h3{ font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  .menu-card .course{ margin-top:20px; padding-top:20px; border-top:1px solid var(--stroke); }
+  .menu-card .course:first-of-type{ border-top:0; padding-top:0; }
+  .menu-card .ck{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
+  .menu-card .cn{ margin-top:8px; font-size:22px; font-weight:600; letter-spacing:-.018em; color:#fff; font-family:"PP Editorial New","Tiempos Headline",Georgia,serif; font-style:italic; }
+  .menu-card .cd{ margin-top:8px; font-size:13.5px; color:var(--text-2); line-height:1.5; }
+  .menu-card .cv{ display:inline-block; margin-top:8px; font-size:11px; padding:3px 10px; border-radius:100px; background:rgba(48,209,88,.1); border:1px solid rgba(48,209,88,.3); color:#30D158; font-weight:600; }
+
+  /* ---------- ARTISTS ---------- */
+  .artists{ margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .artist{ position:relative; aspect-ratio:4/5; border-radius:24px; overflow:hidden; background:linear-gradient(135deg, var(--c1), var(--c2)); display:flex; align-items:flex-end; padding:28px; }
+  .artist::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,.7) 100%); }
+  .artist-info{ position:relative; z-index:1; color:#fff; }
+  .artist-info .role{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.85; font-weight:600; }
+  .artist-info .name{ margin-top:8px; font-size:32px; font-weight:700; letter-spacing:-.025em; line-height:1; }
+  .artist-info .desc{ margin-top:10px; font-size:13px; opacity:.9; line-height:1.45; max-width:90%; }
+
+  /* ---------- DETAILS GRID ---------- */
+  .details{ margin-top:56px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .detail{ background:rgba(255,255,255,.04); border:1px solid var(--stroke); border-radius:20px; padding:28px; }
+  .detail .ico{ width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, var(--gold), var(--gold-2)); display:grid; place-items:center; color:#1a1300; font-size:20px; font-weight:700; margin-bottom:18px; }
+  .detail h4{ font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:#fff; font-weight:700; }
+  .detail p{ margin-top:8px; font-size:14px; color:var(--text-2); line-height:1.5; }
+
+  /* ---------- WHO ---------- */
+  .who{ margin-top:48px; padding:48px; background:linear-gradient(135deg, rgba(94,92,230,.08), rgba(255,55,95,.04)); border:1px solid rgba(94,92,230,.25); border-radius:28px; text-align:center; }
+  .who-stats{ margin-top:32px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .who-stat .n{ font-size:48px; font-weight:700; letter-spacing:-.03em; background:linear-gradient(135deg,#fff,#A89BD9); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .who-stat .l{ margin-top:6px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
+
+  /* ---------- BOOK ---------- */
+  .book{ margin-top:120px; padding:80px 48px; border-radius:32px; background: radial-gradient(circle at 30% 20%, rgba(255,214,10,.18), transparent 50%), radial-gradient(circle at 70% 80%, rgba(255,55,95,.15), transparent 50%), #0a0612; border:1px solid rgba(255,214,10,.3); text-align:center; }
+  .book h2{ font-size:clamp(36px,5vw,56px); font-weight:700; letter-spacing:-.035em; color:#fff; }
+  .book h2 i{ font-style:italic; font-weight:300; font-family:"PP Editorial New",Georgia,serif; color:var(--gold); }
+  .book p{ margin:18px auto 0; max-width:560px; font-size:16px; color:var(--text-2); line-height:1.5; }
+  .book .price{ margin-top:28px; font-size:14px; color:var(--text-3); }
+  .book .price b{ color:#fff; font-size:26px; font-weight:700; margin-right:8px; }
+
+  @media (max-width: 900px){
+    .nf-hero{ padding:120px 20px 80px; min-height:auto; }
+    .nf-section{ padding:80px 20px; }
+    .menu-grid, .artists, .details, .who-stats{ grid-template-columns:1fr; }
+    .timeline::before{ left:18px; }
+    .tl-row{ grid-template-columns:1fr; gap:14px; padding:24px 0 24px 44px; }
+    .tl-row::before{ left:13px; top:32px; }
+    .book{ padding:48px 24px; }
+  }
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span></a>
+  <nav class="nav-links"><a href="index.html">Startsida</a><a href="program.html">Program</a><a href="talare.html">Talare</a><a href="utstallning.html">Utställning</a><a href="kvallsmingel.html" style="color:#FFD60A">Kvällsmingel</a><a href="index.html#biljetter">Biljetter</a></nav>
+  <a href="#book" class="nav-cta">Boka plats</a>
+</div></header>
+
+<!-- HERO -->
+<section class="nf-hero">
+  <div style="position:relative;z-index:2;">
+    <span class="nf-eyebrow"><span class="dot"></span>19 maj 2027 · 18:30 – 01:00</span>
+    <h1 class="nf-h1">The <span class="gold">Night</span><br/>Forward.</h1>
+    <p class="nf-sub">Sveriges energibransch samlas för en kväll som gör mer än underhåller — den flyttar branschen framåt. Trerätters, två scener, en framtid.</p>
+    <div class="nf-meta">
+      <span class="nf-pill"><b>📍</b>Kistamässan, Hall A</span>
+      <span class="nf-pill"><b>👔</b>Smart casual</span>
+      <span class="nf-pill"><b>🎟️</b>Inkluderat i Premium-pass</span>
+      <span class="nf-pill"><b>🍽️</b>Trerätters middag</span>
+    </div>
+    <div class="nf-cta-row">
+      <a href="#book" class="nf-btn primary">Boka plats →</a>
+      <a href="#schedule" class="nf-btn ghost">Se program</a>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="nf-section" id="schedule">
+  <div class="nf-eye-2">Kvällens flow</div>
+  <h2 class="nf-h2">Sex timmar som <i>räknas</i>.</h2>
+  <p class="nf-lead">Från välkomstdrink till sista låten. Allt designat för att maximera meningsfulla möten — utan att glömma att ha kul.</p>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-time">18:30<small>Mingel</small></div>
+      <div class="tl-card">
+        <div class="tl-title">Welcome reception &amp; champagne</div>
+        <div class="tl-desc">Mässhallen förvandlas. Ljussättning av Bright Group, ambient soundscape av Petter Winnberg. Bubblel från Skåne, alkoholfria signaturdrinkar och canapéer av Daniel Berlin.</div>
+        <span class="tl-tag">Ljud · Ljus · Mat</span>
+      </div>
+    </div>
+    <div class="tl-row plum">
+      <div class="tl-time">19:30<small>Dinner</small></div>
+      <div class="tl-card">
+        <div class="tl-title">Trerätters middag — "Future Soil"</div>
+        <div class="tl-desc">300 gäster vid långbord. Råvaror inom 200 km. Måltidsdramaturgi av kock Titti Qvarnström — varje rätt berättar en del av Sveriges energiomställning.</div>
+        <span class="tl-tag">300 platser</span>
+      </div>
+    </div>
+    <div class="tl-row plum">
+      <div class="tl-time">21:15<small>Stage</small></div>
+      <div class="tl-card">
+        <div class="tl-title">Energimässan Awards 2027</div>
+        <div class="tl-desc">Sex priser. Sex kategorier. En kväll där branschen hyllar sig själv — Årets innovation, Årets utställare, Årets samhällsbyggare, Årets startup, Folkets pris och Lifetime Achievement.</div>
+        <span class="tl-tag">Live-prisutdelning</span>
+      </div>
+    </div>
+    <div class="tl-row pink">
+      <div class="tl-time">22:30<small>Live</small></div>
+      <div class="tl-card">
+        <div class="tl-title">Live act: Miriam Bryant + DJ Seinabo Sey</div>
+        <div class="tl-desc">Akustisk halvtimme följt av DJ-set. Dansgolvet öppnar — bar med svenska gins och naturvin tar över hela B-hallen.</div>
+        <span class="tl-tag">Konsert · DJ</span>
+      </div>
+    </div>
+    <div class="tl-row pink">
+      <div class="tl-time">01:00<small>End</small></div>
+      <div class="tl-card">
+        <div class="tl-title">Kvällen avslutas</div>
+        <div class="tl-desc">Shuttle-bussar mot Stockholm city avgår 00:30, 01:00 och 01:30. Taxiservice kö-fri via Lyft-partnerskapet.</div>
+        <span class="tl-tag">Shuttle inkluderat</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="nf-section" style="padding-top:0;">
+  <div class="nf-eye-2">Menyn</div>
+  <h2 class="nf-h2"><i>Future Soil</i> — av Titti Qvarnström.</h2>
+  <p class="nf-lead">En måltid där varje rätt är en kommentar till energiomställningen. Vegetariskt huvudfokus, fisk-alternativ, allt inom 200 km.</p>
+
+  <div class="menu-grid">
+    <div class="menu-card">
+      <h3>Standardmeny</h3>
+      <div class="course">
+        <div class="ck">Förrätt</div>
+        <div class="cn">Rotsellerirostad bottnig</div>
+        <div class="cd">Lättrökt insjöfisk, picklad äppellök, jordkrasse, brynt smör.</div>
+      </div>
+      <div class="course">
+        <div class="ck">Varmrätt</div>
+        <div class="cn">Skördad höst</div>
+        <div class="cd">Bakad kålrot från Österlen, fermenterad gulbeta, hasselnötspuré, svamp­fond med torkad enbär.</div>
+      </div>
+      <div class="course">
+        <div class="ck">Dessert</div>
+        <div class="cn">Solens energi</div>
+        <div class="cd">Honungsglacé från solpanel-bigårdar, havtorn, rågsmulor, frostat tallskott.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <h3>Fullt anpassningsbart</h3>
+      <div class="course">
+        <div class="ck">Vegan</div>
+        <div class="cn">Plantbaserad meny</div>
+        <div class="cd">Hela menyn finns i 100% växtbaserad version. Hasselnöt­emulsion ersätter brynt smör.</div>
+        <span class="cv">✓ Tillgängligt</span>
+      </div>
+      <div class="course">
+        <div class="ck">Allergi</div>
+        <div class="cn">Glutenfritt &amp; nötfritt</div>
+        <div class="cd">Bocka i dina behov vid bokning. Köket gör enskilda anpassningar för 14 vanliga allergier.</div>
+        <span class="cv">✓ Tillgängligt</span>
+      </div>
+      <div class="course">
+        <div class="ck">Drycker</div>
+        <div class="cn">Wine pairing &amp; alkoholfritt</div>
+        <div class="cd">Naturviner från Loire, kombucha­pairing av Ölands Bryggeri, hantverkskaffe från Standout.</div>
+        <span class="cv">✓ Inkluderat</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTISTS -->
+<section class="nf-section" style="padding-top:0;">
+  <div class="nf-eye-2">På scenen</div>
+  <h2 class="nf-h2">Live-akter &amp; <i>moderator</i>.</h2>
+
+  <div class="artists">
+    <div class="artist" style="--c1:#FF375F;--c2:#FF9500;">
+      <div class="artist-info">
+        <div class="role">Live act 22:30</div>
+        <div class="name">Miriam<br/>Bryant</div>
+        <div class="desc">Stripped-down akustiskt set — exklusivt för Energimässan.</div>
+      </div>
+    </div>
+    <div class="artist" style="--c1:#5E5CE6;--c2:#BF5AF2;">
+      <div class="artist-info">
+        <div class="role">DJ 23:15 – 01:00</div>
+        <div class="name">Seinabo<br/>Sey</div>
+        <div class="desc">Producent &amp; DJ. Lyssnarvänligt house med soulrötter.</div>
+      </div>
+    </div>
+    <div class="artist" style="--c1:#30D158;--c2:#0A84FF;">
+      <div class="artist-info">
+        <div class="role">Konferencier</div>
+        <div class="name">Aida<br/>Hadžialić</div>
+        <div class="desc">Leder kvällen och prisutdelningen. Skarp, varm, oväntad.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="nf-section" style="padding-top:0;">
+  <div class="nf-eye-2">Praktiskt</div>
+  <h2 class="nf-h2">Det du <i>behöver veta</i>.</h2>
+
+  <div class="details">
+    <div class="detail">
+      <div class="ico">📍</div>
+      <h4>Plats</h4>
+      <p>Kistamässan, Hall A. 18 min från Stockholm C med pendeltåg, 25 min med taxi.</p>
+    </div>
+    <div class="detail">
+      <div class="ico">👔</div>
+      <h4>Klädkod</h4>
+      <p>Smart casual. Vi vill att du känner dig hemma — kavaj utan slips, klänning utan klackar.</p>
+    </div>
+    <div class="detail">
+      <div class="ico">🚌</div>
+      <h4>Hemresa</h4>
+      <p>Gratis shuttle till Stockholm city 00:30 / 01:00 / 01:30. Lyft-partnerskap för fri taxikö.</p>
+    </div>
+    <div class="detail">
+      <div class="ico">🎟️</div>
+      <h4>Inkluderat</h4>
+      <p>Premium-pass och Konferenspass inkluderar kvällen. Mässpass kan uppgradera för 1 950 kr.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="nf-section" style="padding-top:0;">
+  <div class="nf-eye-2">Vilka kommer?</div>
+  <h2 class="nf-h2">Hela <i>energi-Sverige</i> i ett rum.</h2>
+
+  <div class="who">
+    <p style="font-size:18px; color:var(--text-2); max-width:680px; margin:0 auto; line-height:1.55;">VD:ar, hållbarhetschefer, investerare, politiker, forskare och grundare. 300 platser. Tidig bokning rekommenderas — kvällen sålde slut tre veckor före mässan 2026.</p>
+    <div class="who-stats">
+      <div class="who-stat"><div class="n">300</div><div class="l">Gäster</div></div>
+      <div class="who-stat"><div class="n">42%</div><div class="l">C-suite</div></div>
+      <div class="who-stat"><div class="n">18</div><div class="l">Investerare</div></div>
+      <div class="who-stat"><div class="n">12</div><div class="l">Riksdagsledamöter</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="nf-section" id="book">
+  <div class="book">
+    <h2>Säkra din <i>plats</i>.</h2>
+    <p>The Night Forward 2027 säljer slut. 2026 var det fullbokat tre veckor i förväg.</p>
+    <div class="price"><b>1 950 kr</b>per person · ingår i Premium &amp; Konferenspass</div>
+    <div class="nf-cta-row" style="justify-content:center;">
+      <a href="index.html#biljetter" class="nf-btn primary">Boka kvällsmingel →</a>
+      <a href="#" class="nf-btn ghost" id="addCal">📅 Lägg till i kalender</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Add to calendar
+  document.getElementById('addCal').addEventListener('click', e => {
+    e.preventDefault();
+    const fmt = d => d.getUTCFullYear()+String(d.getUTCMonth()+1).padStart(2,'0')+String(d.getUTCDate()).padStart(2,'0')+'T'+String(d.getUTCHours()).padStart(2,'0')+String(d.getUTCMinutes()).padStart(2,'0')+'00Z';
+    const start = new Date('2027-05-19T18:30:00+02:00');
+    const end = new Date('2027-05-20T01:00:00+02:00');
+    const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Energimassan//SV\nBEGIN:VEVENT\nUID:night-forward-2027@energimassan.se\nDTSTAMP:${fmt(new Date())}\nDTSTART:${fmt(start)}\nDTEND:${fmt(end)}\nSUMMARY:The Night Forward — Energimässan 2027\nDESCRIPTION:Kvällsmingel med trerätters middag, prisutdelning och live-akter.\nLOCATION:Kistamässan, Hall A, Stockholm\nEND:VEVENT\nEND:VCALENDAR`;
+    const blob = new Blob([ics],{type:'text/calendar'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'the-night-forward-2027.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+</script>
+
+</body>
+</html>
