@@ -3953,6 +3953,49 @@
         });
       }
 
+      // Removes uniform corner-colored backgrounds (white OR dark monochrome) by making them transparent.
+      function stripUniformBackground(img){
+        try {
+          const cv = document.createElement('canvas');
+          cv.width = img.naturalWidth || img.width;
+          cv.height = img.naturalHeight || img.height;
+          if (!cv.width || !cv.height) return img;
+          const cx = cv.getContext('2d');
+          cx.drawImage(img, 0, 0);
+          const id = cx.getImageData(0, 0, cv.width, cv.height);
+          const d = id.data;
+          // Sample 4 corners
+          const corners = [
+            [0,0], [cv.width-1,0], [0,cv.height-1], [cv.width-1,cv.height-1]
+          ].map(function(p){ const i=(p[1]*cv.width + p[0])*4; return [d[i],d[i+1],d[i+2],d[i+3]]; });
+          // All corners must agree within tolerance and be opaque
+          const ref = corners[0];
+          if (ref[3] < 200) return img; // already transparent corner — leave it
+          for (let k=1;k<4;k++){
+            if (Math.abs(corners[k][0]-ref[0])>14 || Math.abs(corners[k][1]-ref[1])>14 || Math.abs(corners[k][2]-ref[2])>14) return img;
+          }
+          // Treat as solid background — must be near-white OR dark monochrome (low saturation)
+          const max = Math.max(ref[0],ref[1],ref[2]), min = Math.min(ref[0],ref[1],ref[2]);
+          const sat = max - min;
+          const isLight = ref[0] > 230 && ref[1] > 230 && ref[2] > 230;
+          const isDarkMono = max < 90 && sat < 24;
+          if (!isLight && !isDarkMono) return img;
+          const tol = isDarkMono ? 38 : 24;
+          const fade = isDarkMono ? 70 : 48; // soft edge band
+          for (let i=0;i<d.length;i+=4){
+            const dr = d[i]-ref[0], dg = d[i+1]-ref[1], db = d[i+2]-ref[2];
+            const dist = Math.sqrt(dr*dr+dg*dg+db*db);
+            if (dist < tol){ d[i+3] = 0; }
+            else if (dist < tol+fade){ d[i+3] = Math.round(d[i+3] * ((dist-tol)/fade)); }
+          }
+          cx.putImageData(id, 0, 0);
+          const out = new Image();
+          out.width = cv.width; out.height = cv.height;
+          out.src = cv.toDataURL('image/png');
+          return new Promise(function(res){ out.onload = function(){ res(out); }; out.onerror = function(){ res(img); }; });
+        } catch(e){ return img; }
+      }
+
       async function submit(){
         const data = {};
         // Validate text fields
