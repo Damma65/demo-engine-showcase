@@ -188,9 +188,10 @@
       ['resa-boende.html','Boende & Info']
     ];
     var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    var base = siteBase();
     links.innerHTML = items.map(function(it){
-      var href = it[0], label = it[1];
-      var file = href.split('#')[0].toLowerCase();
+      var href = base + it[0], label = it[1];
+      var file = it[0].split('#')[0].toLowerCase();
       var active = (file === path) ? ' class="active"' : '';
       if (label === 'Kvällsmingel') active = (file === path) ? ' class="active nav-mingel"' : ' class="nav-mingel"';
       return '<a href="'+href+'"'+active+'>'+label+'</a>';
