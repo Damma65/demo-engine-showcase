@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>DEMO · Bli utställare v3 (lugn palett) · Energimässan 2027</title>
+<meta name="robots" content="noindex,nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../shared.css" />
+<script src="/site/shared.js" defer></script>
+<style>
+  /* ===== Demo-banner ===== */
+  .demo-banner{
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: linear-gradient(90deg, #30D158, #0A84FF);
+    color: #04140a; font-weight: 600; font-size: 12.5px; letter-spacing:.04em;
+    padding: 8px 20px; text-align:center;
+  }
+  .demo-banner a{ color: #04140a; text-decoration: underline; margin-left: 12px; font-weight:700; }
+  body{ padding-top: 34px; padding-bottom: 90px; }
+  header.nav{ top: 34px; }
+
+  /* ===== Hero ===== */
+  .ph-wrap{ position: relative; max-width: 1320px; margin: 140px auto 0; padding: 0 32px; }
+  .ph-grid{
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px;
+    align-items: center;
+    padding: 56px 56px;
+    border-radius: 28px;
+    background:
+      linear-gradient(135deg, rgba(6,40,21,0.6), rgba(8,18,35,0.55)),
+      radial-gradient(900px 500px at 80% 20%, rgba(48,209,88,0.20), transparent 60%);
+    border: 1px solid var(--stroke);
+    overflow: hidden;
+    position: relative;
+  }
+  .ph-grid::before{
+    content:""; position: absolute; inset:0; z-index:0; opacity:.4;
+    background: radial-gradient(600px 300px at 100% 100%, rgba(10,132,255,0.18), transparent 60%);
+  }
+  .ph-grid > *{ position: relative; z-index: 1; }
+  .ph-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
+    color: #30D158; font-weight:700;
+  }
+  .ph-eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background: #30D158; box-shadow: 0 0 12px rgba(48,209,88,.6); }
+  .ph-h1{
+    margin-top: 18px;
+    font-size: clamp(40px, 5.4vw, 76px);
+    font-weight: 700; letter-spacing:-.045em; line-height: 1.0;
+    background: linear-gradient(180deg, #FFFFFF, #BABABF);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
+  }
+  .ph-h1 .grad{
+    background: linear-gradient(135deg, #30D158, #0A84FF);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
+  }
+  .ph-sub{ margin-top: 22px; font-size: 17px; color: var(--text-2); line-height:1.55; max-width: 520px; }
+  .ph-cta{ margin-top: 32px; display:flex; gap: 12px; flex-wrap: wrap; }
+  .ph-cta .btn-p{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 14px 24px; border-radius: 100px;
+    background: #30D158; color: #062815;
+    font-weight: 700; font-size: 14px; text-decoration:none;
+    border: none;
+  }
+  .ph-cta .btn-s{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 14px 24px; border-radius: 100px;
+    background: rgba(255,255,255,0.04); color: var(--text);
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 600; font-size: 14px; text-decoration:none;
+  }
+
+  .ph-stats{
+    background: rgba(8, 14, 28, 0.72);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 22px;
+    padding: 28px 24px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 18px 8px;
+  }
+  .ph-stat{ text-align:center; padding: 4px 6px; }
+  .ph-stat-ic{ width: 32px; height:32px; margin: 0 auto 10px; display:grid; place-items:center; color: rgba(255,255,255,.85); }
+  .ph-stat-ic svg{ width: 26px; height: 26px; }
+  .ph-stat-num{ font-size: 28px; font-weight: 700; letter-spacing:-.025em; line-height:1; color: #fff; font-feature-settings:"tnum"; }
+  .ph-stat-lbl{ margin-top: 6px; font-size: 11.5px; color: rgba(255,255,255,.65); line-height: 1.3; }
+
+  /* ===== Värdekort ===== */
+  .why-section{ max-width: 1320px; margin: 80px auto 80px; padding: 0 32px; }
+  .why-head{ display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+  .why-title{ font-size: 28px; font-weight:700; letter-spacing:-.025em; }
+  .why-intro{ font-size: 14.5px; color: var(--text-2); line-height:1.6; margin-top: 14px; }
+  .why-checks{ margin-top: 18px; display:flex; flex-direction:column; gap: 8px; padding:0; }
+  .why-checks li{ list-style:none; font-size: 13.5px; color: var(--text-2); display:flex; gap:10px; align-items:center; }
+  .why-checks li::before{ content:""; width:16px; height:16px; border-radius: 50%;
+    background: rgba(48,209,88,.15);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2330D158' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: 11px; background-repeat: no-repeat; background-position: center;
+    flex-shrink:0;
+  }
+  .why-cards{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .wcard{ padding: 24px; background: var(--surface); border: 1px solid var(--stroke); border-radius: 18px; transition: transform .2s, border-color .2s; }
+  .wcard:hover{ transform: translateY(-3px); border-color: rgba(48,209,88,.35); }
+  .wcard-ic{ width: 44px; height: 44px; border-radius: 12px; background: rgba(48,209,88,0.10); display:grid; place-items:center; color: #30D158; margin-bottom: 16px; }
+  .wcard-ic svg{ width: 22px; height: 22px; }
+  .wcard-h{ font-size: 16px; font-weight:700; letter-spacing:-.018em; }
+  .wcard-d{ margin-top: 8px; font-size: 13px; color: var(--text-3); line-height:1.5; }
+
+  /* ===== Monterstorlekar ===== */
+  .lv-section{ max-width: 1320px; margin: 20px auto 80px; padding: 0 32px; }
+  .lv-head{ display:flex; align-items:end; justify-content:space-between; gap: 24px; margin-bottom: 28px; flex-wrap: wrap; }
+  .lv-title{ font-size: 28px; font-weight:700; letter-spacing:-.025em; }
+  .lv-sub{ font-size: 13.5px; color: var(--text-3); margin-top: 6px; }
+  .lv-compare{ font-size: 13px; color: var(--text-2); text-decoration: none; padding: 10px 18px;
+    border-radius: 100px; border:1px solid var(--stroke-2); background: rgba(255,255,255,0.03); }
+  .lv-compare:hover{ background: rgba(255,255,255,0.06); }
+
+  .lv-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .lv{
+    position: relative; padding: 22px 20px 20px;
+    border-radius: 18px; background: var(--surface);
+    border: 1px solid var(--stroke); text-decoration: none; color: inherit;
+    transition: transform .18s, border-color .18s, background .18s;
+    display:flex; flex-direction:column; gap: 12px; min-height: 200px;
+  }
+  .lv:hover{ transform: translateY(-3px); border-color: var(--lv-c, rgba(255,255,255,.25)); background: rgba(255,255,255,0.04); }
+  .lv-top{ display:flex; align-items:center; justify-content:space-between; gap: 12px; }
+  .lv-size{ font-size: 32px; font-weight:700; letter-spacing:-.03em; color: var(--lv-c); line-height:1; }
+  .lv-size sub{ font-size: 13px; color: var(--text-3); font-weight:600; vertical-align: baseline; margin-left: 4px; letter-spacing: 0; }
+  .lv-pricepill{
+    font-size: 12px; font-weight:700; padding: 6px 12px; border-radius: 100px;
+    background: color-mix(in srgb, var(--lv-c) 14%, transparent); color: var(--lv-c);
+    white-space: nowrap; font-feature-settings:"tnum";
+  }
+  .lv-d{ font-size: 13.5px; color: var(--text-2); line-height:1.5; flex: 1; }
+  .lv-incl{ display:flex; flex-wrap:wrap; gap: 6px; margin-top: 4px; }
+  .lv-incl span{
+    font-size: 11px; color: var(--text-3);
+    padding: 3px 8px; border-radius: 6px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  }
+  .lv-bot{ display:flex; align-items:center; justify-content:space-between; gap: 10px; margin-top: 4px; }
+  .lv-badge{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size: 11px; font-weight:600; padding: 5px 10px; border-radius: 100px;
+    background: color-mix(in srgb, var(--lv-c) 14%, transparent); color: var(--lv-c);
+  }
+  .lv-arrow{ color: var(--text-3); font-size: 16px; transition: transform .18s, color .18s; }
+  .lv:hover .lv-arrow{ color: var(--lv-c); transform: translateX(2px); }
+
+  /* Lugn palett: neutralt + en orange accent på Mest populär */
+  .lv.s-9,  .lv.s-16, .lv.s-18, .lv.s-24{ --lv-c: #F5F5F7; }
+  .lv.s-12{ --lv-c: #FF9F0A; }
+  .lv.s-12{ background: linear-gradient(180deg, rgba(255,159,10,0.06), rgba(255,159,10,0.02)); border-color: rgba(255,159,10,0.32); }
+  .lv-pricepill{ background: rgba(255,255,255,0.06) !important; color: var(--text) !important; border:1px solid rgba(255,255,255,0.10); }
+  .lv.s-12 .lv-pricepill{ background: rgba(255,159,10,0.14) !important; color:#FF9F0A !important; border-color: rgba(255,159,10,0.30); }
+  .lv-badge{ background: rgba(255,255,255,0.05) !important; color: var(--text-2) !important; border:1px solid rgba(255,255,255,0.10); }
+  .lv.s-12 .lv-badge{ background: rgba(255,159,10,0.14) !important; color:#FF9F0A !important; border-color: rgba(255,159,10,0.30); }
+
+  .lv-custom{
+    margin-top: 14px; padding: 28px 32px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(6,40,21,0.7), rgba(8,18,35,0.55));
+    border: 1px solid rgba(255,255,255,0.10);
+    display:grid; grid-template-columns: 1fr auto; gap: 24px; align-items:center;
+    position: relative; overflow: hidden;
+  }
+  .lv-custom::before{
+    content:""; position:absolute; right:-40px; top:-40px; width:240px; height:240px;
+    background: radial-gradient(closest-side, rgba(48,209,88,.25), transparent 70%);
+    pointer-events:none;
+  }
+  .lv-custom h3{ font-size: 20px; font-weight:700; letter-spacing:-.022em; }
+  .lv-custom p{ margin-top: 6px; font-size: 14px; color: var(--text-2); max-width: 640px; }
+  .lv-custom a{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 22px; border-radius: 100px;
+    background: #fff; color: #111; text-decoration:none;
+    font-weight: 700; font-size: 13.5px; white-space:nowrap;
+  }
+
+  /* ===== Ingår alltid (kompakt rad) ===== */
+  .always-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .always{
+    padding: 22px 28px;
+    border-radius: 18px;
+    background: rgba(48,209,88,.04);
+    border: 1px dashed rgba(48,209,88,.25);
+  }
+  .always-h{
+    font-size: 11px; letter-spacing:.16em; text-transform:uppercase;
+    color: #30D158; font-weight:700; margin-bottom: 14px;
+    display:block;
+  }
+  .always-row{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px 18px;
+  }
+  .always-row span{ font-size: 13.5px; color: var(--text-2); display:inline-flex; align-items:center; gap:6px; }
+  .always-row span::before{ content:"✓"; color: #30D158; font-weight:700; flex-shrink:0; }
+  @media (max-width: 1180px){ .always-row{ grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 720px){ .always-row{ grid-template-columns: repeat(2, 1fr); } }
+
+  /* ===== Bli partner cross-link ===== */
+  .bp-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .bp-card{
+    position: relative; overflow: hidden;
+    padding: 36px 40px; border-radius: 22px;
+    background:
+      radial-gradient(120% 140% at 100% 0%, rgba(255,159,10,.10), transparent 60%),
+      var(--surface);
+    border: 1px solid var(--stroke);
+    display:flex; align-items:center; justify-content:space-between; gap: 28px; flex-wrap: wrap;
+  }
+  .bp-eyebrow{
+    font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
+    color: #FF9F0A; font-weight:700; margin-bottom: 8px;
+  }
+  .bp-title{ font-size: 26px; font-weight: 800; letter-spacing:-.02em; line-height:1.15; margin:0 0 6px; }
+  .bp-sub{ font-size: 14.5px; color: var(--text-2); max-width: 620px; line-height:1.5; margin:0; }
+  .bp-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    padding: 14px 22px; border-radius: 999px;
+    background: #FF9F0A;
+    color:#1a0a00; text-decoration:none; font-weight:700; font-size: 14.5px;
+    box-shadow: 0 8px 24px -8px rgba(255,159,10,.55);
+    transition: transform .15s;
+  }
+  .bp-cta:hover{ transform: translateY(-2px); }
+  @media (max-width: 720px){ .bp-card{ padding: 28px; } .bp-title{ font-size: 22px; } }
+
+  /* ===== Tillval ===== */
+  .add-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .add-block{ margin-bottom: 22px; }
+  .add-h{
+    font-size: 12px; letter-spacing:.16em; text-transform:uppercase;
+    color: var(--text-3); font-weight:700; margin-bottom: 12px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .add-h a{ font-size: 12px; color: var(--text-2); text-decoration:none; letter-spacing:0; text-transform:none; font-weight:500; }
+  .add-h a:hover{ color: var(--orange); }
+  .add-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .add{
+    padding: 16px 14px; border-radius: 14px;
+    background: var(--surface); border: 1px solid var(--stroke);
+    text-decoration:none; color: inherit;
+    transition: transform .15s, border-color .15s;
+    display:flex; flex-direction:column; gap: 6px;
+  }
+  .add:hover{ transform: translateY(-2px); border-color: rgba(255,159,10,.35); }
+  .add-name{ font-size: 13.5px; font-weight:700; letter-spacing:-.012em; }
+  .add-price{ font-size: 12px; color: var(--text-3); font-feature-settings:"tnum"; }
+  @media (max-width:760px){ .add-grid{ grid-template-columns: repeat(2, 1fr); } }
+
+  /* Info-ikon (i) på tillval */
+  .add{ position: relative; }
+  .add-info{
+    position:absolute; top:10px; right:10px;
+    width:18px; height:18px; border-radius:50%;
+    border:1.5px solid rgba(255,255,255,.35);
+    display:grid; place-items:center;
+    font-size:11px; font-weight:700; font-style: italic;
+    color: var(--text-2); font-family: Georgia, serif;
+    line-height:1; letter-spacing:0;
+    transition: border-color .15s, color .15s;
+  }
+  .add:hover .add-info{ border-color: var(--orange); color: var(--orange); }
+
+  /* ===== Obligatoriskt (under monterstorlekar) ===== */
+  .req-section{ max-width: 1320px; margin: -40px auto 60px; padding: 0 32px; }
+  .req-head{
+    font-size: 12px; letter-spacing:.16em; text-transform:uppercase;
+    color: var(--text-3); font-weight:700; margin-bottom: 12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .req-head .req-dot{ width:8px; height:8px; border-radius:50%; background: #FF453A; box-shadow: 0 0 0 4px rgba(255,69,58,.15); }
+  .req-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .req{
+    padding: 22px 22px 20px; border-radius: 18px;
+    background: var(--surface); border: 1px solid var(--stroke);
+    position: relative; overflow:hidden;
+  }
+  .req::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+    background: var(--req-c, #FF9F0A);
+  }
+  .req-top{ display:flex; align-items:flex-start; gap:14px; margin-bottom: 10px; }
+  .req-num{
+    width:28px; height:28px; border-radius:50%;
+    display:grid; place-items:center; flex-shrink:0;
+    font-size:13px; font-weight:700; color:#fff;
+    background: var(--req-c, #FF9F0A);
+  }
+  .req-name{ font-size: 16px; font-weight:700; letter-spacing:-.012em; line-height:1.25; }
+  .req-price{
+    font-size: 22px; font-weight: 800; letter-spacing:-.02em;
+    margin: 6px 0 10px; color: var(--text);
+    font-feature-settings:"tnum";
+  }
+  .req-important .req-price{ color: #FF9F0A; }
+  .req-num{ background: rgba(255,255,255,0.10) !important; color: var(--text) !important; }
+  .req-important .req-num{ background: #FF9F0A !important; color:#1a0a00 !important; }
+  .req-list li::before{ background: rgba(255,255,255,0.35) !important; }
+  .req-tag.neu{ background: rgba(255,255,255,0.06); color: var(--text-2); border:1px solid rgba(255,255,255,0.10); }
+  .req-important-tag{ background: rgba(255,159,10,0.14) !important; color:#FF9F0A !important; border:1px solid rgba(255,159,10,0.30); }
+  .req-dot{ background: #FF9F0A !important; box-shadow: 0 0 0 4px rgba(255,159,10,.15) !important; }
+  .req-d{ font-size: 13.5px; color: var(--text-2); line-height:1.5; }
+  .req-list{ list-style:none; padding:0; margin: 8px 0 0;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; }
+  .req-list li{ font-size: 12.5px; color: var(--text-2); position:relative; padding-left: 12px; }
+  .req-list li::before{ content:""; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background: var(--req-c, #BF5AF2); }
+  .req-tag{
+    position:absolute; top:18px; right:18px;
+    font-size: 10.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+    padding: 4px 8px; border-radius: 6px;
+    background: rgba(255,69,58,.12); color: #FF6961;
+  }
+  .req-tag.opt{ background: rgba(48,209,88,.12); color:#30D158; }
+  .req-tag.up{ background: rgba(191,90,242,.12); color:#BF5AF2; }
+  @media (max-width: 980px){ .req-grid{ grid-template-columns: 1fr; } }
+
+  /* ===== Citat ===== */
+  .qt-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .qt-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .qt{ padding: 32px; border-radius: 20px; background: var(--surface); border: 1px solid var(--stroke); position: relative; }
+  .qt-mark{ position:absolute; top: 18px; right: 22px; font-size: 56px; line-height:.6; color: rgba(255,255,255,.10); font-family: Georgia, serif; font-weight: 700; }
+  .qt-text{ font-size: 16.5px; color: var(--text); line-height: 1.55; font-weight: 500; letter-spacing:-.005em; }
+  .qt-by{ margin-top: 22px; display:flex; align-items:center; gap: 14px; }
+  .qt-av{ width: 44px; height: 44px; border-radius: 50%; display:grid; place-items:center;
+    font-weight:700; font-size: 15px; color: #fff;
+    background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); flex-shrink:0; }
+  .qt-name{ font-size: 14px; font-weight: 700; }
+  .qt-role{ font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
+
+  /* ===== Logorad ===== */
+  .lr-section{ max-width: 1320px; margin: 0 auto 100px; padding: 0 32px; }
+  .lr-card{ padding: 28px 32px; border-radius: 20px; background: var(--surface); border: 1px solid var(--stroke); }
+  .lr-eyebrow{ font-size: 11px; letter-spacing:.18em; text-transform:uppercase; color: var(--text-3); font-weight:700; margin-bottom: 18px; }
+  .lr-row{ display:grid; grid-template-columns: repeat(6, 1fr); gap: 10px; align-items: center; }
+  .lr-tile{ aspect-ratio: 5/2; display:grid; place-items:center;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; font-weight: 700; letter-spacing:-.01em; font-size: 14px;
+    color: rgba(255,255,255,.78); text-align:center; padding: 4px; }
+  .lr-foot{ margin-top: 18px; display:flex; align-items:center; justify-content:space-between; font-size: 13px; }
+  .lr-foot a{ color: var(--text-2); text-decoration:none; }
+  .lr-foot a:hover{ color: #30D158; }
+
+  /* ===== Sticky bottom CTA ===== */
+  .sticky-cta{
+    position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+    z-index: 90; display:flex; align-items:center; gap: 18px;
+    padding: 14px 18px 14px 22px; border-radius: 100px;
+    background: rgba(8,12,22,0.88);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 18px 50px -10px rgba(0,0,0,0.6);
+    opacity: 0; pointer-events: none; transition: opacity .25s;
+  }
+  .sticky-cta.show{ opacity: 1; pointer-events: auto; }
+  .sticky-ic{ width: 32px; height: 32px; border-radius: 50%; background: rgba(48,209,88,.18); color: #30D158; display:grid; place-items:center; flex-shrink:0; }
+  .sticky-ic svg{ width:18px; height:18px; }
+  .sticky-txt{ font-size: 13.5px; color: var(--text); font-weight:600; }
+  .sticky-txt small{ display:block; font-size: 11px; color: var(--text-3); font-weight: 500; margin-top: 1px; }
+  .sticky-actions{ display:flex; gap: 8px; }
+  .sticky-actions a{ padding: 10px 18px; border-radius: 100px; font-weight:700; font-size: 13px; text-decoration:none; white-space: nowrap; }
+  .sticky-actions .s-p{ background: #30D158; color: #062815; }
+  .sticky-actions .s-s{ background: rgba(255,255,255,0.08); color: var(--text); border:1px solid rgba(255,255,255,.12); }
+
+  @media (max-width: 980px){
+    .ph-grid{ grid-template-columns: 1fr; padding: 36px 28px; }
+    .why-head{ grid-template-columns: 1fr; }
+    .why-cards{ grid-template-columns: repeat(2, 1fr); }
+    .lv-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lv-custom{ grid-template-columns: 1fr; }
+    .qt-grid{ grid-template-columns: 1fr; }
+    .lr-row{ grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px){
+    .lv-grid{ grid-template-columns: 1fr; }
+    .why-cards{ grid-template-columns: 1fr; }
+    .sticky-cta{ left: 12px; right: 12px; transform: none; flex-wrap: wrap; justify-content: center; padding: 12px; }
+    .sticky-txt{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">DEMO v3 — lugnare palett (en accent + neutralt). <a href="../bli-utstallare.html">→ Tillbaka till skarp Bli utställare</a>
+  <a href="partner-v2.html">· Partner v2</a>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Startsida</a>
+      <a href="../program.html">Program</a>
+      <a href="../talare.html">Talare</a>
+      <a href="../utstallning.html">Utställning</a>
+      <a href="../kvallsmingel.html">Kvällsmingel</a>
+      <a href="../bli-utstallare.html">Bli utställare</a>
+      <a href="../index.html#biljetter">Biljetter</a>
+      <a href="../resa-boende.html">Boende &amp; Info</a>
+    </nav>
+    <a href="#paket" class="nav-cta">Boka monter</a>
+  </div>
+</header>
+
+<!-- ===== HERO + stats ===== -->
+<section class="ph-wrap">
+  <div class="ph-grid">
+    <div>
+      <span class="ph-eyebrow">Utställare 2027</span>
+      <h1 class="ph-h1">Möt energi&shy;sektorn i <span class="grad">din egen monter.</span></h1>
+      <p class="ph-sub">Boka monter på Sveriges största energimässa. Generera kvalificerade leads, visa produkten live och möt 8 500+ beslutsfattare på två intensiva dagar.</p>
+      <div class="ph-cta">
+        <a href="#paket" class="btn-p">Boka monter →</a>
+        <a href="mailto:michael@energimassan.se" class="btn-s">📅 Boka säljmöte</a>
+      </div>
+    </div>
+
+    <aside class="ph-stats" aria-label="Räckvidd för utställare">
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.2"/><path d="M4 20c.8-4 4-6 8-6s7.2 2 8 6"/></svg></div>
+        <div class="ph-stat-num" style="font-size:22px;">8 500+</div>
+        <div class="ph-stat-lbl">beslutsfattare</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M3 11h18M8 7V4h8v3"/></svg></div>
+        <div class="ph-stat-num">250+</div>
+        <div class="ph-stat-lbl">utställare 2026</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21V8l9-5 9 5v13M9 21v-7h6v7"/></svg></div>
+        <div class="ph-stat-num">4</div>
+        <div class="ph-stat-lbl">parallella hallar</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12l5 5 11-12"/></svg></div>
+        <div class="ph-stat-num">87%</div>
+        <div class="ph-stat-lbl">återbokar 2028</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== Varför ställa ut? ===== -->
+<section class="why-section">
+  <div class="why-head">
+    <div>
+      <h2 class="why-title">Varför ställa ut?</h2>
+      <p class="why-intro">Energimässan är där affärerna görs — inte bara där produkter visas.</p>
+      <ul class="why-checks">
+        <li>Kvalificerade leads från hela energikedjan</li>
+        <li>Visa produkten live för rätt målgrupp</li>
+        <li>Premium synlighet i 4 hallar samtidigt</li>
+        <li>AI-matchmaking ingår i alla paket</li>
+      </ul>
+    </div>
+
+    <div class="why-cards">
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></div>
+        <div class="wcard-h">Kvalificerade leads</div>
+        <p class="wcard-d">Inköpare och beslutsfattare från energi, industri och offentlig sektor — i samma rum.</p>
+      </div>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="wcard-h">Visa live</div>
+        <p class="wcard-d">Demo, produkt och team i fysiskt möte — det som inget Teams-möte kan ersätta.</p>
+      </div>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+        <div class="wcard-h">Premium synlighet</div>
+        <p class="wcard-d">Marknadsföring i 6 månader — webb, app, nyhetsbrev och sociala medier.</p>
+      </div>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="wcard-h">Mässmatch ingår</div>
+        <p class="wcard-d">AI-matchmaking parar er med rätt besökare innan mässan ens börjar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Monterstorlekar ===== -->
+<section class="lv-section" id="paket">
+  <div class="lv-head">
+    <div>
+      <h2 class="lv-title">Välj monterstorlek</h2>
+      <p class="lv-sub">Allt från kompakt 9 m² till skräddarsydd 48 m². Möbler, el, matta och leadexport ingår alltid.</p>
+    </div>
+    <a href="../bli-utstallare.html#jamfor" class="lv-compare">Jämför alla storlekar →</a>
+  </div>
+
+  <div class="lv-grid">
+
+    <a href="../paket.html?id=monter-9&name=9%20m%C2%B2%20monter&price=62400" class="lv s-9">
+      <div class="lv-top">
+        <div class="lv-size">9<sub>m²</sub></div>
+        <span class="lv-pricepill">62 400 SEK</span>
+      </div>
+      <p class="lv-d">Kompakt yta för tydlig närvaro och effektiv leadgenerering. För team om 1–2 personer.</p>
+      <div class="lv-incl"><span>Matta</span><span>Väggar</span><span>Disk</span><span>TV</span></div>
+      <div class="lv-bot"><span class="lv-badge">Bra startyta</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="../paket.html?id=monter-12&name=12%20m%C2%B2%20monter&price=93600" class="lv s-12">
+      <div class="lv-top">
+        <div class="lv-size">12<sub>m²</sub></div>
+        <span class="lv-pricepill">93 600 SEK</span>
+      </div>
+      <p class="lv-d">Balans mellan synlighet, mötesyta och produktpresentation. Mest valda storleken 2026.</p>
+      <div class="lv-incl"><span>Premium­matta</span><span>LED-list</span><span>Stor disk</span><span>Lounge</span></div>
+      <div class="lv-bot"><span class="lv-badge">Mest populär</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="../paket.html?id=monter-16&name=16%20m%C2%B2%20monter&price=124800" class="lv s-16">
+      <div class="lv-top">
+        <div class="lv-size">16<sub>m²</sub></div>
+        <span class="lv-pricepill">124 800 SEK</span>
+      </div>
+      <p class="lv-d">Starkare position för team, demo och kunddialog. Eget mötesrum ingår.</p>
+      <div class="lv-incl"><span>Backlit­vägg</span><span>Bardisk</span><span>Mötesrum</span><span>Vatten</span></div>
+      <div class="lv-bot"><span class="lv-badge">Premiumval</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="../paket.html?id=monter-18&name=18%20m%C2%B2%20monter&price=140400" class="lv s-18">
+      <div class="lv-top">
+        <div class="lv-size">18<sub>m²</sub></div>
+        <span class="lv-pricepill">140 400 SEK</span>
+      </div>
+      <p class="lv-d">För större team som vill köra flera demos parallellt och bjuda in kunder till längre möten.</p>
+      <div class="lv-incl"><span>2 mötesrum</span><span>Storbild-TV</span><span>Lounge</span><span>Pantry</span></div>
+      <div class="lv-bot"><span class="lv-badge">Få platser kvar</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="../paket.html?id=monter-24&name=24%20m%C2%B2%20monter&price=187200" class="lv s-24">
+      <div class="lv-top">
+        <div class="lv-size">24<sub>m²</sub></div>
+        <span class="lv-pricepill">187 200 SEK</span>
+      </div>
+      <p class="lv-d">Hub-monter för marknadsledare. Egen scen, demo-zoner och plats för hela säljteamet.</p>
+      <div class="lv-incl"><span>Egen scen</span><span>3 mötesrum</span><span>Bar</span><span>Hörnläge</span></div>
+      <div class="lv-bot"><span class="lv-badge">Premiumval</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="mailto:michael@energimassan.se" class="lv" style="--lv-c:#fff;">
+      <div class="lv-top">
+        <div class="lv-size" style="font-size:24px;">+ Bygg<br/>din egen</div>
+        <span class="lv-pricepill" style="background:rgba(255,255,255,0.06); color: var(--text-2);">Pris på offert</span>
+      </div>
+      <p class="lv-d">Anpassa yta, placering och exponering efter era mål. Upp till 48 m² + hörnlägen.</p>
+      <div class="lv-bot"><span class="lv-badge" style="background:rgba(255,255,255,0.06); color: var(--text-2);">Skräddarsytt</span><span class="lv-arrow">→</span></div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ===== Obligatoriskt & uppgraderingar ===== -->
+<section class="req-section">
+  <div class="req-head">
+    <span class="req-dot"></span>
+    <span>Obligatoriskt &amp; tillgängliga uppgraderingar</span>
+  </div>
+  <div class="req-grid">
+
+    <div class="req" style="--req-c:rgba(255,255,255,0.22);">
+      <span class="req-tag neu">Tillval</span>
+      <div class="req-top">
+        <div class="req-num">7</div>
+        <div class="req-name">Hörnmonter</div>
+      </div>
+      <div class="req-price">+ 4 500 SEK</div>
+      <div class="req-d">Tillägg vid två öppna sidor — naturligt flöde och bättre tillgänglighet.</div>
+    </div>
+
+    <div class="req req-important" style="--req-c:#FF9F0A;">
+      <span class="req-tag req-important-tag">Obligatoriskt</span>
+      <div class="req-top">
+        <div class="req-num">8</div>
+        <div class="req-name">Anmälningsavgift</div>
+      </div>
+      <div class="req-price">9 900 SEK</div>
+      <div class="req-d">Obligatorisk för alla utställare. Registrering, försäkring och utställarservice.</div>
+    </div>
+
+    <div class="req" style="--req-c:rgba(255,255,255,0.22);">
+      <span class="req-tag neu">Uppgradering</span>
+      <div class="req-top">
+        <div class="req-num">9</div>
+        <div class="req-name">Pluspaketet · Uppgradering</div>
+      </div>
+      <div class="req-price">16 900 SEK</div>
+      <ul class="req-list">
+        <li>Obegränsad scanning</li>
+        <li>Logga i utställarlistan</li>
+        <li>Logga på webben</li>
+        <li>Logga i mässguiden</li>
+        <li>2 konferenspass</li>
+        <li>2 mingelbiljetter</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="always-section">
+  <div class="always">
+    <span class="always-h">Ingår alltid</span>
+    <div class="always-row">
+      <span>Lead-export</span>
+      <span>Mässmatch (AI)</span>
+      <span>Profil i mässappen</span>
+      <span>El &amp; internet</span>
+      <span>Inflyttning torsdag</span>
+      <span>2 utställarbiljetter / 9 m²</span>
+      <span>Wi-Fi i hela hallen</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Tillval ===== -->
+<section class="add-section">
+  <div class="add-block">
+    <div class="add-h">
+      <span>Tillval · Tal &amp; möten</span>
+      <a href="../bli-utstallare.html#tillval">Se alla tillval →</a>
+    </div>
+    <div class="add-grid">
+      <a href="../paket.html?id=talartid-i-konferensen&name=Talartid%20i%20konferensen&price=79000" class="add" title="Klicka för mer info">
+        <span class="add-info" aria-hidden="true">i</span>
+        <div class="add-name">Talartid i konferensen</div>
+        <div class="add-price">79 000 SEK</div>
+      </a>
+      <a href="../paket.html?id=open-inspiration&name=Open%20Inspiration&price=35000" class="add" title="Klicka för mer info">
+        <span class="add-info" aria-hidden="true">i</span>
+        <div class="add-name">Open Inspiration</div>
+        <div class="add-price">35 000 SEK</div>
+      </a>
+      <a href="../paket.html?id=massmatch&name=M%C3%A4ssmatch&price=29000" class="add">
+        <div class="add-name">Mässmatch Plus</div>
+        <div class="add-price">29 000 SEK</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="add-block">
+    <div class="add-h">
+      <span>Tillval · Synlighet</span>
+      <a href="../bli-utstallare.html#tillval">Se alla 12 →</a>
+    </div>
+    <div class="add-grid">
+      <a href="../paket.html?id=badgeband&name=Badgeband&price=85000" class="add">
+        <div class="add-name">Badgeband</div>
+        <div class="add-price">85 000 SEK</div>
+      </a>
+      <a href="../paket.html?id=cafepartner&name=Cafépartner&price=120000" class="add">
+        <div class="add-name">Cafépartner</div>
+        <div class="add-price">120 000 SEK</div>
+      </a>
+      <a href="../paket.html?id=fasadvepa&name=Fasadvepa&price=75000" class="add">
+        <div class="add-name">Fasadvepa</div>
+        <div class="add-price">75 000 SEK</div>
+      </a>
+      <a href="../paket.html?id=namnbrickor&name=Namnbrickor&price=65000" class="add">
+        <div class="add-name">Namnbrickor</div>
+        <div class="add-price">65 000 SEK</div>
+      </a>
+      <a href="../paket.html?id=profilering-pa-golv&name=Profilering%20p%C3%A5%20golv&price=45000" class="add">
+        <div class="add-name">Profilering på golv</div>
+        <div class="add-price">45 000 SEK</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Bli partner cross-link ===== -->
+<section class="bp-section">
+  <div class="bp-card">
+    <div>
+      <div class="bp-eyebrow">Vill du synas mer?</div>
+      <h2 class="bp-title">Bli partner</h2>
+      <p class="bp-sub">Som partner får du långt mer än en monter — strategisk synlighet före, under och efter mässan, talartid på huvudscenen, exklusiva mötesytor och en plats vid bordet i energiomställningen.</p>
+    </div>
+    <a href="./partner-v2.html" class="bp-cta">Utforska partnerskap →</a>
+  </div>
+</section>
+
+<!-- ===== Citat ===== -->
+<section class="qt-section">
+  <div class="qt-grid">
+    <article class="qt">
+      <span class="qt-mark">"</span>
+      <p class="qt-text">Vi bokade om innan vi ens hunnit packa ihop förra året. Mässan ger oss fler kvalificerade möten på två dagar än vad vi får på ett halvår av kall outreach.</p>
+      <div class="qt-by">
+        <div class="qt-av" style="--av-c1:#30D158;--av-c2:#0A84FF;">PJ</div>
+        <div>
+          <div class="qt-name">Per Johansson</div>
+          <div class="qt-role">Säljchef · Sungrow Nordics</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="qt">
+      <span class="qt-mark">"</span>
+      <p class="qt-text">Mässmatch är guld värt — vi visste exakt vilka beslutsfattare som skulle besöka vår monter, och kunde förbereda rätt material i förväg.</p>
+      <div class="qt-by">
+        <div class="qt-av" style="--av-c1:#FFD60A;--av-c2:#FF9F0A;">AS</div>
+        <div>
+          <div class="qt-name">Anna Svensson</div>
+          <div class="qt-role">Marknadschef · Plexigrid</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== Logorad ===== -->
+<section class="lr-section">
+  <div class="lr-card">
+    <div class="lr-eyebrow">Utställare 2026 — ett urval</div>
+    <div class="lr-row">
+      <div class="lr-tile">SUNGROW</div>
+      <div class="lr-tile">SCHNEIDER</div>
+      <div class="lr-tile">ABB</div>
+      <div class="lr-tile">HITACHI</div>
+      <div class="lr-tile">SIEMENS</div>
+      <div class="lr-tile">FORTUM</div>
+      <div class="lr-tile">PLEXIGRID</div>
+      <div class="lr-tile">RISE</div>
+      <div class="lr-tile">VOLVO</div>
+      <div class="lr-tile">NIDEC</div>
+      <div class="lr-tile">GRUNDFOS</div>
+      <div class="lr-tile">+ 240 till</div>
+    </div>
+    <div class="lr-foot">
+      <a href="../utstallning.html">← Se alla utställare</a>
+      <a href="#paket">Bli en av dem 2027 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Sticky CTA ===== -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9z"/></svg></div>
+  <div class="sticky-txt">Säkra din monter inför 2027<small>87% av utställarna återbokar</small></div>
+  <div class="sticky-actions">
+    <a href="#paket" class="s-p">Boka monter →</a>
+    <a href="mailto:michael@energimassan.se" class="s-s">Säljmöte</a>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const el = document.getElementById('stickyCta');
+    let last = false;
+    function update(){
+      const show = window.scrollY > 600;
+      if(show !== last){ el.classList.toggle('show', show); last = show; }
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
+
+<footer>
+  <div class="foot-inner">
+    <div>© 2027 Nordic Live Expo · Energimässan</div>
+    <div class="foot-links">
+      <a href="../index.html">Hem</a>
+      <a href="../program.html">Program</a>
+      <a href="../bli-utstallare.html">Bli utställare</a>
+      <a href="partner-v2.html">Partner v2</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
