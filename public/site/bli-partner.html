@@ -159,7 +159,7 @@
     display:flex; flex-direction:column; gap: 12px;
     min-height: 180px;
   }
-  .lv:hover{ transform: translateY(-3px); border-color: var(--lv-c, rgba(255,255,255,.25)); background: rgba(255,255,255,0.04); }
+  .lv:hover{ transform: translateY(-3px); border-color: var(--lv-hover-c, var(--lv-c, rgba(255,255,255,.25))); background: rgba(255,255,255,0.04); }
   .lv-top{ display:flex; align-items:center; gap: 12px; }
   .lv-ic{
     width: 38px; height: 38px; border-radius: 11px;
@@ -184,13 +184,13 @@
   .lv-arrow{ color: var(--text-3); font-size: 16px; transition: transform .18s, color .18s; }
   .lv:hover .lv-arrow{ color: var(--lv-c); transform: translateX(2px); }
 
-  /* Partnernivåer — dämpat: guld/silver/brons i gul, event/scen/mingel i lila, övrigt neutralt */
-  .lv.lv-guld{ --lv-c: #FFD60A; }
-  .lv.lv-silver{ --lv-c: #FFD60A; }
-  .lv.lv-brons{ --lv-c: #FFD60A; }
-  .lv.lv-event{ --lv-c: #BF5AF2; }
-  .lv.lv-scen{ --lv-c: #BF5AF2; }
-  .lv.lv-mingel{ --lv-c: #BF5AF2; }
+  /* Partnernivåer — neutralt vitt som default; original-färg syns bara på hover (border) */
+  .lv.lv-guld   { --lv-c: #fff; --lv-hover-c: #FFD60A; }
+  .lv.lv-silver { --lv-c: #fff; --lv-hover-c: #FFD60A; }
+  .lv.lv-brons  { --lv-c: #fff; --lv-hover-c: #FFD60A; }
+  .lv.lv-event  { --lv-c: #fff; --lv-hover-c: #BF5AF2; }
+  .lv.lv-scen   { --lv-c: #fff; --lv-hover-c: #BF5AF2; }
+  .lv.lv-mingel { --lv-c: #fff; --lv-hover-c: #BF5AF2; }
 
   .lv-custom{
     margin-top: 14px;
