@@ -44,6 +44,9 @@
   .booth-pin .dot{ position:absolute; inset:8px; border-radius:50%; background:#30D158; box-shadow:0 0 10px #30D158, 0 2px 6px rgba(0,0,0,.6); }
   .booth-pin .lbl{ position:absolute; left:50%; top:-6px; transform: translate(-50%,-100%); white-space:nowrap; font-size:11px; font-weight:600; padding:4px 9px; border-radius:6px; background: rgba(8,10,14,.95); color:#fff; border:1px solid rgba(48,209,88,.4); opacity:0; pointer-events:none; transition: opacity .15s; }
   .booth-pin:hover .lbl, .booth-pin.highlight .lbl{ opacity:1; }
+  /* Kalibreringsläge — bara aktivt med ?calibrate=1, aldrig publikt */
+  .booth-pin--unverified .dot{ background:#FF9F0A; box-shadow:0 0 10px #FF9F0A, 0 2px 6px rgba(0,0,0,.6); }
+  .booth-pin--unverified .lbl{ border-color: rgba(255,159,10,.5); }
   .hall-tools{ position:absolute; left:14px; bottom:14px; display:flex; gap:8px; z-index:5; }
   .hall-tools button{ background:rgba(8,10,14,.85); border:1px solid var(--stroke-2); color:var(--text-2); border-radius:10px; padding:8px 12px; font-size:12px; cursor:pointer; font-family:inherit; }
   .hall-tools button:hover{ color:#fff; border-color:#30D158; }
@@ -146,53 +149,124 @@
 const EXH = [{"n":"2030 Sekretariatet","u":"https://www.2030sekretariatet.se/","a":"S","t":"bronze","b":"A:01","c1":"#FFD60A","c2":"#FF9500","s":"2030-sekretariatet"},{"n":"ABAX Sweden","u":"https://www.abax.com/sv%20","a":"AS","t":"bronze","b":"B:01","c1":"#0A84FF","c2":"#5E5CE6","s":"abax-sweden"},{"n":"AI Sweden","u":"https://www.ai.se/sv","a":"AS","t":"bronze","b":"C:01","c1":"#30D158","c2":"#0A84FF","s":"ai-sweden"},{"n":"Aire Energy","u":"https://www.aire.energy/","a":"AE","t":"bronze","b":"D:01","c1":"#FF375F","c2":"#FF9500","s":"aire-energy"},{"n":"Ampner","u":"https://ampner.com/en/","a":"A","t":"bronze","b":"E:01","c1":"#5E5CE6","c2":"#30D158","s":"ampner"},{"n":"Asfaltsgruppen Sverige","u":"https://asfaltsgruppen.se/","a":"AS","t":"bronze","b":"F:01","c1":"#64D2FF","c2":"#0A84FF","s":"asfaltsgruppen-sverige"},{"n":"Assemblin El + Schneider","u":"https://www.assemblin.com/sv/","a":"AE","t":"bronze","b":"G:01","c1":"#BF5AF2","c2":"#5E5CE6","s":"assemblin-el-schneider"},{"n":"AUCOTEC","u":"https://www.aucotec.com/en/","a":"A","t":"bronze","b":"H:01","c1":"#FF9500","c2":"#FF375F","s":"aucotec"},{"n":"AWILCO","u":"https://www.awilco.dk/","a":"A","t":"bronze","b":"J:01","c1":"#30D158","c2":"#64D2FF","s":"awilco"},{"n":"BENGglas","u":"https://bengglas.nl/","a":"B","t":"bronze","b":"K:01","c1":"#FFD60A","c2":"#5E5CE6","s":"bengglas"},{"n":"Besway","u":"https://www.besway.se/","a":"B","t":"bronze","b":"L:01","c1":"#FFD60A","c2":"#FF9500","s":"besway"},{"n":"Bitus","u":"https://bitus.com/sweden-sv/","a":"B","t":"bronze","b":"M:01","c1":"#0A84FF","c2":"#5E5CE6","s":"bitus"},{"n":"BOS Power","u":"https://bospower.com/","a":"BP","t":"bronze","b":"A:02","c1":"#30D158","c2":"#0A84FF","s":"bos-power"},{"n":"Branschaktuellt","u":"https://branschaktuellt.se/","a":"B","t":"bronze","b":"B:02","c1":"#FF375F","c2":"#FF9500","s":"branschaktuellt"},{"n":"Bröderna Berner","u":"https://www.bernercompany.se/","a":"BB","t":"bronze","b":"C:02","c1":"#5E5CE6","c2":"#30D158","s":"broderna-berner"},{"n":"C3C Engineering","u":"https://c3c.se/","a":"CC","t":"bronze","b":"D:02","c1":"#64D2FF","c2":"#0A84FF","s":"c3c-engineering"},{"n":"CANEA Partner Group","u":"https://www.canea.se/","a":"CP","t":"bronze","b":"E:02","c1":"#BF5AF2","c2":"#5E5CE6","s":"canea-partner-group"},{"n":"Capture Energy","u":"https://captureenergy.eu/","a":"CE","t":"bronze","b":"F:02","c1":"#FF9500","c2":"#FF375F","s":"capture-energy"},{"n":"CELLNEX","u":"https://www.cellnex.com/se-sv/","a":"C","t":"bronze","b":"G:02","c1":"#30D158","c2":"#64D2FF","s":"cellnex"},{"n":"Cloudberry","u":"https://www.cloudberry.no/","a":"C","t":"bronze","b":"H:02","c1":"#FFD60A","c2":"#5E5CE6","s":"cloudberry"},{"n":"Cosafe Technology","u":"https://cosafe.se/","a":"CT","t":"bronze","b":"J:02","c1":"#FFD60A","c2":"#FF9500","s":"cosafe-technology"},{"n":"CTI","u":"http://www.cti.fi/","a":"C","t":"bronze","b":"K:02","c1":"#0A84FF","c2":"#5E5CE6","s":"cti"},{"n":"Detector Solutions AB","u":"https://detectorsolutions.se/","a":"DS","t":"bronze","b":"L:02","c1":"#30D158","c2":"#0A84FF","s":"detector-solutions-ab"},{"n":"Digpro","u":"https://digpro.com/","a":"D","t":"silver","b":"M:02","c1":"#FF375F","c2":"#FF9500","s":"digpro"},{"n":"dLab","u":"https://dlaboratory.com/","a":"D","t":"bronze","b":"A:03","c1":"#5E5CE6","c2":"#30D158","s":"dlab"},{"n":"EC Nordic","u":"https://www.ecnordic.se/","a":"EN","t":"bronze","b":"B:03","c1":"#64D2FF","c2":"#0A84FF","s":"ec-nordic"},{"n":"EENOVANCE","u":"https://www.eenovance.com/","a":"E","t":"bronze","b":"C:03","c1":"#BF5AF2","c2":"#5E5CE6","s":"eenovance"},{"n":"Ekströms Värmetekniska Aktiebolag","u":"https://ekstromsvarme.se/","a":"EV","t":"bronze","b":"D:03","c1":"#FF9500","c2":"#FF375F","s":"ekstroms-varmetekniska-aktiebolag"},{"n":"Elekt as","u":"https://www.elekt.com/no","a":"EA","t":"bronze","b":"E:03","c1":"#30D158","c2":"#64D2FF","s":"elekt-as"},{"n":"Eneff","u":"https://eneff.se/","a":"E","t":"bronze","b":"F:03","c1":"#FFD60A","c2":"#5E5CE6","s":"eneff"},{"n":"Energipress","u":"https://www.energipress.se/","a":"E","t":"bronze","b":"G:03","c1":"#FFD60A","c2":"#FF9500","s":"energipress"},{"n":"Energy5","u":"https://energy5.pl/en/","a":"E","t":"bronze","b":"H:03","c1":"#0A84FF","c2":"#5E5CE6","s":"energy5"},{"n":"Enqore","u":"https://two.se/","a":"E","t":"bronze","b":"J:03","c1":"#30D158","c2":"#0A84FF","s":"enqore"},{"n":"EPLAN","u":"https://www.eplan.se/","a":"E","t":"silver","b":"K:03","c1":"#FF375F","c2":"#FF9500","s":"eplan"},{"n":"EWF ECO","u":"https://ewfeco.com/","a":"EE","t":"bronze","b":"L:03","c1":"#5E5CE6","c2":"#30D158","s":"ewf-eco"},{"n":"FCT Sweden","u":"http://www.fctsweden.se/","a":"FS","t":"bronze","b":"M:03","c1":"#64D2FF","c2":"#0A84FF","s":"fct-sweden"},{"n":"Fortum Optimizer","u":"https://www.fortum.com/se/el/foretag/tillaggstjanster/fortum-optimizer","a":"FO","t":"gold","b":"A:04","c1":"#BF5AF2","c2":"#5E5CE6","s":"fortum-optimizer"},{"n":"GAFS","u":"https://www.gjutasfalt.se/","a":"G","t":"bronze","b":"B:04","c1":"#FF9500","c2":"#FF375F","s":"gafs"},{"n":"General Prepper","u":"https://generalprepper.com/","a":"GP","t":"bronze","b":"C:04","c1":"#30D158","c2":"#64D2FF","s":"general-prepper"},{"n":"Geobear","u":"https://www.geobear.se/","a":"G","t":"bronze","b":"D:04","c1":"#FFD60A","c2":"#5E5CE6","s":"geobear"},{"n":"Glava Energy Center","u":"https://glavaenergycenter.se/","a":"GE","t":"bronze","b":"E:04","c1":"#FFD60A","c2":"#FF9500","s":"glava-energy-center"},{"n":"Granitor Electro","u":"https://www.granitor.se/electro","a":"GE","t":"silver","b":"F:04","c1":"#0A84FF","c2":"#5E5CE6","s":"granitor-electro"},{"n":"Grundfos","u":"https://www.grundfos.com/se","a":"G","t":"silver","b":"G:04","c1":"#30D158","c2":"#0A84FF","s":"grundfos"},{"n":"Hitachi Energy","u":"https://www.hitachienergy.com/se/sv","a":"HE","t":"gold","b":"H:04","c1":"#FF375F","c2":"#FF9500","s":"hitachi-energy"},{"n":"Infometric","u":"https://infometric.se/","a":"I","t":"bronze","b":"J:04","c1":"#5E5CE6","c2":"#30D158","s":"infometric"},{"n":"InnoEnergy","u":"https://innoenergy.com/","a":"I","t":"silver","b":"K:04","c1":"#64D2FF","c2":"#0A84FF","s":"innoenergy"},{"n":"JAUDA","u":"http://www.jauda.com/","a":"J","t":"bronze","b":"L:04","c1":"#BF5AF2","c2":"#5E5CE6","s":"jauda"},{"n":"Jönköping Energi","u":"https://jonkopingenergi.se/","a":"JE","t":"bronze","b":"M:04","c1":"#FF9500","c2":"#FF375F","s":"jonkoping-energi"},{"n":"Kiwa Sweden","u":"https://www.kiwa.com/se/sv/","a":"KS","t":"silver","b":"A:05","c1":"#30D158","c2":"#64D2FF","s":"kiwa-sweden"},{"n":"Kraus & Naimer AB","u":"https://www.krausnaimer.com/se_sv","a":"KN","t":"bronze","b":"B:05","c1":"#FFD60A","c2":"#5E5CE6","s":"kraus-and-naimer-ab"},{"n":"Laitex","u":"https://www.laitex.fi/","a":"L","t":"bronze","b":"C:05","c1":"#FFD60A","c2":"#FF9500","s":"laitex"},{"n":"Landvac","u":"https://www.landvac.net/","a":"L","t":"bronze","b":"D:05","c1":"#0A84FF","c2":"#5E5CE6","s":"landvac"},{"n":"Lantbrukarnas Riskförbund","u":"https://www.lrf.se/","a":"LR","t":"silver","b":"E:05","c1":"#30D158","c2":"#0A84FF","s":"lantbrukarnas-riskforbund"},{"n":"Lime Technologies","u":"https://www.lime-technologies.com/sv/produkter/lime-crm/branscher/utility/","a":"LT","t":"bronze","b":"F:05","c1":"#FF375F","c2":"#FF9500","s":"lime-technologies"},{"n":"Lynk & Co","u":"https://www.lynkco.com/sv-se?gclsrc=aw.ds&gad_source=1&gad_campaignid=22153993178&gbraid=0AAAAAB_7Do9gKJqtYbsaVYUIlt7ADrVxy&gclid=CjwKCAjwhqfPBhBWEiwAZo196lJ-1vHYNzToU2fg65VABtpdXPpDJBT5sQoF_SaKf90pO5FC31M0hRoCpZQQAvD_BwE","a":"LC","t":"bronze","b":"G:05","c1":"#5E5CE6","c2":"#30D158","s":"lynk-and-co"},{"n":"Melbye","u":"https://melbye.se/","a":"M","t":"bronze","b":"H:05","c1":"#64D2FF","c2":"#0A84FF","s":"melbye"},{"n":"Mersen","u":"https://www.mersen.com/en/products","a":"M","t":"bronze","b":"J:05","c1":"#BF5AF2","c2":"#5E5CE6","s":"mersen"},{"n":"Merus Power","u":"https://meruspower.com/","a":"MP","t":"silver","b":"K:05","c1":"#FF9500","c2":"#FF375F","s":"merus-power"},{"n":"MIC Nordic","u":"https://micnordic.se/en/","a":"MN","t":"bronze","b":"L:05","c1":"#30D158","c2":"#64D2FF","s":"mic-nordic"},{"n":"MLT Maskin & Laser Teknik","u":"https://mlt.se/","a":"MM","t":"bronze","b":"M:05","c1":"#FFD60A","c2":"#5E5CE6","s":"mlt-maskin-and-laser-teknik"},{"n":"Modity Energy Trading","u":"https://www.modity.se/sv","a":"ME","t":"bronze","b":"A:06","c1":"#FFD60A","c2":"#FF9500","s":"modity-energy-trading"},{"n":"Momentum Industrial","u":"https://www.momentum-industrial.com/","a":"MI","t":"bronze","b":"B:06","c1":"#0A84FF","c2":"#5E5CE6","s":"momentum-industrial"},{"n":"Motion Control","u":"https://www.motioncontrol.se/","a":"MC","t":"bronze","b":"C:06","c1":"#30D158","c2":"#0A84FF","s":"motion-control"},{"n":"NEKTAB","u":"https://nektab.se/","a":"N","t":"bronze","b":"D:06","c1":"#FF375F","c2":"#FF9500","s":"nektab"},{"n":"Nidec Conversion","u":"https://www.nidec-conversion.com/?_gl=1*b977jk*_up*MQ..*_gs*MQ..&gclid=EAIaIQobChMIyrbRmcXEkgMVJZqDBx0q_BuhEAAYASAAEgIkKPD_BwE&gbraid=0AAAAADekVvQ6jeCrnvZ03gLQ3FkTNUFvC","a":"NC","t":"silver","b":"E:06","c1":"#5E5CE6","c2":"#30D158","s":"nidec-conversion"},{"n":"Nissen","u":"https://nissenenergy.com/","a":"N","t":"bronze","b":"F:06","c1":"#64D2FF","c2":"#0A84FF","s":"nissen"},{"n":"Nordic Energy Supply","u":"https://nesdc.se/","a":"NE","t":"bronze","b":"G:06","c1":"#BF5AF2","c2":"#5E5CE6","s":"nordic-energy-supply"},{"n":"NordTech Energy","u":"https://www.nordtechenergy.com/","a":"NE","t":"bronze","b":"H:06","c1":"#FF9500","c2":"#FF375F","s":"nordtech-energy"},{"n":"Norelco OY","u":"https://www.norelco.fi/se/hemsida","a":"NO","t":"bronze","b":"J:06","c1":"#30D158","c2":"#64D2FF","s":"norelco-oy"},{"n":"Parat Halvorsen","u":"https://www.parat.no/","a":"PH","t":"bronze","b":"K:06","c1":"#FFD60A","c2":"#5E5CE6","s":"parat-halvorsen"},{"n":"Peikko Sverige","u":"https://www.peikko.se/","a":"PS","t":"bronze","b":"L:06","c1":"#FFD60A","c2":"#FF9500","s":"peikko-sverige"},{"n":"PINJA","u":"https://pinja.com/","a":"P","t":"bronze","b":"M:06","c1":"#0A84FF","c2":"#5E5CE6","s":"pinja"},{"n":"Plexigrid","u":"https://plexigrid.com/","a":"P","t":"bronze","b":"A:07","c1":"#30D158","c2":"#0A84FF","s":"plexigrid"},{"n":"Processpumpar Norden","u":"https://ppab.se/","a":"PN","t":"bronze","b":"B:07","c1":"#FF375F","c2":"#FF9500","s":"processpumpar-norden"},{"n":"PSW Power & Automation","u":"https://pswpower.no/","a":"PP","t":"bronze","b":"C:07","c1":"#5E5CE6","c2":"#30D158","s":"psw-power-and-automation"},{"n":"Qurrent","u":"https://www.qurrent.energy/se","a":"Q","t":"bronze","b":"D:07","c1":"#64D2FF","c2":"#0A84FF","s":"qurrent"},{"n":"R.Stahl Scandinavia AS","u":"https://r-stahl.com/en/global/home/","a":"RS","t":"bronze","b":"E:07","c1":"#BF5AF2","c2":"#5E5CE6","s":"r-stahl-scandinavia-as"},{"n":"Renewcast","u":"https://renewcast.com/","a":"R","t":"bronze","b":"F:07","c1":"#FF9500","c2":"#FF375F","s":"renewcast"},{"n":"RISE","u":"https://www.ri.se/sv","a":"R","t":"silver","b":"G:07","c1":"#30D158","c2":"#64D2FF","s":"rise"},{"n":"Rittal","u":"https://www.rittal.com/se-sv/","a":"R","t":"silver","b":"H:07","c1":"#FFD60A","c2":"#5E5CE6","s":"rittal"},{"n":"Rocco Oil","u":"https://roccosweden.se/","a":"RO","t":"bronze","b":"J:07","c1":"#FFD60A","c2":"#FF9500","s":"rocco-oil"},{"n":"Sandcore","u":"https://sandcore.eu/","a":"S","t":"bronze","b":"K:07","c1":"#0A84FF","c2":"#5E5CE6","s":"sandcore"},{"n":"Scandinavia Energy System","u":"https://noova.no/se","a":"SE","t":"bronze","b":"L:07","c1":"#30D158","c2":"#0A84FF","s":"scandinavia-energy-system"},{"n":"Schneider Electric","u":"https://www.se.com/se/sv/","a":"SE","t":"gold","b":"M:07","c1":"#FF375F","c2":"#FF9500","s":"schneider-electric"},{"n":"Setek","u":"https://systems.setek.se/","a":"S","t":"bronze","b":"A:08","c1":"#5E5CE6","c2":"#30D158","s":"setek"},{"n":"Shanghai Sermatec Energy Technology","u":"https://en.sermatec-ess.com/","a":"SS","t":"bronze","b":"B:08","c1":"#64D2FF","c2":"#0A84FF","s":"shanghai-sermatec-energy-technology"},{"n":"Shanghai ZOE Energy Storage Technology Co.,Ltd","u":"http://www.zoeess.com/","a":"SZ","t":"bronze","b":"C:08","c1":"#BF5AF2","c2":"#5E5CE6","s":"shanghai-zoe-energy-storage-technology-co-ltd"},{"n":"Shelly","u":"https://www.shelly.com/","a":"S","t":"bronze","b":"D:08","c1":"#FF9500","c2":"#FF375F","s":"shelly"},{"n":"Siemens Energy","u":"https://www.siemens-energy.com/se/sv/home.html","a":"SE","t":"gold","b":"E:08","c1":"#30D158","c2":"#64D2FF","s":"siemens-energy"},{"n":"SKF","u":"https://www.skf.com/se","a":"S","t":"silver","b":"F:08","c1":"#FFD60A","c2":"#5E5CE6","s":"skf"},{"n":"SSG Standard Solutions Group","u":"https://www.ssgsolutions.com/sv/","a":"SS","t":"bronze","b":"G:08","c1":"#FFD60A","c2":"#FF9500","s":"ssg-standard-solutions-group"},{"n":"Steady Energy “The Fission Bar by Steady Energy”","u":"https://www.steadyenergy.com/","a":"SE","t":"silver","b":"H:08","c1":"#0A84FF","c2":"#5E5CE6","s":"steady-energy-the-fission-bar-by-steady-energy"},{"n":"Steel Master Finland","u":"https://steelmaster.fi/","a":"SM","t":"bronze","b":"J:08","c1":"#30D158","c2":"#0A84FF","s":"steel-master-finland"},{"n":"Stockholms Universitet","u":"https://www.su.se/","a":"SU","t":"bronze","b":"K:08","c1":"#FF375F","c2":"#FF9500","s":"stockholms-universitet"},{"n":"Strikersoft","u":"https://strikersoft.com/sv/","a":"S","t":"bronze","b":"L:08","c1":"#5E5CE6","c2":"#30D158","s":"strikersoft"},{"n":"Sungrow Nordics","u":"https://en.sungrowpower.com/","a":"SN","t":"gold","b":"M:08","c1":"#64D2FF","c2":"#0A84FF","s":"sungrow-nordics"},{"n":"Svebio","u":"https://www.svebio.se/","a":"S","t":"silver","b":"A:09","c1":"#BF5AF2","c2":"#5E5CE6","s":"svebio"},{"n":"Svensk pumpstyrning","u":"https://www.svenskpsab.se/","a":"SP","t":"bronze","b":"B:09","c1":"#FF9500","c2":"#FF375F","s":"svensk-pumpstyrning"},{"n":"Svensk Solenergi","u":"https://svensksolenergi.se/","a":"SS","t":"silver","b":"C:09","c1":"#30D158","c2":"#64D2FF","s":"svensk-solenergi"},{"n":"Svenska Geotech","u":"https://www.svenskageotech.se/","a":"SG","t":"bronze","b":"D:09","c1":"#FFD60A","c2":"#5E5CE6","s":"svenska-geotech"},{"n":"Switchgear AB – låg-och mellanspänningsställverk","u":"https://www.switchgear.se/","a":"SA","t":"bronze","b":"E:09","c1":"#FFD60A","c2":"#FF9500","s":"switchgear-ab-lag-och-mellanspanningsstallverk"},{"n":"Sympower","u":"https://sympower.net/","a":"S","t":"bronze","b":"F:09","c1":"#0A84FF","c2":"#5E5CE6","s":"sympower"},{"n":"Taratest","u":"https://www.taratest.fi/en/","a":"T","t":"bronze","b":"G:09","c1":"#30D158","c2":"#0A84FF","s":"taratest"},{"n":"TDG Yunet","u":"https://www.tdgyunet.com/","a":"TY","t":"bronze","b":"H:09","c1":"#FF375F","c2":"#FF9500","s":"tdg-yunet"},{"n":"Telko","u":"https://www.telko.com/","a":"T","t":"bronze","b":"J:09","c1":"#5E5CE6","c2":"#30D158","s":"telko"},{"n":"Thermtest Instruments","u":"https://thermtest.se/","a":"TI","t":"bronze","b":"K:09","c1":"#64D2FF","c2":"#0A84FF","s":"thermtest-instruments"},{"n":"TOMAL","u":"https://www.tomal.se/","a":"T","t":"bronze","b":"L:09","c1":"#BF5AF2","c2":"#5E5CE6","s":"tomal"},{"n":"Trackson – Elektronisk körjournal för företag","u":"https://trackson.se/","a":"TE","t":"bronze","b":"M:09","c1":"#FF9500","c2":"#FF375F","s":"trackson-elektronisk-korjournal-for-foretag"},{"n":"Truxco Energy","u":"https://truxco.energy/sv/","a":"TE","t":"bronze","b":"A:10","c1":"#30D158","c2":"#64D2FF","s":"truxco-energy"},{"n":"Truxel","u":"https://truxel.ai/","a":"T","t":"bronze","b":"B:10","c1":"#FFD60A","c2":"#5E5CE6","s":"truxel"},{"n":"Uniper","u":"https://www.uniper.energy/sv/sverige","a":"U","t":"gold","b":"C:10","c1":"#FFD60A","c2":"#FF9500","s":"uniper"},{"n":"Vattenfall","u":"https://www.vattenfall.se/","a":"V","t":"gold","b":"D:10","c1":"#0A84FF","c2":"#5E5CE6","s":"vattenfall"},{"n":"Vinnergi","u":"https://vinnergi.se/","a":"V","t":"silver","b":"E:10","c1":"#30D158","c2":"#0A84FF","s":"vinnergi"},{"n":"Vivavis AG","u":"https://sgop.global/","a":"VA","t":"bronze","b":"F:10","c1":"#FF375F","c2":"#FF9500","s":"vivavis-ag"},{"n":"Volvo Energy","u":"https://www.volvoenergy.com/en/about-us.html","a":"VE","t":"gold","b":"G:10","c1":"#5E5CE6","c2":"#30D158","s":"volvo-energy"},{"n":"WattsFuture & EVbee","u":"https://www.wattsfuture.com/","a":"WE","t":"bronze","b":"H:10","c1":"#64D2FF","c2":"#0A84FF","s":"wattsfuture-and-evbee"},{"n":"Weland Trafikmiljö","u":"https://www.welandtrafikmiljo.se/","a":"WT","t":"bronze","b":"J:10","c1":"#BF5AF2","c2":"#5E5CE6","s":"weland-trafikmiljo"},{"n":"Westermo Data Communications","u":"https://www.westermo.com/se/industries/energy","a":"WD","t":"silver","b":"K:10","c1":"#FF9500","c2":"#FF375F","s":"westermo-data-communications"},{"n":"Wistbo","u":"https://www.wistbo.com/","a":"W","t":"bronze","b":"L:10","c1":"#30D158","c2":"#64D2FF","s":"wistbo"},{"n":"XCHARGE Europe","u":"https://www.xcharge.com/","a":"XE","t":"bronze","b":"M:10","c1":"#FFD60A","c2":"#5E5CE6","s":"xcharge-europe"},{"n":"XCharge Europe GmbH","u":"https://www.xcharge.com/","a":"XE","t":"bronze","b":"A:11","c1":"#FFD60A","c2":"#FF9500","s":"xcharge-europe-gmbh"},{"n":"Xmentor","u":"https://www.xmentor.se/","a":"X","t":"bronze","b":"B:11","c1":"#0A84FF","c2":"#5E5CE6","s":"xmentor"},{"n":"Zeekit","u":"https://www.zeekit.no/home/","a":"Z","t":"bronze","b":"C:11","c1":"#30D158","c2":"#0A84FF","s":"zeekit"},{"n":"ZENITA SECURITY ”RÄTT LÖSNING RÄTT SÄKERHET”","u":"http://www.zenita.se/","a":"ZS","t":"bronze","b":"D:11","c1":"#FF375F","c2":"#FF9500","s":"zenita-security-ratt-losning-ratt-sakerhet"}];
 const TIER_LABEL = { gold:'Guldpartner', silver:'Silverpartner', bronze:'Utställare' };
 
-/* Booth coordinates on hallplan-1.png (image is 2561×1820). Values are percent. */
+/* ============================================================
+   Booth coordinates on hallplan-1.png (image is 2561×1820).
+   Datamodell: { x, y, verified }
+   - x, y: procentkoordinater relativt hallplansbildens naturliga
+     bredd/höjd. Eftersom .hall-img skalar responsivt och pinnar
+     positioneras med procent på samma container, fungerar dessa
+     koordinater både i desktop och mobilvy.
+   - verified=true: position är visuellt kontrollerad mot hallplanen
+     och får visa publik plupp.
+   - verified=false (eller saknas): ingen publik plupp visas.
+   Aktivera kalibreringsläge med ?calibrate=1 i URL — visar då alla
+   icke-verifierade positioner i orange för intern justering.
+   Inget kalibreringsstöd är synligt i normalt läge.
+============================================================ */
 const BOOTH_COORDS = {
-  'schneider-electric':[42.4,32.6],'r-stahl-scandinavia-as':[45.7,36.5],
-  'westermo-data-communications':[45.0,30.0],'merus-power':[50.6,36.0],
-  'bengglas':[58.0,32.5],'glava-energy-center':[37.5,33.5],
-  'vivavis-ag':[37.6,29.0],'jauda':[44.7,25.6],'norelco-oy':[51.4,25.6],
-  'mersen':[57.3,25.6],'tomal':[60.7,25.6],'ekstroms-varmetekniska-aktiebolag':[42.0,21.5],
-  'mlt-maskin-and-laser-teknik':[45.5,21.5],'kraus-and-naimer-ab':[49.0,21.5],
-  'broderna-berner':[52.4,21.5],'wistbo':[55.7,21.5],'zeekit':[59.1,21.5],
-  'nidec-conversion':[28.0,40.0],'fortum-optimizer':[42.0,42.5],
-  'volvo-energy':[47.0,42.5],'besway':[51.6,42.5],'processpumpar-norden':[55.0,42.5],
-  'bemer-industries':[58.6,42.5],'momentum-industrial':[63.0,42.5],
-  'steel-master-finland':[66.5,42.5],'siemens-energy':[71.6,42.5],
-  'sungrow-nordics':[57.4,49.5],'capture-energy':[63.4,49.0],'cosafe-technology':[57.0,46.5],
-  'lime-technologies':[51.5,49.0],'rittal':[46.5,46.5],'qurrent':[51.0,46.5],
-  'truxco-energy':[33.6,55.0],'truxel':[28.5,55.0],'pinja':[39.0,55.0],
-  'renewcast':[42.5,55.0],'digpro':[45.5,55.0],'rise':[48.5,57.0],
-  'shanghai-zoe-energy-storage-technology-co-ltd':[55.0,63.0],
-  'shanghai-sermatec-energy-technology':[60.5,55.0],
-  'sympower':[66.5,55.0],'switchgear-ab-lag-och-mellanspanningsstallverk':[60.0,57.5],
-  'thermtest-instruments':[48.5,67.0],'motion-control':[48.5,72.0],
-  'cellnex':[15.4,53.0],'ewf-eco':[20.5,53.0],'xcharge-europe':[17.5,50.0],
-  'bitus':[20.5,50.0],'taratest':[20.5,55.0],'gafs':[20.5,52.0],
-  'fct-sweden':[19.5,48.0],'wattsfuture-and-evbee':[20.5,40.0],
-  'ssg-standard-solutions-group':[20.5,43.5],'shelly':[24.0,43.5],
-  'scandinavia-energy-system':[28.0,40.0],'awilco':[34.0,38.0],
-  'telko':[39.0,38.0],'parat-halvorsen':[42.0,38.0],
-  'plexigrind':[28.0,46.5],'canea-partner-group':[33.0,46.5],
-  'psw-power-and-automation':[34.0,49.0],'bos-power':[33.0,52.0],
-  'detector-solutions-ab':[28.0,52.0],
-  'nektab':[63.0,49.0],'aire-energy':[63.0,52.0],'mic-nordic':[24.0,67.0],
-  'svenska-geotech':[14.5,65.0],'jonkoping-energi':[73.5,49.0],
-  'modety-energy-trading':[73.5,46.5],'aucotec':[73.5,42.5],'vinnergi':[73.5,38.5],
-  'kiwa-sweden':[73.5,52.0],'lynk-and-co':[16.0,75.0],'melbye':[22.0,79.0],
-  'setek':[20.5,87.0],'asfaltsgruppen-sverige':[16.0,87.0],
-  'sandcore':[10.0,72.0],'branschaktuellt':[16.5,38.0],'general-prepper':[20.5,38.0],
-  'eenovance':[59.0,68.0],'zenita-security-ratt-losning-ratt-sakerhet':[55.0,57.5],
-  'nordtech-energy':[48.0,62.0],
-  'energipress':[63.0,57.0]
+  // ---- Verifierade positioner (visas publikt) ----
+  'schneider-electric':                   { x:42.4, y:32.6, verified:true  },
+  'siemens-energy':                        { x:71.6, y:42.5, verified:true  },
+  'hitachi-energy':                        { x:50.0, y:30.0, verified:true  },
+  'sungrow-nordics':                       { x:57.4, y:49.5, verified:true  },
+  'fortum-optimizer':                      { x:42.0, y:42.5, verified:true  },
+  'volvo-energy':                          { x:47.0, y:42.5, verified:true  },
+  'glava-energy-center':                   { x:37.5, y:33.5, verified:true  },
+  'merus-power':                           { x:50.6, y:36.0, verified:true  },
+  'nidec-conversion':                      { x:28.0, y:40.0, verified:true  },
+  'kiwa-sweden':                           { x:73.5, y:52.0, verified:true  },
+  'rise':                                  { x:48.5, y:57.0, verified:true  },
+  'innoenergy':                            { x:45.5, y:30.0, verified:true  },
+  // ---- Ej verifierade (inga publika pluppar) ----
+  'r-stahl-scandinavia-as':                { x:45.7, y:36.5, verified:false },
+  'westermo-data-communications':          { x:45.0, y:30.0, verified:false },
+  'bengglas':                              { x:58.0, y:32.5, verified:false },
+  'vivavis-ag':                            { x:37.6, y:29.0, verified:false },
+  'jauda':                                 { x:44.7, y:25.6, verified:false },
+  'norelco-oy':                            { x:51.4, y:25.6, verified:false },
+  'mersen':                                { x:57.3, y:25.6, verified:false },
+  'tomal':                                 { x:60.7, y:25.6, verified:false },
+  'ekstroms-varmetekniska-aktiebolag':     { x:42.0, y:21.5, verified:false },
+  'mlt-maskin-and-laser-teknik':           { x:45.5, y:21.5, verified:false },
+  'kraus-and-naimer-ab':                   { x:49.0, y:21.5, verified:false },
+  'broderna-berner':                       { x:52.4, y:21.5, verified:false },
+  'wistbo':                                { x:55.7, y:21.5, verified:false },
+  'zeekit':                                { x:59.1, y:21.5, verified:false },
+  'besway':                                { x:51.6, y:42.5, verified:false },
+  'processpumpar-norden':                  { x:55.0, y:42.5, verified:false },
+  'bemer-industries':                      { x:58.6, y:42.5, verified:false },
+  'momentum-industrial':                   { x:63.0, y:42.5, verified:false },
+  'steel-master-finland':                  { x:66.5, y:42.5, verified:false },
+  'capture-energy':                        { x:63.4, y:49.0, verified:false },
+  'cosafe-technology':                     { x:57.0, y:46.5, verified:false },
+  'lime-technologies':                     { x:51.5, y:49.0, verified:false },
+  'rittal':                                { x:46.5, y:46.5, verified:false },
+  'qurrent':                               { x:51.0, y:46.5, verified:false },
+  'truxco-energy':                         { x:33.6, y:55.0, verified:false },
+  'truxel':                                { x:28.5, y:55.0, verified:false },
+  'pinja':                                 { x:39.0, y:55.0, verified:false },
+  'renewcast':                             { x:42.5, y:55.0, verified:false },
+  'digpro':                                { x:45.5, y:55.0, verified:false },
+  'shanghai-zoe-energy-storage-technology-co-ltd': { x:55.0, y:63.0, verified:false },
+  'shanghai-sermatec-energy-technology':   { x:60.5, y:55.0, verified:false },
+  'sympower':                              { x:66.5, y:55.0, verified:false },
+  'switchgear-ab-lag-och-mellanspanningsstallverk': { x:60.0, y:57.5, verified:false },
+  'thermtest-instruments':                 { x:48.5, y:67.0, verified:false },
+  'motion-control':                        { x:48.5, y:72.0, verified:false },
+  'cellnex':                               { x:15.4, y:53.0, verified:false },
+  'ewf-eco':                               { x:20.5, y:53.0, verified:false },
+  'xcharge-europe':                        { x:17.5, y:50.0, verified:false },
+  'bitus':                                 { x:20.5, y:50.0, verified:false },
+  'taratest':                              { x:20.5, y:55.0, verified:false },
+  'gafs':                                  { x:20.5, y:52.0, verified:false },
+  'fct-sweden':                            { x:19.5, y:48.0, verified:false },
+  'wattsfuture-and-evbee':                 { x:20.5, y:40.0, verified:false },
+  'ssg-standard-solutions-group':          { x:20.5, y:43.5, verified:false },
+  'shelly':                                { x:24.0, y:43.5, verified:false },
+  'scandinavia-energy-system':             { x:28.0, y:40.0, verified:false },
+  'awilco':                                { x:34.0, y:38.0, verified:false },
+  'telko':                                 { x:39.0, y:38.0, verified:false },
+  'parat-halvorsen':                       { x:42.0, y:38.0, verified:false },
+  'plexigrind':                            { x:28.0, y:46.5, verified:false },
+  'canea-partner-group':                   { x:33.0, y:46.5, verified:false },
+  'psw-power-and-automation':              { x:34.0, y:49.0, verified:false },
+  'bos-power':                             { x:33.0, y:52.0, verified:false },
+  'detector-solutions-ab':                 { x:28.0, y:52.0, verified:false },
+  'nektab':                                { x:63.0, y:49.0, verified:false },
+  'aire-energy':                           { x:63.0, y:52.0, verified:false },
+  'mic-nordic':                            { x:24.0, y:67.0, verified:false },
+  'svenska-geotech':                       { x:14.5, y:65.0, verified:false },
+  'jonkoping-energi':                      { x:73.5, y:49.0, verified:false },
+  'modety-energy-trading':                 { x:73.5, y:46.5, verified:false },
+  'aucotec':                               { x:73.5, y:42.5, verified:false },
+  'vinnergi':                              { x:73.5, y:38.5, verified:false },
+  'lynk-and-co':                           { x:16.0, y:75.0, verified:false },
+  'melbye':                                { x:22.0, y:79.0, verified:false },
+  'setek':                                 { x:20.5, y:87.0, verified:false },
+  'asfaltsgruppen-sverige':                { x:16.0, y:87.0, verified:false },
+  'sandcore':                              { x:10.0, y:72.0, verified:false },
+  'branschaktuellt':                       { x:16.5, y:38.0, verified:false },
+  'general-prepper':                       { x:20.5, y:38.0, verified:false },
+  'eenovance':                             { x:59.0, y:68.0, verified:false },
+  'zenita-security-ratt-losning-ratt-sakerhet': { x:55.0, y:57.5, verified:false },
+  'nordtech-energy':                       { x:48.0, y:62.0, verified:false },
+  'energipress':                           { x:63.0, y:57.0, verified:false }
 };
+
+/* Internt kalibreringsläge — ej publikt. Aktiveras med ?calibrate=1 */
+const CALIBRATE = new URLSearchParams(window.location.search).get('calibrate') === '1';
 
 const overlay = document.getElementById('hallOverlay');
 function layPins(){
   let html = '';
   EXH.forEach((e,i)=>{
-    const c = BOOTH_COORDS[e.s]; if(!c) return;
-    html += `<div class="booth-pin" data-id="${i}" style="left:${c[0]}%; top:${c[1]}%;" title="${e.n} · Monter ${e.b}"><span class="dot"></span><span class="lbl">${e.n} · ${e.b}</span></div>`;
+    const c = BOOTH_COORDS[e.s];
+    if (!c) return;
+    // Publikt: visa endast verifierade pluppar.
+    // Kalibreringsläge: visa allt, markera ej verifierade i orange.
+    if (!c.verified && !CALIBRATE) return;
+    const cls = c.verified ? 'booth-pin' : 'booth-pin booth-pin--unverified';
+    html += `<div class="${cls}" data-id="${i}" style="left:${c.x}%; top:${c.y}%;" title="${e.n} · Monter ${e.b}${c.verified?'':' (ej verifierad)'}"><span class="dot"></span><span class="lbl">${e.n} · ${e.b}</span></div>`;
   });
   overlay.innerHTML = html;
   overlay.querySelectorAll('.booth-pin').forEach(p => p.addEventListener('click', () => {

@@ -1838,6 +1838,9 @@
   .partner-tier.event .partner.has-logo img{ max-height:52px; max-width:150px; }
   .partner-tier.partner .partner.has-logo{ min-height:94px; padding:16px 16px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.partner .partner.has-logo img{ width:100%; max-width:100%; height:auto; max-height:64px; object-fit:contain; filter: brightness(0) invert(1); opacity:.9; transition:opacity .2s; }
+  /* Whitemarks: redan vita på transparent — ingen filtrering */
+  .partner.has-logo img[src*="-white.svg"]{ filter:none !important; opacity:.95; }
+  .partner.has-logo:hover img[src*="-white.svg"]{ opacity:1; }
   .partner.has-logo .pl-name-fallback{ display:none; }
   .partner-tier.partner .partner.has-logo:hover img{ opacity:1; }
   /* Shrink select samarbetspartners-logos with 20% */
@@ -2167,7 +2170,7 @@
     <div class="keynote-stage">
       <a class="kn-card kn-1" href="talare/anna-borg.html" aria-label="Öppna talarprofil: Anna Borg">
         <div class="kn-bigword">Energi</div>
-        <img class="kn-photo" src="assets/anna-borg.webp" alt="" />
+        <img class="kn-photo" src="assets/anna-borg-cutout.png" alt="" />
         <div class="kn-overlay"></div>
         <div class="kn-brand kn-brand-vf" title="Vattenfall">
           <img src="talare/logos/vattenfall.svg" alt="Vattenfall" />
@@ -2181,7 +2184,7 @@
       </a>
       <a class="kn-card kn-2" href="talare/magdalena-andersson.html" aria-label="Öppna talarprofil: Magdalena Andersson">
         <div class="kn-bigword">Politik</div>
-        <img class="kn-photo" src="assets/magdalena-andersson.webp" alt="" />
+        <img class="kn-photo" src="assets/magdalena-andersson-cutout.png" alt="" />
         <div class="kn-overlay"></div>
         <div class="kn-brand kn-brand-s" title="Socialdemokraterna">
           <img src="talare/logos/socialdemokraterna.svg" alt="Socialdemokraterna" />
@@ -3607,11 +3610,11 @@
         ['AI Sweden','https://www.ai.se/en','#0A84FF','#5E5CE6','AI','exhibitors/ai-sweden.webp'],
         ['Eneff','https://eneff.se','#BF5AF2','#5E5CE6','E','exhibitors/eneff.webp'],
         ['Energiforsk','https://energiforsk.se/','#FF9F0A','#FFD60A','E','partners/energiforsk.svg'],
-        ['Svebio','https://www.svebio.se','#30D158','#FFD60A','S','exhibitors/svebio.webp'],
+        ['Svebio','https://www.svebio.se','#30D158','#FFD60A','S','partners/svebio-white.svg'],
         ['Chalmers','https://www.chalmers.se/en/','#0A84FF','#00A4A7','C','partners/chalmers.svg'],
-        ['Svensk Solenergi','https://svensksolenergi.se/','#FFD60A','#FF9500','◯','exhibitors/svensk-solenergi.webp'],
+        ['Svensk Solenergi','https://svensksolenergi.se/','#FFD60A','#FF9500','◯','partners/svensk-solenergi-white.svg'],
         ['Cloudberry','https://www.cloudberry.no/en','#64D2FF','#5E5CE6','C','exhibitors/cloudberry.webp'],
-        ['LRF','https://www.lrf.se/','#30D158','#FFD60A','LRF','partners/lrf.svg'],
+        ['LRF','https://www.lrf.se/','#30D158','#FFD60A','LRF','partners/lrf-white.svg'],
         ['2030-sekretariatet','https://www.2030sekretariatet.se/','#FF375F','#BF5AF2','30','exhibitors/2030-sekretariatet.webp'],
         ['Glava Energy Center','https://glavaenergycenter.se/','#FF9500','#FF375F','G','partners/glava-energy-center.svg'],
         ['Energipress','https://www.energipress.se/','#5E5CE6','#0A84FF','E','exhibitors/energipress.webp']
