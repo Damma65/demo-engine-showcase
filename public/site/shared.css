@@ -74,12 +74,14 @@ body{
 .gs-chip-mark.s{ background: linear-gradient(135deg,#FF9500,#FFD60A); }
 .gs-chip-mark.t{ background: linear-gradient(135deg,#5E5CE6,#64D2FF); color:#fff; }
 .gs-divider{ width:1px; height:18px; background: rgba(255,214,10,0.22); }
-.gs-logo{ display:inline-flex; align-items:center; justify-content:center; height:24px; padding:0 8px; background:transparent; transition: transform .2s ease, opacity .2s ease; opacity:.95; }
+.gs-logo{ display:inline-flex; align-items:center; justify-content:center; height:28px; min-width:60px; padding:0 8px; background:transparent; transition: transform .2s ease, opacity .2s ease; opacity:.95; }
 .gs-logo:hover{ transform: translateY(-1px); opacity:1; }
-.gs-logo img{ height:18px; width:auto; display:block; }
+.gs-logo img{ max-height:18px; width:auto; height:auto; display:block; object-fit:contain; }
+.gs-logo--tdg img{ max-height:22px; }
 @media (max-width: 900px){
-  .gs-logo{ height:20px; padding:3px 9px; }
-  .gs-logo img{ height:13px; }
+  .gs-logo{ height:22px; min-width:48px; padding:3px 9px; }
+  .gs-logo img{ max-height:13px; }
+  .gs-logo--tdg img{ max-height:16px; }
 }
 .gs-cta{ color:#FFD60A; text-decoration:none; white-space:nowrap; transition: color .2s; }
 .gs-cta:hover{ color:#fff; }

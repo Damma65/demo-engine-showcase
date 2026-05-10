@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="360" height="80">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 50" width="300" height="50">
   <style>
     .t{ font: 700 44px -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; letter-spacing: -0.02em; }
     .tdg{ fill:#1956A8; }
     .pipe{ fill:#9CB3D6; font-weight:300; }
     .yu{ fill:#E60012; }
   </style>
-  <text x="0" y="56" class="t tdg">TDG</text>
-  <text x="135" y="56" class="t pipe">|</text>
-  <text x="160" y="56" class="t yu">YUNET</text>
+  <text x="0" y="40" class="t tdg">TDG</text>
+  <text x="120" y="40" class="t pipe">|</text>
+  <text x="142" y="40" class="t yu">YUNET</text>
 </svg>
