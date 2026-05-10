@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<title>DEMO · Bli partner v2 · Energimässan 2027</title>
+<meta name="robots" content="noindex,nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="../shared.css" />
+<script src="/site/shared.js" defer></script>
+<style>
+  /* ===== Demo-banner ===== */
+  .demo-banner{
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: linear-gradient(90deg, #FF375F, #FF9F0A);
+    color: #1a0a00; font-weight: 600; font-size: 12.5px; letter-spacing:.04em;
+    padding: 8px 20px; text-align:center;
+  }
+  .demo-banner a{ color: #1a0a00; text-decoration: underline; margin-left: 12px; font-weight:700; }
+  body{ padding-top: 34px; }
+  header.nav{ top: 34px; }
+
+  /* ===== Hero ===== */
+  .ph-wrap{ position: relative; max-width: 1320px; margin: 140px auto 0; padding: 0 32px; }
+  .ph-grid{
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px;
+    align-items: center;
+    padding: 56px 56px;
+    border-radius: 28px;
+    background:
+      linear-gradient(135deg, rgba(10,30,60,0.65), rgba(20,10,40,0.45)),
+      radial-gradient(900px 500px at 80% 20%, rgba(255,159,10,0.18), transparent 60%);
+    border: 1px solid var(--stroke);
+    overflow: hidden;
+    position: relative;
+  }
+  .ph-grid::before{
+    content:""; position: absolute; inset:0; z-index:0; opacity:.35;
+    background:
+      radial-gradient(600px 300px at 100% 100%, rgba(48,209,88,0.18), transparent 60%);
+  }
+  .ph-grid > *{ position: relative; z-index: 1; }
+  .ph-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
+    color: var(--orange); font-weight:700;
+  }
+  .ph-eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background: var(--orange); box-shadow: 0 0 12px rgba(255,159,10,.6); }
+  .ph-h1{
+    margin-top: 18px;
+    font-size: clamp(40px, 5.4vw, 76px);
+    font-weight: 700; letter-spacing:-.045em; line-height: 1.0;
+    background: linear-gradient(180deg, #FFFFFF, #BABABF);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
+  }
+  .ph-sub{ margin-top: 22px; font-size: 17px; color: var(--text-2); line-height:1.55; max-width: 520px; }
+  .ph-cta{ margin-top: 32px; display:flex; gap: 12px; flex-wrap: wrap; }
+  .ph-cta .btn-p{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 14px 24px; border-radius: 100px;
+    background: #30D158; color: #062815;
+    font-weight: 700; font-size: 14px; text-decoration:none;
+    border: none;
+  }
+  .ph-cta .btn-s{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 14px 24px; border-radius: 100px;
+    background: rgba(255,255,255,0.04); color: var(--text);
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 600; font-size: 14px; text-decoration:none;
+  }
+
+  /* ===== Stat-block (höger sida i hero) ===== */
+  .ph-stats{
+    background: rgba(8, 14, 28, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 22px;
+    padding: 28px 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .ph-stat{ text-align:center; padding: 4px 6px; }
+  .ph-stat-ic{
+    width: 32px; height:32px; margin: 0 auto 10px;
+    display:grid; place-items:center;
+    color: rgba(255,255,255,.85);
+  }
+  .ph-stat-ic svg{ width: 26px; height: 26px; }
+  .ph-stat-num{
+    font-size: 28px; font-weight: 700; letter-spacing:-.025em; line-height:1;
+    color: #fff; font-feature-settings:"tnum";
+  }
+  .ph-stat-lbl{ margin-top: 6px; font-size: 11.5px; color: rgba(255,255,255,.65); line-height: 1.3; }
+
+  /* ===== Värdekort ===== */
+  .why-section{ max-width: 1320px; margin: 80px auto 80px; padding: 0 32px; }
+  .why-head{ display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+  .why-title{ font-size: 28px; font-weight:700; letter-spacing:-.025em; }
+  .why-intro{ font-size: 14.5px; color: var(--text-2); line-height:1.6; margin-top: 14px; }
+  .why-checks{ margin-top: 18px; display:flex; flex-direction:column; gap: 8px; }
+  .why-checks li{ list-style:none; font-size: 13.5px; color: var(--text-2); display:flex; gap:10px; align-items:center; }
+  .why-checks li::before{ content:""; width:16px; height:16px; border-radius: 50%;
+    background: rgba(48,209,88,.15);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2330D158' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: 11px; background-repeat: no-repeat; background-position: center;
+    flex-shrink:0;
+  }
+  .why-cards{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .wcard{
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    border-radius: 18px;
+    transition: transform .2s, border-color .2s;
+  }
+  .wcard:hover{ transform: translateY(-3px); border-color: rgba(255,159,10,.35); }
+  .wcard-ic{
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(255,159,10,0.1);
+    display:grid; place-items:center; color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .wcard-ic svg{ width: 22px; height: 22px; }
+  .wcard-h{ font-size: 16px; font-weight:700; letter-spacing:-.018em; }
+  .wcard-d{ margin-top: 8px; font-size: 13px; color: var(--text-3); line-height:1.5; }
+
+  @media (max-width: 980px){
+    .ph-grid{ grid-template-columns: 1fr; padding: 36px 28px; }
+    .ph-stats{ grid-template-columns: repeat(4, 1fr); padding: 20px 12px; }
+    .ph-stat-num{ font-size: 22px; }
+    .why-head{ grid-template-columns: 1fr; }
+    .why-cards{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px){
+    .ph-stats{ grid-template-columns: repeat(2, 1fr); gap: 16px 8px; }
+    .why-cards{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  DEMO-version — visas inte publikt. Skarp sida ligger kvar.
+  <a href="../bli-utstallare.html">→ Tillbaka till skarp Bli utställare</a>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <span class="logo-text"><span class="logo-brand">Nordic Live Expo</span><span class="logo-event">Energimässan 2027</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Startsida</a>
+      <a href="../program.html">Program</a>
+      <a href="../talare.html">Talare</a>
+      <a href="../utstallning.html">Utställning</a>
+      <a href="../kvallsmingel.html">Kvällsmingel</a>
+      <a href="../bli-utstallare.html">Bli utställare</a>
+      <a href="../index.html#biljetter">Biljetter</a>
+      <a href="../resa-boende.html">Boende &amp; Info</a>
+    </nav>
+    <a href="../bli-utstallare.html" class="nav-cta">Boka monter</a>
+  </div>
+</header>
+
+<!-- ===== HERO med stat-block ===== -->
+<section class="ph-wrap">
+  <div class="ph-grid">
+    <div>
+      <span class="ph-eyebrow">Partnerskap 2027</span>
+      <h1 class="ph-h1">Partnerskap som<br/>stärker er position.</h1>
+      <p class="ph-sub">Maximera er synlighet, stärk ert tankeledarskap och skapa värdefulla affärsmöjligheter på Sveriges viktigaste energimötesplats.</p>
+      <div class="ph-cta">
+        <a href="#paket" class="btn-p">Bli partner →</a>
+        <a href="mailto:michael@energimassan.se" class="btn-s">📅 Boka möte</a>
+      </div>
+    </div>
+
+    <aside class="ph-stats" aria-label="Mässans räckvidd">
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3.2"/><path d="M2 20c.6-3.4 3.4-5 7-5s6.4 1.6 7 5"/><circle cx="17" cy="9" r="2.4"/><path d="M22 18c-.4-2.2-1.8-3.4-4-3.6"/></svg></div>
+        <div class="ph-stat-num">200+</div>
+        <div class="ph-stat-lbl">talare</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M3 11h18M8 7V4h8v3"/></svg></div>
+        <div class="ph-stat-num">250+</div>
+        <div class="ph-stat-lbl">utställare</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M7 20l5-2 5 2"/></svg></div>
+        <div class="ph-stat-num">4</div>
+        <div class="ph-stat-lbl">parallella mötesplatser</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.2"/><path d="M4 20c.8-4 4-6 8-6s7.2 2 8 6"/></svg></div>
+        <div class="ph-stat-num" style="font-size:22px;">8 500+</div>
+        <div class="ph-stat-lbl">beslutsfattare</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== Varför partner? ===== -->
+<section class="why-section">
+  <div class="why-head">
+    <div>
+      <h2 class="why-title">Varför partner?</h2>
+      <p class="why-intro">Energimässan 2027 är mötesplatsen där energisektorn formar framtiden.</p>
+      <ul class="why-checks">
+        <li>Nå tusentals relevanta beslutsfattare</li>
+        <li>Bygg varumärke och förtroende</li>
+        <li>Positionera er som branschledare</li>
+        <li>Skapa nya affärsmöjligheter</li>
+      </ul>
+    </div>
+
+    <div class="why-cards">
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M2 20c.5-3 3-5 7-5s6.5 2 7 5"/></svg></div>
+        <div class="wcard-h">Synlighet</div>
+        <p class="wcard-d">Maximal exponering före, under och efter eventet i våra kanaler.</p>
+      </div>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.7.6 1 1.4 1 2.3h6c0-.9.3-1.7 1-2.3A7 7 0 0 0 12 2z"/></svg></div>
+        <div class="wcard-h">Tankeledarskap</div>
+        <p class="wcard-d">Dela er kunskap och påverka branschens agenda från scen.</p>
+      </div>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 14l-3-3 3-3M16 14l3-3-3-3M3 11h18M14 6l-4 12"/></svg></div>
+        <div class="wcard-h">Nätverk &amp; leads</div>
+        <p class="wcard-d">Kvalificerade möten med potentiella kunder och partners.</p>
+      </div>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20h18M5 16l4-5 4 3 6-8"/><circle cx="19" cy="6" r="1.5"/></svg></div>
+        <div class="wcard-h">Affärsnytta</div>
+        <p class="wcard-d">Skapa pipeline och driv affärer på kort och lång sikt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>© 2027 Nordic Live Expo · Energimässan</div>
+    <div class="foot-links">
+      <a href="../index.html">Hem</a>
+      <a href="../program.html">Program</a>
+      <a href="../bli-utstallare.html">Bli utställare</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
