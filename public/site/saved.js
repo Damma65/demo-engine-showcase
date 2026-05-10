@@ -434,8 +434,33 @@
   }
 
   /* ---------- Scan & init ---------- */
+  function decorateSpeakerCardLink(el){
+    decorate(el, () => {
+      const card = el.querySelector('.sp-card');
+      const name = (el.querySelector('.sp-name')||{}).textContent || '';
+      const role = (el.querySelector('.sp-role')||{}).textContent || '';
+      const org  = (el.querySelector('.sp-org')||{}).textContent || '';
+      const av = el.querySelector('.avatar');
+      let thumb = '';
+      if (av){
+        const m = (av.getAttribute('style')||'').match(/url\(['"]?([^'")]+)['"]?\)/);
+        if (m) thumb = m[1];
+      }
+      const href = el.getAttribute('href') || '';
+      const slug = (card && card.getAttribute('data-slug')) || slugFromHref(href) || name.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+      return {
+        type:'talare',
+        id:'talare:'+slug,
+        title:(name||'').replace(/&amp;/g,'&').trim(),
+        subtitle:[role,org].filter(Boolean).join(' · ').replace(/&amp;/g,'&'),
+        href, thumb
+      };
+    });
+  }
+
   function scan(){
     document.querySelectorAll('.sp-tile').forEach(decorateSpeakerTile);
+    document.querySelectorAll('.sp-card-link').forEach(decorateSpeakerCardLink);
     document.querySelectorAll('.kn-card').forEach(decorateKeynote);
     document.querySelectorAll('.ex-card').forEach(decorateExhibitor);
   }
