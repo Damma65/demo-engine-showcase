@@ -1,19 +1,30 @@
 /* Shared site behavior — gold strip, mobile menu, rich footer. */
 (function(){
   /* ---------- GOLD SPONSOR STRIP (above nav, on every page) ---------- */
+  /* Resolve asset paths relative to /site/ regardless of how deep the page lives
+     (t.ex. /site/talare/x.html behöver "../partners/sungrow.svg"). */
+  function siteBase(){
+    var p = location.pathname;
+    var i = p.indexOf('/site/');
+    if (i === -1) return '';
+    var rest = p.slice(i + 6); // after "/site/"
+    var depth = (rest.match(/\//g) || []).length; // antal under-mappar
+    return depth > 0 ? '../'.repeat(depth) : '';
+  }
   function injectGoldStrip(){
     if (document.querySelector('.gold-strip')) return;
+    var base = siteBase();
     var strip = document.createElement('div');
     strip.className = 'gold-strip';
     strip.innerHTML =
       '<div class="gold-strip-inner">' +
         '<span class="gs-label"><span class="gs-dot"></span><span class="gs-label-text">Guldsponsorer · Energimässan 2027</span></span>' +
         '<div class="gs-chips">' +
-          '<a class="gs-logo gs-logo--sungrow" href="https://en.sungrowpower.com/" target="_blank" rel="noopener" aria-label="Sungrow"><img src="partners/sungrow.svg" alt="Sungrow" loading="eager" decoding="async" /></a>' +
+          '<a class="gs-logo gs-logo--sungrow" href="https://en.sungrowpower.com/" target="_blank" rel="noopener" aria-label="Sungrow"><img src="'+base+'partners/sungrow.svg" alt="Sungrow" loading="eager" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{textContent:\'Sungrow\',className:\'gs-fallback\'}))" /></a>' +
           '<span class="gs-divider"></span>' +
-          '<a class="gs-logo gs-logo--tdg" href="sponsorpaket.html" aria-label="TDG Yunet"><img src="partners/tdg-yunet.svg" alt="TDG Yunet" loading="eager" decoding="async" /></a>' +
+          '<a class="gs-logo gs-logo--tdg" href="'+base+'sponsorpaket.html" aria-label="TDG Yunet"><img src="'+base+'partners/tdg-yunet.svg" alt="TDG Yunet" loading="eager" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{textContent:\'TDG | YUNET\',className:\'gs-fallback\'}))" /></a>' +
         '</div>' +
-        '<a class="gs-cta" href="sponsorpaket.html">Bli sponsor</a>' +
+        '<a class="gs-cta" href="'+base+'sponsorpaket.html">Bli sponsor</a>' +
       '</div>';
     document.body.insertBefore(strip, document.body.firstChild);
   }

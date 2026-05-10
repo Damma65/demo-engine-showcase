@@ -78,6 +78,8 @@ body{
 .gs-logo:hover{ transform: translateY(-1px); opacity:1; }
 .gs-logo img{ max-height:18px; width:auto; height:auto; display:block; object-fit:contain; }
 .gs-logo--tdg img{ max-height:22px; }
+.gs-fallback{ font-size:11px; font-weight:700; letter-spacing:.06em; color:rgba(255,255,255,0.85); white-space:nowrap; }
+a.sp-side-cta.is-saved{ background:linear-gradient(135deg,#FFD60A,#FF9500) !important; color:#0a0612 !important; border-color:transparent !important; }
 @media (max-width: 900px){
   .gs-logo{ height:22px; min-width:48px; padding:3px 9px; }
   .gs-logo img{ max-height:13px; }
