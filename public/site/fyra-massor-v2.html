@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>En biljett. Fyra världar. | Energimässan 2027</title>
+<meta name="description" content="Energi, smart city, mobilitet och infrastruktur möts parallellt på Kistamässan. Samma dagar, samma hus, samma biljett." />
+<link rel="stylesheet" href="/site/shared.css" />
+<style>
+  :root{
+    --bg-0:#06070A;
+    --bg-1:#0B0D12;
+    --line: rgba(255,255,255,0.08);
+    --line-2: rgba(255,255,255,0.14);
+    --tx: #F2F2F4;
+    --tx-2: rgba(242,242,244,0.66);
+    --tx-3: rgba(242,242,244,0.42);
+  }
+
+  body{ background:var(--bg-0); }
+
+  .expo-worlds-section{
+    position:relative;
+    padding: 56px 40px 80px;
+    max-width: 1480px;
+    margin: 0 auto;
+    color: var(--tx);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+  }
+
+  /* HERO copy + meta */
+  .expo-hero{
+    display:grid;
+    grid-template-columns: 1.05fr 1.55fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .expo-copy .expo-kicker{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--tx-2); font-weight: 600;
+    padding: 8px 14px;
+    border:1px solid var(--line); border-radius: 100px;
+    background: rgba(255,255,255,0.02);
+  }
+  .expo-copy .expo-kicker::before{
+    content:""; width:6px; height:6px; border-radius:50%;
+    background:#5DE38A; box-shadow:0 0 10px #5DE38A;
+  }
+
+  .expo-copy h1{
+    margin: 26px 0 0;
+    font-size: clamp(56px, 6.2vw, 96px);
+    line-height: 0.98; letter-spacing: -0.045em;
+    font-weight: 600;
+  }
+  .expo-copy h1 span{ display:block; color: var(--tx); }
+  .expo-copy h1 strong{
+    display:block; font-weight: 600;
+    background: linear-gradient(135deg, #E8E8EC 0%, #8E8E93 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .expo-copy p{
+    margin: 28px 0 0; max-width: 520px;
+    font-size: 17.5px; line-height: 1.55; color: var(--tx-2);
+  }
+
+  .expo-cta{
+    margin-top: 40px;
+    display:inline-flex; align-items:center; gap: 10px;
+    padding: 14px 22px;
+    border-radius: 100px;
+    border: 1px solid var(--line-2);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    color: var(--tx); font-size: 14.5px; font-weight: 600;
+    text-decoration:none;
+    transition: border-color .2s, background .2s, transform .2s;
+  }
+  .expo-cta:hover{ border-color: rgba(255,255,255,0.28); transform: translateY(-1px); }
+  .expo-cta i{ font-style: normal; opacity:.7; transition: transform .2s; }
+  .expo-cta:hover i{ transform: translateX(3px); opacity:1; }
+
+  /* CARDS */
+  .expo-cards-area{
+    position:relative;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .world-card{
+    position: relative;
+    height: 560px;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #0a0c10;
+    isolation: isolate;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .3s;
+  }
+  .world-card:hover{
+    transform: translateY(-6px);
+    border-color: var(--line-2);
+  }
+
+  .world-card .wc-img{
+    position:absolute; inset:0;
+    background-size: cover; background-position: center;
+    transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .4s;
+    filter: saturate(0.85) brightness(0.78);
+  }
+  .world-card:hover .wc-img{
+    transform: scale(1.04);
+    filter: saturate(0.95) brightness(0.88);
+  }
+
+  .world-card::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(180deg,
+        rgba(6,7,10,0.55) 0%,
+        rgba(6,7,10,0.0) 30%,
+        rgba(6,7,10,0.0) 50%,
+        rgba(6,7,10,0.85) 100%);
+  }
+
+  .world-card .wc-inner{
+    position:relative; z-index:2;
+    height: 100%;
+    padding: 26px 24px;
+    display:flex; flex-direction:column; justify-content: space-between;
+  }
+
+  .world-card .wc-logo{
+    height: 28px; max-width: 78%;
+    object-fit: contain; object-position: left center;
+    opacity: .98;
+    filter: drop-shadow(0 2px 14px rgba(0,0,0,0.55));
+  }
+
+  .world-card .wc-bottom{ display:flex; flex-direction:column; gap: 14px; }
+  .world-card .wc-num{
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--tx-3); font-weight: 600;
+  }
+  .world-card .wc-name{
+    font-size: 22px; font-weight: 600; letter-spacing: -.015em; line-height: 1.15;
+  }
+  .world-card .wc-link{
+    display:inline-flex; align-items:center; gap: 8px;
+    font-size: 13.5px; font-weight: 600; color: var(--tx);
+    text-decoration: none;
+  }
+  .world-card .wc-link i{ font-style: normal; transition: transform .2s; opacity:.75; }
+  .world-card:hover .wc-link i{ transform: translateX(4px); opacity:1; }
+
+  /* INFO PILL */
+  .expo-info-pill{
+    margin-top: 64px;
+    display:flex; align-items:center; justify-content: space-between;
+    gap: 24px;
+    padding: 18px 28px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  }
+  .expo-info-pill .ip-item{
+    display:flex; align-items:center; gap: 14px;
+    color: var(--tx); font-size: 14.5px; font-weight: 500;
+  }
+  .expo-info-pill .ip-item small{
+    display:block; color: var(--tx-3); font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .expo-info-pill .ip-ico{
+    width: 36px; height: 36px; flex:none;
+    display:grid; place-items:center;
+    border-radius: 50%;
+    border: 1px solid var(--line-2);
+    background: rgba(255,255,255,0.03);
+    color: var(--tx-2);
+  }
+  .expo-info-pill .ip-ico svg{ width: 16px; height: 16px; }
+  .expo-info-pill i.sep{
+    width: 1px; height: 32px; background: var(--line); display:block;
+  }
+
+  @media (max-width: 1500px) {
+    .expo-hero{ grid-template-columns: 1fr; gap: 60px; margin-top: 60px; }
+    .expo-copy{ max-width: 760px; }
+    .expo-copy p{ max-width: 680px; }
+  }
+  @media (max-width: 1050px) {
+    .expo-worlds-section{ padding: 18px 26px 60px; }
+    .expo-cards-area{ grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .world-card{ height: 480px; }
+    .expo-info-pill{ border-radius: 28px; flex-direction: column; align-items: flex-start; padding: 22px 26px; gap: 18px; }
+    .expo-info-pill i.sep{ display: none; }
+  }
+  @media (max-width: 640px) {
+    .expo-copy h1{ font-size: 56px; }
+    .expo-cards-area{ grid-template-columns: 1fr; }
+    .world-card{ height: 460px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+  <section class="expo-worlds-section">
+
+    <div class="expo-hero">
+      <div class="expo-copy">
+        <span class="expo-kicker">4 mässor under ett tak</span>
+        <h1>
+          <span>En biljett.</span>
+          <strong>Fyra världar.</strong>
+        </h1>
+        <p>
+          Energi, smart city, mobilitet och infrastruktur möts parallellt i
+          Kistamässan. Du rör dig fritt mellan dem &mdash; samma dagar,
+          samma hus, samma biljett.
+        </p>
+        <a href="/site/program.html" class="expo-cta">
+          Läs mer <i>→</i>
+        </a>
+      </div>
+
+      <div class="expo-cards-area">
+        <a class="world-card" href="/site/index.html">
+          <div class="wc-img" style="background-image:url('/site/assets/worlds/energi.png')"></div>
+          <div class="wc-inner">
+            <img class="wc-logo" src="/site/assets/logos/energimassan-2026.webp" alt="Energimässan 2027" />
+            <div class="wc-bottom">
+              <span class="wc-num">01 · Energi</span>
+              <span class="wc-name">Energimässan</span>
+              <span class="wc-link">Utforska <i>→</i></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="world-card" href="#">
+          <div class="wc-img" style="background-image:url('/site/assets/worlds/smart-city.png')"></div>
+          <div class="wc-inner">
+            <img class="wc-logo" src="/site/assets/logos/stockholm-smart-city-2026.webp" alt="Stockholm Smart City" />
+            <div class="wc-bottom">
+              <span class="wc-num">02 · Smart City</span>
+              <span class="wc-name">Stockholm Smart City</span>
+              <span class="wc-link">Utforska <i>→</i></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="world-card" href="#">
+          <div class="wc-img" style="background-image:url('/site/assets/worlds/mobility.png')"></div>
+          <div class="wc-inner">
+            <img class="wc-logo" src="/site/assets/logos/nmce-2026.webp" alt="Nordic Mobility &amp; Charging Expo" />
+            <div class="wc-bottom">
+              <span class="wc-num">03 · Mobilitet</span>
+              <span class="wc-name">Nordic Mobility Expo</span>
+              <span class="wc-link">Utforska <i>→</i></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="world-card" href="#">
+          <div class="wc-img" style="background-image:url('/site/assets/worlds/infrastruktur.png')"></div>
+          <div class="wc-inner">
+            <img class="wc-logo" src="/site/assets/logos/infrastruktur-2026.webp" alt="Infrastruktur 2027" />
+            <div class="wc-bottom">
+              <span class="wc-num">04 · Infrastruktur</span>
+              <span class="wc-name">Infrastruktur</span>
+              <span class="wc-link">Utforska <i>→</i></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="expo-info-pill">
+      <div class="ip-item">
+        <span class="ip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+        <div><small>Datum</small>19–20 maj 2027</div>
+      </div>
+      <i class="sep"></i>
+      <div class="ip-item">
+        <span class="ip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-7.5 8-13a8 8 0 10-16 0c0 5.5 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg></span>
+        <div><small>Plats</small>Kistamässan, Stockholm</div>
+      </div>
+      <i class="sep"></i>
+      <div class="ip-item">
+        <span class="ip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+        <div><small>Besökare</small>3 200+ deltagare</div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="/site/shared.js"></script>
+</body>
+</html>
