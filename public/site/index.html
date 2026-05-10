@@ -2306,10 +2306,14 @@
   }
   .fm-pt > *{ position: relative; z-index: 1; }
   .fm-pt-dot{ width:12px; height:12px; border-radius:50%; background: var(--c); box-shadow: 0 0 14px var(--c); }
-  .fm-pt-logo{ height: 24px; margin-top: 12px; object-fit: contain; object-position: left center; }
-  .fm-pt h3{ margin-top: auto; font-size: 17px; font-weight:700; letter-spacing:-.015em; line-height: 1.15; }
-  .fm-pt span.link{ margin-top: 6px; font-size: 12.5px; font-weight:600; color: var(--c); }
+  .fm-pt-logo{
+    display:block; width: 100%; max-width: 180px;
+    height: 56px; margin: 18px auto 0;
+    object-fit: contain; object-position: left center;
+  }
+  .fm-pt span.link{ margin-top: auto; font-size: 12.5px; font-weight:600; color: var(--c); }
   .fm-pt span.link::after{ content:" →"; }
+
   .fm-pt.e{ --c:#30D158; --c-glow: rgba(48,209,88,0.42); }
   .fm-pt.s{ --c:#0A84FF; --c-glow: rgba(10,132,255,0.42); }
   .fm-pt.m{ --c:#BF5AF2; --c-glow: rgba(191,90,242,0.40); }
@@ -2339,25 +2343,21 @@
       <a href="fyra-massor.html" class="fm-pt e">
         <span class="fm-pt-dot"></span>
         <img class="fm-pt-logo" src="assets/logos/energimassan-2026.webp" alt="Energimässan 2027" />
-        <h3>Energimässan</h3>
         <span class="link">Utforska</span>
       </a>
       <a href="fyra-massor.html" class="fm-pt s">
         <span class="fm-pt-dot"></span>
         <img class="fm-pt-logo" src="assets/logos/stockholm-smart-city-2026.webp" alt="Stockholm Smart City" />
-        <h3>Stockholm Smart City</h3>
         <span class="link">Utforska</span>
       </a>
       <a href="fyra-massor.html" class="fm-pt m">
         <span class="fm-pt-dot"></span>
         <img class="fm-pt-logo" src="assets/logos/nmce-2026.webp" alt="Nordic Mobility Expo" />
-        <h3>Nordic Mobility Expo</h3>
         <span class="link">Utforska</span>
       </a>
       <a href="fyra-massor.html" class="fm-pt i">
         <span class="fm-pt-dot"></span>
         <img class="fm-pt-logo" src="assets/logos/infrastruktur-2026.webp" alt="Infrastruktur 2027" />
-        <h3>Infrastruktur</h3>
         <span class="link">Utforska</span>
       </a>
     </div>
