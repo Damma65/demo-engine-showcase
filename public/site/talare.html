@@ -92,8 +92,13 @@
   }
   .sp-card:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px -12px var(--cat, rgba(255,255,255,0.15)); }
   .sp-card .avatar{ width:100%; height:100%; transition: transform .6s; background-size: cover; background-position: center 25%; background-color: #1a1a1f; }
-  .sp-card.is-cutout{ background:#000; border-color: rgba(255,255,255,0.08); }
+  .sp-card.is-cutout{ background:#000 !important; }
   .sp-card.is-cutout .avatar{ background-size: contain; background-position: bottom center; background-repeat: no-repeat; background-color: #000 !important; }
+  /* Per-talare finjusterad position på cutout-bilder */
+  .sp-card[data-slug="anna-borg"] .avatar{ background-position: center 12% !important; background-size: cover !important; }
+  /* Konferensbiljett-badge (för keynotes) — blå/primär istället för orange föranmälan */
+  .sp-konf{ position:absolute; top:12px; right:12px; z-index:3; display:inline-flex; align-items:center; gap:6px; padding:5px 10px; background:linear-gradient(135deg,#5AC8FA,#0A84FF); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.04em; border-radius:100px; backdrop-filter: blur(8px); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  .sp-konf svg{ width:11px; height:11px; }
   .sp-card .avatar .tint{ display: none; }
   .sp-card:hover .avatar{ transform: scale(1.06); }
   .sp-card .sp-cat{ background: var(--cat, rgba(255,255,255,0.12)); color: #0a0a0c; }
@@ -507,16 +512,20 @@
       const photo = real ? real.src : PHOTOS[i % PHOTOS.length];
       const isCut = !!(real && real.cut);
       const isPre = PRE_REG.has(cleanName.toLowerCase());
+      const isKeynote = cats.includes('keynote');
       const slug = slugify(cleanName);
       const CAT_COLOR = { keynote:'#FF9F0A', ai:'#5AC8FA', produktion:'#30D158', drift:'#BF5AF2', politik:'#FF375F', forskning:'#64D2FF' };
       const CAT_LABEL = {keynote:'Keynote',ai:'AI & Digital',produktion:'Produktion',drift:'Drift & UH',politik:'Politik',forskning:'Forskning'};
       const catColor = CAT_COLOR[primaryCat] || '#6E6E73';
       const catLabel = cats.map(c => CAT_LABEL[c] || c).join(' · ');
-      const preBadge = isPre ? `<span class="sp-prereg" title="Förhandsanmälan krävs — begränsade platser"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Föranmälan</span>` : '';
+      // Badge-regel: keynote => Konferensbiljett (blå). Annars om föranmälan krävs => Föranmälan (orange).
+      const badge = isKeynote
+        ? `<span class="sp-konf" title="Konferensbiljett krävs för denna session"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v10H3z"/><path d="M3 11h18"/></svg>Konferensbiljett</span>`
+        : (isPre ? `<span class="sp-prereg" title="Förhandsanmälan krävs — begränsade platser"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Föranmälan</span>` : '');
       return `
         <a class="sp-card-link ${match ? 'matched' : 'dimmed'}" href="talare/${slug}.html" style="text-decoration:none;color:inherit;${match ? 'display:block;' : 'display:none;'}">
-        <article class="sp-card ${isCut?'is-cutout':''}" style="--cat:${catColor};">
-          ${preBadge}
+        <article class="sp-card ${isCut?'is-cutout':''}" data-slug="${slug}" style="--cat:${catColor};">
+          ${badge}
           <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');" loading="lazy">
             <div class="tint"></div>
           </div>
