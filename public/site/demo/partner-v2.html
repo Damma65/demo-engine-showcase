@@ -216,6 +216,98 @@
 
   @media (max-width: 980px){ .lv-grid{ grid-template-columns: repeat(2, 1fr); } .lv-custom{ grid-template-columns: 1fr; } }
   @media (max-width: 560px){ .lv-grid{ grid-template-columns: 1fr; } }
+
+  /* ===== Citat ===== */
+  .qt-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .qt-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .qt{
+    padding: 32px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    position: relative;
+  }
+  .qt-mark{
+    position:absolute; top: 18px; right: 22px; font-size: 56px; line-height:.6;
+    color: rgba(255,159,10,.18); font-family: Georgia, serif; font-weight: 700;
+  }
+  .qt-text{ font-size: 16.5px; color: var(--text); line-height: 1.55; font-weight: 500; letter-spacing:-.005em; }
+  .qt-by{ margin-top: 22px; display:flex; align-items:center; gap: 14px; }
+  .qt-av{
+    width: 44px; height: 44px; border-radius: 50%;
+    display:grid; place-items:center;
+    font-weight:700; font-size: 15px; color: #fff;
+    background: linear-gradient(135deg, var(--av-c1, #FF9F0A), var(--av-c2, #FF375F));
+    flex-shrink:0;
+  }
+  .qt-name{ font-size: 14px; font-weight: 700; }
+  .qt-role{ font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
+
+  /* ===== Logorad ===== */
+  .lr-section{ max-width: 1320px; margin: 0 auto 100px; padding: 0 32px; }
+  .lr-card{
+    padding: 28px 32px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+  }
+  .lr-eyebrow{ font-size: 11px; letter-spacing:.18em; text-transform:uppercase; color: var(--text-3); font-weight:700; margin-bottom: 18px; }
+  .lr-row{
+    display:grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+    align-items: center;
+  }
+  .lr-tile{
+    aspect-ratio: 5/2;
+    display:grid; place-items:center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    font-weight: 700; letter-spacing:-.01em; font-size: 16px;
+    color: rgba(255,255,255,.78);
+  }
+  .lr-foot{ margin-top: 18px; display:flex; align-items:center; justify-content:space-between; font-size: 13px; }
+  .lr-foot a{ color: var(--text-2); text-decoration:none; }
+  .lr-foot a:hover{ color: var(--orange); }
+
+  /* ===== Sticky bottom CTA ===== */
+  .sticky-cta{
+    position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+    z-index: 90;
+    display:flex; align-items:center; gap: 18px;
+    padding: 14px 18px 14px 22px;
+    border-radius: 100px;
+    background: rgba(8,12,22,0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 18px 50px -10px rgba(0,0,0,0.6);
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s, transform .25s;
+  }
+  .sticky-cta.show{ opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .sticky-ic{ width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,159,10,.18); color: var(--orange);
+    display:grid; place-items:center; flex-shrink:0; }
+  .sticky-ic svg{ width:18px; height:18px; }
+  .sticky-txt{ font-size: 13.5px; color: var(--text); font-weight:600; }
+  .sticky-txt small{ display:block; font-size: 11px; color: var(--text-3); font-weight: 500; margin-top: 1px; }
+  .sticky-actions{ display:flex; gap: 8px; }
+  .sticky-actions a{
+    padding: 10px 18px; border-radius: 100px;
+    font-weight:700; font-size: 13px; text-decoration:none;
+    white-space: nowrap;
+  }
+  .sticky-actions .s-p{ background: #30D158; color: #062815; }
+  .sticky-actions .s-s{ background: rgba(255,255,255,0.08); color: var(--text); border:1px solid rgba(255,255,255,.12); }
+  body{ padding-bottom: 90px; }
+
+  @media (max-width: 760px){
+    .qt-grid{ grid-template-columns: 1fr; }
+    .lr-row{ grid-template-columns: repeat(3, 1fr); }
+    .sticky-cta{ left: 12px; right: 12px; transform: none; flex-wrap: wrap; justify-content: center; padding: 12px; }
+    .sticky-cta.show{ transform: none; }
+    .sticky-txt{ display:none; }
+  }
 </style>
 </head>
 <body>
@@ -416,6 +508,77 @@
     <a href="mailto:michael@energimassan.se">Kontakta oss →</a>
   </div>
 </section>
+
+<!-- ===== Citat ===== -->
+<section class="qt-section">
+  <div class="qt-grid">
+    <article class="qt">
+      <span class="qt-mark">"</span>
+      <p class="qt-text">Energimässan är den självklara plattformen för att möta beslutsfattare, dela vår kunskap och driva affärer framåt. Vi får både synlighet och kvalificerade möten i samma rum.</p>
+      <div class="qt-by">
+        <div class="qt-av" style="--av-c1:#0A84FF;--av-c2:#5E5CE6;">UH</div>
+        <div>
+          <div class="qt-name">Ulrika Hesslow</div>
+          <div class="qt-role">Chef marknadsföring · Energisystem</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="qt">
+      <span class="qt-mark">"</span>
+      <p class="qt-text">Vi får fantastisk exponering och leads av hög kvalitet. Samarbetet ger oss ett tydligt försprång på marknaden — och vi bokar om varje år.</p>
+      <div class="qt-by">
+        <div class="qt-av" style="--av-c1:#FF9F0A;--av-c2:#FF375F;">JW</div>
+        <div>
+          <div class="qt-name">Jonas Wigenstam</div>
+          <div class="qt-role">Presskontakt · Tata Steel</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== Logorad ===== -->
+<section class="lr-section">
+  <div class="lr-card">
+    <div class="lr-eyebrow">Våra partners 2026</div>
+    <div class="lr-row">
+      <div class="lr-tile">VATTENFALL</div>
+      <div class="lr-tile">E.ON</div>
+      <div class="lr-tile">FORTUM</div>
+      <div class="lr-tile">ØRSTED</div>
+      <div class="lr-tile">SVEVIND</div>
+    </div>
+    <div class="lr-foot">
+      <a href="../sponsorer.html">← Se alla partners</a>
+      <a href="../sponsorer.html">Bli en av dem 2027 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Sticky bottom CTA ===== -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9z"/></svg></div>
+  <div class="sticky-txt">Redo att bli partner?<small>Säkra er plats inför 2027</small></div>
+  <div class="sticky-actions">
+    <a href="#paket" class="s-p">Bli partner →</a>
+    <a href="mailto:michael@energimassan.se" class="s-s">Boka möte</a>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const el = document.getElementById('stickyCta');
+    const trigger = 600;
+    let last = false;
+    function update(){
+      const show = window.scrollY > trigger;
+      if(show !== last){ el.classList.toggle('show', show); last = show; }
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
 
 <footer>
   <div class="foot-inner">
