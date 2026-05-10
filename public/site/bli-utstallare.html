@@ -155,10 +155,10 @@
   .lv:hover .lv-arrow{ color: var(--lv-c); transform: translateX(2px); }
 
   .lv.s-9{ --lv-c: #BABABF; }
-  .lv.s-12{ --lv-c: #30D158; }
-  .lv.s-16{ --lv-c: #FFD60A; }
-  .lv.s-18{ --lv-c: #FF9F0A; }
-  .lv.s-24{ --lv-c: #BF5AF2; }
+  .lv.s-12{ --lv-c: #fff; }
+  .lv.s-16{ --lv-c: #fff; }
+  .lv.s-18{ --lv-c: #fff; }
+  .lv.s-24{ --lv-c: #fff; }
 
   .lv-custom{
     margin-top: 14px; padding: 28px 32px;
@@ -209,26 +209,27 @@
   .bp-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
   .bp-card{
     position: relative; overflow: hidden;
-    padding: 36px 40px; border-radius: 22px;
+    padding: 40px 44px; border-radius: 24px;
     background:
-      radial-gradient(120% 140% at 100% 0%, rgba(10,132,255,.18), transparent 55%),
-      radial-gradient(120% 140% at 0% 100%, rgba(191,90,242,.14), transparent 55%),
-      var(--surface);
-    border: 1px solid var(--stroke);
+      radial-gradient(120% 140% at 100% 0%, rgba(255,159,10,.28), transparent 55%),
+      radial-gradient(120% 140% at 0% 100%, rgba(255,106,0,.22), transparent 55%),
+      linear-gradient(135deg, #1a0f00, #0d0805);
+    border: 1px solid rgba(255,159,10,.4);
+    box-shadow: 0 20px 60px -20px rgba(255,159,10,.35);
     display:flex; align-items:center; justify-content:space-between; gap: 28px; flex-wrap: wrap;
   }
   .bp-eyebrow{
     font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
-    color: #0A84FF; font-weight:700; margin-bottom: 8px;
+    color: #FFB340; font-weight:800; margin-bottom: 8px;
   }
-  .bp-title{ font-size: 26px; font-weight: 800; letter-spacing:-.02em; line-height:1.15; margin:0 0 6px; }
-  .bp-sub{ font-size: 14.5px; color: var(--text-2); max-width: 620px; line-height:1.5; margin:0; }
+  .bp-title{ font-size: 30px; font-weight: 800; letter-spacing:-.02em; line-height:1.15; margin:0 0 6px; color:#fff; }
+  .bp-sub{ font-size: 14.5px; color: rgba(255,255,255,.78); max-width: 620px; line-height:1.5; margin:0; }
   .bp-cta{
     display:inline-flex; align-items:center; gap:10px;
-    padding: 14px 22px; border-radius: 999px;
-    background: linear-gradient(135deg, #0A84FF, #BF5AF2);
-    color:#fff; text-decoration:none; font-weight:700; font-size: 14.5px;
-    box-shadow: 0 8px 24px -8px rgba(10,132,255,.55);
+    padding: 16px 26px; border-radius: 999px;
+    background: linear-gradient(135deg, #FF9F0A, #FF6A00);
+    color:#fff; text-decoration:none; font-weight:800; font-size: 15px;
+    box-shadow: 0 12px 32px -8px rgba(255,159,10,.6);
     transition: transform .15s;
   }
   .bp-cta:hover{ transform: translateY(-2px); }
@@ -566,30 +567,28 @@
   </div>
   <div class="req-grid">
 
-    <div class="req" style="--req-c:#FF9F0A;">
-      <span class="req-tag opt">Tillval</span>
-      <div class="req-top">
-        <div class="req-num">7</div>
-        <div class="req-name">Hörnmonter</div>
-      </div>
-      <div class="req-price">+ 4 500 SEK</div>
-      <div class="req-d">Tillägg vid två öppna sidor — naturligt flöde och bättre tillgänglighet.</div>
-    </div>
-
     <div class="req" style="--req-c:#FF375F;">
       <span class="req-tag">Obligatoriskt</span>
       <div class="req-top">
-        <div class="req-num">8</div>
         <div class="req-name">Anmälningsavgift</div>
       </div>
       <div class="req-price">9 900 SEK</div>
       <div class="req-d">Obligatorisk för alla utställare. Registrering, försäkring och utställarservice.</div>
     </div>
 
+    <div class="req" style="--req-c:#FF9F0A;">
+      <span class="req-tag opt">Tillval</span>
+      <div class="req-top">
+        <div class="req-name">Hörnmonter</div>
+      </div>
+      <div class="req-price">+ 4 500 SEK</div>
+      <div class="req-d">Tillägg vid två öppna sidor — naturligt flöde och bättre tillgänglighet.</div>
+    </div>
+
     <div class="req" style="--req-c:#BF5AF2;">
       <span class="req-tag up">Uppgradering</span>
+      <span class="req-rec" style="position:absolute; top:14px; right:14px; padding:4px 10px; border-radius:100px; background:linear-gradient(135deg,#FF9F0A,#FF6A00); color:#fff; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;">Rekommenderas</span>
       <div class="req-top">
-        <div class="req-num">9</div>
         <div class="req-name">Pluspaketet · Uppgradering</div>
       </div>
       <div class="req-price">16 900 SEK</div>
