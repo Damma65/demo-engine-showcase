@@ -414,24 +414,25 @@
 
   /* Big colored type accent — statement piece */
   .kn-bigword{
-    position: absolute; left: 0; right: 0; top: 18px;
+    position: absolute; left: 26px; right: auto; top: 24px;
     z-index: 1;
-    text-align: center;
+    text-align: left;
     font-family: 'Inter Tight','Inter',system-ui,sans-serif;
     font-weight: 900;
     letter-spacing: -.04em;
     text-transform: uppercase;
     line-height: 0.85;
-    font-size: clamp(48px, 7vw, 92px);
+    font-size: clamp(54px, 8vw, 104px);
     pointer-events: none;
-    mix-blend-mode: screen;
-    opacity: 0.18;
+    mix-blend-mode: normal;
+    opacity: 0.85;
     transition: opacity .4s ease;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.55);
   }
   .kn-card.kn-1 .kn-bigword{ color: #7DD3FC; }
-  .kn-card.kn-2 .kn-bigword{ color: #FCA5A5; opacity: 0.55; mix-blend-mode: normal; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
-  .kn-card:hover .kn-bigword{ opacity: 0.34; }
-  .kn-card.kn-2:hover .kn-bigword{ opacity: 0.7; }
+  .kn-card.kn-2 .kn-bigword{ color: #FCA5A5; opacity: 0.85; mix-blend-mode: normal; text-shadow: 0 4px 24px rgba(0,0,0,0.55); }
+  .kn-card:hover .kn-bigword{ opacity: 1; }
+  .kn-card.kn-2:hover .kn-bigword{ opacity: 1; }
   .kn-mark{
     position:absolute; top: 18px; left: 18px;
     font-size: 10px; letter-spacing: .22em; font-weight: 700; color: var(--text);
