@@ -365,14 +365,21 @@ function render(){
           const stageCls = `s-${s.stage}`;
           const cls = `session ${stageCls} ${s.featured?'featured':''} ${s.paid?'paid':''}`;
           let badges = '';
+          const requiresConferenceTicket = !!s.paid;
           if (s.kind === 'keynote') badges += `<span class="badge kn">Keynote</span>`;
-          if (s.paid) badges += `<span class="badge pd">Betalseminarium</span>`;
-          if (s.requiresRegistration) badges += `<span class="badge rg" title="Begränsat antal platser — föranmäl dig i förväg">Föranmälan</span>`;
-          if (s.open && !s.paid && s.kind !== 'keynote') badges += `<span class="badge op">Öppen</span>`;
+          if (requiresConferenceTicket) badges += `<span class="badge pd">Konferensbiljett</span>`;
+          // Föranmälan visas ENDAST när konferensbiljett INTE redan krävs
+          if (s.requiresPreRegistration && !requiresConferenceTicket) {
+            badges += `<span class="badge rg" title="Begränsat antal platser — föranmäl dig i förväg">Föranmälan krävs</span>`;
+          }
+          if (s.open && !requiresConferenceTicket && s.kind !== 'keynote') badges += `<span class="badge op">Öppen</span>`;
           const spkHtml = s.speakers.length
             ? `<span class="sm-spk">${s.speakers.map(([init,name,slug,c1,c2]) => `<span class="mini-av" style="--c1:${c1};--c2:${c2}">${init}</span>`).join('')}<span>${s.speakers.map(s=>s[1]).join(' · ')}</span></span>`
             : '';
-          return `<div class="${cls}" data-sid="${sid(activeDay,time,s.title)}">
+          const sidVal = sid(activeDay,time,s.title);
+          const aTitle = JSON.stringify(s.title).replace(/"/g,'&quot;');
+          const aDesc  = JSON.stringify(s.desc||'').replace(/"/g,'&quot;');
+          return `<div class="${cls}" data-sid="${sidVal}">
             <a href="${href}" style="text-decoration:none;color:inherit;display:block;">
               <div class="session-stage ${STAGE_CLS[s.stage]}"><span class="sd"></span>${stageNames[s.stage]}</div>
               <div class="session-title">${s.title}${badges}</div>
@@ -381,8 +388,8 @@ function render(){
             <div class="session-meta">
               ${spkHtml}
               <span>${s.duration}</span>
-              <button onclick="toggleAgenda(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}', this)" title="Lägg till i Min agenda" class="agenda-star ${isSaved(sid(activeDay,time,s.title))?'on':''}" style="margin-left:auto;background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">★ ${isSaved(sid(activeDay,time,s.title))?'Sparad':'Spara'}</button>
-              <button onclick="downloadIcs(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}')" style="background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">📅 .ics</button>
+              <button onclick="toggleAgenda(${activeDay},'${time}',${aTitle},${aDesc},'${s.duration}', this)" title="Lägg till i Min agenda" class="agenda-star ${isSaved(sidVal)?'on':''}" style="margin-left:auto;background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">★ ${isSaved(sidVal)?'Sparad':'Spara'}</button>
+              <button onclick="downloadIcs(${activeDay},'${time}',${aTitle},${aDesc},'${s.duration}')" style="background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">📅 .ics</button>
             </div>
           </div>`;
         }).join('')}
