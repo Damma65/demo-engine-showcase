@@ -160,7 +160,31 @@
     document.body.appendChild(btn);
   }
 
-  function init(){ injectGoldStrip(); initMobileNav(); injectFooter(); injectSavedSidebar(); injectSpeakerClose(); }
+  /* ---------- CANONICAL NAV (same headings on every page) ---------- */
+  function normalizeNav(){
+    var links = document.querySelector('.nav .nav-links');
+    if (!links) return;
+    var items = [
+      ['index.html','Startsida'],
+      ['program.html','Program'],
+      ['talare.html','Talare'],
+      ['utstallning.html','Utställning'],
+      ['kvallsmingel.html','Kvällsmingel'],
+      ['bli-utstallare.html','Bli utställare'],
+      ['index.html#biljetter','Biljetter'],
+      ['resa-boende.html','Boende & Info']
+    ];
+    var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    links.innerHTML = items.map(function(it){
+      var href = it[0], label = it[1];
+      var file = href.split('#')[0].toLowerCase();
+      var active = (file === path) ? ' class="active"' : '';
+      if (label === 'Kvällsmingel') active = (file === path) ? ' class="active nav-mingel"' : ' class="nav-mingel"';
+      return '<a href="'+href+'"'+active+'>'+label+'</a>';
+    }).join('');
+  }
+
+  function init(){ injectGoldStrip(); normalizeNav(); initMobileNav(); injectFooter(); injectSavedSidebar(); injectSpeakerClose(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
