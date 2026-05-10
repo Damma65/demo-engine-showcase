@@ -491,11 +491,13 @@
     const REAL = {
       'anna borg':         { src:'talare/photos/anna-borg-cutout-v2.png',     cut:true },
       'magdalena andersson':{ src:'talare/photos/magdalena-cutout-v2.png',    cut:true },
-      'tomas kåberger':    { src:'talare/photos/tomas-kaberger-cutout.png',   cut:true },
-      'carl berglöf':      { src:'talare/photos/carl-berglof-cutout.png',     cut:true },
-      'jonas birgersson':  { src:'talare/photos/jonas-birgersson-cutout.png', cut:true },
-      'ulrika hesslow':    { src:'talare/photos/ulrika-hesslow-cutout.png',   cut:true },
-      'peter carlsson':    { src:'talare/photos/peter-carlsson-cutout.png',   cut:true },
+      /* Hotfix v1.0.1: använd rena porträtt — gamla "cutout"-PNG hade ljusgrå
+         bakgrund inbakad som visuellt liknade en schackrutig transparens. */
+      'tomas kåberger':    { src:'talare/photos/tomas-kaberger.png',          cut:false },
+      'carl berglöf':      { src:'talare/photos/carl-berglof.png',            cut:false },
+      'jonas birgersson':  { src:'talare/photos/jonas-birgersson.png',        cut:false },
+      'ulrika hesslow':    { src:'talare/photos/ulrika-hesslow.png',          cut:false },
+      'peter carlsson':    { src:'talare/photos/peter-carlsson.png',          cut:false },
       'desiree comstedt':  { src:'talare/photos/desiree-comstedt-cutout.png', cut:true },
       /* Riktiga porträtt (icke-cutout) hämtade från Trippus 2026-05-10 */
       'gustav ebenå':      { src:'talare/photos/gustav-ebena.png',            cut:false },
