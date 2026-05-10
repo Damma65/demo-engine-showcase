@@ -44,6 +44,9 @@
   .booth-pin .dot{ position:absolute; inset:8px; border-radius:50%; background:#30D158; box-shadow:0 0 10px #30D158, 0 2px 6px rgba(0,0,0,.6); }
   .booth-pin .lbl{ position:absolute; left:50%; top:-6px; transform: translate(-50%,-100%); white-space:nowrap; font-size:11px; font-weight:600; padding:4px 9px; border-radius:6px; background: rgba(8,10,14,.95); color:#fff; border:1px solid rgba(48,209,88,.4); opacity:0; pointer-events:none; transition: opacity .15s; }
   .booth-pin:hover .lbl, .booth-pin.highlight .lbl{ opacity:1; }
+  /* Kalibreringsläge — bara aktivt med ?calibrate=1, aldrig publikt */
+  .booth-pin--unverified .dot{ background:#FF9F0A; box-shadow:0 0 10px #FF9F0A, 0 2px 6px rgba(0,0,0,.6); }
+  .booth-pin--unverified .lbl{ border-color: rgba(255,159,10,.5); }
   .hall-tools{ position:absolute; left:14px; bottom:14px; display:flex; gap:8px; z-index:5; }
   .hall-tools button{ background:rgba(8,10,14,.85); border:1px solid var(--stroke-2); color:var(--text-2); border-radius:10px; padding:8px 12px; font-size:12px; cursor:pointer; font-family:inherit; }
   .hall-tools button:hover{ color:#fff; border-color:#30D158; }
