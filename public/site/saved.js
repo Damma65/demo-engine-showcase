@@ -458,11 +458,63 @@
     });
   }
 
+  /* ---- Talarprofil-knapp ("Lägg till talare" på /talare/*.html) ----
+     Profilsidor renderar en <a class="sp-side-cta tertiary" href="#">Lägg till talare</a>.
+     Vi binder den till samma saved-store som övriga ★-knappar. */
+  function profileSpeakerItem(){
+    const m = location.pathname.match(/\/talare\/([^\/]+?)\.html$/i);
+    if (!m) return null;
+    const slug = m[1].toLowerCase();
+    const name = ((document.querySelector('.sp-name')||{}).textContent || document.title.split('·')[0] || slug).trim();
+    const role = ((document.querySelector('.sp-role')||{}).textContent || '').trim();
+    const orgEl = document.querySelector('.sp-org, .sp-meta-v');
+    const org  = (orgEl ? orgEl.textContent : '').trim();
+    let thumb = '';
+    const portrait = document.querySelector('.sp-portrait-img');
+    if (portrait){
+      const mm = (portrait.getAttribute('style')||'').match(/url\(['"]?([^'")]+)['"]?\)/);
+      if (mm) thumb = mm[1];
+    }
+    return {
+      type:'talare',
+      id:'talare:'+slug,
+      title:name,
+      subtitle:[role,org].filter(Boolean).join(' · '),
+      href: location.pathname,
+      thumb
+    };
+  }
+  function decorateProfileCTA(){
+    const cta = Array.from(document.querySelectorAll('a.sp-side-cta'))
+      .find(a => /lägg till talare/i.test(a.textContent||'') && !a.dataset.emWired);
+    if (!cta) return;
+    const item = profileSpeakerItem();
+    if (!item) return;
+    cta.dataset.emWired = '1';
+    function refresh(){
+      const saved = has(item.id);
+      cta.classList.toggle('is-saved', saved);
+      const svg = cta.querySelector('svg');
+      const text = saved ? 'Tillagd ✓' : 'Lägg till talare';
+      cta.innerHTML = '<span class="em-cta-label">'+text+'</span>' + (svg ? svg.outerHTML : '');
+    }
+    cta.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (has(item.id)) { remove(item.id); showToast('Borttagen'); }
+      else { add(item); showToast('★ Tillagd i din lista'); if (load().length === 1) setTimeout(openPanel, 250); }
+      refresh();
+    });
+    refresh();
+    window.addEventListener('storage', (e) => { if (e.key === KEY) refresh(); });
+    cta._emRefresh = refresh;
+  }
+
   function scan(){
     document.querySelectorAll('.sp-tile').forEach(decorateSpeakerTile);
     document.querySelectorAll('.sp-card-link').forEach(decorateSpeakerCardLink);
     document.querySelectorAll('.kn-card').forEach(decorateKeynote);
     document.querySelectorAll('.ex-card').forEach(decorateExhibitor);
+    decorateProfileCTA();
   }
 
   function init(){
