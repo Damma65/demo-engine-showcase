@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fyra mässor — ett tak | Energimässan 2027</title>
+<meta name="description" content="Energimässan, Stockholm Smart City, Nordic Mobility Expo och Infrastruktur 2027 — fyra mässor parallellt på Kistamässan, en biljett." />
+<link rel="stylesheet" href="/site/shared.css" />
+<style>
+  /* ===== FYRA MÄSSOR — page-local styles ===== */
+  .fm-hero{
+    position: relative;
+    padding: 180px 32px 120px;
+    overflow: hidden;
+  }
+  .fm-hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(800px 500px at 12% 20%, rgba(48,209,88,0.10), transparent 60%),
+      radial-gradient(700px 500px at 88% 30%, rgba(94,92,230,0.10), transparent 60%),
+      radial-gradient(900px 600px at 50% 100%, rgba(10,132,255,0.08), transparent 60%);
+    pointer-events:none;
+  }
+  .fm-grid{
+    position: relative;
+    max-width: 1280px; margin: 0 auto;
+    display:grid; grid-template-columns: 1.05fr 1.4fr; gap: 72px; align-items: center;
+  }
+  .fm-eyebrow{
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    color: var(--green-2); font-weight:700;
+  }
+  .fm-title{
+    margin-top: 18px;
+    font-size: clamp(48px, 5.6vw, 84px); font-weight: 700;
+    line-height: 1.0; letter-spacing: -0.04em;
+  }
+  .fm-title .l2{
+    display:block;
+    background: linear-gradient(135deg, #5DE38A 0%, #64D2FF 70%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .fm-lead{
+    margin-top: 26px; max-width: 480px;
+    font-size: 18px; line-height: 1.55; color: var(--text-2);
+  }
+  .fm-callout{
+    margin-top: 28px; padding: 18px 22px;
+    display:flex; gap: 14px; align-items:flex-start;
+    border:1px solid var(--stroke); border-radius: 16px;
+    background: rgba(94,92,230,0.05);
+    max-width: 520px;
+  }
+  .fm-callout-ico{
+    width: 32px; height: 32px; flex:none; border-radius: 9px;
+    background: linear-gradient(135deg, #5E5CE6, #B0AEFF);
+    display:grid; place-items:center; color:#fff; font-size: 16px;
+  }
+  .fm-callout p{ font-size: 14.5px; color: var(--text-2); line-height:1.5; }
+  .fm-callout p b{ color: var(--text); font-weight:600; }
+  .fm-cta-row{ margin-top: 32px; display:flex; gap: 12px; flex-wrap:wrap; }
+  .fm-meta{
+    margin-top: 32px;
+    display:flex; gap: 8px; flex-wrap:wrap;
+  }
+  .fm-meta-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 10px 14px; border-radius: 100px;
+    border:1px solid var(--stroke); background: rgba(255,255,255,0.03);
+    font-size: 12.5px; color: var(--text-2);
+  }
+  .fm-meta-pill svg{ width:14px; height:14px; opacity:.7; }
+
+  /* Tiles */
+  .fm-tiles{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  }
+  .fm-tile{
+    position: relative; overflow: hidden;
+    border-radius: 22px;
+    border:1px solid var(--stroke);
+    background: linear-gradient(180deg, #0d0d10 0%, #07070A 100%);
+    aspect-ratio: 9 / 16;
+    display:flex; flex-direction:column;
+    transition: transform .25s ease, border-color .25s ease;
+    text-decoration: none; color: inherit;
+  }
+  .fm-tile:hover{ transform: translateY(-4px); border-color: var(--stroke-2); }
+  .fm-tile-bg{
+    position:absolute; inset:0; opacity:.55;
+    background-size: cover; background-position: center;
+    transition: opacity .3s, transform .6s ease;
+  }
+  .fm-tile:hover .fm-tile-bg{ opacity:.7; transform: scale(1.04); }
+  .fm-tile::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.65) 75%, rgba(0,0,0,0.92) 100%);
+  }
+  .fm-tile-inner{
+    position: relative; z-index: 2; flex: 1;
+    display:flex; flex-direction:column; justify-content: space-between;
+    padding: 22px 20px;
+  }
+  .fm-tile-top{ display:flex; flex-direction:column; gap: 14px; }
+  .fm-tile-dot{
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--c, #30D158);
+    box-shadow: 0 0 16px var(--c, #30D158), 0 0 4px var(--c, #30D158);
+  }
+  .fm-tile-logo{
+    height: 28px; max-width: 100%;
+    object-fit: contain; object-position: left center;
+    opacity: .96;
+  }
+  .fm-tile h3{
+    margin-top: 6px;
+    font-size: 22px; font-weight: 700; line-height: 1.1; letter-spacing: -.02em;
+    color: var(--text);
+  }
+  .fm-tile p{
+    margin-top: 8px;
+    font-size: 13.5px; line-height: 1.45; color: var(--text-2);
+    max-width: 92%;
+  }
+  .fm-tile-bottom{ display:flex; align-items:center; justify-content: space-between; }
+  .fm-tile-link{
+    display:inline-flex; align-items:center; gap: 6px;
+    font-size: 13.5px; font-weight: 600;
+    color: var(--c, #30D158);
+  }
+  .fm-tile-link::after{ content: "→"; transition: transform .2s; }
+  .fm-tile:hover .fm-tile-link::after{ transform: translateX(3px); }
+  .fm-tile-num{
+    font-size: 11px; letter-spacing:.16em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600;
+  }
+
+  /* Per-tile color + bg */
+  .fm-tile.t-energi{ --c: #30D158; }
+  .fm-tile.t-energi .fm-tile-bg{
+    background-image:
+      radial-gradient(60% 50% at 50% 35%, rgba(48,209,88,0.45), transparent 70%),
+      linear-gradient(180deg, #0a1a10 0%, #03150a 100%);
+  }
+  .fm-tile.t-smart{ --c: #0A84FF; }
+  .fm-tile.t-smart .fm-tile-bg{
+    background-image:
+      radial-gradient(60% 50% at 50% 35%, rgba(10,132,255,0.42), transparent 70%),
+      linear-gradient(180deg, #08111f 0%, #02080f 100%);
+  }
+  .fm-tile.t-mobility{ --c: #BF5AF2; }
+  .fm-tile.t-mobility .fm-tile-bg{
+    background-image:
+      radial-gradient(60% 50% at 50% 35%, rgba(191,90,242,0.40), transparent 70%),
+      linear-gradient(180deg, #150a1f 0%, #08020f 100%);
+  }
+  .fm-tile.t-infra{ --c: #FF9F0A; }
+  .fm-tile.t-infra .fm-tile-bg{
+    background-image:
+      radial-gradient(60% 50% at 50% 35%, rgba(255,159,10,0.35), transparent 70%),
+      linear-gradient(180deg, #1a1108 0%, #0d0703 100%);
+  }
+
+  /* Connector line beneath tiles */
+  .fm-connector{
+    position: relative;
+    margin-top: 22px;
+    height: 36px;
+  }
+  .fm-connector svg{ width: 100%; height: 100%; display:block; }
+  .fm-labels{
+    margin-top: 6px;
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    text-align: center;
+  }
+  .fm-labels span{
+    font-size: 11px; letter-spacing:.18em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600;
+  }
+
+  /* Section: details below */
+  .fm-detail{
+    padding: 100px 32px;
+    border-top: 1px solid var(--stroke);
+  }
+  .fm-detail-inner{ max-width: 1280px; margin: 0 auto; }
+  .fm-detail h2{
+    font-size: clamp(34px, 3.6vw, 48px);
+    font-weight: 700; letter-spacing: -.03em; max-width: 720px;
+  }
+  .fm-detail .lead{
+    margin-top: 18px; max-width: 640px;
+    color: var(--text-2); font-size: 17px; line-height: 1.55;
+  }
+  .fm-rows{
+    margin-top: 56px;
+    display:grid; gap: 18px;
+  }
+  .fm-row{
+    display:grid; grid-template-columns: 56px 220px 1fr auto; gap: 24px;
+    align-items: center;
+    padding: 22px 24px;
+    border:1px solid var(--stroke); border-radius: 18px;
+    background: rgba(255,255,255,0.02);
+    transition: background .2s, border-color .2s;
+    text-decoration:none; color: inherit;
+  }
+  .fm-row:hover{ background: rgba(255,255,255,0.04); border-color: var(--stroke-2); }
+  .fm-row .fm-row-dot{
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--c); box-shadow: 0 0 14px var(--c);
+    justify-self:center;
+  }
+  .fm-row .fm-row-logo{
+    height: 30px; max-width: 100%;
+    object-fit: contain; object-position: left center; opacity: .95;
+  }
+  .fm-row .fm-row-text strong{
+    display:block; font-size: 17px; font-weight: 600; color: var(--text);
+    letter-spacing: -.012em;
+  }
+  .fm-row .fm-row-text span{
+    display:block; margin-top: 4px;
+    font-size: 14px; color: var(--text-2); line-height: 1.45;
+  }
+  .fm-row .fm-row-arrow{
+    color: var(--c); font-weight: 600; font-size: 14px; white-space: nowrap;
+  }
+
+  @media (max-width: 1100px){
+    .fm-grid{ grid-template-columns: 1fr; gap: 56px; }
+  }
+  @media (max-width: 760px){
+    .fm-hero{ padding: 130px 20px 80px; }
+    .fm-tiles{ grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .fm-labels{ grid-template-columns: repeat(2, 1fr); }
+    .fm-connector{ display:none; }
+    .fm-detail{ padding: 70px 20px; }
+    .fm-row{ grid-template-columns: 24px 1fr; row-gap: 14px; column-gap: 16px; }
+    .fm-row .fm-row-logo{ grid-column: 1 / -1; height: 26px; }
+    .fm-row .fm-row-arrow{ grid-column: 2; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Shared header injected -->
+<div id="site-header"></div>
+
+<main>
+  <section class="fm-hero">
+    <div class="fm-grid">
+      <!-- LEFT -->
+      <div class="fm-copy">
+        <div class="fm-eyebrow">4 mässor under ett tak</div>
+        <h1 class="fm-title">
+          En biljett.
+          <span class="l2">Fyra världar.</span>
+        </h1>
+        <p class="fm-lead">
+          Energi, smart city, mobilitet och infrastruktur möts parallellt i Kistamässan.
+          Du rör dig fritt mellan dem — samma dagar, samma hus, samma biljett.
+        </p>
+
+        <div class="fm-callout">
+          <div class="fm-callout-ico">✦</div>
+          <p><b>Därför ska du vara här:</b> en resa ger dig fyra perspektiv på samma samhällsomställning — från elektroner till asfalt.</p>
+        </div>
+
+        <div class="fm-cta-row">
+          <a href="/site/checkout.html" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3v6a3 3 0 01-3 3H5a3 3 0 01-3-3V9z"/><path d="M2 12h20"/></svg>
+            Hämta biljett
+          </a>
+          <a href="/site/program.html" class="btn btn-secondary">Se programmet →</a>
+        </div>
+
+        <div class="fm-meta">
+          <span class="fm-meta-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+            19–20 maj 2027
+          </span>
+          <span class="fm-meta-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-7.5 8-13a8 8 0 10-16 0c0 5.5 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg>
+            Kistamässan, Stockholm
+          </span>
+          <span class="fm-meta-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            3 200+ besökare
+          </span>
+        </div>
+      </div>
+
+      <!-- RIGHT — TILES -->
+      <div>
+        <div class="fm-tiles">
+          <a href="/site/index.html" class="fm-tile t-energi">
+            <div class="fm-tile-bg"></div>
+            <div class="fm-tile-inner">
+              <div class="fm-tile-top">
+                <span class="fm-tile-dot"></span>
+                <img class="fm-tile-logo" src="/site/assets/logos/energimassan-2026.webp" alt="Energimässan 2027" />
+                <h3>Energimässan</h3>
+                <p>Framtidens energi för en hållbar omställning.</p>
+              </div>
+              <div class="fm-tile-bottom">
+                <span class="fm-tile-num">01</span>
+                <span class="fm-tile-link">Utforska</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="fm-tile t-smart">
+            <div class="fm-tile-bg"></div>
+            <div class="fm-tile-inner">
+              <div class="fm-tile-top">
+                <span class="fm-tile-dot"></span>
+                <img class="fm-tile-logo" src="/site/assets/logos/stockholm-smart-city-2026.webp" alt="Stockholm Smart City" />
+                <h3>Stockholm Smart City</h3>
+                <p>Smarta lösningar för levande och hållbara städer.</p>
+              </div>
+              <div class="fm-tile-bottom">
+                <span class="fm-tile-num">02</span>
+                <span class="fm-tile-link">Utforska</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="fm-tile t-mobility">
+            <div class="fm-tile-bg"></div>
+            <div class="fm-tile-inner">
+              <div class="fm-tile-top">
+                <span class="fm-tile-dot"></span>
+                <img class="fm-tile-logo" src="/site/assets/logos/nmce-2026.webp" alt="Nordic Mobility &amp; Charging Expo" />
+                <h3>Nordic Mobility Expo</h3>
+                <p>Mobilitet som är ren, smart och tillgänglig för alla.</p>
+              </div>
+              <div class="fm-tile-bottom">
+                <span class="fm-tile-num">03</span>
+                <span class="fm-tile-link">Utforska</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="fm-tile t-infra">
+            <div class="fm-tile-bg"></div>
+            <div class="fm-tile-inner">
+              <div class="fm-tile-top">
+                <span class="fm-tile-dot"></span>
+                <img class="fm-tile-logo" src="/site/assets/logos/infrastruktur-2026.webp" alt="Infrastruktur 2027" />
+                <h3>Infrastruktur</h3>
+                <p>Grundläggande system för ett robust samhälle.</p>
+              </div>
+              <div class="fm-tile-bottom">
+                <span class="fm-tile-num">04</span>
+                <span class="fm-tile-link">Utforska</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="fm-connector" aria-hidden="true">
+          <svg viewBox="0 0 1000 36" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="fmline" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%"   stop-color="#30D158"/>
+                <stop offset="33%"  stop-color="#0A84FF"/>
+                <stop offset="66%"  stop-color="#BF5AF2"/>
+                <stop offset="100%" stop-color="#FF9F0A"/>
+              </linearGradient>
+            </defs>
+            <path d="M30,18 C 200,2 320,34 500,18 C 680,2 800,34 970,18"
+              fill="none" stroke="url(#fmline)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="125"  cy="14" r="5" fill="#30D158"/>
+            <circle cx="395"  cy="22" r="5" fill="#0A84FF"/>
+            <circle cx="625"  cy="14" r="5" fill="#BF5AF2"/>
+            <circle cx="895"  cy="22" r="5" fill="#FF9F0A"/>
+          </svg>
+        </div>
+
+        <div class="fm-labels">
+          <span>Energi</span><span>Smart City</span><span>Mobilitet</span><span>Infrastruktur</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL ROWS -->
+  <section class="fm-detail">
+    <div class="fm-detail-inner">
+      <h2>Fyra mässor — en gemensam vecka i Kista.</h2>
+      <p class="lead">
+        Allt äger rum samtidigt på Kistamässan 19–20 maj 2027. En biljett ger dig tillgång till
+        alla fyra utställningsytor, deras programscener och gemensamma mingelytor.
+      </p>
+
+      <div class="fm-rows">
+        <a class="fm-row" href="/site/index.html" style="--c:#30D158">
+          <span class="fm-row-dot"></span>
+          <img class="fm-row-logo" src="/site/assets/logos/energimassan-2026.webp" alt="Energimässan" />
+          <div class="fm-row-text">
+            <strong>Energimässan 2027</strong>
+            <span>Producenter, nät, lagring och energieffektivisering — hela energisystemet på ett ställe.</span>
+          </div>
+          <span class="fm-row-arrow">Till mässan →</span>
+        </a>
+
+        <a class="fm-row" href="#" style="--c:#0A84FF">
+          <span class="fm-row-dot"></span>
+          <img class="fm-row-logo" src="/site/assets/logos/stockholm-smart-city-2026.webp" alt="Stockholm Smart City" />
+          <div class="fm-row-text">
+            <strong>Stockholm Smart City 2027</strong>
+            <span>Digital infrastruktur, sensorer, data och tjänster som bygger morgondagens städer.</span>
+          </div>
+          <span class="fm-row-arrow">Till mässan →</span>
+        </a>
+
+        <a class="fm-row" href="#" style="--c:#BF5AF2">
+          <span class="fm-row-dot"></span>
+          <img class="fm-row-logo" src="/site/assets/logos/nmce-2026.webp" alt="Nordic Mobility Expo" />
+          <div class="fm-row-text">
+            <strong>Nordic Mobility &amp; Charging Expo</strong>
+            <span>Elfordon, laddinfrastruktur, kollektivtrafik och nya transportlösningar.</span>
+          </div>
+          <span class="fm-row-arrow">Till mässan →</span>
+        </a>
+
+        <a class="fm-row" href="#" style="--c:#FF9F0A">
+          <span class="fm-row-dot"></span>
+          <img class="fm-row-logo" src="/site/assets/logos/infrastruktur-2026.webp" alt="Infrastruktur 2027" />
+          <div class="fm-row-text">
+            <strong>Infrastruktur 2027</strong>
+            <span>Vägar, järnväg, vatten, fiber — den fysiska basen som allt annat vilar på.</span>
+          </div>
+          <span class="fm-row-arrow">Till mässan →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="/site/shared.js"></script>
+</body>
+</html>
