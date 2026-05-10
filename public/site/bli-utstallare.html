@@ -3,203 +3,384 @@
 <head>
 <meta charset="utf-8" />
 <title>Bli utställare · Energimässan 2027</title>
-<meta name="description" content="Bli utställare på Energimässan 2027 — guld-, silver- och bronspaket plus tematiska aktiveringar. Möt 14 000 besökare på Kistamässan." />
-<link rel="canonical" href="/site/bli-utstallare.html" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="robots" content="noindex,nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="shared.css" />
 <script src="/site/shared.js" defer></script>
 <style>
-  .page-hero{ padding: 160px 32px 60px; text-align:center; position:relative; overflow:hidden; }
-  .page-hero::before{ content:""; position:absolute; inset:0; z-index:0;
-    background: radial-gradient(700px 400px at 50% 0%, rgba(255,159,10,0.18), transparent 60%); }
-  .page-hero > *{ position: relative; z-index: 1; }
-  .page-h1{
-    font-size: clamp(56px, 8vw, 112px);
-    font-weight: 700; letter-spacing: -.05em; line-height: .95;
+  /* ===== Demo-banner ===== */
+  .demo-banner{
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: linear-gradient(90deg, #30D158, #0A84FF);
+    color: #04140a; font-weight: 600; font-size: 12.5px; letter-spacing:.04em;
+    padding: 8px 20px; text-align:center;
+  }
+  .demo-banner a{ color: #04140a; text-decoration: underline; margin-left: 12px; font-weight:700; }
+  body{ padding-top: 34px; padding-bottom: 90px; }
+  header.nav{ top: 34px; }
+
+  /* ===== Hero ===== */
+  .ph-wrap{ position: relative; max-width: 1320px; margin: 140px auto 0; padding: 0 32px; }
+  .ph-grid{
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px;
+    align-items: center;
+    padding: 56px 56px;
+    border-radius: 28px;
+    background:
+      linear-gradient(135deg, rgba(6,40,21,0.6), rgba(8,18,35,0.55)),
+      radial-gradient(900px 500px at 80% 20%, rgba(48,209,88,0.20), transparent 60%);
+    border: 1px solid var(--stroke);
+    overflow: hidden;
+    position: relative;
+  }
+  .ph-grid::before{
+    content:""; position: absolute; inset:0; z-index:0; opacity:.4;
+    background: radial-gradient(600px 300px at 100% 100%, rgba(10,132,255,0.18), transparent 60%);
+  }
+  .ph-grid > *{ position: relative; z-index: 1; }
+  .ph-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
+    color: #30D158; font-weight:700;
+  }
+  .ph-eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background: #30D158; box-shadow: 0 0 12px rgba(48,209,88,.6); }
+  .ph-h1{
+    margin-top: 18px;
+    font-size: clamp(40px, 5.4vw, 76px);
+    font-weight: 700; letter-spacing:-.045em; line-height: 1.0;
     background: linear-gradient(180deg, #FFFFFF, #BABABF);
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
   }
-  .page-h1 .grad{
-    background: linear-gradient(135deg, #FF9F0A, #FF375F);
+  .ph-h1 .grad{
+    background: linear-gradient(135deg, #30D158, #0A84FF);
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
   }
-  .page-sub{ margin: 28px auto 0; max-width: 620px; font-size: 18px; color: var(--text-2); line-height: 1.5; }
-
-  .why-grid{
-    max-width: 1280px; margin: 80px auto 0;
-    padding: 0 32px;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  .ph-sub{ margin-top: 22px; font-size: 17px; color: var(--text-2); line-height:1.55; max-width: 520px; }
+  .ph-cta{ margin-top: 32px; display:flex; gap: 12px; flex-wrap: wrap; }
+  .ph-cta .btn-p{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 14px 24px; border-radius: 100px;
+    background: #30D158; color: #062815;
+    font-weight: 700; font-size: 14px; text-decoration:none;
+    border: none;
   }
-  .why{
-    padding: 32px;
-    background: var(--surface);
-    border: 1px solid var(--stroke);
+  .ph-cta .btn-s{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 14px 24px; border-radius: 100px;
+    background: rgba(255,255,255,0.04); color: var(--text);
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 600; font-size: 14px; text-decoration:none;
+  }
+
+  .ph-stats{
+    background: rgba(8, 14, 28, 0.72);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.10);
     border-radius: 22px;
+    padding: 28px 24px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 18px 8px;
   }
-  .why-num{
-    font-size: 48px; font-weight: 700; letter-spacing: -.04em; line-height: 1;
-    background: linear-gradient(135deg, #FF9F0A, #FF375F);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .why-h{ margin-top: 16px; font-size: 17px; font-weight: 600; letter-spacing: -.018em; }
-  .why-d{ margin-top: 8px; font-size: 13.5px; color: var(--text-3); line-height: 1.5; }
+  .ph-stat{ text-align:center; padding: 4px 6px; }
+  .ph-stat-ic{ width: 32px; height:32px; margin: 0 auto 10px; display:grid; place-items:center; color: rgba(255,255,255,.85); }
+  .ph-stat-ic svg{ width: 26px; height: 26px; }
+  .ph-stat-num{ font-size: 28px; font-weight: 700; letter-spacing:-.025em; line-height:1; color: #fff; font-feature-settings:"tnum"; }
+  .ph-stat-lbl{ margin-top: 6px; font-size: 11.5px; color: rgba(255,255,255,.65); line-height: 1.3; }
 
-  .pricing{
-    max-width: 1280px; margin: 100px auto 0;
-    padding: 0 32px;
+  /* ===== Värdekort ===== */
+  .why-section{ max-width: 1320px; margin: 80px auto 80px; padding: 0 32px; }
+  .why-head{ display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+  .why-title{ font-size: 28px; font-weight:700; letter-spacing:-.025em; }
+  .why-intro{ font-size: 14.5px; color: var(--text-2); line-height:1.6; margin-top: 14px; }
+  .why-checks{ margin-top: 18px; display:flex; flex-direction:column; gap: 8px; padding:0; }
+  .why-checks li{ list-style:none; font-size: 13.5px; color: var(--text-2); display:flex; gap:10px; align-items:center; }
+  .why-checks li::before{ content:""; width:16px; height:16px; border-radius: 50%;
+    background: rgba(48,209,88,.15);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2330D158' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: 11px; background-repeat: no-repeat; background-position: center;
+    flex-shrink:0;
   }
-  .pricing-h{
-    font-size: clamp(40px, 5vw, 64px);
-    font-weight: 700; letter-spacing: -.04em; line-height: 1;
-    text-align: center;
+  .why-cards{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .wcard{ padding: 24px; background: var(--surface); border: 1px solid var(--stroke); border-radius: 18px; transition: transform .2s, border-color .2s; }
+  .wcard:hover{ transform: translateY(-3px); border-color: rgba(48,209,88,.35); }
+  .wcard-ic{ width: 44px; height: 44px; border-radius: 12px; background: rgba(48,209,88,0.10); display:grid; place-items:center; color: #30D158; margin-bottom: 16px; }
+  .wcard-ic svg{ width: 22px; height: 22px; }
+  .wcard-h{ font-size: 16px; font-weight:700; letter-spacing:-.018em; }
+  .wcard-d{ margin-top: 8px; font-size: 13px; color: var(--text-3); line-height:1.5; }
+
+  /* ===== Monterstorlekar ===== */
+  .lv-section{ max-width: 1320px; margin: 20px auto 80px; padding: 0 32px; }
+  .lv-head{ display:flex; align-items:end; justify-content:space-between; gap: 24px; margin-bottom: 28px; flex-wrap: wrap; }
+  .lv-title{ font-size: 28px; font-weight:700; letter-spacing:-.025em; }
+  .lv-sub{ font-size: 13.5px; color: var(--text-3); margin-top: 6px; }
+  .lv-compare{ font-size: 13px; color: var(--text-2); text-decoration: none; padding: 10px 18px;
+    border-radius: 100px; border:1px solid var(--stroke-2); background: rgba(255,255,255,0.03); }
+  .lv-compare:hover{ background: rgba(255,255,255,0.06); }
+
+  .lv-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .lv{
+    position: relative; padding: 22px 20px 20px;
+    border-radius: 18px; background: var(--surface);
+    border: 1px solid var(--stroke); text-decoration: none; color: inherit;
+    transition: transform .18s, border-color .18s, background .18s;
+    display:flex; flex-direction:column; gap: 12px; min-height: 200px;
   }
-  .pricing-grid{
-    margin-top: 50px;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  .lv:hover{ transform: translateY(-3px); border-color: var(--lv-c, rgba(255,255,255,.25)); background: rgba(255,255,255,0.04); }
+  .lv-top{ display:flex; align-items:center; justify-content:space-between; gap: 12px; }
+  .lv-size{ font-size: 32px; font-weight:700; letter-spacing:-.03em; color: var(--lv-c); line-height:1; }
+  .lv-size sub{ font-size: 13px; color: var(--text-3); font-weight:600; vertical-align: baseline; margin-left: 4px; letter-spacing: 0; }
+  .lv-pricepill{
+    font-size: 12px; font-weight:700; padding: 6px 12px; border-radius: 100px;
+    background: color-mix(in srgb, var(--lv-c) 14%, transparent); color: var(--lv-c);
+    white-space: nowrap; font-feature-settings:"tnum";
   }
-  .pkg{
-    padding: 36px 28px;
-    border-radius: 24px;
-    border: 1px solid var(--stroke);
-    background: rgba(20,20,22,0.55);
-    display: flex; flex-direction: column;
+  .lv-d{ font-size: 13.5px; color: var(--text-2); line-height:1.5; flex: 1; }
+  .lv-incl{ display:flex; flex-wrap:wrap; gap: 6px; margin-top: 4px; }
+  .lv-incl span{
+    font-size: 11px; color: var(--text-3);
+    padding: 3px 8px; border-radius: 6px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
   }
-  .pkg.featured{
-    background: linear-gradient(180deg, rgba(255,159,10,0.16), rgba(255,159,10,0.04));
-    border-color: rgba(255,159,10,0.4);
-    transform: scale(1.02);
+  .lv-bot{ display:flex; align-items:center; justify-content:space-between; gap: 10px; margin-top: 4px; }
+  .lv-badge{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size: 11px; font-weight:600; padding: 5px 10px; border-radius: 100px;
+    background: color-mix(in srgb, var(--lv-c) 14%, transparent); color: var(--lv-c);
   }
-  .pkg-tag{
-    display: inline-flex; align-items: center;
-    padding: 5px 12px; border-radius: 100px;
-    background: rgba(255,255,255,0.06);
-    font-size: 11px; letter-spacing: .06em; color: var(--text-2);
-    font-weight: 500; align-self: flex-start;
+  .lv-arrow{ color: var(--text-3); font-size: 16px; transition: transform .18s, color .18s; }
+  .lv:hover .lv-arrow{ color: var(--lv-c); transform: translateX(2px); }
+
+  .lv.s-9{ --lv-c: #BABABF; }
+  .lv.s-12{ --lv-c: #30D158; }
+  .lv.s-16{ --lv-c: #FFD60A; }
+  .lv.s-18{ --lv-c: #FF9F0A; }
+  .lv.s-24{ --lv-c: #BF5AF2; }
+
+  .lv-custom{
+    margin-top: 14px; padding: 28px 32px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(6,40,21,0.7), rgba(8,18,35,0.55));
+    border: 1px solid rgba(255,255,255,0.10);
+    display:grid; grid-template-columns: 1fr auto; gap: 24px; align-items:center;
+    position: relative; overflow: hidden;
   }
-  .pkg.featured .pkg-tag{ background: rgba(255,159,10,0.18); color: var(--orange); }
-  .pkg-name{ margin-top: 18px; font-size: 28px; font-weight: 700; letter-spacing: -.025em; }
-  .pkg-size{ margin-top: 6px; font-size: 14px; color: var(--text-3); }
-  .pkg-price{ margin-top: 22px; }
-  .pkg-price b{ font-size: 36px; font-weight: 600; letter-spacing: -.025em; }
-  .pkg-price-sub{ margin-top: 4px; font-size: 12px; color: var(--text-3); }
-  .pkg-list{ margin-top: 22px; display:flex; flex-direction:column; gap: 10px; flex: 1; }
-  .pkg-list li{
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 13px; color: var(--text-2); line-height: 1.5; list-style: none;
+  .lv-custom::before{
+    content:""; position:absolute; right:-40px; top:-40px; width:240px; height:240px;
+    background: radial-gradient(closest-side, rgba(48,209,88,.25), transparent 70%);
+    pointer-events:none;
   }
-  .pkg-list svg{ width: 13px; height: 13px; margin-top: 3px; color: var(--orange); flex-shrink: 0; }
-  .pkg-cta{
-    margin-top: 28px; padding: 12px 22px;
-    text-align: center; border-radius: 100px;
-    text-decoration: none; font-size: 13px; font-weight: 600;
-  }
-  .pkg-cta.primary{ background: var(--text); color: var(--bg); }
-  .pkg-cta.secondary{
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--stroke-2); color: var(--text);
+  .lv-custom h3{ font-size: 20px; font-weight:700; letter-spacing:-.022em; }
+  .lv-custom p{ margin-top: 6px; font-size: 14px; color: var(--text-2); max-width: 640px; }
+  .lv-custom a{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 22px; border-radius: 100px;
+    background: #fff; color: #111; text-decoration:none;
+    font-weight: 700; font-size: 13.5px; white-space:nowrap;
   }
 
-  .cta-band{
-    max-width: 1280px; margin: 100px auto 100px;
-    padding: 0 32px;
-  }
-  .cta-band-inner{
-    padding: 60px 48px;
-    border-radius: 32px;
-    background: linear-gradient(135deg, rgba(255,159,10,0.2), rgba(255,55,95,0.12));
-    border: 1px solid rgba(255,159,10,0.3);
-    text-align: center;
-  }
-  .cta-band h2{
-    font-size: clamp(36px, 4.4vw, 56px);
-    font-weight: 700; letter-spacing: -.035em; line-height: 1.05;
-  }
-  .cta-band p{ margin: 18px auto 0; font-size: 17px; color: var(--text-2); max-width: 520px; line-height: 1.5; }
-  .cta-band .btn{ margin-top: 32px; }
-
-  /* ============ EXPONERING & BESÖKARRESA ============ */
-  .expo{ max-width: 1280px; margin: 120px auto 0; padding: 0 32px; }
-  .expo-eyebrow{
-    text-align:center; font-size: 11px; letter-spacing: .18em; text-transform:uppercase;
-    color: var(--text-3); font-weight: 600;
-  }
-  .expo-h{
-    margin-top: 14px;
-    font-size: clamp(40px, 5vw, 64px);
-    font-weight: 700; letter-spacing: -.04em; line-height: 1; text-align:center;
-  }
-  .expo-sub{ text-align:center; margin: 20px auto 0; max-width: 640px; font-size: 16px; color: var(--text-2); line-height: 1.55; }
-  .expo-grid{
-    margin-top: 56px;
-    display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-  }
-  .expo-card{
-    position: relative;
-    padding: 24px 22px 22px;
+  /* ===== Ingår alltid (kompakt rad) ===== */
+  .always-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .always{
+    padding: 22px 28px;
     border-radius: 18px;
-    background: rgba(20,20,22,0.55);
+    background: rgba(48,209,88,.04);
+    border: 1px dashed rgba(48,209,88,.25);
+  }
+  .always-h{
+    font-size: 11px; letter-spacing:.16em; text-transform:uppercase;
+    color: #30D158; font-weight:700; margin-bottom: 14px;
+    display:block;
+  }
+  .always-row{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px 18px;
+  }
+  .always-row span{ font-size: 13.5px; color: var(--text-2); display:inline-flex; align-items:center; gap:6px; }
+  .always-row span::before{ content:"✓"; color: #30D158; font-weight:700; flex-shrink:0; }
+  @media (max-width: 1180px){ .always-row{ grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 720px){ .always-row{ grid-template-columns: repeat(2, 1fr); } }
+
+  /* ===== Bli partner cross-link ===== */
+  .bp-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .bp-card{
+    position: relative; overflow: hidden;
+    padding: 36px 40px; border-radius: 22px;
+    background:
+      radial-gradient(120% 140% at 100% 0%, rgba(10,132,255,.18), transparent 55%),
+      radial-gradient(120% 140% at 0% 100%, rgba(191,90,242,.14), transparent 55%),
+      var(--surface);
     border: 1px solid var(--stroke);
-    min-height: 150px;
-    transition: border-color .3s ease, transform .3s ease;
+    display:flex; align-items:center; justify-content:space-between; gap: 28px; flex-wrap: wrap;
   }
-  .expo-card:hover{ border-color: rgba(255,159,10,0.35); transform: translateY(-2px); }
-  .expo-num{
-    position:absolute; top: 18px; right: 20px;
-    font-size: 13px; font-weight: 600; color: var(--orange);
-    font-feature-settings: "tnum";
+  .bp-eyebrow{
+    font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
+    color: #0A84FF; font-weight:700; margin-bottom: 8px;
   }
-  .expo-card h4{ font-size: 15px; font-weight: 600; letter-spacing: -.012em; padding-right: 32px; }
-  .expo-card p{ margin-top: 8px; font-size: 12.5px; color: var(--text-3); line-height: 1.5; }
+  .bp-title{ font-size: 26px; font-weight: 800; letter-spacing:-.02em; line-height:1.15; margin:0 0 6px; }
+  .bp-sub{ font-size: 14.5px; color: var(--text-2); max-width: 620px; line-height:1.5; margin:0; }
+  .bp-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    padding: 14px 22px; border-radius: 999px;
+    background: linear-gradient(135deg, #0A84FF, #BF5AF2);
+    color:#fff; text-decoration:none; font-weight:700; font-size: 14.5px;
+    box-shadow: 0 8px 24px -8px rgba(10,132,255,.55);
+    transition: transform .15s;
+  }
+  .bp-cta:hover{ transform: translateY(-2px); }
+  @media (max-width: 720px){ .bp-card{ padding: 28px; } .bp-title{ font-size: 22px; } }
 
-  /* ============ SÄLJKONTAKT ============ */
-  .sales{ max-width: 1280px; margin: 120px auto 0; padding: 0 32px; }
-  .sales-grid{
-    margin-top: 50px;
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  /* ===== Tillval ===== */
+  .add-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .add-block{ margin-bottom: 22px; }
+  .add-h{
+    font-size: 12px; letter-spacing:.16em; text-transform:uppercase;
+    color: var(--text-3); font-weight:700; margin-bottom: 12px;
+    display:flex; align-items:center; justify-content:space-between;
   }
-  .sales-card{
-    padding: 32px 28px;
-    border-radius: 22px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-    border: 1px solid var(--stroke-2);
-    display: flex; flex-direction: column; align-items: center; text-align: center;
+  .add-h a{ font-size: 12px; color: var(--text-2); text-decoration:none; letter-spacing:0; text-transform:none; font-weight:500; }
+  .add-h a:hover{ color: var(--orange); }
+  .add-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .add{
+    padding: 16px 14px; border-radius: 14px;
+    background: var(--surface); border: 1px solid var(--stroke);
+    text-decoration:none; color: inherit;
+    transition: transform .15s, border-color .15s;
+    display:flex; flex-direction:column; gap: 6px;
   }
-  .sales-photo{
-    width: 96px; height: 96px; border-radius: 50%;
-    background-size: cover; background-position: center 25%;
-    background-color: #1a1a1d;
-    border: 1px solid var(--stroke-2);
-  }
-  .sales-name{ margin-top: 18px; font-size: 19px; font-weight: 600; letter-spacing: -.015em; }
-  .sales-role{ margin-top: 4px; font-size: 13px; color: var(--text-3); }
-  .sales-area{ margin-top: 10px; font-size: 12px; padding: 4px 10px; border-radius: 100px; background: rgba(255,159,10,0.12); color: var(--orange); }
-  .sales-contact{ margin-top: 18px; display:flex; flex-direction: column; gap: 6px; font-size: 13px; }
-  .sales-contact a{ color: var(--text-2); text-decoration: none; }
-  .sales-contact a:hover{ color: var(--text); }
+  .add:hover{ transform: translateY(-2px); border-color: rgba(255,159,10,.35); }
+  .add-name{ font-size: 13.5px; font-weight:700; letter-spacing:-.012em; }
+  .add-price{ font-size: 12px; color: var(--text-3); font-feature-settings:"tnum"; }
+  @media (max-width:760px){ .add-grid{ grid-template-columns: repeat(2, 1fr); } }
 
-  @media (max-width: 1000px){
-    .expo-grid{ grid-template-columns: repeat(2, 1fr); }
-    .sales-grid{ grid-template-columns: 1fr; }
+  /* Info-ikon (i) på tillval */
+  .add{ position: relative; }
+  .add-info{
+    position:absolute; top:10px; right:10px;
+    width:18px; height:18px; border-radius:50%;
+    border:1.5px solid rgba(255,255,255,.35);
+    display:grid; place-items:center;
+    font-size:11px; font-weight:700; font-style: italic;
+    color: var(--text-2); font-family: Georgia, serif;
+    line-height:1; letter-spacing:0;
+    transition: border-color .15s, color .15s;
   }
-  @media (max-width: 900px){
-    .why-grid{ grid-template-columns: 1fr 1fr; }
-    .pricing-grid{ grid-template-columns: 1fr 1fr; }
-    .pkg.featured{ transform: none; }
+  .add:hover .add-info{ border-color: var(--orange); color: var(--orange); }
+
+  /* ===== Obligatoriskt (under monterstorlekar) ===== */
+  .req-section{ max-width: 1320px; margin: -40px auto 60px; padding: 0 32px; }
+  .req-head{
+    font-size: 12px; letter-spacing:.16em; text-transform:uppercase;
+    color: var(--text-3); font-weight:700; margin-bottom: 12px;
+    display:flex; align-items:center; gap:10px;
   }
-  @media (max-width: 500px){
-    .why-grid, .pricing-grid{ grid-template-columns: 1fr; }
+  .req-head .req-dot{ width:8px; height:8px; border-radius:50%; background: #FF453A; box-shadow: 0 0 0 4px rgba(255,69,58,.15); }
+  .req-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .req{
+    padding: 22px 22px 20px; border-radius: 18px;
+    background: var(--surface); border: 1px solid var(--stroke);
+    position: relative; overflow:hidden;
+  }
+  .req::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+    background: var(--req-c, #FF9F0A);
+  }
+  .req-top{ display:flex; align-items:flex-start; gap:14px; margin-bottom: 10px; }
+  .req-num{
+    width:28px; height:28px; border-radius:50%;
+    display:grid; place-items:center; flex-shrink:0;
+    font-size:13px; font-weight:700; color:#fff;
+    background: var(--req-c, #FF9F0A);
+  }
+  .req-name{ font-size: 16px; font-weight:700; letter-spacing:-.012em; line-height:1.25; }
+  .req-price{
+    font-size: 22px; font-weight: 800; letter-spacing:-.02em;
+    margin: 6px 0 10px;
+    background: linear-gradient(90deg, #FF9F0A, #FF375F);
+    -webkit-background-clip:text; background-clip:text; color: transparent;
+    font-feature-settings:"tnum";
+  }
+  .req-d{ font-size: 13.5px; color: var(--text-2); line-height:1.5; }
+  .req-list{ list-style:none; padding:0; margin: 8px 0 0;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; }
+  .req-list li{ font-size: 12.5px; color: var(--text-2); position:relative; padding-left: 12px; }
+  .req-list li::before{ content:""; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background: var(--req-c, #BF5AF2); }
+  .req-tag{
+    position:absolute; top:18px; right:18px;
+    font-size: 10.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+    padding: 4px 8px; border-radius: 6px;
+    background: rgba(255,69,58,.12); color: #FF6961;
+  }
+  .req-tag.opt{ background: rgba(48,209,88,.12); color:#30D158; }
+  .req-tag.up{ background: rgba(191,90,242,.12); color:#BF5AF2; }
+  @media (max-width: 980px){ .req-grid{ grid-template-columns: 1fr; } }
+
+  /* ===== Citat ===== */
+  .qt-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .qt-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .qt{ padding: 32px; border-radius: 20px; background: var(--surface); border: 1px solid var(--stroke); position: relative; }
+  .qt-mark{ position:absolute; top: 18px; right: 22px; font-size: 56px; line-height:.6; color: rgba(48,209,88,.20); font-family: Georgia, serif; font-weight: 700; }
+  .qt-text{ font-size: 16.5px; color: var(--text); line-height: 1.55; font-weight: 500; letter-spacing:-.005em; }
+  .qt-by{ margin-top: 22px; display:flex; align-items:center; gap: 14px; }
+  .qt-av{ width: 44px; height: 44px; border-radius: 50%; display:grid; place-items:center;
+    font-weight:700; font-size: 15px; color: #fff;
+    background: linear-gradient(135deg, var(--av-c1, #30D158), var(--av-c2, #0A84FF)); flex-shrink:0; }
+  .qt-name{ font-size: 14px; font-weight: 700; }
+  .qt-role{ font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
+
+  /* ===== Logorad ===== */
+  .lr-section{ max-width: 1320px; margin: 0 auto 100px; padding: 0 32px; }
+  .lr-card{ padding: 28px 32px; border-radius: 20px; background: var(--surface); border: 1px solid var(--stroke); }
+  .lr-eyebrow{ font-size: 11px; letter-spacing:.18em; text-transform:uppercase; color: var(--text-3); font-weight:700; margin-bottom: 18px; }
+  .lr-row{ display:grid; grid-template-columns: repeat(6, 1fr); gap: 10px; align-items: center; }
+  .lr-tile{ aspect-ratio: 5/2; display:grid; place-items:center;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; font-weight: 700; letter-spacing:-.01em; font-size: 14px;
+    color: rgba(255,255,255,.78); text-align:center; padding: 4px; }
+  .lr-foot{ margin-top: 18px; display:flex; align-items:center; justify-content:space-between; font-size: 13px; }
+  .lr-foot a{ color: var(--text-2); text-decoration:none; }
+  .lr-foot a:hover{ color: #30D158; }
+
+  /* ===== Sticky bottom CTA ===== */
+  .sticky-cta{
+    position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+    z-index: 90; display:flex; align-items:center; gap: 18px;
+    padding: 14px 18px 14px 22px; border-radius: 100px;
+    background: rgba(8,12,22,0.88);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 18px 50px -10px rgba(0,0,0,0.6);
+    opacity: 0; pointer-events: none; transition: opacity .25s;
+  }
+  .sticky-cta.show{ opacity: 1; pointer-events: auto; }
+  .sticky-ic{ width: 32px; height: 32px; border-radius: 50%; background: rgba(48,209,88,.18); color: #30D158; display:grid; place-items:center; flex-shrink:0; }
+  .sticky-ic svg{ width:18px; height:18px; }
+  .sticky-txt{ font-size: 13.5px; color: var(--text); font-weight:600; }
+  .sticky-txt small{ display:block; font-size: 11px; color: var(--text-3); font-weight: 500; margin-top: 1px; }
+  .sticky-actions{ display:flex; gap: 8px; }
+  .sticky-actions a{ padding: 10px 18px; border-radius: 100px; font-weight:700; font-size: 13px; text-decoration:none; white-space: nowrap; }
+  .sticky-actions .s-p{ background: #30D158; color: #062815; }
+  .sticky-actions .s-s{ background: rgba(255,255,255,0.08); color: var(--text); border:1px solid rgba(255,255,255,.12); }
+
+  @media (max-width: 980px){
+    .ph-grid{ grid-template-columns: 1fr; padding: 36px 28px; }
+    .why-head{ grid-template-columns: 1fr; }
+    .why-cards{ grid-template-columns: repeat(2, 1fr); }
+    .lv-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lv-custom{ grid-template-columns: 1fr; }
+    .qt-grid{ grid-template-columns: 1fr; }
+    .lr-row{ grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px){
+    .lv-grid{ grid-template-columns: 1fr; }
+    .why-cards{ grid-template-columns: 1fr; }
+    .sticky-cta{ left: 12px; right: 12px; transform: none; flex-wrap: wrap; justify-content: center; padding: 12px; }
+    .sticky-txt{ display:none; }
   }
 </style>
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  </defs>
-</svg>
 
 <header class="nav">
   <div class="nav-inner">
@@ -213,246 +394,202 @@
       <a href="talare.html">Talare</a>
       <a href="utstallning.html">Utställning</a>
       <a href="kvallsmingel.html">Kvällsmingel</a>
-      <a href="bli-utstallare.html" class="active">Bli utställare</a>
-      <a href="index.html#biljetter">Biljetter</a><a href="resa-boende.html">Boende &amp; Info</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="bli-partner.html">Bli partner</a>
+      <a href="index.html#biljetter">Biljetter</a>
+      <a href="resa-boende.html">Boende &amp; Info</a>
     </nav>
-    <a href="bli-utstallare.html" class="nav-cta">Boka monter</a>
+    <a href="#paket" class="nav-cta">Boka monter</a>
   </div>
 </header>
 
-<section class="page-hero">
-  <h1 class="page-h1">Sveriges<br/>energi möts <span class="grad">här.</span></h1>
-  <p class="page-sub">3 200+ besökare. 200+ talare. 50% återbokar inom en vecka. Det här är platsen där affärerna görs.</p>
+<!-- ===== HERO + stats ===== -->
+<section class="ph-wrap">
+  <div class="ph-grid">
+    <div>
+      <span class="ph-eyebrow">Utställare 2027</span>
+      <h1 class="ph-h1">Möt energi&shy;sektorn i <span class="grad">din egen monter.</span></h1>
+      <p class="ph-sub">Boka monter på Sveriges största energimässa. Generera kvalificerade leads, visa produkten live och möt 8 500+ beslutsfattare på två intensiva dagar.</p>
+      <div class="ph-cta">
+        <a href="#paket" class="btn-p">Boka monter →</a>
+        <a href="mailto:michael@energimassan.se" class="btn-s">📅 Boka säljmöte</a>
+      </div>
+    </div>
+
+    <aside class="ph-stats" aria-label="Räckvidd för utställare">
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.2"/><path d="M4 20c.8-4 4-6 8-6s7.2 2 8 6"/></svg></div>
+        <div class="ph-stat-num" style="font-size:22px;">8 500+</div>
+        <div class="ph-stat-lbl">beslutsfattare</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M3 11h18M8 7V4h8v3"/></svg></div>
+        <div class="ph-stat-num">250+</div>
+        <div class="ph-stat-lbl">utställare 2026</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21V8l9-5 9 5v13M9 21v-7h6v7"/></svg></div>
+        <div class="ph-stat-num">4</div>
+        <div class="ph-stat-lbl">parallella hallar</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12l5 5 11-12"/></svg></div>
+        <div class="ph-stat-num">87%</div>
+        <div class="ph-stat-lbl">återbokar 2028</div>
+      </div>
+    </aside>
+  </div>
 </section>
 
-<div class="why-grid">
-  <div class="why">
-    <div class="why-num">3 200<span style="font-size:0.5em">+</span></div>
-    <div class="why-h">Kvalificerade besökare</div>
-    <div class="why-d">Beslutsfattare och inköpare från hela energikedjan.</div>
-  </div>
-  <div class="why">
-    <div class="why-num">50<span style="font-size:0.5em">%</span></div>
-    <div class="why-h">Återbokar direkt</div>
-    <div class="why-d">Hälften av utställarna bokar nästa år innan mässan ens stängt.</div>
-  </div>
-  <div class="why">
-    <div class="why-num">4</div>
-    <div class="why-h">Mässor i en</div>
-    <div class="why-d">Energi, smart city, mobilitet, infrastruktur — exponering till alla.</div>
-  </div>
-  <div class="why">
-    <div class="why-num">AI</div>
-    <div class="why-h">Smart matchmaking</div>
-    <div class="why-d">Vi parar ihop dig med rätt besökare innan mässan börjar.</div>
-  </div>
-</div>
+<!-- ===== Varför ställa ut? ===== -->
+<section class="why-section">
+  <div class="why-head">
+    <div>
+      <h2 class="why-title">Varför ställa ut?</h2>
+      <p class="why-intro">Energimässan är där affärerna görs — inte bara där produkter visas.</p>
+      <ul class="why-checks">
+        <li>Kvalificerade leads från hela energikedjan</li>
+        <li>Visa produkten live för rätt målgrupp</li>
+        <li>Premium synlighet i 4 hallar samtidigt</li>
+        <li>AI-matchmaking ingår i alla paket</li>
+      </ul>
+    </div>
 
-<style>
-  /* === MONTERPAKET 2027 === */
-  .mp{ max-width: 1320px; margin: 100px auto 0; padding: 0 32px; }
-  .mp-eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color: var(--orange); }
-  .mp-eyebrow::before{ content:""; width:28px; height:1px; background: var(--orange); }
-  .mp-h{ margin-top:14px; font-size: clamp(40px, 5.4vw, 72px); font-weight:700; letter-spacing:-.045em; line-height:.98;
-    background: linear-gradient(180deg, #fff, #B8B8BD); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; max-width: 880px; }
-  .mp-h .accent{ background: linear-gradient(135deg, #FF9F0A, #FF375F); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-  .mp-sub{ margin-top:18px; max-width: 640px; font-size: 17px; line-height:1.55; color: var(--text-2); }
-
-  .mp-row{ margin-top:56px; display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items:stretch; }
-  .mp-group-h{ display:flex; align-items:center; gap:10px; padding: 0 4px 14px; font-size: 11px; font-weight: 700; letter-spacing:.22em; text-transform:uppercase; }
-  .mp-group-h .dot{ width:8px; height:8px; border-radius: 50%; }
-
-  .mp-card{ position:relative; padding: 18px 18px 30px; border-radius: 18px;
-    background: linear-gradient(180deg, rgba(20,22,28,0.8), rgba(12,12,14,0.9));
-    border: 1px solid rgba(255,255,255,0.07);
-    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    display:flex; flex-direction:column; min-height: 300px; overflow:hidden; cursor:pointer;
-  }
-  .mp-card::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.0; transition: opacity .3s ease;
-    background: radial-gradient(420px 200px at 50% -10%, currentColor, transparent 60%); }
-  .mp-card:hover{ transform: translateY(-4px); }
-
-  /* Tier color accents */
-  .mp-card.tier-silver{ color:#BABABF; }
-  .mp-card.tier-silver:hover{ border-color: rgba(186,186,191,.4); box-shadow: 0 24px 60px -28px rgba(186,186,191,.35); }
-  .mp-card.tier-gold{ color:#FFD60A; border-color: rgba(255,214,10,.25); background: linear-gradient(180deg, rgba(40,30,8,0.55), rgba(12,12,14,0.92)); }
-  .mp-card.tier-gold:hover{ border-color: rgba(255,214,10,.55); box-shadow: 0 24px 60px -28px rgba(255,214,10,.45); }
-  .mp-card.tier-premium{ color:#BF5AF2; border-color: rgba(191,90,242,.35); background: linear-gradient(180deg, rgba(40,20,60,0.55), rgba(12,12,14,0.9)); box-shadow: 0 24px 60px -32px rgba(191,90,242,.45); }
-  .mp-card.tier-premium:hover{ border-color: rgba(191,90,242,.6); box-shadow: 0 24px 60px -24px rgba(191,90,242,.55); }
-  .mp-card.tier-empty{ color:#5AC8FA; border-style: dashed; border-color: rgba(255,255,255,0.14); background: linear-gradient(180deg, rgba(14,16,22,0.55), rgba(10,10,12,0.85)); }
-  .mp-card.tier-empty:hover{ border-color: rgba(90,200,250,.45); }
-
-  .mp-tier-label{ position:absolute; top: 14px; left: 14px; font-size: 10px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color: currentColor; }
-  .mp-card:hover::before{ opacity:.18; }
-
-  /* Hero kvm-tal — huvudbudskap, premium */
-  .mp-size{ margin: 22px auto 8px; font-size: 88px; font-weight: 800; letter-spacing:-.045em; color:#fff; text-align:center;
-    line-height: .95; background: linear-gradient(180deg, #fff, rgba(255,255,255,0.55));
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 60px rgba(255,255,255,0.06); }
-  .mp-size sub{ font-size: 18px; font-weight:700; color: currentColor; -webkit-text-fill-color: currentColor; margin-left:4px; vertical-align: 14px; letter-spacing:0; }
-  .mp-tag{ margin: 0 auto 18px; padding: 0 6px; font-size: 13px; color: var(--text-2); line-height: 1.5; text-align:center; max-width: 240px; }
-  .mp-price{ margin-top: auto; padding-top: 14px; font-size: 18px; font-weight:800; color: currentColor; text-align:center; letter-spacing:-.01em; }
-  .mp-price small{ display:block; font-size: 9.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color: var(--text-3); margin-top:4px; }
-
-  /* Hide rendered booth images — kvm är huvudbudskapet */
-  .mp-booth-img{ display:none !important; }
-  .mp-card.is-selected{ border-color: rgba(48,209,88,.6) !important; box-shadow: 0 24px 60px -28px rgba(48,209,88,.45) !important; }
-  .mp-card .mp-pick, .mp-addon .mp-pick, .mb-tile .mb-pick{ position:absolute; top: 14px; right: 14px; width: 16px; height: 16px; border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.28); background: transparent; transition: all .2s; box-shadow: inset 0 0 0 0 transparent; }
-  .mp-card.is-selected .mp-pick, .mp-addon.is-selected .mp-pick, .mb-tile.is-selected .mb-pick{
-    border-color: #30D158; box-shadow: inset 0 0 0 4px #30D158;
-  }
-  .mp-card .mp-pick svg, .mp-addon .mp-pick svg, .mb-tile .mb-pick svg{ display:none; }
-  .mp-incl{ margin-top:auto; padding-top: 12px; border-top: 1px dashed rgba(255,255,255,0.08); display:flex; flex-wrap:wrap; gap: 6px 10px; }
-  .mp-incl span{ display:inline-flex; align-items:center; gap:5px; font-size: 10.5px; color: var(--text-3); font-weight:500; }
-  .mp-incl span svg{ width:11px; height:11px; opacity:.7; }
-  .mp-badge{ position:absolute; bottom:0; left:0; right:0; padding: 7px 12px; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-    text-align:center; color: currentColor; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.04));
-    border-top: 1px solid rgba(255,255,255,0.06); }
-
-  .mp-empty-inner{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding: 24px 12px; text-align:center; }
-  .mp-empty-inner .mei-mark{ width:54px; height:54px; border-radius:14px; border: 1.5px dashed rgba(90,200,250,.5); display:grid; place-items:center; color:#5AC8FA; font-size:22px; font-weight:700; }
-  .mp-empty-inner h5{ margin:6px 0 0; font-size:15px; font-weight:700; color:#fff; letter-spacing:-.01em; }
-  .mp-empty-inner p{ margin:0; font-size:12px; color: var(--text-3); line-height:1.5; max-width: 220px; }
-
-  .mp-addons{ margin-top: 28px; display:grid; grid-template-columns: 1fr 1fr 2fr; gap: 14px; }
-  .mp-addon{ position:relative; padding: 22px 22px 22px 70px; border-radius: 18px;
-    background: rgba(18,18,22,0.7); border:1px solid rgba(255,255,255,0.07); }
-  .mp-addon-num{ position:absolute; top: 22px; left: 22px; width: 34px; height: 34px; border-radius: 50%;
-    display:grid; place-items:center; font-weight:800; font-size: 13px; color:#fff; }
-  .mp-addon.a-corner .mp-addon-num{ background: linear-gradient(135deg, #FF9F0A, #FF6A00); }
-  .mp-addon.a-fee .mp-addon-num{ background: linear-gradient(135deg, #FF375F, #C2255C); }
-  .mp-addon.a-plus .mp-addon-num{ background: linear-gradient(135deg, #BF5AF2, #5E5CE6); }
-  .mp-addon h4{ margin: 0 0 4px; font-size: 16px; font-weight:700; letter-spacing:-.02em; color:#fff; }
-  .mp-addon .ap{ font-size: 22px; font-weight:700; letter-spacing:-.02em; }
-  .mp-addon.a-corner .ap{ color:#FF9F0A; }
-  .mp-addon.a-fee .ap{ color:#FF375F; }
-  .mp-addon.a-plus .ap{ color:#BF5AF2; }
-  .mp-addon .ad{ margin-top:6px; font-size: 12.5px; color: var(--text-3); line-height:1.5; }
-  .mp-addon.a-plus ul{ margin: 10px 0 0; padding:0; list-style:none; display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px 14px; }
-  .mp-addon.a-plus li{ display:inline-flex; align-items:center; gap:6px; font-size: 11.5px; color: var(--text-2); }
-  .mp-addon.a-plus li::before{ content:""; width:5px; height:5px; border-radius:50%; background:#BF5AF2; flex-shrink:0; }
-
-  .mp-tips{ margin-top: 28px; display:grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
-  .mp-tip{ padding: 22px; border-radius: 18px; background: rgba(14,14,18,0.6); border:1px solid rgba(255,255,255,0.06); }
-  .mp-tip-i{ width:36px; height:36px; border-radius:10px; background: rgba(255,159,10,0.12); color:#FF9F0A; display:grid; place-items:center; }
-  .mp-tip-i svg{ width:18px; height:18px; }
-  .mp-tip h5{ margin: 14px 0 4px; font-size: 14px; font-weight:700; letter-spacing:-.015em; color:#fff; }
-  .mp-tip p{ margin:0; font-size: 12.5px; color: var(--text-3); line-height: 1.5; }
-
-  @media (max-width: 1100px){
-    .mp-row{ grid-template-columns: 1fr 1fr; }
-    .mp-addons{ grid-template-columns: 1fr; }
-    .mp-addon.a-plus ul{ grid-template-columns: 1fr 1fr; }
-    .mp-tips{ grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 640px){
-    .mp-row{ grid-template-columns: 1fr; }
-    .mp-tips{ grid-template-columns: 1fr; }
-  }
-
-</style>
-
-<section class="mp">
-  <div class="mp-eyebrow">Monterpaket 2027</div>
-  <h2 class="mp-h">Tre paket.<br/><span class="accent">En tydlig prislapp.</span></h2>
-  <p class="mp-sub">Silver, Guld och Premium — visualiserade exakt så de byggs på plats. Transparenta priser, vad som ingår och säljbara uppgraderingar. Behöver du något helt eget? Välj Skräddarsydd.</p>
-
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <symbol id="mp-booth" viewBox="0 0 200 140">
-        <polygon points="100,30 190,80 100,130 10,80" fill="rgba(255,255,255,0.04)" stroke="currentColor" stroke-opacity=".55" stroke-width="1.2"/>
-        <polygon points="10,80 100,30 100,8 10,58" fill="rgba(255,255,255,0.07)" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/>
-        <polygon points="100,30 190,80 190,58 100,8" fill="rgba(255,255,255,0.04)" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/>
-        <polygon points="40,52 80,30 80,18 40,40" fill="currentColor" fill-opacity=".55"/>
-        <polygon points="120,82 158,103 158,113 120,92" fill="currentColor" fill-opacity=".35" stroke="currentColor" stroke-opacity=".5" stroke-width=".8"/>
-        <circle cx="55" cy="14" r="2" fill="currentColor"/>
-        <circle cx="100" cy="2" r="2" fill="currentColor"/>
-        <circle cx="145" cy="14" r="2" fill="currentColor"/>
-      </symbol>
-      <symbol id="ic-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    </defs>
-  </svg>
-
-  <div class="mp-row">
-
-    <div class="mp-card tier-silver" data-pkg="monter" data-name="9 m² monter" data-price="62400">
-      <div class="mp-tier-label">9 m²</div>
-      <div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mp-size">9<sub>kvm</sub></div>
-      <p class="mp-tag">Kompakt yta för tydlig närvaro och effektiv leadgenerering.</p>
-      <div class="mp-incl">
-        <span><svg><use href="#ic-check"/></svg>Matta</span><span><svg><use href="#ic-check"/></svg>Väggar</span>
-        <span><svg><use href="#ic-check"/></svg>Disk</span><span><svg><use href="#ic-check"/></svg>TV-skärm</span>
-        <span><svg><use href="#ic-check"/></svg>Möblering</span>
+    <div class="why-cards">
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></div>
+        <div class="wcard-h">Kvalificerade leads</div>
+        <p class="wcard-d">Inköpare och beslutsfattare från energi, industri och offentlig sektor — i samma rum.</p>
       </div>
-      <div class="mp-price">62 400 SEK<small>exkl. moms</small></div>
-      <div class="mp-badge">Bra startyta</div>
-    </div>
-
-    <div class="mp-card tier-gold" data-pkg="monter" data-name="12 m² monter" data-price="93600">
-      <div class="mp-tier-label">12 m²</div>
-      <div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mp-size">12<sub>kvm</sub></div>
-      <p class="mp-tag">Balans mellan synlighet, mötesyta och produktpresentation.</p>
-      <div class="mp-incl">
-        <span><svg><use href="#ic-check"/></svg>Premium­matta</span><span><svg><use href="#ic-check"/></svg>LED-list</span>
-        <span><svg><use href="#ic-check"/></svg>Stor disk</span><span><svg><use href="#ic-check"/></svg>Storbild-TV</span>
-        <span><svg><use href="#ic-check"/></svg>Lounge</span>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="wcard-h">Visa live</div>
+        <p class="wcard-d">Demo, produkt och team i fysiskt möte — det som inget Teams-möte kan ersätta.</p>
       </div>
-      <div class="mp-price">93 600 SEK<small>exkl. moms</small></div>
-      <div class="mp-badge">Mest populär</div>
-    </div>
-
-    <div class="mp-card tier-premium" data-pkg="monter" data-name="16 m² monter" data-price="124800">
-      <div class="mp-tier-label">16 m²</div>
-      <div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mp-size">16<sub>kvm</sub></div>
-      <p class="mp-tag">Starkare position för team, demo och kunddialog.</p>
-      <div class="mp-incl">
-        <span><svg><use href="#ic-check"/></svg>Premium­matta</span><span><svg><use href="#ic-check"/></svg>Backlit­vägg</span>
-        <span><svg><use href="#ic-check"/></svg>Bardisk</span><span><svg><use href="#ic-check"/></svg>Mötesrum</span>
-        <span><svg><use href="#ic-check"/></svg>Vatten + el</span>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+        <div class="wcard-h">Premium synlighet</div>
+        <p class="wcard-d">Marknadsföring i 6 månader — webb, app, nyhetsbrev och sociala medier.</p>
       </div>
-      <div class="mp-price">124 800 SEK<small>exkl. moms</small></div>
-      <div class="mp-badge">Premiumval</div>
-    </div>
-
-    <div class="mp-card tier-empty" data-pkg="monter" data-name="Skräddarsydd monter" data-price="0">
-      <div class="mp-tier-label">Bygg din egen</div>
-      <div class="mp-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mp-empty-inner">
-        <div class="mei-mark">+</div>
-        <h5>Bygg din egen</h5>
-        <p>Anpassa yta, placering och exponering efter mål och budget.</p>
+      <div class="wcard">
+        <div class="wcard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="wcard-h">Mässmatch ingår</div>
+        <p class="wcard-d">AI-matchmaking parar er med rätt besökare innan mässan ens börjar.</p>
       </div>
-      <div class="mp-badge">Pris på offert</div>
     </div>
+  </div>
+</section>
 
+<!-- ===== Monterstorlekar ===== -->
+<section class="lv-section" id="paket">
+  <div class="lv-head">
+    <div>
+      <h2 class="lv-title">Välj monterstorlek</h2>
+      <p class="lv-sub">Allt från kompakt 9 m² till skräddarsydd 48 m². Möbler, el, matta och leadexport ingår alltid.</p>
+    </div>
+    <a href="bli-utstallare.html#jamfor" class="lv-compare">Jämför alla storlekar →</a>
   </div>
 
-  <div class="mp-addons">
-    <div class="mp-addon a-corner mp-card-toggle" data-pkg="addon" data-name="Hörnmonter" data-price="4500">
-      <div class="mp-pick"></div>
-      <div class="mp-addon-num">7</div>
-      <h4>Hörnmonter</h4>
-      <div class="ap">+ 4 500 SEK</div>
-      <p class="ad">Tillägg vid två öppna sidor — naturligt flöde och bättre tillgänglighet.</p>
+  <div class="lv-grid">
+
+    <a href="paket.html?id=monter-9&name=9%20m%C2%B2%20monter&price=62400" class="lv s-9">
+      <div class="lv-top">
+        <div class="lv-size">9<sub>m²</sub></div>
+        <span class="lv-pricepill">62 400 SEK</span>
+      </div>
+      <p class="lv-d">Kompakt yta för tydlig närvaro och effektiv leadgenerering. För team om 1–2 personer.</p>
+      <div class="lv-incl"><span>Matta</span><span>Väggar</span><span>Disk</span><span>TV</span></div>
+      <div class="lv-bot"><span class="lv-badge">Bra startyta</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="paket.html?id=monter-12&name=12%20m%C2%B2%20monter&price=93600" class="lv s-12">
+      <div class="lv-top">
+        <div class="lv-size">12<sub>m²</sub></div>
+        <span class="lv-pricepill">93 600 SEK</span>
+      </div>
+      <p class="lv-d">Balans mellan synlighet, mötesyta och produktpresentation. Mest valda storleken 2026.</p>
+      <div class="lv-incl"><span>Premium­matta</span><span>LED-list</span><span>Stor disk</span><span>Lounge</span></div>
+      <div class="lv-bot"><span class="lv-badge">Mest populär</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="paket.html?id=monter-16&name=16%20m%C2%B2%20monter&price=124800" class="lv s-16">
+      <div class="lv-top">
+        <div class="lv-size">16<sub>m²</sub></div>
+        <span class="lv-pricepill">124 800 SEK</span>
+      </div>
+      <p class="lv-d">Starkare position för team, demo och kunddialog. Eget mötesrum ingår.</p>
+      <div class="lv-incl"><span>Backlit­vägg</span><span>Bardisk</span><span>Mötesrum</span><span>Vatten</span></div>
+      <div class="lv-bot"><span class="lv-badge">Premiumval</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="paket.html?id=monter-18&name=18%20m%C2%B2%20monter&price=140400" class="lv s-18">
+      <div class="lv-top">
+        <div class="lv-size">18<sub>m²</sub></div>
+        <span class="lv-pricepill">140 400 SEK</span>
+      </div>
+      <p class="lv-d">För större team som vill köra flera demos parallellt och bjuda in kunder till längre möten.</p>
+      <div class="lv-incl"><span>2 mötesrum</span><span>Storbild-TV</span><span>Lounge</span><span>Pantry</span></div>
+      <div class="lv-bot"><span class="lv-badge">Få platser kvar</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="paket.html?id=monter-24&name=24%20m%C2%B2%20monter&price=187200" class="lv s-24">
+      <div class="lv-top">
+        <div class="lv-size">24<sub>m²</sub></div>
+        <span class="lv-pricepill">187 200 SEK</span>
+      </div>
+      <p class="lv-d">Hub-monter för marknadsledare. Egen scen, demo-zoner och plats för hela säljteamet.</p>
+      <div class="lv-incl"><span>Egen scen</span><span>3 mötesrum</span><span>Bar</span><span>Hörnläge</span></div>
+      <div class="lv-bot"><span class="lv-badge">Premiumval</span><span class="lv-arrow">→</span></div>
+    </a>
+
+    <a href="mailto:michael@energimassan.se" class="lv" style="--lv-c:#fff;">
+      <div class="lv-top">
+        <div class="lv-size" style="font-size:24px;">+ Bygg<br/>din egen</div>
+        <span class="lv-pricepill" style="background:rgba(255,255,255,0.06); color: var(--text-2);">Pris på offert</span>
+      </div>
+      <p class="lv-d">Anpassa yta, placering och exponering efter era mål. Upp till 48 m² + hörnlägen.</p>
+      <div class="lv-bot"><span class="lv-badge" style="background:rgba(255,255,255,0.06); color: var(--text-2);">Skräddarsytt</span><span class="lv-arrow">→</span></div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ===== Obligatoriskt & uppgraderingar ===== -->
+<section class="req-section">
+  <div class="req-head">
+    <span class="req-dot"></span>
+    <span>Obligatoriskt &amp; tillgängliga uppgraderingar</span>
+  </div>
+  <div class="req-grid">
+
+    <div class="req" style="--req-c:#FF9F0A;">
+      <span class="req-tag opt">Tillval</span>
+      <div class="req-top">
+        <div class="req-num">7</div>
+        <div class="req-name">Hörnmonter</div>
+      </div>
+      <div class="req-price">+ 4 500 SEK</div>
+      <div class="req-d">Tillägg vid två öppna sidor — naturligt flöde och bättre tillgänglighet.</div>
     </div>
-    <div class="mp-addon a-fee mp-card-toggle is-selected" data-pkg="fee" data-name="Anmälningsavgift" data-price="9900">
-      <div class="mp-pick"></div>
-      <div class="mp-addon-num">8</div>
-      <h4>Anmälningsavgift</h4>
-      <div class="ap">9 900 SEK</div>
-      <p class="ad">Obligatorisk för alla utställare. Registrering, försäkring och utställarservice.</p>
+
+    <div class="req" style="--req-c:#FF375F;">
+      <span class="req-tag">Obligatoriskt</span>
+      <div class="req-top">
+        <div class="req-num">8</div>
+        <div class="req-name">Anmälningsavgift</div>
+      </div>
+      <div class="req-price">9 900 SEK</div>
+      <div class="req-d">Obligatorisk för alla utställare. Registrering, försäkring och utställarservice.</div>
     </div>
-    <div class="mp-addon a-plus mp-card-toggle" data-pkg="addon" data-name="Pluspaketet" data-price="16900">
-      <div class="mp-pick"></div>
-      <div class="mp-addon-num">9</div>
-      <h4>Pluspaketet · Uppgradering</h4>
-      <div class="ap">16 900 SEK</div>
-      <ul>
+
+    <div class="req" style="--req-c:#BF5AF2;">
+      <span class="req-tag up">Uppgradering</span>
+      <div class="req-top">
+        <div class="req-num">9</div>
+        <div class="req-name">Pluspaketet · Uppgradering</div>
+      </div>
+      <div class="req-price">16 900 SEK</div>
+      <ul class="req-list">
         <li>Obegränsad scanning</li>
         <li>Logga i utställarlistan</li>
         <li>Logga på webben</li>
@@ -461,346 +598,169 @@
         <li>2 mingelbiljetter</li>
       </ul>
     </div>
+
   </div>
 </section>
 
 
-<!-- ============ MÄSSBOOST & TILLVAL ============ -->
-<style>
-  .mb{ max-width: 1320px; margin: 120px auto 0; padding: 0 32px; }
-  .mb-eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color: var(--green-2); }
-  .mb-eyebrow::before{ content:""; width:28px; height:1px; background: var(--green-2); }
-  .mb-h{ margin-top:14px; font-size: clamp(40px, 5.4vw, 72px); font-weight:700; letter-spacing:-.045em; line-height:.98;
-    background: linear-gradient(180deg, #fff, #B8B8BD); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; max-width: 880px; }
-  .mb-h .accent{ background: linear-gradient(135deg, #30D158, #64D2FF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-  .mb-sub{ margin-top:18px; max-width: 640px; font-size: 17px; line-height:1.55; color: var(--text-2); }
-
-  .mb-benefits{ margin-top: 40px; display:grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
-  .mb-bn{ padding: 22px; border-radius: 16px; background: rgba(94,92,230,0.06); border:1px solid rgba(94,92,230,0.18); }
-  .mb-bn-i{ width:36px; height:36px; border-radius:10px; background: rgba(94,92,230,0.18); color:#B0AEFF; display:grid; place-items:center; }
-  .mb-bn-i svg{ width:18px; height:18px; }
-  .mb-bn h5{ margin: 14px 0 4px; font-size: 14px; font-weight:700; color:#fff; }
-  .mb-bn p{ margin:0; font-size: 12px; color: var(--text-3); line-height:1.5; }
-
-  .mb-section-h{ margin: 56px 0 18px; font-size: 22px; font-weight:700; letter-spacing:-.02em; display:flex; align-items:center; gap: 12px; }
-  .mb-section-h .mb-num-pill{ font-size: 11px; font-weight:800; letter-spacing:.14em; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.06); color: var(--text-2); }
-  .mb-grid{ display:grid; gap: 12px; }
-  .mb-grid.cols-6{ grid-template-columns: repeat(6,1fr); }
-  .mb-grid.cols-3{ grid-template-columns: repeat(3,1fr); }
-  .mb-grid.cols-4{ grid-template-columns: repeat(4,1fr); }
-
-  .mb-tile{ position: relative; padding: 22px 20px 20px; border-radius: 16px; cursor: pointer;
-    background: rgba(20,20,22,0.7); border:1px solid rgba(255,255,255,0.07);
-    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    display:flex; flex-direction:column; gap: 8px; }
-  .mb-tile:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
-  .mb-tile.is-selected{ border-color: rgba(48,209,88,.55); box-shadow: 0 16px 40px -20px rgba(48,209,88,.45); background: rgba(48,209,88,0.05); }
-  .mb-tile .mb-icon{ width:34px; height:34px; border-radius:9px; display:grid; place-items:center; background: rgba(255,255,255,0.05); color: var(--text-2); }
-  .mb-tile .mb-icon svg{ width:18px; height:18px; }
-  .mb-tile.cat-partner .mb-icon{ background: rgba(255,159,10,0.14); color:#FFB84D; }
-  .mb-tile.cat-talk .mb-icon{ background: rgba(48,209,88,0.14); color:#5DE38A; }
-  .mb-tile.cat-expo .mb-icon{ background: rgba(94,92,230,0.16); color:#B0AEFF; }
-  .mb-tile h6{ margin:0; font-size: 14px; font-weight:700; letter-spacing:-.012em; color:#fff; padding-right:30px; }
-  .mb-tile .mb-tile-price{ font-size: 18px; font-weight:700; letter-spacing:-.02em; color:#fff; font-feature-settings:"tnum"; }
-  .mb-tile .mb-tile-d{ font-size: 11.5px; color: var(--text-3); line-height: 1.5; }
-  .mb-tile.is-popular::after{ content:"MEST POPULÄR"; position: absolute; top: -10px; left: 16px;
-    font-size: 9.5px; font-weight: 800; letter-spacing: .14em; padding: 4px 9px; border-radius: 6px;
-    background: linear-gradient(135deg, #FF9F0A, #FF6A00); color:#0a0a0c; }
-  .mb-info{ position:absolute; bottom:10px; right:10px; width:26px; height:26px; border-radius:50%;
-    display:grid; place-items:center; background: rgba(255,255,255,0.06); color: var(--text-2);
-    border:1px solid rgba(255,255,255,0.14); text-decoration:none; font-size:18px; font-weight:400; line-height:1;
-    transition: all .18s ease; z-index:2; }
-  .mb-info:hover{ background: var(--text); color: #000; border-color: var(--text); transform: scale(1.08); }
-
-  /* Sticky cost summary */
-  .mb-totalbar{ position: sticky; bottom: 16px; z-index: 60; margin: 40px auto 0; max-width: 1100px;
-    padding: 18px 22px; border-radius: 18px; background: rgba(15,15,18,0.92); backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,159,10,0.35); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8);
-    display:flex; align-items:center; gap: 22px; flex-wrap:wrap; }
-  .mb-totalbar .mb-count{ font-size: 12px; color: var(--text-3); }
-  .mb-totalbar .mb-count b{ color: var(--text); font-weight:700; }
-  .mb-totalbar .mb-total{ flex:1; display:flex; align-items: baseline; gap: 10px; justify-content:flex-end; }
-  .mb-totalbar .mb-total .mb-tlabel{ font-size: 11px; letter-spacing:.18em; text-transform:uppercase; color: var(--text-3); }
-  .mb-totalbar .mb-total .mb-tval{ font-size: 30px; font-weight:700; letter-spacing:-.025em; color:#fff; font-feature-settings:"tnum"; }
-  .mb-totalbar .mb-total small{ font-size: 11px; color: var(--text-3); margin-left: 4px; }
-  .mb-totalbar .btn{ padding: 12px 22px; font-size: 13px; }
-  .mb-clear{ background: none; border: 1px solid var(--stroke-2); color: var(--text-2); padding: 10px 16px; border-radius: 100px; font-size: 12px; cursor:pointer; font-family: inherit; }
-  .mb-clear:hover{ color: var(--text); }
-  .mb-list{ flex-basis:100%; display:flex; flex-wrap:wrap; gap: 6px; max-height: 0; overflow:hidden; transition: max-height .3s ease; }
-  .mb-list.show{ max-height: 200px; padding-top: 4px; }
-  .mb-list span{ font-size: 11.5px; padding: 4px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); color: var(--text-2); }
-
-  @media (max-width: 1100px){
-    .mb-benefits{ grid-template-columns: repeat(2,1fr); }
-    .mb-grid.cols-6, .mb-grid.cols-4{ grid-template-columns: repeat(2,1fr); }
-    .mb-grid.cols-3{ grid-template-columns: 1fr; }
-  }
-</style>
-
-<section class="mb">
-  <h3 class="mb-section-h" style="margin-top:0;"><span class="mb-num-pill">1</span> Partnerpaket</h3>
-  <div class="mb-grid cols-6">
-    <div class="mb-tile cat-partner is-popular" data-pkg="partner" data-name="Guldpartner" data-price="340000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.5 9 9"/></svg></div>
-      <h6>Guldpartner</h6><div class="mb-tile-price">340 000 SEK</div>
-      <div class="mb-tile-d">Maximal exponering före, under och efter mässan.</div>
-    </div>
-    <div class="mb-tile cat-partner" data-pkg="partner" data-name="Silverpartner" data-price="250000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.5 9 9"/></svg></div>
-      <h6>Silverpartner</h6><div class="mb-tile-price">250 000 SEK</div>
-      <div class="mb-tile-d">Stark synlighet och exklusiva förmåner.</div>
-    </div>
-    <div class="mb-tile cat-partner" data-pkg="partner" data-name="Bronspartner" data-price="199000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.5 9 9"/></svg></div>
-      <h6>Bronspartner</h6><div class="mb-tile-price">199 000 SEK</div>
-      <div class="mb-tile-d">Synlighet och närvaro som stärker engagemang.</div>
-    </div>
-    <div class="mb-tile cat-partner" data-pkg="partner" data-name="Eventpartner" data-price="135000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
-      <h6>Eventpartner</h6><div class="mb-tile-price">135 000 SEK</div>
-      <div class="mb-tile-d">Exponering kopplat till ett utvalt event.</div>
-    </div>
-    <div class="mb-tile cat-partner" data-pkg="partner" data-name="Scenpartner" data-price="210000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
-      <h6>Scenpartner</h6><div class="mb-tile-price">210 000 SEK</div>
-      <div class="mb-tile-d">Stark exponering i scenprogram och kommunikation.</div>
-    </div>
-    <div class="mb-tile cat-partner" data-pkg="partner" data-name="Mingelpartner" data-price="195000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4l3 7-3 1zM16 4l-3 7 3 1zM11 12v8M13 12v8M9 21h6"/></svg></div>
-      <h6>Mingelpartner</h6><div class="mb-tile-price">195 000 SEK</div>
-      <div class="mb-tile-d">Synas i samband med vårt populära mingel.</div>
-    </div>
-  </div>
-
-  <h3 class="mb-section-h"><span class="mb-num-pill">3</span> Tal &amp; möten</h3>
-  <div class="mb-grid cols-3">
-    <div class="mb-tile cat-talk" data-pkg="talk" data-name="Talartid i konferensen" data-price="79000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
-      <h6>Talartid i konferensen</h6><div class="mb-tile-price">79 000 SEK</div>
-      <div class="mb-tile-d">Säkra en talartid och nå en engagerad målgrupp.</div>
-    </div>
-    <div class="mb-tile cat-talk" data-pkg="talk" data-name="Open Inspiration" data-price="35000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/></svg></div>
-      <h6>Open Inspiration</h6><div class="mb-tile-price">35 000 SEK</div>
-      <div class="mb-tile-d">Kortare inspirationspass i öppet scenprogram.</div>
-    </div>
-    <div class="mb-tile cat-talk" data-pkg="talk" data-name="Mässmatch" data-price="29000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg></div>
-      <h6>Mässmatch</h6><div class="mb-tile-price">29 000 SEK</div>
-      <div class="mb-tile-d">Boka möten med relevanta beslutsfattare.</div>
-    </div>
-  </div>
-
-  <h3 class="mb-section-h"><span class="mb-num-pill">4</span> Exponeringspaket</h3>
-  <div class="mb-grid cols-4">
-    <div class="mb-tile cat-expo" data-pkg="expo" data-name="Registreringshallen" data-price="120000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
-      <h6>Registreringshallen</h6><div class="mb-tile-price">120 000 SEK</div>
-      <div class="mb-tile-d">Maximal exponering i registreringsområdet.</div>
-    </div>
-    <div class="mb-tile cat-expo" data-pkg="expo" data-name="Cafépartner" data-price="99000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M16 10h2a2 2 0 0 1 0 4h-2"/></svg></div>
-      <h6>Cafépartner</h6><div class="mb-tile-price">99 000 SEK</div>
-      <div class="mb-tile-d">Synlighet i caféområdet där besluten diskuteras.</div>
-    </div>
-    <div class="mb-tile cat-expo" data-pkg="expo" data-name="Namnbrickor" data-price="75000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="6" width="14" height="14" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M12 3v3"/></svg></div>
-      <h6>Namnbrickor</h6><div class="mb-tile-price">75 000 SEK</div>
-      <div class="mb-tile-d">Er logotyp på alla deltagares namnbrickor.</div>
-    </div>
-    <div class="mb-tile cat-expo" data-pkg="expo" data-name="Väska/Påse i entrén" data-price="75000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 13H6zM9 8V5a3 3 0 0 1 6 0v3"/></svg></div>
-      <h6>Väska/Påse i entrén</h6><div class="mb-tile-price">75 000 SEK</div>
-      <div class="mb-tile-d">Er logotyp på mässans väska/påse.</div>
-    </div>
-    <div class="mb-tile cat-expo" data-pkg="expo" data-name="Badgeband" data-price="75000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3l4 6 4-6M9 9h6v12H9z"/></svg></div>
-      <h6>Badgeband</h6><div class="mb-tile-price">75 000 SEK</div>
-      <div class="mb-tile-d">Er logotyp på alla badgeband.</div>
-    </div>
-    <div class="mb-tile cat-expo" data-pkg="expo" data-name="Profilering på golv" data-price="50000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4l4 7-4 3M13 10l4 7-4 3"/></svg></div>
-      <h6>Profilering på golv</h6><div class="mb-tile-price">50 000 SEK</div>
-      <div class="mb-tile-d">Syns där alla går – maximal effekt.</div>
-    </div>
-    <div class="mb-tile cat-expo" data-pkg="expo" data-name="Fasadvepa" data-price="35000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="14" rx="1"/><path d="M5 17l3 4M19 17l-3 4"/></svg></div>
-      <h6>Fasadvepa</h6><div class="mb-tile-price">35 000 SEK</div>
-      <div class="mb-tile-d">Stor exponering på mässans fasad.</div>
-    </div>
-    <div class="mb-tile cat-expo" data-pkg="expo" data-name="Flagga vid huvudentrén" data-price="25000"><div class="mb-pick"><svg><use href="#ic-check"/></svg></div>
-      <div class="mb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 21V3M6 4h12l-3 4 3 4H6"/></svg></div>
-      <h6>Flagga vid huvudentrén</h6><div class="mb-tile-price">25 000 SEK</div>
-      <div class="mb-tile-d">Välkomna besökare med er flagga.</div>
-    </div>
-  </div>
-
-  <div class="mb-totalbar" id="mbTotalbar">
-    <div class="mb-count"><b id="mbCount">0</b> tillval valda <button class="mb-clear" id="mbToggleList" style="margin-left:10px;">Visa</button> <button class="mb-clear" id="mbClear">Rensa</button></div>
-    <div class="mb-total"><span class="mb-tlabel">Totalkostnad</span><span class="mb-tval" id="mbTotal">0 SEK</span><small>exkl. moms</small></div>
-    <a href="#" class="btn btn-primary">Boka mitt paket <svg><use href="#i-arrow"/></svg></a>
-    <div class="mb-list" id="mbList"></div>
-  </div>
-
-  <div class="mp-tips" style="margin-top:60px;">
-    <div class="mp-tip">
-      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
-      <h5>Rätt yta ger rätt affärer</h5>
-      <p>Större yta ger fler besök, fler kontakter och högre konvertering.</p>
-    </div>
-    <div class="mp-tip">
-      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M14 20c0-2 2-3.5 4-3.5s3.5 1.5 3.5 3.5"/></svg></div>
-      <h5>Storlek matchar mål och team</h5>
-      <p>Välj en monter som passar ditt team och dina affärsmål.</p>
-    </div>
-    <div class="mp-tip">
-      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/></svg></div>
-      <h5>Hörnläge ökar synligheten</h5>
-      <p>Två öppna sidor skapar naturligt flöde och bättre tillgänglighet.</p>
-    </div>
-    <div class="mp-tip">
-      <div class="mp-tip-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><polygon points="12 3 14.6 9 21 9.6 16 14 17.5 20.5 12 17 6.5 20.5 8 14 3 9.6 9.4 9"/></svg></div>
-      <h5>Premium ger fler spontana möten</h5>
-      <p>Nära scen, entré och café skapar fler kvalificerade möten.</p>
+<section class="always-section">
+  <div class="always">
+    <span class="always-h">Ingår alltid</span>
+    <div class="always-row">
+      <span>Lead-export</span>
+      <span>Mässmatch (AI)</span>
+      <span>Profil i mässappen</span>
+      <span>El &amp; internet</span>
+      <span>Inflyttning torsdag</span>
+      <span>2 utställarbiljetter / 9 m²</span>
+      <span>Wi-Fi i hela hallen</span>
     </div>
   </div>
 </section>
 
-<script>
-(function(){
-  const fmt = n => n.toLocaleString('sv-SE').replace(/,/g,' ') + ' SEK';
-  const totalEl = document.getElementById('mbTotal');
-  const countEl = document.getElementById('mbCount');
-  const listEl  = document.getElementById('mbList');
-  const tiles = document.querySelectorAll('.mb-tile, .mp-card[data-price], .mp-card-toggle');
-  let selectedMonter = null;
+<!-- ===== Tillval ===== -->
+<section class="add-section">
+  <div class="add-block">
+    <div class="add-h">
+      <span>Tillval · Tal &amp; möten</span>
+      <a href="bli-utstallare.html#tillval">Se alla tillval →</a>
+    </div>
+    <div class="add-grid">
+      <a href="paket.html?id=talartid-i-konferensen&name=Talartid%20i%20konferensen&price=79000" class="add" title="Klicka för mer info">
+        <span class="add-info" aria-hidden="true">i</span>
+        <div class="add-name">Talartid i konferensen</div>
+        <div class="add-price">79 000 SEK</div>
+      </a>
+      <a href="paket.html?id=open-inspiration&name=Open%20Inspiration&price=35000" class="add" title="Klicka för mer info">
+        <span class="add-info" aria-hidden="true">i</span>
+        <div class="add-name">Open Inspiration</div>
+        <div class="add-price">35 000 SEK</div>
+      </a>
+      <a href="paket.html?id=massmatch&name=M%C3%A4ssmatch&price=29000" class="add">
+        <div class="add-name">Mässmatch Plus</div>
+        <div class="add-price">29 000 SEK</div>
+      </a>
+    </div>
+  </div>
 
-  function update(){
-    let total = 0, count = 0; const items = [];
-    document.querySelectorAll('.mb-tile.is-selected, .mp-card.is-selected, .mp-card-toggle.is-selected').forEach(el=>{
-      const p = parseInt(el.dataset.price||'0',10);
-      total += p; count++;
-      items.push(`<span>${el.dataset.name} · ${fmt(p)}</span>`);
-    });
-    totalEl.textContent = fmt(total);
-    countEl.textContent = count;
-    listEl.innerHTML = items.join('');
-  }
-
-  // Inject info "+" link on each mb-tile that links to a per-package info page
-  document.querySelectorAll('.mb-tile').forEach(t=>{
-    const slug = (t.dataset.name||'').toLowerCase()
-      .replace(/å|ä/g,'a').replace(/ö/g,'o')
-      .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-    const a = document.createElement('a');
-    a.className = 'mb-info';
-    a.href = `paket.html?id=${encodeURIComponent(slug)}&name=${encodeURIComponent(t.dataset.name||'')}&price=${encodeURIComponent(t.dataset.price||'')}&cat=${encodeURIComponent(t.dataset.pkg||'')}`;
-    a.title = 'Mer info';
-    a.setAttribute('aria-label','Mer info om '+(t.dataset.name||''));
-    a.textContent = '+';
-    t.appendChild(a);
-  });
-
-  tiles.forEach(t=>{
-    t.addEventListener('click', e=>{
-      // Prevent toggling when clicking nested links (incl. info "+")
-      if(e.target.closest('a')) return;
-      if(t.dataset.pkg === 'monter'){
-        // single-select among monter cards
-        document.querySelectorAll('.mp-card[data-pkg="monter"]').forEach(c=>c.classList.remove('is-selected'));
-        if(selectedMonter !== t){ t.classList.add('is-selected'); selectedMonter = t; } else { selectedMonter = null; }
-      } else {
-        t.classList.toggle('is-selected');
-      }
-      update();
-    });
-  });
-
-  document.getElementById('mbClear').addEventListener('click', ()=>{
-    document.querySelectorAll('.is-selected').forEach(el=>{
-      // keep mandatory fee selected
-      if(el.dataset.pkg !== 'fee') el.classList.remove('is-selected');
-    });
-    selectedMonter = null;
-    update();
-  });
-  document.getElementById('mbToggleList').addEventListener('click', ()=>{
-    listEl.classList.toggle('show');
-  });
-
-  update();
-})();
-</script>
-
-<!-- ============ EXPONERING & BESÖKARRESA ============ -->
-<section class="expo">
-  <div class="expo-eyebrow">Exponering & besökarresa</div>
-  <h2 class="expo-h">14 ytor.<br/>En komplett resa.</h2>
-  <p class="expo-sub">Från första digitala intryck till uppföljning efter mässan — vi har kartlagt alla ytor där du kan synas. Välj de som matchar din målgrupp och budget.</p>
-  <div class="expo-grid">
-    <div class="expo-card"><span class="expo-num">01</span><h4>Sajten — partnerlogga</h4><p>Logga på energimassan.se i månader inför mässan. Trafik från hela branschen.</p></div>
-    <div class="expo-card"><span class="expo-num">02</span><h4>Nyhetsbrev</h4><p>Featured i 1–4 utskick till 18 000+ prenumeranter. Klick & öppning rapporteras.</p></div>
-    <div class="expo-card"><span class="expo-num">03</span><h4>Sociala kanaler</h4><p>Sponsrade inlägg på LinkedIn & Instagram med kampanj-länk till din monter.</p></div>
-    <div class="expo-card"><span class="expo-num">04</span><h4>AI-matchmaking</h4><p>Vår algoritm parar dig med rätt besökare och bokar förslag på möten.</p></div>
-    <div class="expo-card"><span class="expo-num">05</span><h4>Mobilappen</h4><p>Listad i utställarregistret med ikoner, beskrivning, monter-pin och leadgen.</p></div>
-    <div class="expo-card"><span class="expo-num">06</span><h4>Entré & gångstråk</h4><p>Banderoller, gobo-projektioner och digitala skärmar längs huvudflödet.</p></div>
-    <div class="expo-card"><span class="expo-num">07</span><h4>Hallplan & skyltning</h4><p>Logga på tryckt hallplan, väggskyltar och informationspunkter.</p></div>
-    <div class="expo-card"><span class="expo-num">08</span><h4>Monterplats</h4><p>Hjärtat i exponeringen. Storlek 9–48 m². Hörn-lägen och scenkant tillval.</p></div>
-    <div class="expo-card"><span class="expo-num">09</span><h4>Scenpass</h4><p>5–15 min på öppen scen, eller keynote på Stora scenen för guldpartners.</p></div>
-    <div class="expo-card"><span class="expo-num">10</span><h4>AI-Zonen</h4><p>Egen demo-pod i Sveriges största AI-mässyta inom energi.</p></div>
-    <div class="expo-card"><span class="expo-num">11</span><h4>Mingel & VIP</h4><p>VIP-platser på onsdagsminglet — där 60% av affärerna inleds.</p></div>
-    <div class="expo-card"><span class="expo-num">12</span><h4>Press & PR</h4><p>Co-branding i pressmaterial. Pitch till 80+ branschjournalister.</p></div>
-    <div class="expo-card"><span class="expo-num">13</span><h4>Leadgen-skanner</h4><p>QR-skanner i monter — alla leads i CRM samma kväll, med samtycke.</p></div>
-    <div class="expo-card"><span class="expo-num">14</span><h4>Efter mässan</h4><p>Rapport, lead-listor, NPS från besökare i din monter, omboknings-erbjudande.</p></div>
+  <div class="add-block">
+    <div class="add-h">
+      <span>Tillval · Synlighet</span>
+      <a href="bli-utstallare.html#tillval">Se alla 12 →</a>
+    </div>
+    <div class="add-grid">
+      <a href="paket.html?id=badgeband&name=Badgeband&price=85000" class="add">
+        <div class="add-name">Badgeband</div>
+        <div class="add-price">85 000 SEK</div>
+      </a>
+      <a href="paket.html?id=cafepartner&name=Cafépartner&price=120000" class="add">
+        <div class="add-name">Cafépartner</div>
+        <div class="add-price">120 000 SEK</div>
+      </a>
+      <a href="paket.html?id=fasadvepa&name=Fasadvepa&price=75000" class="add">
+        <div class="add-name">Fasadvepa</div>
+        <div class="add-price">75 000 SEK</div>
+      </a>
+      <a href="paket.html?id=namnbrickor&name=Namnbrickor&price=65000" class="add">
+        <div class="add-name">Namnbrickor</div>
+        <div class="add-price">65 000 SEK</div>
+      </a>
+      <a href="paket.html?id=profilering-pa-golv&name=Profilering%20p%C3%A5%20golv&price=45000" class="add">
+        <div class="add-name">Profilering på golv</div>
+        <div class="add-price">45 000 SEK</div>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ============ SÄLJKONTAKT ============ -->
-<section class="sales">
-  <div class="expo-eyebrow">Säljkontakt</div>
-  <h2 class="expo-h">Prata med oss<br/><span class="grad">direkt.</span></h2>
-  <p class="expo-sub">Tre seniora säljare. Olika branschområden. Alla med 10+ år i mässindustrin. Ring, mejla eller boka 30 min direkt i kalendern.</p>
-  <div class="sales-grid">
-    <div class="sales-card">
-      <div class="sales-photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80&auto=format&fit=crop');"></div>
-      <div class="sales-name">Michael Dammert</div>
-      <div class="sales-role">Försäljningschef</div>
-      <span class="sales-area">Guld & Premium · Storkund</span>
-      <div class="sales-contact">
-        <a href="mailto:michael@energimassan.se">michael@energimassan.se</a>
-        <a href="tel:+46812345601">+46 8 123 456 01</a>
+<!-- ===== Bli partner cross-link ===== -->
+<section class="bp-section">
+  <div class="bp-card">
+    <div>
+      <div class="bp-eyebrow">Vill du synas mer?</div>
+      <h2 class="bp-title">Bli partner</h2>
+      <p class="bp-sub">Som partner får du långt mer än en monter — strategisk synlighet före, under och efter mässan, talartid på huvudscenen, exklusiva mötesytor och en plats vid bordet i energiomställningen.</p>
+    </div>
+    <a href="bli-partner.html" class="bp-cta">Utforska partnerskap →</a>
+  </div>
+</section>
+
+<!-- ===== Citat ===== -->
+<section class="qt-section">
+  <div class="qt-grid">
+    <article class="qt">
+      <span class="qt-mark">"</span>
+      <p class="qt-text">Vi bokade om innan vi ens hunnit packa ihop förra året. Mässan ger oss fler kvalificerade möten på två dagar än vad vi får på ett halvår av kall outreach.</p>
+      <div class="qt-by">
+        <div class="qt-av" style="--av-c1:#30D158;--av-c2:#0A84FF;">PJ</div>
+        <div>
+          <div class="qt-name">Per Johansson</div>
+          <div class="qt-role">Säljchef · Sungrow Nordics</div>
+        </div>
       </div>
-    </div>
-    <div class="sales-card">
-      <div class="sales-photo" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80&auto=format&fit=crop');"></div>
-      <div class="sales-name">Connie Lindberg</div>
-      <div class="sales-role">Senior Account Manager</div>
-      <span class="sales-area">Standard & Brons · SME</span>
-      <div class="sales-contact">
-        <a href="mailto:connie@energimassan.se">connie@energimassan.se</a>
-        <a href="tel:+46812345602">+46 8 123 456 02</a>
+    </article>
+
+    <article class="qt">
+      <span class="qt-mark">"</span>
+      <p class="qt-text">Mässmatch är guld värt — vi visste exakt vilka beslutsfattare som skulle besöka vår monter, och kunde förbereda rätt material i förväg.</p>
+      <div class="qt-by">
+        <div class="qt-av" style="--av-c1:#FFD60A;--av-c2:#FF9F0A;">AS</div>
+        <div>
+          <div class="qt-name">Anna Svensson</div>
+          <div class="qt-role">Marknadschef · Plexigrid</div>
+        </div>
       </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== Logorad ===== -->
+<section class="lr-section">
+  <div class="lr-card">
+    <div class="lr-eyebrow">Utställare 2026 — ett urval</div>
+    <div class="lr-row">
+      <div class="lr-tile">SUNGROW</div>
+      <div class="lr-tile">SCHNEIDER</div>
+      <div class="lr-tile">ABB</div>
+      <div class="lr-tile">HITACHI</div>
+      <div class="lr-tile">SIEMENS</div>
+      <div class="lr-tile">FORTUM</div>
+      <div class="lr-tile">PLEXIGRID</div>
+      <div class="lr-tile">RISE</div>
+      <div class="lr-tile">VOLVO</div>
+      <div class="lr-tile">NIDEC</div>
+      <div class="lr-tile">GRUNDFOS</div>
+      <div class="lr-tile">+ 240 till</div>
     </div>
-    <div class="sales-card">
-      <div class="sales-photo" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&q=80&auto=format&fit=crop');"></div>
-      <div class="sales-name">Stefan Holmberg</div>
-      <div class="sales-role">Account Manager</div>
-      <span class="sales-area">AI-Zonen · Startup & Scaleup</span>
-      <div class="sales-contact">
-        <a href="mailto:stefan@energimassan.se">stefan@energimassan.se</a>
-        <a href="tel:+46812345603">+46 8 123 456 03</a>
-      </div>
+    <div class="lr-foot">
+      <a href="utstallning.html">← Se alla utställare</a>
+      <a href="#paket">Bli en av dem 2027 →</a>
     </div>
   </div>
 </section>
 
-<div class="cta-band">
-  <div class="cta-band-inner">
-    <h2>Plats är begränsat. <br/>2026 sålde slut i december.</h2>
-    <p>Boka tidigt och välj din monterplats. Vi hjälper dig hela vägen — från storlek och layout till leads efter mässan.</p>
-    <a href="#" class="btn btn-primary">Boka säljmöte <svg><use href="#i-arrow"/></svg></a>
+<!-- ===== Sticky CTA ===== -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9z"/></svg></div>
+  <div class="sticky-txt">Säkra din monter inför 2027<small>87% av utställarna återbokar</small></div>
+  <div class="sticky-actions">
+    <a href="#paket" class="s-p">Boka monter →</a>
+    <a href="mailto:michael@energimassan.se" class="s-s">Säljmöte</a>
   </div>
 </div>
+
+<script>
+  (function(){
+    const el = document.getElementById('stickyCta');
+    let last = false;
+    function update(){
+      const show = window.scrollY > 600;
+      if(show !== last){ el.classList.toggle('show', show); last = show; }
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
 
 <footer>
   <div class="foot-inner">
@@ -808,8 +768,9 @@
     <div class="foot-links">
       <a href="index.html">Hem</a>
       <a href="program.html">Program</a>
-      <a href="talare.html">Talare</a>
-      <a href="utstallning.html">Utställning</a>
+      <a href="bli-utstallare.html">Bli utställare</a>
+      <a href="bli-partner.html">Bli partner</a>
+      <a href="bli-partner.html">Partner v2</a>
     </div>
   </div>
 </footer>
