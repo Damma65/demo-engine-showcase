@@ -3380,12 +3380,153 @@
 <!-- 'Inte slumpen'-algoritm-sektionen borttagen 2027-edit -->
 
 
-<!-- ============ BOKA AFFÄRSMATCHNING ============ -->
-<section class="section dating" id="match" style="padding-top:0;">
-  <div class="section-inner">
-    <a href="checkout.html?addon=dating" style="display:block;">
-      <img src="assets/affarsmatchning.png" alt="Boka affärsmatchning — förbokade 1-mot-1-möten via MässMatch" style="width:100%;height:auto;display:block;border-radius:18px;" />
-    </a>
+<!-- ============ BOKA AFFÄRSMATCHNING (HERO) ============ -->
+<style>
+  .am-hero{ position:relative; padding: 100px 32px; overflow:hidden; border-radius: 24px; margin: 0 32px;
+    background:
+      radial-gradient(1100px 600px at 12% 8%, rgba(94,92,230,0.22), transparent 60%),
+      radial-gradient(900px 600px at 92% 18%, rgba(100,210,255,0.16), transparent 60%),
+      radial-gradient(800px 500px at 80% 100%, rgba(48,209,88,0.10), transparent 60%),
+      linear-gradient(180deg, #0a0a0f 0%, #06060a 100%);
+    border: 1px solid var(--stroke); }
+  .am-hero::before{ content:""; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(900px 600px at 50% 30%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(900px 600px at 50% 30%, #000 20%, transparent 75%); pointer-events:none; }
+  .am-inner{ position:relative; z-index:1; max-width:1216px; margin:0 auto; display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 80px; align-items:center; }
+  .am-eyebrow{ display:inline-flex; align-items:center; gap:10px; padding:7px 14px; border-radius:100px; background:linear-gradient(135deg, rgba(94,92,230,0.20), rgba(100,210,255,0.12)); border:1px solid rgba(94,92,230,0.45); font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:#B0AEFF; }
+  .am-eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:#5E5CE6; box-shadow:0 0 12px #5E5CE6; }
+  .am-h1{ margin-top:24px; font-size: clamp(44px, 5vw, 72px); line-height: .98; letter-spacing:-0.045em; font-weight:700; color:#fff; }
+  .am-h1 .grad{ background: linear-gradient(135deg,#5E5CE6 0%,#64D2FF 60%,#30D158 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .am-lead{ margin-top: 26px; max-width: 560px; font-size: 18px; line-height: 1.55; color: var(--text-2); }
+  .am-steps{ margin-top: 38px; display:grid; grid-template-columns:1fr 1fr; gap: 14px; max-width: 600px; }
+  .am-step{ padding: 16px 18px; border-radius: 14px; background: rgba(255,255,255,0.035); border: 1px solid var(--stroke); display:flex; gap:14px; align-items:flex-start; }
+  .am-step .n{ flex:none; width:30px; height:30px; border-radius:9px; background: linear-gradient(135deg,#5E5CE6,#64D2FF); display:grid; place-items:center; font-weight:700; font-size:13px; color:#fff; box-shadow: 0 6px 14px -4px rgba(94,92,230,.5); }
+  .am-step p{ font-size: 13px; line-height:1.45; color: var(--text-2); }
+  .am-step p b{ color: #fff; font-weight:600; }
+  .am-cta-row{ margin-top: 36px; display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+  .am-cta{ display:inline-flex; align-items:center; gap:10px; padding: 16px 28px; border-radius: 100px; background: linear-gradient(135deg,#5E5CE6,#64D2FF); color:#fff; text-decoration:none; font-weight:600; font-size:15px; box-shadow: 0 14px 36px -10px rgba(94,92,230,.6); transition: transform .18s ease, box-shadow .18s ease; }
+  .am-cta:hover{ transform: translateY(-2px); box-shadow: 0 18px 44px -10px rgba(94,92,230,.75); }
+  .am-cta-note{ font-size: 12.5px; color: var(--text-3); max-width: 260px; line-height:1.4; }
+  .am-stats{ margin-top: 56px; display:grid; grid-template-columns:repeat(3,1fr); gap: 14px; max-width: 600px; }
+  .am-stat{ padding: 18px 20px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--stroke); }
+  .am-stat .v{ font-size: 26px; font-weight:700; letter-spacing:-.025em; background: linear-gradient(135deg,#64D2FF,#5E5CE6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .am-stat .l{ margin-top:4px; font-size: 11.5px; letter-spacing:.06em; text-transform:uppercase; color: var(--text-3); }
+  .am-right{ display:flex; justify-content:center; }
+  .am-phone-wrap{ position:relative; }
+  .am-phone-wrap::before{ content:""; position:absolute; inset:-40px; background: radial-gradient(closest-side, rgba(94,92,230,0.35), transparent 70%); filter: blur(40px); z-index:0; }
+  .am-phone{ position:relative; z-index:1; width: 360px; height: 740px; border-radius: 48px; background: linear-gradient(180deg,#1a1a22,#0d0d12); padding: 14px; box-shadow: 0 60px 120px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08), inset 0 0 0 1px rgba(255,255,255,0.05); }
+  .am-screen{ width:100%; height:100%; border-radius:36px; background: linear-gradient(180deg,#0e0e14 0%, #0a0a10 100%); overflow:hidden; position:relative; display:flex; flex-direction:column; border: 1px solid rgba(255,255,255,0.04); }
+  .ph-status{ display:flex; justify-content:space-between; align-items:center; padding: 14px 22px 8px; font-size: 13px; font-weight:600; color:#fff; }
+  .ph-status .dots{ display:flex; gap:4px; align-items:center; }
+  .ph-status .dots i{ width:4px; height:4px; border-radius:50%; background:#fff; }
+  .ph-status .battery{ width:22px; height:11px; border:1px solid #fff; border-radius:3px; padding:1px; }
+  .ph-status .battery i{ display:block; width:80%; height:100%; background:#fff; border-radius:1px; }
+  .ph-head{ padding: 8px 22px 14px; display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ph-head h3{ font-size: 17px; font-weight:600; color:#fff; letter-spacing:-.01em; }
+  .ph-head .badge{ width:24px; height:24px; border-radius:50%; background: linear-gradient(135deg,#5E5CE6,#FF375F); }
+  .ph-tabs{ display:flex; gap:6px; padding: 12px 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ph-tabs span{ padding: 7px 13px; border-radius: 100px; font-size: 12px; color: var(--text-3); font-weight:500; }
+  .ph-tabs span.on{ background: rgba(94,92,230,0.18); color:#B0AEFF; border:1px solid rgba(94,92,230,0.4); }
+  .ph-list{ padding: 14px 16px; flex:1; overflow:hidden; display:flex; flex-direction:column; gap:10px; }
+  .ph-list-head{ display:flex; justify-content:space-between; align-items:center; padding: 2px 4px 6px; }
+  .ph-list-head .t{ font-size:13px; font-weight:600; color:#fff; }
+  .ph-list-head .f{ font-size:11.5px; color: var(--text-3); }
+  .ph-card{ padding: 14px; border-radius: 16px; background: linear-gradient(180deg, rgba(94,92,230,0.10), rgba(100,210,255,0.04)); border:1px solid rgba(94,92,230,0.30); position:relative; }
+  .ph-card .pct{ position:absolute; top:12px; right:12px; font-size: 10.5px; padding: 3px 8px; border-radius:100px; background: rgba(48,209,88,0.18); color:#5DE38A; border:1px solid rgba(48,209,88,0.35); font-weight:700; }
+  .ph-card .av-row{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .ph-card .av{ width:34px; height:34px; border-radius:50%; background: linear-gradient(135deg,#5E5CE6,#64D2FF); }
+  .ph-card .av.b{ background: linear-gradient(135deg,#FF9F0A,#FF375F); }
+  .ph-card .arr{ width:22px; height:22px; border-radius:50%; background: rgba(255,255,255,0.06); display:grid; place-items:center; font-size:11px; color:var(--text-2); }
+  .ph-card .nm{ font-size: 13px; font-weight:600; color:#fff; line-height:1.3; }
+  .ph-card .ro{ font-size: 11.5px; color: var(--text-3); margin-top:2px; line-height:1.35; }
+  .ph-card .meta{ display:flex; gap:10px; margin-top: 10px; flex-wrap:wrap; font-size: 11px; color: var(--text-2); }
+  .ph-card .meta span{ padding: 4px 8px; border-radius: 8px; background: rgba(255,255,255,0.05); border:1px solid var(--stroke); }
+  .ph-card .acts{ display:flex; gap:8px; margin-top:12px; }
+  .ph-card .acts button{ flex:1; padding: 9px 10px; border-radius:10px; border:none; cursor:pointer; font-size:12px; font-weight:600; font-family:inherit; }
+  .ph-card .acts .skip{ background: rgba(255,255,255,0.06); color: var(--text-2); }
+  .ph-card .acts .book{ background: linear-gradient(135deg,#5E5CE6,#64D2FF); color:#fff; }
+  .ph-mini{ display:flex; align-items:center; gap:10px; padding: 11px 12px; border-radius: 14px; background: rgba(255,255,255,0.03); border:1px solid var(--stroke); }
+  .ph-mini .av{ flex:none; width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#30D158,#5E5CE6); }
+  .ph-mini .av.c{ background:linear-gradient(135deg,#64D2FF,#BF5AF2); }
+  .ph-mini .info{ flex:1; min-width:0; }
+  .ph-mini .info .pct{ font-size:10.5px; color:#5DE38A; font-weight:700; }
+  .ph-mini .info .nm{ font-size:12.5px; color:#fff; font-weight:600; line-height:1.3; margin-top:1px; }
+  .ph-mini .info .ro{ font-size:11px; color:var(--text-3); line-height:1.3; margin-top:1px; }
+  .ph-mini .chev{ color:var(--text-3); font-size:14px; }
+  .ph-see{ display:flex; justify-content:space-between; align-items:center; padding: 11px 14px; border-radius:12px; background: rgba(94,92,230,0.08); border:1px solid rgba(94,92,230,0.25); color:#B0AEFF; font-size:12.5px; font-weight:600; }
+  .ph-tabbar{ display:flex; justify-content:space-around; align-items:center; padding: 10px 8px 14px; border-top:1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.4); }
+  .ph-tabbar a{ display:flex; flex-direction:column; align-items:center; gap:3px; font-size: 10.5px; color: var(--text-3); text-decoration:none; }
+  .ph-tabbar a.on{ color:#B0AEFF; }
+  .ph-tabbar a .ic{ font-size:14px; }
+  @media (max-width: 1100px){
+    .am-hero{ padding: 70px 24px; margin: 0 16px; }
+    .am-inner{ grid-template-columns: 1fr; gap: 60px; }
+    .am-right{ order: 2; }
+  }
+  @media (max-width: 600px){
+    .am-hero{ padding: 50px 18px; margin: 0 8px; }
+    .am-steps{ grid-template-columns: 1fr; }
+    .am-stats{ grid-template-columns: 1fr; }
+    .am-cta{ width:100%; justify-content:center; }
+    .am-cta-note{ max-width: none; }
+    .am-phone{ width: 320px; height: 660px; }
+  }
+</style>
+<section class="am-hero" id="match">
+  <div class="am-inner">
+    <div class="am-left">
+      <span class="am-eyebrow"><span class="dot"></span>Affärsmatchning · Förbokade 1:1-möten</span>
+      <h1 class="am-h1">Boka<br/><span class="grad">affärsmatchning.</span></h1>
+      <p class="am-lead">Kvalificerade möten med rätt beslutsfattare, kunder och partners. Du beskriver målet — vi matchar och bokar in relevanta säljmöten som skapar mer nytta, bättre dialoger och högre ROI på mässan.</p>
+      <div class="am-steps">
+        <div class="am-step"><div class="n">1</div><p><b>Beskriv vilka du vill träffa</b> — kunder, partners, investerare eller leverantörer.</p></div>
+        <div class="am-step"><div class="n">2</div><p><b>Få relevanta förslag</b> — vi matchar mot deltagare, mål och affärsintresse.</p></div>
+        <div class="am-step"><div class="n">3</div><p><b>Boka kvalitetsmöten</b> — färre chansningar, fler skarpa affärsdialoger.</p></div>
+        <div class="am-step"><div class="n">4</div><p><b>Följ upp smart</b> — kontaktuppgifter och nästa steg samlas i appen.</p></div>
+      </div>
+      <div class="am-cta-row">
+        <a href="checkout.html?addon=dating" class="am-cta">Aktivera affärsmatchning →</a>
+        <span class="am-cta-note">Tillval till mässbiljett. Skapat för fler kvalitetsmöten och bättre ROI.</span>
+      </div>
+      <div class="am-stats">
+        <div class="am-stat"><div class="v">12 400</div><div class="l">Möten 2025</div></div>
+        <div class="am-stat"><div class="v">94%</div><div class="l">Upplevd relevans</div></div>
+        <div class="am-stat"><div class="v">17 min</div><div class="l">Snittlängd</div></div>
+      </div>
+    </div>
+    <div class="am-right">
+      <div class="am-phone-wrap">
+        <div class="am-phone"><div class="am-screen">
+          <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+          <div class="ph-head"><h3>Affärsmatchning</h3><div class="badge"></div></div>
+          <div class="ph-tabs"><span class="on">Förslag</span><span>Bokade</span><span>Profil</span></div>
+          <div class="ph-list">
+            <div class="ph-list-head"><div class="t">3 nya affärsmöten</div><div class="f">☷ Filtrera</div></div>
+            <div class="ph-card">
+              <span class="pct">94% match</span>
+              <div class="av-row"><div class="av"></div><div class="arr">↔</div><div class="av b"></div></div>
+              <div class="nm">Karin Jönsson ↔ Lars Bergström</div>
+              <div class="ro">Inköpschef · Stockholm Exergi</div>
+              <div class="ro">Sales Director · Sungrow</div>
+              <div class="meta"><span>▣ Ons 19/5 · 11:20</span><span>⌖ Mötespunkt B4</span></div>
+              <div class="acts"><button class="skip">Hoppa över</button><button class="book">Boka möte</button></div>
+            </div>
+            <div class="ph-mini"><div class="av"></div><div class="info"><div class="pct">91% match</div><div class="nm">Helena Strand ↔ Erik Wahlberg</div><div class="ro">Partner · EQT Future → CEO · GridFlex</div></div><div class="chev">›</div></div>
+            <div class="ph-mini"><div class="av c"></div><div class="info"><div class="pct">88% match</div><div class="nm">Daniel Hellström ↔ Sofia Lundqvist</div><div class="ro">Norrköpings kommun · Vinnergi</div></div><div class="chev">›</div></div>
+            <div class="ph-see"><span>⌘ Se alla förslag</span><span>→</span></div>
+          </div>
+          <div class="ph-tabbar">
+            <a href="#" class="on"><span class="ic">⌂</span>Hem</a>
+            <a href="#"><span class="ic">⌕</span>Förslag</a>
+            <a href="#"><span class="ic">□</span>Bokade</a>
+            <a href="#"><span class="ic">♙</span>Nätverk</a>
+            <a href="#"><span class="ic">○</span>Profil</a>
+          </div>
+        </div></div>
+      </div>
+    </div>
   </div>
 </section>
 
