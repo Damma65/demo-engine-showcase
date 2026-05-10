@@ -285,14 +285,18 @@
   .mp-tier-label{ position:absolute; top: 14px; left: 14px; font-size: 10px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color: currentColor; }
   .mp-card:hover::before{ opacity:.18; }
 
-  .mp-size{ margin-top: 4px; font-size: 22px; font-weight: 700; letter-spacing:-.025em; color:#fff; text-align:right; }
-  .mp-size sub{ font-size: 11px; font-weight:600; color: var(--text-3); margin-left:3px; vertical-align: baseline; }
-  .mp-price{ margin-top: 2px; font-size: 13px; font-weight:700; color: currentColor; text-align:right; letter-spacing:.01em; }
-  .mp-price small{ display:block; font-size: 9.5px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color: var(--text-3); margin-top:2px; }
+  /* Hero kvm-tal — huvudbudskap, premium */
+  .mp-size{ margin: 22px auto 8px; font-size: 88px; font-weight: 800; letter-spacing:-.045em; color:#fff; text-align:center;
+    line-height: .95; background: linear-gradient(180deg, #fff, rgba(255,255,255,0.55));
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 60px rgba(255,255,255,0.06); }
+  .mp-size sub{ font-size: 18px; font-weight:700; color: currentColor; -webkit-text-fill-color: currentColor; margin-left:4px; vertical-align: 14px; letter-spacing:0; }
+  .mp-tag{ margin: 0 auto 18px; padding: 0 6px; font-size: 13px; color: var(--text-2); line-height: 1.5; text-align:center; max-width: 240px; }
+  .mp-price{ margin-top: auto; padding-top: 14px; font-size: 18px; font-weight:800; color: currentColor; text-align:center; letter-spacing:-.01em; }
+  .mp-price small{ display:block; font-size: 9.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color: var(--text-3); margin-top:4px; }
 
-  .mp-booth-img{ display:block; margin: 14px auto 14px; object-fit: contain; object-position: center center;
-    width: 100%; height: auto; max-height: 180px; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.55)); transition: transform .35s ease; }
-  .mp-card:hover .mp-booth-img{ transform: translateY(-3px) scale(1.03); }
+  /* Hide rendered booth images — kvm är huvudbudskapet */
+  .mp-booth-img{ display:none !important; }
   .mp-card.is-selected{ border-color: rgba(48,209,88,.6) !important; box-shadow: 0 24px 60px -28px rgba(48,209,88,.45) !important; }
   .mp-card .mp-pick, .mp-addon .mp-pick, .mb-tile .mb-pick{ position:absolute; top: 14px; right: 14px; width: 16px; height: 16px; border-radius: 50%;
     border: 1.5px solid rgba(255,255,255,0.28); background: transparent; transition: all .2s; box-shadow: inset 0 0 0 0 transparent; }
