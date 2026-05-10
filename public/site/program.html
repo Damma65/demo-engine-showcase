@@ -225,10 +225,10 @@
   </div>
   <div class="stage-filter" id="stages">
     <span class="sf active" data-stage="all">Alla scener</span>
-    <span class="sf" data-stage="stora"><span class="sf-dot" style="background:var(--green-2)"></span>Stora scenen</span>
-    <span class="sf" data-stage="tech"><span class="sf-dot" style="background:var(--orange)"></span>Tech &amp; CIO</span>
-    <span class="sf" data-stage="drift"><span class="sf-dot" style="background:#FF375F"></span>Drift &amp; UH</span>
-    <span class="sf" data-stage="ai"><span class="sf-dot" style="background:var(--indigo-2)"></span>AI-Zonen</span>
+    <span class="sf" data-stage="stora"><span class="sf-dot" style="background:var(--green-2)"></span>Scen 1 · Stora scenen</span>
+    <span class="sf" data-stage="tech"><span class="sf-dot" style="background:var(--orange)"></span>Scen 2 · Tech &amp; CIO</span>
+    <span class="sf" data-stage="drift"><span class="sf-dot" style="background:#FF375F"></span>Scen 3 · Drift &amp; UH</span>
+    <span class="sf" data-stage="ai"><span class="sf-dot" style="background:var(--indigo-2)"></span>Scen 4 · AI-Zonen</span>
   </div>
   <div class="legend">
     <span class="pill"><span class="pp"></span> Betalseminarium (kräver konferenspass)</span>
@@ -283,7 +283,7 @@ const PROGRAM = {
   1: [
     ['08:00', 'Morgon', [
       {stage:'stora', title:'Morgonseminarium: Sveriges energi 2027 — vad har hänt?', desc:'Snabb genomgång av nuläget — pris, kapacitet, politik. En perfekt start på dagen.', speakers:[['TK','Tomas Käberger','tomas-kaberger','#30D158','#64D2FF']], duration:'45 min', open:true},
-      {stage:'ai', title:'Frukost-AI: hur LLM:er förändrar drift', desc:'Konkreta exempel på var språkmodeller redan sparar tid i kontrollrum och fältarbete.', speakers:[['AS','Anna Svensson','anna-svensson','#5E5CE6','#30D158']], duration:'30 min', open:true},
+      {stage:'ai', title:'Frukost-AI: hur LLM:er förändrar drift', desc:'Konkreta exempel på var språkmodeller redan sparar tid i kontrollrum och fältarbete.', speakers:[['AS','Anna Svensson','anna-svensson','#5E5CE6','#30D158']], duration:'30 min', open:true, requiresPreRegistration:true},
     ]],
     ['09:30', 'Öppning', [
       {stage:'stora', kind:'keynote', title:'Vattenfalls plan för 2030', desc:'Anna Borg presenterar Vattenfalls vägval för det kommande decenniet — kärnkraft, vind, vätgas och kapitalbehov.', speakers:[['AB','Anna Borg','anna-borg','#FFD60A','#FF9500']], duration:'45 min', open:true, featured:true},
@@ -303,7 +303,7 @@ const PROGRAM = {
     ]],
     ['15:30', 'Sen eftermiddag', [
       {stage:'drift', title:'BESS i drift — lärdomar från Volvo Energy', desc:'Driftcase, garantier och felmoder under det första året.', speakers:[['NT','Niklas Thulin','niklas-thulin','#5E5CE6','#0A84FF']], duration:'30 min', open:true},
-      {stage:'ai', title:'Hands-on: prediktivt underhåll med AI Sweden', desc:'Live-workshop med datasets från svensk industri.', speakers:[['FK','Filip Kjellgren','filip-kjellgren','#0A84FF','#BF5AF2']], duration:'45 min'},
+      {stage:'ai', title:'Hands-on: prediktivt underhåll med AI Sweden', desc:'Live-workshop med datasets från svensk industri.', speakers:[['FK','Filip Kjellgren','filip-kjellgren','#0A84FF','#BF5AF2']], duration:'45 min', requiresPreRegistration:true},
       {stage:'tech', kind:'paid', title:'Panel: Hur ska Sverige finansiera elnätet?', desc:'80 mdr SEK på tre år — vem betalar, och hur fördelas risken? Konferenspass krävs.', speakers:[['UH','Ulrika Hesslow','ulrika-hesslow','#FF375F','#FF9500'],['LH','Lars Hjalmered','lars-hjalmered','#FF9F0A','#FF375F']], duration:'45 min', paid:true},
     ]],
     ['17:30', 'Mingel', [
@@ -313,7 +313,7 @@ const PROGRAM = {
   2: [
     ['08:00', 'Morgon', [
       {stage:'ai', title:'Morgonseminarium: AI-Zonen öppnar', desc:'Översikt av dagens 30 demos och hur du planerar din runda.', speakers:[['AS','Anna Svensson','anna-svensson','#5E5CE6','#30D158']], duration:'30 min', open:true},
-      {stage:'drift', title:'Frukost: Drift &amp; UH-träffen', desc:'Roundtable för drifttekniker och UH-chefer. Frukost ingår.', speakers:[['LB','Lotta Bångens','lotta-bangens','#BF5AF2','#0A84FF']], duration:'45 min', open:true},
+      {stage:'drift', title:'Frukost: Drift &amp; UH-träffen', desc:'Roundtable för drifttekniker och UH-chefer. Frukost ingår.', speakers:[['LB','Lotta Bångens','lotta-bangens','#BF5AF2','#0A84FF']], duration:'45 min', open:true, requiresPreRegistration:true},
     ]],
     ['09:30', 'Öppning dag 2', [
       {stage:'stora', kind:'keynote', title:'Peter Carlsson — efter Northvolt, vad nu?', desc:'En personlig genomgång av lärdomarna och vad som kommer härnäst för svensk batteriindustri.', speakers:[['PC','Peter Carlsson','peter-carlsson','#30D158','#FFD60A']], duration:'45 min', open:true, featured:true},
@@ -325,7 +325,7 @@ const PROGRAM = {
     ]],
     ['13:00', 'Eftermiddag', [
       {stage:'stora', title:'Panel: Industrins elektrifiering — vem betalar?', desc:'Stålindustri, kemi och transport möts. Modereras av Åsa Pettersson.', speakers:[['ÅP','Åsa Pettersson','asa-pettersson','#FF9500','#FF375F'],['MN','Magnus Nilsson','magnus-nilsson','#0A84FF','#30D158'],['JS','Johan Svenningsson','johan-svenningsson','#BF5AF2','#5E5CE6']], duration:'60 min', open:true},
-      {stage:'ai', title:'AI-rådgivning live · drop-in (12 experter)', desc:'Boka 20-minuters rådgivning på plats — först till kvarn.', speakers:[], duration:'pågående', open:true},
+      {stage:'ai', title:'AI-rådgivning live · drop-in (12 experter)', desc:'Boka 20-minuters rådgivning på plats — först till kvarn.', speakers:[], duration:'pågående', open:true, requiresPreRegistration:true},
     ]],
     ['15:00', 'Avslutning', [
       {stage:'stora', kind:'keynote', title:'AVSLUTNING: Vart är vi på väg 2030?', desc:'Två röster summerar dagarna och pekar ut riktningen.', speakers:[['TK','Tomas Käberger','tomas-kaberger','#30D158','#64D2FF'],['BN','Bo Normark','bo-normark','#64D2FF','#0A84FF']], duration:'45 min', open:true, featured:true},
@@ -333,7 +333,7 @@ const PROGRAM = {
   ]
 };
 
-const stageNames = { stora:'Stora scenen', ai:'AI-Zonen', drift:'Drift & UH', tech:'Tech & CIO' };
+const stageNames = { stora:'Scen 1 · Stora scenen', ai:'Scen 4 · AI-Zonen', drift:'Scen 3 · Drift & UH', tech:'Scen 2 · Tech & CIO' };
 const STAGE_CLS = { stora:'stage-stora', ai:'stage-ai', drift:'stage-drift', tech:'stage-tech' };
 
 let activeDay = 1;
@@ -365,14 +365,21 @@ function render(){
           const stageCls = `s-${s.stage}`;
           const cls = `session ${stageCls} ${s.featured?'featured':''} ${s.paid?'paid':''}`;
           let badges = '';
+          const requiresConferenceTicket = !!s.paid;
           if (s.kind === 'keynote') badges += `<span class="badge kn">Keynote</span>`;
-          if (s.paid) badges += `<span class="badge pd">Betalseminarium</span>`;
-          if (s.requiresRegistration) badges += `<span class="badge rg" title="Begränsat antal platser — föranmäl dig i förväg">Föranmälan</span>`;
-          if (s.open && !s.paid && s.kind !== 'keynote') badges += `<span class="badge op">Öppen</span>`;
+          if (requiresConferenceTicket) badges += `<span class="badge pd">Konferensbiljett</span>`;
+          // Föranmälan visas ENDAST när konferensbiljett INTE redan krävs
+          if (s.requiresPreRegistration && !requiresConferenceTicket) {
+            badges += `<span class="badge rg" title="Begränsat antal platser — föranmäl dig i förväg">Föranmälan krävs</span>`;
+          }
+          if (s.open && !requiresConferenceTicket && s.kind !== 'keynote') badges += `<span class="badge op">Öppen</span>`;
           const spkHtml = s.speakers.length
             ? `<span class="sm-spk">${s.speakers.map(([init,name,slug,c1,c2]) => `<span class="mini-av" style="--c1:${c1};--c2:${c2}">${init}</span>`).join('')}<span>${s.speakers.map(s=>s[1]).join(' · ')}</span></span>`
             : '';
-          return `<div class="${cls}" data-sid="${sid(activeDay,time,s.title)}">
+          const sidVal = sid(activeDay,time,s.title);
+          const aTitle = JSON.stringify(s.title).replace(/"/g,'&quot;');
+          const aDesc  = JSON.stringify(s.desc||'').replace(/"/g,'&quot;');
+          return `<div class="${cls}" data-sid="${sidVal}">
             <a href="${href}" style="text-decoration:none;color:inherit;display:block;">
               <div class="session-stage ${STAGE_CLS[s.stage]}"><span class="sd"></span>${stageNames[s.stage]}</div>
               <div class="session-title">${s.title}${badges}</div>
@@ -381,8 +388,8 @@ function render(){
             <div class="session-meta">
               ${spkHtml}
               <span>${s.duration}</span>
-              <button onclick="toggleAgenda(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}', this)" title="Lägg till i Min agenda" class="agenda-star ${isSaved(sid(activeDay,time,s.title))?'on':''}" style="margin-left:auto;background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">★ ${isSaved(sid(activeDay,time,s.title))?'Sparad':'Spara'}</button>
-              <button onclick="downloadIcs(${activeDay},'${time}',${JSON.stringify(s.title)},${JSON.stringify(s.desc||'')},'${s.duration}')" style="background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">📅 .ics</button>
+              <button onclick="toggleAgenda(${activeDay},'${time}',${aTitle},${aDesc},'${s.duration}', this)" title="Lägg till i Min agenda" class="agenda-star ${isSaved(sidVal)?'on':''}" style="margin-left:auto;background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">★ ${isSaved(sidVal)?'Sparad':'Spara'}</button>
+              <button onclick="downloadIcs(${activeDay},'${time}',${aTitle},${aDesc},'${s.duration}')" style="background:transparent;border:1px solid var(--stroke-2);color:var(--text-2);padding:4px 10px;border-radius:100px;font-size:11px;cursor:pointer;font-family:inherit;">📅 .ics</button>
             </div>
           </div>`;
         }).join('')}
