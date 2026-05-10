@@ -186,15 +186,50 @@
     border-radius: 18px;
     background: rgba(48,209,88,.04);
     border: 1px dashed rgba(48,209,88,.25);
-    display:flex; align-items:center; gap: 18px 28px; flex-wrap: wrap;
   }
   .always-h{
     font-size: 11px; letter-spacing:.16em; text-transform:uppercase;
-    color: #30D158; font-weight:700; padding-right: 18px;
-    border-right: 1px solid rgba(255,255,255,0.08);
+    color: #30D158; font-weight:700; margin-bottom: 14px;
+    display:block;
   }
-  .always span{ font-size: 13.5px; color: var(--text-2); display:inline-flex; align-items:center; gap:6px; }
-  .always span::before{ content:"✓"; color: #30D158; font-weight:700; }
+  .always-row{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px 18px;
+  }
+  .always-row span{ font-size: 13.5px; color: var(--text-2); display:inline-flex; align-items:center; gap:6px; }
+  .always-row span::before{ content:"✓"; color: #30D158; font-weight:700; flex-shrink:0; }
+  @media (max-width: 1180px){ .always-row{ grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 720px){ .always-row{ grid-template-columns: repeat(2, 1fr); } }
+
+  /* ===== Bli partner cross-link ===== */
+  .bp-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
+  .bp-card{
+    position: relative; overflow: hidden;
+    padding: 36px 40px; border-radius: 22px;
+    background:
+      radial-gradient(120% 140% at 100% 0%, rgba(10,132,255,.18), transparent 55%),
+      radial-gradient(120% 140% at 0% 100%, rgba(191,90,242,.14), transparent 55%),
+      var(--surface);
+    border: 1px solid var(--stroke);
+    display:flex; align-items:center; justify-content:space-between; gap: 28px; flex-wrap: wrap;
+  }
+  .bp-eyebrow{
+    font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
+    color: #0A84FF; font-weight:700; margin-bottom: 8px;
+  }
+  .bp-title{ font-size: 26px; font-weight: 800; letter-spacing:-.02em; line-height:1.15; margin:0 0 6px; }
+  .bp-sub{ font-size: 14.5px; color: var(--text-2); max-width: 620px; line-height:1.5; margin:0; }
+  .bp-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    padding: 14px 22px; border-radius: 999px;
+    background: linear-gradient(135deg, #0A84FF, #BF5AF2);
+    color:#fff; text-decoration:none; font-weight:700; font-size: 14.5px;
+    box-shadow: 0 8px 24px -8px rgba(10,132,255,.55);
+    transition: transform .15s;
+  }
+  .bp-cta:hover{ transform: translateY(-2px); }
+  @media (max-width: 720px){ .bp-card{ padding: 28px; } .bp-title{ font-size: 22px; } }
 
   /* ===== Tillval ===== */
   .add-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
@@ -576,13 +611,15 @@
 <section class="always-section">
   <div class="always">
     <span class="always-h">Ingår alltid</span>
-    <span>Lead-export</span>
-    <span>Mässmatch (AI)</span>
-    <span>Profil i mässappen</span>
-    <span>El &amp; internet</span>
-    <span>Inflyttning torsdag</span>
-    <span>2 utställarbiljetter / 9 m²</span>
-    <span>Wi-Fi i hela hallen</span>
+    <div class="always-row">
+      <span>Lead-export</span>
+      <span>Mässmatch (AI)</span>
+      <span>Profil i mässappen</span>
+      <span>El &amp; internet</span>
+      <span>Inflyttning torsdag</span>
+      <span>2 utställarbiljetter / 9 m²</span>
+      <span>Wi-Fi i hela hallen</span>
+    </div>
   </div>
 </section>
 
@@ -638,6 +675,18 @@
         <div class="add-price">45 000 SEK</div>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ===== Bli partner cross-link ===== -->
+<section class="bp-section">
+  <div class="bp-card">
+    <div>
+      <div class="bp-eyebrow">Vill du synas mer?</div>
+      <h2 class="bp-title">Bli partner</h2>
+      <p class="bp-sub">Som partner får du långt mer än en monter — strategisk synlighet före, under och efter mässan, talartid på huvudscenen, exklusiva mötesytor och en plats vid bordet i energiomställningen.</p>
+    </div>
+    <a href="./partner-v2.html" class="bp-cta">Utforska partnerskap →</a>
   </div>
 </section>
 
