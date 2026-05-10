@@ -333,6 +333,7 @@
       const it = el._emItemFactory();
       setBtnState(el._emSaveBtn, it && has(it.id));
     });
+    document.querySelectorAll('a.sp-side-cta').forEach(a => { if (a._emRefresh) a._emRefresh(); });
   }
 
   /* ----- factories per card type ----- */
