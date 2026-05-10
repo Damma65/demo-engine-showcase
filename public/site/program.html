@@ -367,6 +367,7 @@ function render(){
           let badges = '';
           if (s.kind === 'keynote') badges += `<span class="badge kn">Keynote</span>`;
           if (s.paid) badges += `<span class="badge pd">Betalseminarium</span>`;
+          if (s.requiresRegistration) badges += `<span class="badge rg" title="Begränsat antal platser — föranmäl dig i förväg">Föranmälan</span>`;
           if (s.open && !s.paid && s.kind !== 'keynote') badges += `<span class="badge op">Öppen</span>`;
           const spkHtml = s.speakers.length
             ? `<span class="sm-spk">${s.speakers.map(([init,name,slug,c1,c2]) => `<span class="mini-av" style="--c1:${c1};--c2:${c2}">${init}</span>`).join('')}<span>${s.speakers.map(s=>s[1]).join(' · ')}</span></span>`
