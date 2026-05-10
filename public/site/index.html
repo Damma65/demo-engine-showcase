@@ -1838,6 +1838,9 @@
   .partner-tier.event .partner.has-logo img{ max-height:52px; max-width:150px; }
   .partner-tier.partner .partner.has-logo{ min-height:94px; padding:16px 16px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.partner .partner.has-logo img{ width:100%; max-width:100%; height:auto; max-height:64px; object-fit:contain; filter: brightness(0) invert(1); opacity:.9; transition:opacity .2s; }
+  /* Whitemarks: redan vita på transparent — ingen filtrering */
+  .partner.has-logo img[src*="-white.svg"]{ filter:none !important; opacity:.95; }
+  .partner.has-logo:hover img[src*="-white.svg"]{ opacity:1; }
   .partner.has-logo .pl-name-fallback{ display:none; }
   .partner-tier.partner .partner.has-logo:hover img{ opacity:1; }
   /* Shrink select samarbetspartners-logos with 20% */
