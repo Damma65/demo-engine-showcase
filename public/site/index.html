@@ -389,6 +389,18 @@
   .kn-card.kn-2 .kn-photo{ object-position: center 102%; transform: scale(1.10); transform-origin: center bottom; }
   .kn-card.kn-1:hover .kn-photo{ transform: scale(1.17); }
   .kn-card.kn-2:hover .kn-photo{ transform: scale(1.15); }
+  /* Stable rectangular portraits (.webp) — anchored right, soft-faded left so kn-bigword reads. */
+  .kn-card.kn-1 .kn-photo[data-stable], .kn-card.kn-2 .kn-photo[data-stable]{
+    left:auto; right:0; width:62%; height:100%;
+    object-fit:cover; object-position:center 18%;
+    transform:none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%, #000 100%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 22%, #000 100%);
+  }
+  .kn-card.kn-1:hover .kn-photo[data-stable], .kn-card.kn-2:hover .kn-photo[data-stable]{ transform:scale(1.04); transform-origin:right center; }
+  @media (max-width:700px){
+    .kn-card.kn-1 .kn-photo[data-stable], .kn-card.kn-2 .kn-photo[data-stable]{ width:70%; }
+  }
 
   /* Soft vignette + bottom darkening so text reads */
   .kn-overlay{
