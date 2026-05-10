@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8" />
-<title>DEMO · Bli utställare v2 · Energimässan 2027</title>
+<title>DEMO · Bli utställare v3 (lugn palett) · Energimässan 2027</title>
 <meta name="robots" content="noindex,nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -151,11 +151,14 @@
   .lv-arrow{ color: var(--text-3); font-size: 16px; transition: transform .18s, color .18s; }
   .lv:hover .lv-arrow{ color: var(--lv-c); transform: translateX(2px); }
 
-  .lv.s-9{ --lv-c: #BABABF; }
-  .lv.s-12{ --lv-c: #30D158; }
-  .lv.s-16{ --lv-c: #FFD60A; }
-  .lv.s-18{ --lv-c: #FF9F0A; }
-  .lv.s-24{ --lv-c: #BF5AF2; }
+  /* Lugn palett: neutralt + en orange accent på Mest populär */
+  .lv.s-9,  .lv.s-16, .lv.s-18, .lv.s-24{ --lv-c: #F5F5F7; }
+  .lv.s-12{ --lv-c: #FF9F0A; }
+  .lv.s-12{ background: linear-gradient(180deg, rgba(255,159,10,0.06), rgba(255,159,10,0.02)); border-color: rgba(255,159,10,0.32); }
+  .lv-pricepill{ background: rgba(255,255,255,0.06) !important; color: var(--text) !important; border:1px solid rgba(255,255,255,0.10); }
+  .lv.s-12 .lv-pricepill{ background: rgba(255,159,10,0.14) !important; color:#FF9F0A !important; border-color: rgba(255,159,10,0.30); }
+  .lv-badge{ background: rgba(255,255,255,0.05) !important; color: var(--text-2) !important; border:1px solid rgba(255,255,255,0.10); }
+  .lv.s-12 .lv-badge{ background: rgba(255,159,10,0.14) !important; color:#FF9F0A !important; border-color: rgba(255,159,10,0.30); }
 
   .lv-custom{
     margin-top: 14px; padding: 28px 32px;
@@ -208,24 +211,23 @@
     position: relative; overflow: hidden;
     padding: 36px 40px; border-radius: 22px;
     background:
-      radial-gradient(120% 140% at 100% 0%, rgba(10,132,255,.18), transparent 55%),
-      radial-gradient(120% 140% at 0% 100%, rgba(191,90,242,.14), transparent 55%),
+      radial-gradient(120% 140% at 100% 0%, rgba(255,159,10,.10), transparent 60%),
       var(--surface);
     border: 1px solid var(--stroke);
     display:flex; align-items:center; justify-content:space-between; gap: 28px; flex-wrap: wrap;
   }
   .bp-eyebrow{
     font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
-    color: #0A84FF; font-weight:700; margin-bottom: 8px;
+    color: #FF9F0A; font-weight:700; margin-bottom: 8px;
   }
   .bp-title{ font-size: 26px; font-weight: 800; letter-spacing:-.02em; line-height:1.15; margin:0 0 6px; }
   .bp-sub{ font-size: 14.5px; color: var(--text-2); max-width: 620px; line-height:1.5; margin:0; }
   .bp-cta{
     display:inline-flex; align-items:center; gap:10px;
     padding: 14px 22px; border-radius: 999px;
-    background: linear-gradient(135deg, #0A84FF, #BF5AF2);
-    color:#fff; text-decoration:none; font-weight:700; font-size: 14.5px;
-    box-shadow: 0 8px 24px -8px rgba(10,132,255,.55);
+    background: #FF9F0A;
+    color:#1a0a00; text-decoration:none; font-weight:700; font-size: 14.5px;
+    box-shadow: 0 8px 24px -8px rgba(255,159,10,.55);
     transition: transform .15s;
   }
   .bp-cta:hover{ transform: translateY(-2px); }
@@ -296,11 +298,16 @@
   .req-name{ font-size: 16px; font-weight:700; letter-spacing:-.012em; line-height:1.25; }
   .req-price{
     font-size: 22px; font-weight: 800; letter-spacing:-.02em;
-    margin: 6px 0 10px;
-    background: linear-gradient(90deg, #FF9F0A, #FF375F);
-    -webkit-background-clip:text; background-clip:text; color: transparent;
+    margin: 6px 0 10px; color: var(--text);
     font-feature-settings:"tnum";
   }
+  .req-important .req-price{ color: #FF9F0A; }
+  .req-num{ background: rgba(255,255,255,0.10) !important; color: var(--text) !important; }
+  .req-important .req-num{ background: #FF9F0A !important; color:#1a0a00 !important; }
+  .req-list li::before{ background: rgba(255,255,255,0.35) !important; }
+  .req-tag.neu{ background: rgba(255,255,255,0.06); color: var(--text-2); border:1px solid rgba(255,255,255,0.10); }
+  .req-important-tag{ background: rgba(255,159,10,0.14) !important; color:#FF9F0A !important; border:1px solid rgba(255,159,10,0.30); }
+  .req-dot{ background: #FF9F0A !important; box-shadow: 0 0 0 4px rgba(255,159,10,.15) !important; }
   .req-d{ font-size: 13.5px; color: var(--text-2); line-height:1.5; }
   .req-list{ list-style:none; padding:0; margin: 8px 0 0;
     display:grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; }
@@ -320,12 +327,12 @@
   .qt-section{ max-width: 1320px; margin: 0 auto 80px; padding: 0 32px; }
   .qt-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .qt{ padding: 32px; border-radius: 20px; background: var(--surface); border: 1px solid var(--stroke); position: relative; }
-  .qt-mark{ position:absolute; top: 18px; right: 22px; font-size: 56px; line-height:.6; color: rgba(48,209,88,.20); font-family: Georgia, serif; font-weight: 700; }
+  .qt-mark{ position:absolute; top: 18px; right: 22px; font-size: 56px; line-height:.6; color: rgba(255,255,255,.10); font-family: Georgia, serif; font-weight: 700; }
   .qt-text{ font-size: 16.5px; color: var(--text); line-height: 1.55; font-weight: 500; letter-spacing:-.005em; }
   .qt-by{ margin-top: 22px; display:flex; align-items:center; gap: 14px; }
   .qt-av{ width: 44px; height: 44px; border-radius: 50%; display:grid; place-items:center;
     font-weight:700; font-size: 15px; color: #fff;
-    background: linear-gradient(135deg, var(--av-c1, #30D158), var(--av-c2, #0A84FF)); flex-shrink:0; }
+    background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); flex-shrink:0; }
   .qt-name{ font-size: 14px; font-weight: 700; }
   .qt-role{ font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
 
@@ -382,9 +389,7 @@
 </head>
 <body>
 
-<div class="demo-banner">
-  DEMO-version — visas inte publikt. Skarp sida ligger kvar.
-  <a href="../bli-utstallare.html">→ Tillbaka till skarp Bli utställare</a>
+<div class="demo-banner">DEMO v3 — lugnare palett (en accent + neutralt). <a href="../bli-utstallare.html">→ Tillbaka till skarp Bli utställare</a>
   <a href="partner-v2.html">· Partner v2</a>
 </div>
 
@@ -567,8 +572,8 @@
   </div>
   <div class="req-grid">
 
-    <div class="req" style="--req-c:#FF9F0A;">
-      <span class="req-tag opt">Tillval</span>
+    <div class="req" style="--req-c:rgba(255,255,255,0.22);">
+      <span class="req-tag neu">Tillval</span>
       <div class="req-top">
         <div class="req-num">7</div>
         <div class="req-name">Hörnmonter</div>
@@ -577,8 +582,8 @@
       <div class="req-d">Tillägg vid två öppna sidor — naturligt flöde och bättre tillgänglighet.</div>
     </div>
 
-    <div class="req" style="--req-c:#FF375F;">
-      <span class="req-tag">Obligatoriskt</span>
+    <div class="req req-important" style="--req-c:#FF9F0A;">
+      <span class="req-tag req-important-tag">Obligatoriskt</span>
       <div class="req-top">
         <div class="req-num">8</div>
         <div class="req-name">Anmälningsavgift</div>
@@ -587,8 +592,8 @@
       <div class="req-d">Obligatorisk för alla utställare. Registrering, försäkring och utställarservice.</div>
     </div>
 
-    <div class="req" style="--req-c:#BF5AF2;">
-      <span class="req-tag up">Uppgradering</span>
+    <div class="req" style="--req-c:rgba(255,255,255,0.22);">
+      <span class="req-tag neu">Uppgradering</span>
       <div class="req-top">
         <div class="req-num">9</div>
         <div class="req-name">Pluspaketet · Uppgradering</div>
