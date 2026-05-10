@@ -391,17 +391,17 @@
   .kn-card.kn-2 .kn-photo{ object-position: center 102%; transform: scale(1.10); transform-origin: center bottom; }
   .kn-card.kn-1:hover .kn-photo{ transform: scale(1.17); }
   .kn-card.kn-2:hover .kn-photo{ transform: scale(1.15); }
-  /* Stable rectangular portraits (.webp) — anchored right, soft-faded left so kn-bigword reads. */
+  /* Stable rectangular portraits — centered, with top fade so kn-bigword reads behind head */
   .kn-card.kn-1 .kn-photo[data-stable], .kn-card.kn-2 .kn-photo[data-stable]{
-    left:auto; right:0; width:62%; height:100%;
-    object-fit:cover; object-position:center 18%;
+    left:0; right:0; width:100%; height:100%;
+    object-fit:cover; object-position:center 22%;
     transform:none;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%, #000 100%);
-            mask-image: linear-gradient(to right, transparent 0%, #000 22%, #000 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 14%, #000 32%, #000 100%);
+            mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 14%, #000 32%, #000 100%);
   }
-  .kn-card.kn-1:hover .kn-photo[data-stable], .kn-card.kn-2:hover .kn-photo[data-stable]{ transform:scale(1.04); transform-origin:right center; }
+  .kn-card.kn-1:hover .kn-photo[data-stable], .kn-card.kn-2:hover .kn-photo[data-stable]{ transform:scale(1.03); transform-origin:center bottom; }
   @media (max-width:700px){
-    .kn-card.kn-1 .kn-photo[data-stable], .kn-card.kn-2 .kn-photo[data-stable]{ width:70%; }
+    .kn-card.kn-1 .kn-photo[data-stable], .kn-card.kn-2 .kn-photo[data-stable]{ object-position:center 18%; }
   }
 
   /* Soft vignette + bottom darkening so text reads */
