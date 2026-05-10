@@ -94,6 +94,7 @@
             '<li><a href="talare.html">Talare</a></li>' +
             '<li><a href="utstallning.html">Utställning</a></li>' +
             '<li><a href="bli-utstallare.html">Bli utställare</a></li>' +
+            '<li><a href="bli-partner.html">Bli partner</a></li>' +
             '<li><a href="sponsorpaket.html">Bli sponsor</a></li>' +
             '<li><a href="resa-boende.html">Resa &amp; boende</a></li>' +
             '<li><a href="faq.html">Vanliga frågor</a></li>' +
@@ -182,6 +183,7 @@
       ['utstallning.html','Utställning'],
       ['kvallsmingel.html','Kvällsmingel'],
       ['bli-utstallare.html','Bli utställare'],
+      ['bli-partner.html','Bli partner'],
       ['index.html#biljetter','Biljetter'],
       ['resa-boende.html','Boende & Info']
     ];
