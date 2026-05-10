@@ -92,9 +92,13 @@
   }
   .sp-card:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px -12px var(--cat, rgba(255,255,255,0.15)); }
   .sp-card .avatar{ width:100%; height:100%; transition: transform .6s; background-size: cover; background-position: center 25%; background-color: #1a1a1f; }
+  .sp-card.is-cutout .avatar{ background-size: contain; background-position: bottom center; background-repeat: no-repeat; background-color: #000; }
+  .sp-card.is-cutout{ border-color: rgba(255,255,255,0.08); }
   .sp-card .avatar .tint{ display: none; }
   .sp-card:hover .avatar{ transform: scale(1.06); }
   .sp-card .sp-cat{ background: var(--cat, rgba(255,255,255,0.12)); color: #0a0a0c; }
+  .sp-prereg{ position:absolute; top:12px; right:12px; z-index:3; display:inline-flex; align-items:center; gap:6px; padding:5px 10px; background:rgba(255,159,10,0.95); color:#1a1300; font-size:10.5px; font-weight:700; letter-spacing:.04em; border-radius:100px; backdrop-filter: blur(8px); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  .sp-prereg svg{ width:11px; height:11px; }
 
   /* Filter: HIDE non-matches completely (gap collapses) */
   .sp-card{ transition: transform .5s ease, opacity .3s ease; }
@@ -157,7 +161,7 @@
       <a href="utstallning.html">Utställning</a>
       <a href="kvallsmingel.html">Kvällsmingel</a>
       <a href="bli-utstallare.html">Bli utställare</a>
-      <a href="index.html#biljetter">Biljetter</a>
+      <a href="index.html#biljetter">Biljetter</a><a href="resa-boende.html">Boende &amp; Info</a>
     </nav>
     <a href="index.html#biljetter" class="nav-cta">Boka biljett</a>
   </div>
@@ -193,6 +197,160 @@
 <div class="count-line" id="countline">Visar 24 av 24 talare</div>
 
 <div class="speakers-grid" id="grid"></div>
+
+<!-- Pre-anmälan info banner -->
+<section class="ts-prereg-info" aria-label="Förhandsanmälan information">
+  <div class="ts-prereg-inner">
+    <div class="ts-prereg-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+    </div>
+    <div class="ts-prereg-text">
+      <div class="ts-prereg-h">Föranmälan krävs för utvalda sessioner</div>
+      <div class="ts-prereg-d">Talare märkta med <span class="ts-prereg-chip">Föranmälan</span> har begränsade platser och fylls snabbt. Säkra din plats redan nu via programmet.</div>
+    </div>
+    <a href="program.html" class="ts-prereg-cta">Till programmet →</a>
+  </div>
+</section>
+
+<!-- Most saved speakers widget -->
+<section class="ts-add-section">
+  <div class="ts-add-eye">Live · uppdateras nu</div>
+  <h2 class="ts-add-h">Mest sparade <span class="grad">just nu.</span></h2>
+  <p class="ts-add-sub">Andra besökare har lagt dessa talare i sin lista. Klicka på stjärnan för att spara dina egna.</p>
+  <div class="ts-most-saved" id="ts-most-saved">
+    <div class="ts-most-empty">Inga sparade talare än — börja med att klicka på ★ på ett talarkort ovan.</div>
+  </div>
+</section>
+
+<!-- Past highlights -->
+<section class="ts-add-section">
+  <div class="ts-add-eye">Tidigare år</div>
+  <h2 class="ts-add-h">Höjdpunkter från <span class="grad">scenen 2024–2026.</span></h2>
+  <p class="ts-add-sub">Citaten som satte agendan för svensk energidebatt.</p>
+  <div class="ts-quotes">
+    <figure class="ts-quote" style="--c1:#FFD60A;--c2:#FF9500;">
+      <blockquote>"Sverige behöver dubbla elproduktionen — och vi måste börja igår."</blockquote>
+      <figcaption><b>Anna Borg</b> · VD Vattenfall · 2026</figcaption>
+    </figure>
+    <figure class="ts-quote" style="--c1:#5E5CE6;--c2:#BF5AF2;">
+      <blockquote>"AI är inte framtiden för elnätet — det är 2025 års verklighet."</blockquote>
+      <figcaption><b>Filip Kjellgren</b> · AI Sweden · 2025</figcaption>
+    </figure>
+    <figure class="ts-quote" style="--c1:#30D158;--c2:#64D2FF;">
+      <blockquote>"Småskalig solenergi har blivit en industripolitisk fråga."</blockquote>
+      <figcaption><b>Johanna Lakso</b> · Power Circle · 2024</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Suggest a speaker form -->
+<section class="ts-add-section ts-suggest-wrap">
+  <div class="ts-suggest">
+    <div class="ts-suggest-l">
+      <div class="ts-add-eye">Bidra till programmet</div>
+      <h2 class="ts-add-h">Föreslå en <span class="grad">talare till 2028.</span></h2>
+      <p class="ts-add-sub">Vi tar emot förslag löpande. Programkommittén granskar varje vecka.</p>
+    </div>
+    <form class="ts-form" onsubmit="event.preventDefault(); this.querySelector('.ts-thanks').hidden=false; this.querySelector('.ts-fields').hidden=true;">
+      <div class="ts-fields">
+        <input type="text" name="name" placeholder="Talarens namn" required maxlength="100"/>
+        <input type="text" name="org" placeholder="Organisation" maxlength="100"/>
+        <input type="email" name="email" placeholder="Din e-post" required maxlength="120"/>
+        <textarea name="why" placeholder="Varför skulle den här personen vara värdefull på scenen?" maxlength="500" rows="3"></textarea>
+        <button type="submit" class="ts-submit">Skicka förslag →</button>
+      </div>
+      <div class="ts-thanks" hidden>
+        <div style="font-size:32px;margin-bottom:8px;">✨</div>
+        <b>Tack — förslaget är mottaget.</b>
+        <div style="color:var(--text-3);font-size:13px;margin-top:6px;">Vi återkommer om vi går vidare.</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .ts-prereg-info{ max-width:1280px; margin: 24px auto 0; padding: 0 32px; }
+  .ts-prereg-inner{ display:flex; align-items:center; gap:18px; padding: 18px 22px; background: linear-gradient(135deg, rgba(255,159,10,0.10), rgba(255,159,10,0.03)); border:1px solid rgba(255,159,10,0.25); border-radius: 18px; }
+  .ts-prereg-icon{ width:42px; height:42px; flex:0 0 42px; border-radius:50%; background: rgba(255,159,10,0.18); color:#FFB340; display:grid; place-items:center; }
+  .ts-prereg-icon svg{ width:22px; height:22px; }
+  .ts-prereg-text{ flex:1; }
+  .ts-prereg-h{ font-weight:700; font-size:15px; letter-spacing:-.012em; }
+  .ts-prereg-d{ margin-top:4px; font-size:13px; color: var(--text-2); }
+  .ts-prereg-chip{ display:inline-block; padding:2px 8px; background:rgba(255,159,10,0.95); color:#1a1300; font-size:10.5px; font-weight:700; border-radius:100px; vertical-align:middle; margin: 0 2px; }
+  .ts-prereg-cta{ flex-shrink:0; padding:10px 18px; border-radius: 100px; background: rgba(255,159,10,0.95); color:#1a1300; font-weight:700; font-size:13px; text-decoration:none; transition:transform .2s; white-space:nowrap; }
+  .ts-prereg-cta:hover{ transform: translateY(-1px); }
+  @media(max-width:700px){ .ts-prereg-inner{ flex-direction:column; align-items:flex-start; } }
+
+  .ts-add-section{ max-width:1280px; margin: 80px auto 0; padding: 0 32px; }
+  .ts-add-eye{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color: var(--text-3); font-weight:600; margin-bottom: 10px; }
+  .ts-add-h{ font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing:-.028em; line-height:1.05; margin:0; }
+  .ts-add-h .grad{ background: linear-gradient(135deg,#30D158,#64D2FF,#5E5CE6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .ts-add-sub{ margin-top: 12px; font-size: 16px; color: var(--text-2); max-width: 720px; }
+
+  .ts-most-saved{ margin-top: 28px; display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  .ts-most-empty{ grid-column:1/-1; padding: 32px; background: var(--bg-2); border:1px dashed var(--stroke); border-radius: 16px; text-align:center; color: var(--text-3); font-size:14px; }
+  .ts-saved-card{ display:flex; align-items:center; gap:12px; padding:14px; background: var(--bg-2); border:1px solid var(--stroke); border-radius: 14px; text-decoration:none; color:inherit; transition: transform .2s, border-color .2s; }
+  .ts-saved-card:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+  .ts-saved-rank{ font-size: 22px; font-weight: 800; letter-spacing:-.02em; min-width:28px; background: linear-gradient(135deg,#FFD60A,#FF9500); -webkit-background-clip:text; background-clip:text; color: transparent; }
+  .ts-saved-info{ flex:1; min-width:0; }
+  .ts-saved-name{ font-size:14px; font-weight:700; letter-spacing:-.014em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; }
+  .ts-saved-org{ font-size:11.5px; color: var(--text-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; }
+
+  .ts-quotes{ margin-top: 28px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media(max-width:900px){ .ts-quotes{ grid-template-columns: 1fr; } }
+  .ts-quote{ margin:0; padding: 28px; border-radius: 22px; background: var(--bg-2); border:1px solid var(--stroke); position:relative; overflow:hidden; }
+  .ts-quote::before{ content:'"'; position:absolute; top:-20px; left:14px; font-size: 130px; line-height:1; font-weight: 800; background: linear-gradient(135deg, var(--c1), var(--c2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent; opacity:.45; }
+  .ts-quote blockquote{ position:relative; margin:0; font-size: 18px; font-weight: 600; line-height: 1.35; letter-spacing:-.012em; }
+  .ts-quote figcaption{ margin-top: 16px; font-size: 12px; color: var(--text-3); }
+  .ts-quote figcaption b{ color: var(--text-2); }
+
+  .ts-suggest-wrap{ margin-bottom: 80px; }
+  .ts-suggest{ margin-top: 28px; display:grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 36px; border-radius: 24px; background: linear-gradient(135deg, rgba(94,92,230,0.10), rgba(48,209,88,0.06)); border:1px solid rgba(255,255,255,0.08); }
+  @media(max-width:900px){ .ts-suggest{ grid-template-columns: 1fr; padding:24px; } }
+  .ts-form .ts-fields{ display:grid; gap: 10px; }
+  .ts-form input, .ts-form textarea{ width:100%; padding: 12px 14px; background: rgba(0,0,0,0.4); border:1px solid var(--stroke); border-radius: 10px; color: var(--text); font-family: inherit; font-size: 14px; outline:none; transition: border-color .2s; }
+  .ts-form input:focus, .ts-form textarea:focus{ border-color: rgba(94,92,230,0.6); }
+  .ts-form textarea{ resize: vertical; min-height: 80px; }
+  .ts-submit{ padding: 12px 20px; border-radius: 100px; background: var(--text); color: var(--bg); border:none; font-weight: 700; font-size: 14px; cursor:pointer; transition: transform .2s; }
+  .ts-submit:hover{ transform: translateY(-1px); }
+  .ts-thanks{ padding: 28px; background: rgba(48,209,88,0.08); border:1px solid rgba(48,209,88,0.25); border-radius: 14px; text-align:center; }
+</style>
+
+<script>
+  /* Render "Mest sparade" — uses localStorage if available, else baseline */
+  (function renderMostSaved(){
+    const el = document.getElementById('ts-most-saved');
+    if (!el) return;
+    let saved = [];
+    try {
+      const raw = localStorage.getItem('mina-sparade-talare') || localStorage.getItem('savedSpeakers') || '[]';
+      saved = JSON.parse(raw);
+    } catch(e){}
+    const baseline = [
+      { name:'Anna Borg', org:'Vattenfall', slug:'anna-borg' },
+      { name:'Magdalena Andersson', org:'Socialdemokraterna', slug:'magdalena-andersson' },
+      { name:'Tomas Kåberger', org:'Sveriges Energiforum', slug:'tomas-kaberger' },
+      { name:'Jonas Birgersson', org:'Via Europa', slug:'jonas-birgersson' },
+      { name:'Peter Carlsson', org:'Tidigare Northvolt', slug:'peter-carlsson' },
+      { name:'Ulrika Hesslow', org:'Energimarknadsinspektionen', slug:'ulrika-hesslow' },
+    ];
+    const list = (saved && saved.length ? saved.slice(0,6) : baseline);
+    if (!list.length){ return; }
+    el.innerHTML = list.map((s,i) => {
+      const name = s.name || s;
+      const org = s.org || '';
+      const slug = s.slug || (name||'').toLowerCase().replace(/å|ä/g,'a').replace(/ö/g,'o').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      return `<a class="ts-saved-card" href="talare/${slug}.html">
+        <span class="ts-saved-rank">${i+1}</span>
+        <span class="ts-saved-info">
+          <span class="ts-saved-name">${name}</span>
+          <span class="ts-saved-org">${org}</span>
+        </span>
+      </a>`;
+    }).join('');
+  })();
+</script>
+
 
 <footer>
   <div class="foot-inner">
@@ -321,15 +479,18 @@
     else if (sort === 'cat') list.sort((a,b)=>a.s[3].localeCompare(b.s[3]));
 
     const REAL = {
-      'anna borg':'talare/photos/anna-borg.webp',
-      'magdalena andersson':'talare/photos/magdalena.png',
-      'tomas kåberger':'talare/photos/tomas-kaberger.png',
-      'carl berglöf':'talare/photos/carl-berglof.png',
-      'jonas birgersson':'talare/photos/jonas-birgersson.png',
-      'ulrika hesslow':'talare/photos/ulrika-hesslow.png',
-      'peter carlsson':'talare/photos/peter-carlsson.png',
-      'desiree comstedt':'talare/photos/desiree-comstedt.png',
+      'anna borg':         { src:'talare/photos/anna-borg-cutout-v2.png',     cut:true },
+      'magdalena andersson':{ src:'talare/photos/magdalena-cutout-v2.png',    cut:true },
+      'tomas kåberger':    { src:'talare/photos/tomas-kaberger-cutout.png',   cut:true },
+      'carl berglöf':      { src:'talare/photos/carl-berglof-cutout.png',     cut:true },
+      'jonas birgersson':  { src:'talare/photos/jonas-birgersson-cutout.png', cut:true },
+      'ulrika hesslow':    { src:'talare/photos/ulrika-hesslow-cutout.png',   cut:true },
+      'peter carlsson':    { src:'talare/photos/peter-carlsson-cutout.png',   cut:true },
+      'desiree comstedt':  { src:'talare/photos/desiree-comstedt-cutout.png', cut:true },
     };
+    /* Talare som kräver förhandsanmälan (begränsade platser) */
+    const PRE_REG = new Set(['anna borg','magdalena andersson','tomas kåberger','peter carlsson','jonas birgersson','niklas wykman']);
+
     const slugify = (s) => s.toLowerCase()
       .replace(/å|ä/g,'a').replace(/ö/g,'o').replace(/é/g,'e')
       .replace(/&amp;/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -342,16 +503,20 @@
       const match = catOK && sOK;
       if (match) activeCount++;
       const cleanName = name.replace(/&amp;/g,'&');
-      const realPhoto = REAL[cleanName.toLowerCase()];
-      const photo = realPhoto || PHOTOS[i % PHOTOS.length];
+      const real = REAL[cleanName.toLowerCase()];
+      const photo = real ? real.src : PHOTOS[i % PHOTOS.length];
+      const isCut = !!(real && real.cut);
+      const isPre = PRE_REG.has(cleanName.toLowerCase());
       const slug = slugify(cleanName);
       const CAT_COLOR = { keynote:'#FF9F0A', ai:'#5AC8FA', produktion:'#30D158', drift:'#BF5AF2', politik:'#FF375F', forskning:'#64D2FF' };
       const CAT_LABEL = {keynote:'Keynote',ai:'AI & Digital',produktion:'Produktion',drift:'Drift & UH',politik:'Politik',forskning:'Forskning'};
       const catColor = CAT_COLOR[primaryCat] || '#6E6E73';
       const catLabel = cats.map(c => CAT_LABEL[c] || c).join(' · ');
+      const preBadge = isPre ? `<span class="sp-prereg" title="Förhandsanmälan krävs — begränsade platser"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Föranmälan</span>` : '';
       return `
         <a class="sp-card-link ${match ? 'matched' : 'dimmed'}" href="talare/${slug}.html" style="text-decoration:none;color:inherit;${match ? 'display:block;' : 'display:none;'}">
-        <article class="sp-card" style="--cat:${catColor};">
+        <article class="sp-card ${isCut?'is-cutout':''}" style="--cat:${catColor};">
+          ${preBadge}
           <div class="avatar has-photo" style="--c1:${c1}; --c2:${c2}; background-image: url('${photo}');" loading="lazy">
             <div class="tint"></div>
           </div>

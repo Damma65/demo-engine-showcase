@@ -1831,12 +1831,13 @@
   /* Gold = real brand colors, no invert */
   .partner-tier.gold .partner.has-logo img{ max-height:64px; filter:none; opacity:1; }
   .partner-tier.gold .partner.has-logo img[src*="tdg"]{ max-height:64px; height:64px; max-width:none; width:auto; }
-  .partner-tier.bronze .partner.has-logo{ min-width:150px; min-height:90px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.bronze .partner.has-logo img{ max-height:48px; max-width:140px; }
-  .partner-tier.event .partner.has-logo{ min-width:150px; min-height:84px; padding:14px 18px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.event .partner.has-logo img{ max-height:42px; max-width:140px; }
-  .partner-tier.partner .partner.has-logo{ min-height:84px; padding:14px 14px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.partner .partner.has-logo img{ width:100%; max-width:100%; height:auto; max-height:54px; object-fit:contain; filter: brightness(0) invert(1); opacity:.9; transition:opacity .2s; }
+  .partner-tier.bronze .partner.has-logo{ min-width:160px; min-height:100px; padding:16px 20px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.bronze .partner.has-logo img{ max-height:58px; max-width:150px; }
+  .partner-tier.event .partner.has-logo{ min-width:160px; min-height:94px; padding:16px 20px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.event .partner.has-logo img{ max-height:52px; max-width:150px; }
+  .partner-tier.partner .partner.has-logo{ min-height:94px; padding:16px 16px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.partner .partner.has-logo img{ width:100%; max-width:100%; height:auto; max-height:64px; object-fit:contain; filter: brightness(0) invert(1); opacity:.9; transition:opacity .2s; }
+  .partner.has-logo .pl-name-fallback{ display:none; }
   .partner-tier.partner .partner.has-logo:hover img{ opacity:1; }
   /* Shrink select samarbetspartners-logos with 20% */
   .partner-tier.partner .partner.has-logo img[src*="hitachi"],
@@ -2063,8 +2064,7 @@
 
     <div class="hero-cta">
       <a href="checkout.html?ticket=expo" class="btn btn-primary">Hämta kostnadsfri biljett <svg><use href="#i-arrow"/></svg></a>
-      <a href="program.html" class="btn btn-secondary"><svg><use href="#i-play"/></svg> Se programmet</a>
-      <a href="assets/energimassan-2027.ics" class="btn btn-secondary" download>📅 Lägg till i kalender</a>
+      <a href="checkout.html?ticket=conference" class="btn btn-secondary">Konferensbiljett <svg><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 
@@ -2135,23 +2135,8 @@
     <h2 class="section-title">Hela branschen.<br/><span class="grad">På två dagar.</span></h2>
     <p class="section-sub">Kraft, möjlighet, förnyelse — i ett rum. Sveriges största scen för energiomställningen.</p>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-num green">3 200<span style="font-size:0.5em; vertical-align: top;">+</span></div>
-        <div class="stat-label">Besökare</div>
-        <div class="stat-desc">Beslutsfattare, ingenjörer, inköpare och innovatörer från hela energikedjan.</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num indigo">250<span style="font-size:0.5em; vertical-align: top;">+</span></div>
-        <div class="stat-label">Utställare</div>
-        <div class="stat-desc">Allt från globala jättar till nordiska greentech-startups på samma golv.</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num blue">200<span style="font-size:0.5em; vertical-align: top;">+</span></div>
-        <div class="stat-label">Talare</div>
-        <div class="stat-desc">VD:ar, ministrar, forskare och entreprenörer på fyra parallella scener.</div>
-      </div>
-    </div>
+    <!-- Stats block removed per request -->
+
   </div>
 </section>
 
