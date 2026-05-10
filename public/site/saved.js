@@ -119,15 +119,11 @@
         background:rgba(8,5,15,0.78); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.18);
         color:#fff; cursor:pointer; display:grid; place-items:center; padding:0; font-family:inherit;
         transition:transform .15s, background .15s, border-color .15s, color .15s;
-        opacity:0; }
-      .em-save-btn:hover{ transform:scale(1.08); background:rgba(8,5,15,0.95); border-color:rgba(255,214,10,0.5); color:#FFD60A; }
+        opacity:1; }
+      .em-save-btn:hover{ transform:scale(1.08); background:rgba(8,5,15,0.95); border-color:rgba(255,214,10,0.6); color:#FFD60A; }
       .em-save-btn svg{ width:16px; height:16px; }
       .em-save-btn.is-saved{ background:linear-gradient(135deg,#FFD60A,#FF9500); border-color:transparent; color:#0a0612; opacity:1; }
       .em-save-btn.is-saved:hover{ color:#0a0612; }
-      /* show on hover of parent */
-      .em-saveable:hover .em-save-btn,
-      .em-save-btn:focus-visible,
-      .em-save-btn.is-saved{ opacity:1; }
       .em-saveable{ position:relative; }
 
       /* small toast */
