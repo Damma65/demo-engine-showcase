@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="shared.css" />
 <script src="/site/shared.js" defer></script>
 <style>
+  /* Dämpa färgintensiteten på hela programsidan med 50% (behåller layout/kontrast) */
+  body{ filter: saturate(0.5); }
+  body .gold-strip, body .nav, body .site-footer, body #agendaBtn{ filter: saturate(2); }
   .page-hero{ padding: 160px 32px 40px; text-align:center; position:relative; overflow:hidden; }
   .page-hero::before{ content:""; position:absolute; inset:0; z-index:0;
     background: radial-gradient(700px 400px at 50% 0%, rgba(94,92,230,0.25), transparent 60%); }
