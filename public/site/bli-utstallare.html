@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="shared.css" />
 <script src="/site/shared.js" defer></script>
 <style>
+  /* Dämpa färgintensiteten på hela sidan med 50% (samma behandling som programsidan) */
+  body{ filter: saturate(0.5); }
+  body .gold-strip, body .nav, body .site-footer, body .sticky-cta{ filter: saturate(2); }
   /* ===== Demo-banner ===== */
   .demo-banner{
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -324,8 +327,9 @@
   .qt-text{ font-size: 16.5px; color: var(--text); line-height: 1.55; font-weight: 500; letter-spacing:-.005em; }
   .qt-by{ margin-top: 22px; display:flex; align-items:center; gap: 14px; }
   .qt-av{ width: 44px; height: 44px; border-radius: 50%; display:grid; place-items:center;
-    font-weight:700; font-size: 15px; color: #fff;
+    font-weight:700; font-size: 15px; color: #fff; overflow:hidden;
     background: linear-gradient(135deg, var(--av-c1, #30D158), var(--av-c2, #0A84FF)); flex-shrink:0; }
+  .qt-av img{ width:100%; height:100%; object-fit:cover; display:block; }
   .qt-name{ font-size: 14px; font-weight: 700; }
   .qt-role{ font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
 
@@ -692,7 +696,7 @@
       <span class="qt-mark">"</span>
       <p class="qt-text">Vi bokade om innan vi ens hunnit packa ihop förra året. Mässan ger oss fler kvalificerade möten på två dagar än vad vi får på ett halvår av kall outreach.</p>
       <div class="qt-by">
-        <div class="qt-av" style="--av-c1:#30D158;--av-c2:#0A84FF;">PJ</div>
+        <div class="qt-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&q=80&auto=format&fit=crop&crop=faces" alt="Per Johansson" loading="lazy" /></div>
         <div>
           <div class="qt-name">Per Johansson</div>
           <div class="qt-role">Säljchef · Sungrow Nordics</div>
@@ -704,7 +708,7 @@
       <span class="qt-mark">"</span>
       <p class="qt-text">Mässmatch är guld värt — vi visste exakt vilka beslutsfattare som skulle besöka vår monter, och kunde förbereda rätt material i förväg.</p>
       <div class="qt-by">
-        <div class="qt-av" style="--av-c1:#FFD60A;--av-c2:#FF9F0A;">AS</div>
+        <div class="qt-av"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&q=80&auto=format&fit=crop&crop=faces" alt="Anna Svensson" loading="lazy" /></div>
         <div>
           <div class="qt-name">Anna Svensson</div>
           <div class="qt-role">Marknadschef · Plexigrid</div>
