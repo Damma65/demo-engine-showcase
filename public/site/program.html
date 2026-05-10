@@ -64,7 +64,9 @@
   .day-tab.active{ background: var(--text); color: var(--bg); box-shadow: 0 6px 18px -8px rgba(255,255,255,.4); }
 
   /* Stage filter chips — luftiga, konsekventa */
-  .stage-filter{ margin: 28px auto 0; display:flex; gap: 10px; flex-wrap:wrap; justify-content:center; max-width: 820px; padding: 0 24px;}
+  .stage-filter{ margin: 28px auto 0; display:flex; gap: 10px; flex-wrap:nowrap; justify-content:center; max-width: 100%; padding: 0 24px; overflow-x:auto; }
+  .stage-filter .sf{ white-space:nowrap; flex:0 0 auto; }
+  @media (max-width: 760px){ .stage-filter{ flex-wrap:wrap; } }
   .sf{
     padding: 9px 18px; border-radius: 100px;
     background: rgba(255,255,255,0.03);
