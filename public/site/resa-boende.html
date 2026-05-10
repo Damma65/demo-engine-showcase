@@ -36,15 +36,34 @@
 
   /* Map */
   .map-wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
-  .map-card{ position:relative; border-radius:24px; overflow:hidden; border:1px solid rgba(94,180,255,0.25); background:#0F1A2E; box-shadow:0 32px 80px -32px rgba(94,180,255,0.3); }
-  .map-card iframe{ display:block; width:100%; height:480px; border:0; filter:invert(0.92) hue-rotate(180deg) contrast(0.9) saturate(0.7); }
-  .map-overlay{ position:absolute; left:24px; bottom:24px; right:24px; display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; pointer-events:none; }
-  .map-card-info{ background:rgba(8,8,10,0.92); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:18px 22px; max-width:380px; pointer-events:auto; }
-  .map-card-info h3{ font-size:18px; font-weight:700; margin-bottom:4px; }
-  .map-card-info p{ font-size:13px; color:rgba(255,255,255,0.7); line-height:1.5; }
-  .map-actions{ display:flex; gap:8px; flex-wrap:wrap; pointer-events:auto; }
-  .map-btn{ padding:11px 16px; border-radius:100px; background:rgba(8,8,10,0.92); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.18); color:#fff; font-size:13px; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
-  .map-btn.primary{ background:linear-gradient(135deg,#30D158,#5AC8FA); border:0; color:#0a0a0c; }
+  .map-card{ position:relative; border-radius:28px; overflow:hidden;
+    border:1px solid rgba(94,180,255,0.22);
+    background:#0B1220;
+    box-shadow: 0 40px 100px -40px rgba(94,180,255,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .map-card iframe{ display:block; width:100%; height:520px; border:0;
+    filter: invert(0.92) hue-rotate(180deg) contrast(0.92) saturate(0.7) brightness(0.95); }
+  /* Subtle gradient skim so info-card lyfter mot kartan */
+  .map-card::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:55%; pointer-events:none;
+    background: linear-gradient(180deg, transparent 0%, rgba(8,8,14,0.55) 70%, rgba(8,8,14,0.78) 100%); }
+  .map-overlay{ position:absolute; left:24px; bottom:24px; right:24px; display:flex; gap:14px; flex-wrap:wrap;
+    align-items:flex-end; justify-content:space-between; pointer-events:none; z-index:2; }
+  .map-card-info{ background:rgba(10,10,16,0.78); backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+    border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:20px 22px; max-width:400px; pointer-events:auto;
+    box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6); }
+  .map-card-info .mci-tag{ font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:#5AC8FA; font-weight:700; margin-bottom:6px; }
+  .map-card-info h3{ font-size:20px; font-weight:700; margin-bottom:6px; letter-spacing:-.018em; }
+  .map-card-info p{ font-size:13px; color:rgba(255,255,255,0.72); line-height:1.55; }
+  .map-actions{ display:flex; gap:10px; flex-wrap:wrap; pointer-events:auto; }
+  .map-btn{ padding:12px 18px; border-radius:100px; background:rgba(10,10,16,0.78); backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+    border:1px solid rgba(255,255,255,0.16); color:#fff; font-size:13px; font-weight:600; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px; transition: transform .18s, background .2s, border-color .2s, box-shadow .25s;
+    box-shadow: 0 12px 30px -16px rgba(0,0,0,0.6); }
+  .map-btn:hover{ transform:translateY(-1px); background:rgba(20,20,28,0.85); border-color:rgba(255,255,255,0.28); }
+  .map-btn.primary{ background:linear-gradient(135deg,#30D158,#5AC8FA); border:0; color:#0a0a0c;
+    box-shadow: 0 14px 34px -10px rgba(48,209,88,0.55); }
+  .map-btn.primary:hover{ box-shadow: 0 18px 44px -10px rgba(48,209,88,0.75); }
+  .map-btn svg{ width:14px; height:14px; }
 
   .info-grid{ max-width:1180px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
   .info-card{ padding:24px; border:1px solid rgba(255,255,255,0.1); border-radius:18px; background:rgba(255,255,255,0.02); }
