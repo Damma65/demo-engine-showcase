@@ -241,35 +241,40 @@
     font-size: 13px; font-weight: 600; color: var(--tx);
   }
 
-  /* Logga i stubben (centrerad) */
+  /* Logga i stubben (centrerad, större) */
   .world-card .wc-stub .wc-logo{
-    max-width: 78%;
-    max-height: 70px;
+    max-width: 88%;
+    max-height: 96px;
     object-fit: contain;
     align-self: center;
-    margin: 4px 0;
+    margin: 10px 0 6px;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
     transition: transform .5s cubic-bezier(.2,.7,.2,1);
   }
   .world-card:hover .wc-stub .wc-logo{ transform: scale(1.04); }
 
+  /* Realistisk streckkod */
   .world-card .wc-barcode{
     margin-top: auto;
-    height: 32px;
+    height: 44px;
+    background-color: #fff;
     background-image: repeating-linear-gradient(
       90deg,
-      var(--tx) 0 1px, transparent 1px 3px,
-      var(--tx) 3px 5px, transparent 5px 6px,
-      var(--tx) 6px 8px, transparent 8px 11px,
-      var(--tx) 11px 12px, transparent 12px 15px
+      #000 0 2px, #fff 2px 4px,
+      #000 4px 5px, #fff 5px 8px,
+      #000 8px 11px, #fff 11px 12px,
+      #000 12px 13px, #fff 13px 16px,
+      #000 16px 18px, #fff 18px 21px,
+      #000 21px 22px, #fff 22px 25px
     );
-    opacity: .85;
     border-radius: 2px;
+    padding: 0;
   }
   .world-card .wc-serial{
     font-family: ui-monospace, "SF Mono", monospace;
-    font-size: 10px; letter-spacing: .15em;
-    color: var(--tx-3); text-align:center;
+    font-size: 11px; letter-spacing: .18em;
+    color: var(--tx-2); text-align:center;
+    margin-top: 2px;
   }
 
   /* Färgaccenter per kort */
