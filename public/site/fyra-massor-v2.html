@@ -84,116 +84,195 @@
   .expo-cta i{ font-style: normal; opacity:.7; transition: transform .2s; }
   .expo-cta:hover i{ transform: translateX(3px); opacity:1; }
 
-  /* CARDS — formade som mässpass / biljetter */
+  /* CARDS — utformade som riktiga besöksbiljetter / lanyard-badges */
   .expo-cards-area{
     position:relative;
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+    gap: 28px;
+    padding-top: 38px; /* plats för snöre */
+  }
+
+  /* Lanyard / snöre upptill */
+  .world-card::before{
+    content:"";
+    position:absolute;
+    top: -38px; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 38px;
+    background:
+      linear-gradient(180deg, transparent 0 6px, rgba(255,255,255,0.14) 6px 7px, transparent 7px 100%),
+      radial-gradient(ellipse 60% 100% at 50% 100%, rgba(255,255,255,0.05), transparent 70%);
+    -webkit-mask: radial-gradient(ellipse 100% 70% at 50% 100%, #000 60%, transparent 70%);
+            mask: radial-gradient(ellipse 100% 70% at 50% 100%, #000 60%, transparent 70%);
+    pointer-events:none;
+    z-index: 0;
+  }
+  /* Hål för snöret */
+  .world-card::after{
+    content:"";
+    position:absolute;
+    top: 14px; left: 50%; transform: translateX(-50%);
+    width: 46px; height: 8px;
+    border-radius: 100px;
+    background: #000;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.08),
+      inset 0 1px 2px rgba(0,0,0,0.9);
+    z-index: 4;
   }
 
   .world-card{
     position: relative;
-    height: 580px;
-    background: linear-gradient(180deg, #14171D 0%, #0C0E13 100%);
+    height: 560px;
+    background: linear-gradient(180deg, #1A1D24 0%, #0E1015 100%);
     color: var(--tx);
     text-decoration: none;
     isolation: isolate;
-    transition: transform .4s cubic-bezier(.2,.7,.2,1), filter .3s;
-    /* biljett-form: utstansade halvcirklar i midjan */
-    --notch: 14px;
-    -webkit-mask:
-      radial-gradient(circle var(--notch) at 0 62%, transparent 98%, #000 100%),
-      radial-gradient(circle var(--notch) at 100% 62%, transparent 98%, #000 100%);
-    -webkit-mask-composite: source-in;
-            mask:
-      radial-gradient(circle var(--notch) at 0 62%, transparent 98%, #000 100%),
-      radial-gradient(circle var(--notch) at 100% 62%, transparent 98%, #000 100%);
-    mask-composite: intersect;
-    border-radius: 22px;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), filter .3s, box-shadow .3s;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
     box-shadow:
-      0 1px 0 rgba(255,255,255,0.05) inset,
-      0 30px 60px -30px rgba(0,0,0,0.7);
+      0 1px 0 rgba(255,255,255,0.06) inset,
+      0 40px 60px -30px rgba(0,0,0,0.85),
+      0 8px 20px -10px rgba(0,0,0,0.6);
+    padding-top: 34px; /* plats för clip + hål */
+    display:flex; flex-direction: column;
   }
   .world-card:hover{
-    transform: translateY(-6px);
-    filter: brightness(1.05);
+    transform: translateY(-6px) rotate(-0.4deg);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.08) inset,
+      0 50px 80px -30px rgba(0,0,0,0.9),
+      0 10px 28px -8px rgba(0,0,0,0.7);
   }
 
-  /* huvuddelen — bildyta */
+  /* Färgrand i toppen ("BESÖKARE" band) */
+  .world-card .wc-band{
+    position:absolute;
+    top: 0; left: 0; right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, var(--accent, #5DE38A), color-mix(in srgb, var(--accent, #5DE38A) 40%, #000));
+    border-radius: 16px 16px 0 0;
+    z-index: 3;
+  }
+
+  /* Bildyta */
   .world-card .wc-photo{
     position: relative;
-    height: 62%;
+    margin: 0 14px;
+    height: 200px;
     overflow: hidden;
-    border-radius: 22px 22px 0 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
   }
   .world-card .wc-img{
     position:absolute; inset:0;
     background-size: cover; background-position: center;
     transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .4s;
-    filter: saturate(0.85) brightness(0.72);
+    filter: saturate(0.85) brightness(0.7);
   }
   .world-card:hover .wc-img{
-    transform: scale(1.04);
+    transform: scale(1.05);
     filter: saturate(0.95) brightness(0.85);
   }
   .world-card .wc-photo::after{
     content:""; position:absolute; inset:0; pointer-events:none;
-    background: linear-gradient(180deg,
-      rgba(6,7,10,0.55) 0%,
-      rgba(6,7,10,0.0) 35%,
-      rgba(6,7,10,0.55) 100%);
+    background: linear-gradient(180deg, rgba(6,7,10,0.3) 0%, rgba(6,7,10,0.55) 100%);
   }
   .world-card .wc-logo{
-    position:absolute; top: 22px; left: 22px; right: 22px;
-    height: 30px; max-width: 75%;
-    object-fit: contain; object-position: left center;
+    position:absolute; bottom: 14px; left: 14px; right: 14px;
+    height: 28px; max-width: 80%;
+    object-fit: contain; object-position: left bottom;
     z-index: 2;
-    filter: drop-shadow(0 2px 14px rgba(0,0,0,0.7));
-  }
-  .world-card .wc-num{
-    position:absolute; bottom: 18px; left: 22px;
-    font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase;
-    color: rgba(255,255,255,0.78); font-weight: 600; z-index:2;
+    filter: drop-shadow(0 2px 14px rgba(0,0,0,0.85));
   }
 
-  /* perforering */
+  /* "ADMIT ONE" / kategorirad */
+  .world-card .wc-cat{
+    margin: 18px 18px 0;
+    display:flex; align-items:center; justify-content: space-between;
+    font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--tx-3); font-weight: 700;
+  }
+  .world-card .wc-cat span:last-child{
+    color: var(--accent, var(--tx));
+  }
+
+  /* Namn ("besökarens" namn = mässans namn) */
+  .world-card .wc-name{
+    margin: 10px 18px 0;
+    font-size: 22px; font-weight: 700;
+    letter-spacing: -.02em; line-height: 1.1;
+    color: var(--tx);
+  }
+  .world-card .wc-role{
+    margin: 4px 18px 0;
+    font-size: 12px; color: var(--tx-2);
+  }
+
+  /* Perforering */
   .world-card .wc-perf{
     position:relative;
-    height: 1px;
-    margin: 0 22px;
-    background-image: linear-gradient(90deg, rgba(255,255,255,0.28) 50%, transparent 0);
-    background-size: 8px 1px;
+    height: 14px;
+    margin: 16px 0 0;
+    background-image: radial-gradient(circle 3px at 6px 50%, var(--bg-0) 99%, transparent 100%);
+    background-size: 12px 14px;
     background-repeat: repeat-x;
+    border-top: 1px dashed rgba(255,255,255,0.12);
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
   }
+  /* utstansade halvcirklar i midjan */
+  .world-card .wc-perf::before,
+  .world-card .wc-perf::after{
+    content:"";
+    position:absolute; top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--bg-0);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .world-card .wc-perf::before{ left: -9px; }
+  .world-card .wc-perf::after{ right: -9px; }
 
-  /* stub — biljettdelen */
+  /* Stub — datum/hall/barcode */
   .world-card .wc-stub{
-    height: 38%;
-    padding: 22px 22px 20px;
-    display:flex; flex-direction:column; justify-content: space-between;
+    padding: 14px 18px 18px;
+    display:flex; flex-direction:column; gap: 12px;
+    flex: 1;
   }
   .world-card .wc-meta{
-    display:grid; grid-template-columns: 1fr 1fr; gap: 14px 10px;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 10px;
   }
   .world-card .wc-meta div small{
-    display:block; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--tx-3); font-weight: 600; margin-bottom: 4px;
+    display:block; font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--tx-3); font-weight: 700; margin-bottom: 3px;
   }
   .world-card .wc-meta div b{
-    font-size: 13.5px; font-weight: 600; color: var(--tx); letter-spacing: -.005em;
+    font-size: 13px; font-weight: 600; color: var(--tx);
   }
-  .world-card .wc-name{
-    font-size: 19px; font-weight: 600; letter-spacing: -.015em; line-height: 1.2;
+  .world-card .wc-barcode{
+    margin-top: auto;
+    height: 32px;
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--tx) 0 1px, transparent 1px 3px,
+      var(--tx) 3px 5px, transparent 5px 6px,
+      var(--tx) 6px 8px, transparent 8px 11px,
+      var(--tx) 11px 12px, transparent 12px 15px
+    );
+    opacity: .85;
+    border-radius: 2px;
   }
-  .world-card .wc-link{
-    display:inline-flex; align-items:center; gap: 8px;
-    font-size: 12.5px; font-weight: 600; color: var(--tx);
-    padding-top: 12px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+  .world-card .wc-serial{
+    font-family: ui-monospace, "SF Mono", monospace;
+    font-size: 10px; letter-spacing: .15em;
+    color: var(--tx-3); text-align:center;
   }
-  .world-card .wc-link i{ font-style: normal; opacity:.7; transition: transform .2s; margin-left:auto; }
-  .world-card:hover .wc-link i{ transform: translateX(4px); opacity:1; }
+
+  /* Färgaccenter per kort */
+  .world-card.c-energi      { --accent: #5DE38A; }
+  .world-card.c-smartcity   { --accent: #4DA3FF; }
+  .world-card.c-mobility    { --accent: #C77DFF; }
+  .world-card.c-infra       { --accent: #FFB04D; }
 
   /* INFO PILL */
   .expo-info-pill{
