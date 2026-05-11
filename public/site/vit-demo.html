@@ -1981,8 +1981,177 @@
     .cd-num{ font-size: 48px; }
   }
 </style>
+
+<style id="white-theme">
+  /* ============================================================
+     VIT DEMO — ljust premium-tema (override)
+     Skopat till body.theme-light. Ändrar tokens + några nyckel-
+     ytor som är hårdkodade i mörka rgba-värden i den vanliga css:n.
+  ============================================================ */
+  html.theme-light, body.theme-light{
+    background: #F6F6F8;
+  }
+  body.theme-light{
+    --bg:#F6F6F8;
+    --bg-2:#FFFFFF;
+    --bg-3:#FFFFFF;
+    --surface: rgba(10,12,20,0.04);
+    --surface-2: rgba(10,12,20,0.07);
+    --stroke: rgba(10,12,20,0.10);
+    --stroke-2: rgba(10,12,20,0.18);
+    --text:#0B0D14;
+    --text-2:#4A4A55;
+    --text-3:#7A7A85;
+    color: var(--text);
+    background:
+      radial-gradient(900px 600px at 12% -5%,  rgba(94,92,230,0.10),  transparent 60%),
+      radial-gradient(800px 600px at 100% 8%,  rgba(10,132,255,0.10), transparent 60%),
+      radial-gradient(900px 700px at 60% 110%, rgba(48,209,88,0.08),  transparent 60%),
+      #F6F6F8;
+    background-attachment: fixed;
+  }
+
+  /* ----- Gold strip (ljus variant) ----- */
+  body.theme-light .gold-strip{
+    background: linear-gradient(90deg, #FFFBEA 0%, #FFF6D1 50%, #FFFBEA 100%);
+    border-bottom: 1px solid rgba(180,130,0,0.22);
+  }
+  body.theme-light .gold-strip::before{
+    background:
+      radial-gradient(60% 100% at 50% 50%, rgba(255,184,0,0.18), transparent 70%),
+      radial-gradient(40% 100% at 0% 50%, rgba(255,140,0,0.10), transparent 70%);
+  }
+  body.theme-light .gs-label{ color:#7a5a00; }
+  body.theme-light .gs-label .gs-dot{ background:#C99A00; box-shadow:0 0 10px #FFCB45; }
+  body.theme-light .gs-cta{ color:#3a2a00; border-color: rgba(180,130,0,0.45); }
+  body.theme-light .gs-divider{ background: rgba(180,130,0,0.25); }
+
+  /* ----- Top nav ----- */
+  body.theme-light .nav{
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(10,12,20,0.06);
+  }
+  body.theme-light .nav, body.theme-light .nav a, body.theme-light .nav-links a{ color: var(--text); }
+  body.theme-light .nav-links a{ color: var(--text-2); }
+  body.theme-light .nav-links a:hover{ color: var(--text); }
+  body.theme-light .nav-links a.active{
+    color: var(--text);
+    background: rgba(10,12,20,0.06);
+  }
+  body.theme-light .nav-cta{
+    background: #0B0D14; color:#fff;
+  }
+  body.theme-light .nav-cta:hover{ background:#000; }
+  body.theme-light .nav-burger span{ background: var(--text); }
+  body.theme-light .nav-overlay{ background: rgba(246,246,248,0.96); }
+  body.theme-light .nav-overlay a{ color: var(--text); }
+
+  /* ----- Hero — gör mörka overlays ljusa ----- */
+  body.theme-light .hero{ color: var(--text); }
+  body.theme-light .hero::before{
+    background:
+      radial-gradient(1100px 800px at 50% 40%, rgba(94,92,230,0.18) 0%, transparent 60%),
+      radial-gradient(800px 600px at 15% 90%, rgba(48,209,88,0.14) 0%, transparent 60%),
+      radial-gradient(800px 600px at 85% 10%, rgba(10,132,255,0.16) 0%, transparent 60%);
+  }
+  body.theme-light .hero-video-grid{
+    opacity: 0.22;
+    -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 70%, transparent 100%);
+            mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 70%, transparent 100%);
+  }
+  body.theme-light .hero-video-grid video{ filter: saturate(0.65) contrast(0.95) brightness(1.15); }
+  body.theme-light .hero-video-grid::before{
+    background:
+      radial-gradient(ellipse 80% 100% at 50% 50%, rgba(246,246,248,0.55) 0%, rgba(246,246,248,0.85) 60%, rgba(246,246,248,0.96) 100%);
+  }
+  body.theme-light .hero-video-grid .vc-tile::after{
+    background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(246,246,248,0.55) 100%);
+  }
+  body.theme-light .hero-canvas{ opacity: 0.35; mix-blend-mode: multiply; }
+
+  /* ----- Generella mörka ytor → ljusa ----- */
+  body.theme-light section,
+  body.theme-light main > section{
+    color: var(--text);
+  }
+  body.theme-light h1, body.theme-light h2, body.theme-light h3, body.theme-light h4{
+    color: var(--text);
+  }
+  body.theme-light p, body.theme-light li, body.theme-light span, body.theme-light small{
+    color: inherit;
+  }
+
+  /* Översätt vanligast förekommande hårdkodade mörka bakgrunder */
+  body.theme-light [style*="background:#000"],
+  body.theme-light [style*="background: #000"],
+  body.theme-light [style*="background:#0A0A0C"],
+  body.theme-light [style*="background:#101013"]{
+    background: #FFFFFF !important;
+    color: var(--text) !important;
+  }
+
+  /* Kort/paneler som använder rgba(255,255,255,0.04..0.10) blir nu ljusa kort */
+  body.theme-light .card,
+  body.theme-light .panel,
+  body.theme-light .tile,
+  body.theme-light .pill,
+  body.theme-light .chip,
+  body.theme-light .glass{
+    background: #FFFFFF;
+    border: 1px solid rgba(10,12,20,0.08);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 10px 30px -18px rgba(10,12,20,0.18);
+    color: var(--text);
+  }
+
+  /* Knappar */
+  body.theme-light .btn,
+  body.theme-light .button,
+  body.theme-light a.cta,
+  body.theme-light .primary{
+    background:#0B0D14; color:#fff; border-color: transparent;
+  }
+  body.theme-light .btn.ghost,
+  body.theme-light .btn-secondary,
+  body.theme-light .secondary{
+    background:#fff; color: var(--text); border:1px solid rgba(10,12,20,0.14);
+  }
+
+  /* Footer */
+  body.theme-light .site-footer{
+    background: #FFFFFF;
+    color: var(--text);
+    border-top: 1px solid rgba(10,12,20,0.08);
+  }
+  body.theme-light .site-footer h4{ color: var(--text); }
+  body.theme-light .site-footer a{ color: var(--text-2); }
+  body.theme-light .site-footer a:hover{ color: var(--text); }
+  body.theme-light .sf-bottom{ border-top: 1px solid rgba(10,12,20,0.08); color: var(--text-3); }
+  body.theme-light .sf-social a{
+    background: rgba(10,12,20,0.04);
+    border: 1px solid rgba(10,12,20,0.08);
+    color: var(--text);
+  }
+
+  /* Sektionsdelare / horisontella linjer */
+  body.theme-light hr{ border-color: rgba(10,12,20,0.10); }
+
+  /* Subtil "wow": mjuk diagonal gradient-glans bakom hero-rubrik */
+  body.theme-light .hero h1{
+    background: linear-gradient(135deg, #0B0D14 0%, #2C2E78 45%, #0A84FF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* "Vit demo"-bricka i nav */
+  body.theme-light .nav-links a[href$="vit-demo.html"]{
+    color:#0A84FF;
+    font-weight: 600;
+  }
+</style>
 </head>
-<body>
+<body class="theme-light">
 
 <!-- icon defs -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
