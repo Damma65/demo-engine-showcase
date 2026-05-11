@@ -3519,11 +3519,24 @@
   .ph-card{ padding: 14px; border-radius: 16px; background: linear-gradient(180deg, rgba(94,92,230,0.10), rgba(100,210,255,0.04)); border:1px solid rgba(94,92,230,0.30); position:relative; }
   .ph-card .pct{ position:absolute; top:12px; right:12px; font-size: 10.5px; padding: 3px 8px; border-radius:100px; background: rgba(48,209,88,0.18); color:#5DE38A; border:1px solid rgba(48,209,88,0.35); font-weight:700; }
   .ph-card .av-row{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-  .ph-card .av{ width:34px; height:34px; border-radius:50%; background: linear-gradient(135deg,#5E5CE6,#64D2FF); }
+  .ph-card .av{ width:34px; height:34px; border-radius:50%; background: linear-gradient(135deg,#5E5CE6,#64D2FF); display:grid; place-items:center; font-weight:700; font-size:12px; color:#fff; letter-spacing:.02em; }
   .ph-card .av.b{ background: linear-gradient(135deg,#FF9F0A,#FF375F); }
   .ph-card .arr{ width:22px; height:22px; border-radius:50%; background: rgba(255,255,255,0.06); display:grid; place-items:center; font-size:11px; color:var(--text-2); }
   .ph-card .nm{ font-size: 13px; font-weight:600; color:#fff; line-height:1.3; }
   .ph-card .ro{ font-size: 11.5px; color: var(--text-3); margin-top:2px; line-height:1.35; }
+  .ph-card .person{ display:flex; align-items:center; gap:8px; padding:6px 0; }
+  .ph-card .person .lg{ flex:none; width:26px; height:26px; border-radius:7px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); display:grid; place-items:center; font-size:9.5px; font-weight:800; color:#fff; letter-spacing:.02em; }
+  .ph-card .person .lg.exergi{ background:linear-gradient(135deg,#0070f3,#003a8c); }
+  .ph-card .person .lg.sungrow{ background:#FF7900; color:#fff; }
+  .ph-card .person .lg.eqt{ background:linear-gradient(135deg,#1a1a1a,#3a3a3a); }
+  .ph-card .person .lg.gridflex{ background:linear-gradient(135deg,#30D158,#0a8a3a); }
+  .ph-card .person .lg.kommun{ background:linear-gradient(135deg,#C8102E,#7a0a1c); }
+  .ph-card .person .lg.vinnergi{ background:linear-gradient(135deg,#5E5CE6,#3a38b8); }
+  .ph-card .person .info{ min-width:0; }
+  .ph-card .person .info .nm{ font-size:12.5px; font-weight:600; color:#fff; line-height:1.25; }
+  .ph-card .person .info .ro{ font-size:10.5px; color:var(--text-3); line-height:1.3; margin-top:1px; }
+  .ph-card .vsdiv{ display:flex; align-items:center; gap:8px; margin:4px 0; color:var(--text-3); font-size:10px; letter-spacing:.18em; text-transform:uppercase; }
+  .ph-card .vsdiv::before, .ph-card .vsdiv::after{ content:""; flex:1; height:1px; background:rgba(255,255,255,0.08); }
   .ph-card .meta{ display:flex; gap:10px; margin-top: 10px; flex-wrap:wrap; font-size: 11px; color: var(--text-2); }
   .ph-card .meta span{ padding: 4px 8px; border-radius: 8px; background: rgba(255,255,255,0.05); border:1px solid var(--stroke); }
   .ph-card .acts{ display:flex; gap:8px; margin-top:12px; }
@@ -3543,6 +3556,39 @@
   .ph-tabbar a{ display:flex; flex-direction:column; align-items:center; gap:3px; font-size: 10.5px; color: var(--text-3); text-decoration:none; }
   .ph-tabbar a.on{ color:#B0AEFF; }
   .ph-tabbar a .ic{ font-size:14px; }
+  /* Step interactivity + multi-screen */
+  .am-step{ cursor:pointer; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+  .am-step:hover{ background:rgba(255,255,255,0.06); }
+  .am-step.on{ background: linear-gradient(135deg, rgba(94,92,230,0.18), rgba(100,210,255,0.08)); border-color: rgba(94,92,230,0.55); }
+  .am-screens{ position:relative; flex:1; min-height:0; }
+  .am-screens .ph-screen{ position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; pointer-events:none; }
+  .am-screens .ph-screen.on{ opacity:1; transform:none; pointer-events:auto; }
+  .ph-form{ padding:14px 16px; display:flex; flex-direction:column; gap:10px; flex:1; overflow:hidden; }
+  .ph-form .lbl{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-top:4px; }
+  .ph-input{ padding:10px 12px; border-radius:10px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke); font-size:12.5px; color:#fff; }
+  .ph-chips{ display:flex; flex-wrap:wrap; gap:6px; }
+  .ph-chip{ padding:6px 10px; border-radius:100px; font-size:11px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke); color:var(--text-2); }
+  .ph-chip.on{ background:rgba(94,92,230,0.18); color:#B0AEFF; border-color:rgba(94,92,230,0.45); }
+  .ph-cta-mini{ margin-top:auto; padding:12px; border-radius:12px; background:linear-gradient(135deg,#5E5CE6,#64D2FF); color:#fff; font-weight:600; font-size:13px; text-align:center; }
+  .ph-cal{ padding:14px 16px; display:flex; flex-direction:column; gap:10px; flex:1; overflow:hidden; }
+  .ph-cal .day{ font-size:12.5px; color:#fff; font-weight:600; }
+  .ph-slot{ display:flex; align-items:center; justify-content:space-between; padding:11px 12px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid var(--stroke); font-size:12px; color:var(--text-2); }
+  .ph-slot.sel{ background:linear-gradient(135deg,rgba(48,209,88,0.16),rgba(94,92,230,0.10)); border-color:rgba(48,209,88,0.4); color:#fff; }
+  .ph-slot .tm{ font-weight:600; color:#fff; }
+  .ph-slot .tag{ font-size:10.5px; padding:3px 8px; border-radius:100px; background:rgba(48,209,88,0.18); color:#5DE38A; border:1px solid rgba(48,209,88,0.35); font-weight:700; }
+  .ph-confirm{ display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:12px; background:rgba(48,209,88,0.10); border:1px solid rgba(48,209,88,0.3); }
+  .ph-confirm .ic{ width:26px; height:26px; border-radius:50%; background:#30D158; color:#000; display:grid; place-items:center; font-weight:700; font-size:13px; }
+  .ph-confirm .tx{ font-size:12px; color:#fff; line-height:1.3; }
+  .ph-confirm .tx b{ color:#5DE38A; }
+  .ph-followup{ padding:14px 16px; display:flex; flex-direction:column; gap:10px; flex:1; overflow:hidden; }
+  .ph-fu{ padding:12px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid var(--stroke); }
+  .ph-fu .head{ display:flex; align-items:center; gap:8px; }
+  .ph-fu .head .lg{ width:24px; height:24px; border-radius:6px; display:grid; place-items:center; font-size:9px; font-weight:800; color:#fff; }
+  .ph-fu .head .nm{ font-size:12.5px; color:#fff; font-weight:600; }
+  .ph-fu .head .st{ margin-left:auto; font-size:10px; padding:3px 7px; border-radius:100px; background:rgba(48,209,88,0.18); color:#5DE38A; border:1px solid rgba(48,209,88,0.3); font-weight:700; }
+  .ph-fu .body{ margin-top:8px; font-size:11.5px; color:var(--text-2); line-height:1.45; }
+  .ph-fu .acts{ display:flex; gap:6px; margin-top:8px; }
+  .ph-fu .acts span{ padding:5px 9px; border-radius:8px; background:rgba(94,92,230,0.14); color:#B0AEFF; font-size:10.5px; font-weight:600; border:1px solid rgba(94,92,230,0.3); }
   @media (max-width: 1100px){
     .am-hero{ padding: 70px 24px; margin: 0 16px; }
     .am-inner{ grid-template-columns: 1fr; gap: 60px; }
@@ -3560,17 +3606,17 @@
 <section class="am-hero" id="match">
   <div class="am-inner">
     <div class="am-left">
-      <span class="am-eyebrow"><span class="dot"></span>Affärsmatchning · Förbokade 1:1-möten</span>
-      <h1 class="am-h1">Boka<br/><span class="grad">affärsmatchning.</span></h1>
+      <span class="am-eyebrow"><span class="dot"></span>MässMatch · Förbokade 1:1-möten</span>
+      <h1 class="am-h1">Öka ROI på mässan.<br/><span class="grad">Boka MässMatch.</span></h1>
       <p class="am-lead">Kvalificerade möten med rätt beslutsfattare, kunder och partners. Du beskriver målet — vi matchar och bokar in relevanta säljmöten som skapar mer nytta, bättre dialoger och högre ROI på mässan.</p>
-      <div class="am-steps">
-        <div class="am-step"><div class="n">1</div><p><b>Beskriv vilka du vill träffa</b> — kunder, partners, investerare eller leverantörer.</p></div>
-        <div class="am-step"><div class="n">2</div><p><b>Få relevanta förslag</b> — vi matchar mot deltagare, mål och affärsintresse.</p></div>
-        <div class="am-step"><div class="n">3</div><p><b>Boka kvalitetsmöten</b> — färre chansningar, fler skarpa affärsdialoger.</p></div>
-        <div class="am-step"><div class="n">4</div><p><b>Följ upp smart</b> — kontaktuppgifter och nästa steg samlas i appen.</p></div>
+      <div class="am-steps" id="amSteps">
+        <div class="am-step on" data-step="1"><div class="n">1</div><p><b>Beskriv vilka du vill träffa</b> — kunder, partners, investerare eller leverantörer.</p></div>
+        <div class="am-step" data-step="2"><div class="n">2</div><p><b>Få relevanta förslag</b> — vi matchar mot deltagare, mål och affärsintresse.</p></div>
+        <div class="am-step" data-step="3"><div class="n">3</div><p><b>Boka kvalitetsmöten</b> — färre chansningar, fler skarpa affärsdialoger.</p></div>
+        <div class="am-step" data-step="4"><div class="n">4</div><p><b>Följ upp smart</b> — kontaktuppgifter och nästa steg samlas i appen.</p></div>
       </div>
       <div class="am-cta-row">
-        <a href="checkout.html?addon=dating" class="am-cta">Aktivera affärsmatchning →</a>
+        <a href="checkout.html?addon=dating" class="am-cta">Aktivera MässMatch →</a>
         <span class="am-cta-note">Tillval till mässbiljett. Skapat för fler kvalitetsmöten och bättre ROI.</span>
       </div>
       <div class="am-stats">
@@ -3583,22 +3629,107 @@
       <div class="am-phone-wrap">
         <div class="am-phone"><div class="am-screen">
           <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
-          <div class="ph-head"><h3>Affärsmatchning</h3><div class="badge"></div></div>
-          <div class="ph-tabs"><span class="on">Förslag</span><span>Bokade</span><span>Profil</span></div>
-          <div class="ph-list">
-            <div class="ph-list-head"><div class="t">3 nya affärsmöten</div><div class="f">☷ Filtrera</div></div>
-            <div class="ph-card">
-              <span class="pct">94% match</span>
-              <div class="av-row"><div class="av"></div><div class="arr">↔</div><div class="av b"></div></div>
-              <div class="nm">Karin Jönsson ↔ Lars Bergström</div>
-              <div class="ro">Inköpschef · Stockholm Exergi</div>
-              <div class="ro">Sales Director · Sungrow</div>
-              <div class="meta"><span>▣ Ons 19/5 · 11:20</span><span>⌖ Mötespunkt B4</span></div>
-              <div class="acts"><button class="skip">Hoppa över</button><button class="book">Boka möte</button></div>
+          <div class="ph-head"><h3 id="amPhoneTitle">Beskriv ditt mål</h3><div class="badge"></div></div>
+          <div class="ph-tabs" id="amPhoneTabs">
+            <span class="on">1. Beskriv</span><span>2. Förslag</span><span>3. Boka</span><span>4. Följ upp</span>
+          </div>
+          <div class="am-screens" id="amScreens">
+
+            <!-- Steg 1: Beskriv vilka du vill träffa -->
+            <div class="ph-screen on" data-screen="1">
+              <div class="ph-form">
+                <div class="lbl">Mitt företag</div>
+                <div class="ph-input" style="display:flex;align-items:center;gap:8px;"><span class="lg sungrow" style="width:22px;height:22px;border-radius:6px;display:inline-grid;place-items:center;font-size:8.5px;font-weight:800;color:#fff;background:#FF7900;">SG</span> Sungrow Nordics AB</div>
+                <div class="lbl">Jag vill träffa</div>
+                <div class="ph-chips">
+                  <span class="ph-chip on">Inköpare</span>
+                  <span class="ph-chip on">Kommun</span>
+                  <span class="ph-chip">Investerare</span>
+                  <span class="ph-chip on">Energibolag</span>
+                  <span class="ph-chip">Leverantör</span>
+                </div>
+                <div class="lbl">Affärsintresse</div>
+                <div class="ph-input">BESS &gt; 20 MW · Norden · 2027</div>
+                <div class="ph-cta-mini">Hitta matchningar →</div>
+              </div>
             </div>
-            <div class="ph-mini"><div class="av"></div><div class="info"><div class="pct">91% match</div><div class="nm">Helena Strand ↔ Erik Wahlberg</div><div class="ro">Partner · EQT Future → CEO · GridFlex</div></div><div class="chev">›</div></div>
-            <div class="ph-mini"><div class="av c"></div><div class="info"><div class="pct">88% match</div><div class="nm">Daniel Hellström ↔ Sofia Lundqvist</div><div class="ro">Norrköpings kommun · Vinnergi</div></div><div class="chev">›</div></div>
-            <div class="ph-see"><span>⌘ Se alla förslag</span><span>→</span></div>
+
+            <!-- Steg 2: Få relevanta förslag (med logos) -->
+            <div class="ph-screen" data-screen="2">
+              <div class="ph-list">
+                <div class="ph-list-head"><div class="t">3 nya affärsmöten</div><div class="f">☷ Filtrera</div></div>
+                <div class="ph-card">
+                  <span class="pct">94% match</span>
+                  <div class="person">
+                    <span class="lg exergi">SE</span>
+                    <div class="info"><div class="nm">Karin Jönsson</div><div class="ro">Inköpschef · Stockholm Exergi</div></div>
+                  </div>
+                  <div class="vsdiv">möte</div>
+                  <div class="person">
+                    <span class="lg sungrow">SG</span>
+                    <div class="info"><div class="nm">Lars Bergström</div><div class="ro">Sales Director · Sungrow</div></div>
+                  </div>
+                  <div class="meta"><span>▣ Ons 19/5 · 11:20</span><span>⌖ Mötespunkt B4</span></div>
+                  <div class="acts"><button class="skip">Hoppa över</button><button class="book">Boka möte</button></div>
+                </div>
+                <div class="ph-mini">
+                  <span class="lg eqt" style="width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:10px;font-weight:800;color:#fff;background:linear-gradient(135deg,#1a1a1a,#3a3a3a);flex:none;">EQT</span>
+                  <div class="info"><div class="pct">91% match</div><div class="nm">Helena Strand ↔ Erik Wahlberg</div><div class="ro">EQT Future · GridFlex</div></div><div class="chev">›</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Steg 3: Boka kvalitetsmöten -->
+            <div class="ph-screen" data-screen="3">
+              <div class="ph-cal">
+                <div class="day">Onsdag 19 maj · Mötespunkt B4</div>
+                <div class="ph-slot"><span class="tm">10:40</span><span class="tag">Ledig</span></div>
+                <div class="ph-slot sel"><span class="tm">11:20</span><span class="tag">Vald</span></div>
+                <div class="ph-slot"><span class="tm">13:00</span><span class="tag">Ledig</span></div>
+                <div class="ph-slot" style="opacity:.5;"><span class="tm">14:40</span><span style="font-size:10.5px;color:var(--text-3);">Bokat</span></div>
+                <div class="ph-confirm">
+                  <div class="ic">✓</div>
+                  <div class="tx"><b>Möte bokat</b> · Karin Jönsson (Stockholm Exergi) ↔ Lars Bergström (Sungrow)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Steg 4: Följ upp smart -->
+            <div class="ph-screen" data-screen="4">
+              <div class="ph-followup">
+                <div class="ph-fu">
+                  <div class="head">
+                    <span class="lg exergi" style="background:linear-gradient(135deg,#0070f3,#003a8c);">SE</span>
+                    <span class="lg sungrow" style="background:#FF7900;">SG</span>
+                    <span class="nm">Stockholm Exergi · Sungrow</span>
+                    <span class="st">Avklarat</span>
+                  </div>
+                  <div class="body">Karin: skicka offert på 50 MW BESS senast fredag. Boka uppföljning v.22.</div>
+                  <div class="acts"><span>✉ Maila</span><span>📅 Kalender</span><span>＋ CRM</span></div>
+                </div>
+                <div class="ph-fu">
+                  <div class="head">
+                    <span class="lg eqt" style="background:linear-gradient(135deg,#1a1a1a,#3a3a3a);">EQT</span>
+                    <span class="lg gridflex" style="background:linear-gradient(135deg,#30D158,#0a8a3a);">GF</span>
+                    <span class="nm">EQT Future · GridFlex</span>
+                    <span class="st">Avklarat</span>
+                  </div>
+                  <div class="body">Skicka pitch deck. Series B intro till investment team v.21.</div>
+                  <div class="acts"><span>✉ Maila</span><span>📎 Deck</span><span>＋ CRM</span></div>
+                </div>
+                <div class="ph-fu">
+                  <div class="head">
+                    <span class="lg kommun" style="background:linear-gradient(135deg,#C8102E,#7a0a1c);">NK</span>
+                    <span class="lg vinnergi" style="background:linear-gradient(135deg,#5E5CE6,#3a38b8);">VI</span>
+                    <span class="nm">Norrköpings kommun · Vinnergi</span>
+                    <span class="st">Avklarat</span>
+                  </div>
+                  <div class="body">Förstudie energiplan 2027. Workshop bokad 4 juni.</div>
+                  <div class="acts"><span>✉ Maila</span><span>📅 Workshop</span><span>＋ CRM</span></div>
+                </div>
+              </div>
+            </div>
+
           </div>
           <div class="ph-tabbar">
             <a href="#" class="on"><span class="ic">⌂</span>Hem</a>
@@ -3611,6 +3742,31 @@
       </div>
     </div>
   </div>
+  <script>
+    (function(){
+      var steps = document.querySelectorAll('#amSteps .am-step');
+      var screens = document.querySelectorAll('#amScreens .ph-screen');
+      var tabs = document.querySelectorAll('#amPhoneTabs span');
+      var titles = ['Beskriv ditt mål','Dina matchningar','Boka tid','Uppföljning'];
+      var titleEl = document.getElementById('amPhoneTitle');
+      var current = 1, timer = null, paused = false;
+      function show(n){
+        current = n;
+        steps.forEach(function(s){ s.classList.toggle('on', +s.dataset.step === n); });
+        screens.forEach(function(s){ s.classList.toggle('on', +s.dataset.screen === n); });
+        tabs.forEach(function(t,i){ t.classList.toggle('on', i+1 === n); });
+        if (titleEl) titleEl.textContent = titles[n-1];
+      }
+      steps.forEach(function(s){
+        s.addEventListener('click', function(){ paused = true; show(+s.dataset.step); });
+        s.addEventListener('mouseenter', function(){ paused = true; show(+s.dataset.step); });
+      });
+      function tick(){ if(!paused) show(current % 4 + 1); }
+      timer = setInterval(tick, 3500);
+      var hero = document.getElementById('match');
+      if (hero) hero.addEventListener('mouseleave', function(){ paused = false; });
+    })();
+  </script>
 </section>
 
 <!-- ============ GAMLA MÄSSMATCH (DOLD — ersatt av Boka mässdejting) ============ -->
