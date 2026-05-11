@@ -2267,101 +2267,18 @@
   </div>
 </section>
 
-<!-- ============ FYRA MÄSSOR — promo block ============ -->
+<!-- ============ FYRA MÄSSOR — promo block (ny standalone) ============ -->
 <style>
-  .fm-promo{ padding: 40px 32px 100px; }
-  .fm-promo-inner{
-    max-width: 1280px; margin: 0 auto;
-    display:grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: center;
+  .fm-embed-wrap{ padding: 40px 0 100px; }
+  .fm-embed-frame{
+    display:block; width:100%; border:0; background: transparent;
+    height: 820px;
   }
-  .fm-promo .eyebrow{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#5DE38A; font-weight:700; }
-  .fm-promo h2{
-    margin-top:14px; font-size: clamp(36px, 4.4vw, 60px);
-    font-weight:700; line-height: 1.02; letter-spacing:-.035em;
-  }
-  .fm-promo h2 .l2{
-    display:block;
-    background: linear-gradient(135deg,#5DE38A,#64D2FF);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color: transparent;
-  }
-  .fm-promo p.lead{ margin-top: 18px; max-width: 420px; font-size:16.5px; line-height:1.55; color: var(--text-2); }
-  .fm-promo .cta-row{ margin-top: 24px; display:flex; gap:10px; }
-  .fm-promo-tiles{ display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
-  .fm-pt{
-    position:relative; overflow:hidden; border-radius: 20px;
-    border:1px solid var(--stroke); aspect-ratio: 9/14;
-    background: linear-gradient(180deg,#0d0d10,#07070A);
-    display:flex; flex-direction:column; padding: 18px 16px;
-    text-decoration:none; color: inherit;
-    transition: transform .25s, border-color .25s;
-  }
-  .fm-pt:hover{ transform: translateY(-3px); border-color: var(--stroke-2); }
-  .fm-pt::before{
-    content:""; position:absolute; inset:0; opacity:.55;
-    background: radial-gradient(60% 50% at 50% 35%, var(--c-glow), transparent 70%);
-  }
-  .fm-pt::after{
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.85) 100%);
-  }
-  .fm-pt > *{ position: relative; z-index: 1; }
-  .fm-pt-dot{ width:12px; height:12px; border-radius:50%; background: var(--c); box-shadow: 0 0 14px var(--c); }
-  .fm-pt-logo{
-    display:block; width: 100%; max-width: 180px;
-    height: 56px; margin: 18px auto 0;
-    object-fit: contain; object-position: left center;
-  }
-  .fm-pt span.link{ margin-top: auto; font-size: 12.5px; font-weight:600; color: var(--c); }
-  .fm-pt span.link::after{ content:" →"; }
-
-  .fm-pt.e{ --c:#30D158; --c-glow: rgba(48,209,88,0.42); }
-  .fm-pt.s{ --c:#0A84FF; --c-glow: rgba(10,132,255,0.42); }
-  .fm-pt.m{ --c:#BF5AF2; --c-glow: rgba(191,90,242,0.40); }
-  .fm-pt.i{ --c:#FF9F0A; --c-glow: rgba(255,159,10,0.36); }
-  @media (max-width: 1000px){
-    .fm-promo-inner{ grid-template-columns: 1fr; gap: 40px; }
-  }
-  @media (max-width: 600px){
-    .fm-promo-tiles{ grid-template-columns: repeat(2,1fr); }
-    .fm-promo{ padding: 20px 20px 70px; }
-  }
+  @media (max-width: 900px){ .fm-embed-frame{ height: 1100px; } }
+  @media (max-width: 600px){ .fm-embed-frame{ height: 1400px; } }
 </style>
-<section class="fm-promo">
-  <div class="fm-promo-inner">
-    <div>
-      <div class="eyebrow">4 mässor under ett tak</div>
-      <h2>En biljett.<span class="l2">Fyra världar.</span></h2>
-      <p class="lead">
-        Energi, smart city, mobilitet och infrastruktur möts parallellt i Kistamässan.
-        Du rör dig fritt mellan dem — samma dagar, samma hus, samma biljett.
-      </p>
-      <div class="cta-row">
-        <a href="fyra-massor.html" class="btn btn-secondary">Läs mer →</a>
-      </div>
-    </div>
-    <div class="fm-promo-tiles">
-      <a href="fyra-massor.html" class="fm-pt e">
-        <span class="fm-pt-dot"></span>
-        <img class="fm-pt-logo" src="assets/logos/energimassan-2026.webp" alt="Energimässan 2027" />
-        <span class="link">Utforska</span>
-      </a>
-      <a href="fyra-massor.html" class="fm-pt s">
-        <span class="fm-pt-dot"></span>
-        <img class="fm-pt-logo" src="assets/logos/stockholm-smart-city-2026.webp" alt="Stockholm Smart City" />
-        <span class="link">Utforska</span>
-      </a>
-      <a href="fyra-massor.html" class="fm-pt m">
-        <span class="fm-pt-dot"></span>
-        <img class="fm-pt-logo" src="assets/logos/nmce-2026.webp" alt="Nordic Mobility Expo" />
-        <span class="link">Utforska</span>
-      </a>
-      <a href="fyra-massor.html" class="fm-pt i">
-        <span class="fm-pt-dot"></span>
-        <img class="fm-pt-logo" src="assets/logos/infrastruktur-2026.webp" alt="Infrastruktur 2027" />
-        <span class="link">Utforska</span>
-      </a>
-    </div>
-  </div>
+<section class="fm-embed-wrap" aria-label="Fyra mässor under ett tak">
+  <iframe class="fm-embed-frame" src="/site/embed/fyra-varldar.html" loading="lazy" title="Fyra mässor under ett tak"></iframe>
 </section>
 
 <!-- ============ FOCUS AREAS ============ -->
