@@ -185,8 +185,7 @@
       ['bli-utstallare.html','Bli utställare'],
       ['bli-partner.html','Bli partner'],
       ['index.html#biljetter','Biljetter'],
-      ['resa-boende.html','Boende & Info'],
-      ['vit-demo.html','Vit demo']
+      ['resa-boende.html','Boende & Info']
     ];
     var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
     var base = siteBase();
