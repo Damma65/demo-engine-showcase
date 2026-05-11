@@ -2758,6 +2758,222 @@
   </div>
 </section>
 
+<!-- ============ DÄRFÖR ENERGIMÄSSAN ============ -->
+<style>
+  .why-em{ position:relative; padding: 120px 32px 100px; overflow:hidden; }
+  .why-em::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(900px 540px at 12% 8%, rgba(48,209,88,0.10), transparent 60%),
+      radial-gradient(820px 520px at 92% 40%, rgba(94,92,230,0.10), transparent 65%),
+      radial-gradient(700px 500px at 50% 110%, rgba(10,132,255,0.08), transparent 60%);
+  }
+  .why-inner{ position:relative; max-width: 1280px; margin: 0 auto; }
+  .why-head{ display:grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; margin-bottom: 64px; }
+  .why-eyebrow{
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
+    color:#5DE38A;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .why-eyebrow::before{
+    content:""; width:28px; height:1px; background: linear-gradient(90deg, transparent, #5DE38A);
+  }
+  .why-h{
+    margin-top: 18px;
+    font-size: clamp(40px, 5vw, 72px); font-weight: 700;
+    line-height: 1.0; letter-spacing: -.038em;
+  }
+  .why-h .grad{
+    background: linear-gradient(135deg,#5DE38A 0%, #64D2FF 60%, #B0AEFF 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .why-lead{
+    font-size: 18px; line-height: 1.6; color: var(--text-2);
+    max-width: 460px; padding-bottom: 6px;
+  }
+  .why-lead b{ color: var(--text); font-weight:600; }
+
+  .why-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  .why-card{
+    position:relative;
+    padding: 28px 26px 26px;
+    border-radius: 22px;
+    border: 1px solid var(--stroke);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%);
+    overflow:hidden;
+    transition: transform .25s ease, border-color .25s ease, background .25s;
+  }
+  .why-card::before{
+    content:""; position:absolute; inset:-1px;
+    border-radius: 22px; padding:1px;
+    background: linear-gradient(135deg, var(--c, #5DE38A) 0%, transparent 50%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .25s;
+    pointer-events:none;
+  }
+  .why-card:hover{ transform: translateY(-4px); border-color: var(--stroke-2); background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%); }
+  .why-card:hover::before{ opacity: 1; }
+  .why-num{
+    font-size: 11px; letter-spacing:.2em; text-transform:uppercase;
+    color: var(--text-3); font-weight: 700;
+  }
+  .why-ico{
+    margin-top: 14px;
+    width: 46px; height: 46px; border-radius: 13px;
+    display:grid; place-items:center;
+    background: color-mix(in srgb, var(--c) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+    color: var(--c);
+  }
+  .why-ico svg{ width: 22px; height: 22px; }
+  .why-card h3{
+    margin-top: 18px;
+    font-size: 21px; font-weight: 600; letter-spacing: -.018em; line-height: 1.2;
+    color: var(--text);
+  }
+  .why-card p{
+    margin-top: 10px;
+    font-size: 14.5px; line-height: 1.55; color: var(--text-2);
+  }
+  .why-card .why-stat{
+    margin-top: 18px; padding-top: 16px;
+    border-top: 1px dashed var(--stroke);
+    font-size: 12.5px; color: var(--text-3);
+  }
+  .why-card .why-stat b{ color: var(--c); font-weight: 700; letter-spacing:-.01em; }
+
+  .why-card.c1{ --c:#30D158; }
+  .why-card.c2{ --c:#0A84FF; }
+  .why-card.c3{ --c:#BF5AF2; }
+  .why-card.c4{ --c:#FF9F0A; }
+  .why-card.c5{ --c:#64D2FF; }
+  .why-card.c6{ --c:#FF375F; }
+
+  .why-foot{
+    margin-top: 56px;
+    display:grid; grid-template-columns: 1.4fr 1fr; gap: 24px;
+    padding: 28px 32px;
+    border-radius: 24px;
+    border: 1px solid var(--stroke);
+    background:
+      radial-gradient(800px 220px at 10% 0%, rgba(48,209,88,0.10), transparent 70%),
+      linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    align-items: center;
+  }
+  .why-foot-q{
+    font-size: 22px; line-height: 1.45; letter-spacing: -.015em; color: var(--text);
+    font-weight: 500;
+  }
+  .why-foot-q::before{ content: "“"; color:#5DE38A; font-size: 38px; line-height:0; vertical-align:-12px; margin-right:6px; }
+  .why-foot-q::after{ content: "”"; color:#5DE38A; font-size: 38px; line-height:0; vertical-align:-12px; margin-left:4px; }
+  .why-foot-att{
+    margin-top: 12px; font-size: 13px; color: var(--text-3);
+  }
+  .why-foot-att b{ color: var(--text-2); font-weight:600; }
+  .why-foot-cta{
+    display:flex; flex-direction:column; gap: 12px; align-items: flex-end;
+  }
+  .why-foot-cta .why-cta-row{ display:flex; gap: 10px; flex-wrap:wrap; justify-content:flex-end; }
+  .why-foot-cta .why-meta{
+    font-size: 12px; color: var(--text-3); letter-spacing:.04em;
+  }
+
+  @media (max-width: 1080px){
+    .why-head{ grid-template-columns: 1fr; gap: 24px; align-items: start; margin-bottom: 48px; }
+    .why-grid{ grid-template-columns: repeat(2, 1fr); }
+    .why-foot{ grid-template-columns: 1fr; }
+    .why-foot-cta{ align-items: flex-start; }
+    .why-foot-cta .why-cta-row{ justify-content:flex-start; }
+  }
+  @media (max-width: 640px){
+    .why-em{ padding: 80px 20px 70px; }
+    .why-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+<section class="why-em" id="darfor">
+  <div class="why-inner">
+    <div class="why-head">
+      <div>
+        <span class="why-eyebrow">Därför Energimässan</span>
+        <h1 class="why-h">Två dagar.<br/><span class="grad">Hela året i vinst.</span></h1>
+      </div>
+      <p class="why-lead">
+        Energimässan är inte ännu en mässa — det är <b>Sveriges samlingsplats</b> för dem som faktiskt bygger
+        omställningen. På 48 timmar får du marknaden, beslutsfattarna och tekniken som annars kräver ett halvår av
+        möten, mejl och resor. Du går hem med <b>affärer, riktning och kontakter</b> — inte bara broschyrer.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <article class="why-card c1">
+        <div class="why-num">01 — Affärer</div>
+        <div class="why-ico"><svg><use href="#i-bolt"/></svg></div>
+        <h3>Möt köparna som faktiskt skriver under.</h3>
+        <p>VD, inköp, projektledning och teknikchefer från Vattenfall, Eon, Fortum, Skanska, NCC, kommuner och regionnät — på plats, redo att prata. Inte gatekeepers. Beslutsfattare.</p>
+        <div class="why-stat"><b>38</b> kvalificerade leads i snitt per utställare 2026.</div>
+      </article>
+
+      <article class="why-card c2">
+        <div class="why-num">02 — Kunskap</div>
+        <div class="why-ico"><svg><use href="#i-cpu"/></svg></div>
+        <h3>Marknadens skarpaste analys — utan filter.</h3>
+        <p>250+ talare från IEA, Energimyndigheten, Svenska kraftnät, ledande forskning och industri. Du får insikterna innan de blir Bloomberg-rubriker.</p>
+        <div class="why-stat"><b>6 scener</b> · keynotes, paneler, deep-dives och Q&amp;A.</div>
+      </article>
+
+      <article class="why-card c3">
+        <div class="why-num">03 — Nätverk</div>
+        <div class="why-ico"><svg><use href="#i-grid"/></svg></div>
+        <h3>Förbokade möten via MässMatch.</h3>
+        <p>Vår AI matchar dig med rätt motpart innan du kliver in genom dörren. Ingen kalla samtal, ingen lobby-roulette — bara möten som flyttar något framåt.</p>
+        <div class="why-stat"><b>200+</b> förbokade möten · 92% leder till uppföljning.</div>
+      </article>
+
+      <article class="why-card c4">
+        <div class="why-num">04 — Innovation</div>
+        <div class="why-ico"><svg><use href="#i-flask"/></svg></div>
+        <h3>Se tekniken som definierar 2030 — idag.</h3>
+        <p>Från SMR till V2G, från grön vätgas till AI-driven nätbalansering. 320+ utställare visar produkter du annars läser om sex månader senare i Ny Teknik.</p>
+        <div class="why-stat"><b>40+ premiärer</b> · världs- eller Sverigelanseringar 2027.</div>
+      </article>
+
+      <article class="why-card c5">
+        <div class="why-num">05 — Bredd</div>
+        <div class="why-ico"><svg><use href="#i-recycle"/></svg></div>
+        <h3>Fyra mässor. En biljett. Ett hus.</h3>
+        <p>Energi, smart city, mobilitet och infrastruktur — under samma tak, samma dagar. Du rör dig fritt och ser hela värdekedjan från elektron till asfalt.</p>
+        <div class="why-stat"><b>8 500+</b> besökare totalt över de fyra arenorna.</div>
+      </article>
+
+      <article class="why-card c6">
+        <div class="why-num">06 — ROI</div>
+        <div class="why-ico"><svg><use href="#i-shield"/></svg></div>
+        <h3>Två dagar som ersätter sex månaders möten.</h3>
+        <p>Räkna själv: 40 möten, 12 demos, 6 keynotes och 4 mingel — på samma adress. Restid, kalenderstrid och flygkvitton du slipper. Sömnen kvar i Stockholm.</p>
+        <div class="why-stat"><b>94%</b> av besökarna 2026 rekommenderar mässan till en kollega.</div>
+      </article>
+    </div>
+
+    <div class="why-foot">
+      <div>
+        <p class="why-foot-q">Energimässan är de två dagar om året då hela branschen är på samma adress. Vi bokar inga interna möten den veckan — alla är där.</p>
+        <p class="why-foot-att"><b>Pernilla Winnhed</b> · Tidigare VD, Energiföretagen Sverige</p>
+      </div>
+      <div class="why-foot-cta">
+        <div class="why-cta-row">
+          <a href="checkout.html" class="btn btn-primary">Säkra din biljett →</a>
+          <a href="program.html" class="btn btn-secondary">Se programmet</a>
+        </div>
+        <span class="why-meta">19–20 maj 2027 · Kistamässan, Stockholm</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 <!-- ============ HITTA RÄTT SPÅR FÖR DIN ROLL (referens) ============ -->
