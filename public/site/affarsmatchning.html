@@ -68,6 +68,14 @@
     background: rgba(255,255,255,0.035);
     border: 1px solid var(--stroke);
     display:flex; gap:14px; align-items:flex-start;
+    text-align:left; font-family:inherit; cursor:pointer;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .am-step:hover{ background: rgba(255,255,255,0.06); border-color: rgba(94,92,230,0.35); }
+  .am-step.is-active{
+    background: linear-gradient(135deg, rgba(94,92,230,0.16), rgba(100,210,255,0.08));
+    border-color: rgba(94,92,230,0.55);
+    box-shadow: 0 14px 36px -16px rgba(94,92,230,.6);
   }
   .am-step .n{
     flex:none; width:30px; height:30px; border-radius:9px;
@@ -249,6 +257,52 @@
   .ph-tabbar a .ic{ font-size:14px; }
 
   /* RESPONSIVE */
+  /* Stacked screens — only one visible */
+  .am-phone{ position:relative; }
+  .am-sc{ position:absolute; inset:14px; opacity:0; pointer-events:none; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
+  .am-sc.on{ position:absolute; opacity:1; pointer-events:auto; transform:none; }
+
+  /* Avatar with logo chip */
+  .av-stack{ position:relative; width:34px; height:34px; }
+  .av-stack .av{ width:34px; height:34px; }
+  .av-stack.sm{ width:30px; height:30px; }
+  .av-stack.sm .av{ width:30px; height:30px; }
+  .logo-chip{
+    position:absolute; right:-6px; bottom:-6px;
+    min-width:20px; height:16px; padding:0 5px;
+    border-radius:5px; background:#fff; color:#0a0a10;
+    font-size:9px; font-weight:800; letter-spacing:.02em;
+    display:grid; place-items:center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.45), 0 0 0 1.5px #0a0a10;
+  }
+  .logo-chip.o{ background:#FF9F0A; color:#3a1f00; }
+  .logo-chip.g{ background:#5DE38A; color:#063017; }
+
+  .party{ display:flex; flex-direction:column; margin-top:6px; }
+  .party .nm{ font-size:12.5px; color:#fff; font-weight:600; }
+  .party .co{ font-size:11px; color: var(--text-3); margin-top:1px; }
+
+  /* Form fields */
+  .ph-field{ display:flex; flex-direction:column; gap:8px; padding:6px 4px; }
+  .ph-field .lab{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
+  .ph-input{
+    padding: 10px 12px; border-radius: 10px; font-size:12.5px; color:#fff;
+    background: rgba(255,255,255,0.04); border:1px solid var(--stroke);
+  }
+  .chips, .slots{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip, .slot{
+    padding: 6px 10px; border-radius: 100px; font-size:11.5px;
+    background: rgba(255,255,255,0.04); border:1px solid var(--stroke); color:var(--text-2);
+  }
+  .chip.on, .slot.on{
+    background: rgba(94,92,230,0.20); color:#B0AEFF; border-color: rgba(94,92,230,0.45);
+  }
+  .ph-note{
+    margin-top:10px; padding: 10px 12px; border-radius:10px;
+    background: rgba(100,210,255,0.08); border:1px solid rgba(100,210,255,0.25);
+    font-size: 12px; color:#9BE3FF; font-style: italic;
+  }
+
   @media (max-width: 1100px){
     .am-hero{ padding: 130px 24px 80px; }
     .am-inner{ grid-template-columns: 1fr; gap: 80px; }
@@ -278,9 +332,9 @@
 
     <!-- LEFT -->
     <div class="am-left">
-      <span class="am-eyebrow"><span class="dot"></span>Affärsmatchning · Förbokade 1:1-möten</span>
+      <span class="am-eyebrow"><span class="dot"></span>MässMatch · Förbokade 1:1-möten</span>
 
-      <h1 class="am-h1">Boka<br/><span class="grad">affärsmatchning.</span></h1>
+      <h1 class="am-h1">Öka ROI på mässan<br/><span class="grad">— boka MässMatch.</span></h1>
 
       <p class="am-lead">
         Kvalificerade möten med rätt beslutsfattare, kunder och partners.
@@ -288,23 +342,23 @@
         som skapar mer nytta, bättre dialoger och högre ROI på mässan.
       </p>
 
-      <div class="am-steps">
-        <div class="am-step">
+      <div class="am-steps" role="tablist">
+        <button class="am-step" data-step="1" type="button" aria-selected="true">
           <div class="n">1</div>
           <p><b>Beskriv vilka du vill träffa</b> — kunder, partners, investerare eller leverantörer.</p>
-        </div>
-        <div class="am-step">
+        </button>
+        <button class="am-step" data-step="2" type="button">
           <div class="n">2</div>
           <p><b>Få relevanta förslag</b> — vi matchar mot deltagare, mål och affärsintresse.</p>
-        </div>
-        <div class="am-step">
+        </button>
+        <button class="am-step" data-step="3" type="button">
           <div class="n">3</div>
           <p><b>Boka kvalitetsmöten</b> — färre chansningar, fler skarpa affärsdialoger.</p>
-        </div>
-        <div class="am-step">
+        </button>
+        <button class="am-step" data-step="4" type="button">
           <div class="n">4</div>
           <p><b>Följ upp smart</b> — kontaktuppgifter och nästa steg samlas i appen.</p>
-        </div>
+        </button>
       </div>
 
       <div class="am-cta-row">
@@ -323,87 +377,171 @@
     <div class="am-right">
       <div class="am-phone-wrap">
         <div class="am-phone">
-          <div class="am-screen">
 
-            <div class="ph-status">
-              <span>10:24</span>
-              <div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div>
-            </div>
-
-            <div class="ph-head">
-              <h3>Affärsmatchning</h3>
-              <div class="badge"></div>
-            </div>
-
-            <div class="ph-tabs">
-              <span class="on">Förslag</span>
-              <span>Bokade</span>
-              <span>Profil</span>
-            </div>
-
+          <!-- SCREEN 1: BESKRIV -->
+          <div class="am-screen am-sc on" data-screen="1">
+            <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+            <div class="ph-head"><h3>Min profil</h3><div class="badge"></div></div>
+            <div class="ph-tabs"><span>Förslag</span><span>Bokade</span><span class="on">Profil</span></div>
             <div class="ph-list">
-              <div class="ph-list-head">
-                <div class="t">3 nya affärsmöten</div>
-                <div class="f">☷ Filtrera</div>
+              <div class="ph-list-head"><div class="t">Beskriv målet</div><div class="f">Steg 1 av 4</div></div>
+
+              <div class="ph-field">
+                <div class="lab">Jag söker</div>
+                <div class="chips">
+                  <span class="chip on">Kunder</span><span class="chip on">Partners</span>
+                  <span class="chip">Investerare</span><span class="chip on">Leverantörer</span>
+                </div>
               </div>
+              <div class="ph-field">
+                <div class="lab">Branscher</div>
+                <div class="chips">
+                  <span class="chip on">Energilagring</span><span class="chip on">Solenergi</span>
+                  <span class="chip">Vätgas</span>
+                </div>
+              </div>
+              <div class="ph-field">
+                <div class="lab">Roller hos motpart</div>
+                <div class="chips">
+                  <span class="chip on">CEO / Grundare</span><span class="chip on">Inköp</span>
+                  <span class="chip">Tech</span>
+                </div>
+              </div>
+              <div class="ph-field">
+                <div class="lab">Geografi</div>
+                <div class="ph-input">Norden + DACH</div>
+              </div>
+
+              <div class="ph-see"><span>✦ Spara &amp; matcha mig</span><span>→</span></div>
+            </div>
+            <div class="ph-tabbar">
+              <a href="#"><span class="ic">⌂</span>Hem</a>
+              <a href="#"><span class="ic">⌕</span>Förslag</a>
+              <a href="#"><span class="ic">□</span>Bokade</a>
+              <a href="#"><span class="ic">♙</span>Nätverk</a>
+              <a href="#" class="on"><span class="ic">○</span>Profil</a>
+            </div>
+          </div>
+
+          <!-- SCREEN 2: FÖRSLAG -->
+          <div class="am-screen am-sc" data-screen="2">
+            <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+            <div class="ph-head"><h3>MässMatch</h3><div class="badge"></div></div>
+            <div class="ph-tabs"><span class="on">Förslag</span><span>Bokade</span><span>Profil</span></div>
+            <div class="ph-list">
+              <div class="ph-list-head"><div class="t">3 nya affärsmöten</div><div class="f">☷ Filtrera</div></div>
 
               <div class="ph-card">
                 <span class="pct">94% match</span>
                 <div class="av-row">
-                  <div class="av"></div>
+                  <div class="av-stack"><div class="av"></div><div class="logo-chip">SE</div></div>
                   <div class="arr">↔</div>
-                  <div class="av b"></div>
+                  <div class="av-stack"><div class="av b"></div><div class="logo-chip o">SG</div></div>
                 </div>
-                <div class="nm">Karin Jönsson ↔ Lars Bergström</div>
-                <div class="ro">Inköpschef · Stockholm Exergi</div>
-                <div class="ro">Sales Director · Sungrow</div>
-                <div class="meta">
-                  <span>▣ Ons 19/5 · 11:20</span>
-                  <span>⌖ Mötespunkt B4</span>
-                </div>
-                <div class="acts">
-                  <button class="skip">Hoppa över</button>
-                  <button class="book">Boka möte</button>
-                </div>
+                <div class="party"><span class="nm">Karin Jönsson</span><span class="co">Stockholm Exergi · Inköpschef</span></div>
+                <div class="party"><span class="nm">Lars Bergström</span><span class="co">Sungrow · Sales Director</span></div>
+                <div class="meta"><span>▣ Ons 19/5 · 11:20</span><span>⌖ Mötespunkt B4</span></div>
+                <div class="acts"><button class="skip">Hoppa över</button><button class="book">Boka möte</button></div>
               </div>
 
               <div class="ph-mini">
-                <div class="av"></div>
-                <div class="info">
-                  <div class="pct">91% match</div>
-                  <div class="nm">Helena Strand ↔ Erik Wahlberg</div>
-                  <div class="ro">Partner · EQT Future → CEO · GridFlex</div>
-                </div>
+                <div class="av-stack sm"><div class="av"></div><div class="logo-chip">EQT</div></div>
+                <div class="info"><div class="pct">91% match</div><div class="nm">Helena Strand ↔ Erik Wahlberg</div><div class="ro">EQT Future · Partner → GridFlex · CEO</div></div>
                 <div class="chev">›</div>
               </div>
 
               <div class="ph-mini">
-                <div class="av c"></div>
-                <div class="info">
-                  <div class="pct">88% match</div>
-                  <div class="nm">Daniel Hellström ↔ Sofia Lundqvist</div>
-                  <div class="ro">Norrköpings kommun · Vinnergi</div>
-                </div>
+                <div class="av-stack sm"><div class="av c"></div><div class="logo-chip g">NK</div></div>
+                <div class="info"><div class="pct">88% match</div><div class="nm">Daniel Hellström ↔ Sofia Lundqvist</div><div class="ro">Norrköpings kommun · Vinnergi</div></div>
                 <div class="chev">›</div>
-              </div>
-
-              <div class="ph-see">
-                <span>⌘ Se alla förslag</span>
-                <span>→</span>
               </div>
             </div>
-
             <div class="ph-tabbar">
-              <a href="#" class="on"><span class="ic">⌂</span>Hem</a>
-              <a href="#"><span class="ic">⌕</span>Förslag</a>
+              <a href="#"><span class="ic">⌂</span>Hem</a>
+              <a href="#" class="on"><span class="ic">⌕</span>Förslag</a>
               <a href="#"><span class="ic">□</span>Bokade</a>
               <a href="#"><span class="ic">♙</span>Nätverk</a>
               <a href="#"><span class="ic">○</span>Profil</a>
             </div>
-
           </div>
+
+          <!-- SCREEN 3: BOKA -->
+          <div class="am-screen am-sc" data-screen="3">
+            <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+            <div class="ph-head"><h3>Boka möte</h3><div class="badge"></div></div>
+            <div class="ph-tabs"><span>Förslag</span><span class="on">Bokade</span><span>Profil</span></div>
+            <div class="ph-list">
+              <div class="ph-card">
+                <span class="pct">94% match</span>
+                <div class="av-row">
+                  <div class="av-stack"><div class="av"></div><div class="logo-chip">SE</div></div>
+                  <div class="arr">↔</div>
+                  <div class="av-stack"><div class="av b"></div><div class="logo-chip o">SG</div></div>
+                </div>
+                <div class="party"><span class="nm">Karin Jönsson</span><span class="co">Stockholm Exergi</span></div>
+                <div class="party"><span class="nm">Lars Bergström</span><span class="co">Sungrow</span></div>
+              </div>
+
+              <div class="ph-field">
+                <div class="lab">Välj tid · Ons 19/5</div>
+                <div class="slots">
+                  <span class="slot">10:40</span>
+                  <span class="slot on">11:20</span>
+                  <span class="slot">13:00</span>
+                  <span class="slot">14:20</span>
+                </div>
+              </div>
+              <div class="ph-field">
+                <div class="lab">Plats</div>
+                <div class="ph-input">Mötespunkt B4 · Hall B</div>
+              </div>
+
+              <div class="ph-see"><span>✓ Bekräfta bokning</span><span>→</span></div>
+            </div>
+            <div class="ph-tabbar">
+              <a href="#"><span class="ic">⌂</span>Hem</a>
+              <a href="#"><span class="ic">⌕</span>Förslag</a>
+              <a href="#" class="on"><span class="ic">□</span>Bokade</a>
+              <a href="#"><span class="ic">♙</span>Nätverk</a>
+              <a href="#"><span class="ic">○</span>Profil</a>
+            </div>
+          </div>
+
+          <!-- SCREEN 4: FÖLJ UPP -->
+          <div class="am-screen am-sc" data-screen="4">
+            <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+            <div class="ph-head"><h3>Efter mötet</h3><div class="badge"></div></div>
+            <div class="ph-tabs"><span>Förslag</span><span class="on">Bokade</span><span>Profil</span></div>
+            <div class="ph-list">
+              <div class="ph-card">
+                <span class="pct" style="background:rgba(100,210,255,.18);color:#9BE3FF;border-color:rgba(100,210,255,.35)">Genomfört</span>
+                <div class="av-row">
+                  <div class="av-stack"><div class="av"></div><div class="logo-chip">SE</div></div>
+                  <div class="arr">↔</div>
+                  <div class="av-stack"><div class="av b"></div><div class="logo-chip o">SG</div></div>
+                </div>
+                <div class="party"><span class="nm">Karin Jönsson</span><span class="co">Stockholm Exergi · karin@exergi.se</span></div>
+                <div class="party"><span class="nm">Lars Bergström</span><span class="co">Sungrow · lars@sungrow.com</span></div>
+                <div class="ph-note">"Skicka offert på 2 MWh BESS, uppföljning v.22."</div>
+                <div class="acts"><button class="skip">Exportera</button><button class="book">Skapa uppgift</button></div>
+              </div>
+
+              <div class="ph-mini">
+                <div class="av-stack sm"><div class="av"></div><div class="logo-chip">EQT</div></div>
+                <div class="info"><div class="pct">Nästa steg</div><div class="nm">Helena Strand</div><div class="ro">Pitchmöte bokat 27/5 · 09:00</div></div>
+                <div class="chev">›</div>
+              </div>
+            </div>
+            <div class="ph-tabbar">
+              <a href="#"><span class="ic">⌂</span>Hem</a>
+              <a href="#"><span class="ic">⌕</span>Förslag</a>
+              <a href="#" class="on"><span class="ic">□</span>Bokade</a>
+              <a href="#"><span class="ic">♙</span>Nätverk</a>
+              <a href="#"><span class="ic">○</span>Profil</a>
+            </div>
+          </div>
+
         </div>
-      </div>
     </div>
 
   </div>
@@ -411,5 +549,28 @@
 
 <footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="program.html">Program</a><a href="utstallning.html">Utställning</a><a href="faq.html">FAQ</a></div></div></footer>
 
+<script>
+(function(){
+  const steps = document.querySelectorAll('.am-step[data-step]');
+  const screens = document.querySelectorAll('.am-sc[data-screen]');
+  function show(n){
+    steps.forEach(s => s.classList.toggle('is-active', s.dataset.step === String(n)));
+    screens.forEach(s => s.classList.toggle('on', s.dataset.screen === String(n)));
+  }
+  steps.forEach(s => {
+    s.addEventListener('click', () => show(s.dataset.step));
+    s.addEventListener('mouseenter', () => show(s.dataset.step));
+  });
+  show(1);
+  // Auto-rotate when not hovered
+  let i = 1, paused = false;
+  const wrap = document.querySelector('.am-steps');
+  if (wrap){
+    wrap.addEventListener('mouseenter', () => paused = true);
+    wrap.addEventListener('mouseleave', () => paused = false);
+  }
+  setInterval(() => { if (paused) return; i = (i % 4) + 1; show(i); }, 4200);
+})();
+</script>
 </body>
 </html>
