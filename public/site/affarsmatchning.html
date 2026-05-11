@@ -257,6 +257,52 @@
   .ph-tabbar a .ic{ font-size:14px; }
 
   /* RESPONSIVE */
+  /* Stacked screens — only one visible */
+  .am-phone{ position:relative; }
+  .am-sc{ position:absolute; inset:14px; opacity:0; pointer-events:none; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
+  .am-sc.on{ position:absolute; opacity:1; pointer-events:auto; transform:none; }
+
+  /* Avatar with logo chip */
+  .av-stack{ position:relative; width:34px; height:34px; }
+  .av-stack .av{ width:34px; height:34px; }
+  .av-stack.sm{ width:30px; height:30px; }
+  .av-stack.sm .av{ width:30px; height:30px; }
+  .logo-chip{
+    position:absolute; right:-6px; bottom:-6px;
+    min-width:20px; height:16px; padding:0 5px;
+    border-radius:5px; background:#fff; color:#0a0a10;
+    font-size:9px; font-weight:800; letter-spacing:.02em;
+    display:grid; place-items:center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.45), 0 0 0 1.5px #0a0a10;
+  }
+  .logo-chip.o{ background:#FF9F0A; color:#3a1f00; }
+  .logo-chip.g{ background:#5DE38A; color:#063017; }
+
+  .party{ display:flex; flex-direction:column; margin-top:6px; }
+  .party .nm{ font-size:12.5px; color:#fff; font-weight:600; }
+  .party .co{ font-size:11px; color: var(--text-3); margin-top:1px; }
+
+  /* Form fields */
+  .ph-field{ display:flex; flex-direction:column; gap:8px; padding:6px 4px; }
+  .ph-field .lab{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-3); font-weight:600; }
+  .ph-input{
+    padding: 10px 12px; border-radius: 10px; font-size:12.5px; color:#fff;
+    background: rgba(255,255,255,0.04); border:1px solid var(--stroke);
+  }
+  .chips, .slots{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip, .slot{
+    padding: 6px 10px; border-radius: 100px; font-size:11.5px;
+    background: rgba(255,255,255,0.04); border:1px solid var(--stroke); color:var(--text-2);
+  }
+  .chip.on, .slot.on{
+    background: rgba(94,92,230,0.20); color:#B0AEFF; border-color: rgba(94,92,230,0.45);
+  }
+  .ph-note{
+    margin-top:10px; padding: 10px 12px; border-radius:10px;
+    background: rgba(100,210,255,0.08); border:1px solid rgba(100,210,255,0.25);
+    font-size: 12px; color:#9BE3FF; font-style: italic;
+  }
+
   @media (max-width: 1100px){
     .am-hero{ padding: 130px 24px 80px; }
     .am-inner{ grid-template-columns: 1fr; gap: 80px; }
