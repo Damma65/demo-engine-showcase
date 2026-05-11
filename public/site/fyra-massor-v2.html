@@ -84,78 +84,115 @@
   .expo-cta i{ font-style: normal; opacity:.7; transition: transform .2s; }
   .expo-cta:hover i{ transform: translateX(3px); opacity:1; }
 
-  /* CARDS */
+  /* CARDS — formade som mässpass / biljetter */
   .expo-cards-area{
     position:relative;
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    gap: 22px;
   }
 
   .world-card{
     position: relative;
-    height: 560px;
-    border-radius: 28px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: #0a0c10;
+    height: 580px;
+    background: linear-gradient(180deg, #14171D 0%, #0C0E13 100%);
+    color: var(--tx);
+    text-decoration: none;
     isolation: isolate;
-    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .3s;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), filter .3s;
+    /* biljett-form: utstansade halvcirklar i midjan */
+    --notch: 14px;
+    -webkit-mask:
+      radial-gradient(circle var(--notch) at 0 62%, transparent 98%, #000 100%),
+      radial-gradient(circle var(--notch) at 100% 62%, transparent 98%, #000 100%);
+    -webkit-mask-composite: source-in;
+            mask:
+      radial-gradient(circle var(--notch) at 0 62%, transparent 98%, #000 100%),
+      radial-gradient(circle var(--notch) at 100% 62%, transparent 98%, #000 100%);
+    mask-composite: intersect;
+    border-radius: 22px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.05) inset,
+      0 30px 60px -30px rgba(0,0,0,0.7);
   }
   .world-card:hover{
     transform: translateY(-6px);
-    border-color: var(--line-2);
+    filter: brightness(1.05);
   }
 
+  /* huvuddelen — bildyta */
+  .world-card .wc-photo{
+    position: relative;
+    height: 62%;
+    overflow: hidden;
+    border-radius: 22px 22px 0 0;
+  }
   .world-card .wc-img{
     position:absolute; inset:0;
     background-size: cover; background-position: center;
     transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .4s;
-    filter: saturate(0.85) brightness(0.78);
+    filter: saturate(0.85) brightness(0.72);
   }
   .world-card:hover .wc-img{
     transform: scale(1.04);
-    filter: saturate(0.95) brightness(0.88);
+    filter: saturate(0.95) brightness(0.85);
   }
-
-  .world-card::after{
+  .world-card .wc-photo::after{
     content:""; position:absolute; inset:0; pointer-events:none;
-    background:
-      linear-gradient(180deg,
-        rgba(6,7,10,0.55) 0%,
-        rgba(6,7,10,0.0) 30%,
-        rgba(6,7,10,0.0) 50%,
-        rgba(6,7,10,0.85) 100%);
+    background: linear-gradient(180deg,
+      rgba(6,7,10,0.55) 0%,
+      rgba(6,7,10,0.0) 35%,
+      rgba(6,7,10,0.55) 100%);
+  }
+  .world-card .wc-logo{
+    position:absolute; top: 22px; left: 22px; right: 22px;
+    height: 30px; max-width: 75%;
+    object-fit: contain; object-position: left center;
+    z-index: 2;
+    filter: drop-shadow(0 2px 14px rgba(0,0,0,0.7));
+  }
+  .world-card .wc-num{
+    position:absolute; bottom: 18px; left: 22px;
+    font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase;
+    color: rgba(255,255,255,0.78); font-weight: 600; z-index:2;
   }
 
-  .world-card .wc-inner{
-    position:relative; z-index:2;
-    height: 100%;
-    padding: 26px 24px;
+  /* perforering */
+  .world-card .wc-perf{
+    position:relative;
+    height: 1px;
+    margin: 0 22px;
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.28) 50%, transparent 0);
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+  }
+
+  /* stub — biljettdelen */
+  .world-card .wc-stub{
+    height: 38%;
+    padding: 22px 22px 20px;
     display:flex; flex-direction:column; justify-content: space-between;
   }
-
-  .world-card .wc-logo{
-    height: 28px; max-width: 78%;
-    object-fit: contain; object-position: left center;
-    opacity: .98;
-    filter: drop-shadow(0 2px 14px rgba(0,0,0,0.55));
+  .world-card .wc-meta{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 14px 10px;
   }
-
-  .world-card .wc-bottom{ display:flex; flex-direction:column; gap: 14px; }
-  .world-card .wc-num{
-    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--tx-3); font-weight: 600;
+  .world-card .wc-meta div small{
+    display:block; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--tx-3); font-weight: 600; margin-bottom: 4px;
+  }
+  .world-card .wc-meta div b{
+    font-size: 13.5px; font-weight: 600; color: var(--tx); letter-spacing: -.005em;
   }
   .world-card .wc-name{
-    font-size: 22px; font-weight: 600; letter-spacing: -.015em; line-height: 1.15;
+    font-size: 19px; font-weight: 600; letter-spacing: -.015em; line-height: 1.2;
   }
   .world-card .wc-link{
     display:inline-flex; align-items:center; gap: 8px;
-    font-size: 13.5px; font-weight: 600; color: var(--tx);
-    text-decoration: none;
+    font-size: 12.5px; font-weight: 600; color: var(--tx);
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
   }
-  .world-card .wc-link i{ font-style: normal; transition: transform .2s; opacity:.75; }
+  .world-card .wc-link i{ font-style: normal; opacity:.7; transition: transform .2s; margin-left:auto; }
   .world-card:hover .wc-link i{ transform: translateX(4px); opacity:1; }
 
   /* INFO PILL */
