@@ -156,11 +156,11 @@
     z-index: 3;
   }
 
-  /* Logo-yta (ersätter bilden) */
-  .world-card .wc-logo-area{
+  /* Logo-yta (övre del — halverad) */
+  .world-card .wc-photo{
     position: relative;
     margin: 0 14px;
-    height: 200px;
+    height: 100px;
     display: grid;
     place-items: center;
     border-radius: 8px;
@@ -170,19 +170,10 @@
       linear-gradient(180deg, #14171D 0%, #0A0C11 100%);
     overflow: hidden;
   }
-  .world-card .wc-logo-area::after{
+  .world-card .wc-photo::after{
     content:""; position:absolute; inset:0; pointer-events:none;
     background: linear-gradient(180deg, transparent 0%, rgba(6,7,10,0.4) 100%);
   }
-  .world-card .wc-logo{
-    max-width: 78%;
-    max-height: 110px;
-    object-fit: contain;
-    z-index: 2;
-    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.6));
-    transition: transform .5s cubic-bezier(.2,.7,.2,1);
-  }
-  .world-card:hover .wc-logo{ transform: scale(1.04); }
 
   /* "ADMIT ONE" / kategorirad */
   .world-card .wc-cat{
@@ -246,6 +237,19 @@
   .world-card .wc-meta div b{
     font-size: 13px; font-weight: 600; color: var(--tx);
   }
+
+  /* Logga i stubben (centrerad) */
+  .world-card .wc-stub .wc-logo{
+    max-width: 78%;
+    max-height: 70px;
+    object-fit: contain;
+    align-self: center;
+    margin: 4px 0;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .world-card:hover .wc-stub .wc-logo{ transform: scale(1.04); }
+
   .world-card .wc-barcode{
     margin-top: auto;
     height: 32px;
@@ -342,26 +346,26 @@
           samma hus, samma biljett.
         </p>
         <a href="/site/program.html" class="expo-cta">
-          Läs mer <i>→</i>
+          Läs mer <i>&rarr;</i>
         </a>
       </div>
 
       <div class="expo-cards-area">
         <a class="world-card c-energi" href="/site/index.html">
           <span class="wc-band"></span>
-          <div class="wc-cat"><span>Visitor Pass · 01</span><span>Energi</span></div>
+          <div class="wc-cat"><span>Visitor Pass &middot; 01</span><span>Energi</span></div>
           <span class="wc-name">Energimässan</span>
-          <span class="wc-role">Energy &amp; Power · Hall A</span>
+          <span class="wc-role">Energy &amp; Power &middot; Hall A</span>
           <div class="wc-photo">
             <div class="wc-img" style="background-image:url('/site/assets/worlds/energi.png')"></div>
-            <img class="wc-logo" src="/site/assets/logos/energimassan-2026.webp" alt="Energimässan 2027" />
           </div>
           <div class="wc-perf"></div>
           <div class="wc-stub">
             <div class="wc-meta">
-              <div><small>Datum</small><b>19–20 maj</b></div>
+              <div><small>Datum</small><b>19&ndash;20 maj</b></div>
               <div><small>Plats</small><b>Kistamässan</b></div>
             </div>
+            <img class="wc-logo" src="/site/assets/logos/energimassan-2026.webp" alt="Energimässan 2027" />
             <div class="wc-barcode"></div>
             <div class="wc-serial">EM-2027-0001-A</div>
           </div>
@@ -369,19 +373,19 @@
 
         <a class="world-card c-smartcity" href="#">
           <span class="wc-band"></span>
-          <div class="wc-cat"><span>Visitor Pass · 02</span><span>Smart City</span></div>
+          <div class="wc-cat"><span>Visitor Pass &middot; 02</span><span>Smart City</span></div>
           <span class="wc-name">Stockholm Smart City</span>
-          <span class="wc-role">Urban Tech &amp; Data · Hall B</span>
+          <span class="wc-role">Urban Tech &amp; Data &middot; Hall B</span>
           <div class="wc-photo">
             <div class="wc-img" style="background-image:url('/site/assets/worlds/smart-city.png')"></div>
-            <img class="wc-logo" src="/site/assets/logos/stockholm-smart-city-2026.webp" alt="Stockholm Smart City" />
           </div>
           <div class="wc-perf"></div>
           <div class="wc-stub">
             <div class="wc-meta">
-              <div><small>Datum</small><b>19–20 maj</b></div>
+              <div><small>Datum</small><b>19&ndash;20 maj</b></div>
               <div><small>Plats</small><b>Kistamässan</b></div>
             </div>
+            <img class="wc-logo" src="/site/assets/logos/stockholm-smart-city-2026.webp" alt="Stockholm Smart City" />
             <div class="wc-barcode"></div>
             <div class="wc-serial">SC-2027-0002-B</div>
           </div>
@@ -389,19 +393,19 @@
 
         <a class="world-card c-mobility" href="#">
           <span class="wc-band"></span>
-          <div class="wc-cat"><span>Visitor Pass · 03</span><span>Mobility</span></div>
+          <div class="wc-cat"><span>Visitor Pass &middot; 03</span><span>Mobility</span></div>
           <span class="wc-name">Nordic Mobility Expo</span>
-          <span class="wc-role">EV &amp; Charging · Hall C</span>
+          <span class="wc-role">EV &amp; Charging &middot; Hall C</span>
           <div class="wc-photo">
             <div class="wc-img" style="background-image:url('/site/assets/worlds/mobility.png')"></div>
-            <img class="wc-logo" src="/site/assets/logos/nmce-2026.webp" alt="Nordic Mobility &amp; Charging Expo" />
           </div>
           <div class="wc-perf"></div>
           <div class="wc-stub">
             <div class="wc-meta">
-              <div><small>Datum</small><b>19–20 maj</b></div>
+              <div><small>Datum</small><b>19&ndash;20 maj</b></div>
               <div><small>Plats</small><b>Kistamässan</b></div>
             </div>
+            <img class="wc-logo" src="/site/assets/logos/nmce-2026.webp" alt="Nordic Mobility &amp; Charging Expo" />
             <div class="wc-barcode"></div>
             <div class="wc-serial">NM-2027-0003-C</div>
           </div>
@@ -409,19 +413,19 @@
 
         <a class="world-card c-infra" href="#">
           <span class="wc-band"></span>
-          <div class="wc-cat"><span>Visitor Pass · 04</span><span>Infrastruktur</span></div>
+          <div class="wc-cat"><span>Visitor Pass &middot; 04</span><span>Infrastruktur</span></div>
           <span class="wc-name">Infrastruktur</span>
-          <span class="wc-role">Bygg &amp; Anläggning · Hall D</span>
+          <span class="wc-role">Bygg &amp; Anläggning &middot; Hall D</span>
           <div class="wc-photo">
             <div class="wc-img" style="background-image:url('/site/assets/worlds/infrastruktur.png')"></div>
-            <img class="wc-logo" src="/site/assets/logos/infrastruktur-2026.webp" alt="Infrastruktur 2027" />
           </div>
           <div class="wc-perf"></div>
           <div class="wc-stub">
             <div class="wc-meta">
-              <div><small>Datum</small><b>19–20 maj</b></div>
+              <div><small>Datum</small><b>19&ndash;20 maj</b></div>
               <div><small>Plats</small><b>Kistamässan</b></div>
             </div>
+            <img class="wc-logo" src="/site/assets/logos/infrastruktur-2026.webp" alt="Infrastruktur 2027" />
             <div class="wc-barcode"></div>
             <div class="wc-serial">IN-2027-0004-D</div>
           </div>
@@ -432,7 +436,7 @@
     <div class="expo-info-pill">
       <div class="ip-item">
         <span class="ip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
-        <div><small>Datum</small>19–20 maj 2027</div>
+        <div><small>Datum</small>19&ndash;20 maj 2027</div>
       </div>
       <i class="sep"></i>
       <div class="ip-item">
