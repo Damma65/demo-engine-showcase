@@ -156,36 +156,33 @@
     z-index: 3;
   }
 
-  /* Bildyta */
-  .world-card .wc-photo{
+  /* Logo-yta (ersätter bilden) */
+  .world-card .wc-logo-area{
     position: relative;
     margin: 0 14px;
     height: 200px;
-    overflow: hidden;
+    display: grid;
+    place-items: center;
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.06);
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 40%, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 70%),
+      linear-gradient(180deg, #14171D 0%, #0A0C11 100%);
+    overflow: hidden;
   }
-  .world-card .wc-img{
-    position:absolute; inset:0;
-    background-size: cover; background-position: center;
-    transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .4s;
-    filter: saturate(0.85) brightness(0.7);
-  }
-  .world-card:hover .wc-img{
-    transform: scale(1.05);
-    filter: saturate(0.95) brightness(0.85);
-  }
-  .world-card .wc-photo::after{
+  .world-card .wc-logo-area::after{
     content:""; position:absolute; inset:0; pointer-events:none;
-    background: linear-gradient(180deg, rgba(6,7,10,0.3) 0%, rgba(6,7,10,0.55) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(6,7,10,0.4) 100%);
   }
   .world-card .wc-logo{
-    position:absolute; bottom: 14px; left: 14px; right: 14px;
-    height: 28px; max-width: 80%;
-    object-fit: contain; object-position: left bottom;
+    max-width: 78%;
+    max-height: 110px;
+    object-fit: contain;
     z-index: 2;
-    filter: drop-shadow(0 2px 14px rgba(0,0,0,0.85));
+    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.6));
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
   }
+  .world-card:hover .wc-logo{ transform: scale(1.04); }
 
   /* "ADMIT ONE" / kategorirad */
   .world-card .wc-cat{
