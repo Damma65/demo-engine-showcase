@@ -1739,7 +1739,7 @@
   .match-note{ display:block; margin-top: 14px; font-size: 12px; color: var(--text-3); }
 
   /* ============ PARTNERS ============ */
-  .partners{ padding: 100px 32px; border-top:1px solid var(--stroke); background:#06060A; width:100%; }
+  .partners{ padding: 100px 32px; border-top:1px solid var(--stroke); background:#000; width:100%; }
   .partners-eyebrow{
     text-align: center;
     font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
@@ -1783,9 +1783,9 @@
   .partner-tier.gold .partner-grid{ grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .partner-tier.gold .partner{ padding: 28px 32px; min-height: 140px; display:flex; align-items:center; justify-content:center; }
   .partner-tier.gold .partner img{ max-height: 72px; max-width: 80%; width:auto; height:auto; object-fit: contain; filter: brightness(1.05); }
-  .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 200px)); justify-content:center; gap: 14px; }
-  .partner-tier.event .partner-grid{ grid-template-columns: repeat(5, 1fr); gap: 14px; }
-  .partner-tier.partner .partner-grid{ grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(120px, 170px)); justify-content:center; gap: 8px; }
+  .partner-tier.event .partner-grid{ grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .partner-tier.partner .partner-grid{ grid-template-columns: repeat(5, 1fr); gap: 8px; }
   @media(max-width:900px){
     .partner-tier.event .partner-grid,
     .partner-tier.partner .partner-grid{ grid-template-columns: repeat(3, 1fr); }
@@ -1795,9 +1795,9 @@
     .partner-tier.partner .partner-grid{ grid-template-columns: repeat(2, 1fr); }
   }
   .partner{
-    background: var(--bg-2); min-height: 110px;
+    background: transparent; min-height: 80px;
     display: grid; place-items: center;
-    padding: 20px 28px;
+    padding: 10px 12px;
     color: var(--text-2);
     font-size: 16px; font-weight: 600; letter-spacing: -0.01em;
     text-align:center;
@@ -1805,7 +1805,7 @@
     text-decoration: none;
     position: relative;
   }
-  .partner:hover{ background: var(--bg-3); color: var(--text); transform: translateY(-1px); }
+  .partner:hover{ background: rgba(255,255,255,0.04); color: var(--text); transform: translateY(-1px); }
   .partner:hover .pl-mark{ filter: saturate(1.3) brightness(1.15); transform: rotate(-3deg) scale(1.05); }
 
   /* "Logotyp" — symbol + wordmark */
@@ -1839,35 +1839,36 @@
   .partner-meta{ font-size: 11px; color: var(--text-3); letter-spacing: 0.04em; font-weight:500; }
 
   /* Real-logo tiles: transparent on black, logos rendered i vitt via filter */
-  .partner.has-logo{ background:transparent; padding:18px 22px; }
+  .partner.has-logo{ background:transparent; padding:10px 12px; }
   .partner.has-logo:hover{ background:rgba(255,255,255,.04); transform: translateY(-2px); }
-  .partner.has-logo img{ max-width:100%; max-height:60px; width:auto; height:auto; object-fit:contain; filter: brightness(0) invert(1); opacity:.85; transition:opacity .2s; }
+  .partner.has-logo img{ max-width:100%; max-height:30px; width:auto; height:auto; object-fit:contain; filter: brightness(0) invert(1); opacity:.85; transition:opacity .2s; }
   .partner.has-logo:hover img{ opacity:1; }
   .partner-tier.gold .partner.has-logo{ padding:28px 36px; }
-  /* Gold = real brand colors, no invert */
+  /* Gold = real brand colors, no invert — keep stora */
   .partner-tier.gold .partner.has-logo img{ max-height:64px; filter:none; opacity:1; }
   .partner-tier.gold .partner.has-logo img[src*="tdg"]{ max-height:64px; height:64px; max-width:none; width:auto; }
-  .partner-tier.bronze .partner.has-logo{ min-width:160px; min-height:100px; padding:16px 20px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.bronze .partner.has-logo img{ max-height:58px; max-width:150px; }
-  .partner-tier.event .partner.has-logo{ min-width:160px; min-height:94px; padding:16px 20px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.event .partner.has-logo img{ max-height:52px; max-width:150px; }
-  .partner-tier.partner .partner.has-logo{ min-height:94px; padding:16px 16px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.partner .partner.has-logo img{ width:100%; max-width:100%; height:auto; max-height:64px; object-fit:contain; filter: brightness(0) invert(1); opacity:.9; transition:opacity .2s; }
+  .partner-tier.bronze .partner.has-logo{ min-width:120px; min-height:64px; padding:8px 12px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.bronze .partner.has-logo img{ max-height:30px; max-width:110px; }
+  .partner-tier.event .partner.has-logo{ min-width:120px; min-height:60px; padding:8px 12px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.event .partner.has-logo img{ max-height:26px; max-width:100px; }
+  .partner-tier.partner .partner.has-logo{ min-height:60px; padding:8px 10px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.partner .partner.has-logo img{ width:auto; max-width:100%; height:auto; max-height:30px; object-fit:contain; filter: brightness(0) invert(1); opacity:.9; transition:opacity .2s; }
   /* Whitemarks: redan vita på transparent — ingen filtrering */
   .partner.has-logo img[src*="-white.svg"]{ filter:none !important; opacity:.95; }
   .partner.has-logo:hover img[src*="-white.svg"]{ opacity:1; }
   .partner.has-logo .pl-name-fallback{ display:none; }
   .partner-tier.partner .partner.has-logo:hover img{ opacity:1; }
-  /* Shrink select samarbetspartners-logos with 20% */
-  .partner-tier.partner .partner.has-logo img[src*="hitachi"],
-  .partner-tier.partner .partner.has-logo img[src*="vattenfall"],
-  .partner-tier.partner .partner.has-logo img[src*="eneff"],
-  .partner-tier.partner .partner.has-logo img[src*="energiforsk"],
-  .partner-tier.partner .partner.has-logo img[src*="svebio"],
-  .partner-tier.partner .partner.has-logo img[src*="chalmers"],
-  .partner-tier.partner .partner.has-logo img[src*="cloudberry"],
-  .partner-tier.partner .partner.has-logo img[src*="2030"],
-  .partner-tier.partner .partner.has-logo img[src*="energipress"]{ max-height:43px; max-width:80%; }
+
+  /* SMALA / SMÅ logos — behåll större storlek (skall INTE halveras) */
+  .partner.has-logo img[src*="truxco"],
+  .partner.has-logo img[src*="truxel"],
+  .partner.has-logo img[src*="aucotec"],
+  .partner.has-logo img[src*="wistbo"],
+  .partner.has-logo img[src*="canea"],
+  .partner.has-logo img[src*="vivavis"],
+  .partner.has-logo img[src*="lrf"],
+  .partner.has-logo img[src*="eneff"],
+  .partner.has-logo img[src*="2030"]{ max-height:46px !important; max-width:130px !important; }
   .partner-tier.event .pl-name, .partner-tier.partner .pl-name{ font-size: 11px; }
   .partner-tier.event .pl-mark, .partner-tier.partner .pl-mark{ width:20px; height:20px; font-size:10px; border-radius:6px; }
 
@@ -3803,100 +3804,6 @@
   </div>
 </section>
 
-<!-- ============ PARTNERS ============ -->
-<section class="partners" id="partners">
-  <div class="partners-eyebrow">Partners 2027</div>
-  <h2 class="partners-headline">De som gör det möjligt.</h2>
-  <p class="partners-sub">Sveriges största energimöte byggs tillsammans med branschens ledande aktörer.</p>
-
-  <div class="partner-tier gold">
-    <div class="partner-tier-label"><span class="ttl"><span class="badge"></span>Guldpartner</span><span class="line"></span></div>
-    <div class="partner-grid" id="pg-gold"></div>
-  </div>
-
-  <div class="partner-tier bronze">
-    <div class="partner-tier-label"><span class="ttl"><span class="badge"></span>Bronspartner</span><span class="line"></span></div>
-    <div class="partner-grid" id="pg-bronze"></div>
-  </div>
-
-  <div class="partner-tier event">
-    <div class="partner-tier-label"><span class="ttl"><span class="badge"></span>Eventpartners</span><span class="line"></span></div>
-    <div class="partner-grid" id="pg-event"></div>
-  </div>
-
-  <div class="partner-tier partner">
-    <div class="partner-tier-label"><span class="ttl"><span class="badge"></span>Samarbetspartners &amp; medverkande</span><span class="line"></span></div>
-    <div class="partner-grid" id="pg-partner"></div>
-  </div>
-</section>
-
-<script>
-  /* Partners logos — renderas som "logotyp" (symbol + wordmark) */
-  (function(){
-    // [name, url, hex1, hex2, mark/initials, logoPath?]
-    const data = {
-      gold: [
-        ['Sungrow','https://en.sungrowpower.com/','#FF9500','#FFD60A','S','partners/sungrow.svg'],
-        ['TDG | YUNET','http://www.tdgyunet.com/','#0A84FF','#5E5CE6','◇','partners/tdg-yunet.svg']
-      ],
-      bronze: [
-        ['Siemens Energy','https://www.siemens-energy.com/se/sv/home.html','#00A4A7','#0A84FF','SE','exhibitors/siemens-energy.png'],
-        ['Merus Power','https://meruspower.com/','#5E5CE6','#BF5AF2','M','exhibitors/merus-power.webp'],
-        ['Fortum Optimizer','https://www.fortum.com/','#30D158','#64D2FF','F','exhibitors/fortum-optimizer.webp']
-      ],
-      event: [
-        ['Digpro','https://digpro.com/','#0A84FF','#5E5CE6','D','exhibitors/digpro.webp'],
-        ['Steady Energy','https://www.steadyenergy.com/','#FF9500','#FFD60A','SE','exhibitors/steady-energy-the-fission-bar-by-steady-energy.png'],
-        ['Vinnergi','https://vinnergi.se/','#30D158','#64D2FF','V','exhibitors/vinnergi.webp'],
-        ['Truxco','https://truxco.energy/sv/','#FF375F','#BF5AF2','T','exhibitors/truxco-energy.webp'],
-        ['Truxel','https://truxel.ai/','#BF5AF2','#5E5CE6','T','exhibitors/truxel.webp'],
-        ['CANEA','https://www.canea.se/','#FF9F0A','#FF375F','C','exhibitors/canea-partner-group.webp'],
-        ['Wistbo','https://www.wistbo.com/','#0A84FF','#30D158','W','exhibitors/wistbo.webp'],
-        ['Schneider Electric','https://www.se.com/se/sv/','#30D158','#FFD60A','SE','exhibitors/schneider-electric.webp'],
-        ['AUCOTEC','https://www.aucotec.com/en/','#FF375F','#FF9F0A','A','exhibitors/aucotec.webp'],
-        ['VIVAVIS SGOP','https://sgop.global/','#5E5CE6','#0A84FF','V','exhibitors/vivavis-ag.webp']
-      ],
-      partner: [
-        ['Hitachi Energy','https://www.hitachienergy.com/se/sv','#FF375F','#FF9F0A','H','exhibitors/hitachi-energy.png'],
-        ['Vattenfall','https://www.vattenfall.se/','#FFD60A','#FF9500','V','exhibitors/vattenfall.webp'],
-        ['Uniper','https://www.uniper.energy/sv/sverige','#00A4A7','#0A84FF','U','exhibitors/uniper.webp'],
-        ['EIT InnoEnergy','https://www.innoenergy.com','#30D158','#64D2FF','EIT','exhibitors/innoenergy.webp'],
-        ['AI Sweden','https://www.ai.se/en','#0A84FF','#5E5CE6','AI','exhibitors/ai-sweden.webp'],
-        ['Eneff','https://eneff.se','#BF5AF2','#5E5CE6','E','exhibitors/eneff.webp'],
-        ['Energiforsk','https://energiforsk.se/','#FF9F0A','#FFD60A','E','partners/energiforsk.svg'],
-        ['Svebio','https://www.svebio.se','#30D158','#FFD60A','S','partners/svebio-white.svg'],
-        ['Chalmers','https://www.chalmers.se/en/','#0A84FF','#00A4A7','C','partners/chalmers.svg'],
-        ['Svensk Solenergi','https://svensksolenergi.se/','#FFD60A','#FF9500','◯','partners/svensk-solenergi-white.svg'],
-        ['Cloudberry','https://www.cloudberry.no/en','#64D2FF','#5E5CE6','C','exhibitors/cloudberry.webp'],
-        ['LRF','https://www.lrf.se/','#30D158','#FFD60A','LRF','partners/lrf-white.svg'],
-        ['2030-sekretariatet','https://www.2030sekretariatet.se/','#FF375F','#BF5AF2','30','exhibitors/2030-sekretariatet.webp'],
-        ['Glava Energy Center','https://glavaenergycenter.se/','#FF9500','#FF375F','G','partners/glava-energy-center.svg'],
-        ['Energipress','https://www.energipress.se/','#5E5CE6','#0A84FF','E','exhibitors/energipress.webp']
-      ]
-    };
-    function render(tier, items){
-      const el = document.getElementById('pg-'+tier);
-      if (!el) return;
-      el.innerHTML = items.map(([name, url, c1, c2, mark, logo]) => {
-        if (logo) {
-          const tag = tier==='gold' ? '' : `<span class="pl-name-fallback">${name}</span>`;
-          return `<a class="partner has-logo" href="${url}" target="_blank" rel="noopener" aria-label="${name}" title="${name}">
-            <img src="${logo}" alt="${name}" loading="lazy" onerror="this.parentNode.classList.remove('has-logo');this.replaceWith(Object.assign(document.createElement('span'),{className:'pl-name',textContent:'${name}'}));" />
-          </a>`;
-        }
-        const goldExtra = tier==='gold' ? `<span class="partner-name"><b>GULDPARTNER</b></span>` : '';
-        return `<a class="partner" href="${url}" target="_blank" rel="noopener" title="${name}">
-          ${goldExtra}
-          <span class="partner-logo">
-            <span class="pl-mark" style="background: linear-gradient(135deg, ${c1}, ${c2});">${mark}</span>
-            <span class="pl-name">${name}</span>
-          </span>
-        </a>`;
-      }).join('');
-    }
-    Object.entries(data).forEach(([tier, items]) => render(tier, items));
-  })();
-</script>
 
 <!-- ============ INSTAGRAM LIVE FEED (mockup) ============ -->
 <style>
@@ -4403,6 +4310,102 @@
     <button type="submit">Anmäl</button>
   </form>
 </section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="partners" id="partners">
+  <div class="partners-eyebrow">Partners 2027</div>
+  <h2 class="partners-headline">De som gör det möjligt.</h2>
+  <p class="partners-sub">Sveriges största energimöte byggs tillsammans med branschens ledande aktörer.</p>
+
+  <div class="partner-tier gold">
+    <div class="partner-tier-label"><span class="ttl"><span class="badge"></span>Guldpartner</span><span class="line"></span></div>
+    <div class="partner-grid" id="pg-gold"></div>
+  </div>
+
+  <div class="partner-tier bronze">
+    <div class="partner-tier-label"><span class="ttl"><span class="badge"></span>Bronspartner</span><span class="line"></span></div>
+    <div class="partner-grid" id="pg-bronze"></div>
+  </div>
+
+  <div class="partner-tier event">
+    <div class="partner-tier-label"><span class="ttl"><span class="badge"></span>Eventpartners</span><span class="line"></span></div>
+    <div class="partner-grid" id="pg-event"></div>
+  </div>
+
+  <div class="partner-tier partner">
+    <div class="partner-tier-label"><span class="ttl"><span class="badge"></span>Samarbetspartners &amp; medverkande</span><span class="line"></span></div>
+    <div class="partner-grid" id="pg-partner"></div>
+  </div>
+</section>
+
+<script>
+  /* Partners logos — renderas som "logotyp" (symbol + wordmark) */
+  (function(){
+    // [name, url, hex1, hex2, mark/initials, logoPath?]
+    const data = {
+      gold: [
+        ['Sungrow','https://en.sungrowpower.com/','#FF9500','#FFD60A','S','partners/sungrow.svg'],
+        ['TDG | YUNET','http://www.tdgyunet.com/','#0A84FF','#5E5CE6','◇','partners/tdg-yunet.svg']
+      ],
+      bronze: [
+        ['Siemens Energy','https://www.siemens-energy.com/se/sv/home.html','#00A4A7','#0A84FF','SE','exhibitors/siemens-energy.png'],
+        ['Merus Power','https://meruspower.com/','#5E5CE6','#BF5AF2','M','exhibitors/merus-power.webp'],
+        ['Fortum Optimizer','https://www.fortum.com/','#30D158','#64D2FF','F','exhibitors/fortum-optimizer.webp']
+      ],
+      event: [
+        ['Digpro','https://digpro.com/','#0A84FF','#5E5CE6','D','exhibitors/digpro.webp'],
+        ['Steady Energy','https://www.steadyenergy.com/','#FF9500','#FFD60A','SE','exhibitors/steady-energy-the-fission-bar-by-steady-energy.png'],
+        ['Vinnergi','https://vinnergi.se/','#30D158','#64D2FF','V','exhibitors/vinnergi.webp'],
+        ['Truxco','https://truxco.energy/sv/','#FF375F','#BF5AF2','T','exhibitors/truxco-energy.webp'],
+        ['Truxel','https://truxel.ai/','#BF5AF2','#5E5CE6','T','exhibitors/truxel.webp'],
+        ['CANEA','https://www.canea.se/','#FF9F0A','#FF375F','C','exhibitors/canea-partner-group.webp'],
+        ['Wistbo','https://www.wistbo.com/','#0A84FF','#30D158','W','exhibitors/wistbo.webp'],
+        ['Schneider Electric','https://www.se.com/se/sv/','#30D158','#FFD60A','SE','exhibitors/schneider-electric.webp'],
+        ['AUCOTEC','https://www.aucotec.com/en/','#FF375F','#FF9F0A','A','exhibitors/aucotec.webp'],
+        ['VIVAVIS SGOP','https://sgop.global/','#5E5CE6','#0A84FF','V','exhibitors/vivavis-ag.webp']
+      ],
+      partner: [
+        ['Hitachi Energy','https://www.hitachienergy.com/se/sv','#FF375F','#FF9F0A','H','exhibitors/hitachi-energy.png'],
+        ['Vattenfall','https://www.vattenfall.se/','#FFD60A','#FF9500','V','exhibitors/vattenfall.webp'],
+        ['Uniper','https://www.uniper.energy/sv/sverige','#00A4A7','#0A84FF','U','exhibitors/uniper.webp'],
+        ['EIT InnoEnergy','https://www.innoenergy.com','#30D158','#64D2FF','EIT','exhibitors/innoenergy.webp'],
+        ['AI Sweden','https://www.ai.se/en','#0A84FF','#5E5CE6','AI','exhibitors/ai-sweden.webp'],
+        ['Eneff','https://eneff.se','#BF5AF2','#5E5CE6','E','exhibitors/eneff.webp'],
+        ['Energiforsk','https://energiforsk.se/','#FF9F0A','#FFD60A','E','partners/energiforsk.svg'],
+        ['Svebio','https://www.svebio.se','#30D158','#FFD60A','S','partners/svebio-white.svg'],
+        ['Chalmers','https://www.chalmers.se/en/','#0A84FF','#00A4A7','C','partners/chalmers.svg'],
+        ['Svensk Solenergi','https://svensksolenergi.se/','#FFD60A','#FF9500','◯','partners/svensk-solenergi-white.svg'],
+        ['Cloudberry','https://www.cloudberry.no/en','#64D2FF','#5E5CE6','C','exhibitors/cloudberry.webp'],
+        ['LRF','https://www.lrf.se/','#30D158','#FFD60A','LRF','partners/lrf-white.svg'],
+        ['2030-sekretariatet','https://www.2030sekretariatet.se/','#FF375F','#BF5AF2','30','exhibitors/2030-sekretariatet.webp'],
+        ['Glava Energy Center','https://glavaenergycenter.se/','#FF9500','#FF375F','G','partners/glava-energy-center.svg'],
+        ['Energipress','https://www.energipress.se/','#5E5CE6','#0A84FF','E','exhibitors/energipress.webp']
+      ]
+    };
+    function render(tier, items){
+      const el = document.getElementById('pg-'+tier);
+      if (!el) return;
+      el.innerHTML = items.map(([name, url, c1, c2, mark, logo]) => {
+        if (logo) {
+          const tag = tier==='gold' ? '' : `<span class="pl-name-fallback">${name}</span>`;
+          return `<a class="partner has-logo" href="${url}" target="_blank" rel="noopener" aria-label="${name}" title="${name}">
+            <img src="${logo}" alt="${name}" loading="lazy" onerror="this.parentNode.classList.remove('has-logo');this.replaceWith(Object.assign(document.createElement('span'),{className:'pl-name',textContent:'${name}'}));" />
+          </a>`;
+        }
+        const goldExtra = tier==='gold' ? `<span class="partner-name"><b>GULDPARTNER</b></span>` : '';
+        return `<a class="partner" href="${url}" target="_blank" rel="noopener" title="${name}">
+          ${goldExtra}
+          <span class="partner-logo">
+            <span class="pl-mark" style="background: linear-gradient(135deg, ${c1}, ${c2});">${mark}</span>
+            <span class="pl-name">${name}</span>
+          </span>
+        </a>`;
+      }).join('');
+    }
+    Object.entries(data).forEach(([tier, items]) => render(tier, items));
+  })();
+</script>
+
 
 <!-- ============ FOOTER ============ -->
 <footer>
