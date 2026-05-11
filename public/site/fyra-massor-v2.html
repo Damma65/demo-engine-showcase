@@ -124,7 +124,7 @@
   .world-card{
     position: relative;
     height: 640px;
-    background: linear-gradient(180deg, #1A1D24 0%, #0E1015 100%);
+    background: #16191F;
     color: var(--tx);
     text-decoration: none;
     isolation: isolate;
@@ -201,28 +201,26 @@
     font-size: 12px; color: var(--tx-2);
   }
 
-  /* Perforering */
+  /* Perforering — en linje av prickar tvärs över kortet */
   .world-card .wc-perf{
     position:relative;
-    height: 14px;
-    margin: 16px 0 0;
-    background-image: radial-gradient(circle 3px at 6px 50%, var(--bg-0) 99%, transparent 100%);
-    background-size: 12px 14px;
+    height: 16px;
+    margin: 14px 0 0;
+    background-image: radial-gradient(circle 2px at 7px 50%, rgba(0,0,0,0.55) 99%, transparent 100%);
+    background-size: 14px 16px;
     background-repeat: repeat-x;
-    border-top: 1px dashed rgba(255,255,255,0.12);
-    border-bottom: 1px dashed rgba(255,255,255,0.06);
   }
-  /* utstansade halvcirklar i midjan */
+  /* Halvcirkel-utstansningar i kanten — tonad mot sidans bg */
   .world-card .wc-perf::before,
   .world-card .wc-perf::after{
     content:"";
     position:absolute; top: 50%; transform: translateY(-50%);
-    width: 18px; height: 18px; border-radius: 50%;
+    width: 16px; height: 16px; border-radius: 50%;
     background: var(--bg-0);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
   }
-  .world-card .wc-perf::before{ left: -9px; }
-  .world-card .wc-perf::after{ right: -9px; }
+  .world-card .wc-perf::before{ left: -8px; }
+  .world-card .wc-perf::after{ right: -8px; }
 
   /* Stub — datum/hall/barcode */
   .world-card .wc-stub{
