@@ -123,7 +123,7 @@
 
   .world-card{
     position: relative;
-    height: 560px;
+    height: 640px;
     background: linear-gradient(180deg, #1A1D24 0%, #0E1015 100%);
     color: var(--tx);
     text-decoration: none;
@@ -239,6 +239,15 @@
   }
   .world-card .wc-meta div b{
     font-size: 13px; font-weight: 600; color: var(--tx);
+  }
+
+  /* Tom inset-ruta i stubben (matchar serie-rutan upptill) */
+  .world-card .wc-stub-inset{
+    height: 44px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.35);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+    margin-top: 2px;
   }
 
   /* Logga i stubben (centrerad, större) */
@@ -371,6 +380,7 @@
               <div><small>Datum</small><b>19&ndash;20 maj</b></div>
               <div><small>Plats</small><b>Kistamässan</b></div>
             </div>
+            <div class="wc-stub-inset"></div>
             <img class="wc-logo" src="/site/assets/logos/energimassan-2026.webp" alt="Energimässan 2027" />
             <div class="wc-barcode"></div>
             <div class="wc-serial">EM-2027-0001-A</div>
@@ -389,6 +399,7 @@
               <div><small>Datum</small><b>19&ndash;20 maj</b></div>
               <div><small>Plats</small><b>Kistamässan</b></div>
             </div>
+            <div class="wc-stub-inset"></div>
             <img class="wc-logo" src="/site/assets/logos/stockholm-smart-city-2026.webp" alt="Stockholm Smart City" />
             <div class="wc-barcode"></div>
             <div class="wc-serial">SC-2027-0002-B</div>
@@ -407,6 +418,7 @@
               <div><small>Datum</small><b>19&ndash;20 maj</b></div>
               <div><small>Plats</small><b>Kistamässan</b></div>
             </div>
+            <div class="wc-stub-inset"></div>
             <img class="wc-logo" src="/site/assets/logos/nmce-2026.webp" alt="Nordic Mobility &amp; Charging Expo" />
             <div class="wc-barcode"></div>
             <div class="wc-serial">NM-2027-0003-C</div>
@@ -425,6 +437,7 @@
               <div><small>Datum</small><b>19&ndash;20 maj</b></div>
               <div><small>Plats</small><b>Kistamässan</b></div>
             </div>
+            <div class="wc-stub-inset"></div>
             <img class="wc-logo" src="/site/assets/logos/infrastruktur-2026.webp" alt="Infrastruktur 2027" />
             <div class="wc-barcode"></div>
             <div class="wc-serial">IN-2027-0004-D</div>
