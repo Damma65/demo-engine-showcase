@@ -68,6 +68,14 @@
     background: rgba(255,255,255,0.035);
     border: 1px solid var(--stroke);
     display:flex; gap:14px; align-items:flex-start;
+    text-align:left; font-family:inherit; cursor:pointer;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .am-step:hover{ background: rgba(255,255,255,0.06); border-color: rgba(94,92,230,0.35); }
+  .am-step.is-active{
+    background: linear-gradient(135deg, rgba(94,92,230,0.16), rgba(100,210,255,0.08));
+    border-color: rgba(94,92,230,0.55);
+    box-shadow: 0 14px 36px -16px rgba(94,92,230,.6);
   }
   .am-step .n{
     flex:none; width:30px; height:30px; border-radius:9px;
