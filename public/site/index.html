@@ -1776,13 +1776,13 @@
   .partner-tier.partner{ --tier-c: #30D158; }
   .partner-grid{
     display: grid; gap: 1px;
-    background: var(--stroke);
-    border-radius: 22px; overflow: hidden;
-    border: 1px solid var(--stroke);
+    background: transparent;
+    border-radius: 0; overflow: visible;
+    border: none;
   }
   .partner-tier.gold .partner-grid{ grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .partner-tier.gold .partner{ padding: 28px 32px; min-height: 140px; display:flex; align-items:center; justify-content:center; }
-  .partner-tier.gold .partner img{ max-height: 72px; max-width: 80%; width:auto; height:auto; object-fit: contain; filter: brightness(1.05); }
+  .partner-tier.gold .partner{ padding: 18px 20px; min-height: 100px; display:flex; align-items:center; justify-content:center; }
+  .partner-tier.gold .partner img{ max-height: 50px; max-width: 80%; width:auto; height:auto; object-fit: contain; filter: brightness(1.05); }
   .partner-tier.bronze .partner-grid{ grid-template-columns: repeat(auto-fit, minmax(120px, 170px)); justify-content:center; gap: 8px; }
   .partner-tier.event .partner-grid{ grid-template-columns: repeat(5, 1fr); gap: 8px; }
   .partner-tier.partner .partner-grid{ grid-template-columns: repeat(5, 1fr); gap: 8px; }
