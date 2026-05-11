@@ -3556,6 +3556,39 @@
   .ph-tabbar a{ display:flex; flex-direction:column; align-items:center; gap:3px; font-size: 10.5px; color: var(--text-3); text-decoration:none; }
   .ph-tabbar a.on{ color:#B0AEFF; }
   .ph-tabbar a .ic{ font-size:14px; }
+  /* Step interactivity + multi-screen */
+  .am-step{ cursor:pointer; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+  .am-step:hover{ background:rgba(255,255,255,0.06); }
+  .am-step.on{ background: linear-gradient(135deg, rgba(94,92,230,0.18), rgba(100,210,255,0.08)); border-color: rgba(94,92,230,0.55); }
+  .am-screens{ position:relative; flex:1; min-height:0; }
+  .am-screens .ph-screen{ position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; pointer-events:none; }
+  .am-screens .ph-screen.on{ opacity:1; transform:none; pointer-events:auto; }
+  .ph-form{ padding:14px 16px; display:flex; flex-direction:column; gap:10px; flex:1; overflow:hidden; }
+  .ph-form .lbl{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-top:4px; }
+  .ph-input{ padding:10px 12px; border-radius:10px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke); font-size:12.5px; color:#fff; }
+  .ph-chips{ display:flex; flex-wrap:wrap; gap:6px; }
+  .ph-chip{ padding:6px 10px; border-radius:100px; font-size:11px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke); color:var(--text-2); }
+  .ph-chip.on{ background:rgba(94,92,230,0.18); color:#B0AEFF; border-color:rgba(94,92,230,0.45); }
+  .ph-cta-mini{ margin-top:auto; padding:12px; border-radius:12px; background:linear-gradient(135deg,#5E5CE6,#64D2FF); color:#fff; font-weight:600; font-size:13px; text-align:center; }
+  .ph-cal{ padding:14px 16px; display:flex; flex-direction:column; gap:10px; flex:1; overflow:hidden; }
+  .ph-cal .day{ font-size:12.5px; color:#fff; font-weight:600; }
+  .ph-slot{ display:flex; align-items:center; justify-content:space-between; padding:11px 12px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid var(--stroke); font-size:12px; color:var(--text-2); }
+  .ph-slot.sel{ background:linear-gradient(135deg,rgba(48,209,88,0.16),rgba(94,92,230,0.10)); border-color:rgba(48,209,88,0.4); color:#fff; }
+  .ph-slot .tm{ font-weight:600; color:#fff; }
+  .ph-slot .tag{ font-size:10.5px; padding:3px 8px; border-radius:100px; background:rgba(48,209,88,0.18); color:#5DE38A; border:1px solid rgba(48,209,88,0.35); font-weight:700; }
+  .ph-confirm{ display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:12px; background:rgba(48,209,88,0.10); border:1px solid rgba(48,209,88,0.3); }
+  .ph-confirm .ic{ width:26px; height:26px; border-radius:50%; background:#30D158; color:#000; display:grid; place-items:center; font-weight:700; font-size:13px; }
+  .ph-confirm .tx{ font-size:12px; color:#fff; line-height:1.3; }
+  .ph-confirm .tx b{ color:#5DE38A; }
+  .ph-followup{ padding:14px 16px; display:flex; flex-direction:column; gap:10px; flex:1; overflow:hidden; }
+  .ph-fu{ padding:12px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid var(--stroke); }
+  .ph-fu .head{ display:flex; align-items:center; gap:8px; }
+  .ph-fu .head .lg{ width:24px; height:24px; border-radius:6px; display:grid; place-items:center; font-size:9px; font-weight:800; color:#fff; }
+  .ph-fu .head .nm{ font-size:12.5px; color:#fff; font-weight:600; }
+  .ph-fu .head .st{ margin-left:auto; font-size:10px; padding:3px 7px; border-radius:100px; background:rgba(48,209,88,0.18); color:#5DE38A; border:1px solid rgba(48,209,88,0.3); font-weight:700; }
+  .ph-fu .body{ margin-top:8px; font-size:11.5px; color:var(--text-2); line-height:1.45; }
+  .ph-fu .acts{ display:flex; gap:6px; margin-top:8px; }
+  .ph-fu .acts span{ padding:5px 9px; border-radius:8px; background:rgba(94,92,230,0.14); color:#B0AEFF; font-size:10.5px; font-weight:600; border:1px solid rgba(94,92,230,0.3); }
   @media (max-width: 1100px){
     .am-hero{ padding: 70px 24px; margin: 0 16px; }
     .am-inner{ grid-template-columns: 1fr; gap: 60px; }
