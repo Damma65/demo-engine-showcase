@@ -4471,6 +4471,132 @@
   </form>
 </section>
 
+<!-- ============ NYHETER ============ -->
+<style>
+  .news{ padding: 110px 32px 60px; max-width: 1280px; margin: 0 auto; }
+  .news-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom: 44px; flex-wrap:wrap; }
+  .news-head .left .ey{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); font-weight:700; }
+  .news-head .left h2{ margin-top:14px; font-size: clamp(40px, 4.4vw, 60px); line-height:.98; letter-spacing:-.04em; font-weight:700; color:#fff; }
+  .news-head .left h2 .grad{ background: linear-gradient(135deg,#FF9F0A,#FFD60A 60%,#30D158); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .news-head .right{ font-size:14px; color:var(--text-3); max-width:360px; line-height:1.5; }
+  .news-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px; }
+  .news-card{ position:relative; padding: 22px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); border:1px solid var(--stroke); overflow:hidden; display:flex; flex-direction:column; min-height: 260px; transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+  .news-card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,0.18); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); }
+  .news-card.featured{ grid-row: span 2; min-height: unset; padding: 28px; background: radial-gradient(700px 400px at 0% 0%, rgba(255,159,10,0.18), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); }
+  .news-tag{ align-self:flex-start; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding: 5px 10px; border-radius:100px; background: rgba(255,159,10,0.16); color:#FFB454; border:1px solid rgba(255,159,10,0.35); font-weight:700; }
+  .news-tag.green{ background: rgba(48,209,88,0.14); color:#5DE38A; border-color:rgba(48,209,88,0.35); }
+  .news-tag.blue{ background: rgba(10,132,255,0.16); color:#5AC8FA; border-color:rgba(10,132,255,0.4); }
+  .news-tag.purple{ background: rgba(94,92,230,0.18); color:#B0AEFF; border-color:rgba(94,92,230,0.4); }
+  .news-card h3{ margin-top: 14px; font-size: 19px; line-height:1.25; font-weight:700; color:#fff; letter-spacing:-.02em; }
+  .news-card.featured h3{ font-size: clamp(28px, 2.8vw, 36px); letter-spacing:-.03em; line-height:1.1; }
+  .news-card p{ margin-top: 10px; font-size: 13.5px; line-height:1.55; color: var(--text-2); flex:1; }
+  .news-card.featured p{ font-size: 15.5px; line-height:1.55; max-width: 520px; }
+  .news-foot{ margin-top: 16px; display:flex; align-items:center; justify-content:space-between; font-size: 12px; color: var(--text-3); }
+  .news-foot .arrow{ width:28px; height:28px; border-radius:50%; background:rgba(255,255,255,0.06); display:grid; place-items:center; color:#fff; font-size:13px; transition: background .2s ease, transform .2s ease; }
+  .news-card:hover .news-foot .arrow{ background: linear-gradient(135deg,#FF9F0A,#FFD60A); color:#000; transform: translateX(2px); }
+  @media (max-width: 980px){ .news-grid{ grid-template-columns: 1fr 1fr; } .news-card.featured{ grid-column: span 2; grid-row: auto; min-height: unset; } }
+  @media (max-width: 600px){ .news-grid{ grid-template-columns: 1fr; } .news-card.featured{ grid-column: auto; } }
+
+  /* Fokusområden bottom — kompakt rutnät */
+  .focus2{ padding: 60px 32px 100px; max-width: 1280px; margin: 0 auto; }
+  .focus2-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom: 36px; flex-wrap:wrap; }
+  .focus2-head .ey{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); font-weight:700; }
+  .focus2-head h2{ margin-top:14px; font-size: clamp(40px, 4.4vw, 60px); line-height:.98; letter-spacing:-.04em; font-weight:700; color:#fff; }
+  .focus2-head h2 .grad{ background: linear-gradient(135deg,#30D158,#64D2FF 60%,#5E5CE6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .focus2-head .sub{ font-size:14px; color:var(--text-3); max-width:380px; line-height:1.5; }
+  .focus2-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .focus2-card{ position:relative; padding: 18px 16px; border-radius: 14px; background: rgba(255,255,255,0.03); border:1px solid var(--stroke); display:flex; flex-direction:column; gap:10px; transition: transform .22s ease, border-color .22s ease, background .22s ease; min-height: 124px; }
+  .focus2-card:hover{ transform: translateY(-2px); border-color: rgba(48,209,88,0.4); background: rgba(48,209,88,0.05); }
+  .focus2-card .ic{ width:36px; height:36px; border-radius:10px; display:grid; place-items:center; background: linear-gradient(135deg, var(--c1,#30D158), var(--c2,#64D2FF)); color:#fff; box-shadow: 0 6px 14px -4px var(--c1,#30D158); }
+  .focus2-card .ic svg{ width:18px; height:18px; }
+  .focus2-card .ttl{ font-size: 13.5px; font-weight:700; color:#fff; line-height:1.25; letter-spacing:-.012em; }
+  .focus2-card .desc{ font-size: 11.5px; color: var(--text-3); line-height:1.4; }
+  @media (max-width: 980px){ .focus2-grid{ grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px){ .focus2-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 420px){ .focus2-grid{ grid-template-columns: 1fr; } }
+</style>
+<section class="news" id="nyheter">
+  <div class="news-head">
+    <div class="left">
+      <div class="ey">Nyheter</div>
+      <h2>Det senaste från<br/><span class="grad">Energimässan 2027.</span></h2>
+    </div>
+    <div class="right">Programsläpp, nya fokusområden, talarbekräftelser och uppdateringar inför mässdagarna 19–20 maj 2027.</div>
+  </div>
+  <div class="news-grid">
+
+    <article class="news-card featured">
+      <span class="news-tag">Programsläpp</span>
+      <h3>Ny öppen scen 2027 — fokus Drift &amp; Underhåll lanseras på mässgolvet</h3>
+      <p>Parallellt med Energimässans öppna scen lanserar vi nu ett helt nytt fokusområde: Drift &amp; Underhåll. På den nya scenen samlas analyser, trender, produktnyheter och konkreta case direkt på mässgolvet — för dig som ansvarar för anläggningen i drift.</p>
+      <div class="news-foot"><span>10 maj 2026 · 4 min läsning</span><span class="arrow">→</span></div>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag green">Talare bekräftad</span>
+      <h3>Magdalena Andersson talar på Energimässan 2027</h3>
+      <p>Socialdemokraternas partiledare gästar mässan för att tala om Sveriges energipolitik och industriell omställning.</p>
+      <div class="news-foot"><span>2 maj 2026</span><span class="arrow">→</span></div>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag blue">AI-Zonen</span>
+      <h3>AI Sweden, Google och Vattenfall till nya AI-Zonen</h3>
+      <p>Stor nyhet inför 2027: en helt egen yta för AI-driven energi — med Jeff Sundheim (Google), Anna Svensson och Filip Kjellgren (AI Sweden).</p>
+      <div class="news-foot"><span>28 april 2026</span><span class="arrow">→</span></div>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag purple">Konferens</span>
+      <h3>Sveriges Energiforum: program 2027 släppt</h3>
+      <p>Över 200 talare, fyra parallella spår och 100+ sessioner om kärnkraft, vätgas, BESS, elnät och hållbar industri.</p>
+      <div class="news-foot"><span>22 april 2026</span><span class="arrow">→</span></div>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag">Utmärkelse</span>
+      <h3>Årets Framstegspris Energi — nominera nu</h3>
+      <p>Vi lyfter fram person, företag eller myndighet som gjort något föredömligt för Sveriges energiomställning. Nomineringen är öppen.</p>
+      <div class="news-foot"><span>15 april 2026</span><span class="arrow">→</span></div>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag green">Mötesplats</span>
+      <h3>Morgonseminarier 2027 — kostnadsfria, varje mässdag</h3>
+      <p>Starta dagen med inspirerande morgonseminarier på mässgolvet. Nya teman, nya talare och kaffe från 07:30.</p>
+      <div class="news-foot"><span>8 april 2026</span><span class="arrow">→</span></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ FOKUSOMRÅDEN (alla 14) ============ -->
+<section class="focus2" id="fokusomraden">
+  <div class="focus2-head">
+    <div>
+      <div class="ey">Fokusområden 2027</div>
+      <h2>14 områden.<br/><span class="grad">Hela energisystemet.</span></h2>
+    </div>
+    <div class="sub">Från cirkulär ekonomi och drift &amp; underhåll till energilösningar för industri och datacenter — Energimässan täcker hela kedjan.</div>
+  </div>
+  <div class="focus2-grid">
+    <a class="focus2-card" style="--c1:#30D158;--c2:#64D2FF;" href="#"><span class="ic"><svg><use href="#i-recycle"/></svg></span><span class="ttl">Cirkulär ekonomi &amp; klimat</span><span class="desc">Net Zero, koldioxidstrategier och hållbara värdekedjor.</span></a>
+    <a class="focus2-card" style="--c1:#FF9F0A;--c2:#FF375F;" href="#"><span class="ic"><svg><use href="#i-shield"/></svg></span><span class="ttl">Drift- &amp; underhållsteknik</span><span class="desc">Egen scen 2027 med case, produkter och AI-verktyg.</span></a>
+    <a class="focus2-card" style="--c1:#FFD60A;--c2:#FF9500;" href="#"><span class="ic"><svg><use href="#i-bolt"/></svg></span><span class="ttl">Effektiv användning av energi</span><span class="desc">Energieffektivisering i industri, fastigheter och samhälle.</span></a>
+    <a class="focus2-card" style="--c1:#5E5CE6;--c2:#64D2FF;" href="#"><span class="ic"><svg><use href="#i-flask"/></svg></span><span class="ttl">Energi- &amp; koldioxidstrategi</span><span class="desc">Strategier för fossilfritt — från styrning till leverans.</span></a>
+    <a class="focus2-card" style="--c1:#0A84FF;--c2:#5E5CE6;" href="#"><span class="ic"><svg><use href="#i-grid"/></svg></span><span class="ttl">Energiöverföring &amp; hantering</span><span class="desc">Smart grid, transmission, distribution och balansering.</span></a>
+    <a class="focus2-card" style="--c1:#FFD60A;--c2:#FF9F0A;" href="#"><span class="ic"><svg><use href="#i-bolt"/></svg></span><span class="ttl">El- &amp; värmeproduktion och lagring</span><span class="desc">Kärnkraft, sol, vind, vätgas, kraftvärme och BESS.</span></a>
+    <a class="focus2-card" style="--c1:#BF5AF2;--c2:#5E5CE6;" href="#"><span class="ic"><svg><use href="#i-cpu"/></svg></span><span class="ttl">Energi för industri &amp; datacenter</span><span class="desc">Effektförsörjning, PPA:er och elektrifiering av processer.</span></a>
+    <a class="focus2-card" style="--c1:#30D158;--c2:#FFD60A;" href="#"><span class="ic"><svg><use href="#i-flask"/></svg></span><span class="ttl">Forskning &amp; innovation</span><span class="desc">Nya material, nya processer, nya affärsmodeller.</span></a>
+    <a class="focus2-card" style="--c1:#FF9500;--c2:#FF375F;" href="#"><span class="ic"><svg><use href="#i-bolt"/></svg></span><span class="ttl">Framtidens drivmedel &amp; teknik</span><span class="desc">Vätgas, e-bränslen, biogas och elektrifierad transport.</span></a>
+    <a class="focus2-card" style="--c1:#30D158;--c2:#0A84FF;" href="#"><span class="ic"><svg><use href="#i-recycle"/></svg></span><span class="ttl">Hållbarhetslösningar &amp; Net Zero</span><span class="desc">Konkreta vägar till klimatneutralitet 2045.</span></a>
+    <a class="focus2-card" style="--c1:#64D2FF;--c2:#BF5AF2;" href="#"><span class="ic"><svg><use href="#i-cpu"/></svg></span><span class="ttl">Nya smarta energilösningar</span><span class="desc">Digitalisering, AI och uppkopplade system.</span></a>
+    <a class="focus2-card" style="--c1:#FF375F;--c2:#FF9F0A;" href="#"><span class="ic"><svg><use href="#i-shield"/></svg></span><span class="ttl">Prediktivt &amp; förebyggande underhåll</span><span class="desc">Sensorer, AI-modeller och tillståndsbaserat underhåll.</span></a>
+    <a class="focus2-card" style="--c1:#5AC8FA;--c2:#30D158;" href="#"><span class="ic"><svg><use href="#i-grid"/></svg></span><span class="ttl">Produktionsteknik</span><span class="desc">Automation, robotik och effektiv produktion av energiteknik.</span></a>
+    <a class="focus2-card" style="--c1:#FF9F0A;--c2:#FFD60A;" href="#"><span class="ic"><svg><use href="#i-shield"/></svg></span><span class="ttl">Säkerhet &amp; bevakning</span><span class="desc">Cyber- och fysisk säkerhet för kritisk energiinfrastruktur.</span></a>
+  </div>
+</section>
+
 <!-- ============ PARTNERS ============ -->
 <section class="partners" id="partners">
   <div class="partners-eyebrow">Partners 2027</div>
