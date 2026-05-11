@@ -323,87 +323,171 @@
     <div class="am-right">
       <div class="am-phone-wrap">
         <div class="am-phone">
-          <div class="am-screen">
 
-            <div class="ph-status">
-              <span>10:24</span>
-              <div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div>
-            </div>
-
-            <div class="ph-head">
-              <h3>Affärsmatchning</h3>
-              <div class="badge"></div>
-            </div>
-
-            <div class="ph-tabs">
-              <span class="on">Förslag</span>
-              <span>Bokade</span>
-              <span>Profil</span>
-            </div>
-
+          <!-- SCREEN 1: BESKRIV -->
+          <div class="am-screen am-sc on" data-screen="1">
+            <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+            <div class="ph-head"><h3>Min profil</h3><div class="badge"></div></div>
+            <div class="ph-tabs"><span>Förslag</span><span>Bokade</span><span class="on">Profil</span></div>
             <div class="ph-list">
-              <div class="ph-list-head">
-                <div class="t">3 nya affärsmöten</div>
-                <div class="f">☷ Filtrera</div>
+              <div class="ph-list-head"><div class="t">Beskriv målet</div><div class="f">Steg 1 av 4</div></div>
+
+              <div class="ph-field">
+                <div class="lab">Jag söker</div>
+                <div class="chips">
+                  <span class="chip on">Kunder</span><span class="chip on">Partners</span>
+                  <span class="chip">Investerare</span><span class="chip on">Leverantörer</span>
+                </div>
               </div>
+              <div class="ph-field">
+                <div class="lab">Branscher</div>
+                <div class="chips">
+                  <span class="chip on">Energilagring</span><span class="chip on">Solenergi</span>
+                  <span class="chip">Vätgas</span>
+                </div>
+              </div>
+              <div class="ph-field">
+                <div class="lab">Roller hos motpart</div>
+                <div class="chips">
+                  <span class="chip on">CEO / Grundare</span><span class="chip on">Inköp</span>
+                  <span class="chip">Tech</span>
+                </div>
+              </div>
+              <div class="ph-field">
+                <div class="lab">Geografi</div>
+                <div class="ph-input">Norden + DACH</div>
+              </div>
+
+              <div class="ph-see"><span>✦ Spara &amp; matcha mig</span><span>→</span></div>
+            </div>
+            <div class="ph-tabbar">
+              <a href="#"><span class="ic">⌂</span>Hem</a>
+              <a href="#"><span class="ic">⌕</span>Förslag</a>
+              <a href="#"><span class="ic">□</span>Bokade</a>
+              <a href="#"><span class="ic">♙</span>Nätverk</a>
+              <a href="#" class="on"><span class="ic">○</span>Profil</a>
+            </div>
+          </div>
+
+          <!-- SCREEN 2: FÖRSLAG -->
+          <div class="am-screen am-sc" data-screen="2">
+            <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+            <div class="ph-head"><h3>MässMatch</h3><div class="badge"></div></div>
+            <div class="ph-tabs"><span class="on">Förslag</span><span>Bokade</span><span>Profil</span></div>
+            <div class="ph-list">
+              <div class="ph-list-head"><div class="t">3 nya affärsmöten</div><div class="f">☷ Filtrera</div></div>
 
               <div class="ph-card">
                 <span class="pct">94% match</span>
                 <div class="av-row">
-                  <div class="av"></div>
+                  <div class="av-stack"><div class="av"></div><div class="logo-chip">SE</div></div>
                   <div class="arr">↔</div>
-                  <div class="av b"></div>
+                  <div class="av-stack"><div class="av b"></div><div class="logo-chip o">SG</div></div>
                 </div>
-                <div class="nm">Karin Jönsson ↔ Lars Bergström</div>
-                <div class="ro">Inköpschef · Stockholm Exergi</div>
-                <div class="ro">Sales Director · Sungrow</div>
-                <div class="meta">
-                  <span>▣ Ons 19/5 · 11:20</span>
-                  <span>⌖ Mötespunkt B4</span>
-                </div>
-                <div class="acts">
-                  <button class="skip">Hoppa över</button>
-                  <button class="book">Boka möte</button>
-                </div>
+                <div class="party"><span class="nm">Karin Jönsson</span><span class="co">Stockholm Exergi · Inköpschef</span></div>
+                <div class="party"><span class="nm">Lars Bergström</span><span class="co">Sungrow · Sales Director</span></div>
+                <div class="meta"><span>▣ Ons 19/5 · 11:20</span><span>⌖ Mötespunkt B4</span></div>
+                <div class="acts"><button class="skip">Hoppa över</button><button class="book">Boka möte</button></div>
               </div>
 
               <div class="ph-mini">
-                <div class="av"></div>
-                <div class="info">
-                  <div class="pct">91% match</div>
-                  <div class="nm">Helena Strand ↔ Erik Wahlberg</div>
-                  <div class="ro">Partner · EQT Future → CEO · GridFlex</div>
-                </div>
+                <div class="av-stack sm"><div class="av"></div><div class="logo-chip">EQT</div></div>
+                <div class="info"><div class="pct">91% match</div><div class="nm">Helena Strand ↔ Erik Wahlberg</div><div class="ro">EQT Future · Partner → GridFlex · CEO</div></div>
                 <div class="chev">›</div>
               </div>
 
               <div class="ph-mini">
-                <div class="av c"></div>
-                <div class="info">
-                  <div class="pct">88% match</div>
-                  <div class="nm">Daniel Hellström ↔ Sofia Lundqvist</div>
-                  <div class="ro">Norrköpings kommun · Vinnergi</div>
-                </div>
+                <div class="av-stack sm"><div class="av c"></div><div class="logo-chip g">NK</div></div>
+                <div class="info"><div class="pct">88% match</div><div class="nm">Daniel Hellström ↔ Sofia Lundqvist</div><div class="ro">Norrköpings kommun · Vinnergi</div></div>
                 <div class="chev">›</div>
-              </div>
-
-              <div class="ph-see">
-                <span>⌘ Se alla förslag</span>
-                <span>→</span>
               </div>
             </div>
-
             <div class="ph-tabbar">
-              <a href="#" class="on"><span class="ic">⌂</span>Hem</a>
-              <a href="#"><span class="ic">⌕</span>Förslag</a>
+              <a href="#"><span class="ic">⌂</span>Hem</a>
+              <a href="#" class="on"><span class="ic">⌕</span>Förslag</a>
               <a href="#"><span class="ic">□</span>Bokade</a>
               <a href="#"><span class="ic">♙</span>Nätverk</a>
               <a href="#"><span class="ic">○</span>Profil</a>
             </div>
-
           </div>
+
+          <!-- SCREEN 3: BOKA -->
+          <div class="am-screen am-sc" data-screen="3">
+            <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+            <div class="ph-head"><h3>Boka möte</h3><div class="badge"></div></div>
+            <div class="ph-tabs"><span>Förslag</span><span class="on">Bokade</span><span>Profil</span></div>
+            <div class="ph-list">
+              <div class="ph-card">
+                <span class="pct">94% match</span>
+                <div class="av-row">
+                  <div class="av-stack"><div class="av"></div><div class="logo-chip">SE</div></div>
+                  <div class="arr">↔</div>
+                  <div class="av-stack"><div class="av b"></div><div class="logo-chip o">SG</div></div>
+                </div>
+                <div class="party"><span class="nm">Karin Jönsson</span><span class="co">Stockholm Exergi</span></div>
+                <div class="party"><span class="nm">Lars Bergström</span><span class="co">Sungrow</span></div>
+              </div>
+
+              <div class="ph-field">
+                <div class="lab">Välj tid · Ons 19/5</div>
+                <div class="slots">
+                  <span class="slot">10:40</span>
+                  <span class="slot on">11:20</span>
+                  <span class="slot">13:00</span>
+                  <span class="slot">14:20</span>
+                </div>
+              </div>
+              <div class="ph-field">
+                <div class="lab">Plats</div>
+                <div class="ph-input">Mötespunkt B4 · Hall B</div>
+              </div>
+
+              <div class="ph-see"><span>✓ Bekräfta bokning</span><span>→</span></div>
+            </div>
+            <div class="ph-tabbar">
+              <a href="#"><span class="ic">⌂</span>Hem</a>
+              <a href="#"><span class="ic">⌕</span>Förslag</a>
+              <a href="#" class="on"><span class="ic">□</span>Bokade</a>
+              <a href="#"><span class="ic">♙</span>Nätverk</a>
+              <a href="#"><span class="ic">○</span>Profil</a>
+            </div>
+          </div>
+
+          <!-- SCREEN 4: FÖLJ UPP -->
+          <div class="am-screen am-sc" data-screen="4">
+            <div class="ph-status"><span>10:24</span><div class="dots"><i></i><i></i><i></i><div class="battery"><i></i></div></div></div>
+            <div class="ph-head"><h3>Efter mötet</h3><div class="badge"></div></div>
+            <div class="ph-tabs"><span>Förslag</span><span class="on">Bokade</span><span>Profil</span></div>
+            <div class="ph-list">
+              <div class="ph-card">
+                <span class="pct" style="background:rgba(100,210,255,.18);color:#9BE3FF;border-color:rgba(100,210,255,.35)">Genomfört</span>
+                <div class="av-row">
+                  <div class="av-stack"><div class="av"></div><div class="logo-chip">SE</div></div>
+                  <div class="arr">↔</div>
+                  <div class="av-stack"><div class="av b"></div><div class="logo-chip o">SG</div></div>
+                </div>
+                <div class="party"><span class="nm">Karin Jönsson</span><span class="co">Stockholm Exergi · karin@exergi.se</span></div>
+                <div class="party"><span class="nm">Lars Bergström</span><span class="co">Sungrow · lars@sungrow.com</span></div>
+                <div class="ph-note">"Skicka offert på 2 MWh BESS, uppföljning v.22."</div>
+                <div class="acts"><button class="skip">Exportera</button><button class="book">Skapa uppgift</button></div>
+              </div>
+
+              <div class="ph-mini">
+                <div class="av-stack sm"><div class="av"></div><div class="logo-chip">EQT</div></div>
+                <div class="info"><div class="pct">Nästa steg</div><div class="nm">Helena Strand</div><div class="ro">Pitchmöte bokat 27/5 · 09:00</div></div>
+                <div class="chev">›</div>
+              </div>
+            </div>
+            <div class="ph-tabbar">
+              <a href="#"><span class="ic">⌂</span>Hem</a>
+              <a href="#"><span class="ic">⌕</span>Förslag</a>
+              <a href="#" class="on"><span class="ic">□</span>Bokade</a>
+              <a href="#"><span class="ic">♙</span>Nätverk</a>
+              <a href="#"><span class="ic">○</span>Profil</a>
+            </div>
+          </div>
+
         </div>
-      </div>
     </div>
 
   </div>
