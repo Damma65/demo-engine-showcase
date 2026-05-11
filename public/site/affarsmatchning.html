@@ -549,5 +549,28 @@
 
 <footer><div class="foot-inner"><div>© 2027 Nordic Live Expo · Energimässan</div><div class="foot-links"><a href="index.html">Hem</a><a href="program.html">Program</a><a href="utstallning.html">Utställning</a><a href="faq.html">FAQ</a></div></div></footer>
 
+<script>
+(function(){
+  const steps = document.querySelectorAll('.am-step[data-step]');
+  const screens = document.querySelectorAll('.am-sc[data-screen]');
+  function show(n){
+    steps.forEach(s => s.classList.toggle('is-active', s.dataset.step === String(n)));
+    screens.forEach(s => s.classList.toggle('on', s.dataset.screen === String(n)));
+  }
+  steps.forEach(s => {
+    s.addEventListener('click', () => show(s.dataset.step));
+    s.addEventListener('mouseenter', () => show(s.dataset.step));
+  });
+  show(1);
+  // Auto-rotate when not hovered
+  let i = 1, paused = false;
+  const wrap = document.querySelector('.am-steps');
+  if (wrap){
+    wrap.addEventListener('mouseenter', () => paused = true);
+    wrap.addEventListener('mouseleave', () => paused = false);
+  }
+  setInterval(() => { if (paused) return; i = (i % 4) + 1; show(i); }, 4200);
+})();
+</script>
 </body>
 </html>
