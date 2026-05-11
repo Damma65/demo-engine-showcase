@@ -2144,7 +2144,29 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* "Vit demo"-bricka i nav */
+  /* Hero — ljus bakgrund (override av .hero-still-bg + orb) */
+  body.theme-light .hero-still-bg{
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(94,92,230,0.18) 0%, rgba(10,132,255,0.08) 35%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(48,209,88,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 15% 75%, rgba(255,159,10,0.10) 0%, transparent 60%),
+      linear-gradient(180deg, #FFFFFF 0%, #F4F5FA 55%, #EAECF4 100%);
+  }
+  body.theme-light .hero-still-bg::after{
+    background-image: radial-gradient(rgba(10,12,20,0.08) 1px, transparent 1px);
+    mix-blend-mode: multiply; opacity:.30;
+  }
+  body.theme-light .orb{ filter: blur(2px) saturate(1.05); opacity: 0.85; mix-blend-mode: multiply; }
+  body.theme-light .eyebrow{
+    background: rgba(48,209,88,0.10);
+    border: 1px solid rgba(48,209,88,0.35);
+    color: #1a6b34;
+  }
+  body.theme-light .hc-label{ color: var(--text-3); }
+  body.theme-light .cd-num{ color: var(--text); }
+  body.theme-light .cd-block small, body.theme-light .cd-label{ color: var(--text-3); }
+</style>
+
   body.theme-light .nav-links a[href$="vit-demo.html"]{
     color:#0A84FF;
     font-weight: 600;
