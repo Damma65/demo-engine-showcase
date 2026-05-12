@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rätt roller. Alla är här. — Energimässan 2027</title>
+<meta name="description" content="Förslag: Tydligare visualisering av besökarprofilen på Energimässan 2027." />
+<style>
+  :root{
+    --bg:#000; --panel:#0c0d10; --panel-2:#111317; --stroke:rgba(255,255,255,0.08); --stroke-2:rgba(255,255,255,0.16);
+    --text:#fff; --text-2:#c9ccd1; --text-3:#8b9099;
+    --green:#30D158; --blue:#0A84FF; --teal:#64D2FF; --orange:#FF9F0A; --purple:#5E5CE6; --pink:#FF375F;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display","Inter",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; }
+
+  .wrap{ max-width:1280px; margin:0 auto; padding: 100px 32px 140px; }
+
+  .eyebrow{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700; color:var(--green); }
+  h1{ margin: 18px 0 14px; font-size: clamp(44px, 5.4vw, 76px); line-height:.96; letter-spacing:-.045em; font-weight:800; }
+  h1 .sub{ display:block; background: linear-gradient(135deg,#5E5CE6,#64D2FF 60%,#30D158); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .lead{ font-size: 18px; line-height:1.55; color:var(--text-2); max-width: 720px; }
+
+  /* TOP-summary kpi-band */
+  .kpis{ display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin: 44px 0 56px; }
+  .kpi{ position:relative; padding: 22px 22px 20px; border-radius:18px; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border:1px solid var(--stroke); }
+  .kpi b{ display:block; font-size: clamp(34px, 3.2vw, 44px); font-weight:800; letter-spacing:-.03em; line-height:1; }
+  .kpi .lbl{ margin-top:8px; font-size:12.5px; color:var(--text-3); letter-spacing:.04em; }
+  .kpi.green b{ color:var(--green); }
+  .kpi.blue  b{ color:var(--teal); }
+  .kpi.orange b{ color:var(--orange); }
+  .kpi.purple b{ color:#B0AEFF; }
+
+  /* MAIN: roles list (clear) */
+  .grid{ display:grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items:start; }
+
+  .roles{ display:flex; flex-direction:column; gap:10px; }
+  .role{ display:grid; grid-template-columns: 44px 1fr auto; gap:18px; align-items:center;
+    padding: 18px 20px; border-radius: 16px; background: var(--panel); border:1px solid var(--stroke);
+    transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+  .role:hover{ transform: translateX(2px); border-color: var(--stroke-2); background: var(--panel-2); }
+
+  .role .ico{ width:44px; height:44px; border-radius:12px; display:grid; place-items:center;
+    background: rgba(48,209,88,0.12); color: var(--green); }
+  .role .ico svg{ width:22px; height:22px; }
+  .role.t2 .ico{ background: rgba(100,210,255,0.12); color: var(--teal); }
+  .role.t3 .ico{ background: rgba(255,159,10,0.12); color: var(--orange); }
+  .role.t4 .ico{ background: rgba(94,92,230,0.18); color:#B0AEFF; }
+  .role.t5 .ico{ background: rgba(255,55,95,0.14); color: var(--pink); }
+  .role.t6 .ico{ background: rgba(10,132,255,0.14); color: #5AC8FA; }
+
+  .role .text .name{ font-size:17px; font-weight:700; letter-spacing:-.012em; color:#fff; }
+  .role .text .titles{ margin-top:4px; font-size:13px; color:var(--text-3); line-height:1.45; }
+
+  .role .right{ text-align:right; min-width: 110px; }
+  .role .pct{ font-size: 22px; font-weight:800; letter-spacing:-.02em; color:#fff; line-height:1; }
+  .role .count{ margin-top:4px; font-size:11.5px; color:var(--text-3); letter-spacing:.04em; }
+
+  /* The bar inside each row */
+  .bar{ grid-column: 1 / -1; height:6px; border-radius:100px; background: rgba(255,255,255,0.06); overflow:hidden; margin-top: 14px; }
+  .bar > i{ display:block; height:100%; border-radius:100px;
+    background: linear-gradient(90deg, var(--green), #5DE38A); }
+  .role.t2 .bar > i{ background: linear-gradient(90deg, var(--teal), #9FE5FF); }
+  .role.t3 .bar > i{ background: linear-gradient(90deg, var(--orange), #FFD60A); }
+  .role.t4 .bar > i{ background: linear-gradient(90deg, var(--purple), #B0AEFF); }
+  .role.t5 .bar > i{ background: linear-gradient(90deg, var(--pink), #FF7A9C); }
+  .role.t6 .bar > i{ background: linear-gradient(90deg, var(--blue), #5AC8FA); }
+
+  /* SIDEBAR */
+  .side{ display:flex; flex-direction:column; gap:18px; position:sticky; top: 24px; }
+  .panel{ padding: 24px; border-radius:20px; background: var(--panel); border:1px solid var(--stroke); }
+  .panel h3{ margin:0 0 14px; font-size: 12px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); font-weight:700; }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ padding: 8px 14px; border-radius:100px; background: rgba(255,255,255,0.05); border:1px solid var(--stroke); font-size:13px; color:#e7e9ec; }
+
+  .stats{ display:flex; flex-direction:column; gap:14px; }
+  .stat{ display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px dashed rgba(255,255,255,0.08); }
+  .stat:last-child{ border-bottom:none; padding-bottom:0; }
+  .stat b{ font-size: 30px; font-weight:800; letter-spacing:-.025em; color:#fff; min-width: 96px; }
+  .stat b.g{ color:var(--green); }
+  .stat b.t{ color:var(--teal); }
+  .stat span{ font-size:13.5px; color:var(--text-2); line-height:1.45; }
+
+  /* Legend / how to read */
+  .legend{ margin-top: 36px; display:flex; align-items:center; gap:14px; font-size:12.5px; color:var(--text-3); }
+  .legend .dot{ width:10px; height:10px; border-radius:50%; background: var(--green); display:inline-block; margin-right:6px; vertical-align:middle; }
+
+  @media (max-width: 980px){
+    .kpis{ grid-template-columns: repeat(2, 1fr); }
+    .grid{ grid-template-columns: 1fr; }
+    .side{ position:static; }
+    .role{ grid-template-columns: 40px 1fr auto; }
+  }
+  @media (max-width: 520px){
+    .role .right{ min-width: 80px; }
+    .role .pct{ font-size: 19px; }
+  }
+
+  .note{ margin-top: 60px; padding: 18px 20px; border-radius: 12px; background: rgba(48,209,88,0.06); border:1px dashed rgba(48,209,88,0.35); font-size: 13.5px; color:var(--text-2); }
+  .back{ display:inline-block; margin-bottom: 24px; font-size:13px; color: var(--text-3); text-decoration:none; }
+  .back:hover{ color:#fff; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-strategy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 17v-7"/><path d="M12 17V5"/><path d="M18 17v-4"/></symbol>
+    <symbol id="i-tech" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M2 22h20"/><path d="M9 8l-3 3 3 3"/><path d="M15 8l3 3-3 3"/></symbol>
+    <symbol id="i-ops" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09A1.65 1.65 0 0 0 15 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.34.22.7.22 1.07"/></symbol>
+    <symbol id="i-buy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 3h2l1 3"/></symbol>
+    <symbol id="i-research" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+    <symbol id="i-sales" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <a class="back" href="/site/index.html">← Tillbaka till startsidan</a>
+
+  <div class="eyebrow">Besökarprofil · 2027</div>
+  <h1>Vilka du faktiskt träffar.<span class="sub">3 200 beslutsfattare. Sex roller.</span></h1>
+  <p class="lead">
+    Vi har plottat alla anmälda från 2026 + förbokade till 2027. Det här är fördelningen — så att du vet exakt vem du delar kaffepausen med innan du bokar din monter.
+  </p>
+
+  <!-- KPIs som ramar in helheten -->
+  <div class="kpis">
+    <div class="kpi green"><b>3 200+</b><div class="lbl">Beslutsfattare över 2 dagar</div></div>
+    <div class="kpi blue"><b>76%</b><div class="lbl">Har budgetansvar 2027–2028</div></div>
+    <div class="kpi orange"><b>6</b><div class="lbl">Tydliga rollkategorier</div></div>
+    <div class="kpi purple"><b>9</b><div class="lbl">Branscher representerade</div></div>
+  </div>
+
+  <div class="grid">
+
+    <!-- Vänster: tydlig rollista -->
+    <div class="roles">
+
+      <article class="role">
+        <div class="ico"><svg><use href="#i-strategy"/></svg></div>
+        <div class="text">
+          <div class="name">Strategi &amp; Ledning</div>
+          <div class="titles">VD · Styrelse · COO · Strategichef</div>
+        </div>
+        <div class="right"><div class="pct">28%</div><div class="count">~895 personer</div></div>
+        <div class="bar"><i style="width:88%"></i></div>
+      </article>
+
+      <article class="role t2">
+        <div class="ico"><svg><use href="#i-tech"/></svg></div>
+        <div class="text">
+          <div class="name">Teknik &amp; Innovation</div>
+          <div class="titles">CTO · CIO · Datachef · FoU</div>
+        </div>
+        <div class="right"><div class="pct">24%</div><div class="count">~770 personer</div></div>
+        <div class="bar"><i style="width:76%"></i></div>
+      </article>
+
+      <article class="role t3">
+        <div class="ico"><svg><use href="#i-ops"/></svg></div>
+        <div class="text">
+          <div class="name">Drift &amp; Underhåll</div>
+          <div class="titles">Driftchef · Säkerhet · Anläggningsansvarig</div>
+        </div>
+        <div class="right"><div class="pct">21%</div><div class="count">~670 personer</div></div>
+        <div class="bar"><i style="width:66%"></i></div>
+      </article>
+
+      <article class="role t4">
+        <div class="ico"><svg><use href="#i-buy"/></svg></div>
+        <div class="text">
+          <div class="name">Affär &amp; Inköp</div>
+          <div class="titles">CFO · Inköpschef · Affärsutveckling</div>
+        </div>
+        <div class="right"><div class="pct">17%</div><div class="count">~545 personer</div></div>
+        <div class="bar"><i style="width:54%"></i></div>
+      </article>
+
+      <article class="role t5">
+        <div class="ico"><svg><use href="#i-research"/></svg></div>
+        <div class="text">
+          <div class="name">Forskning, Politik &amp; Press</div>
+          <div class="titles">Akademi · Riksdag · Journalister · Myndigheter</div>
+        </div>
+        <div class="right"><div class="pct">10%</div><div class="count">~320 personer</div></div>
+        <div class="bar"><i style="width:32%"></i></div>
+      </article>
+
+    </div>
+
+    <!-- Höger: branscher + key facts -->
+    <aside class="side">
+
+      <div class="panel">
+        <h3>Branscher representerade</h3>
+        <div class="chips">
+          <span class="chip">Nätbolag</span>
+          <span class="chip">Kraftproducenter</span>
+          <span class="chip">Fjärrvärme</span>
+          <span class="chip">Industri &amp; Storkund</span>
+          <span class="chip">Kommun &amp; Region</span>
+          <span class="chip">Fastighet</span>
+          <span class="chip">Leverantör / Tech</span>
+          <span class="chip">Finans</span>
+          <span class="chip">Akademi</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Det här tar du med hem</h3>
+        <div class="stats">
+          <div class="stat"><b class="g">38</b><span>kvalificerade leads i snitt per utställare 2026</span></div>
+          <div class="stat"><b class="t">76%</b><span>av besökarna har budgetansvar för strategiska investeringar</span></div>
+          <div class="stat"><b class="g">2 dgr</b><span>räcker för att fylla pipen för Q3 — säger 9 av 10 utställare</span></div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot"></span>Stapel = andel av totalt antal besökare 2026</span>
+    <span>·</span>
+    <span>Källa: Energimässans registreringsdata 2026 + förbokningar 2027</span>
+  </div>
+
+  <div class="note">
+    <strong>Förslag till startsidan:</strong> En tydligare rollista med procent + antal personer + bransch-chips i en separat panel. Lättare att skanna, snabbare att förstå "vem träffar jag faktiskt".
+  </div>
+</div>
+
+</body>
+</html>
