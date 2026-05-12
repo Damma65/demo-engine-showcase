@@ -2581,7 +2581,7 @@
     </div>
     <div class="right">Programsläpp, nya fokusområden, talarbekräftelser och uppdateringar inför mässdagarna 19–20 maj 2027.</div>
   </div>
-  <div class="news-grid">
+  <div class="news-rail-wrap"><div class="news-rail">
 
     <article class="news-card featured">
       <span class="news-tag">Programsläpp</span>
@@ -2625,7 +2625,7 @@
       <div class="news-foot"><span>8 april 2026</span><span class="arrow">→</span></div>
     </article>
 
-  </div>
+  </div></div>
 </section>
 
 <!-- ============ MERVÄRDE ============ -->
@@ -2689,7 +2689,7 @@
         </div>
         <div class="ai-zone-cta-row">
           <a href="ai-zonen.html" class="ai-zone-cta">Utforska AI-Zonen <span aria-hidden="true">→</span></a>
-          <a href="ai-zonen.html#talare" class="ai-zone-cta-2">Se programmet</a>
+          <a href="program.html" class="ai-zone-cta-2">Se programmet</a>
         </div>
       </div>
       <div class="ai-zone-visual">
@@ -4616,29 +4616,33 @@
 
 <!-- ============ NYHETER ============ -->
 <style>
-  .news{ padding: 110px 32px 60px; max-width: 1280px; margin: 0 auto; }
-  .news-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom: 44px; flex-wrap:wrap; }
+  .news{ padding: 110px 0 60px; max-width: 1280px; margin: 0 auto; }
+  .news-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin: 0 32px 44px; flex-wrap:wrap; }
   .news-head .left .ey{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); font-weight:700; }
   .news-head .left h2{ margin-top:14px; font-size: clamp(40px, 4.4vw, 60px); line-height:.98; letter-spacing:-.04em; font-weight:700; color:#fff; }
   .news-head .left h2 .grad{ background: linear-gradient(135deg,#FF9F0A,#FFD60A 60%,#30D158); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .news-head .right{ font-size:14px; color:var(--text-3); max-width:360px; line-height:1.5; }
-  .news-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px; }
-  .news-card{ position:relative; padding: 22px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); border:1px solid var(--stroke); overflow:hidden; display:flex; flex-direction:column; min-height: 260px; transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+  .news-rail-wrap{ position:relative; }
+  .news-rail-wrap::after{ content:""; position:absolute; top:0; right:0; bottom:14px; width:80px; pointer-events:none; background: linear-gradient(90deg, rgba(10,10,12,0) 0%, var(--bg, #0a0a0c) 90%); }
+  .news-rail{ display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; padding: 4px 32px 14px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent; -webkit-overflow-scrolling: touch; }
+  .news-rail::-webkit-scrollbar{ height: 8px; }
+  .news-rail::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.14); border-radius:100px; }
+  .news-rail::-webkit-scrollbar-track{ background: transparent; }
+  .news-card{ position:relative; flex: 0 0 320px; scroll-snap-align: start; padding: 22px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); border:1px solid var(--stroke); overflow:hidden; display:flex; flex-direction:column; min-height: 320px; transition: transform .25s ease, border-color .25s ease, background .25s ease; }
   .news-card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,0.18); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); }
-  .news-card.featured{ grid-row: span 2; min-height: unset; padding: 28px; background: radial-gradient(700px 400px at 0% 0%, rgba(255,159,10,0.18), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); }
+  .news-card.featured{ flex: 0 0 460px; padding: 28px; background: radial-gradient(700px 400px at 0% 0%, rgba(255,159,10,0.18), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); }
   .news-tag{ align-self:flex-start; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; padding: 5px 10px; border-radius:100px; background: rgba(255,159,10,0.16); color:#FFB454; border:1px solid rgba(255,159,10,0.35); font-weight:700; }
   .news-tag.green{ background: rgba(48,209,88,0.14); color:#5DE38A; border-color:rgba(48,209,88,0.35); }
   .news-tag.blue{ background: rgba(10,132,255,0.16); color:#5AC8FA; border-color:rgba(10,132,255,0.4); }
   .news-tag.purple{ background: rgba(94,92,230,0.18); color:#B0AEFF; border-color:rgba(94,92,230,0.4); }
   .news-card h3{ margin-top: 14px; font-size: 19px; line-height:1.25; font-weight:700; color:#fff; letter-spacing:-.02em; }
-  .news-card.featured h3{ font-size: clamp(28px, 2.8vw, 36px); letter-spacing:-.03em; line-height:1.1; }
+  .news-card.featured h3{ font-size: clamp(24px, 2.2vw, 30px); letter-spacing:-.03em; line-height:1.15; }
   .news-card p{ margin-top: 10px; font-size: 13.5px; line-height:1.55; color: var(--text-2); flex:1; }
-  .news-card.featured p{ font-size: 15.5px; line-height:1.55; max-width: 520px; }
+  .news-card.featured p{ font-size: 15px; line-height:1.55; max-width: 520px; }
   .news-foot{ margin-top: 16px; display:flex; align-items:center; justify-content:space-between; font-size: 12px; color: var(--text-3); }
   .news-foot .arrow{ width:28px; height:28px; border-radius:50%; background:rgba(255,255,255,0.06); display:grid; place-items:center; color:#fff; font-size:13px; transition: background .2s ease, transform .2s ease; }
   .news-card:hover .news-foot .arrow{ background: linear-gradient(135deg,#FF9F0A,#FFD60A); color:#000; transform: translateX(2px); }
-  @media (max-width: 980px){ .news-grid{ grid-template-columns: 1fr 1fr; } .news-card.featured{ grid-column: span 2; grid-row: auto; min-height: unset; } }
-  @media (max-width: 600px){ .news-grid{ grid-template-columns: 1fr; } .news-card.featured{ grid-column: auto; } }
+  @media (max-width: 600px){ .news-card{ flex-basis: 84%; min-height: 280px; } .news-card.featured{ flex-basis: 88%; } }
 
   /* Fokusområden — stilren lista med enhetliga ikoner */
   .focus2{ padding: 60px 32px 100px; max-width: 1280px; margin: 0 auto; }
