@@ -792,38 +792,80 @@
   .track-foot-d{ opacity: .4; }
 
 
-  /* ============ RÄTT ROLLER (roles-stack) ============ */
-  .roles-wrap{ margin-top: 56px; display:grid; grid-template-columns: 1.6fr 1fr; gap: 32px; align-items: start; }
-  @media (max-width: 980px){ .roles-wrap{ grid-template-columns: 1fr; gap: 24px; } }
+  /* ============ RÄTT ROLLER (new design from ratt-roller.html) ============ */
+  .roles-section-new{ }
+  .roles-section-new .eyebrow{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700; color:var(--green-2); }
+  .roles-section-new h2{ margin: 18px 0 14px; font-size: clamp(44px, 5.4vw, 76px); line-height:.96; letter-spacing:-.045em; font-weight:800; }
+  .roles-section-new h2 .sub{ display:block; background: linear-gradient(135deg,#5E5CE6,#64D2FF 60%,#30D158); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .roles-section-new .lead{ font-size: 18px; line-height:1.55; color:var(--text-2); max-width: 720px; margin-bottom: 0; }
 
-  .roles-stack{ display:flex; flex-direction:column; gap: 10px; }
-  .role-bar{ position:relative; padding: 0; border-radius: 18px; overflow:hidden; border: 1px solid var(--stroke); background: rgba(255,255,255,0.02); }
-  .role-bar-fill{
-    position:absolute; left:0; top:0; bottom:0; width: var(--w);
-    background: var(--bar-grad);
-    opacity: .85;
-    border-right: 1px solid rgba(255,255,255,0.18);
+  .roles-section-new .kpis{ display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin: 44px 0 56px; }
+  .roles-section-new .kpi{ position:relative; padding: 22px 22px 20px; border-radius:18px; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border:1px solid var(--stroke); }
+  .roles-section-new .kpi b{ display:block; font-size: clamp(34px, 3.2vw, 44px); font-weight:800; letter-spacing:-.03em; line-height:1; }
+  .roles-section-new .kpi .lbl{ margin-top:8px; font-size:12.5px; color:var(--text-3); letter-spacing:.04em; }
+  .roles-section-new .kpi.green b{ color:var(--green-2); }
+  .roles-section-new .kpi.blue  b{ color:#5AC8FA; }
+  .roles-section-new .kpi.orange b{ color:var(--orange); }
+  .roles-section-new .kpi.purple b{ color:#B0AEFF; }
+
+  .roles-section-new .grid{ display:grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items:start; }
+
+  .roles-section-new .roles{ display:flex; flex-direction:column; gap:10px; }
+  .roles-section-new .role{ display:grid; grid-template-columns: 44px 1fr auto; gap:18px; align-items:center;
+    padding: 18px 20px; border-radius: 16px; background: var(--bg-2); border:1px solid var(--stroke);
+    transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+  .roles-section-new .role:hover{ transform: translateX(2px); border-color: var(--stroke-2); background: var(--bg-3); }
+
+  .roles-section-new .role .ico{ width:44px; height:44px; border-radius:12px; display:grid; place-items:center;
+    background: rgba(48,209,88,0.12); color: var(--green-2); }
+  .roles-section-new .role .ico svg{ width:22px; height:22px; }
+  .roles-section-new .role.t2 .ico{ background: rgba(100,210,255,0.12); color: #5AC8FA; }
+  .roles-section-new .role.t3 .ico{ background: rgba(255,159,10,0.12); color: var(--orange); }
+  .roles-section-new .role.t4 .ico{ background: rgba(94,92,230,0.18); color:#B0AEFF; }
+  .roles-section-new .role.t5 .ico{ background: rgba(255,55,95,0.14); color: #FF375F; }
+
+  .roles-section-new .role .text .name{ font-size:17px; font-weight:700; letter-spacing:-.012em; color:#fff; }
+  .roles-section-new .role .text .titles{ margin-top:4px; font-size:13px; color:var(--text-3); line-height:1.45; }
+
+  .roles-section-new .role .right{ text-align:right; min-width: 110px; }
+  .roles-section-new .role .pct{ font-size: 22px; font-weight:800; letter-spacing:-.02em; color:#fff; line-height:1; }
+  .roles-section-new .role .count{ margin-top:4px; font-size:11.5px; color:var(--text-3); letter-spacing:.04em; }
+
+  .roles-section-new .bar{ grid-column: 1 / -1; height:6px; border-radius:100px; background: rgba(255,255,255,0.06); overflow:hidden; margin-top: 14px; }
+  .roles-section-new .bar > i{ display:block; height:100%; border-radius:100px;
+    background: linear-gradient(90deg, var(--green-2), #5DE38A); }
+  .roles-section-new .role.t2 .bar > i{ background: linear-gradient(90deg, #5AC8FA, #9FE5FF); }
+  .roles-section-new .role.t3 .bar > i{ background: linear-gradient(90deg, var(--orange), #FFD60A); }
+  .roles-section-new .role.t4 .bar > i{ background: linear-gradient(90deg, #5E5CE6, #B0AEFF); }
+  .roles-section-new .role.t5 .bar > i{ background: linear-gradient(90deg, #FF375F, #FF7A9C); }
+
+  .roles-section-new .side{ display:flex; flex-direction:column; gap:18px; position:sticky; top: 24px; }
+  .roles-section-new .panel{ padding: 24px; border-radius:20px; background: var(--bg-2); border:1px solid var(--stroke); }
+  .roles-section-new .panel h3{ margin:0 0 14px; font-size: 12px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); font-weight:700; }
+  .roles-section-new .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .roles-section-new .chip{ padding: 8px 14px; border-radius:100px; background: rgba(255,255,255,0.05); border:1px solid var(--stroke); font-size:13px; color:#e7e9ec; }
+
+  .roles-section-new .stats{ display:flex; flex-direction:column; gap:14px; }
+  .roles-section-new .stat{ display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px dashed rgba(255,255,255,0.08); }
+  .roles-section-new .stat:last-child{ border-bottom:none; padding-bottom:0; }
+  .roles-section-new .stat b{ font-size: 30px; font-weight:800; letter-spacing:-.025em; color:#fff; min-width: 96px; }
+  .roles-section-new .stat b.g{ color:var(--green-2); }
+  .roles-section-new .stat b.t{ color:#5AC8FA; }
+  .roles-section-new .stat span{ font-size:13.5px; color:var(--text-2); line-height:1.45; }
+
+  .roles-section-new .legend{ margin-top: 36px; display:flex; align-items:center; gap:14px; font-size:12.5px; color:var(--text-3); }
+  .roles-section-new .legend .dot{ width:10px; height:10px; border-radius:50%; background: var(--green-2); display:inline-block; margin-right:6px; vertical-align:middle; }
+
+  @media (max-width: 980px){
+    .roles-section-new .kpis{ grid-template-columns: repeat(2, 1fr); }
+    .roles-section-new .grid{ grid-template-columns: 1fr; }
+    .roles-section-new .side{ position:static; }
+    .roles-section-new .role{ grid-template-columns: 40px 1fr auto; }
   }
-  .role-bar.r-1{ --bar-grad: linear-gradient(90deg, rgba(48,209,88,0.55), rgba(48,209,88,0.18)); }
-  .role-bar.r-2{ --bar-grad: linear-gradient(90deg, rgba(90,200,250,0.55), rgba(90,200,250,0.18)); }
-  .role-bar.r-3{ --bar-grad: linear-gradient(90deg, rgba(94,92,230,0.55), rgba(94,92,230,0.18)); }
-  .role-bar.r-4{ --bar-grad: linear-gradient(90deg, rgba(255,159,10,0.55), rgba(255,159,10,0.18)); }
-  .role-bar.r-5{ --bar-grad: linear-gradient(90deg, rgba(191,90,242,0.55), rgba(191,90,242,0.18)); }
-  .role-bar-content{ position:relative; z-index: 1; padding: 18px 22px; display:flex; align-items:center; justify-content: space-between; gap: 16px; }
-  .role-bar-name{ font-size: 17px; font-weight: 700; letter-spacing: -.015em; }
-  .role-bar-d{ margin-top: 4px; font-size: 12.5px; color: var(--text-3); }
-  .role-bar-r{ text-align: right; font-variant-numeric: tabular-nums; }
-  .role-bar-pct{ font-size: 22px; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
-  .role-bar-n{ margin-top: 2px; font-size: 11px; color: var(--text-3); letter-spacing: .04em; }
-
-  .roles-side{ padding: 24px; border:1px solid var(--stroke); border-radius: 22px; background: linear-gradient(180deg, rgba(94,92,230,0.04), rgba(48,209,88,0.02)); }
-  .roles-side-eyebrow{ font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
-  .roles-tags{ list-style:none; padding:0; margin: 12px 0 22px; display:flex; flex-wrap: wrap; gap: 6px; }
-  .roles-tags li{ font-size: 12px; padding: 6px 11px; border-radius: 100px; background: rgba(255,255,255,0.04); border:1px solid var(--stroke); color: var(--text-2); }
-  .roles-stat{ margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--stroke); display:flex; align-items:flex-start; gap: 12px; }
-  .roles-stat:first-of-type{ border-top: 0; padding-top: 0; }
-  .roles-stat-n{ font-size: 28px; font-weight: 800; letter-spacing: -.03em; line-height: 1; background: linear-gradient(135deg, #34D399, #5AC8FA); -webkit-background-clip: text; background-clip: text; color: transparent; min-width: 78px; }
-  .roles-stat-l{ font-size: 12.5px; color: var(--text-2); line-height: 1.4; }
+  @media (max-width: 520px){
+    .roles-section-new .role .right{ min-width: 80px; }
+    .roles-section-new .role .pct{ font-size: 19px; }
+  }
 
 
   /* ============ BOKA MÄSSDEJTING (dating) ============ */
@@ -2001,6 +2043,14 @@
     <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M16 6h3v2a3 3 0 0 1-3 3M8 6H5v2a3 3 0 0 0 3 3M9 18h6M10 14v4M14 14v4M8 21h8"/></symbol>
     <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M14 20a5 5 0 0 1 7-3"/></symbol>
     <symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 10h2a2 2 0 0 1 0 4h-2M7 4l1 2M11 3l1 3M15 4l1 2"/></symbol>
+
+    <!-- Roles icons -->
+    <symbol id="i-strategy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 17v-7"/><path d="M12 17V5"/><path d="M18 17v-4"/></symbol>
+    <symbol id="i-tech" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M2 22h20"/><path d="M9 8l-3 3 3 3"/><path d="M15 8l3 3-3 3"/></symbol>
+    <symbol id="i-ops" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09A1.65 1.65 0 0 0 15 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.34.22.7.22 1.07"/></symbol>
+    <symbol id="i-buy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 3h2l1 3"/></symbol>
+    <symbol id="i-research" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+    <symbol id="i-sales" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></symbol>
   </defs>
 </svg>
 
@@ -2631,100 +2681,110 @@
   </div>
 </section>
 
-<!-- ============ RÄTT ROLLER. ALLA ÄR HÄR ============ -->
-<section class="section" id="roller" style="padding-top:0;">
+<!-- ============ RÄTT ROLLER. ALLA ÄR HÄR (ny design) ============ -->
+<section class="section roles-section-new" id="roller" style="padding-top:0;">
   <div class="section-inner">
-    <div class="section-eyebrow">Besökarprofil</div>
-    <h2 class="section-title">Rätt roller.<br/><span class="grad-cool">Alla är här.</span></h2>
-    <p class="section-sub">3 200+ beslutsfattare från hela värdekedjan — från VD-bord till driftcentral. Här ser du vem du delar kaffepausen med.</p>
+    <div class="eyebrow">Besökarprofil · 2027</div>
+    <h2>Vilka du faktiskt träffar.<span class="sub">3 200 beslutsfattare. Sex roller.</span></h2>
+    <p class="lead">
+      Vi har plottat alla anmälda från 2026 + förbokade till 2027. Det här är fördelningen — så att du vet exakt vem du delar kaffepausen med innan du bokar din monter.
+    </p>
 
-    <div class="roles-wrap">
-      <div class="roles-stack">
-        <div class="role-bar r-1" style="--w: 28%;">
-          <div class="role-bar-fill"></div>
-          <div class="role-bar-content">
-            <div class="role-bar-l">
-              <div class="role-bar-name">Strategi &amp; Ledning</div>
-              <div class="role-bar-d">VD, Styrelse, COO, Strategichef</div>
-            </div>
-            <div class="role-bar-r">
-              <div class="role-bar-pct">28%</div>
-              <div class="role-bar-n">~895</div>
-            </div>
+    <div class="kpis">
+      <div class="kpi green"><b>3 200+</b><div class="lbl">Beslutsfattare över 2 dagar</div></div>
+      <div class="kpi blue"><b>76%</b><div class="lbl">Har budgetansvar 2027–2028</div></div>
+      <div class="kpi orange"><b>6</b><div class="lbl">Tydliga rollkategorier</div></div>
+      <div class="kpi purple"><b>9</b><div class="lbl">Branscher representerade</div></div>
+    </div>
+
+    <div class="grid">
+      <div class="roles">
+
+        <article class="role">
+          <div class="ico"><svg><use href="#i-strategy"/></svg></div>
+          <div class="text">
+            <div class="name">Strategi &amp; Ledning</div>
+            <div class="titles">VD · Styrelse · COO · Strategichef</div>
           </div>
-        </div>
-        <div class="role-bar r-2" style="--w: 24%;">
-          <div class="role-bar-fill"></div>
-          <div class="role-bar-content">
-            <div class="role-bar-l">
-              <div class="role-bar-name">Teknik &amp; Innovation</div>
-              <div class="role-bar-d">CTO, CIO, Datachef, FoU</div>
-            </div>
-            <div class="role-bar-r">
-              <div class="role-bar-pct">24%</div>
-              <div class="role-bar-n">~770</div>
-            </div>
+          <div class="right"><div class="pct">28%</div><div class="count">~895 personer</div></div>
+          <div class="bar"><i style="width:88%"></i></div>
+        </article>
+
+        <article class="role t2">
+          <div class="ico"><svg><use href="#i-tech"/></svg></div>
+          <div class="text">
+            <div class="name">Teknik &amp; Innovation</div>
+            <div class="titles">CTO · CIO · Datachef · FoU</div>
           </div>
-        </div>
-        <div class="role-bar r-3" style="--w: 21%;">
-          <div class="role-bar-fill"></div>
-          <div class="role-bar-content">
-            <div class="role-bar-l">
-              <div class="role-bar-name">Drift &amp; Underhåll</div>
-              <div class="role-bar-d">Driftchef, Säkerhet, Anläggningsansvarig</div>
-            </div>
-            <div class="role-bar-r">
-              <div class="role-bar-pct">21%</div>
-              <div class="role-bar-n">~670</div>
-            </div>
+          <div class="right"><div class="pct">24%</div><div class="count">~770 personer</div></div>
+          <div class="bar"><i style="width:76%"></i></div>
+        </article>
+
+        <article class="role t3">
+          <div class="ico"><svg><use href="#i-ops"/></svg></div>
+          <div class="text">
+            <div class="name">Drift &amp; Underhåll</div>
+            <div class="titles">Driftchef · Säkerhet · Anläggningsansvarig</div>
           </div>
-        </div>
-        <div class="role-bar r-4" style="--w: 17%;">
-          <div class="role-bar-fill"></div>
-          <div class="role-bar-content">
-            <div class="role-bar-l">
-              <div class="role-bar-name">Affär &amp; Inköp</div>
-              <div class="role-bar-d">CFO, Inköpschef, Affärsutveckling</div>
-            </div>
-            <div class="role-bar-r">
-              <div class="role-bar-pct">17%</div>
-              <div class="role-bar-n">~545</div>
-            </div>
+          <div class="right"><div class="pct">21%</div><div class="count">~670 personer</div></div>
+          <div class="bar"><i style="width:66%"></i></div>
+        </article>
+
+        <article class="role t4">
+          <div class="ico"><svg><use href="#i-buy"/></svg></div>
+          <div class="text">
+            <div class="name">Affär &amp; Inköp</div>
+            <div class="titles">CFO · Inköpschef · Affärsutveckling</div>
           </div>
-        </div>
-        <div class="role-bar r-5" style="--w: 10%;">
-          <div class="role-bar-fill"></div>
-          <div class="role-bar-content">
-            <div class="role-bar-l">
-              <div class="role-bar-name">Forskning, Politik &amp; Press</div>
-              <div class="role-bar-d">Akademi, Myndighet, Media</div>
-            </div>
-            <div class="role-bar-r">
-              <div class="role-bar-pct">10%</div>
-              <div class="role-bar-n">~320</div>
-            </div>
+          <div class="right"><div class="pct">17%</div><div class="count">~545 personer</div></div>
+          <div class="bar"><i style="width:54%"></i></div>
+        </article>
+
+        <article class="role t5">
+          <div class="ico"><svg><use href="#i-research"/></svg></div>
+          <div class="text">
+            <div class="name">Forskning, Politik &amp; Press</div>
+            <div class="titles">Akademi · Riksdag · Journalister · Myndigheter</div>
           </div>
-        </div>
+          <div class="right"><div class="pct">10%</div><div class="count">~320 personer</div></div>
+          <div class="bar"><i style="width:32%"></i></div>
+        </article>
+
       </div>
 
-      <aside class="roles-side">
-        <div class="roles-side-eyebrow">Branscher representerade</div>
-        <ul class="roles-tags">
-          <li>Nätbolag</li><li>Kraftproducenter</li><li>Fjärrvärme</li>
-          <li>Industri &amp; Storkund</li><li>Kommun &amp; Region</li>
-          <li>Fastighet</li><li>Leverantör / Tech</li><li>Finans</li>
-          <li>Akademi</li>
-        </ul>
+      <aside class="side">
 
-        <div class="roles-stat">
-          <div class="roles-stat-n">76%</div>
-          <div class="roles-stat-l">har budgetansvar för strategiska investeringar 2027–2028</div>
+        <div class="panel">
+          <h3>Branscher representerade</h3>
+          <div class="chips">
+            <span class="chip">Nätbolag</span>
+            <span class="chip">Kraftproducenter</span>
+            <span class="chip">Fjärrvärme</span>
+            <span class="chip">Industri &amp; Storkund</span>
+            <span class="chip">Kommun &amp; Region</span>
+            <span class="chip">Fastighet</span>
+            <span class="chip">Leverantör / Tech</span>
+            <span class="chip">Finans</span>
+            <span class="chip">Akademi</span>
+          </div>
         </div>
-        <div class="roles-stat">
-          <div class="roles-stat-n">3 200+</div>
-          <div class="roles-stat-l">besökare totalt över två dagar (uppskattat)</div>
+
+        <div class="panel">
+          <h3>Det här tar du med hem</h3>
+          <div class="stats">
+            <div class="stat"><b class="g">38</b><span>kvalificerade leads i snitt per utställare 2026</span></div>
+            <div class="stat"><b class="t">76%</b><span>av besökarna har budgetansvar för strategiska investeringar</span></div>
+            <div class="stat"><b class="g">2 dgr</b><span>räcker för att fylla pipen för Q3 — säger 9 av 10 utställare</span></div>
+          </div>
         </div>
+
       </aside>
+    </div>
+
+    <div class="legend">
+      <span><span class="dot"></span>Stapel = andel av totalt antal besökare 2026</span>
+      <span>·</span>
+      <span>Källa: Energimässans registreringsdata 2026 + förbokningar 2027</span>
     </div>
   </div>
 </section>
