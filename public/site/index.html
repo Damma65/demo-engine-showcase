@@ -2,6 +2,14 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8" />
+<script>
+  // Gate: kräver lösenord via /
+  try {
+    if (sessionStorage.getItem('em27_gate_ok') !== '1') {
+      window.location.replace('/');
+    }
+  } catch(e) {}
+</script>
 <title>Energimässan 2027 · 19–20 maj · Kistamässan, Stockholm</title>
 <meta name="description" content="Nordens största energimässa 19–20 maj 2027 på Kistamässan. 200+ talare, 250+ utställare, fyra scener och AI-Zonen. Hämta din kostnadsfria biljett." />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
