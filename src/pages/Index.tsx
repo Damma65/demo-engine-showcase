@@ -15,7 +15,7 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    if (authed) window.location.replace("/site/index.html");
+    if (authed) window.location.replace("/demo-engine-showcase/site/index.html");
   }, [authed]);
 
   const onSubmit = (e: FormEvent) => {
